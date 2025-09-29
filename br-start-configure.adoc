@@ -40,19 +40,22 @@ You need to configure the following types of credentials:
 
 //After NetApp Backup and Recovery discovers hosts, you can change the password, but you cannot delete the credentials for that host. 
 
+//+
+//image:../media/screen-br-settings-all.png[Settings option showing the options]
+//+
+//image:../media/screen-br-settings-credentials.png[Settings option]
+//+
+//image:../media/screen-br-settings-credentials-add.png[Settings option to add new credentials]
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
-+
-image:../media/screen-br-settings-all.png[Settings option showing the options]
+
 
 . Select the down arrow for *Credentials*.
-+
-image:../media/screen-br-settings-credentials.png[Settings option]
+
 
 
 . Select *Add new credentials*.
-+
-image:../media/screen-br-settings-credentials-add.png[Settings option to add new credentials]
+
 . Enter information for the credentials. Different fields appear depending on the Authentication mode you select. Select the Information *i* for more information about the fields. 
 * *Credentials name*: Enter a name for the credentials.
 * *Authentication mode*: Select *Windows* or *Microsoft SQL*. 
@@ -70,7 +73,12 @@ TIP: You need to enter credentials for both Windows and Microsoft SQL Server, so
 
 . Select *Add*.
 
-
+//+
+//image:../media/screen-br-settings-credentials-edit.png[Settings option]
+//+
+//image:../media/screen-br-settings-all.png[Settings option showing the options]
+//+
+//image:../media/screen-br-settings-vmware-open.png[Settings option showing the VMware vCenter settings]
 === Edit credentials for host resources
 
 You can later edit the password for the host resources that you imported from SnapCenter.
@@ -79,8 +87,6 @@ You can later edit the password for the host resources that you imported from Sn
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
 . Select the down arrow to expand the *Credentials* section. 
-+
-image:../media/screen-br-settings-credentials-edit.png[Settings option]
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit credentials*.   
 +
 * *Password*: Enter the password for the credentials.
@@ -93,11 +99,9 @@ Provide the VMware vCenter credentials to discover the VMware vCenter Server wor
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
-+
-image:../media/screen-br-settings-all.png[Settings option showing the options]
+
 . Select the down arrow to expand the *VMware vCenter* section.
-+
-image:../media/screen-br-settings-vmware-open.png[Settings option showing the VMware vCenter settings]
+
 
 . Select *Add vCenter*.
 
@@ -130,15 +134,12 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 .Steps 
 
 . From the NetApp Backup and Recovery menu, select *Settings*. 
-+
-image:../media/screen-br-settings-all.png[Settings option showing the options]
+
 . Select the down arrow to expand the *Import from SnapCenter* section.
-+
-image:../media/screen-br-settings-import-snapcenter.png[Settings option to import SnapCenter Server resources]
+
 
 . Select *Import from SnapCenter* to import the SnapCenter resources.
-+
-image:../media/screen-br-settings-import-snapcenter-details.png[Settings option to import SnapCenter Server resources]
+
 
 . Enter *SnapCenter application credentials*:
 .. *SnapCenter FQDN or IP address*: Enter the FQDN or IP address of the SnapCenter application itself.
@@ -158,7 +159,6 @@ NOTE: If the SnapCenter Server is already registered, you can  update the existi
 .Result
 The Inventory page shows the imported SnapCenter resources.
 
-image:../media/screen-br-inventory-manage-option.png[Inventory page showing the imported SnapCenter resources and the Manage option]
 
 === Manage SnapCenter host resources
 
@@ -168,8 +168,6 @@ After you import the SnapCenter resources, manage those host resources in NetApp
 . After you import the SnapCenter resources, on the Inventory page that appears, select the SnapCenter resources that you imported that you want to have NetApp Backup and Recovery manage from now on.  
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to manage the resources.   
-+
-image:../media/screen-br-inventory-manage-host.png[Inventory page showing the imported SnapCenter resources and the Manage option]
 
 . Select *Manage in NetApp Console*. 
 +
@@ -189,8 +187,6 @@ You can change only the port and password details for the SnapCenter Server.
 + 
 The Import from SnapCenter page shows all previous imports. 
 
-+ 
-image:../media/screen-br-settings-import-snapcenter-edit.png[Settings option to import SnapCenter Server resources showing previously imported resources]
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit* to update the resources.   
 
@@ -226,29 +222,25 @@ image:../media/screen-br-settings-import-snapcenter-edit.png[Settings option to 
 
 
 
-
 == Configure log directories in snapshots for Windows hosts
 
 Before you create policies for Windows hosts, you should configure log directories in snapshots for Windows hosts. Log directories are used to store the logs that are generated during the backup process. 
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-+
-image:../media/screen-br-inventory-viewdetails-option.png[Inventory page showing the workloads and the View details option]
 
 . From the Inventory page, select a workload and then select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.   
 
 . From the Inventory details page showing Microsoft SQL Server, select the Hosts tab. 
-+
-image:../media/screen-br-inventory-hosts-actionmenu.png[Inventory details page showing Microsoft SQL Server Hosts tab and the Actions menu] 
+ 
 
 . From the Inventory details page, select a host and select the Actions icon image:../media/icon-action.png[Actions option] > *Configure log directory*.   
-+
-image:../media/screen-br-inventory-configure-log.png[Configure log screen] 
+
 . Either browse or enter the path for the log directory.
 . Select *Save*.
 
-
+//+//
+//image:../media/screen-br-inventory-configure-log.png[Configure log screen] 
 
 //== Configure buckets in working environments
 

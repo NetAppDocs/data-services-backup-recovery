@@ -1,4 +1,4 @@
 ---
 permalink: task-manage-vm-data-in-cloud.html
-redirect: bluexp-backup-recovery/prev-vmware-manage.html
+redirect: data-services-backup-recovery/prev-vmware-manage.html
 ---

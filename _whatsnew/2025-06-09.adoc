@@ -9,7 +9,7 @@ Before you can use the Search & Restore method of restoring data, you need to en
 
 The Indexed Catalog can then track every volume and backup file, making your searches quick and efficient.  
 
-For more information, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html[Enable indexing for Search & Restore].
+For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-restore.html[Enable indexing for Search & Restore].
 
 
 
@@ -32,6 +32,4 @@ The previous release introduced support for SnapMirror to Cloud Resync (SM-C Res
 
 When you create backup files in object storage for a working environment, by default, NetApp Backup and Recovery creates the container (bucket or storage account) for the backup files in the object storage account that you configured. Previously, you could override this and specify your own container for Amazon S3, Azure Blob Storage, and Google Cloud Storage. With this release, you can now bring your own StorageGRID object storage container. 
 
-
-See https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-protect-journey.html[Create your own object storage container].
-
+See https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-journey.html[Create your own object storage container].

@@ -25,7 +25,7 @@ Before you can use the Search & Restore method of restoring data, you need to en
 
 Enable indexing on the source working environment by selecting the "Enable Indexing" option when you are performing a Search & Restore.
 
-For more information, see the documentation https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html[how to restore ONTAP data using Search & Restore].
+For more information, see the documentation https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-restore.html[how to restore ONTAP data using Search & Restore].
 
 
 //For more information, see the documentation link:task-restore-backups-ontap.html[Restore ONTAP data using Search & Restore].

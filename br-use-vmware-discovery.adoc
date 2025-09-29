@@ -65,7 +65,10 @@ NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisite
 //* Workload type – VMware, no of vCenters, resources – datastores/VMs discovered, protected resources and total protected capacity as nil
 //* If user has selected “discover underlying applications “ VMware tools will be used to identify VMs which has MSSQL applications and a summary of MSSQL discovered resources will be displayed as a new row. 
 
-
+//+
+//image:screen-br-landing-discover-import-buttons.png[Landing page screenshot for NetApp Backup and Recovery without discovered resources]
+//+
+//image:screen-br-discover-workloads.png[Discover workload resources screenshot]
 === If SnapCenter Plug-in is not already installed, add a vCenter and discover resources
 
 If you don't already have SnapCenter Plug-in for VMware installed, add vCenter information and have NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
@@ -77,12 +80,10 @@ If you don't already have SnapCenter Plug-in for VMware installed, add vCenter i
 . From the NetApp Console left navigation, select *Protection* > *Backup and Recovery*. 
 +
 If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
-+
-image:screen-br-landing-discover-import-buttons.png[Landing page screenshot for NetApp Backup and Recovery without discovered resources]
+
 
 . Select *Discover resources*.
-+
-image:screen-br-discover-workloads.png[Discover workload resources screenshot]
+
 
 . Enter the following information: 
 .. *Workload type*: Select *VMware*.
@@ -127,15 +128,10 @@ TIP: After you import vCenter metadata from the SnapCenter Plug-in, NetApp Backu
 
 . From the BlueXP left navigation, select *Protection* > *Backup and Recovery*. 
 . Select *Inventory*.
-+
-image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery showing VMware workload]
-. From the Inventory page, select *Discover resources*.
 //+
 //image:../media/screen-br-discover-workloads.png[Discover workload resources screenshot]
 . From the NetApp Backup and Recovery Discover workload resources page, select *Import from SnapCenter*.
 
-+
-image:../media/screen-vm-discover-import-snapcenter.png[Settings option to import SnapCenter Plug-in resources]
 . In the Import from field, select *SnapCenter Plug-in for VMware*.
 
 
@@ -157,7 +153,7 @@ NOTE: If the SnapCenter Plug-in is already registered, you can  update the exist
 .Result
 The Inventory page shows the vCenter as unmanaged in NetApp Backup and Recovery until you explicitly select to manage it.
 
-image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter as unmanaged]
+//image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter as unmanaged]
 
 
 
@@ -170,15 +166,11 @@ After you select to manage the resources, the resources, VMs, and policies are i
 .Steps 
 . After you import the VMware resources from SnapCenter Plug-in, from the Backup and Recovery menu, select *Inventory*. 
 . From the Inventory page, select the imported vCenter that you want to have NetApp Backup and Recovery manage from now on.  
-+
-image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter resources]
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.  
 
 
 . From the Inventory > workload page, select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to display the Manage vCenter page.   
-+
-image:../media/screen-vm-discover-import-manage.png[Manage vCenter in NetApp Console page]
 
 . Check the box "Do you want to continue with the migration?" and select *Migrate*. 
 
@@ -186,10 +178,13 @@ image:../media/screen-vm-discover-import-manage.png[Manage vCenter in NetApp Con
 
 The Inventory page shows the newly managed vCenter resources.
 
+////
 image:../media/screen-vm-inventory-managed.png[Inventory page showing the managed vCenter resources]
-
-
-
++
+image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter resources]
++
+image:../media/screen-vm-discover-import-manage.png[Manage vCenter in NetApp Console page]
+/////
 
 
 

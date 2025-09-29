@@ -34,9 +34,12 @@ You can accomplish the following goals related to policies:
 == View policies 
 
 . From the NetApp Backup and Recovery menu, select *Policies*.
+<<<<<<< HEAD
 +
 image:screen-br-policies.png["Policies page"]
 
+=======
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 . Review these policy details. 
 
 * *Workload*: Examples include Microsoft SQL Server, Volumes, VMware, KVM, Hyper-V, or Kubernetes. 
@@ -65,8 +68,12 @@ For information about snapshot locking in general, refer to https://docs.netapp.
 .Steps
 . From the NetApp Backup and Recovery menu, select *Policies*.
 . From the Policies page, select *Create new policy*.
+<<<<<<< HEAD
 +
 image:screen-br-policies-new-nodata-vm.png[Screenshot of new policy creation]
+=======
+
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 
 . In the Policies page, provide the following information.   
 
@@ -222,7 +229,11 @@ Enter information in these fields:
 
 Optionally, you can configure advanced settings in the policy. These settings are available for all backup architectures, including local snapshots, replication to secondary storage, and backups to object storage. These settings are not available for Kubernetes workloads.
 
+<<<<<<< HEAD
 image:screen-br-policies-advanced.png[Advanced settings screenshot for NetApp Backup and Recovery policies]
+=======
+//image:screen-br-policies-advanced.png[Advanced settings screenshot for NetApp Backup and Recovery policies]
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Policies*.
@@ -259,8 +270,13 @@ TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with th
 
 
 * *Backup verification*: (Not applicable to VMware Preview workloads) Select whether you want to enable backup verification and whether you want it immediately or later. This feature ensures that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
+<<<<<<< HEAD
 +
 image:screen-br-policies-advanced-more-backup-verification.png[Backup verification settings screenshot for NetApp Backup and Recovery policies]
+=======
+//+
+//image:screen-br-policies-advanced-more-backup-verification.png[Backup verification settings screenshot for NetApp Backup and Recovery policies]
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 +
 Additionally, configure the following options:
 
@@ -287,8 +303,13 @@ Additionally, configure the following options:
 //TIP: Enabling scans will incur extra charges, depending on the cloud provider. 
 
 * *SnapMirror and snapshot format*: Optionally, enter your own snapshot name in a policy that governs the backups for Microsoft SQL Server workloads. Enter the format and custom text. If you chose to backup to secondary storage, you can also add a SnapMirror volume prefix and suffix.
+<<<<<<< HEAD
 +
 image:screen-br-sql-policy-create-advanced-snapmirror.png[SnapMirror and snapshot format settings screenshot for NetApp Backup and Recovery policies]
+=======
+//+
+//image:screen-br-sql-policy-create-advanced-snapmirror.png[SnapMirror and snapshot format settings screenshot for NetApp Backup and Recovery policies]
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 
 
 == Edit a policy

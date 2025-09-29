@@ -1,4 +1,4 @@
 ---
 permalink: reference-aws-backup-tiers.html
-redirect: bluexp-backup-recovery/prev-reference-aws-archive-storage-tiers.html
+redirect: data-services-backup-recovery/prev-reference-aws-archive-storage-tiers.html
 ---

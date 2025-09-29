@@ -85,21 +85,16 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery restore adm
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Restore*.
-+
-image:screen-vm-restore-dropdown.png[A screenshot showing the Restore page.]
 . From the drop-down list to the right of the name search field, select *Virtual machines*. 
 
 . Enter the name of the resource you want to restore or filter for the vCenter, datacenter, or datastore where the resource that you want to restore is located. 
 +
 A list of snapshots appears that match your search criteria.
-+
-image:screen-vm-restore-snapshot.png[A screenshot showing the list of snapshots to restore.]    
+   
 
 . Select the snapshot that you want to restore. 
 +
 A list of restore location options appears.
-+
-image:screen-vm-restore-location.png[A screenshot showing the Restore options page.]
 
 . Select the restore location where you want to restore the snapshot:  
 
@@ -110,8 +105,6 @@ If you choose secondary storage, enter the source and destination location infor
 * Object storage: Restores the snapshot to an object storage location.  
 +
 If you choose object storage, check whether you want to scan the snapshot again before restoring. 
-+
-image:screen-vm-restore-location-objectstore.png[A screenshot showing the Restore options page for object storage.]
 //+
 //If you chose object storage, you can choose an option to balance cost and speed of restoration: 
 //+
@@ -120,8 +113,6 @@ image:screen-vm-restore-location-objectstore.png[A screenshot showing the Restor
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
 Next, you can choose the destination settings and the pre-restore and post-restore options.
-+
-image:screen-vm-restore-destination.png[A screenshot showing the Restore Destination details page.]
 
 ===== Destination selection
 
@@ -225,12 +216,17 @@ Not available for VMware preview.
 //Browse and restore not available for VMware preview.  
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //*Required Console role*
 //Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 =======
 //*Required BlueXP role*
  Storage viewer, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
 >>>>>>> 498131cbabed11cda6a9e0c4fb5594874e95d76c
+=======
+//*Required Console role*
+//Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 
 //.Steps
 

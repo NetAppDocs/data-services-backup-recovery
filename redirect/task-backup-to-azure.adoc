@@ -1,4 +1,4 @@
 ---
 permalink: task-backup-to-azure.html
-redirect: bluexp-backup-recovery/prev-ontap-backup-cvo-azure.html
+redirect: data-services-backup-recovery/prev-ontap-backup-cvo-azure.html
 ---

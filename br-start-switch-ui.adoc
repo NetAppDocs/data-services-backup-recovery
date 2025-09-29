@@ -13,19 +13,20 @@ summary: You can switch among the different NetApp Backup and Recovery workloads
 :imagesdir: ./media/
 
 [.lead]
-You can switch among the different NetApp Backup and Recovery workloads. Some workloads use a different UI.
+You can switch among the different NetApp Backup and Recovery workloads. 
+//Some workloads use a different UI.
 
 
 
-*How do you know which UI you are using?*
+//*How do you know which UI you are using?*
 
 
-The taskbar for Microsoft SQL Server, VMware workloads (Preview without SnapCenter Plug-in for VMware vSphere), KVM workloads (Preview), Hyper-V workloads (Preview), and Kubernetes workloads (Preview) looks like this: 
-image:screen-br-menu-unified.png[New UI screenshot for NetApp Backup and Recovery]
+//The taskbar for Microsoft SQL Server, VMware workloads (Preview without SnapCenter Plug-in for VMware vSphere), KVM workloads (Preview), Hyper-V workloads (Preview), and Kubernetes workloads (Preview) looks like this: 
+//image:screen-br-menu-unified.png[New UI screenshot for NetApp Backup and Recovery]
 
-The menu bar for ONTAP volumes and VMware workloads (with SnapCenter Plug-in for VMware vSphere) looks like this: 
-image:screen-br-menu-legacy.png[Previous UI screenshot for NetApp Backup and Recovery]
-
+//The menu bar for ONTAP volumes and VMware workloads (with SnapCenter Plug-in for VMware vSphere) looks like this: 
+//image:screen-br-menu-legacy.png[Previous UI screenshot for NetApp Backup and Recovery]
+//image:screen-br-menu-switch-ui.png[Switch workload screenshot for NetApp Backup and Recovery]
 
 
 == Switch to a different workload 
@@ -37,10 +38,8 @@ You can switch to a different workload in the NetApp Backup and Recovery UI.
 . From the top right corner of the page, select the *Switch workload* drop-down list.
 
 . Select the workload that you want to switch to.
-image:screen-br-menu-switch-ui.png[Switch workload screenshot for NetApp Backup and Recovery]
-
 +
-The page refreshes and shows the selected workload in the appropriate UI.
+The page refreshes and shows the selected workload.
 
 
 

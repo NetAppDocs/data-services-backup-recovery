@@ -10,4 +10,4 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 * Work with containers and virtual machines running on Kubernetes.
 * Create application-consistent backups using execution hooks and templates.
 
-For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].

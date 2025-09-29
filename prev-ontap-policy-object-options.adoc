@@ -121,9 +121,9 @@ Refer to link:prev-ontap-policy-object-advanced-settings.html[How to update Rans
 
 
 
-=== What is Ransomware protection in NetApp Backup and Recovery
+=== What is Ransomware protection
 
-The Ransomware protection option in NetApp Backup and Recovery scans your backup files to look for evidence of a ransomware attack. The detection of ransomware attacks is performed using a checksum comparison. If potential ransomware is identified in a new backup file versus the previous backup file, that newer backup file is replaced by the most recent backup file that does not show any signs of a ransomware attack. (The file that was identified as having a ransomware attack is deleted 1 day after it has been replaced.)
+Ransomware protection scans your backup files to look for evidence of a ransomware attack. The detection of ransomware attacks is performed using a checksum comparison. If potential ransomware is identified in a new backup file versus the previous backup file, that newer backup file is replaced by the most recent backup file that does not show any signs of a ransomware attack. (The file that was identified as having a ransomware attack is deleted 1 day after it has been replaced.)
 
 Scans occur in these situations:
 
@@ -277,7 +277,7 @@ endif::azure[]
 * The DataLock option you select when activating NetApp Backup and Recovery must be used for all backup policies for that cluster. 
 * You cannot use multiple DataLock modes on a single cluster.
 * If you enable DataLock, all volume backups will be locked. You can't mix locked and non-locked volume backups for a single cluster.
-* DataLock and Ransomware protection is applicable for new volume backups using a backup policy with DataLock and Ransomware protection enabled. You can later enable or disable the Ransomware scanning option using the Advanced Settings option. 
+* DataLock and Ransomware protection is applicable for new volume backups using a backup policy with DataLock and Ransomware protection enabled. You can later enable or disable these features using the Advanced Settings option. 
 * FlexGroup volumes can use DataLock and Ransomware protection only when using ONTAP 9.13.1 or greater.
 
 === Tips on how to mitigate DataLock costs

@@ -3,10 +3,12 @@
 BlueXP backup and recovery has been renamed to NetApp Backup and Recovery.
  
 === BlueXP is now NetApp Console
+
+BlueXP is now NetApp Console.
  
-BlueXP has been renamed and redesigned to better reflect the role it has in managing your data infrastructure.
+The NetApp Console, built on the enhanced and restructured BlueXP foundation, provides centralized management of NetApp storage and NetApp Data Services across on-premises and cloud environments at enterprise grade—delivering real-time insights, faster workflows, and simplified administration, that is highly secure and compliant.
  
-The NetApp Console (formerly BlueXP) provides centralized management of storage and data services across on-premises and cloud environments at enterprise grade—delivering real-time insights, faster workflows, and simplified administration. For details on what's changed, see the https://docs.netapp.com/us-en/bluexp-relnotes/index.html[NetApp Console release notes].
+For details on what's changed, see the link:https://docs.netapp.com/us-en/bluexp-relnotes/index.html[NetApp  Console release notes.]
 
 === Hyper-V workload support as a Preview
 
@@ -19,7 +21,7 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 * Restore VMs from primary, secondary, and object storage
 * Search and restore VM backups
 
-For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
 
 === KVM workload support as a Preview
 
@@ -32,7 +34,7 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 * Search and restore VM backups
 * Guided process to back up and restore KVM-based VMs and VM data
 
-For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
 
 === Kubernetes Preview improvements
 The Preview release of Kubernetes workloads introduces the following enhancements:

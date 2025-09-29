@@ -1,4 +1,4 @@
 ---
 permalink: reference-restart-backup-html.html
-redirect: bluexp-backup-recovery/reference-restart-backup.html
+redirect: data-services-backup-recovery/reference-restart-backup.html
 ---

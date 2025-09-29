@@ -246,9 +246,6 @@ You can restore a database to ensure that your data is protected.
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
 
-.Steps
-. From the NetApp Backup and Recovery menu, select *Inventory*.
-. Select the workload that you want to view and select *View*.
 . Select the *Databases* tab. 
 . Select the database. 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Restore*.
@@ -277,7 +274,11 @@ For details about creating a policy, refer to link:br-use-policies-create.html[C
 You can back up your Microsoft SQL Server instances and databases now to ensure that your data is protected immediately.
 
 *Required NetApp Console role*
+<<<<<<< HEAD
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+=======
+Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+>>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.

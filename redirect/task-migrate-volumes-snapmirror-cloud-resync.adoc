@@ -1,4 +1,4 @@
 ---
 permalink: task-migrate-volumes-snapmirror-cloud-resync.html
-redirect: bluexp-backup-recovery/prev-ontap-migrate-resync.html
+redirect: data-services-backup-recovery/prev-ontap-migrate-resync.html
 ---

@@ -1,4 +1,4 @@
 ---
 permalink: reference-backup-cbs-db-in-dark-site.html
-redirect: bluexp-backup-recovery/reference-backup-cbs-db-in-dark-site.html
+redirect: data-services-backup-recovery/reference-backup-cbs-db-in-dark-site.html
 ---

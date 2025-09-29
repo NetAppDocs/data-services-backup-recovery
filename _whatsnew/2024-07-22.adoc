@@ -8,7 +8,7 @@ The DataLock feature protects your backup files from being modified or deleted f
 
 //For details about DataLock and tips on how to mitigate the associated costs, refer to link:concept-cloud-backup-policies.html[Backup-to-object policy settings].
 
-For details about DataLock and tips on how to mitigate the associated costs, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+For details about DataLock and tips on how to mitigate the associated costs, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-policy-object-options.html[Backup-to-object policy settings].
 
 === AWS IAM Roles Anywhere integration 
 
@@ -28,6 +28,6 @@ Previously, FlexVol volumes could be restored, but you couldn't restore FlexGrou
 
 With this release, support for FlexGroup folder restore is a technology preview.
 
-For details, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html[Restore folders and files using Browse & Restore].
+For details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-restore.html[Restore folders and files using Browse & Restore].
 
 For details to enable it manually, refer to https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-July-2024-Release/ba-p/453993[NetApp Backup and Recovery July 2024 release blog].

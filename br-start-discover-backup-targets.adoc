@@ -31,8 +31,6 @@ To add an offsite backup target, at least one workload has to be discovered.
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select the *Offsite backup targets* tab.
-+
-image:screen-br-inventory-offsite-backup-targets.png[Offsite backup targets tab]
 . Select *Discover backup target*. 
 . Select one of the backup target types: *Amazon Web Services (AWS) S3*, *Microsoft Azure Blob Storage*, *StorageGRID* or *ONTAP S3*.
 . In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
@@ -70,6 +68,9 @@ image:screen-br-inventory-offsite-backup-targets.png[Offsite backup targets tab]
 ** *Secret key*: Enter the ONTAP S3 secret key. 
 
 . Select *Discover*.
+
+//+
+//image:screen-br-inventory-offsite-backup-targets.png[Offsite backup targets tab]
 
 == Add a bucket for a backup target 
 

@@ -1,4 +1,4 @@
 ---
 permalink: task-restore-backups-ontap.html
-redirect: bluexp-backup-recovery/prev-ontap-restore.html
+redirect: data-services-backup-recovery/prev-ontap-restore.html
 ---

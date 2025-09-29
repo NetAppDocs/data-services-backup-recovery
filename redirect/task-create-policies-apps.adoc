@@ -1,4 +1,4 @@
 ---
 permalink: task-create-policies-apps.html
-redirect: bluexp-backup-recovery/index.html
+redirect: data-services-backup-recovery/index.html
 ---

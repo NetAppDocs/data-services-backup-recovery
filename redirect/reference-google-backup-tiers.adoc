@@ -1,4 +1,4 @@
 ---
 permalink: reference-google-backup-tiers.html
-redirect: bluexp-backup-recovery/prev-reference-gcp-archive-storage-tiers.html
+redirect: data-services-backup-recovery/prev-reference-gcp-archive-storage-tiers.html
 ---

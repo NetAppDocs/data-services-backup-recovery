@@ -1,4 +1,4 @@
 ---
 permalink: reference-limitations.html
-redirect: bluexp-backup-recovery/br-reference-limitations.html
+redirect: data-services-backup-recovery/br-reference-limitations.html
 ---

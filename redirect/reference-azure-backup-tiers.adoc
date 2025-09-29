@@ -1,4 +1,4 @@
 ---
 permalink: reference-azure-backup-tiers.html
-redirect: bluexp-backup-recovery/prev-reference-azure-archive-storage-tiers.html
+redirect: data-services-backup-recovery/prev-reference-azure-archive-storage-tiers.html
 ---

@@ -1,4 +1,4 @@
 ---
 permalink: task-backup-vm-data-to-azure.html
-redirect: bluexp-backup-recovery/prev-vmware-backup-azure.html
+redirect: data-services-backup-recovery/prev-vmware-backup-azure.html
 ---

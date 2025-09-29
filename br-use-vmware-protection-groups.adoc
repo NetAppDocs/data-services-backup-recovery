@@ -27,13 +27,12 @@ You can perform the following tasks related to protection groups:
 
 Group workloads that you want to protect together into a protection group. You can create a protection group for a set of workloads that you want to back up and restore together.
 
-*Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+*Required Console role*
+Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-+
-image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
+
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
@@ -60,8 +59,6 @@ The protection status changes to "Under maintenance" when you suspend a protecti
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-+
-image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
@@ -78,8 +75,6 @@ The protection status changes from "Under maintenance" when you suspend a protec
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-+
-image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
