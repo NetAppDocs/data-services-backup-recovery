@@ -154,8 +154,6 @@ You need specific requirements to discover Kubernetes resources and protect your
 
 For NetApp Console requirements, refer to <<In NetApp Console>>.
 
-//* A the NetApp Console working environment that has storage volumes configured and useable by BlueXP
-//* A https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html#connector-installation[BlueXP Console agent^]
 * A primary ONTAP system (ONTAP 9.16.1 or later)
 * A Kubernetes cluster - Supported Kubernetes distributions and versions include:
 ** Anthos On-Prem (VMware) and Anthos on bare metal 1.16
