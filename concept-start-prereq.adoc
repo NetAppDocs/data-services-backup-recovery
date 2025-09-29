@@ -158,16 +158,18 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
 
-* Microsoft Hyper-V 2019, 2022 & 2025 editions
-** Standalone and clustered VM hosts are supported (clustered hosts must use FCI)
-* A primary ONTAP system (ONTAP 9.15.1 or later)
-* Hardware and software requirements for the Hyper-V host:
+* Software requirements for the Hyper-V host:
+** Microsoft Hyper-V 2019, 2022 & 2025 editions
+** ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
+** PowerShell 7.4.2
+* Hardware requirements for the Hyper-V host:
+** Standalone and FCI-clustered hosts are supported
 ** 1GB RAM minimum for the NetApp Hyper-V plug-in on the Hyper-V host
 ** 5GB minimum installation and log space for the plug-in on the Hyper-V Host
 +
 NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the logs folder and regularly monitor its usage. The required space depends on how often backups and data protection operations occur. If there isn't enough space, logs will not be generated.
-** ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
 * NetApp ONTAP configuration requirements:
+** A primary ONTAP system (ONTAP 9.15.1 or later)
 ** For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
 
 == In NetApp Console
