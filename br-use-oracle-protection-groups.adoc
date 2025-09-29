@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: br-use-vmware-protection-groups.html
-keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, vmware, vm, virtual machines, workloads, volumes, snapshots
-summary: Create and manage protection groups for VMware workloads in NetApp Backup and Recovery. 
+permalink: br-use-oracle-protection-groups.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle, database, workloads, volumes, snapshots
+summary: Create and manage protection groups for Oracle workloads in NetApp Backup and Recovery. 
 ---
 
-= Create and manage protection groups for VMware workloads with NetApp Backup and Recovery
+= Create and manage protection groups for Oracle workloads with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,32 +13,34 @@ summary: Create and manage protection groups for VMware workloads in NetApp Back
 :imagesdir: ./media/
 
 [.lead]
-Create protection groups to manage the backup and restore operations for a set of workloads.  A protection group is a logical grouping of resources such as VMs and datastores that you want to protect together.
+Create protection groups to manage the backup operations for a set of Oracle resources. A protection group is a logical grouping of resources such as databases that you want to protect together. You need to create a protection group to back up Oracle databases.
 
 You can perform the following tasks related to protection groups:
 
 * Create a protection group.
 * View protection details. 
-* Back up a protection group now. See link:br-use-vmware-backup.html[Back up VMware workloads now].
+* Back up a protection group now. See link:br-use-kvm-backup.html[Back up Oracle workloads now].
 * Suspend and resume a protection group's backup schedule.  
 * Delete a protection group.
 
 == Create a protection group 
 
-Group workloads that you want to protect together into a protection group. You can create a protection group for a set of workloads that you want to back up and restore together.
+Group VMs and storage pools that you want to protect together into a protection group. 
 
 *Required Console role*
 Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
+//+
+//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
 
 . Provide a name for the protection group.
-. Select the VMs or databases that you want to include in the protection group.
+. Select the VMs or storage pools that you want to include in the protection group.
 . Select *Next*. 
 
 . Select the *Backup policy* that you want to apply to the protection group.
@@ -49,7 +51,6 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 . Review the configuration.
 . Select *Create* to create the protection group.
 
-
 == Suspend a protection group's backup schedule
 
 Suspending a protection group pauses the scheduled backups for the protection group. You might want to suspend a protection group if you want to temporarily stop backups for the workloads in that group. 
@@ -58,6 +59,8 @@ The protection status changes to "Under maintenance" when you suspend a protecti
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
+//+
+//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
@@ -74,6 +77,8 @@ The protection status changes from "Under maintenance" when you suspend a protec
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
+//+
+//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.

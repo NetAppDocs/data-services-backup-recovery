@@ -137,6 +137,18 @@ You need specific requirements to discover and protect KVM virtual machines.
 * QEMU Guest Agent version 9.0.0 or later
 * libvirt version 10.5.0 or later
 
+== Requirements for protecting Oracle workloads
+Ensure your environment meets specific requirements to discover and protect Oracle resources.
+
+* Oracle Database:
+** Oracle 19C and 21C are supported in a standalone deployment.
+** Oracle Database must be deployed in primary or secondary NetApp ONTAP storage. 
+* Object storage support:
+** Azure Object Storage
+** Amazon AWS
+** NetApp StorageGRID
+** ONTAP S3
+
 == Requirements for protecting Kubernetes applications
 You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
 

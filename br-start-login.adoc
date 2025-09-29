@@ -58,10 +58,22 @@ The NetApp Console login page appears.
 //image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
 
 . If you haven't done so already, select the *Discover and manage* option. 
+<<<<<<< HEAD
 
 * For Microsoft SQL Server workloads, refer to link:br-start-discover.html[Discover Microsoft SQL Server workloads].
 * For VMware workloads, refer to link:br-use-vmware-discovery.html[Discover VMware workloads].
 * For KVM workloads, refer to link:br-start-discover-kvm.html[Discover KVM workloads].
 * For Hyper-V workloads, refer to link:br-start-discover-hyperv.html[Discover Hyper-V workloads].
 * For Kubernetes workloads, refer to link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
+=======
++
+* For Microsoft SQL Server workloads, refer to link:br-start-discover.html[Discover Microsoft SQL Server workloads].
+* For VMware workloads, refer to link:br-use-vmware-discovery.html[Discover VMware workloads].
+* For KVM workloads, refer to link:br-start-discover-kvm.html[Discover KVM workloads].
+* For Oracle workloads, refer to link:br-start-discover-oracle.html[Discover Oracle workloads].
+* For Kubernetes workloads, refer to link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
+ 
+
+
+>>>>>>> 6b2aaa82d1d2ec0ac72303b380f289e4a01ba4c6
 

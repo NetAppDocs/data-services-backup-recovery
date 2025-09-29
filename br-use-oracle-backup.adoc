@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: br-use-oracle-backup.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database, protection group
+summary: Protect your Oracle workloads with NetApp backup and recovery. 
+---
+
+= Back up Oracle workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Back up Oracle protection groups or databases from on-premises ONTAP systems to Amazon Web Services or StorageGRID to ensure that your data is protected. When you back up a protection group, the NetApp Console backs up the databases and log data contained in the protection group. 
+//Backups are automatically generated and stored in an object store in your public or private cloud account. 
+
+NOTE: To back up protection groups or single databases on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
+
+* Create protection groups to manage the backup and restore operations for a set of resources. See link:br-use-kvm-protection-groups.html[Create and manage protection groups for Oracle workloads with NetApp Backup and Recovery] for more information.
+* Back up a protection group now (create an on-demand backup now).
+* Back up a database now.  
+
+== Back up protection groups now with an on-demand backup
+
+You can run an on-demand backup immediately. This is helpful if you're about to make changes to your system and want to ensure that you have a backup before you start.
+
+*Required Console role*
+Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. In the Oracle tile, select *Discover and manage*.
+. Select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select the *Protection Groups*, *Datastores* or *Virtual machines* tab. 
+. Select the protection group that you want to back up.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
++
+NOTE: The policy that is applied to the backup is the same policy that is assigned to the protection group.
+
+. Select the schedule tier.
+. Select *Back up*. 
+
+== Back up a database now with an on-demand backup
+
+You can run an on-demand backup of a single database. 
+
+*Required Console role*
+Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. In the Oracle tile, select *Discover and manage*.
+. Select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select the *Databases* tab. 
+. Select the database that you want to back up.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
+. Select the schedule tier.
+. Select *Back up*. 

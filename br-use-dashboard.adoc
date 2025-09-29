@@ -25,10 +25,6 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 //+
 //image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
 
-== View the overall system summary
-
-The System summary provides the following information: 
-
 * Number of hosts or VMs discovered
 * Number of Kubernetes clusters discovered
 * Number of backup targets on object storage 

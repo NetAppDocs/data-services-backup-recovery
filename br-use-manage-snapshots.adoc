@@ -32,8 +32,6 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . Select the *Databases* tab. 
 . Select the database that you want to delete a snapshot for.
 . From the Actions menu, select *View protection details*. 
-+
-image:screen-br-inventory-sql-protection-details.png[View protection details]   
 
 . Select the local snapshot that you want to delete. 
 +

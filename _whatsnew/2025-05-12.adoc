@@ -33,12 +33,5 @@ While this feature is in preview, there are certain limitations:
 
 *Getting started* 
 
-To begin using this preview feature, you must enable a  flag on the Console agent. You can then enter the connection details of you MinIO third-party object store in the protection workflow by choosing *Third party Compatible* object store in the backup section. 
+To begin using this preview feature, you must enable a flag on the Console agent. You can then enter the connection details of you MinIO third-party object store in the protection workflow by choosing *Third party Compatible* object store in the backup section. 
 
-//For directions on how to enable preview features, see link:task-preview-enable.html[Enable preview features in NetApp Backup and Recovery].
-
-<<<<<<< HEAD
-//For directions on how to enable preview features, see https://docs.netapp.com/us-en/bluexp-backup-recovery/task-preview-enable.html[Enable preview features in NetApp Backup and Recovery].
-=======
-//For directions on how to enable preview features, see https://docs.netapp.com/us-en/data-services-backup-recovery/task-preview-enable.html[Enable preview features in NetApp Backup and Recovery].
->>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86

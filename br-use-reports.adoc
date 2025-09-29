@@ -13,8 +13,6 @@ summary: In NetApp Backup and Recovery, create reports to view the status of you
 [.lead]
 In NetApp Backup and Recovery, create reports for Microsoft SQL Server workloadsto view the status of your backups, including the number of backups, the number of successful backups, and the number of failed backups. You can also view the details of each backup, including the backup type, the storage system used for the backup, and the time of the backup.
 
-
-
 == Create a report
 
 *Required NetApp Console role*
@@ -23,10 +21,6 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . From the NetApp Backup and Recovery menu, select the *Reports* option.
 
 . Select *Create report*.
-+
-image:../media/screen-br-reports.png[Create new report screenshot]
-
-
 . Enter report scope details: 
 
 * *Report name*: Enter a unique name for the report.

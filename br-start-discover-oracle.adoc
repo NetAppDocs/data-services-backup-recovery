@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: br-start-discover-kvm.html
-keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, KVM, workloads, protect
+permalink: br-start-discover-oracle.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, workloads, protect, Oracle
 summary: NetApp Backup and Recovery needs to first discover workloads in order for you to protect them.  
 ---
 
-= Discover KVM workloads in NetApp Backup and Recovery
+= Discover Oracle workloads in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to first discover KVM hosts and virtual machines so that you can protect them.
+NetApp Backup and Recovery needs to first discover your Oracle databases so that you can protect them.
 
 
 *Required Console role*
@@ -66,38 +66,40 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 //* If user has selected “discover underlying applications “ KVM tools will be used to identify VMs which has MSSQL applications and a summary of MSSQL discovered resources will be displayed as a new row. 
 
 
-== Add a KVM host and discover resources
+== Add an Oracle host and discover resources
 
-Add KVM host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads.  
+Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads.  
 
 .Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. In the KVM tile, select *Discover and manage*.
+. In the Oracle tile, select *Discover and manage*.
 +
 If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
 
 . Select *Discover resources*.
 
 . Enter the following information: 
-.. *Workload type*: Select *KVM*.
-.. If you haven't yet stored credentials for this KVM host, select *Add credentials*.
+.. *Workload type*: Select *Oracle*.
+.. If you haven't yet stored credentials for this Oracle host, select *Add credentials*.
 ... Select the Console agent to use with this host.
 ... Enter a name for this credential.
-... Choose whether to use root credentials or non-root credentials.
 ... Enter the user name and password for the account.
 ... Select *Done*.
-.. *Host registration*: Add a new KVM host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
+.. *Host registration*: Add a new Oracle host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
 . Select *Discover*. 
 +
 TIP: This process might take a few minutes.
 
 .Result
-The KVM workload is displayed in the list of workloads on the Inventory page.
+The Oracle workload is displayed in the list of workloads on the Inventory page.
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
 
 . To display the NetApp Backup and Recovery Dashboard, from the top menu, select *Dashboard*.   
 
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
+. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
+
+
+ 

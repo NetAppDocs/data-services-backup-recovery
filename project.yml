@@ -37,6 +37,8 @@ sidebar:
           url: /br-limitations-hyperv.html
         - title: Known limitations for KVM workloads
           url: /br-limitations-kvm.html
+        - title: Known limitations for Oracle workloads
+          url: /br-limitations-oracle.html
     - title: Get started
       entries:
         - title: Learn about NetApp Backup and Recovery
@@ -183,7 +185,19 @@ sidebar:
 #            - title: Manage KVM virtual machines
 #              url: /br-use-manage-kvm-vms.html
 #            - title: Manage execution hook templates for Kubernetes workloads
-#              url: /br-use-manage-execution-hook-templates.html   
+#              url: /br-use-manage-execution-hook-templates.html 
+        - title: Protect Oracle workloads (Preview)
+          entries:
+            - title: Protect Oracle workloads overview
+              url: /br-use-oracle-protect-overview.html
+            - title: Discover Oracle workloads
+              url: /br-start-discover-oracle.html
+            - title: Create and manage protection groups for Oracle workloads
+              url: /br-use-oracle-protection-groups.html
+            - title: Back up Oracle workloads 
+              url: /br-use-oracle-backup.html
+            - title: Restore Oracle workloads
+              url: /br-use-oracle-restore.html
         - title: Protect Kubernetes workloads (Preview)
           entries:
             - title: Protect Kubernetes workloads overview

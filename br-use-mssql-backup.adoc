@@ -31,13 +31,8 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 .Steps 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
-+
-image:screen-br-inventory-sql.png[Inventory details page screenshot for NetApp Backup and Recovery]
-
 . Review details on the Hosts, Protection groups, Availability groups, Instances, and Databases tabs. 
 
 
@@ -48,17 +43,13 @@ Before you back up your workloads, set the path for the activity logs for discov
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
 
-.Steps 
 
+.Steps 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select a host. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Configure log directory*. 
-+
-image:screen-br-inventory-details-configurelog-option.png[Configure log screen]
 . Provide the host path or browse through a list of hosts or nodes hosts on the host to locate where you want the host log to be stored.
 . Select those on which you want to store the logs. 
 +
@@ -74,8 +65,6 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
@@ -103,8 +92,6 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 .Steps 
 
 . From the menu, select *Inventory*. 
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select the *Protection Group*, *Instances* or *Databases* tab. 
@@ -133,15 +120,10 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 .Steps 
 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select the *Protection Group*, *Instances* or *Databases* tab. 
 . Select the protection group, instance, or database you want to suspend.
-+
-image:../media/screen-br-inventory-sql-details-actions-menu.png[Actions menu screenshot for NetApp Backup and Recovery]
-
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Suspend*.
 
 
@@ -154,14 +136,11 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete protection group*.
-+
-image:../media/screen-br-inventory-sql-details-actions-menu.png[Actions menu screenshot for NetApp Backup and Recovery]
+
 
 
 == Remove protection from a workload 
@@ -173,15 +152,10 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 .Steps 
 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select the *Protection Group*, *Instances* or *Databases* tab. 
 . Select the protection group, instance, or database.
-+
-image:../media/screen-br-inventory-sql-details-actions-menu.png[Actions menu screenshot for NetApp Backup and Recovery]
-
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Remove protection*.
 
 . In the Remove protection dialog box, select whether you want to keep backups and metadata or delete them.

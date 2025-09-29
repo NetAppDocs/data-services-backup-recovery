@@ -33,7 +33,6 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 
 * *Microsoft SQL Server workloads*: 
 
-
 ** Back up Microsoft SQL Server instances and databases from on-premises ONTAP, Cloud Volumes ONTAP, or Amazon FSx for NetApp ONTAP. 
 ** Restore Microsoft SQL Server databases.
 ** Clone Microsoft SQL Server databases.
@@ -49,7 +48,6 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 //You can restore the VM to the exact same location from where the backup was taken or to an alternate location. 
 ** Use NetApp Backup and Recovery without SnapCenter Plug-in for VMware vSphere. 
 ** Refer to link:br-use-vmware-protect-overview.html[Protect VMware workloads].
-
 
 * *VMware workloads (With SnapCenter Plug-in for VMware vSphere)*: 
 
@@ -69,6 +67,14 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Back up and restore virtual machines
 ** Use protection groups to manage backup tasks
 ** Refer to link:br-use-hyperv-protect-overview.html[Protect Hyper-V workloads].
+* *Oracle workloads (Preview)*:
+** Back up and restore databases and logs
+** Use protection groups to manage backup tasks
+** Create policies to manage database and log backups
+** Protecting a database with a 3-2-1 backup architecture
+** Configure backup retention
+** Mount and unmount ARCHIVELOG backups
+** Refer to link:br-use-oracle-protect-overview.html[Protect Oracle workloads].
 
 * *Kubernetes workloads (Preview)*: 
 ** Manage and protect your Kubernetes applications and resources all in one place.

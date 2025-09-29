@@ -39,18 +39,14 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 .Steps 
 
 . From the Backup and Recovery menu, select *Inventory*. 
-+
-image:screen-vm-inventory-managed.png[Inventory screenshot for NetApp Backup and Recovery]
+
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select the *Protection Groups*, *Datastores* or *Virtual machines* tab. 
-+
-image:screen-vm-inventory-protection-groups.png[Protection groups tab screenshot for NetApp Backup and Recovery]
+
 
 . Select the protection group, datastores, or virtual machines that you want to back up.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
-+
-image:screen-vm-inventory-backup-now.png[Back up now screenshot for NetApp Backup and Recovery]
 +
 NOTE: The policy that is applied to the backup is the same policy that is assigned to the protection group, datastore, or virtual machine.
 

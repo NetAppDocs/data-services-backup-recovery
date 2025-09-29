@@ -105,15 +105,12 @@ If you choose secondary storage, enter the source and destination location infor
 * Object storage: Restores the snapshot to an object storage location.  
 +
 If you choose object storage, check whether you want to scan the snapshot again before restoring. 
-//+
-//If you chose object storage, you can choose an option to balance cost and speed of restoration: 
-//+
-//image:screen-vm-restore-location-objectstore-cost.png[A screenshot showing the Restore options for object storage.]
 
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
 Next, you can choose the destination settings and the pre-restore and post-restore options.
 
+[discrete]
 ===== Destination selection
 
 . Choose the destination settings and the pre-restore and post-restore options.
@@ -215,18 +212,6 @@ Not available for VMware preview.
 
 //Browse and restore not available for VMware preview.  
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//*Required Console role*
-//Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-=======
-//*Required BlueXP role*
- Storage viewer, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
->>>>>>> 498131cbabed11cda6a9e0c4fb5594874e95d76c
-=======
-//*Required Console role*
-//Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
->>>>>>> 12ae67cf44d6bd1d01b9a451fcfc58f994424e86
 
 //.Steps
 
