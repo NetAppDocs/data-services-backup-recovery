@@ -1,0 +1,4 @@
+---
+permalink: task-backup-vm-data-to-storagegrid.html
+redirect: bluexp-backup-recovery/prev-vmware-backup-storagegrid.html
+---

@@ -1,0 +1,55 @@
+=== High performance indexing 
+
+NetApp Backup and Recovery introduces an updated indexing feature that makes the indexing of data on the source system more efficient. The new indexing feature includes updates to the UI, improved performance of the Search & Restore method of restoring data, upgrades to global search capabilities, and better scalability. 
+
+
+Here’s a breakdown of the improvements: 
+
+* *Folder consolidation*: The updated version groups folders together using names that include specific identifiers, making the indexing process smoother. 
+
+* *Parquet file compaction*: The updated version reduces the number of files used for indexing each volume, simplifying the process and removing the need for an extra database. 
+
+* *Scale-out with more sessions*: The new version adds more sessions to handle indexing tasks, speeding up the process. 
+
+* *Support for multiple index containers*: The new version uses multiple containers to better manage and distribute indexing tasks. 
+* *Split index workflow*: The new version divides the indexing process into two parts, enhancing efficiency. 
+* *Improved concurrency*: The new version makes it possible to delete or move directories at the same time, speeding up the indexing process.
+
+.Who benefits from this feature?
+The new indexing feature is available to all new customers.
+
+
+.How do you enable indexing?  
+
+Before you can use the Search & Restore method of restoring data, you need to enable "Indexing" on each source system from which you're planning to restore volumes or files. This allows the Indexed Catalog to track every volume and every backup file, making your searches quick and efficient.  
+
+Enable indexing on the source working environment by selecting the "Enable Indexing" option when you are performing a Search & Restore.
+
+For more information, see the documentation https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html[how to restore ONTAP data using Search & Restore].
+
+
+//For more information, see the documentation link:task-restore-backups-ontap.html[Restore ONTAP data using Search & Restore].
+
+.Supported scale
+
+The new indexing feature supports the following: 
+
+* Global search efficiency in less than 3 minutes
+* Up to 5 billion files 
+* Up to 5000 volumes per cluster
+* Up to 100K snapshots per volume
+* Maximum time for baseline indexing is less than 7 days. The actual time will vary depending on your environment.
+
+
+=== Global search performance improvements
+
+This release also includes enhancements to global search performance. You will now see progress indicators and more detailed search results, including the count of files and the time taken for the search. Dedicated containers for search and indexing ensure that global searches are completed in under five minutes. 
+
+Note these considerations related to global search: 
+
+
+* The new index is not performed on snapshots labeled as hourly. 
+
+* The new indexing feature works only on snapshots on FlexVols, and not for snapshots on FlexGroups. 
+
+

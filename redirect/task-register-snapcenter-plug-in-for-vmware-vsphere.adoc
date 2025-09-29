@@ -1,0 +1,4 @@
+---
+permalink: task-register-snapCenter-plug-in-for-vmware-vsphere.html
+redirect: bluexp-backup-recovery/prev-vmware-register-snapcenter.html
+---

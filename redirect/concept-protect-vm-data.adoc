@@ -1,0 +1,4 @@
+---
+permalink: concept-protect-vm-data.html
+redirect: bluexp-backup-recovery/prev-vmware-prereqs.html
+---

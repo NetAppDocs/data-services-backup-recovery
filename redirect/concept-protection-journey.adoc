@@ -1,0 +1,4 @@
+---
+permalink: concept-protection-journey.html
+redirect: bluexp-backup-recovery/prev-ontap-protect-journey.html
+---

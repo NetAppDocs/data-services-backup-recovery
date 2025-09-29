@@ -1,0 +1,4 @@
+---
+permalink: reference-backup-multi-account-azure.html
+redirect: bluexp-backup-recovery/index.html
+---

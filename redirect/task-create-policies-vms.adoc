@@ -1,0 +1,5 @@
+---
+permalink: task-create-policies-vms.html
+redirect: bluexp-backup-recovery/prev-vmware-policy-create.html
+---
+

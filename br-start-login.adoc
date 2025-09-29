@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: br-start-login.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: You use NetApp Console to log in to NetApp Backup and Recovery service. 
+---
+
+= Log in to NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You use the NetApp Console to log in to NetApp Backup and Recovery. 
+
+NetApp Backup and Recovery uses identity and access management to govern the access that each user has to specific actions. 
+
+For details about the actions that each role can perform, see link:reference-roles.html[NetApp Backup and Recovery user roles].
+
+To log in to the NetApp Console, you can use your NetApp Support Site credentials or you can sign up for a NetApp Console login using your email and a password. https://docs.netapp.com/us-en/bluexp-setup-admin/task-logging-in.html[Learn more about logging in^].
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+
+To add a Console agent, you must have the Organization admin or the Backup and Recovery super admin role. 
+
+
+
+.Steps
+
+. Open a web browser and go to the https://console.netapp.com/[NetApp Console^].
++ 
+The NetApp Console login page appears.
+
+. Log in to the Console. 
+
+
+. From the Console left navigation, select *Protection* > *Backup and Recovery*. 
+
+* If this is your first time logging in to this service and you haven't yet added a system to the *Systems* page, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to add a system. For details about adding a system to the *Systems* page, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
++
+image:screen-br-landing-no-we.png[Landing page screenshot for NetApp Backup and Recovery without a system]
+//* If this is your first time logging in to this service, you already have a system in NetApp Console, but you haven't started the free trial, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Start free trial*. 
+//For details about starting a free trial, see link:br-start-trial.html[Start a free trial].
+//+
+//image:screen-br-landing-unified-start-trial.png[Landing page screenshot for BlueXP NetApp Backup and Recovery without a free trial]
+
+* If this is your first time logging in to this service and you have already added a system to the *Systems* page, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+//+
+//NOTE: After you start the free trial, the *Start free trial* option changes to the *Discover and manage* option. 
++
+image:screen-br-landing-unified.png[Landing page screenshot for NetApp Backup and Recovery]
+//+ 
+//* Otherwise, the NetApp Backup and Recovery Dashboard appears.
+//+
+//image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
+
+. If you haven't done so already, select the *Discover and manage* option. 
+
+* For Microsoft SQL Server workloads, refer to link:br-start-discover.html[Discover Microsoft SQL Server workloads].
+* For VMware workloads, refer to link:br-use-vmware-discovery.html[Discover VMware workloads].
+* For KVM workloads, refer to link:br-start-discover-kvm.html[Discover KVM workloads].
+* For Hyper-V workloads, refer to link:br-start-discover-hyperv.html[Discover Hyper-V workloads].
+* For Kubernetes workloads, refer to link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
+

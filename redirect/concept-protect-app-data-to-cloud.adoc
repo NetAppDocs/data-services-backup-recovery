@@ -1,0 +1,4 @@
+---
+permalink: concept-protect-app-data-to-cloud.html
+redirect: bluexp-backup-recovery/index.html
+---

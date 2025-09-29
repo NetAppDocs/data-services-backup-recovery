@@ -1,0 +1,51 @@
+=== BlueXP backup and recovery is now NetApp Backup and Recovery
+ 
+BlueXP backup and recovery has been renamed to NetApp Backup and Recovery.
+ 
+=== BlueXP is now NetApp Console
+ 
+BlueXP has been renamed and redesigned to better reflect the role it has in managing your data infrastructure.
+ 
+The NetApp Console (formerly BlueXP) provides centralized management of storage and data services across on-premises and cloud environments at enterprise grade—delivering real-time insights, faster workflows, and simplified administration. For details on what's changed, see the https://docs.netapp.com/us-en/bluexp-relnotes/index.html[NetApp Console release notes].
+
+=== Hyper-V workload support as a Preview
+
+This release of of NetApp Backup and Recovery introduces support for discovering and managing Hyper-V workloads:
+
+* Backup and restore VMs on standalone instances as well as failover cluster instances (FCI)
+* Protect VMs stored on SMB3 shares
+* Bulk protection at virtual machine level
+* VM and crash consistent backups 
+* Restore VMs from primary, secondary, and object storage
+* Search and restore VM backups
+
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
+
+=== KVM workload support as a Preview
+
+This release of of NetApp Backup and Recovery introduces support for discovering and managing KVM workloads:
+
+* Back up and restore qcow2 VM images stored on NFS shares
+* Back up storage pools
+* Bulk VM and storage pool protection using protection groups
+* VM consistent and crash consistent VM backups
+* Search and restore VM backups
+* Guided process to back up and restore KVM-based VMs and VM data
+
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
+
+=== Kubernetes Preview improvements
+The Preview release of Kubernetes workloads introduces the following enhancements:
+
+* 3-2-1 Fan out backup architecture support
+* Support for ONTAP S3 as a backup target
+* New Kubernetes dashboard for easier management
+* Enhanced role based access control (RBAC) configuration includes support for the following roles:
+** Backup and Recovery super admin
+** Backup and Recovery backup admin
+** Backup and Recovery restore admin
+** Backup and Recovery viewer
+* Support for SUSE Rancher Kubernetes distribution
+* Multi-bucket support: You can now protect the volumes within a system with multiple buckets per system across different cloud providers
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].

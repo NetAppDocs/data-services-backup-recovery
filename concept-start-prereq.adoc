@@ -1,0 +1,273 @@
+---
+sidebar: sidebar
+permalink: concept-start-prereq.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery
+summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
+---
+
+= NetApp Backup and Recovery prerequisites
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, NetApp Console agent, and NetApp Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
+
+
+== Prerequisite for ONTAP 9.8 and later
+
+An ONTAP One license must be enabled on the on-premises ONTAP instance.
+
+
+//* To apply advanced protection configurations (such as enabling DataLock and others), NetApp Backup and Recovery needs admin permissions on the ONTAP cluster. The ONTAP cluster should have been onboarded using ONTAP cluster admin user credentials only. 
+
+//* If the ONTAP cluster is already onboarded in the NetApp Console using non-admin user credentials, then the non-admin user permissions must be updated with necessary permissions by logging into the ONTAP cluster, described on this page. 
+
+
+== Prerequisites for backups to object storage
+
+To use object storage as backup targets, you need an account with AWS S3, Microsoft Azure Blob, StorageGRID, or ONTAP and the appropriate access permissions configured.
+
+* link:prev-ontap-protect-overview.html[Protect your ONTAP volume data]
+
+
+== Requirements for protecting Microsoft SQL Server workloads 
+
+To use NetApp Backup and Recovery for Microsoft SQL Server workloads, you need the following host system, space, and sizing prerequisites.
+
+[cols=2*,options="header",cols="33,66a",width="90%"]
+|===
+
+| Item
+| Requirements
+
+| Operating systems
+| Microsoft Windows
+For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
+| Microsoft SQL Server versions | Version 2012 and later are supported for VMware Virtual Machine File System (VMFS) and VMware Virtual Machine Disk (VMDK) NFS.
+
+| SnapCenter Server version | SnapCenter Server version 5.0 or greater is required if you are going to import your existing data from SnapCenter into NetApp Backup and Recovery.
+
+NOTE: If you already have SnapCenter, first check to be sure you've met the prerequisites before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
+
+| Minimum RAM for the plug-in on the SQL Server host
+| 1 GB
+
+| Minimum install and log space for the plug-in on the SQL Server host
+| 5 GB
+
+Allocate sufficient disk space and monitor the storage consumption by the logs folder. The log space required varies depending on the number of backups performed and the frequency of data protection operations. If there is not sufficient space, the logs will not be created for the operations. 
+
+|Required software packages
+| * ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
+
+//* Java 11 Oracle Java and OpenJDK
+
+//* Java 11 Oracle Java and OpenJDK are required only for SAP HANA, IBM Db2, PostgreSQL, MySQL, NetApp supported plug-ins, and other custom applications that can be installed on Windows hosts.
+
+* PowerShell Core 7.4.2
+
+For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
+
+//|Required software packages if using SnapCenter 5.0
+//| * Microsoft .NET Framework 4.7.2 or later
+
+//* Windows Management Framework (WMF) 4.0 or later
+
+//* PowerShell 4.0 or later
+
+
+|===
+
+
+== Requirements for protecting VMware workloads
+You need specific requirements to discover and protect your VMware workloads.
+
+//=== Host requirements 
+
+//For VMware workloads, refer to the following host requirements: 
+//https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#host-requirements[SnapCenter Plug-in for VMware vSphere deployment planning and requirements^]
+
+*Software support*
+
+* NFS and VMFS datastores are supported. vVols are not supported. 
+* NFS versions supported: NFS 3 and NFS 4.1
+* VMware ESXi Server versions supported: 7.0U1 and above
+* VMware vCenter vSphere versions supported: 7.0U1 and above
+* IP addresses: IPv4 and IPv6 
+* VMware TLS: 1.2, 1.3
+
+*Connection and port requirements for protecting VMware workloads*
+
+
+[cols=2*,options="header",cols="33,66a",width="90%"]
+|===
+
+| Type of port
+| Pre-configured port
+
+| VMware ESXi Server port | 443 (HTTPS), bidirectional. The Guest File Restore feature uses this port. 
+//| SnapCenter Plug-in for VMware vSphere port | 8144 (HTTPS), bidirectional. This port is used for communication from the VMware vSphere client and the SnapCenter Server. 
+
+//8080 bidirectional. This port is used to manage virtual appliances. 
+//A custom port for the addition of an SCV host to SnapCenter is supported. 
+
+| VMware vSphere vCenter Server port | If you are protecting vVol VMs, you must use port 443. 
+
+
+| Storage cluster or storage VM port | 443 (HTTPS), bidirectional. 
+80 (HTTP), bidirectional. This port is used for communication between the virtual appliance and the storage VM or the cluster containing the storage VM. 
+
+
+|===
+
+*Role-based access control (RBAC) requirements for protecting VMware workloads*
+
+The vCenter administrator account must have the required vCenter privileges. 
+
+For a list of vCenter privileges needed, see https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#rbac-privileges-required[SnapCenter Plug-in for VMware vSphere vCenter privileges needed^].
+
+== Requirements for protecting KVM workloads
+You need specific requirements to discover and protect KVM virtual machines.
+
+* A modern Linux distribution running kernel version 5.14.0-503.22.1.el9_5.x86_64 (longterm) or later
+* Ensure that inbound traffic to port 22 is allowed from the Console agent to the KVM host
+* QEMU Guest Agent version 9.0.0 or later
+* libvirt version 10.5.0 or later
+
+== Requirements for protecting Kubernetes applications
+You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
+
+For NetApp Console requirements, refer to <<In NetApp Console>>.
+
+//* A the NetApp Console working environment that has storage volumes configured and useable by BlueXP
+//* A https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html#connector-installation[BlueXP Console agent^]
+* A primary ONTAP system (ONTAP 9.16.1 or later)
+* A Kubernetes cluster - Supported Kubernetes distributions and versions include:
+** Anthos On-Prem (VMware) and Anthos on bare metal 1.16
+** Kubernetes 1.27 - 1.33
+** OpenShift 4.10 - 4.18
+** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
+** Suse Rancher
+* NetApp Trident 24.10 or later 
+* NetApp Trident protect 25.07 or later (installed during Kubernetes workload discovery)
+* NetApp Trident protect Connector 25.07 or later (installed during Kubernetes workload discovery)
+** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident protect Connector, and the Trident protect proxy.
+
+== Requirements for protecting Hyper-V workloads
+Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
+
+* Microsoft Hyper-V 2019, 2022 & 2025 editions
+** Standalone and clustered VM hosts are supported (clustered hosts must use FCI)
+* A primary ONTAP system (ONTAP 9.15.1 or later)
+* Hardware and software requirements for the Hyper-V host:
+** 1GB RAM minimum for the NetApp Hyper-V plug-in on the Hyper-V host
+** 5GB minimum installation and log space for the plug-in on the Hyper-V Host
++
+NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the logs folder and regularly monitor its usage. The required space depends on how often backups and data protection operations occur. If there isn't enough space, logs will not be generated.
+** ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
+* NetApp ONTAP configuration requirements:
+** For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
+
+== In NetApp Console
+Ensure NetApp Console meets the following requirements.
+
+* A Console user should have the required role and privileges to perform operations on Microsoft SQL Server and Kubernetes workloads. To discover the resources, you must have the NetApp Backup and Recovery role of Super admin. See link:reference-roles.html[NetApp Backup and Recovery role-based access to features] for details about the roles and permissions required to perform operations in NetApp Backup and Recovery.
+
+* A Console organization with at least one active Console agent that connects to on-premises ONTAP clusters or Cloud Volumes ONTAP. Refer to the *Initial Preview setup process* below. 
+//* A BlueXP organization with at least one active Console agent that connects to on-premises ONTAP clusters or to Cloud Volumes ONTAP in AWS or Azure.
+
+
+* At least one Console system with a NetApp on-premises ONTAP or Cloud Volumes ONTAP cluster.
+//* At least one BlueXP working environment with a NetApp on-premises ONTAP cluster or Cloud Volume ONTAP in AWS or Azure (using NAS or CIFS protocols).
+
+* A Console agent
++
+Refer to https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn how to configure a Console agent] and https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[standard NetApp Console requirements^].
+
+** The Preview version requires the Ubuntu 22.04 LTS operating system for the Console agent. 
+
+//RHEL connector will be supported during GA.
+ 
+
+
+//All source and working environments must be in the same BlueXP organization. 
+
+
+
+=== Set up NetApp Console
+The next step is to set up the Console and NetApp Backup and Recovery. 
+
+Review https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[standard NetApp Console requirements^].
+
+
+=== Create a Console agent
+
+You should reach out to your NetApp Product Team to try out this service. Then, when you use the Console agent, it will include the appropriate capabilities for the service. 
+
+To create a Console agent in the NetApp Console before using the service, refer to the Console documentation that describes https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[how to create a Console agent^]. 
+
+
+.Where to install the Console agent
+
+To complete a restore operation, the Console agent can be installed in the following locations:
+
+ifdef::aws[]
+* For Amazon S3, the Console agent can be deployed on your premises. 
+endif::aws[]
+ifdef::azure[]
+* For Azure Blob, the Console agent can be deployed on your premises. 
+endif::azure[]
+//ifdef::gcp[]
+//* For Google Cloud Storage, the Connector must be deployed in your Google Cloud Platform VPC.
+//endif::gcp[]
+
+* For StorageGRID, the Console agent must be deployed in your premises; with or without internet access.
+* For ONTAP S3, the Console agent can be deployed in your premises (with or without internet access) or in a cloud provider environment
+
+NOTE: References to "on-premises ONTAP systems" includes FAS and AFF systems.
+
+
+
+//== Script to run before moving snapshots to object storage
+
+//If you plan to move snapshots to object storage, run a temporary script one time soon after creating a Console agent. The script retrieves information from NetApp Backup and Recovery and enables notifications when transfers of snapshots are moved to object storage. 
+
+
+//----
+//[source,asciidoc]
+
+//#!/bin/bash
+
+//# Define container name and configuration file path inside the container
+//CONTAINER_NAME="cloudmanager_cbs"
+//CONFIG_FILE="config/default.json"
+
+//echo "Enabling pubsub in the container: ${CONTAINER_NAME}..."
+
+//# Use sed to replace the "enable": value only within the pubsub-feature block.
+//# The sed command sets the block range from the line matching "pubsub-feature" and an opening brace '{'
+//# until the first encountered '}' (assumed to be the closing of the block).
+//docker exec -it "${CONTAINER_NAME}" bash -c "sed -i '////\"pubsub-feature\"[[:space:]]*:[[:space:]]*{/,/}/ s/\"enable\":[[:space:]]*\\(true\\|false\\)/\"enable\": true/' ${CONFIG_FILE}"
+
+//if [ $? -eq 0 ]; then
+//    echo "Configuration updated successfully."
+//else
+//    echo "Failed to update configuration."
+//    exit 1
+//fi
+
+//echo "Restarting container: ${CONTAINER_NAME}..."
+//docker restart "${CONTAINER_NAME}"
+
+//if [ $? -eq 0 ]; then
+//    echo "Container restarted successfully."
+//else
+//    echo "Failed to restart container."
+//   exit 1
+//fi
+
+//----
+

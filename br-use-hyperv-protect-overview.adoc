@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: br-use-hyperv-protect-overview.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: You can protect Hyper-V virtual machines from on-premises ONTAP systems to primary and secondary storage, ensuring that your data is protected. 
+---
+
+= Protect Hyper-V workloads overview 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Protect your Hyper-V VMs with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations for both standalone and FCI cluster instances. 
+
+You can back up Hyper-V workloads to Amazon Web Services S3 or StorageGRID and restore Hyper-V workloads back to an on-premises Hyper-V host. 
+
+image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
+
+Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
+//The benefits of using NetApp Backup and Recovery to protect your Hyper-V resources include:
+
+* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
+* Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
+* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+
+When you add Hyper-V hosts and discover resources, NetApp Backup and Recovery installs the NetApp Hyper-V plug-in and the NetApp SnapCenter Windows FileSystem plug-in on the Hyper-V host to help with managing and protecting virtual machines.
+
+NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
+
+You can use NetApp Backup and Recovery to perform the following tasks related to Hyper-V workloads:
+
+* link:br-start-discover-hyperv.html[Discover Hyper-V workloads]
+* link:br-use-hyperv-protection-groups.html[Create and manage protection groups for Hyper-V workloads]
+* link:br-use-hyperv-backup.html[Back up Hyper-V workloads]
+* link:br-use-hyperv-restore.html[Restore Hyper-V workloads]
+//* link:br-use-hyperv-clone.html[Clone Hyper-V workloads]
+

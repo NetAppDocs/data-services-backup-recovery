@@ -1,0 +1,83 @@
+---
+sidebar: sidebar
+permalink: br-use-protect-kubernetes-applications.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
+summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
+---
+
+= Add and protect Kubernetes applications 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to easily discover your Kubernetes clusters, without generating and uploading kubeconfig files. You can connect Kubernetes clusters and install the required software using simple commands copied from the NetApp Console user interface.
+
+.Required NetApp Console role
+
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Add and protect a new Kubernetes application
+The first step in protecting Kubernetes applications is to create an application within NetApp Backup and Recovery. When you create an application, you make the Console aware of the running application on the Kubernetes cluster.
+
+.Before you begin
+Before you can add and protect a Kubernetes application, you need to link:br-start-discover.html[discover Kubernetes workloads].
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. Select *Create application*.
+. Enter a name for the application.
+. Optionally, choose any of the following fields to search for the resources you want to protect:
++
+* Associated cluster
+* Associated namespaces 
+* Resource types
+* Label selectors
+. Optionally, select *Cluster Scoped Resources* to choose any resources that are scoped at the cluster level. If you include them, they are added to the application when you create it.
+. Optionally, select *Search* to find the resources based on your search criteria.
++
+NOTE: The Console does not store the search parameters or results; the parameters are used to search the selected Kubernetes cluster for resources that can be included in the application. 
+. The Console displays a list of resources that match your search criteria.
+. If the list contains the resources you want to protect, select *Next*.
+. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-create.html#create-a-policy[add a protection policy] later.
+. In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. To enable prescripts or postscripts, you must have already created at least one link:br-use-manage-execution-hook-templates.html[execution hook template].
+. Select *Create*.
+
+.Result 
+The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. The NetApp Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery.
+
+== Protect an existing Kubernetes application
+Enable a protection policy on a Kubernetes application that you have already added. 
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to protect and select the associated Actions menu.
+. Select *Protect*.
+. In the *Policy* area, choose an existing protection policy to protect the application or create a new policy. Refer to link:br-use-policies-create.html#create-a-policy[Create a policy] for more information about creating protection policies.
+. In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. You can configure the type of execution hook, the template it uses, arguments, and label selectors.
+. Select *Done*.
+
+.Result
+The Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery. As soon as you enable protection for an application, the Console creates a full backup of the application. Any future incremental backups are created based on the schedule that you define in the protection policy associated with the application.
+
+== Back up a Kubernetes application now
+Manually create a backup of a Kubernetes application to establish a baseline for future backups and snapshots, or to ensure the most recent data is protected.
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to back up and select the associated Actions menu.
+. Select *Backup now*.
+. Ensure the correct application name is selected.
+. Select *Back up*.
+
+.Result
+The Console creates a backup of the application and displays the progress in the *Monitoring* area of Backup and Recovery. The backup is created based on the protection policy associated with the application.

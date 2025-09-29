@@ -1,0 +1,37 @@
+=== Indexed catalog support updates 
+In February 2025, we introduced the updated indexing feature (Indexed Catalog v2) that you use during the Search & Restore method of restoring data. The previous release significantly improved data indexing performance in on-premises environments. With this release, the indexing catalog is now available with Amazon Web Services, Microsoft Azure, and Google Cloud Platform (GCP) environments.
+
+If you are a new customer, the Indexed Catalog v2 is enabled by default for all new environments. If you are an existing customer, you can re-index your environment to leverage the Indexed Catalog v2.
+
+.How do you enable indexing?  
+
+Before you can use the Search & Restore method of restoring data, you need to enable "Indexing" on each source working environment from which you're planning to restore volumes or files. Select the *Enable Indexing* option when you are performing a Search & Restore.
+
+The Indexed Catalog can then track every volume and backup file, making your searches quick and efficient.  
+
+For more information, refer to https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-restore.html[Enable indexing for Search & Restore].
+
+
+
+
+
+=== Azure private link endpoints and service endpoints 
+
+Typically, NetApp Backup and Recovery establishes a private endpoint with the cloud provider to handle protection tasks. This release introduces an optional setting that lets you enable or disable NetApp Backup and Recovery from automatically creating a private endpoint. This might be useful to you if you want more control over the private endpoint creation process.
+
+You can enable or disable this option when you enable protection or start the restore process. 
+
+If you disable this setting, you must manually create the private endpoint for NetApp Backup and Recovery to function properly. Without proper connectivity, you might not be able to perform backup and recovery tasks successfully.
+
+=== Support for SnapMirror to Cloud Resync on ONTAP S3
+
+The previous release introduced support for SnapMirror to Cloud Resync (SM-C Resync). The feature streamlines data protection during volume migration in NetApp environments. This release add support for SM-C Resync on ONTAP S3 as well as other S3-compatible providers such as Wasabi and MinIO. 
+
+
+=== Bring your own bucket for StorageGRID 
+
+When you create backup files in object storage for a working environment, by default, NetApp Backup and Recovery creates the container (bucket or storage account) for the backup files in the object storage account that you configured. Previously, you could override this and specify your own container for Amazon S3, Azure Blob Storage, and Google Cloud Storage. With this release, you can now bring your own StorageGRID object storage container. 
+
+
+See https://docs.netapp.com/us-en/bluexp-backup-recovery/prev-ontap-protect-journey.html[Create your own object storage container].
+

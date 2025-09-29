@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: br-limitations-vmware.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, vmware, vcenter
+summary: The NetApp Backup and Recovery service needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
+---
+
+= Known limitations with NetApp Backup and Recovery for VMware workloads
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Known limitations identify platforms, devices, or functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
+
+The following actions are not supported in the Preview version of VMware workloads in NetApp Backup and Recovery: 
+
+* Mount
+* Unmount
+* Restore to alternate location
+* Restore VMDK
+* Attach VMDK 
+* Detach VMDK
+* vVol support
+* NVMe support
+* Email integration
+* Edit policy
+* Edit protection group
+* Role-based access control (RBAC) support

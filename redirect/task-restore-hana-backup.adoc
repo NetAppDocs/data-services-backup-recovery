@@ -1,0 +1,4 @@
+---
+permalink: task-restore-hana-backup.html
+redirect: bluexp-backup-recovery/index.html
+---

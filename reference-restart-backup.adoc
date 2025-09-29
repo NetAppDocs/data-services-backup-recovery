@@ -1,0 +1,50 @@
+---
+sidebar: sidebar
+permalink: reference-restart-backup.html
+keywords: backup restart, restart backup
+summary: There may be situations where you'll need to restart NetApp Backup and Recovery. 
+---
+
+= Restart NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+There may be situations where you'll need to restart NetApp Backup and Recovery. 
+
+NetApp Backup and Recovery functionality is built into the Console agent. 
+
+.Steps
+
+. Connect to the Linux system that the Console agent is running on.
++
+[cols=2*,options="header",cols="25,50"]
+|===
+
+| Console agent location
+| Procedure
+
+| Cloud deployment | Follow the instructions for https://docs.netapp.com/us-en/bluexp-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[connecting to the Console agent Linux virtual machine^] depending on the cloud provider you're using.
+| Manual installation | Log in to the Linux system.
+
+|===
+
+. Enter the command to restart the service.
++
+[cols=3*,options="header",cols="40,30,30"]
+|===
+
+| Console agent location
+| Docker command
+| Podman command
+
+| Cloud deployment |  `docker restart cloudmanager_cbs`|  `podman restart cloudmanager_cbs`
+| Manual installation with internet access |   `docker restart cloudmanager_cbs` | `podman restart cloudmanager_cbs`
+| Manual installation without internet access |  `docker restart ds_cloudmanager_cbs_1` |  `podman restart ds_cloudmanager_cbs_1`
+
+|===
+
+
