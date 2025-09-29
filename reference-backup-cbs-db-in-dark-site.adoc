@@ -1,0 +1,174 @@
+---
+sidebar: sidebar
+permalink: reference-backup-cbs-db-in-dark-site.html
+keywords: backup database, recover database, dark site, private mode, restore database, backup and recovery, Console agent
+summary: When using NetApp Backup and Recovery in a site with no internet access, known as "private mode", the NetApp Backup and Recovery configuration data is backed up to the StorageGRID or ONTAP S3 bucket where your backups are being stored. If you have an issue with the Console agent host system in the future, you can deploy a new Console agent and restore the critical NetApp Backup and Recovery data.
+---
+
+= Restore NetApp Backup and Recovery configuration data in a dark site
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+When using NetApp Backup and Recovery in a site with no internet access, known as _private mode_, the NetApp Backup and Recovery configuration data is backed up to the StorageGRID or ONTAP S3 bucket where your backups are being stored. If you have an issue with the Console agent host system, you can deploy a new Console agent and restore the critical NetApp Backup and Recovery data. 
+
+NOTE: This procedure applies only to ONTAP volume data.
+
+When you use NetApp Backup and Recovery in a SaaS environment where the Console agent is deployed at your cloud provider, or on your own host system that has internet access, all the important NetApp Backup and Recovery configuration data is backed up and protected in the cloud. If you have an issue with the Console agent, just create a new Console agent and add your systems and the backup details are automatically restored.
+
+There are two types of data that are backed up:
+
+* NetApp Backup and Recovery database - contains a listing of all the volumes, backup files, backup policies, and configuration information.
+* Indexed Catalog files - contains detailed indexes that are used for Search & Restore functionality that make your searches very quick and efficient when looking for volume data that you want to restore.
+
+This data is backed up once per day at midnight, and a maximum of 7 copies of each file are retained. If the Console agent is managing multiple on-premises ONTAP systems, the NetApp Backup and Recovery files will be located in the bucket of the system that was activated first. 
+
+TIP: No volume data is ever included in the NetApp Backup and Recovery database or Indexed Catalog files.
+
+== Restore NetApp Backup and Recovery data to a new Console agent
+
+If your on-premises Console agent has a catastrophic failure, you'll need to install a new Console agent, and then restore the NetApp Backup and Recovery data to the new Console agent.
+
+You'll need to perform the following tasks to return your NetApp Backup and Recovery system to a working state:
+
+* Install a new Console agent
+* Restore the NetApp Backup and Recovery database
+* Restore the Indexed Catalog files
+* Rediscover all of your on-prem ONTAP systems and StorageGRID systems to the NetApp Console UI
+
+Once you verify that your system is back in a working order, we recommend that you create new backup files.
+
+.What you'll need
+
+You'll need to access the most recent database and index backups from the StorageGRID or ONTAP S3 bucket where your backup files are being stored:
+
+* NetApp Backup and Recovery MySQL database file
++
+This file is located in the following location in the bucket `netapp-backup-<GUID>/mysql_backup/`, and it is named `CBS_DB_Backup_<day>_<month>_<year>.sql`.
+* Indexed Catalog backup zip file
++
+This file is located in the following location in the bucket `netapp-backup-<GUID>/catalog_backup/`, and it is named `Indexed_Catalog_DB_Backup_<db_name>_<day>_<month>_<year>.zip`.
+
+=== Install a new Console agent on a new on-premises Linux host
+
+When installing a new Console agent, make sure you download the same release of software as you had installed on the original Console agent. Periodic changes to the NetApp Backup and Recovery database structure may make newer software releases incompatible with the original database backups. You can https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
+
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html[Install the Console agent on a new on-premises Linux host^]
+
+. Log into the Console using the admin user credentials that you just created.
+
+=== Restore the NetApp Backup and Recovery database
+
+. Copy the MySQL backup from the backup location to the new Console agent host. We'll use the example file name "CBS_DB_Backup_23_05_2023.sql" below.
+
+. Copy the backup into the MySQL docker container using one of the following commands, depending on whether you are using a Docker or Podman container:
++
+[source,cli]
+docker cp CBS_DB_Backup_23_05_2023.sql ds_mysql_1:/.
+
++
+[source,cli]
+podman cp CBS_DB_Backup_23_05_2023.sql ds_mysql_1:/.
+
+. Enter the MySQL container shell using one of the following commands, depending on whether you are using a Docker or Podman container:
++
+[source,cli]
+docker exec -it ds_mysql_1 sh
+
++
+[source,cli]
+podman exec -it ds_mysql_1 sh
+
+. In the container shell, deploy the "env".
+
+. You'll need the MySQL DB password, so copy the value of the key "MYSQL_ROOT_PASSWORD".
+
+. Restore the NetApp Backup and Recovery MySQL DB using the following command:
++
+[source,cli]
+mysql -u root -p cloud_backup < CBS_DB_Backup_23_05_2023.sql
+
+. Verify that the NetApp Backup and Recovery MySQL DB has been restored correctly using the following SQL commands:
++
+[source,cli]
+mysql -u root -p cloud_backup
++
+Enter the password.
++
+[source,cli]
+mysql> show tables;
+mysql> select * from volume; 
++
+Check if the volumes that are shown are the same as those that existed in your original environment.
+
+=== Restore the Indexed Catalog files
+
+. Copy the Indexed Catalog backup zip file (we'll use the example file name "Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip") from the backup location to the new Console agent host in the "/opt/application/netapp/cbs" folder.
+
+. Unzip the "Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip" file using the following command:
++
+[source,cli]
+unzip Indexed_Catalog_DB_Backup_catalogdb1_23_05_2023.zip -d catalogdb1
+
+. Run the *ls* command to make sure that the folder "catalogdb1" has been created with the subfolders "changes" and "snapshots" underneath.
+
+=== Discover your ONTAP clusters and StorageGRID systems
+
+. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html#discover-clusters-using-a-connector[Discover all the on-prem ONTAP systems^] that were available in your previous environment. This includes the ONTAP system you have used as an S3 server.
+
+. https://docs.netapp.com/us-en/bluexp-storagegrid/task-discover-storagegrid.html[Discover your StorageGRID systems^]. 
+
+=== Set up the StorageGRID environment details
+
+Add the details of the StorageGRID system associated with your ONTAP systems as they were set up on the original Console agent setup using the https://docs.netapp.com/us-en/bluexp-automation/index.html[NetApp Console APIs^].
+
+The following information applies to private mode installations starting from NetApp Console 3.9.xx. For older versions, use the following procedure: https://community.netapp.com/t5/Tech-ONTAP-Blogs/DarkSite-Cloud-Backup-MySQL-and-Indexed-Catalog-Backup-and-Restore/ba-p/440800[DarkSite Cloud Backup: MySQL and Indexed Catalog Backup and Restore^].
+
+You'll need to perform these steps for each system that is backing up data to StorageGRID.
+
+. Extract the authorization token using the following oauth/token API.
++
+[source,http]
+curl 'http://10.193.192.202/oauth/token' -X POST -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate' -H 'Content-Type: application/json' -d '{"username":"admin@netapp.com","password":"Netapp@123","grant_type":"password"}
+> '
++
+While the IP address, username, and passwords are custom values, the account name is not. The account name is always "account-DARKSITE1". Also, the username must use an email-formatted name. 
++
+This API will return a response like the following. You can retrieve the authorization token as shown below.
++
+[source,text]
+{"expires_in":21600,"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJlMGFiZjRiIn0eyJzdWIiOiJvY2NtYXV0aHwxIiwiYXVkIjpbImh0dHBzOi8vYXBpLmNsb3VkLm5ldGFwcC5jb20iXSwiaHR0cDovL2Nsb3VkLm5ldGFwcC5jb20vZnVsbF9uYW1lIjoiYWRtaW4iLCJodHRwOi8vY2xvdWQubmV0YXBwLmNvbS9lbWFpbCI6ImFkbWluQG5ldGFwcC5jb20iLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIiwiaWF0IjoxNjcyNzM2MDIzLCJleHAiOjE2NzI3NTc2MjMsImlzcyI6Imh0dHA6Ly9vY2NtYXV0aDo4NDIwLyJ9CJtRpRDY23PokyLg1if67bmgnMcYxdCvBOY-ZUYWzhrWbbY_hqUH4T-114v_pNDsPyNDyWqHaKizThdjjHYHxm56vTz_Vdn4NqjaBDPwN9KAnC6Z88WA1cJ4WRQqj5ykODNDmrv5At_f9HHp0-xVMyHqywZ4nNFalMvAh4xESc5jfoKOZc-IOQdWm4F4LHpMzs4qFzCYthTuSKLYtqSTUrZB81-o-ipvrOqSo1iwIeHXZJJV-UsWun9daNgiYd_wX-4WWJViGEnDzzwOKfUoUoe1Fg3ch--7JFkFl-rrXDOjk1sUMumN3WHV9usp1PgBE5HAcJPrEBm0ValSZcUbiA"}
+
+. Extract the system ID and the X-Agent-Id using the tenancy/external/resource API.
++
+[source,http]
+curl -X GET http://10.193.192.202/tenancy/external/resource?account=account-DARKSITE1 -H 'accept: application/json' -H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJlMGFiZjRiIn0eyJzdWIiOiJvY2NtYXV0aHwxIiwiYXVkIjpbImh0dHBzOi8vYXBpLmNsb3VkLm5ldGFwcC5jb20iXSwiaHR0cDovL2Nsb3VkLm5ldGFwcC5jb20vZnVsbF9uYW1lIjoiYWRtaW4iLCJodHRwOi8vY2xvdWQubmV0YXBwLmNvbS9lbWFpbCI6ImFkbWluQG5ldGFwcC5jb20iLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIiwiaWF0IjoxNjcyNzIyNzEzLCJleHAiOjE2NzI3NDQzMTMsImlzcyI6Imh0dHA6Ly9vY2NtYXV0aDo4NDIwLyJ9X_cQF8xttD0-S7sU2uph2cdu_kN-fLWpdJJX98HODwPpVUitLcxV28_sQhuopjWobozPelNISf7KvMqcoXc5kLDyX-yE0fH9gr4XgkdswjWcNvw2rRkFzjHpWrETgfqAMkZcAukV4DHuxogHWh6-DggB1NgPZT8A_szHinud5W0HJ9c4AaT0zC-sp81GaqMahPf0KcFVyjbBL4krOewgKHGFo_7ma_4mF39B1LCj7Vc2XvUd0wCaJvDMjwp19-KbZqmmBX9vDnYp7SSxC1hHJRDStcFgJLdJHtowweNH2829KsjEGBTTcBdO8SvIDtctNH_GAxwSgMT3zUfwaOimPw'
++
+This API will return a response like the following. The value under the "resourceIdentifier" denotes the _WorkingEnvironment Id_ and the value under "agentId" denotes _x-agent-id_.
++
+[source,text]
+[{"resourceIdentifier":"OnPremWorkingEnvironment-pMtZND0M","resourceType":"ON_PREM","agentId":"vB_1xShPpBtUosjD7wfBlLIhqDgIPA0wclients","resourceClass":"ON_PREM","name":"CBSFAS8300-01-02","metadata":"{\"clusterUuid\": \"2cb6cb4b-dc07-11ec-9114-d039ea931e09\"}","workspaceIds":["workspace2wKYjTy9"],"agentIds":["vB_1xShPpBtUosjD7wfBlLIhqDgIPA0wclients"]}]
+
+. Update the NetApp Backup and Recovery database with the details of the StorageGRID system associated with the systems. Make sure to enter the Fully Qualified Domain Name of the StorageGRID, as well as the Access-Key and Storage-Key as shown below:
++
+[source,http]
+curl -X POST 'http://10.193.192.202/account/account-DARKSITE1/providers/cloudmanager_cbs/api/v1/sg/credentials/working-environment/OnPremWorkingEnvironment-pMtZND0M' \
+> --header 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJlMGFiZjRiIn0eyJzdWIiOiJvY2NtYXV0aHwxIiwiYXVkIjpbImh0dHBzOi8vYXBpLmNsb3VkLm5ldGFwcC5jb20iXSwiaHR0cDovL2Nsb3VkLm5ldGFwcC5jb20vZnVsbF9uYW1lIjoiYWRtaW4iLCJodHRwOi8vY2xvdWQubmV0YXBwLmNvbS9lbWFpbCI6ImFkbWluQG5ldGFwcC5jb20iLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIiwiaWF0IjoxNjcyNzIyNzEzLCJleHAiOjE2NzI3NDQzMTMsImlzcyI6Imh0dHA6Ly9vY2NtYXV0aDo4NDIwLyJ9X_cQF8xttD0-S7sU2uph2cdu_kN-fLWpdJJX98HODwPpVUitLcxV28_sQhuopjWobozPelNISf7KvMqcoXc5kLDyX-yE0fH9gr4XgkdswjWcNvw2rRkFzjHpWrETgfqAMkZcAukV4DHuxogHWh6-DggB1NgPZT8A_szHinud5W0HJ9c4AaT0zC-sp81GaqMahPf0KcFVyjbBL4krOewgKHGFo_7ma_4mF39B1LCj7Vc2XvUd0wCaJvDMjwp19-KbZqmmBX9vDnYp7SSxC1hHJRDStcFgJLdJHtowweNH2829KsjEGBTTcBdO8SvIDtctNH_GAxwSgMT3zUfwaOimPw' \
+> --header 'x-agent-id: vB_1xShPpBtUosjD7wfBlLIhqDgIPA0wclients' \
+> -d '
+> { "storage-server" : "sr630ip15.rtp.eng.netapp.com:10443", "access-key": "2ZMYOAVAS5E70MCNH9", "secret-password": "uk/6ikd4LjlXQOFnzSzP/T0zR4ZQlG0w1xgWsB" }'
+
+=== Verify NetApp Backup and Recovery settings
+
+. Select each ONTAP system and click *View Backups* next to the Backup and recovery service in the right-panel.
++
+You should be able to see all the backups that have been created for your volumes.
+
+. From the Restore Dashboard, under the Search & Restore section, click *Indexing Settings*.
++
+Make sure that the systems which had Indexed Cataloging enabled previously remain enabled.
+
+. From the Search & Restore page, run a few catalog searches to confirm that the Indexed Catalog restore has been completed successfully.

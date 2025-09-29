@@ -1,0 +1,103 @@
+---
+sidebar: sidebar
+permalink: br-use-oracle-protection-groups.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle, database, workloads, volumes, snapshots
+summary: Create and manage protection groups for Oracle workloads in NetApp Backup and Recovery. 
+---
+
+= Create and manage protection groups for Oracle workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Create protection groups to manage the backup operations for a set of Oracle resources. A protection group is a logical grouping of resources such as databases that you want to protect together. You need to create a protection group to back up Oracle databases.
+
+You can perform the following tasks related to protection groups:
+
+* Create a protection group.
+* View protection details. 
+* Back up a protection group now. See link:br-use-kvm-backup.html[Back up Oracle workloads now].
+* Suspend and resume a protection group's backup schedule.  
+* Delete a protection group.
+
+== Create a protection group 
+
+Group VMs and storage pools that you want to protect together into a protection group. 
+
+*Required Console role*
+Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+//+
+//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select *Create protection group*.
+
+. Provide a name for the protection group.
+. Select the VMs or storage pools that you want to include in the protection group.
+. Select *Next*. 
+
+. Select the *Backup policy* that you want to apply to the protection group.
++
+If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
+
+. Select *Next*. 
+. Review the configuration.
+. Select *Create* to create the protection group.
+
+== Suspend a protection group's backup schedule
+
+Suspending a protection group pauses the scheduled backups for the protection group. You might want to suspend a protection group if you want to temporarily stop backups for the workloads in that group. 
+
+The protection status changes to "Under maintenance" when you suspend a protection group. You can resume the backup schedule at any time.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+//+
+//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Suspend protection group*.
+
+. Review the confirmation message and select *Suspend*. 
+
+
+== Resume a protection group's backup schedule
+
+Resuming a suspended protection group restarts the scheduled backups for the protection group.  
+
+The protection status changes from "Under maintenance" when you suspend a protection group to "Protected" when you resume it. You can resume the backup schedule at any time.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+//+
+//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Resume protection group*.
+
+. Review the confirmation message and select *Resume*. 
+
+.Result
+The system validates the schedules and changes the protection status to "Protected" if the schedules are valid. If the schedules are not valid, the system displays an error message and does not resume the protection group.  
+
+== Delete a protection group
+
+Deleting a protection group removes it and all associated backup schedules. You might want to delete a protection group if it is no longer needed.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the protection group that you want to delete.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
+. Review the confirmation message about deleting the associated backups and confirm the deletion.

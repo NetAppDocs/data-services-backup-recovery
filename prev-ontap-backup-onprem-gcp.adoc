@@ -1,0 +1,437 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-backup-onprem-gcp.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Back up on-premises ONTAP data to Google Cloud Storage with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your on-premises primary ONTAP systems to a secondary storage system and to Google Cloud Storage.
+
+NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
+
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+
+
+
+== Identify the connection method
+
+Choose which of the two connection methods you will use when configuring backups from on-premises ONTAP systems to Google Cloud Storage. 
+
+* *Public connection* - Directly connect the ONTAP system to Google Cloud Storage using a public Google endpoint.
+* *Private connection* - Use a VPN or Google Cloud Interconnect and route traffic through a Private Google Access interface that uses a private IP address.
+
+Optionally, you can connect to a secondary ONTAP system for replicated volumes using the public or private connection as well.
+
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. The Console agent must be deployed in the Google Cloud Platform VPC.
+//You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the Google Cloud Platform VPC.
+
+image:diagram_cloud_backup_onprem_gcp_public.png[A diagram showing how NetApp Backup and Recovery communicates over a public connection with the volumes on the cluster and the Google Cloud storage where the backup files are located.]
+
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. The Console agent must be deployed in the Google Cloud Platform VPC.
+//You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the Google Cloud Platform VPC.
+
+image:diagram_cloud_backup_onprem_gcp_private.png[A diagram showing how NetApp Backup and Recovery communicates over a private connection with the volumes on the cluster and the Google Cloud storage where the backup files are located.]
+
+== Prepare your Console agent
+
+The Console agent is the main software for Console functionality. A Console agent is required to back up and restore your ONTAP data.
+
+=== Create or switch Console agents
+
+If you already have a Console agent deployed in your Google Cloud Platform VPC, then you're all set. 
+
+If not, then you'll need to create a Console agent in that location to back up ONTAP data to Google Cloud Storage. You can't use a Console agent that's deployed in another cloud provider, or on-premises.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html[Install a Console agent in GCP^]
+//* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html[Install a Console agent in your premises^]
+
+== Prepare networking for the Console agent
+
+Ensure that the Console agent has the required networking connections.
+
+.Steps
+
+. Ensure that the network where the Console agent is installed enables the following connections:
+
+* An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Google Cloud storage (https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-google.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+* An HTTPS connection over port 443 to your ONTAP cluster management LIF
+
+. Enable Private Google Access (or Private Service Connect) on the subnet where you plan to deploy the Console agent. https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] or https://cloud.google.com/vpc/docs/configure-private-service-connect-apis#on-premises[Private Service Connect^] are needed if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Console agent and Google Cloud Storage to stay in your virtual private network (a *private* connection).
++
+Follow the Google instructions for setting up these Private access options. Make sure your DNS servers have been configured to point `www.googleapis.com` and `storage.googleapis.com` to the correct internal (private) IP addresses.
+
+=== Verify or add permissions to the Console agent
+
+To use the NetApp Backup and Recovery "Search & Restore" functionality, you need to have specific permissions in the role for the Console agent so that it can access the Google Cloud BigQuery service. Review the permissions below, and follow the steps if you need to modify the policy.
+
+.Steps
+
+. In the https://console.cloud.google.com[Google Cloud Console^], go to the *Roles* page.
+
+. Using the drop-down list at the top of the page, select the project or organization that contains the role that you want to edit.
+
+. Select a custom role.
+
+. Select *Edit Role* to update the role's permissions.
+
+. Select *Add Permissions* to add the following new permissions to the role.
++
+[source,json]
+bigquery.jobs.get
+bigquery.jobs.list
+bigquery.jobs.listAll
+bigquery.datasets.create
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.create
+
+. Select *Update* to save the edited role.
+
+== Verify license requirements
+
+* Before you can activate NetApp Backup and Recovery for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Console Marketplace offering from Google, or purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
+
+** For NetApp Backup and Recovery PAYGO licensing, you'll need a subscription to the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[NetApp Console offering from the Google Marketplace^]. Billing for NetApp Backup and Recovery is done through this subscription.
+** For NetApp Backup and Recovery BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses].
+
+* You need to have a Google subscription for the object storage space where your backups will be located.
+
+*Supported regions* 
+
+You can create backups from on-premises systems to Google Cloud Storage in all regions. You specify the region where backups will be stored when you set up the service.
+
+== Prepare your ONTAP clusters 
+
+// This section uses an include along with the 2 subsections of "Discover your ONTAP cluster in BlueXP" and "Verify ONTAP requirements"
+
+include::../_include/backup-onprem-prepare-onprem-ONTAP-cluster.adoc[]
+
+// === Discover your ONTAP systems in BlueXP
+// FROM INCLUDE
+
+// === Verify ONTAP system requirements
+// FROM INCLUDE
+
+=== Verify ONTAP networking requirements for backing up data to object storage
+
+You must configure the following requirements on the system that connects to object storage. 
+
+* For a fan-out backup architecture, configure the following settings on the _primary_ system. 
+* For a cascaded backup architecture, configure the following settings on the _secondary_ system.
+
+The following ONTAP cluster networking requirements are needed: 
+
+* The ONTAP cluster initiates an HTTPS connection over port 443 from the intercluster LIF to Google Cloud Storage for backup and restore operations.
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
++
+* ONTAP requires an inbound connection from the Console agent to the cluster management LIF. The Console agent can reside in a Google Cloud Platform VPC.
+
+* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[Learn more about IPspaces^].
++
+When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+* The nodes' intercluster LIFs are able to access the object store.
+* DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
++
+If you're using Private Google Access or Private Service Connect, make sure your DNS servers have been configured to point `storage.googleapis.com` to the correct internal (private) IP address. 
+* Note that if you use are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
+* Update firewall rules, if necessary, to allow NetApp Backup and Recovery connections from ONTAP to object storage through port 443, and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
+
+===  Verify ONTAP networking requirements for replicating volumes
+
+//This section uses an Include for all providers. It includes "Cloud Volumes ONTAP networking requirements", and "On-premises ONTAP networking requirements"  
+
+include::../_include/backup-onprem-prepare-source-destination-systems-for-repl.adoc[]
+
+== Prepare Google Cloud Storage as your backup target
+
+Preparing Google Cloud Storage as your backup target involves the following steps: 
+
+* Set up permissions.
+* (Optional) Create your own buckets. (The service will create buckets for you if you want.)
+* (Optional) Set up customer-managed keys for data encryption
+//* Configure your system for a private connection using a VPC endpoint interface 
+
+//This section is the same as backup CVO to GSP but with onprem info.
+
+=== Set up permissions
+
+You need to provide storage access keys for a service account that has specific permissions using a custom role. A service account enables NetApp Backup and Recovery to authenticate and access Cloud Storage buckets used to store backups. The keys are required so that Google Cloud Storage knows who is making the request.
+
+.Steps
+
+. In the https://console.cloud.google.com[Google Cloud Console^], go to the *Roles* page.
+
+. https://cloud.google.com/iam/docs/creating-custom-roles#creating_a_custom_role[Create a new role^] with the following permissions:
++
+[source,json]
+storage.buckets.create
+storage.buckets.delete
+storage.buckets.get
+storage.buckets.list
+storage.buckets.update
+storage.buckets.getIamPolicy
+storage.multipartUploads.create
+storage.objects.create
+storage.objects.delete
+storage.objects.get
+storage.objects.list
+storage.objects.update
+
+. In the Google Cloud console, https://console.cloud.google.com/iam-admin/serviceaccounts[go to the Service accounts page^].
+
+. Select your Cloud project.
+
+. Select *Create service account* and provide the required information:
+
+.. *Service account details*: Enter a name and description.
+.. *Grant this service account access to project*: Select the custom role that you just created.
+.. Select *Done*.
+
+. Go to https://console.cloud.google.com/storage/settings[GCP Storage Settings^] and create access keys for the service account:
+
+.. Select a project, and select *Interoperability*. If you haven't already done so, select *Enable interoperability access*.
+
+.. Under *Access keys for service accounts*, select *Create a key for a service account*, select the service account that you just created, and click *Create Key*.
++
+You'll need to enter the keys in NetApp Backup and Recovery later when you configure the backup service.
+
+=== Create your own buckets
+
+By default, the service creates buckets for you. Or, if you want to use your own buckets, you can create them before you start the backup activation wizard and then select those buckets in the wizard.
+
+link:prev-ontap-protect-journey.html[Learn more about creating your own buckets^].
+
+=== Set up customer-managed encryption keys (CMEK) for data encryption
+
+You can use your own customer-managed keys for data encryption instead of using the default Google-managed encryption keys. Both cross-region and cross-project keys are supported, so you can choose a project for a bucket that is different than the project of the CMEK key. 
+
+If you're planning to use your own customer-managed keys: 
+
+* You'll need to have the Key Ring and the Key Name so you can add this information in the activation wizard. https://cloud.google.com/kms/docs/cmek[Learn more about customer-managed encryption keys^].
+
+* You'll need to verify that these required permissions are included in the role for the Console agent:
++
+[source,json]
+cloudkms.cryptoKeys.get
+cloudkms.cryptoKeys.getIamPolicy
+cloudkms.cryptoKeys.list
+cloudkms.cryptoKeys.setIamPolicy
+cloudkms.keyRings.get
+cloudkms.keyRings.getIamPolicy
+cloudkms.keyRings.list
+cloudkms.keyRings.setIamPolicy
+
+* You'll need to verify that the Google "Cloud Key Management Service (KMS)" API is enabled in your project. See the https://cloud.google.com/apis/docs/getting-started#enabling_apis[Google Cloud documentation: Enabling APIs^] for details.
+
+*CMEK considerations:*
+
+* Both HSM (Hardware-backed) and Software-generated keys are supported.
+* Both newly created or imported Cloud KMS keys are supported.
+* Only regional keys are supported, global keys are not supported.
+* Currently, only the "Symmetric encrypt/decrypt" purpose is supported.
+* The service agent associated with the Storage Account is assigned the "CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)" IAM role by NetApp Backup and Recovery. 
+
+== Activate backups on your ONTAP volumes 
+
+Activate backups at any time directly from your on-premises system.
+
+A wizard takes you through the following major steps: 
+
+* <<Select the volumes that you want to back up>>
+* <<Define the backup strategy>>
+* <<Review your selections>> 
+
+You can also <<Show the API commands>> at the review step, so you can copy the code to automate backup activation for future systems.  
+
+=== Start the wizard 
+
+.Steps 
+
+. Access the Activate backup and recovery wizard using one of the following ways: 
+* From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right-panel.
++
+image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup and recovery Enable button that is available after you select a system.]
+
++
+If the Google Cloud Storage destination for your backups exists as on the Console *Systems* page, you can drag the ONTAP cluster onto the Google Cloud object storage.  
+* Select *Volumes* in the Backup and recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled).  
+
++ 
+The Introduction page of the wizard shows the protection options including local Snapshots, replication, and backups. If you did the second option in this step, the Define Backup Strategy page appears with one volume selected. 
+
+. Continue with the following options: 
+
+* If you already have a Console agent, you're all set. Just select *Next*. 
+* If you don't already have a Console agent, the *Add a Console agent* option appears. Refer to <<Prepare your Console agent>>. 
+
+=== Select the volumes that you want to back up
+
+Choose the volumes you want to protect. A protected volume is one that has one or more of the following: Snapshot policy, replication policy, backup to object policy. 
+
+You can choose to protect FlexVol or FlexGroup volumes; however, you cannot select a mix of these volumes when activating backup for a system. See how to link:prev-ontap-backup-manage.html[activate backup for additional volumes in the system] (FlexVol or FlexGroup) after you have configured backup for the initial volumes.
+
+[NOTE] 
+====
+* You can activate a backup only on a single FlexGroup volume at a time. 
+* The volumes you select must have the same SnapLock setting. All volumes must have SnapLock Enterprise enabled or have SnapLock disabled. 
+//(Volumes with SnapLock Compliance mode require ONTAP 9.14 or later.)
+====
+
+.Steps 
+
+If the volumes you choose already have snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
+
+. In the Select Volumes page, select the volume or volumes you want to protect. 
++
+* Optionally, filter the rows to show only volumes with certain volume types, styles, and more to make the selection easier. 
+* After you select the first volume, then you can select all FlexVol volumes (FlexGroup volumes can be selected one at a time only). To back up all existing FlexVol volumes, check one volume first and then check the box in the title row. 
+* To back up individual volumes, check the box for each volume.
+
+. Select *Next*.
+
+=== Define the backup strategy 
+
+Defining the backup strategy involves setting the following options: 
+
+* Whether you want one or all of the backup options: local snapshots, replication, and backup to object storage
+* Architecture
+* Local snapshot policy
+* Replication target and policy
++
+NOTE: If the volumes you choose have different snapshot and replication policies than the policies you select in this step, the existing policies will be overwritten. 
+
+* Backup to object storage information (provider, encryption, networking, backup policy, and export options). 
+
+.Steps 
+
+. In the Define backup strategy page, choose one or all of the following. All three are selected by default: 
++
+* *Local Snapshots*: If you are performing replication or back up to object storage, local Snapshots must be created. 
+* *Replication*: Creates replicated volumes on another ONTAP storage system.  
+* *Backup*: Backs up volumes to object storage.  
+
+. *Architecture*: If you chose replication and backup, choose one of the following flows of information: 
+* *Cascading*: Information flows from the primary to the secondary and from the secondary to object storage. 
+* *Fan out*: Information flows from the primary to the secondary _and_ from the primary to object storage. 
++ 
+For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey]. 
+
+. *Local Snapshot*: Choose an existing snapshot policy or create a new one. 
++
+TIP: To create a custom policy, refer to link:br-use-policies-create.html[Create a policy].
+
++
+To create a policy, select *Create new policy* and do the following: 
+
+* Enter the name of the policy. 
+* Select up to five schedules, typically of different frequencies. 
+* Select *Create*. 
+
+. *Replication*: Set the following options: 
++
+* *Replication target*: Select the destination system and SVM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
+* *Replication policy*: Choose an existing replication policy or create a new one. 
++
+TIP: To create a custom policy, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
++
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** Select *Create*. 
+
+. *Back up to Object*: If you selected *Backup*, set the following options: 
++
+* *Provider*: Select *Google Cloud*. 
+* *Provider settings*: Enter the provider details and region where the backups will be stored.
++ 
+Either create a new bucket or select one that you've already created. 
++
+TIP: If you want to tier older backup files to Google Cloud Archive storage for further cost optimization, ensure that the bucket has the appropriate Lifecycle rule. 
++
+Enter the Google Cloud access key and secret key. 
+
++
+* *Encryption key*: If you created a new Google Cloud storage account, enter encryption key information given to you from the provider. Choose whether you'll use the default Google Cloud encryption keys, or choose your own customer-managed keys from your Google Cloud account, to manage encryption of your data. 
++ 
+NOTE: If you chose an existing Google Cloud storage account, encryption information is already available, so you don't need to enter it now. 
++ 
+If you choose to use your own customer-managed keys, enter the key ring and key name. https://cloud.google.com/kms/docs/cmek[Learn more about customer-managed encryption keys^].
+
+* *Networking*: Choose the IPspace. 
+//"Also choose whether you'll be using a Private Endpoint. Private Endpoint is disabled by default."" Private Endpoint field is not visible for GCP. 
++
+The IPspace in the ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access.
++
+//.. Optionally, choose whether you'll use a Google Cloud private endpoint that you have previously configured. https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview[Learn about using an Azure private endpoint^].
+
+* *Backup policy*: Select an existing Backup to object storage policy or create a new one. 
++
+TIP: To create a custom policy, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
+
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** Select *Create*. 
+
+* *Export existing Snapshot copies to object storage as backup copies*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+
+. Select *Next*. 
+
+//.. Enter the name for the default policy. You don't need to change the name.
+//.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings[See the list of existing policies you can choose^].
+
+//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//+
+//NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
+
+//.. Optionally, when using ONTAP 9.10.1 and greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization. link:reference-aws-backup-tiers.html[Learn more about using archival tiers^].
+
+=== Review your selections 
+
+This is the chance to review your selections and make adjustments, if necessary. 
+
+.Steps 
+
+. In the Review page, review your selections. 
+. Optionally check the box to *Automatically synchronize the Snapshot policy labels with the replication and backup policy labels*. This creates snapshots with a label that matches the labels in the replication and backup policies.  
+. Select *Activate Backup*. 
+
+.Result 
+
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the primary storage system data. Subsequent transfers contain differential copies of the primary storage system data contained in Snapshot copies.
+
+A replicated volume is created in the destination cluster that will be synchronized with the source volume. 
+
+A Google Cloud Storage bucket is created automatically in the service account indicated by the Google access key and secret key you entered, and the backup files are stored there. The Volume Backup Dashboard is displayed so you can monitor the state of the backups.
+
+You can also monitor the status of backup and restore jobs using the link:br-use-monitor-tasks.html[Job Monitoring page^].
+
+=== Show the API commands 
+
+You might want to display and optionally copy the API commands used in the Activate backup and recovery wizard. You might want to do this to automate backup activation in future systems. 
+
+.Steps 
+
+. From the Activate backup and recovery wizard, select *View API request*. 
+. To copy the commands to the clipboard, select the *Copy* icon. 
+

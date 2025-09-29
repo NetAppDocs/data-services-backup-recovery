@@ -1,0 +1,4 @@
+---
+permalink: task-backup-vm-data-to-gcp.html
+redirect: bluexp-backup-recovery/prev-vmware-backup-gcp.html
+---

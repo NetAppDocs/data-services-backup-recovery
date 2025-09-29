@@ -1,0 +1,16 @@
+=== Support for protecting VMware workloads in Preview
+
+This release adds preview support for protecting VMware workloads. Back up VMware VMs and datastores from on-premises ONTAP systems to Amazon Web Services and StorageGRID.
+
+NOTE: Documentation about protecting VMware workloads is provided as a technology preview. With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before General Availability.
+
+link:br-use-vmware-protect-overview.html[Learn more about protecting VMware workloads with NetApp Backup and Recovery].
+
+=== High performance indexing for AWS, Azure, and GCP is generally available
+
+In February 2025, we announced the preview of high performance indexing (Indexed Catalog v2) for AWS, Azure, and GCP. This feature is now generally available (GA). In June 2025, we provided it to all _new_ customers by default. With this release, the support is available to _all_ customers. High performance indexing improves the performance of backup and restore operations for workloads that are protected to object storage. 
+
+Enabled by default: 
+
+* If you are a new customer, high performance indexing is enabled by default. 
+* If you are an existing customer, you can enable reindexing by going to the Restore section of the UI.

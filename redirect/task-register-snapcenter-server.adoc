@@ -1,0 +1,5 @@
+---
+permalink: task-register-snapcenter-server.html
+redirect: bluexp-backup-recovery/index.html
+---
+

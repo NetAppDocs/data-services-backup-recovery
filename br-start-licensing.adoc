@@ -1,0 +1,136 @@
+---
+sidebar: sidebar
+permalink: br-start-licensing.html
+keywords: license, licensing, updating license, paygo license, byol license, nlf, license generator, backup license, add backup license, update backup license, annual, netapp intelligent services
+summary: You can license NetApp Backup and Recovery by purchasing a pay-as-you-go or annual marketplace subscription from your cloud provider, or by purchasing a bring-your-own-license from NetApp. A valid license is required to activate NetApp Backup and Recovery on a system, to create backups of your production data, and to restore backup data to a production system.
+---
+
+= Set up licensing for NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can license NetApp Backup and Recovery by purchasing a pay-as-you-go (PAYGO) or annual marketplace subscription to *NetApp Intelligent Services* from your cloud provider, or by purchasing a bring-your-own-license (BYOL) from NetApp. A valid license is required to activate NetApp Backup and Recovery on a system, to create backups of your production data, and to restore backup data to a production system.
+
+A few notes before you read any further:
+
+* If you've already subscribed to the pay-as-you-go (PAYGO) subscription in your cloud provider's marketplace for a Cloud Volumes ONTAP system, then you're automatically subscribed to NetApp Backup and Recovery as well. You won't need to subscribe again.
+* The NetApp Backup and Recovery bring-your-own-license (BYOL) is a floating license that you can use across all systems associated with your NetApp Console organization or account. So if you have sufficient backup capacity available from an existing BYOL license, you won't need to purchase another BYOL license.
+* If you are using a BYOL license, it is recommended that you subscribe to a PAYGO subscription as well. If you back up more data than allowed by your BYOL license, or if the term of your license expires, then backup continues through your pay-as-you-go subscription - there is no disruption of service.
+* When backing up on-prem ONTAP data to StorageGRID, you need a BYOL license, but there's no cost for cloud provider storage space.
+
+link:concept-backup-to-cloud.html[Learn more about the costs related to using NetApp Backup and Recovery.]
+
+== 30-day free trial
+
+A NetApp Backup and Recovery 30-day free trial is available if you sign up for a pay-as-you-go subscription in your cloud provider's marketplace to *NetApp Intelligent Services*. The free trial starts at the time that you subscribe to the marketplace listing. Note that if you pay for the marketplace subscription when deploying a Cloud Volumes ONTAP system, and then start your NetApp Backup and Recovery free trial 10 days later, you'll have 20 days remaining to use the free trial.
+
+When the free trial ends, you'll be switched over automatically to the PAYGO subscription without interruption. If you decide not to continue using NetApp Backup and Recovery, just link:prev-ontap-backup-manage.html[unregister NetApp Backup and Recovery from the system] before the trial ends and you won't be charged.
+
+=== End the free trial
+
+If you want to continue using NetApp Backup and Recovery after the free trial ends, you must set up a paid subscription. You can do this from the NetApp Console interface by navigating to the billing section and selecting a subscription plan that fits your needs. If you don't want to continue using NetApp Backup and Recovery, you can end the free trial.
+
+When you end the free trial without subscribing to a paid plan, your data is automatically deleted 60 days after the free trial ends. You can optionally have the system delete your data immediately. 
+
+.Steps
+. From the NetApp Backup and Recovery landing page, select *View free trial*.
+
+. Select *End free trial*.
+. Select *Delete data immediately after ending my free trial* to delete your data immediately.
+. Type *end trial* in the box. 
+. Select *End* to confirm.
+
+
+== Use a NetApp Backup and Recovery PAYGO subscription
+
+For pay-as-you-go, you'll pay your cloud provider for object storage costs and for NetApp backup licensing costs on an hourly basis in a single subscription. You should subscribe to *NetApp Intelligent Services* in the Marketplace even if you have a free trial or if you bring your own license (BYOL):
+
+* Subscribing ensures that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you back up.
+* If you back up more data than allowed by your BYOL license, then data backup and restore operations continue through your pay-as-you-go subscription. For example, if you have a 10 TiB BYOL license, all capacity beyond the 10 TiB is charged through the PAYGO subscription.
+
+You won't be charged from your pay-as-you-go subscription during your free trial or if you haven't exceeded your BYOL license.
+
+There are a few PAYGO plans for NetApp Backup and Recovery:
+
+* A "Cloud Backup" package that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
+* A "CVO Professional" package that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
++
+Note that this option also requires a Backup and recovery PAYGO subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
+
+https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing[Learn more about these capacity-based license packages].
+
+Use these links to subscribe to NetApp Backup and Recovery from your cloud provider marketplace:
+
+//ifdef::aws[]
+* AWS: https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
+//endif::aws[]
+//ifdef::azure[]
+* Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the  Marketplace offering for NetApp Intelligent Services for pricing details^].
+//endif::azure[]
+//ifdef::gcp[]
+* Google Cloud: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
+//endif::gcp[]
+
+== Use an annual contract
+
+Pay for NetApp Backup and Recovery annually by purchasing an annual contract. They're available in 1-, 2-, or 3-year terms.
+
+If you have an annual contract from a marketplace, all NetApp Backup and Recovery consumption is charged against that contract. You can't mix and match an annual marketplace contract with a BYOL.
+
+//ifdef::aws[]
+When you use AWS, there are two annual contracts available from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
+
+* A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
++
+If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription[associate the subscription with your AWS credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
+
+* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
+//+
+//Note that this option also requires a Backup and recovery subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
++
+See the https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
++
+If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the AWS Marketplace.
+//endif::aws[]
+
+//ifdef::azure[]
+When you use Azure, there are two annual contracts available from the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-bluexp[Azure Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
+
+* A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
++
+If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html#subscribe[associate the subscription with your Azure credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your Azure credentials in the Console.
+
+* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
+//+
+//Note that this option also requires a Backup and recovery subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
++
+See the https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
++
+If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the Azure Marketplace.
+//endif::azure[]
+
+//ifdef::gcp[]
+When you use GCP, contact your NetApp sales representative to purchase an annual contract. The contract is available as a private offer in the Google Cloud Marketplace.
+
+After NetApp shares the private offer with you, you can select the annual plan when you subscribe from the Google Cloud Marketplace during NetApp Backup and Recovery activation.
+//endif::gcp[]
+
+== Use a NetApp Backup and Recovery BYOL license
+
+Bring-your-own licenses from NetApp provide 1-, 2-, or 3-year terms. You pay only for the data that you protect, calculated by the logical used capacity (_before_ any efficiencies) of the source ONTAP volumes which are being backed up. This capacity is also known as Front-End Terabytes (FETB).
+
+The BYOL NetApp Backup and Recovery license is a floating license where the total capacity is shared across all systems associated with your NetApp Console organization or account. For ONTAP systems, you can get a rough estimate of the capacity you'll need by running the CLI command `volume show -fields logical-used-by-afs` for the volumes you plan to back up.
+
+If you don't have a NetApp Backup and Recovery BYOL license, click the chat icon in the lower-right of the Console to purchase one.
+
+Optionally, if you have an unassigned node-based license for Cloud Volumes ONTAP that you won't be using, you can convert it to a NetApp Backup and Recovery license with the same dollar-equivalence and the same expiration date. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses[Go here for details^].
+
+You use the NetApp Console to manage BYOL licenses. You can add new licenses, update existing licenses, and view license status from the Console.
+
+https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html[Learn about adding licenses^].
+
+

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: br-use-manage-kubernetes-clusters.html
+keywords: discover, backup and recovery, snapcenter, kubernetes, k8s, clusters, applications, inventory
+summary: NetApp Backup and Recovery enables you to discover and manage your Kubernetes clusters so that you can protect resources hosted by the clusters. 
+---
+
+= Manage Kubernetes clusters 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to discover and manage your Kubernetes clusters so that you can protect resources hosted by the clusters. 
+
+.Required NetApp Console role
+
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+NOTE: To discover Kubernetes clusters, refer to link:br-start-discover.html[Discover Kubernetes workloads].
+
+== Edit Kubernetes cluster information
+You can edit a cluster if you need to change its name. 
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
+. In the list of clusters, choose a cluster you want to edit and select the associated Actions menu.
+. Select *Edit cluster*.
+. Make any required changes to the cluster name. The cluster name needs to match the name that you used with the Helm command during the discovery process.
+. Select *Done*.
+
+== Remove a Kubernetes cluster
+If you no longer need to protect the resources hosted by a Kubernetes cluster, you can remove it from NetApp Backup and Recovery. Removing a cluster does not delete the cluster or its resources; it only removes the cluster from the NetApp Console inventory. Before you can remove a cluster, you need to disable protection and delete the associated applications from NetApp Backup and Recovery.
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
+. In the list of clusters, choose a cluster you want to edit and select the associated Actions menu.
+. Select *Remove cluster*.
+. Review the information in the confirmation dialog box, and select *Remove*.

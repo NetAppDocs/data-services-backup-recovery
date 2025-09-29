@@ -1,0 +1,99 @@
+---
+sidebar: sidebar
+permalink: br-limitations.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: NetApp Backup and Recovery needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
+---
+
+= Known limitations with NetApp Backup and Recovery for Microsoft SQL Server workloads
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Known limitations identify platforms, devices, or functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
+
+== Clone lifecycle support
+
+* Cloning from object storage is not supported.
+* Bulk clone operations are not supported for on-demand clones.
+* Choosing I-groups is not supported.
+* Choosing QOS (maximum throughput) options is not supported.
+
+== Standard deployment mode only
+The NetApp Backup and Recovery version works only in standard deployment mode, not restricted or private modes. 
+
+
+== Windows cluster name restriction
+
+The Windows cluster name cannot contain an underscore (_) character.
+
+
+== SnapCenter migration issues
+
+The migration of resources from SnapCenter into NetApp Backup and Recovery has the following limitations.
+
+For details about how SnapCenter policies migrate to NetApp Backup and Recovery policies, see link:reference-policy-differences-snapcenter.html[Policies in SnapCenter compared to those in NetApp Backup and Recovery].
+
+=== Resource group limitations 
+
+If all the resources in a resource group are protected and one of those resources is also protected outside of the resource group, the migration from SnapCenter is blocked. 
+
+*Workaround*: Protect the resource either in a resource group or by itself, but not in both. 
+
+=== Resources with multiple policies using the same schedule tier not supported
+
+You cannot have assign multiple policies that use the same schedule tier (for example, hourly, daily, weekly, etc.) to a resource. NetApp Backup and Recovery will not import those resources from SnapCenter.
+
+*Workaround*: Attach only one policy using the same schedule tier to a resource.
+ 
+=== Hourly policies must begin at the start of the hour
+
+If you have a SnapCenter policy that repeats every hours, but the hours are not at intervals at the start of the hour, NetApp Backup and Recovery will not import the resource. For example, policies with schedules of 1:30, 2:30, 3:30, etc. are not supported, while policies with schedules of 1:00, 2:00, 3:00, etc. are supported.
+
+*Workaround*: Use a policy that repeats in 1-hour intervals starting at the top of the hour.
+
+=== Both daily and monthly policies attached to one resource not supported
+
+If a SnapCenter policy repeats both in day and month intervals, NetApp Backup and Recovery will not import the policy.
+
+For example, you cannot attach a daily policy (with less than or equal to 7 days or greater than 7 days) to a resource and also attach a monthly policy to the same resource. 
+
+*Workaround*: Use a policy that uses a daily or a monthly interval, but not both.
+
+=== On demand backup policies not migrated
+
+NetApp Backup and Recovery does not import on demand backup policies from SnapCenter.
+
+=== Log-only backup policies not migrated 
+
+NetApp Backup and Recovery does not import log-only backup policies from SnapCenter. If a SnapCenter policy includes log-only backups, NetApp Backup and Recovery will not import the resource.
+
+
+*Workaround*: Use a policy in SnapCenter that uses more than just log-only backups. 
+
+
+=== Host mapping 
+SnapCenter does not have map storage clusters or SVMs for the resources to hosts, but NetApp Backup and Recovery does. The on-premises ONTAP cluster or SVM will not be mapped to a host in NetApp Backup and Recovery Preview version. Additionally, NetApp Console does not support SVMs. 
+
+
+*Workaround*: Before importing resources from SnapCenter, create a system in NetApp Backup and Recovery for all the on-premises ONTAP storage systems that are registered in on-premises SnapCenter. Then, import the resources for that cluster from SnapCenter into NetApp Backup and Recovery.
+
+
+=== Schedules not in 15-minute intervals 
+
+If you have a SnapCenter policy schedule that starts at a certain time and repeats every so many minutes but the minutes are not in 15-minute intervals, NetApp Backup and Recovery will not import the schedule.
+
+
+*Workaround*: Use SnapCenter to adjust the policy so that it repeats in 15-minute intervals.
+
+== Limited support for virtualization management software
+When you protect KVM workloads, NetApp Backup and Recovery does not support discovery of KVM workloads when virtualization management software such as Apache CloudStack or Red Hat OpenShift Virtualization is in use.
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+---
+permalink: task-backup-to-gcp.html
+redirect: bluexp-backup-recovery/prev-ontap-backup-cvo-gcp.html
+---

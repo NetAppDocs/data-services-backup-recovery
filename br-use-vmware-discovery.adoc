@@ -1,0 +1,217 @@
+---
+sidebar: sidebar
+permalink: br-use-vmware-discovery.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Discover VMware workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The NetApp Backup and Recovery service needs to first discover VMware datastores and VMs running on ONTAP systems in order for you to use the service. You can optionally import backup data and policies from SnapCenter Plug-in for VMware vSphere if you already have it installed.
+
+
+*Required Console role*
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Discover VMware workloads and optionally import SnapCenter resources
+
+During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshot copies, and backup and restore options. 
+
+You can import VMware NFS and VMFS datastores and VMs from their on-premises SnapCenter Plug-in for VMware vSphere into NetApp Backup and Recovery inventory. 
+
+//You can import entire vCenter resources or select specific protection groups. For Preview, you cannot select a specific resource group. 
+
+NOTE: This version of NetApp Backup and Recovery supports only VMware vCenter and does not discover vVols or VMs on vVols.  
+
+During the import process, NetApp Backup and Recovery performs the following tasks:
+
+* Enables secure SSH access to the vCenter server.
+* Activates maintenance mode on all Resource Groups in the vCenter server.
+* Prepares the metadata of the vCenter and marks it as unmanaged in BlueXP. 
+* Configures database access. 
+* Discovers VMware vCenter, datastores, and VMs.
+* Imports existing protection policies, snapshot copies, and backup and restore options from SnapCenter Plug-in for VMware vSphere.
+* Displays the discovered resources in the NetApp Backup and Recovery Inventory page.
+
+//In future releases, you will be able to discover KVM and Hyper-V hypervisors and other applications.
+
+Discovery occurs in the following ways: 
+
+* If you already have SnapCenter Plug-in for VMware vSphere, import SnapCenter resources into NetApp Backup and Recovery by using the NetApp Backup and Recovery UI.
++
+NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisites before importing from SnapCenter. For example, you should create systems in NetApp Console for all on-premises SnapCenter cluster storage first before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
++
+* If you don't already have the SnapCenter Plug-in, you can still discover workloads within your systems by adding a vCenter manually and performing discovery.
+
+
+
+
+//Notes from JIRA: 
+//* Note- Users can choose between physical resources to discover workload on bare metal or virtualized resources to discover VMs and underlying applications with virtualized as default.
+//* Note- In future, 3 hypervisors - VMware, KVM, Hyper-V will be supported with VMware as default selection.
+//* Select VMware as the hypervisor, user can add and register a vCenter to discover NFS, VMFS datastores and VMs  within this vCenter to backup and restore.
+
+//* An option to select Use self-signed certificates ( "Use self-signed certificates" checkbox is selected by default, if you already have authoritative certificates for your vCenter environment, you should uncheck this checkbox.)
+
+//* User can choose to discover underlying applications as part of the discovery process. The scope of application discovered in 25H1 is MSSQL.
+//* Click on Discover to add vcenter, push VMware plug-in per vcenter , discover NFS and VMFS datastores, VMs and list all discovered datastores and VMs. ( Agentless)
+
+//* Workload type – VMware, no of vCenters, resources – datastores/VMs discovered, protected resources and total protected capacity as nil
+//* If user has selected “discover underlying applications “ VMware tools will be used to identify VMs which has MSSQL applications and a summary of MSSQL discovered resources will be displayed as a new row. 
+
+
+=== If SnapCenter Plug-in is not already installed, add a vCenter and discover resources
+
+If you don't already have SnapCenter Plug-in for VMware installed, add vCenter information and have NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
+
+ 
+
+.Steps
+
+. From the NetApp Console left navigation, select *Protection* > *Backup and Recovery*. 
++
+If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
++
+image:screen-br-landing-discover-import-buttons.png[Landing page screenshot for NetApp Backup and Recovery without discovered resources]
+
+. Select *Discover resources*.
++
+image:screen-br-discover-workloads.png[Discover workload resources screenshot]
+
+. Enter the following information: 
+.. *Workload type*: Select *VMware*.
+.. *vCenter settings*: Add a new vCenter. To add a new vCenter, enter the vCenter FQDN or IP address, user name, password, port, and protocol.
++
+TIP: If you are entering vCenter information, enter information for both vCenter settings and Host registration. If you added or entered vCenter information here, you also need to add plugin information in Advanced Settings next. 
+.. *Host registration*:  Not required for VMware. 
+
+
+. Select *Discover*. 
++
+TIP: This process might take a few minutes.
+
+. Continue with Advanced Settings. 
+
+
+
+
+=== If SnapCenter Plug-in is already installed, import SnapCenter Plug-in for VMware resources into NetApp Backup and Recovery
+
+If you already have SnapCenter Plug-in for VMware installed, import SnapCenter Plug-in resources into NetApp Backup and Recovery using these steps. The Console discovers ESXi hosts, datastores, and VMs in vCenters, and schedules from the Plug-in; you don't have to recreate all that information. 
+
+
+You can do this in the following ways: 
+
+* During discovery, select an option to import resources from SnapCenter Plug-in.
+* After discovery, from the Inventory page, select an option to import SnapCenter Plug-in resources.
+* After discovery, from the Settings menu, select an option to import SnapCenter Plug-in resources. For details, see link:br-start-configure.html[Configure NetApp Backup and Recovery]. This is not supported for VMware. 
+
+This is a two-part process described in this section:
+
+. Import the vCenter metadata from SnapCenter Plug-in. The imported vCenter resources are not yet managed by NetApp Backup and Recovery.
+. Initiate management of selected vCenters, VMs, and datastores in NetApp Backup and Recovery. After you initiate management, NetApp Backup and Recovery labels the vCenter as "Managed" on the Inventory page and is able to back up and recover the resources that you imported. After you initiate management in NetApp Backup and Recovery, you no longer manage those resources in SnapCenter Plug-in.
+
+==== Import vCenter metadata from SnapCenter Plug-in
+
+This first step imports vCenter metadata from SnapCenter Plug-in. At that point, the resources are not yet managed by NetApp Backup and Recovery.
+
+TIP: After you import vCenter metadata from the SnapCenter Plug-in, NetApp Backup and Recovery does not take over protection management automatically. To do so, you must explicitly select to manage the imported resources in NetApp Backup and Recovery. This ensures that you are ready to have those resources backed up by NetApp Backup and Recovery. 
+
+.Steps 
+
+. From the BlueXP left navigation, select *Protection* > *Backup and Recovery*. 
+. Select *Inventory*.
++
+image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery showing VMware workload]
+. From the Inventory page, select *Discover resources*.
+//+
+//image:../media/screen-br-discover-workloads.png[Discover workload resources screenshot]
+. From the NetApp Backup and Recovery Discover workload resources page, select *Import from SnapCenter*.
+
++
+image:../media/screen-vm-discover-import-snapcenter.png[Settings option to import SnapCenter Plug-in resources]
+. In the Import from field, select *SnapCenter Plug-in for VMware*.
+
+
+. Enter *VMware vCenter credentials*:
+.. *vCenter IP/hostname*: Enter the FQDN or IP address of the vCenter you want to import into NetApp Backup and Recovery.
+.. *vCenter port number*: Enter the port number for the vCenter.
+.. *vCenter Username* and *Password*: Enter the username and password for the vCenter.
+.. *Connector*: Select the Console agent for the vCenter.
+
+
+. Enter *SnapCenter Plug-in host credentials*:
+.. *Existing credentials*: If you select this option, you can use the existing credentials that you have already added. Choose the credentials name. 
+.. *Add new credentials*: If you don't have existing SnapCenter Plug-in host credentials, you can add new credentials. Enter the credentials name, authentication mode, user name, and password.
+
+. Select *Import* to validate your entries and register the SnapCenter Plug-in.
++
+NOTE: If the SnapCenter Plug-in is already registered, you can  update the existing registration details.
+
+.Result
+The Inventory page shows the vCenter as unmanaged in NetApp Backup and Recovery until you explicitly select to manage it.
+
+image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter as unmanaged]
+
+
+
+==== Manage resources imported from SnapCenter Plug-in
+
+After you import the vCenter metadata from the SnapCenter Plug-in for VMware, manage the resources in NetApp Backup and Recovery. After you select to manage those resources, NetApp Backup and Recovery is able to back up and recover the resources that you imported. After you initiate the management in NetApp Backup and Recovery, you no longer manage those resources in SnapCenter Plug-in. 
+
+After you select to manage the resources, the resources, VMs, and policies are imported from the SnapCenter Plug-in for VMware. The resource groups, policies, and snapshots are migrated from the Plug-in and become managed in NetApp Backup and Recovery. 
+
+.Steps 
+. After you import the VMware resources from SnapCenter Plug-in, from the Backup and Recovery menu, select *Inventory*. 
+. From the Inventory page, select the imported vCenter that you want to have NetApp Backup and Recovery manage from now on.  
++
+image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter resources]
+
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.  
+
+
+. From the Inventory > workload page, select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to display the Manage vCenter page.   
++
+image:../media/screen-vm-discover-import-manage.png[Manage vCenter in NetApp Console page]
+
+. Check the box "Do you want to continue with the migration?" and select *Migrate*. 
+
+.Result
+
+The Inventory page shows the newly managed vCenter resources.
+
+image:../media/screen-vm-inventory-managed.png[Inventory page showing the managed vCenter resources]
+
+
+
+
+
+
+
+
+//==== Set Advanced settings options during discovery and install the plugin
+
+
+//Not supported in VMware.  
+
+
+
+ 
+==== Continue to the NetApp Backup and Recovery Dashboard
+
+
+. To display the Dashboard, from the Backup and Recovery menu, select *Dashboard*.   
+
+. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
++
+image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
++
+link:br-use-dashboard.html[Learn what the Dashboard shows you].
+
+ 

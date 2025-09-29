@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: br-use-vmware-backup.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Back up VMware workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Back up VMware VMs and datastores from on-premises ONTAP systems to Amazon Web Services or StorageGRID to ensure that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. 
+
+* To back up workloads on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
+
+* Create protection groups to manage the backup and restore operations for a set of resources.  See link:br-use-vmware-protection-groups.html[Create and manage protection groups for VMware workloads with NetApp Backup and Recovery] for more information.
+* Back up workloads now (create an on-demand backup now).  
+
+
+
+
+== Back up workloads now with an on-demand backup
+
+Create an on-demand backup immediately. You might want to run an on-demand backup if you're about to make changes to your system and want to ensure that you have a backup before you start.
+
+//Ensure that these conditions are met before you back up workloads; otherwise, you cannot create an on-demand backup:
+
+//* The VMware workload does not include an on-demand policy already.
+//* The VMware workload does not include overlapping schedules.
+//* The VMware workload does not include multiple resource groups (protection groups) for the same datastore. You can remove the datastores from that protection group.  
+
+*Required Console role*
+Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps 
+
+. From the Backup and Recovery menu, select *Inventory*. 
++
+image:screen-vm-inventory-managed.png[Inventory screenshot for NetApp Backup and Recovery]
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select the *Protection Groups*, *Datastores* or *Virtual machines* tab. 
++
+image:screen-vm-inventory-protection-groups.png[Protection groups tab screenshot for NetApp Backup and Recovery]
+
+. Select the protection group, datastores, or virtual machines that you want to back up.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
++
+image:screen-vm-inventory-backup-now.png[Back up now screenshot for NetApp Backup and Recovery]
++
+NOTE: The policy that is applied to the backup is the same policy that is assigned to the protection group, datastore, or virtual machine.
+
+. Select the schedule tier.
+. Select *Back up now*. 

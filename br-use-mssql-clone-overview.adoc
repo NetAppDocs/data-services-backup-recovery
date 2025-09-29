@@ -1,0 +1,23 @@
+---
+sidebar: sidebar
+permalink: br-use-mssql-clone-overview.html
+keywords: backing up, restoring, back up, backup, clone, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: Clone Microsoft SQL Server applications for development, testing, or protection purposes. You can create clones from instant snapshots or existing snapshots of your Microsoft SQL Server workloads.
+---
+
+= Clone Microsoft SQL server workloads overview with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Clone Microsoft SQL Server applications data with NetApp Backup and Recovery to the same or different VM for development, testing, or protection purposes. You can create clones from instant snapshots or existing snapshots of your Microsoft SQL Server workloads.
+
+* Create a clone
+* Refresh a clone
+* Split a clone 
+* Delete a clone
+
+

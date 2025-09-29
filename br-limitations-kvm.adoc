@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: br-limitations-kvm.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, KVM, SAP HANA database, virtual machine, vm
+summary: NetApp Backup and Recovery needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
+---
+
+= Known limitations with NetApp Backup and Recovery for KVM workloads
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Known limitations identify platforms, devices, or functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
+
+The following actions are not supported in the Preview version of KVM workloads in NetApp Backup and Recovery: 
+
+* Clone
+* Mount
+* Unmount
+* Restore to alternate location
+* Spanning disks (across multiple shares)
+* Protect VMs stored on a SAN
+* Protect applications
+* Restore from object store
+* Edit protection group
+* Role-based access control (RBAC) support
+
+
+
+
+

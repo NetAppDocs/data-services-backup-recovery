@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: br-use-kvm-protect-overview.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: You can protect KVM virtual machines from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID, ensuring that your data is protected. 
+---
+
+= Protect KVM workloads overview 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Protect your KVM VMs and storage pools with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations. You can back up KVM workloads to Amazon Web Services S3 or StorageGRID and restore KVM workloads back to an on-premises KVM host. 
+
+image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
+
+Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
+
+* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
+* Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
+* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+
+NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
+
+You can use NetApp Backup and Recovery to perform the following tasks related to KVM workloads:
+
+* link:br-start-discover-kvm.html[Discover KVM workloads]
+* link:br-use-kvm-protection-groups.html[Create and manage protection groups for KVM workloads]
+* link:br-use-kvm-backup.html[Back up KVM workloads]
+* link:br-use-kvm-restore.html[Restore KVM workloads]
+//* link:br-use-kvm-clone.html[Clone KVM workloads]
+

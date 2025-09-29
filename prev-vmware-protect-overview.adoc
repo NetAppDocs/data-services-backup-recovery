@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: prev-vmware-protect-overview.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Protect virtual machines workloads in NetApp Backup and Recovery overview
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Protect your virtual machines workloads with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations for VMs, datastores, and VMDKs. 
+
+You can back up datastores to Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform, and StorageGRID and restore virtual machines back to the on-premises SnapCenter Plug-in for VMware vSphere host. 
+
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+For instructions on protecting virtual machines workloads, see the following topics:
+
+* link:prev-vmware-policy-create.html[Create a policy for VMware workloads]
+* link:prev-vmware-backup-aws.html[Back up VMware datastores to Amazon Web Services]
+* link:prev-vmware-backup-azure.html[Back up VMware datastores to Microsoft Azure]
+* link:prev-vmware-backup-gcp.html[Back up VMware datastores to Google Cloud Platform]
+* link:prev-vmware-backup-storagegrid.html[Back up VMware datastores to StorageGRID]
+* link:prev-vmware-restore.html[Restore VMware workloads]    
+* link:prev-vmware-manage.html[Manage protection for VMware workloads]
