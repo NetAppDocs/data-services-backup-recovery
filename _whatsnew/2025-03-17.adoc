@@ -1,0 +1,19 @@
+=== SMB snapshot browsing 
+
+This NetApp Backup and Recovery update resolved an issue that prevented customers from browsing local snapshots in an SMB environment. 
+
+
+=== AWS GovCloud environment update 
+
+This NetApp Backup and Recovery update fixed an issue that prevented the UI from connecting to an AWS GovCloud environment due to TLS certificate errors. The issue was resolved by using the Console agent host name instead of the IP address. 
+
+=== Backup policy retention limits 
+
+Previously, the NetApp Backup and Recovery UI limited backups to 999 copies, while the CLI allowed more. Now, you can attach up to 4,000 volumes to a backup policy and include 1,018 volumes not attached to a backup policy. This update includes additional validations that prevent exceeding these limits.
+
+=== SnapMirror Cloud resync
+
+This update ensures that SnapMirror Cloud resync cannot be started from NetApp Backup and Recovery for unsupported ONTAP versions after a SnapMirror relationship has been deleted. 
+
+
+

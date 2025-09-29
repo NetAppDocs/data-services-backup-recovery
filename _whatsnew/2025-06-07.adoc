@@ -1,0 +1,51 @@
+=== Enhanced ONTAP volume Dashboard 
+
+In April 2025, we launched a preview of an enhanced ONTAP volume Dashboard that is much faster and more efficient.  
+
+This dashboard was designed to help enterprise customers with a high number of workloads. Even for customers with 20,000 volumes, the new dashboard loads in <10 seconds.  
+
+After a successful preview and great feedback from preview customers, we are now making it the default experience for all our customers. Be ready for a blazingly fast dashboard.
+
+For details, see link:br-use-dashboard.html[View protection health in the Dashboard].
+
+=== Microsoft SQL Server workload support as a Public Technology Preview
+
+This release of NetApp Backup and Recovery provides an updated user interface that enables you to manage Microsoft SQL Server workloads using a 3-2-1 protection strategy, familiar in NetApp Backup and Recovery. With this new version, you can back up these workloads to primary storage, replicate them to secondary storage, and back them up to cloud object storage. 
+
+You can sign up for the preview by completing this https://forms.office.com/pages/responsepage.aspx?id=oBEJS5uSFUeUS8A3RRZbOojtBW63mDRDv3ZK50MaTlJUNjdENllaVTRTVFJGSDQ2MFJIREcxN0EwQi4u&route=shorturl[Preview Signup Form^]. 
+
+NOTE: This documentation about protecting Microsoft SQL Server workloads is provided as a technology preview. With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before general availability.
+
+This version of NetApp Backup and Recovery includes the following updates:
+
+* *3-2-1 backup capability*: This version integrates SnapCenter capabilities, enabling you to manage and protect your SnapCenter resources with a 3-2-1 data protection strategy from the NetApp Backup and Recovery user interface. 
+* *Import from SnapCenter*: You can import SnapCenter backup data and policies into NetApp Backup and Recovery. 
+* *A redesigned user interface* provides a more intuitive experience for managing your backup and recovery tasks.
+* *Backup targets*: You can add buckets in Amazon Web Services (AWS), Microsoft Azure Blob Storage, StorageGRID, and ONTAP S3 environments to use as backup targets for your Microsoft SQL Server workloads.
+* *Workload support*: This version enables you to back up, restore, verify, and clone Microsoft SQL Server databases and availability groups. (Support for other workloads will be added in future releases.)
+* *Flexible restore options*: This version enables you to restore databases to both original and alternate locations in case of corruption or accidental data loss. 
+* *Instant production copies*: Generate space-efficient production copies for development, testing, or analytics in minutes instead of hours or days. 
+
+* This version includes the ability to create detailed reports.  
+
+For details about protecting Microsoft SQL Server workloads, see link:br-use-mssql-protect-overview.html[Protect Microsoft SQL Server workloads overview]. 
+
+
+//=== Kubernetes workload support as a Public Technology Preview 
+
+//This release includes support for Kubernetes workloads as a Technology Preview. You can back up and restore Kubernetes workloads using NetApp Backup and Recovery. This feature is designed to help you protect your containerized applications and data.
+
+//NetApp Backup and Recovery currently supports backing up on Files and Folders/Volumes and MSSQL (Preview). We are happy to announce that we made another significant progress in our efforts towards supporting backup and recovery of applications. Starting this release, NetApp Backup and Recovery supports protecting Kubernetes-based containers and virtual machines (Tech Preview).  Customers can sign up for the preview by filling this form - Preview Signup Form. 
+
+//This includes support for:  
+
+//* Red Hat OpenShift and Open-source Kubernetes clusters. 
+
+//* On-premises ONTAP support for primary storage and AWS, Azure and StorageGRID for object storage backup targets. 
+
+//Back up and restore entire applications or individual resources to any Kubernetes clusters. 
+
+//Storage offload capabilities for efficient data movement for Backup and recovery use cases.  
+
+//NOTE: This documentation is provided as a technology preview.  With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before General Availability.  
+

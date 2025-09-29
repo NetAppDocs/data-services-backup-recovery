@@ -1,0 +1,137 @@
+---
+sidebar: sidebar
+permalink: br-reference-limitations.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Known limitations identify functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
+---
+
+= Known limitations with NetApp Backup and Recovery for ONTAP volumes
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Known limitations identify functions that are not supported by this release of NetApp Backup and Recovery, or that do not interoperate correctly with it. Review these limitations carefully.
+
+
+
+* NetApp Backup and Recovery backing up Cloud Volume ONTAP to an object store in the AWS China regions (including Beijing and Ningxia); however, you might need to manually modify Identity and access policies first. 
++
+For details about creating a Console agent in AWS, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html[Installing a Console agent in AWS^]. 
++
+For additional details in a blog post, refer to 
+https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feature-Blog-May-23-Updates/ba-p/444052[NetApp Backup and Recovery Feature Blog May 2023^].
+
+
+* NetApp Backup and Recovery does not support Microsoft Azure China regions.
++
+For details about creating a Console agent in Azure, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-azure-bluexp.html[Installing a Console agent in Azure^].
+
+* NetApp Backup and Recovery does not support backups of FlexCache volumes. 
+
+== Replication limitations for ONTAP volumes
+
+
+* You can select only one FlexGroup volume at a time for replication. You'll need to activate backups separately for each FlexGroup volume.
++
+There is no limitation for FlexVol volumes - you can select all FlexVol volumes in your system and assign the same backup policies.
+
+* The following functionality is supported in https://docs.netapp.com/us-en/bluexp-replication/index.html[NetApp Replication], but not when using the replication feature of NetApp Backup and Recovery:
+
+** There is no support for a cascade configuration where replication occurs from volume A to volume B and from volume B to volume C. Support includes replication from volume A to volume B.
+** There is no support for replicating data to and from FSx for ONTAP systems.
+** There is no support for creating a one-time replication of a volume.
+//, and replication from volume A to multiple destinations
+
+* When creating replications from on-premises ONTAP systems, if the ONTAP version on the target Cloud Volumes ONTAP system is 9.8, 9.9, or 9.11, only mirror-vault policies are allowed.
+
+== Backup-to-object limitations for ONTAP volumes
+
+
+* When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
++ 
+For an explanation about these encryption types, refer to 
+https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html[Configure NetApp Volume Encryption overview^].
+
+//* If a volume has long-term retention enabled in the SnapMirror relationship in ONTAP, you should not back up those volumes using NetApp Backup and Recovery, because those snapshots will not be moved to object storage.
+
+* If long-term retention snapshots are enabled on a SnapMirror destination volume using the schedule in the SnapMirror policy, snapshots are created directly on the destination volume. In this case, you should not back up those volumes using NetApp Backup and Recovery because those snapshots will not be moved to object storage.
+
+
+* When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
++ 
+For an explanation about these encryption types, refer to 
+https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html[Configure NetApp Volume Encryption overview^].
+
+//* If a volume has long-term retention enabled in the SnapMirror relationship in ONTAP, you should not back up those volumes using NetApp Backup and Recovery, because those snapshots will not be moved to object storage.
+
+* If long-term retention snapshots are enabled on a SnapMirror destination volume using the schedule in the SnapMirror policy, snapshots are created directly on the destination volume. In this case, you should not back up those volumes using NetApp Backup and Recovery because those snapshots will not be moved to object storage.
+
+
+* When you create or edit a backup policy when no volumes are assigned to the policy, the number of retained backups can be a maximum of 1018. After you assign volumes to the policy, you can edit the policy to create up to 4000 backups.
+
+* When backing up data protection (DP) volumes:
+** Relationships with the SnapMirror labels `app_consistent` and `all_source_snapshot` won't be backed up to cloud.
+** If you create local copies of Snapshots on the SnapMirror destination volume (irrespective of the SnapMirror labels used) these Snapshots will not be moved to the cloud as backups. At this time you'll need to create a Snapshot policy with the desired labels to the source DP volume in order for NetApp Backup and Recovery to back them up.
+
+* FlexGroup volume backups can't be moved to archival storage.
+
+* FlexGroup volume backups can use DataLock and Ransomware protection if the cluster is running ONTAP 9.13.1 or greater.
+//can't use DataLock and Ransomware protection.
+
+* SVM-DR volume backup is supported with the following restrictions:
+** Backups are supported from the ONTAP secondary only.
+** The Snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery, including daily, weekly, monthly, etc. The default "sm_created" policy (used for *Mirror All Snapshots*) is not recognized and the DP volume will not be shown in the list of volumes that can be backed up.
+** SVM-DR and volume backup and recovery work fully independently when the backup is taken from either the source or destination. The only restriction is that SVM-DR does not replicate the SnapMirror cloud relationship. In the DR scenario when the SVM goes online in the secondary location, you must manually update the SnapMirror cloud relationship.
+
+//* MetroCluster (MCC) backup is supported from ONTAP secondary only: MCC > SnapMirror > ONTAP > Cloud Backup > object storage.
+* MetroCluster support:
+** When you use ONTAP 9.12.1 GA or greater, backup is supported when connected to the primary system. The entire backup configuration is transferred to the secondary system so that backups to the cloud continue automatically after switchover. You don't need to set up backup on the secondary system (in fact, you are restricted from doing so).
+** When you use ONTAP 9.12.0 and earlier, backup is supported only from the ONTAP secondary system.
+** Backups of FlexGroup volumes are not supported at this time.
+
+* Ad-hoc volume backup using the *Backup Now* button isn't supported on data protection volumes.
+
+* SM-BC configurations are not supported.
+
+* ONTAP doesn't support fan-out of SnapMirror relationships from a single volume to multiple object stores; therefore, this configuration is not supported by NetApp Backup and Recovery.
+
+* WORM/Compliance mode on an object store is supported on Amazon S3, Azure, and StorageGRID at this time. This is known as the DataLock feature, and it must be managed by using NetApp Backup and Recovery settings, not by using the cloud provider interface.
+
+== Restore limitations for ONTAP volumes
+
+
+These limitations apply to both the Search & Restore and the Browse & Restore methods of restoring files and folders; unless called out specifically.
+
+* Browse & Restore can restore up to 100 individual files at a time.
+
+* Search & Restore can restore 1 file at a time.
+
+* When using ONTAP 9.13.0 or greater, Browse & Restore and Search & Restore can restore a folder along with all files and sub-folders within it.
++
+When using a version of ONTAP greater than 9.11.1 but before 9.13.0, the restore operation can restore only the selected folder and the files in that folder - no sub-folders, or files in sub-folders, are restored.
++
+When using a version of ONTAP before 9.11.1, folder restore is not supported.
+
+* Directory/folder restore is supported for data that resides in archival storage only when the cluster is running ONTAP 9.13.1 and greater. 
+
+* Directory/folder restore is supported for data that is protected using DataLock only when the cluster is running ONTAP 9.13.1 and greater. 
+
+* Directory/folder restore is not currently supported from replications and/or local snapshots.
+
+* Restoring from FlexGroup volumes to FlexVol volumes, or FlexVol volumes to FlexGroup volumes is not supported.
+
+* The file being restored must be using the same language as the language on the destination volume. You will receive an error message if the languages are not the same.
+
+* The _High_ restore priority is not supported when restoring data from Azure archival storage to StorageGRID systems.
+
+* If you back up a DP volume and then decide to break the SnapMirror relationship to that volume, you cannot restore files to that volume unless you also delete the SnapMirror relationship or reverse the SnapMirror direction. 
+//GH issue 155
+
+* Quick restore limitations:
+** The destination location must be a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater.
+** It is not supported with backups located in archived storage.
+** FlexGroup volumes are supported only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. 
+** SnapLock volumes are supported only if the source system from which the cloud backup was created was running ONTAP 9.11.0 or greater.

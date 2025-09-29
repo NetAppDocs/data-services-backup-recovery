@@ -1,0 +1,162 @@
+---
+sidebar: sidebar
+permalink: concept-start-prereq-snapcenter-import.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery, snapcenter, import, migration, migrate
+summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
+---
+
+= Prerequisites for importing from the Plug-in service into NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+If you are going to import resources from the SnapCenter Plug-in service for Microsoft SQL Server into NetApp Backup and Recovery, you'll need to configure a few more items.
+
+== Create systems in NetApp Console first 
+
+If you are going to import resources from SnapCenter, you should add all on-premises SnapCenter cluster storage to the Console *Systems* page first before importing from SnapCenter. This ensures that host resources can be discovered and imported correctly.
+
+
+== Ensure host requirements to install the SnapCenter Plug-in
+
+To import resources from the SnapCenter Plug-in for Microsoft SQL Server, ensure host requirements to install the SnapCenter Plug-in for Microsoft SQL Server are met. 
+
+
+
+Check specifically for the SnapCenter requirements in link:concept-start-prereq.html[NetApp Backup and Recovery prerequisites].
+
+== Disable User Account Control remote restrictions 
+
+Before you import resources from SnapCenter, disable User Account Control (UAC) remote restrictions on the SnapCenter Windows host. Disable UAC if you use a local administrative account to connect remotely to the SnapCenter Server host or the SQL host. 
+
+*Security considerations*
+
+Consider the following issues before disabling UAC remote restrictions:
+
+* Security risks: Disabling token filtering can expose your system to security vulnerabilities, especially if local administrative accounts are compromised by malicious actors.
+
+* Use with caution:
+
+** Modify this setting only if it is essential for your administrative tasks.
+
+** Ensure that strong passwords and other security measures are in place to protect administrative accounts.
+
+*Alternative solutions*
+
+* If remote administrative access is required, consider using domain accounts with appropriate privileges.
+
+* Use secure remote management tools that adhere to best security practices to minimize risks.
+
+
+.Steps to disable User Account Control remote restrictions
+
+1. Modify the `LocalAccountTokenFilterPolicy` registry key on the SnapCenter Windows host. 
++
+Do this by using one of the following, with instructions next: 
+
+* Method 1: Registry Editor
+* Method 2: PowerShell script
+
+
+=== Method 1: Disable User Account Control by using the Registry Editor 
+
+This is one of the methods that you can use to disable User Account Control. 
+
+.Steps 
+. Open the Registry Editor on the SnapCenter Windows host by doing the following:   
+
+.. Press `Windows+R` to open the Run dialog box. 
+
+.. Type `regedit` and press `Enter`.        
+ 
+. Navigate to the Policy Key: 
++
+`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+
+. Create or modify the `DWORD` value:
+
+.. Locate: `LocalAccountTokenFilterPolicy`
+.. If it doesn't exist, create a new `DWORD` (32-bit) Value named `LocalAccountTokenFilterPolicy`.
+
+. The following values are supported. For this scenario, set the value to `1`: 
+
+* `0` (Default): UAC remote restrictions are enabled. Local accounts have filtered tokens when accessing remotely. 
+* `1`: UAC remote restrictions are disabled. Local accounts bypass token filtering and have full adminsistrative privileges when accessing remotely. 
+
+
+. Click *OK*. 
+
+. Close the Registry Editor.
+. Restart the SnapCenter Windows host.
+
+.Example registry modification 
+
+This example sets LocalAccountTokenFilterPolicy to "1", disabling UAC remote restrictions.
+
+----
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+
+"LocalAccountTokenFilterPolicy"=dword:00000001
+---- 
+
+
+
+=== Method 2: Disable User Account Control by using a PowerShell script
+
+This is another method that you can use to disable User Account Control.
+
+CAUTION: Running PowerShell commands with elevated privileges can affect system settings. Ensure you understand the commands and their implications before running them.
+
+.Steps
+
+. Open a PowerShell window with administrative privileges on the SnapCenter Windows host:
+.. Click on the *Start* menu. 
+.. Search for *PowerShell 7* or *Windows Powershell*.
+.. Right-click on that option and select *Run as administrator*.
+
+. Ensure that PowerShell is installed on your system. After installation, it should appear in the *Start* menu. 
++
+TIP: PowerShell is included by default in Windows 7 and later versions. 
+
+. To disable UAC remote restrictions, set LocalAccountTokenFilterPolicy to "1" by running the following command:
++
+----
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 1 -Type DWord
+----
+
+. Verify that the current value is set to "1" in `LocalAccountTokenFilterPolicy`` by running:
++
+----
+Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy"
+----
++
+* If the value is 1, UAC remote restrictions are disabled.
+* If the value is 0, UAC remote restrictions are enabled.
+
+. To apply the changes, restart your computer.
+
+
+.Example PowerShell 7 commands to disable UAC remote restrictions:
+
+This example with the value set to "1" indicates that UAC remote restrictions are disabled.
+
+----
+# Disable UAC remote restrictions
+
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 1 -Type DWord
+
+# Verify the change
+
+Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy"
+
+# Output
+
+LocalAccountTokenFilterPolicy : 1
+----
+
+
+
+

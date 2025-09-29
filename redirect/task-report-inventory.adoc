@@ -1,0 +1,4 @@
+---
+permalink: task-report-inventory.html
+redirect: data-services-backup-recovery/index.html
+---

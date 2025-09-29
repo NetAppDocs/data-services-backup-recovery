@@ -1,12 +1,227 @@
 settings:
-  name: "Product Name"
+  name: NetApp Backup and Recovery
   internal:
     pdf_enabled: true
   prod:
     pdf_enabled: true
     harmony_enabled: true
-
-sidebar: 
+  rss_page: "whats-new.html"
+  filter:
+    label: Cloud provider
+    default: All cloud providers
+    options:
+      - name: Amazon Web Services
+        alias: AWS
+        id: aws
+      - name: Google Cloud
+        alias: Google Cloud
+        id: gcp
+      - name: Microsoft Azure
+        alias: Azure
+        id: azure
+sidebar:
   entries:
-  - title: Legal notices
-    url: /legal-notices.html
+    - title: NetApp Backup and Recovery docs
+      url: /index.html
+    - title: Release notes
+      entries:
+        - title: What's new
+          url: /whats-new.html
+        - title: Known limitations for ONTAP volumes workloads
+          url: /br-reference-limitations.html
+        - title: Known limitations for Microsoft SQL Server workloads
+          url: /br-limitations.html
+        - title: Known limitations for VMware workloads
+          url: /br-limitations-vmware.html
+        - title: Known limitations for Hyper-V workloads
+          url: /br-limitations-hyperv.html
+        - title: Known limitations for KVM workloads
+          url: /br-limitations-kvm.html
+    - title: Get started
+      entries:
+        - title: Learn about NetApp Backup and Recovery
+          url: /concept-backup-to-cloud.html
+#        - title: Set up a NetApp Backup and Recovery Preview version
+#          url: /br-start-preview-setup.html
+        - title: Prerequisites for NetApp Backup and Recovery
+          url: /concept-start-prereq.html  
+
+        - title: Set up licensing for NetApp Backup and Recovery
+          url: /br-start-licensing.html
+        - title: Set up backup destinations before you use NetApp Backup and Recovery
+          url: /br-start-setup.html
+        - title: Log in to NetApp Backup and Recovery
+          url: /br-start-login.html
+        - title: Discover backup targets
+          url: /br-start-discover-backup-targets.html
+        - title: Switch to different NetApp Backup and Recovery workloads
+          url: /br-start-switch-ui.html
+        - title: Configure NetApp Backup and Recovery general settings
+          url: /br-start-configure.html
+    - title: Use NetApp Backup and Recovery
+      entries:
+        - title: View protection health in the Dashboard 
+          url: /br-use-dashboard.html  
+        - title: Create policies to govern backups and restores
+          url: /br-use-policies-create.html
+        - title: Protect ONTAP volume workloads 
+          entries: 
+            - title: Protect ONTAP volume workloads overview
+              url: /prev-ontap-protect-overview.html
+            - title: Plan your protection journey for ONTAP volumes
+              url: /prev-ontap-protect-journey.html
+            - title: Manage policies for ONTAP volumes 
+              url: /prev-ontap-policy-manage.html
+            - title: Backup-to-object policy options for ONTAP volumes
+              url: /prev-ontap-policy-object-options.html
+            - title: Manage backup-to-object policy Advanced Settings options
+              url: /prev-ontap-policy-object-advanced-settings.html
+            - title: Back up Cloud Volumes ONTAP to Amazon S3
+              url: /prev-ontap-backup-cvo-aws.html
+            - title: Back up Cloud Volumes ONTAP to Azure Blob 
+              url: /prev-ontap-backup-cvo-azure.html
+            - title: Back up Cloud Volumes ONTAP to Google Cloud
+              url: /prev-ontap-backup-cvo-gcp.html
+            - title: Back up on-premises ONTAP to Amazon S3 
+              url: /prev-ontap-backup-onprem-aws.html
+            - title: Back up on-premises ONTAP to Azure Blob
+              url: /prev-ontap-backup-onprem-azure.html
+            - title: Back up on-premises ONTAP to Google Cloud 
+              url: /prev-ontap-backup-onprem-gcp.html
+            - title: Back up on-premises ONTAP to ONTAP S3 
+              url: /prev-ontap-backup-onprem-ontaps3.html
+            - title: Back up on-premises ONTAP to StorageGRID
+              url: /prev-ontap-backup-onprem-storagegrid.html
+            - title: Migrate volumes using SnapMirror to Cloud Resync   
+              url: /prev-ontap-migrate-resync.html
+            - title: Restore configuration data in a dark site
+              url: /reference-backup-cbs-db-in-dark-site.html
+            - title: Manage ONTAP backups
+              url: /prev-ontap-backup-manage.html
+            - title: Restore from ONTAP backups 
+              url: /prev-ontap-restore.html
+        - title: Protect Microsoft SQL Server workloads 
+          entries:
+            - title: Protect Microsoft SQL Server workloads overview
+              url: /br-use-mssql-protect-overview.html
+            - title: Configure additional items if importing from SnapCenter
+              url: /concept-start-prereq-snapcenter-import.html
+            - title: Discover Microsoft SQL Server workloads
+              url: /br-start-discover.html            
+            - title: Back up Microsoft SQL Server workloads
+              url: /br-use-mssql-backup.html
+            - title: Restore Microsoft SQL Server workloads
+              url: /br-use-mssql-restore.html              
+            - title: Clone Microsoft SQL Server workloads
+              url: /br-use-mssql-clone.html
+            - title: Manage Microsoft SQL Server inventory 
+              url: /br-use-manage-inventory.html 
+            - title: Manage Microsoft SQL Server snapshots
+              url: /br-use-manage-snapshots.html
+            - title: Create Microsoft SQL Server reports 
+              url: /br-use-reports.html
+        - title: Protect VMware workloads (Preview without SnapCenter Plug-in for VMware)
+          entries:
+            - title: Protect VMware workloads overview
+              url: /br-use-vmware-protect-overview.html
+            - title: Discover VMware workloads
+              url: /br-use-vmware-discovery.html
+            - title: Create and manage protection groups for VMware workloads
+              url: /br-use-vmware-protection-groups.html
+            - title: Back up VMware workloads
+              url: /br-use-vmware-backup.html
+            - title: Restore VMware workloads
+              url: /br-use-vmware-restore.html
+        - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
+          entries:  
+            - title: Protect virtual machine workloads overview
+              url: /prev-vmware-protect-overview.html
+            - title: Prerequisites for protecting virtual machines workloads
+              url: /prev-vmware-prereqs.html
+            - title: Register SnapCenter Plug-in for VMware vSphere host
+              url: /prev-vmware-register-snapcenter.html
+            - title: Create a policy to back up virtual machine data
+              url: /prev-vmware-policy-create.html         
+            - title: Back up datastores to Amazon Web Services
+              url: /prev-vmware-backup-aws.html
+            - title: Back up datastores to Microsoft Azure
+              url: /prev-vmware-backup-azure.html
+            - title: Back up datastores to Google Cloud Platform
+              url: /prev-vmware-backup-gcp.html
+            - title: Back up datastores to StorageGRID
+              url: /prev-vmware-backup-storagegrid.html 
+            - title: Manage protection of datastores and virtual machines data
+              url: /prev-vmware-manage.html
+            - title: Restore virtual machine data and datastores
+              url: /prev-vmware-restore.html
+        - title: Protect KVM workloads (Preview)
+          entries:
+            - title: Protect KVM workloads overview
+              url: /br-use-kvm-protect-overview.html
+            - title: Discover KVM workloads
+              url: /br-start-discover-kvm.html
+            - title: Create and manage protection groups for KVM workloads
+              url: /br-use-kvm-protection-groups.html
+            - title: Back up KVM workloads 
+              url: /br-use-kvm-backup.html
+            - title: Restore KVM workloads
+              url: /br-use-kvm-restore.html
+        - title: Protect Hyper-V workloads (Preview)
+          entries:
+            - title: Protect Hyper-V workloads overview
+              url: /br-use-hyperv-protect-overview.html
+            - title: Discover Hyper-V workloads
+              url: /br-start-discover-hyperv.html
+            - title: Create and manage protection groups for Hyper-V workloads
+              url: /br-use-hyperv-protection-groups.html
+            - title: Back up Hyper-V workloads 
+              url: /br-use-hyperv-backup.html
+            - title: Restore Hyper-V workloads
+              url: /br-use-hyperv-restore.html
+#            - title: Manage KVM clusters
+#              url: /br-use-manage-kvm-clusters.html
+#            - title: Manage KVM virtual machines
+#              url: /br-use-manage-kvm-vms.html
+#            - title: Manage execution hook templates for Kubernetes workloads
+#              url: /br-use-manage-execution-hook-templates.html   
+        - title: Protect Kubernetes workloads (Preview)
+          entries:
+            - title: Protect Kubernetes workloads overview
+              url: /br-use-kubernetes-protect-overview.html
+            - title: Discover Kubernetes workloads
+              url: /br-start-discover-kubernetes.html
+            - title: Add and protect Kubernetes applications 
+              url: /br-use-protect-kubernetes-applications.html
+            - title: Restore Kubernetes applications
+              url: /br-use-restore-kubernetes-applications.html
+            - title: Manage Kubernetes clusters
+              url: /br-use-manage-kubernetes-clusters.html
+            - title: Manage Kubernetes applications
+              url: /br-use-manage-kubernetes-applications.html
+            - title: Manage execution hook templates for Kubernetes workloads
+              url: /br-use-manage-execution-hook-templates.html                 
+        - title: Monitor jobs
+          url: /br-use-monitor-tasks.html
+        - title: Restart NetApp Backup and Recovery
+          url: /reference-restart-backup.html
+    - title: Automate with the REST API
+      url: /br-api-backup-restore.html          
+    - title: Reference 
+      entries:
+        - title: Policies in SnapCenter compared to NetApp Backup and Recovery
+          url: /reference-policy-differences-snapcenter.html
+        - title: NetApp Backup and Recovery roles and privileges
+          url: /reference-roles.html
+        - title: Restore NetApp Backup and Recovery data in a dark site
+          url: /reference-backup-cbs-db-in-dark-site.html
+        - title: Supported AWS archive storage tiers
+          url: /prev-reference-aws-archive-storage-tiers.html
+        - title: Supported Azure archive storage tiers
+          url: /prev-reference-azure-archive-storage-tiers.html
+        - title: Supported Google Cloud archive storage tiers
+          url: /prev-reference-gcp-archive-storage-tiers.html
+    - title: Legal notices
+      url: /legal-notices.html
+product-family:
+  name: NetApp Data Services
+  repo: data-services-family

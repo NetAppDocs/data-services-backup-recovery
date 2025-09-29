@@ -1,0 +1,40 @@
+=== SnapMirror to Cloud Resync for volume migrations
+
+The SnapMirror to Cloud Resync feature streamlines data protection and continuity during volume migrations in NetApp environments. When a volume is migrated using SnapMirror Logical Replication (LRSE), from one on-premises NetApp deployment to another, or to a cloud-based solution such as Cloud Volumes ONTAP or Cloud Volumes Service, SnapMirror to Cloud Resync ensures that existing cloud backups remain intact and operational. 
+
+This feature eliminates the need for a time-consuming and resource-intensive re-baseline operation, enabling backup operations to continue post-migration. This feature is valuable in workload migration scenarios, supporting both FlexVols and FlexGroups, and is available starting with ONTAP version 9.16.1. 
+
+By maintaining backup continuity across environments, SnapMirror to Cloud Resync enhances operational efficiency and reduces the complexity of hybrid and multi-cloud data management. 
+
+
+
+For details on how to perform the resync operation, see https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-migrate-resync.html[Migrate volumes using SnapMirror to Cloud Resync].
+
+
+=== Support for third-party MinIO object store (Preview)
+
+NetApp Backup and Recovery now extends its support to third-party object stores with a primary focus on MinIO. This new preview feature enables you to leverage any S3-compatible object store for your backup and recovery needs. 
+
+With this preview version, we hope to ensure robust integration with third-party object stores before the full functionality is rolled out. You are encouraged to explore this new capability and provide feedback to help enhance the service. 
+
+IMPORTANT: This feature should not be used in production.
+
+
+*Preview mode limitations*
+
+While this feature is in preview, there are certain limitations: 
+
+* Bring Your Own Bucket (BYOB) is not supported. 
+* Enabling DataLock in the policy is not supported. 
+* Enabling Archival mode in the policy is not supported. 
+* Only on-premises ONTAP environments are supported. 
+* MetroCluster is not supported.
+* Options to enable bucket-level encryption are not supported.
+
+*Getting started* 
+
+To begin using this preview feature, you must enable a  flag on the Console agent. You can then enter the connection details of you MinIO third-party object store in the protection workflow by choosing *Third party Compatible* object store in the backup section. 
+
+//For directions on how to enable preview features, see link:task-preview-enable.html[Enable preview features in NetApp Backup and Recovery].
+
+//For directions on how to enable preview features, see https://docs.netapp.com/us-en/data-services-backup-recovery/task-preview-enable.html[Enable preview features in NetApp Backup and Recovery].

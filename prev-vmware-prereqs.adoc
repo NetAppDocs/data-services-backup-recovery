@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: prev-vmware-prereqs.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Prerequisites for virtual machines workloads in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Before you begin protecting your virtual machines workloads with NetApp Backup and Recovery, ensure that you meet the following prerequisites:
+
+
+* SnapCenter Plug-in for VMware vSphere 4.6P1 or later
+** You should be using SnapCenter Plug-in for VMware vSphere 4.7P1 or later to back up datastores from on-premises secondary storage.
+* ONTAP 9.8 or later
+* NetApp Console 
+* NFS and VMFS datastores are supported. vVols are not supported.
+* For VMFS support, the SnapCenter Plug-in for VMware vSphere host should be running on 4.9 or later. Ensure to take a backup of the VMFS datastore if the SnapCenter Plug-in for VMware vSphere host was upgraded from an earlier version to the 4.9 release.
+* At least one backup should have been taken in SnapCenter Plug-in for VMware vSphere 4.6P1.
+* At least one daily, weekly, or monthly policy in SnapCenter Plug-in for VMware vSphere with no label or same label as that of the Virtual Machines policy in the Console.
+* For a pre-canned policy, the schedule tier should be the same for the datastore in SnapCenter Plug-in for VMware vSphere and in the cloud.
+* Ensure that there are no FlexGroup volumes in the datastore because backing up and restoring FlexGroup volumes are not supported.
+* Disable "*_recent*" on the required resource groups. If you have "*_recent*" enabled for the resource group, then the backups of those resource groups cannot be used for data protection to cloud and subsequently cannot be used for the restore operation.
+* Ensure that the destination datastore where the virtual machine will be restored has enough space to accommodate a copy of all virtual machine files such as VMDK, VMX, VMSD, and so on.
+* Ensure that the destination datastore does not have stale virtual machine files in the format of restore_xxx_xxxxxx_filename from the previous restore operation failures. You should delete the stale files before triggering a restore operation.
+* To deploy a connector with proxy configured, ensure that all outgoing connector calls are routed through the proxy server.
+* If a volume backing up a datastore is already protected from the Volumes tab (NetApp Backup and Recovery -> Volumes), then the same datastore cannot be protected again from the Virtual Machines tab (NetApp Backup and Recovery -> Virtual Machines).
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:cloud_backup_vm.png[architecture diagram]

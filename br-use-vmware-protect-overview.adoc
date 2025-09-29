@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: br-use-vmware-protect-overview.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Protect VMware workloads with NetApp Backup and Recovery overview
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Protect your VMware VMs and datastores with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations. You can back up VMware workloads to Amazon Web Services S3 or StorageGRID and restore VMware workloads back to an on-premises VMware host. 
+
+NOTE: This version of NetApp Backup and Recovery supports only VMware vCenter and does not discover vVols or VMs on vVols.  
+
+//You can back up VMware workloads to Amazon Web Services S3 or StorageGRID and restore VMware workloads back to the the same or alternate on-premises VMware host. 
+
+//NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations for VMs, datastores, and VMDKs. 
+
+
+Use NetApp Backup and Recovery to implement a 3-2-1 strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
+
+* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
+* Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
+* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
+====
+
+
+
+You can use NetApp Backup and Recovery to perform the following tasks related to VMware workloads:
+
+* link:br-use-vmware-discovery.html[Discover VMware workloads]
+* link:br-use-vmware-protection-groups.html[Create and manage protection groups for VMware workloads]
+* link:br-use-vmware-backup.html[Back up VMware workloads]
+* link:br-use-vmware-restore.html[Restore VMware workloads]
+//* link:br-use-vmware-clone.html[Clone VMware workloads]
+
+
+

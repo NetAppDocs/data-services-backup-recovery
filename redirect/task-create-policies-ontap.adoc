@@ -1,0 +1,5 @@
+---
+permalink: task-create-policies-ontap.html
+redirect: data-services-backup-recovery/prev-ontap-policy-manage.html
+---
+
