@@ -72,7 +72,7 @@ You can restore workloads using one of the following methods. Typically, choose 
 //Inventory is browse and restore. Restore page is Search and restore. 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
 
 == Restore workload data from the Restore option 
 

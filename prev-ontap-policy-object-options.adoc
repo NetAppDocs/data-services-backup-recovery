@@ -226,7 +226,7 @@ ifdef::aws[]
 //+
 //"s3:BypassGovernanceRetention" must be added only if you want your Admin users to be able to overwrite/delete backup files locked using Governance mode.
 +
-https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html[View the full JSON format for the policy where you can copy and paste required permissions^].
+https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[View the full JSON format for the policy where you can copy and paste required permissions^].
 endif::aws[]
 ifdef::azure[]
 * For Azure:

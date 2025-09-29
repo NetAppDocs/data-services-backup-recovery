@@ -289,7 +289,7 @@ endif::gcp[]
 
 === Backup copies are associated with your NetApp Console organization
 
-Backup copies are associated with the NetApp Console organization in which the Console agent resides. https://docs.netapp.com/us-en/bluexp-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console Identity and access^].
+Backup copies are associated with the NetApp Console organization in which the Console agent resides. https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console Identity and access^].
 
 If you have multiple Console agents in the same NetApp Console organization, each Console agent displays the same list of backups. 
 

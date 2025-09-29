@@ -52,10 +52,10 @@ If you already have a Console agent deployed in your AWS VPC or on your premises
 
 If not, then you'll need to create a Console agent in one of those locations to back up ONTAP data to AWS S3 storage. You can't use a Console agent that's deployed in another cloud provider.
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html[Install a Console agent in AWS^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-on-prem.html[Install a Console agent in your premises^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-restricted-mode.html[Install a Console agent in an AWS GovCloud region^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html[Install a Console agent in AWS^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-on-prem.html[Install a Console agent in your premises^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-restricted-mode.html[Install a Console agent in an AWS GovCloud region^]
 +
 NetApp Backup and Recovery is supported in GovCloud regions when the Console agent is deployed in the cloud - not when it's installed in your premises. Additionally, you must deploy the Console agent from the AWS Marketplace. You can't deploy the Console agent in a Government region from the NetApp Console SaaS website.
 
@@ -65,9 +65,9 @@ Ensure that the following networking requirements are met:
 
 * Ensure that the network where the Console agent is installed enables the following connections:
 +
-** An HTTPS connection over port 443 to NetApp Backup and Recovery and to your S3 object storage (https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-aws.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+** An HTTPS connection over port 443 to NetApp Backup and Recovery and to your S3 object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-aws.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
 ** An HTTPS connection over port 443 to your ONTAP cluster management LIF
-** Additional inbound and outbound security group rules are required for AWS and AWS GovCloud deployments. See https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html[Rules for the Console agent in AWS^] for details.
+** Additional inbound and outbound security group rules are required for AWS and AWS GovCloud deployments. See https://docs.netapp.com/us-en/console-setup-admin/reference-ports-aws.html[Rules for the Console agent in AWS^] for details.
 
 
 * If you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC, and you want communication between the Console agent and S3 to stay in your AWS internal network (a *private* connection), you'll need to enable a VPC Endpoint interface to S3. <<Configure your system for a private connection using a VPC endpoint interface>>.
@@ -147,7 +147,7 @@ You'll need to configure two sets of permissions:
 
 .Steps
 
-. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions^].
+. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions^].
 +
 NOTE: When creating backups in AWS China regions, you need to change the AWS Resource Name "arn" under all _Resource_ sections in the IAM policies from "aws" to "aws-cn"; for example `arn:aws-cn:s3:::netapp-backup-*`.
 
@@ -253,7 +253,7 @@ If instead you want to use your own customer-managed keys for data encryption ra
 
 https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html[Refer to how to use your own Amazon encryption keys with Cloud Volumes ONTAP^].
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html#configure-encryption-settings[Refer to how to use your own Amazon encryption keys with NetApp Backup and Recovery^].
+https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html#configure-encryption-settings[Refer to how to use your own Amazon encryption keys with NetApp Backup and Recovery^].
 
 
 === Configure your system for a private connection using a VPC endpoint interface
@@ -278,7 +278,7 @@ If you're using port 443 (HTTPS) for communication to the private endpoint, you 
 +
 image:screenshot_endpoint_dns_aws_console.png[A screenshot of the DNS name of the VPC endpoint from the AWS Console.]
 
-. Obtain the certificate from the VPC S3 endpoint. You do this by https://docs.netapp.com/us-en/bluexp-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[logging into the VM that hosts the Console agent^] and running the following command. When entering the DNS name of the endpoint, add "bucket" to the beginning, replacing the "*":
+. Obtain the certificate from the VPC S3 endpoint. You do this by https://docs.netapp.com/us-en/console-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[logging into the VM that hosts the Console agent^] and running the following command. When entering the DNS name of the endpoint, add "bucket" to the beginning, replacing the "*":
 +
 [source,text]
 [ec2-user@ip-10-160-4-68 ~]$ openssl s_client -connect bucket.vpce-0ff5c15df7e00fbab-yxs7lt8v.s3.us-west-2.vpce.amazonaws.com:443 -showcerts

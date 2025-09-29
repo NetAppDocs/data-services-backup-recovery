@@ -19,7 +19,7 @@ Known limitations identify functions that are not supported by this release of N
 
 * NetApp Backup and Recovery backing up Cloud Volume ONTAP to an object store in the AWS China regions (including Beijing and Ningxia); however, you might need to manually modify Identity and access policies first. 
 +
-For details about creating a Console agent in AWS, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-aws-bluexp.html[Installing a Console agent in AWS^]. 
+For details about creating a Console agent in AWS, refer to https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html[Installing a Console agent in AWS^]. 
 +
 For additional details in a blog post, refer to 
 https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feature-Blog-May-23-Updates/ba-p/444052[NetApp Backup and Recovery Feature Blog May 2023^].
@@ -27,7 +27,7 @@ https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feat
 
 * NetApp Backup and Recovery does not support Microsoft Azure China regions.
 +
-For details about creating a Console agent in Azure, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-azure-bluexp.html[Installing a Console agent in Azure^].
+For details about creating a Console agent in Azure, refer to https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-azure-bluexp.html[Installing a Console agent in Azure^].
 
 * NetApp Backup and Recovery does not support backups of FlexCache volumes. 
 

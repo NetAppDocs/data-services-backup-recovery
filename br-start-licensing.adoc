@@ -86,7 +86,7 @@ When you use AWS, there are two annual contracts available from the https://aws.
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 +
-If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription[associate the subscription with your AWS credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
+If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription[associate the subscription with your AWS credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
 //+
@@ -102,7 +102,7 @@ When you use Azure, there are two annual contracts available from the https://az
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 +
-If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html#subscribe[associate the subscription with your Azure credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your Azure credentials in the Console.
+If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[associate the subscription with your Azure credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your Azure credentials in the Console.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
 //+

@@ -55,9 +55,9 @@ If you already have a Console agent deployed in your Google Cloud Platform VPC, 
 
 If not, then you'll need to create a Console agent in that location to back up ONTAP data to Google Cloud Storage. You can't use a Console agent that's deployed in another cloud provider, or on-premises.
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html[Install a Console agent in GCP^]
-//* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html[Install a Console agent in your premises^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html[Install a Console agent in GCP^]
+//* https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-on-prem.html[Install a Console agent in your premises^]
 
 == Prepare networking for the Console agent
 
@@ -67,7 +67,7 @@ Ensure that the Console agent has the required networking connections.
 
 . Ensure that the network where the Console agent is installed enables the following connections:
 
-* An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Google Cloud storage (https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-google.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+* An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Google Cloud storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-google.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
 . Enable Private Google Access (or Private Service Connect) on the subnet where you plan to deploy the Console agent. https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] or https://cloud.google.com/vpc/docs/configure-private-service-connect-apis#on-premises[Private Service Connect^] are needed if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Console agent and Google Cloud Storage to stay in your virtual private network (a *private* connection).

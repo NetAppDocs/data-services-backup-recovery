@@ -24,7 +24,7 @@ You can manage Microsoft SQL Server snapshots by deleting them from NetApp Backu
 You can delete only local snapshots. 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
 
 .Steps 
 . In NetApp Backup and Recovery, select *Inventory*.

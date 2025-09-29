@@ -46,7 +46,7 @@ You can choose your own customer-managed keys for data encryption in the activat
 
 For NetApp Backup and Recovery PAYGO licensing, a Console subscription is available in the AWS Marketplace that enables deployments of Cloud Volumes ONTAP and NetApp Backup and Recovery. You need to https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[subscribe to this NetApp Console subscription^] before you enable NetApp Backup and Recovery. Billing for NetApp Backup and Recovery is done through this subscription.
 
-For an annual contract that enables you to back up both Cloud Volumes ONTAP data and on-premises ONTAP data, you need to subscribe from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] and then https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html[associate the subscription with your AWS credentials^].
+For an annual contract that enables you to back up both Cloud Volumes ONTAP data and on-premises ONTAP data, you need to subscribe from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[associate the subscription with your AWS credentials^].
 
 For an annual contract that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery, you must set up the annual contract when you create a Cloud Volumes ONTAP system. This option doesn't enable you to back up on-prem data.
 
@@ -56,24 +56,24 @@ And you need to have an AWS account for the storage space where your backups wil
 
 == Prepare your Console agent
 
-The Console agent must be installed in an AWS region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
+The Console agent must be installed in an AWS region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
 //, or in a site with no internet access ("private" mode)
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html[Deploy a Console agent in AWS in standard mode (full internet access)^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-restricted-mode.html[Install the Console agent in restricted mode (limited outbound access)^]
-//* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html[Install the Console agent in private mode (no internet access)^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html[Deploy a Console agent in AWS in standard mode (full internet access)^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-restricted-mode.html[Install the Console agent in restricted mode (limited outbound access)^]
+//* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Install the Console agent in private mode (no internet access)^]
 //
 //[NOTE]
 //====
-//NetApp Backup and Recovery functionality is built into the Console agent. When installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's new] to see the new features in each NetApp Backup and Recovery release, and then you can follow the steps to https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^] when you want to use new features.
+//NetApp Backup and Recovery functionality is built into the Console agent. When installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's new] to see the new features in each NetApp Backup and Recovery release, and then you can follow the steps to https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^] when you want to use new features.
 //
 //We highly recommend that you create local backups of the internal NetApp Backup and Recovery configuration data periodically when the Console agent is installed in a site without internet connectivity. link:reference-backup-cbs-db-in-dark-site.html[See how to back up NetApp Backup and Recovery data in a dark site^].
 //====
 
 === Verify or add permissions to the Console agent
 
-The IAM role that provides the Console with permissions must include S3 permissions from the latest https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html[Console policy^]. If the policy does not contain all of these permissions, see the https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html[AWS Documentation: Editing IAM policies^].
+The IAM role that provides the Console with permissions must include S3 permissions from the latest https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[Console policy^]. If the policy does not contain all of these permissions, see the https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html[AWS Documentation: Editing IAM policies^].
 
 Here are the specific permissions from the policy:
 
@@ -151,7 +151,7 @@ NetApp Backup and Recovery is supported in all AWS regions, including AWS GovClo
 Required setup for creating backups in a different AWS account::
 By default, backups are created using the same account as the one used for your Cloud Volumes ONTAP system. If you want to use a different AWS account for your backups, you must:
 * Verify that the permissions "s3:PutBucketPolicy" and "s3:PutBucketOwnershipControls" are part of the IAM role that provides the Console agent with permissions.
-* Add the destination AWS account credentials in the Console. https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html#add-additional-credentials-to-a-connector[See how to do this^].
+* Add the destination AWS account credentials in the Console. https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#add-additional-credentials-to-a-connector[See how to do this^].
 * Add the following permissions in the user credentials in the second account:
 +
  "athena:StartQueryExecution",

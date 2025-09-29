@@ -19,10 +19,10 @@ NetApp Backup and Recovery uses identity and access management to govern the acc
 
 For details about the actions that each role can perform, see link:reference-roles.html[NetApp Backup and Recovery user roles].
 
-To log in to the NetApp Console, you can use your NetApp Support Site credentials or you can sign up for a NetApp Console login using your email and a password. https://docs.netapp.com/us-en/bluexp-setup-admin/task-logging-in.html[Learn more about logging in^].
+To log in to the NetApp Console, you can use your NetApp Support Site credentials or you can sign up for a NetApp Console login using your email and a password. https://docs.netapp.com/us-en/console-setup-admin/task-logging-in.html[Learn more about logging in^].
 
 *Required NetApp Console role*
-Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 To add a Console agent, you must have the Organization admin or the Backup and Recovery super admin role. 
 
@@ -39,7 +39,7 @@ The NetApp Console login page appears.
 
 . From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 
-* If this is your first time logging in to this service and you haven't yet added a system to the *Systems* page, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to add a system. For details about adding a system to the *Systems* page, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
+* If this is your first time logging in to this service and you haven't yet added a system to the *Systems* page, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to add a system. For details about adding a system to the *Systems* page, refer to https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
 //+
 //image:screen-br-landing-no-we.png[Landing page screenshot for NetApp Backup and Recovery without a system]
 //* If this is your first time logging in to this service, you already have a system in NetApp Console, but you haven't started the free trial, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Start free trial*. 

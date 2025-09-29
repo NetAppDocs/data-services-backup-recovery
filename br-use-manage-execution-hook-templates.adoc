@@ -25,7 +25,7 @@ By default, NetApp Backup and Recovery automatically freezes and unfreezes files
 
 .Required NetApp Console role
 
-Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Types of execution hooks
 NetApp Backup and Recovery supports the following types of execution hooks, based on when they can be run:

@@ -56,8 +56,8 @@ And you need to have a Google subscription for the storage space where your back
 
 The Console agent must be installed in a Google region with internet access.
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html[Deploy a Console agent in Google Cloud^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html[Deploy a Console agent in Google Cloud^]
 
 === Verify or add permissions to the Console agent
 

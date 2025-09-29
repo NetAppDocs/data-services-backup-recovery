@@ -42,10 +42,10 @@ The Console agent is the main software for Console functionality. A Console agen
 
 When you back up data to StorageGRID, a Console agent must be available on your premises. You'll either need to install a new Console agent or make sure that the currently selected Console agent resides on-premises. The Console agent can be installed in a site with or without internet access.
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-on-prem.html[Installing the Console agent on a Linux host with internet access^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html[Installing the Console agent on a Linux host without internet access^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors[Switching between Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-on-prem.html[Installing the Console agent on a Linux host with internet access^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Installing the Console agent on a Linux host without internet access^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors[Switching between Console agents^]
 
 === Prepare Console agent networking requirements
 
@@ -57,7 +57,7 @@ Ensure that the network where the Console agent is installed enables the followi
 
 ==== Private mode (dark site) considerations
 
-* NetApp Backup and Recovery functionality is built into the Console agent. When it is installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's New] to see the new features in each NetApp Backup and Recovery release. When you want to use the new features, follow the steps to https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^].
+* NetApp Backup and Recovery functionality is built into the Console agent. When it is installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's New] to see the new features in each NetApp Backup and Recovery release. When you want to use the new features, follow the steps to https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^].
 +
 The new version of NetApp Backup and Recovery that includes the ability to schedule and create Snapshot copies and replicated volumes, in addition to creating backups to object storage, requires that you are using version 3.9.31 or greater of the Console agent. So it is recommended that you get this newest release to manage all your backups.
 

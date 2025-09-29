@@ -27,7 +27,7 @@ NetApp Backup and Recovery functionality is built into the Console agent.
 | Console agent location
 | Procedure
 
-| Cloud deployment | Follow the instructions for https://docs.netapp.com/us-en/bluexp-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[connecting to the Console agent Linux virtual machine^] depending on the cloud provider you're using.
+| Cloud deployment | Follow the instructions for https://docs.netapp.com/us-en/console-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[connecting to the Console agent Linux virtual machine^] depending on the cloud provider you're using.
 | Manual installation | Log in to the Linux system.
 
 |===

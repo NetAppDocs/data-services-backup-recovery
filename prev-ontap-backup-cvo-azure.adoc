@@ -56,17 +56,17 @@ For NetApp Backup and Recovery BYOL licensing, you need the serial number from N
 And you need to have a Microsoft Azure subscription for the storage space where your backups will be located.
 
 == Prepare your Console agent
-The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/bluexp-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
+The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
 //, or in a site with no internet access ("private" mode)
 
-* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about Console agents^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html[Deploy a Console agent in Azure in standard mode (full internet access)^]
-* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-restricted-mode.html[Install the Console agent in restricted mode (limited outbound access)^]
-//* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html[Install the Console agent in private mode (no internet access)^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html[Deploy a Console agent in Azure in standard mode (full internet access)^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-restricted-mode.html[Install the Console agent in restricted mode (limited outbound access)^]
+//* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Install the Console agent in private mode (no internet access)^]
 
 //[NOTE]
 //====
-//NetApp Backup and Recovery functionality is built into the Console agent. When installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's new] to see the new features in each NetApp Backup and Recovery release, and then you can follow the steps to https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^] when you want to use new features.
+//NetApp Backup and Recovery functionality is built into the Console agent. When installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's new] to see the new features in each NetApp Backup and Recovery release, and then you can follow the steps to https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^] when you want to use new features.
 //
 //We highly recommend that you create local backups of the internal NetApp Backup and Recovery configuration data periodically when the Console agent is installed in a site without internet connectivity. link:reference-backup-cbs-db-in-dark-site.html[See how to back up NetApp Backup and Recovery data in a dark site^].
 //====
@@ -145,7 +145,7 @@ To use the NetApp Backup and Recovery Search & Restore functionality, you need t
 "Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action"
 ====
 +
-https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html[View the full JSON format for the policy^]
+https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html[View the full JSON format for the policy^]
 
 .. Select *Review + update* and then select *Update*.
 

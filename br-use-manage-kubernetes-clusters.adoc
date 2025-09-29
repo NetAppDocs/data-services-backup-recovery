@@ -17,7 +17,7 @@ NetApp Backup and Recovery enables you to discover and manage your Kubernetes cl
 
 .Required NetApp Console role
 
-Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 NOTE: To discover Kubernetes clusters, refer to link:br-start-discover.html[Discover Kubernetes workloads].
 

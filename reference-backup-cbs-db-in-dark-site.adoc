@@ -54,9 +54,9 @@ This file is located in the following location in the bucket `netapp-backup-<GUI
 
 === Install a new Console agent on a new on-premises Linux host
 
-When installing a new Console agent, make sure you download the same release of software as you had installed on the original Console agent. Periodic changes to the NetApp Backup and Recovery database structure may make newer software releases incompatible with the original database backups. You can https://docs.netapp.com/us-en/bluexp-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
+When installing a new Console agent, make sure you download the same release of software as you had installed on the original Console agent. Periodic changes to the NetApp Backup and Recovery database structure may make newer software releases incompatible with the original database backups. You can https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
 
-. https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html[Install the Console agent on a new on-premises Linux host^]
+. https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Install the Console agent on a new on-premises Linux host^]
 
 . Log into the Console using the admin user credentials that you just created.
 

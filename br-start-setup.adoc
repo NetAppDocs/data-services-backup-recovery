@@ -32,14 +32,14 @@ Do the following to prepare AWS as a backup destination:
 
 ** Set up an account in AWS.
 ** Configure S3 permissions in AWS, listed in the next section.
-** For details about managing your AWS storage in the Console, refer to https://docs.netapp.com/us-en/bluexp-setup-admin/task-viewing-amazon-s3.html[Manage your Amazon S3 buckets^].
+** For details about managing your AWS storage in the Console, refer to https://docs.netapp.com/us-en/console-setup-admin/task-viewing-amazon-s3.html[Manage your Amazon S3 buckets^].
 
  
 //* Google Cloud Storage. Refer to https://docs.netapp.com/us-en/bluexp-google-cloud-storage/index.html[Google Cloud Storage documentation^].
 * Microsoft Azure. 
 ** Refer to https://docs.netapp.com/us-en/bluexp-azure-netapp-files/index.html[Azure NetApp Files documentation^].
 ** Set up an account in Azure.
-** Configure https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions.html[Azure permissions^] in Azure. 
+** Configure https://docs.netapp.com/us-en/console-setup-admin/reference-permissions.html[Azure permissions^] in Azure. 
  
 
 ** For details about managing your Azure storage in the Console, refer to https://docs.netapp.com/us-en/bluexp-blob-storage/task-view-azure-blob-storage.html[Manage your Azure storage accounts^].
@@ -58,7 +58,7 @@ You'll need to configure two sets of AWS S3 permissions:
 
 .Steps
 
-. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions].
+. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions].
 +
 NOTE: When creating backups in AWS China regions, you need to change the AWS Resource Name "arn" under all _Resource_ sections in the IAM policies from "aws" to "aws-cn"; for example `arn:aws-cn:s3:::netapp-backup-*`.
 

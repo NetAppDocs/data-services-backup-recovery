@@ -18,7 +18,7 @@ With NetApp Backup and Recovery, monitor the status of local snapshots, replicat
 NetApp Backup and Recovery retains job information for 15 days, after which it is purged and no longer visible in the Job Monitor. 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^]. 
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^]. 
 
 == View job status on the Job Monitor
 
@@ -127,7 +127,7 @@ The "Retention" job type captures all Snapshot deletion jobs initiated on a volu
 
 The NetApp Console Notification Center tracks the progress of backup and restore jobs that you've initiated so you can verify whether the operation was successful or not. 
 
-In addition to viewing the alerts in the Notification Center, you can configure the Console to send certain types of notifications by email as alerts so you can be informed of important system activity even when you're not logged into the system. https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
+In addition to viewing the alerts in the Notification Center, you can configure the Console to send certain types of notifications by email as alerts so you can be informed of important system activity even when you're not logged into the system. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
 
 The Notification Center displays numerous Snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
 
@@ -158,7 +158,7 @@ By default, NetApp Console organization and account admins receive emails for al
 
 To receive the NetApp Backup and Recovery email alerts, you'll need to select the notification severity types "Critical", "Warning", and "Error" in the Notifications settings page.
 
-https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html[Learn how to send alert emails for backup and restore jobs^].
+https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn how to send alert emails for backup and restore jobs^].
 
 .Steps 
 

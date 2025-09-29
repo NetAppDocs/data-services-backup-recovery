@@ -572,7 +572,7 @@ Depending on your configuration, there are 2 ways that Search & Restore is imple
 +
 For information about the Indexed Catalog v2, see the section below about how to enable the Indexed Catalog. 
 ** If you are using a Console agent in a private (dark) site, then the Indexed Catalog information is stored on the Console agent (requires Console agent version 3.9.25 or greater).
-** If you have https://docs.netapp.com/us-en/bluexp-setup-admin/concept-accounts-aws.html[AWS credentials^] or https://docs.netapp.com/us-en/bluexp-setup-admin/concept-accounts-azure.html[Azure credentials^] in the account, then the Indexed Catalog is stored at the cloud provider, just like with a Console agent deployed in the cloud. (If you have both credentials, AWS is selected by default.)
+** If you have https://docs.netapp.com/us-en/console-setup-admin/concept-accounts-aws.html[AWS credentials^] or https://docs.netapp.com/us-en/console-setup-admin/concept-accounts-azure.html[Azure credentials^] in the account, then the Indexed Catalog is stored at the cloud provider, just like with a Console agent deployed in the cloud. (If you have both credentials, AWS is selected by default.)
 +
 Even though you are using an on-premises Console agent, the cloud provider requirements must be met for both Console agent permissions and cloud provider resources. See the AWS and Azure requirements above when using this implementation. 
  
