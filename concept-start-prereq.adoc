@@ -67,7 +67,7 @@ Allocate sufficient disk space and monitor the storage consumption by the logs f
 
 //* Java 11 Oracle Java and OpenJDK are required only for SAP HANA, IBM Db2, PostgreSQL, MySQL, NetApp supported plug-ins, and other custom applications that can be installed on Windows hosts.
 
-* PowerShell Core 7.4.2
+* PowerShell 7.4.2
 
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
 
