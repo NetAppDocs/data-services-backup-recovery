@@ -198,6 +198,8 @@ sidebar:
               url: /br-use-oracle-backup.html
             - title: Restore Oracle workloads
               url: /br-use-oracle-restore.html
+            - title: Mount and unmount recovery points
+              url: /br-use-oracle-mount-unmount.html
         - title: Protect Kubernetes workloads (Preview)
           entries:
             - title: Protect Kubernetes workloads overview
