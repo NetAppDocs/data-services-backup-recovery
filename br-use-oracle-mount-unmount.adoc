@@ -19,7 +19,7 @@ You might want to mount an Oracle database recovery point if you need to access 
 
 If you configure the protection policy for a database to retain archive logs, you can mount the recovery points for the database to view the history of all changes made to the database.
 
-. Steps
+.Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . Select the Oracle tile.
@@ -44,7 +44,7 @@ The recovery point is mounted on the Oracle host.
 == Unmount an Oracle database restore point
 Unmount the recovery point when you no longer need to view changes made to that database.
 
-. Steps
+.Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . Select the Oracle tile.
