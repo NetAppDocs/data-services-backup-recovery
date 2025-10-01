@@ -58,12 +58,7 @@ TIP: When using System Manager, select *Asynchronous* as the policy type for rep
 . In the Console UI, select *Volumes* > *Backup settings*.
 . From the Backup Settings page, select the system, select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Policies management*.
 +
-The Policies management page appears. 
-+
-image:screenshot_policies_management.png["Policies management page"]
-
-+
-Snapshot policies are displayed by default. 
+The Policies management page appears. Snapshot policies are displayed by default. 
 
 . To view other policies that exist in the system, select either *Replication Policies* or *Backup Policies*. If the existing policies can be used for your backup plans, you’re all set. If you need to have a policy with different characteristics, you can create new policies from this page.
 

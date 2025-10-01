@@ -62,18 +62,12 @@ Storage viewer, or Backup and Recovery super admin. https://docs.netapp.com/us-e
 
 .Steps
 . From the menu, select *Inventory*.
-+   
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
-+
-image:screen-br-inventory-sql.png[Inventory details page screenshot for NetApp Backup and Recovery]
 . Select the *Hosts* tab.
 . Select one or more hosts. If you select multiple hosts, a Bulk actions option appears where you can select *Manage (up to 5 hosts)*. 
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Manage*.
-+   
-image:screen-br-inventory-details-manage-hosts.png[Manage hosts page]
 
 . Review the host dependencies:
 ** If the vCenter does not display, select the pencil icon to add or edit the vCenter details.  
@@ -103,8 +97,7 @@ You can change the vCenter server information, host registration credentials, an
 
 . Select the host that you want to edit.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit host*.
-+
-image:screen-br-inventory-hosts-edit.png[Edit host]
+
 . Edit the host information.
 . Select *Done*. 
 

@@ -19,8 +19,6 @@ By participating in one of the NetApp Backup and Recovery preview versions, you 
 . *Registration*: If you don't already have a NetApp Console account, sign up for one. Here's how: 
 
 .. Visit the https://bluexp.netapp.com/[NetApp Console Portal].
-+
-image:screen-preview-bluexp-portal.png[NetApp Console portal screen]
 .. Select *Get Started*.
 +
 image:screen-preview-login.png[Log in to the portal screen]

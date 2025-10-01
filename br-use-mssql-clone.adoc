@@ -39,11 +39,7 @@ You can create a clone from an existing snapshot or from an instant snapshot. An
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Clone*.
-+
-image:screen-br-sql-clone-nomenu.png[Clone page screenshot for NetApp Backup and Recovery]
-
 . Select *Create new clone*.
-
 . Select the clone type:
 ** *Clone and database refresh from existing snapshot*: Choose the snapshot for the clone and configure options for the clone. This is helpful if you want to choose the snapshot for the clone and configure options. 
 ** *Instant snapshot and clone*: Take a snapshot now of the source data and create a clone from that snapshot. This option is useful if you want to create a clone from the latest data in the source workload.
@@ -83,14 +79,9 @@ Optionally, select *Suffix* from the target name drop-down list and append a suf
 . Select *Next*.
 
 
-. Complete the *Advanced options* section:
-+
-image:screen-br-sql-clone-create-advanced.png[Advanced settings for creating a clone in NetApp Backup and Recovery]
-//* *Recovery scope*: Choose whether to recover all log backups or log backups until a specific point in time. This option is useful if you want to recover the clone to a specific point in time.
+. Complete the *Advanced options* section.
 
 . If you chose *Instant snapshot and clone*, complete the following options:
-+
-image:screen-br-sql-clone-create-instantsnapshot-advanced.png[Advanced settings for creating an instant snapshot and clone in NetApp Backup and Recovery]
 +
 * *Clone refresh schedule and expiration*: If you chose *Instant clone*, enter the date when to begin refreshing the clone. The clone schedule defines when the clone will be created.
 ** *Delete clone if schedule expires*: If you want to delete the clone upon the clone expiration date.
@@ -113,7 +104,7 @@ image:screen-br-sql-clone-create-instantsnapshot-advanced.png[Advanced settings 
 
 
 . When the clone is created, you can view it in the *Inventory* page.
-image:screen-br-inventory.png[Inventory page screenshot for NetApp Backup and Recovery]
+
 
 == Refresh a clone
 You can refresh a clone of your Microsoft SQL Server workloads. Refreshing a clone updates the clone with the latest data from the source workload. This is useful if you want to keep the clone up to date with the source workload.
@@ -126,8 +117,6 @@ You have the option to change the database name, use the latest instant snapshot
 
 . Select the clone you want to refresh. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Refresh clone*.
-+
-image:screen-br-sql-clone-refresh-options.png[Refresh clone options for NetApp Backup and Recovery]
 
 . Complete the *Advanced settings* section:
 
@@ -177,13 +166,8 @@ The clone job is not be removed and it can be reused again for other clones.
 
 . Select a clone.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Split clone*.
-
-+
-image:screen-br-sql-clone-split.png[Split clone page for NetApp Backup and Recovery]
 . Review the split clone details and select *Split*.
-
 . When the split clone is created, you can view it in the *Inventory* page.
-image:screen-br-inventory.png[Inventory page screenshot for NetApp Backup and Recovery]
 
 
 == Delete a clone

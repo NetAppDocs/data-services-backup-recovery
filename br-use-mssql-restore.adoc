@@ -82,8 +82,7 @@ Restore database workloads using the Restore option.
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Restore*.
-+
-image:screen-br-restore.png[A screenshot showing the Restore page.]
+
 . Select the database that you want to restore. Use the filters to search.  
 
 . Select the restore option: 
@@ -92,23 +91,20 @@ image:screen-br-restore.png[A screenshot showing the Restore page.]
 * Restore to a specific point in time. This is helpful if you know the name and location of the file, and the date when it was last in good shape. 
 
 * Restore to the latest backup
-+
-image:screen-br-restore-options2.png[A screenshot showing the Restore options.]
+
 
 === Restore workloads from snapshots
 
 . Continuing from the Restore options page, select *Restore from snapshots*. 
 +
 A list of snapshots appears. 
-+
-image:screen-br-restore-snapshots-snapshotlist.png[A screenshot showing the list of snapshots to restore]
+
 
 . Select the snapshot you want to restore. 
 . Select *Next*. 
 +
 You'll see destination options next.
-+
-image:screen-br-restore-destination-original-location.png[A screenshot showing the Restore Destination details page.]
+
 
 
 . In the Destination details page, enter the following information: 
@@ -138,10 +134,7 @@ NetApp Backup and Recovery uses logs and the most recent snapshots to create a p
 
 . Continuing from the Restore options page, select *Restore to specific point in time*. 
 . Select *Next*.
-+
-image:screen-br-restore-point-in-time.png[A screenshot showing the Restore to a specific point in time page]
- 
-. In the Restore to a specific point in time page, enter the following infomation: 
+. In the Restore to a specific point in time page, enter the following information: 
 
 ** *Date and time for data restoration*: Enter the exact date and time of the data that you want to restore. This date and time is from the Microsoft SQL Server Database host. 
 
@@ -149,7 +142,7 @@ image:screen-br-restore-point-in-time.png[A screenshot showing the Restore to a 
 . Select the snapshot that you want to restore.
 . Select *Next*.
 
-. In the Destination details page, enter the following infomation: 
+. In the Destination details page, enter the following information: 
 ** *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the host name and instance, enter the database name, and enter the destination path.
 ** *Pre-restore options*: 
 *** *Preserve original database name*: During the restore, the original database name is preserved. 
@@ -180,7 +173,7 @@ image:screen-br-restore-to-latest-state.png[A screenshot showing the Restore to 
     
 . Select *Next*.
 
-. In the Destination details page, enter the following infomation: 
+. In the Destination details page, enter the following information: 
 ** *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the host name and instance, enter the database name, and enter the destination path.
 ** *Pre-restore options*: 
 *** *Overwrite the database with the same name during restore*: During the restore, the original database name is preserved. 

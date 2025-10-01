@@ -62,16 +62,8 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 
 . From the NetApp Console left navigation, select *Protection* > *Backup and Recovery*. 
 . Select *Inventory*.
-+
-image:screen-br-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select *Discover resources*.
-+
-image:../media/screen-br-discover-workloads.png[Discover workload resources screenshot]
 . From the NetApp Backup and Recovery Discover workload resources page, select *Import from SnapCenter*.
-
-+
-image:../media/screen-br-discover-import-snapcenter.png[Settings option to import SnapCenter Server resources]
-
 . Enter *SnapCenter application credentials*:
 .. *SnapCenter FQDN or IP address*: Enter the FQDN or IP address of the SnapCenter application itself.
 .. *Port*: Enter the port number for the SnapCenter Server.
@@ -90,10 +82,7 @@ NOTE: If the SnapCenter Server is already registered, you can  update the existi
 .Result
 The Inventory page shows the imported SnapCenter resources that include MS SQL hosts, instances, and databases.
 
-image:../media/screen-br-inventory.png[Inventory page showing the imported SnapCenter resources]
-
 To see the details of the imported SnapCenter resources, select the *View details* option from the Actions menu.
-image:../media/screen-br-inventory-details.png[Inventory page showing the imported SnapCenter resources and the details]
 
 ==== Manage SnapCenter host resources
 
@@ -101,13 +90,9 @@ After you import the SnapCenter resources, manage those host resources in NetApp
 
 .Steps 
 . After you import the SnapCenter resources, from the Backup and Recovery menu, select *Inventory*. 
-. From the Inventory page, select the imported SnapCenter host that you want to have NetApp Backup and Recovery to manage from now on.  
-+
-image:../media/screen-br-inventory.png[Inventory page showing the imported SnapCenter resources]
+. From the Inventory page, select the imported SnapCenter host that you want to have NetApp Backup and Recovery to manage from now on.
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.  
-+
-image:../media/screen-br-inventory-manage-option.png[Inventory page showing the imported SnapCenter resources and the Manage option]
 
 . From the Inventory > workload page, select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to display the Manage host page.   
 //+
@@ -131,8 +116,6 @@ If you have already discovered resources, you can import SnapCenter resources fr
 .Steps
 . From the Console left navigation, select *Protection* > *Backup and Recovery*.
 . Select *Inventory*.
-+
-image:../media/screen-br-inventory.png[Inventory page]
 
 . From the Inventory page, select *Import SnapCenter resources*.
 . Follow the steps in the *Import SnapCenter resources* section above to import SnapCenter resources.
@@ -149,12 +132,9 @@ This is optional if you have a VMware environment.
 . From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 +
 If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
-+
-image:screen-br-landing-discover-import-buttons.png[Landing page screenshot for NetApp Backup and Recovery without discovered resources]
+
 
 . Select *Discover resources*.
-+
-image:screen-br-discover-workloads.png[Discover workload resources screenshot]
 
 . Enter the following information: 
 .. *Workload type*: For this version, only Microsoft SQL Server is available.   
@@ -183,8 +163,6 @@ With Advanced Settings, you can manually install the plugin agent on all servers
 .Steps
 
 . From the Discover resources page, continue to Advanced Settings by clicking the down arrow on the right. 
-+
-image:screen-br-discover-workloads-newly-discovered2.png[Newly discovered systems screenshot]
 . In the Discover workload resources page, enter the following information. 
 * *Enter plug-in port number*: Enter the port number that the plugin uses.
 * *Installation path*: Enter the path where the plugin will be installed. 
@@ -208,8 +186,6 @@ image:screen-br-discover-workloads-newly-discovered2.png[Newly discovered system
 . To display the NetApp Backup and Recovery Dashboard, from the Backup and Recovery menu, select *Dashboard*.   
 
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
-+
-image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].
 

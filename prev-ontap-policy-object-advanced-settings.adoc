@@ -48,16 +48,11 @@ You can view the cluster-level backup settings for each system.
 . From the Console menu, select *Protection > Backup and recovery*.
 
 . From the *Volumes* tab, select *Backup Settings*.
-+
-image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button so you can see how Backup is configured for all your systems.]
 
 . From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
 +
-image:screenshot_backup_advanced_settings_button.png[A screenshot that shows the Advanced Settings button from the Backup Settings page.]
-+
 The _Advanced Settings_ page displays the current settings for that system.
-+
-image:screenshot_backup_advanced_settings_page2.png[A screenshot that shows the Backup Advanced Settings values for a specific system.]
+
 
 . Expand the option and make the change. 
 
@@ -103,8 +98,6 @@ When you activate NetApp Backup and Recovery for a system, by default, ONTAP can
 . From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
 
 . In the Advanced Settings page, expand the *Max Transfer Rate* section. 
-+
-image:screenshot_backup_edit_transfer_rate.png[A screenshot of the Maximum Transfer Rate entry in the Advanced Settings page.]
 
 . Choose a value between 1 and 1,000 Mbps as the maximum transfer rate. 
 
