@@ -381,7 +381,7 @@ You don't necessarily need to delete the source volume. You can delete the backu
 
 This feature is available only if your system is running ONTAP 9.12.1 or greater.
 
-You can't delete the source volume from the NetApp Backup and Recovery user interface. However, you can open the Volume Details page on the Console *Systems* page, and https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[delete the volume from there].
+You can't delete the source volume from the NetApp Backup and Recovery user interface. However, you can open the Volume Details page on the Console *Systems* page, and https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[delete the volume from there].
 
 NOTE: You can't delete individual volume backup files once the relationship has been deleted. You can, however, you can delete all backups for the volume. 
 

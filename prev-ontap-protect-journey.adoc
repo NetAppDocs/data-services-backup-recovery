@@ -216,9 +216,9 @@ You can create the container yourself in the object provider account if you want
 
 You can create the bucket from the Console, or from your cloud provider.
 
-* https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html[Create Amazon S3 buckets from the Console^]
-* https://docs.netapp.com/us-en/bluexp-blob-storage/task-add-blob-storage.html[Create Azure Blob storage accounts from the Console^]
-* https://docs.netapp.com/us-en/bluexp-google-cloud-storage/task-add-gcp-bucket.html[Create Google Cloud Storage buckets from the Console^]
+* https://docs.netapp.com/us-en/storage-management-s3-storage/task-add-s3-bucket.html[Create Amazon S3 buckets from the Console^]
+* https://docs.netapp.com/us-en/storage-management-blob-storage/task-add-blob-storage.html[Create Azure Blob storage accounts from the Console^]
+* https://docs.netapp.com/us-en/storage-management-google-cloud-storage/task-add-gcp-bucket.html[Create Google Cloud Storage buckets from the Console^]
 //* https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-task.html[Create S3 buckets for ONTAP S3^]
 //* https://docs.netapp.com/us-en/storagegrid-117/tenant/creating-s3-bucket.html[Create S3 buckets for StorageGRID^]
 

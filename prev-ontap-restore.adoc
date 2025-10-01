@@ -419,7 +419,7 @@ You have a few options for the location when restoring folders and file(s).
 You can restore a volume, folder, or files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume, folder, or file from all backups, and then perform a restore. You don't need to know the exact system name, volume name, or file name - the search looks through all volume backup files.
 
 The search operation looks across all local snapshot copies that exist for your ONTAP volumes, all replicated volumes on secondary storage systems, and all backup files that exist in object storage. Since restoring data from a local Snapshot copy or replicated volume can be faster and less costly than restoring from a backup file in object storage, you may want to restore data from these other locations. 
-//You can restore the Snapshot as a new volume https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[from the Volume Details page on the Canvas^] (not from NetApp Backup and Recovery).
+//You can restore the Snapshot as a new volume https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[from the Volume Details page on the Canvas^] (not from NetApp Backup and Recovery).
 
 When you restore a _full volume_ from a backup file, NetApp Backup and Recovery creates a _new_ volume using the data from the backup. You can restore the data as a volume in the original system, to a different system that's located in the same cloud account as the source system, or to an on-premises ONTAP system.
 

@@ -47,7 +47,7 @@ When necessary, you can restore an entire _volume_, a _folder_, or one or more _
 * Native ONTAP in-flight encryption set up via Pre-Shared Key (PSK) between the two systems.
 * Copied data is immutable until you make it writable and ready to use.
 * Replication is self-healing in the event of a transfer failure.
-* When compared to https://docs.netapp.com/us-en/bluexp-replication/index.html[NetApp  Replication^], the replication in NetApp Backup and Recovery includes the following features:
+* When compared to https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp  Replication^], the replication in NetApp Backup and Recovery includes the following features:
 ** Replicate multiple FlexVol volumes at a time to a secondary system.
 ** Restore a replicated volume to the source system or to a different system using the UI.
 

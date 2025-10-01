@@ -38,7 +38,7 @@ For details about creating a Console agent in Azure, refer to https://docs.netap
 +
 There is no limitation for FlexVol volumes - you can select all FlexVol volumes in your system and assign the same backup policies.
 
-* The following functionality is supported in https://docs.netapp.com/us-en/bluexp-replication/index.html[NetApp Replication], but not when using the replication feature of NetApp Backup and Recovery:
+* The following functionality is supported in https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp Replication], but not when using the replication feature of NetApp Backup and Recovery:
 
 ** There is no support for a cascade configuration where replication occurs from volume A to volume B and from volume B to volume C. Support includes replication from volume A to volume B.
 ** There is no support for replicating data to and from FSx for ONTAP systems.

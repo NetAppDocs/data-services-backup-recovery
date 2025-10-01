@@ -61,7 +61,7 @@ There are a few PAYGO plans for NetApp Backup and Recovery:
 +
 Note that this option also requires a Backup and recovery PAYGO subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing[Learn more about these capacity-based license packages].
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing[Learn more about these capacity-based license packages].
 
 Use these links to subscribe to NetApp Backup and Recovery from your cloud provider marketplace:
 
@@ -92,7 +92,7 @@ If you want to use this option, set up your subscription from the Marketplace pa
 //+
 //Note that this option also requires a Backup and recovery subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
 +
-See the https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
+See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the AWS Marketplace.
 //endif::aws[]
@@ -108,7 +108,7 @@ If you want to use this option, set up your subscription from the Marketplace pa
 //+
 //Note that this option also requires a Backup and recovery subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
 +
-See the https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
+See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the Azure Marketplace.
 //endif::azure[]
@@ -127,10 +127,10 @@ The BYOL NetApp Backup and Recovery license is a floating license where the tota
 
 If you don't have a NetApp Backup and Recovery BYOL license, click the chat icon in the lower-right of the Console to purchase one.
 
-Optionally, if you have an unassigned node-based license for Cloud Volumes ONTAP that you won't be using, you can convert it to a NetApp Backup and Recovery license with the same dollar-equivalence and the same expiration date. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses[Go here for details^].
+Optionally, if you have an unassigned node-based license for Cloud Volumes ONTAP that you won't be using, you can convert it to a NetApp Backup and Recovery license with the same dollar-equivalence and the same expiration date. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses[Go here for details^].
 
 You use the NetApp Console to manage BYOL licenses. You can add new licenses, update existing licenses, and view license status from the Console.
 
-https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html[Learn about adding licenses^].
+https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html[Learn about adding licenses^].
 
 

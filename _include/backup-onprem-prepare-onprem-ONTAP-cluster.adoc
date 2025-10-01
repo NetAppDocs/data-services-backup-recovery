@@ -16,7 +16,7 @@ Preparing your ONTAP clusters involves the following steps:
 Both your source on-premises ONTAP system and any secondary on-premises ONTAP or Cloud Volumes ONTAP systems must be available on the NetApp Console *Systems* page.
 
 You'll need to know the cluster management IP address and the password for the admin user account to add the cluster.
-https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
+https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 
 
