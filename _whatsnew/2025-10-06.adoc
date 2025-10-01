@@ -56,16 +56,13 @@ For details about protecting Kubernetes workloads, refer to https://docs.netapp.
 
 This release of of NetApp Backup and Recovery introduces support for discovering and managing Oracle workloads:
 
-* Discover Oracle databases
+* Discover standalone Oracle databases
 * Create protection policies for data only or data and log backups
 * Protect databases with a 3-2-1 backup scheme
 * Configure backup retention
 * Mount and unmount ARCHIVELOG backups
-* SAN Protocol support
-* Standalone, ASM support
 * Virtualized databases
 * Search and restore database backups
 * Oracle dashboard support
-* Bulk protection of databases
 
 For details about protecting Oracle workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle workloads overview].

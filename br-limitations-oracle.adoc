@@ -22,7 +22,7 @@ The following actions are not supported in the private preview version of Oracle
 * ASM configuration
 * Protecting databases stored on SAN
 
-Oracle Database is only supported as a standalone deployment in the private preview version of Oracle workloads.
+Oracle Database is supported only as a standalone deployment using NFS in the private preview version of Oracle workloads.
 
 
 

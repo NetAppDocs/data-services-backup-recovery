@@ -20,7 +20,7 @@ You can perform the following tasks related to protection groups:
 * Create a protection group.
 * View protection details. 
 * Back up a protection group now. See link:br-use-kvm-backup.html[Back up Oracle workloads now].
-* Suspend and resume a protection group's backup schedule.  
+//* Suspend and resume a protection group's backup schedule.  
 * Delete a protection group.
 
 == Create a protection group 
@@ -51,6 +51,7 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 . Review the configuration.
 . Select *Create* to create the protection group.
 
+////
 == Suspend a protection group's backup schedule
 
 Suspending a protection group pauses the scheduled backups for the protection group. You might want to suspend a protection group if you want to temporarily stop backups for the workloads in that group. 
@@ -87,7 +88,8 @@ The protection status changes from "Under maintenance" when you suspend a protec
 . Review the confirmation message and select *Resume*. 
 
 .Result
-The system validates the schedules and changes the protection status to "Protected" if the schedules are valid. If the schedules are not valid, the system displays an error message and does not resume the protection group.  
+The system validates the schedules and changes the protection status to "Protected" if the schedules are valid. If the schedules are not valid, the system displays an error message and does not resume the protection group.
+////
 
 == Delete a protection group
 
@@ -99,5 +101,5 @@ Deleting a protection group removes it and all associated backup schedules. You 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select the protection group that you want to delete.
-. Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Remove protection*.
 . Review the confirmation message about deleting the associated backups and confirm the deletion.
