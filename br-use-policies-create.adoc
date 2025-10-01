@@ -11,9 +11,7 @@ summary: In NetApp Backup and Recovery, create your own policies that govern the
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
-
-//This used to be the topic for Manage backup policies for ONTAP volumes. Recasting this for MS SQL Server apps. 
+In NetApp Backup and Recovery, create your own policies that govern backup frequency, the time the backup is taken, and the number of backup files that are retained. 
 
 NOTE: Some of these options and configuration sections are not available for all workloads.
 
@@ -64,28 +62,24 @@ For information about snapshot locking in general, refer to https://docs.netapp.
 +
 * *Details* section: 
 ** Workload type: Select the workload that will use the policy. 
-** Enter a policy name. 
+** Enter a policy name.
 +
-TIP: For a list of characters to avoid, see the hover tip. 
+TIP: For a list of characters to avoid, see the hover tip.
 
-* *Backup architecture* section: Select the down arrow and choose the architecture for the backup, such as fan-out, cascading, and disk to disk. 
-
-
-** *Local snapshot*: Local snapshot on the selected volume (Microsoft SQL Server). Local snapshots are a key component of data protection strategies, capturing the state of your data at specific points in time. This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
-+
-For VMware workloads, this configures the local snapshot on the datastores or VMwares on the primary storage system.
+** Select a Console agent from the *Agent* list.
+ 
+* *Backup architecture* section: Select the down arrow and choose the data flow for the backup, such as 3-2-1 fan-out, 3-2-1 cascade, or disk to disk.
 ** *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store -- StorageGRID. These configurations help in achieving optimal data protection and disaster recovery.
 +
 NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
 +
-For VMware workloads, this is not available in the VMware preview. 
-+
-For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary and replicates from primary disk storage to secondary disk storage as well as replicates from primary to cloud object storage. 
-** *3-2-1 cascaded*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store -- StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. 
+For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary and replicates from primary disk storage to secondary disk storage as well as replicates from primary to cloud object storage.
+** *3-2-1 cascade*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store -- StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. 
 +
 NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage and a cascade from primary disk storage to secondary disk storage and then to cloud object storage. 
+
 ** *Disk to disk*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method ensures that your data is continuously updated and available across multiple locations, providing robust protection against data loss. 
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMwares on the primary storage system and then replicates the data from the primary disk storage system to the secondary disk storage system.
@@ -100,9 +94,9 @@ NOTE: You can configure multiple secondary settings for the disk-to-disk fanout 
 + 
 For VMware workloads, this configures the primary disk storage to secondary disk storage and replicates primary disk storage to secondary disk storage.
 
-
-//** *3-2-1-1 cascaded*: Primary storage (disk) to secondary storage (disk) and primary (disk) to cloud (object store)  (Multiple object storage) 
-
+** *Local snapshots*: Local snapshot on the selected volume (Microsoft SQL Server). Local snapshots are a key component of data protection strategies, capturing the state of your data at specific points in time. This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
++
+For VMware workloads, this configures the local snapshot on the datastores or VMwares on the primary storage system.
 
 === Create a local snapshot policy 
 Provide information for the local snapshot.
@@ -110,11 +104,11 @@ Provide information for the local snapshot.
 * Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
 * *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
 * *Snapshot retention*: Enter the number of snapshots to keep.
-* *Enable log backup*: (Applies to Microsoft SQL Server workloads and Oracle workloads. Not available for VMware or Kubernetes workloads.) Check the option to back up logs and set the frequency and retention of the log backups. To do this, you must have already configured a log backup. See link:br-start-configure.html[Configure log directories].
+* *Enable log backup*: (Applies to Microsoft SQL Server workloads and Oracle workloads only.) Enable this option to back up logs and set the frequency and retention of the log backups. To do this, you must have already configured a log backup. See link:br-start-configure.html[Configure log directories].
+** *Prune archive logs after backup*: (Oracle workloads only) If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
 * *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources.
-* *Backup target*: (Kubernetes workloads only) Select the storage bucket that hosts the Kubernetes application resources. The application resource definitions at the time of the snapshot are stored in this bucket. Ensure that the bucket is accessible within your backup environment.
 
-* Optionally, select *Advanced* at the right of the schedule to set the SnapMirror label and enable snapshot locking (not available for Kubernetes workloads). 
+////
 
 ** *SnapMirror label*: The label serves as a marker for transferring a specified snapshot according to the retention rules of the relationship. Adding a label to a snapshot marks it as a target for SnapMirror replication.
 ** *Offset from an hour*: Enter the number of minutes to offset the snapshot from the start of the hour. For example, if you enter *15*, the snapshot will be taken at 15 minutes past the hour. Available only for hourly schedules. 
@@ -125,6 +119,7 @@ Provide information for the local snapshot.
 
 ** *Snapshot locking period*: Enter the number of days, months, or years that you want to lock the snapshot.
 
+////
 
 === Create a policy for secondary settings (replication to secondary storage)
 
@@ -168,7 +163,7 @@ Enter information in these fields:
 
 //To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
 
-==== Create a policy for Microsoft Azure object storage
+==== Create a policy for Microsoft Azure object storage 
 
 Enter information in these fields: 
 
@@ -185,10 +180,10 @@ Enter information in these fields:
 
 * *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 
-//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
+//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate kjhkjhthe number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
 
 
-==== Create a policy for StorageGRID object storage 
+==== Create a policy for StorageGRID object storage
 Enter information in these fields: 
 
 * *Provider*: Select *StorageGRID*. 
@@ -203,79 +198,57 @@ Enter information in these fields:
 * *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 //+
 //TIP: Enabling scans will incur extra charges, depending on the cloud provider. 
+//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
 
 
 * *Tier your backups from object store to archival storage*: (Not available for Kubernetes workloads) If you choose to tier backups to archive storage, select the tier option and the number of days to archive. 
 
-//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
 
 === Configure advanced settings in the policy 
 
-Optionally, you can configure advanced settings in the policy. These settings are available for all backup architectures, including local snapshots, replication to secondary storage, and backups to object storage. These settings are not available for Kubernetes workloads.
-
+Optionally, you can configure advanced settings in the policy. These settings are available for all backup architectures, including local snapshots, replication to secondary storage, and backups to object storage. These settings are not available for Kubernetes workloads. The available advanced settings will differ depending on the workload you selected at the top of the page, so the advanced settings described here might not apply to all workloads. Advanced settings are not available when configuring a policy for Kubernetes workloads.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Policies*.
 . From the Policies page, select *Create new policy*.
-. In the *Policy > Advanced* settings section, select the down arrow and select the option. 
-
+. In the *Policy > Advanced* settings section, select the *Select advance action* menu to choose from a list of advanced settings.
+. Enable any of the settings you want to view or change, and then select *Accept*.
 . Provide the following information:
-
-* *Copy only backup*: Choose copy-only backup (a type of Microsoft SQL Server backup) that lets you back up your resources by using another backup application.  
-
-* *Availability group settings*: Select preferred backup replicas or specify a particular replica. This setting is useful if you have a SQL Server availability group and want to control which replica is used for backups.
-
-
++
+* *Copy only backup*: (Applies to Microsoft SQL Server workloads only) Choose copy-only backup (a type of Microsoft SQL Server backup) if you need to back up your resources by using another backup application.  
+* *Availability group settings*: (Applies to Microsoft SQL Server workloads only) Select preferred backup replicas or specify a particular replica. This setting is useful if you have a SQL Server availability group and want to control which replica is used for backups.
 * *Maximum transfer rate*: To not set a limit on bandwidth usage, select *Unlimited*. If you want to limit the transfer rate, select *Limited* and select the network bandwidth between 1 and 1,000 Mbps allocated to upload backups to object storage. By default, ONTAP can use an unlimited amount of bandwidth to transfer the backup data from volumes in the system to object storage. If you notice backup traffic is affecting normal user workloads, consider decreasing the amount of network bandwidth that is used during the transfer. 
-
-* *Backup retries*: (Not applicable to VMware Preview workloads) To retry the job in case of a failure or interruption, select *Enable job retries during failure*. Enter the maximum number of snapshot and backup job retries and the retry time interval. The recount must be less than 10. This setting is useful if you want to ensure that the backup job is retried in case of a failure or interruption.
+* *Backup retries*: (Not applicable to VMware workloads) To retry the job in case of a failure or interruption, select *Enable job retries during failure*. Enter the maximum number of snapshot and backup job retries and the retry time interval. The recount must be less than 10. This setting is useful if you want to ensure that the backup job is retried in case of a failure or interruption.
 +
 TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes. 
-
 * *Enable VM-consistent snapshot*: (Applies to VMware workloads only) Select whether you want to enable VM-consistent snapshots. This ensures that the newly created snapshots are consistent with the state of the virtual machine at the time of the snapshot. This is useful for ensuring that the backups can be restored successfully and that the data is in a consistent state. This does not apply to existing snapshots. 
-
-    
-//* *Export existing snapshot copies*: Indicate whether you want to export historical snapshot copies to object storage as backup files and include them in your initial baseline backup files for future volumes. This helps you initialize your backups in the cloud by moving older snapshots into the baseline backup copy. 
-
-
-
-
 * *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to AWS and Microsoft Azure object storage. Note that this option might incur additional charges, depending on the cloud provider.
-
-
-//* *Export existing snapshots*: Indicate whether you want to export historical snapshot copies to object storage as backup files and include them in your initial baseline backup files for future volumes. This helps you initialize your backups in the cloud by moving older snapshots into the baseline backup copy.
-
-//* *Yearly snapshot deletion*: Select whether you want yearly snapshots removed from the source system. Yearly backups are very large. By default, yearly snapshots are deleted automatically from the source system after being transferred to object storage. 
-
-
-* *Backup verification*: (Not applicable to VMware Preview workloads) Select whether you want to enable backup verification and whether you want it immediately or later. This feature ensures that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
+* *Backup verification*: (Not applicable to VMware workloads) Select whether you want to enable backup verification and whether you want it immediately or later. This feature ensures that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
 +
 Additionally, configure the following options:
 
 ** *Daily*, *Weekly*, *Monthly*, or *Yearly* verification: If you chose *Later* as the backup verification, select the frequency of backup verification. This ensures that backups are regularly checked for integrity and can be restored successfully.
 ** *Backup labels*: Enter a label for the backup. This label is used to identify the backup in the system and can be useful for tracking and managing backups.
-** *Database consistency check*: (Not applicable to VMware Preview workloads) Select whether you want to enable database consistency checks. This option ensures that the databases are in a consistent state before the backup is taken, which is crucial for ensuring data integrity.
-** *Verify log backups*: (Not applicable to VMware Preview workloads) Select whether you want to verify log backups. Select the verification server. If you chose disk-to-disk or 3-2-1, also select the verification storage location. This option ensures that the log backups are valid and can be restored successfully, which is important for maintaining the integrity of your databases.
-
-
+** *Database consistency check*: (Not applicable to VMware workloads) Select whether you want to enable database consistency checks. This option ensures that the databases are in a consistent state before the backup is taken, which is crucial for ensuring data integrity.
+** *Verify log backups*: (Not applicable to VMware workloads) Select whether you want to verify log backups. Select the verification server. If you chose disk-to-disk or 3-2-1, also select the verification storage location. This option ensures that the log backups are valid and can be restored successfully, which is important for maintaining the integrity of your databases.
 
 * *Networking*: Select the network interface to use for the backup operations. This is useful if you have multiple network interfaces and want to control which one is used for backups.
-
 ** *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
-
 ** *Private endpoint configuration*: If you are using a private endpoint for your object storage, select the private endpoint configuration to use for the backup operations. This is useful if you want to ensure that the backups are transferred securely over a private network connection.
-
 * *Notification*: Select whether you want to enable email notifications for backup operations. This is useful if you want to be notified when a backup operation starts, completes, or fails. 
+* *Independent disks*: (Applies to VMware workloads only) Check this to include in the backup any datastores with independent disks that contain temporary data. An independent disk is a VM disk that not included in VMware snapshots. 
+* *SnapMirror volume and snapshot format*: Optionally, enter your own snapshot name in a policy that governs the backups for Microsoft SQL Server workloads. Enter the format and custom text. If you chose to backup to secondary storage, you can also add a SnapMirror volume prefix and suffix.
 
-* *Independent disks*: (Applicable to VMware Preview workloads) Check this to include in the backup any datastores with independent disks that contain temporary data. An independent disk is a VM disk that not included in VMware snapshots. 
 
+//* *Export existing snapshots*: Indicate whether you want to export historical snapshot copies to object storage as backup files and include them in your initial baseline backup files for future volumes. This helps you initialize your backups in the cloud by moving older snapshots into the baseline backup copy.
+
+//* *Export existing snapshot copies*: Indicate whether you want to export historical snapshot copies to object storage as backup files and include them in your initial baseline backup files for future volumes. This helps you initialize your backups in the cloud by moving older snapshots into the baseline backup copy. 
+
+//* *Yearly snapshot deletion*: Select whether you want yearly snapshots removed from the source system. Yearly backups are very large. By default, yearly snapshots are deleted automatically from the source system after being transferred to object storage. 
 
 //* *Integrity scan*: To protect your backups from being modified or deleted, select the *Integrity scan* option. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 //+
 //TIP: Enabling scans will incur extra charges, depending on the cloud provider. 
-
-* *SnapMirror and snapshot format*: Optionally, enter your own snapshot name in a policy that governs the backups for Microsoft SQL Server workloads. Enter the format and custom text. If you chose to backup to secondary storage, you can also add a SnapMirror volume prefix and suffix.
-
 
 == Edit a policy
 
@@ -310,4 +283,4 @@ TIP: You cannot delete a policy that is associated with a workload.
 . Select the *Policies* option.
 . Select the policy that you want to delete.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Delete*.
-. Review the information in the confirmation dialog box, and select *Delete*.
+. Confirm the action, and select *Delete*.
