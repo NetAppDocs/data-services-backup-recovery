@@ -47,9 +47,7 @@ You use the Restore Dashboard to perform volume, folder, and file restore operat
 
 NOTE: NetApp Backup and Recovery must already be activated for at least one system and initial backup files must exist.
 
-image:screenshot_restore_dashboard.png["The Restore Dashboard showing the options to use the Browse & Restore or Search & Restore functionality."]
-
-As you can see, the Restore Dashboard provides two different ways to restore data from backup files: *Browse & Restore* and *Search & Restore*.
+The Restore Dashboard provides two different ways to restore data from backup files: *Browse & Restore* and *Search & Restore*.
 
 == Comparing Browse & Restore and Search & Restore
 

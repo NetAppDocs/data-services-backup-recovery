@@ -148,9 +148,6 @@ Note that this option only applies to new backup files for new read/write volume
 . From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
 
 . In the Advanced Settings page, expand the *Export existing Snapshot copies* section. 
-+
-image:screenshot_backup_edit_export_snapshots.png[A screenshot of the Export existing Snapshot copies entry in the Advanced Settings page.]
-
 . Select whether you want existing Snapshot copies to be exported. 
 
 . Select *Apply*.

@@ -235,9 +235,6 @@ You can also <<Show the API commands>> at the review step, so you can copy the c
 . Access the Activate backup and recovery wizard using one of the following ways: 
 * From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to the Backup and recovery service in the right-panel.
 +
-image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup and recovery Enable button that is available after you select a system.]
-
-+
 If the Azure destination for your backups exists on the Console *Systems* page, you can drag the ONTAP cluster onto the Azure Blob object storage.  
 * Select *Volumes* in the Backup and recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon  and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled).  
 

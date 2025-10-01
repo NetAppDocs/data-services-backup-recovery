@@ -165,8 +165,6 @@ This option uses the latest full and log backups to restore your data to the las
 . Continuing from the Restore options page, select *Restore to the latest backup*. 
 +
 NetApp Backup and Recovery shows you the snapshots that are available for the restore operation.
-+
-image:screen-br-restore-to-latest-state.png[A screenshot showing the Restore to latest state page]
 
 . In the Restore to the latest state page, select the snapshot location of local, secondary storage, or object storage.
 
@@ -206,8 +204,6 @@ Using the Inventory option, you can restore only databases, not instances.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *View details*.
 . On the Microsoft SQL Server page, select the *Databases* tab. 
 . On the Databases tab, select the database that shows a "Protected" status indicating that there's a backup that you can restore.
-+
-image:screen-br-restore-inventory-databases-tab.png[A screenshot showing the Inventory page and Databases tab] 
 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Restore*.
 +
@@ -218,8 +214,6 @@ The same three options appear as when you restore from the Restore page:
 * Restore to the latest backup
 
 . Continue with the same steps for the restore option from the Restore page
-+
-image:screen-br-restore-options2.png[A screenshot showing the Restore options.]
 
 //== Restore workloads from cloud storage 
 

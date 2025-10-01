@@ -204,8 +204,7 @@ image:../media/screen-vm-discover-import-manage.png[Manage vCenter in NetApp Con
 . To display the Dashboard, from the Backup and Recovery menu, select *Dashboard*.   
 
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
-+
-image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
+
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].
 
