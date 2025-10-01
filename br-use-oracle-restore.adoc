@@ -29,7 +29,7 @@ You can restore databases from different starting locations:
 
 .Restore to these points   
 
-You can restore data to the original location; restoring to an alternate location is not available in this Preview release.
+You can restore data to the original location; restoring to an alternate location is not available in this private preview release.
 
 * Restore to the original location
 //* Restore to an alternate location

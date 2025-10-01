@@ -76,7 +76,7 @@ NetApp Backup and Recovery does not import log-only backup policies from SnapCen
 
 
 === Host mapping 
-SnapCenter does not have map storage clusters or SVMs for the resources to hosts, but NetApp Backup and Recovery does. The on-premises ONTAP cluster or SVM will not be mapped to a host in NetApp Backup and Recovery Preview version. Additionally, NetApp Console does not support SVMs. 
+SnapCenter does not have map storage clusters or SVMs for the resources to hosts, but NetApp Backup and Recovery does. The on-premises ONTAP cluster or SVM will not be mapped to a host in NetApp Backup and Recovery preview versions. Additionally, NetApp Console does not support SVMs. 
 
 
 *Workaround*: Before importing resources from SnapCenter, create a system in NetApp Backup and Recovery for all the on-premises ONTAP storage systems that are registered in on-premises SnapCenter. Then, import the resources for that cluster from SnapCenter into NetApp Backup and Recovery.

@@ -10,7 +10,7 @@ The NetApp Console, built on the enhanced and restructured BlueXP foundation, pr
  
 For details on what's changed, see the link:https://docs.netapp.com/us-en/bluexp-relnotes/index.html[NetApp  Console release notes.]
 
-=== Hyper-V workload support as a Preview
+=== Hyper-V workload support as a private preview
 
 This release of of NetApp Backup and Recovery introduces support for discovering and managing Hyper-V workloads:
 
@@ -23,7 +23,7 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 
 For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
 
-=== KVM workload support as a Preview
+=== KVM workload support as a private preview
 
 This release of of NetApp Backup and Recovery introduces support for discovering and managing KVM workloads:
 
@@ -36,8 +36,8 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 
 For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
 
-=== Kubernetes Preview improvements
-The Preview release of Kubernetes workloads introduces the following enhancements:
+=== Kubernetes preview improvements
+The preview release of Kubernetes workloads introduces the following enhancements:
 
 * 3-2-1 Fan out backup architecture support
 * Support for ONTAP S3 as a backup target
@@ -52,7 +52,7 @@ The Preview release of Kubernetes workloads introduces the following enhancement
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
  
-=== Oracle workload support as a Preview
+=== Oracle workload support as a private preview
 
 This release of of NetApp Backup and Recovery introduces support for discovering and managing Oracle workloads:
 
