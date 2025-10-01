@@ -1,0 +1,211 @@
+---
+sidebar: sidebar
+permalink: br-use-mssql-clone.html
+keywords: backing up, restoring, back up, backup, clone, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: Clone Microsoft SQL Server applications data for development, testing, or protection purposes. You can create clones from instant snapshots or existing snapshots of your Microsoft SQL Server workloads.
+---
+
+= Clone Microsoft SQL Server workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Clone Microsoft SQL Server applications data to the same or different VM for development, testing, or protection purposes using NetApp Backup and Recovery. You can create clones from instant snapshots or existing snapshots of your Microsoft SQL Server workloads.
+
+Choose between the following types of clones:
+
+* *Instant snapshot and clone*: You can create a clone of your Microsoft SQL Server workloads from an instant snapshot. An instant snapshot is a point-in-time copy of the source data that is created from a backup. The clone is stored in an object store in your public or private cloud account. You can use the clone to restore your workloads in case of data loss or corruption.
+* *Clone from an existing snapshot*: You can choose an existing snapshot from a list of snapshots that are available for the workload. This option is useful if you want to create a clone from a specific point in time. Clone to either primary or secondary storage.
+
+
+You can accomplish the following protection goals:
+
+* Create a clone 
+* Refresh a clone
+* Split a clone 
+* Delete a clone
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+
+== Create a clone  
+
+You can create a clone of your Microsoft SQL Server workloads. A clone is a copy of the source data that is created from a backup. The clone is stored in an object store in your public or private cloud account. You can use the clone to restore your workloads in case of data loss or corruption.
+
+You can create a clone from an existing snapshot or from an instant snapshot. An instant snapshot is a point-in-time copy of the source data that is created from a backup. You can use the clone to restore your workloads in case of data loss or corruption.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Clone*.
++
+image:screen-br-sql-clone-nomenu.png[Clone page screenshot for NetApp Backup and Recovery]
+
+. Select *Create new clone*.
+
+. Select the clone type:
+** *Clone and database refresh from existing snapshot*: Choose the snapshot for the clone and configure options for the clone. This is helpful if you want to choose the snapshot for the clone and configure options. 
+** *Instant snapshot and clone*: Take a snapshot now of the source data and create a clone from that snapshot. This option is useful if you want to create a clone from the latest data in the source workload.
+//* *Full clone* - A full clone is a complete copy of the source data. It is stored in the object store and can be used to restore the workloads.
+//* *Snapshot clone* - A snapshot clone is a copy of the source data that is created from a snapshot. It is stored in the object store and can be used to restore the workloads.
+. Complete the *Database source* section:
+
+* *Single clone or bulk clone*: Select whether to create a single clone or multiple clones. If you select *Bulk clone*, you can create multiple clones at once using a protection group that you already created. This option is useful if you want to create multiple clones for different workloads.
+* *Source database host, instance, and name*: Select the source database host, instance, and name for the clone. The source database is the database from which the clone will be created. 
+
+
+. Complete the *Database target* section:
+
+* *Target database host, instance, and name*: Select the target database host, instance, and name for the clone. The target database is the location where the clone will be created. 
++
+Optionally, select *Suffix* from the target name drop-down list and append a suffix to the cloned database name. If you do not specify a suffix, the cloned database name will be the same as the source database name.
+
+* *QoS (max throughput)*: Select the quality of service (QoS) maximum throughput in MBps for the clone. The QoS defines the performance characteristics of the clone, such as the maximum throughput and IOPS.  
+
+. Complete the *Mount* section:
+
+* *Auto-assign mount point*: Select this option to automatically assign a mount point for the clone. The mount point is the location where the clone will be mounted in the object store.
+* *Define mount point path*: Enter a mount point for the clone. The mount point is the location where the clone will be mounted in the object store. Select the drive letter, enter the data file path, and enter the log file path.       
+
+. Select *Next*. 
+
+. Select the restore point: 
+
+* *Existing snapshots*: Select an existing snapshot from the list of snapshots that are available for the workload. This option is useful if you want to create a clone from a specific point in time.
+* *Instant snapshot and clone*: Select the latest snapshot from the list of snapshots that are available for the workload. This option is useful if you want to create a clone from the latest data in the source workload.
+
+. If you chose to create *Instant snapshot and clone*, choose the clone storage location: 
+* *Local storage*: Select this option to create the clone in the local storage of the ONTAP system. The local storage is the storage that is directly attached to the ONTAP system.
+* *Secondary storage*: Select this option to create the clone in the secondary storage of the ONTAP system. The secondary storage is the storage that is used for backup and recovery workloads.
+
+. Select the destination location for the data and logs. 
+. Select *Next*.
+
+
+. Complete the *Advanced options* section:
++
+image:screen-br-sql-clone-create-advanced.png[Advanced settings for creating a clone in NetApp Backup and Recovery]
+//* *Recovery scope*: Choose whether to recover all log backups or log backups until a specific point in time. This option is useful if you want to recover the clone to a specific point in time.
+
+. If you chose *Instant snapshot and clone*, complete the following options:
++
+image:screen-br-sql-clone-create-instantsnapshot-advanced.png[Advanced settings for creating an instant snapshot and clone in NetApp Backup and Recovery]
++
+* *Clone refresh schedule and expiration*: If you chose *Instant clone*, enter the date when to begin refreshing the clone. The clone schedule defines when the clone will be created.
+** *Delete clone if schedule expires*: If you want to delete the clone upon the clone expiration date.
+** *Refresh clone every*: Select how often the clone should be refreshed. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option is useful if you want to keep the clone up to date with the source workload.
+//* *iGroup settings*: Select the igroup for the clone. The igroup is a logical grouping of initiators that are used to access the clone. You can select an existing igroup or create a new one. Select the igroup from the primary or secondary ONTAP storage system. 
+
+* *Prescripts and postscripts*: Optionally, specify pre- and post-clone scripts to run before and after the clone is created. These scripts can be used to perform additional tasks, such as configuring the clone or sending notifications.
+
+* *Notification*: Optionally, specify email addresses to receive notifications about the clone creation status along with the Job report. You can also specify a webhook URL to receive notifications about the clone creation status. You can specify whether you want success and failure notifications or only one or the other. 
+
+* *Tags*: Select one or more labels that will help you later search for the resource group and select *Apply*. For example, if you add "HR" as a tag to multiple resource groups, you can later find all resource groups associated with the HR tag.
+. Select *Create*. 
+//. Choose the type of clone: 
+//** *Thick clone (Long-term clone)*: A complete copy of the source data. It is stored in the object store and can be used to restore the workloads.
+//** *Thin clone (Short-term clone)*: A copy of the source data that is created from a snapshot. It is stored in the object store and can be used to restore the workloads.
+//. Select the quality of service (QoS) policy for the clone. The QoS policy defines the performance characteristics of the clone, such as the maximum throughput and IOPS.
+//** Extreme
+//** Performance
+//** Value
+
+
+. When the clone is created, you can view it in the *Inventory* page.
+image:screen-br-inventory.png[Inventory page screenshot for NetApp Backup and Recovery]
+
+== Refresh a clone
+You can refresh a clone of your Microsoft SQL Server workloads. Refreshing a clone updates the clone with the latest data from the source workload. This is useful if you want to keep the clone up to date with the source workload.
+
+You have the option to change the database name, use the latest instant snapshot, or refresh from an existing production snapshot. 
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Clone*. 
+
+
+. Select the clone you want to refresh. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Refresh clone*.
++
+image:screen-br-sql-clone-refresh-options.png[Refresh clone options for NetApp Backup and Recovery]
+
+. Complete the *Advanced settings* section:
+
+* *Recovery scope*: Choose whether to recover all log backups or log backups until a specific point in time. This option is useful if you want to recover the clone to a specific point in time.
+* *Clone refresh schedule and expiration*: If you chose *Instant clone*, enter the date when to begin refreshing the clone. The clone schedule defines when the clone will be created.
+** *Delete clone if schedule expires*: If you want to delete the clone upon the clone expiration date.
+** *Refresh clone every*: Select how often the clone should be refreshed. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option is useful if you want to keep the clone up to date with the source workload.
+
+* *iGroup settings*: Select the igroup for the clone. The igroup is a logical grouping of initiators that are used to access the clone. You can select an existing igroup or create a new one. Select the igroup from the primary or secondary ONTAP storage system. 
+
+* *Prescripts and postscripts*: Optionally, specify pre- and post-clone scripts to run before and after the clone is created. These scripts can be used to perform additional tasks, such as configuring the clone or sending notifications.
+
+* *Notification*: Optionally, specify email addresses to receive notifications about the clone creation status along with the Job report. You can also specify a webhook URL to receive notifications about the clone creation status. You can specify whether you want success and failure notifications or only one or the other. 
+
+
+* *Tags*: Enter one or more labels that will help you later search for the resource group. For example, if you add "HR" as a tag to multiple resource groups, you can later find all resource groups associated with the HR tag.
+
+
+
+
+. In the Refresh confirmation dialog box, to continue, select *Refresh*.
+
+
+
+== Skip a clone refresh 
+You might want to skip a clone refresh if you do not want to update the clone with the latest data from the source workload. Skipping a clone refresh allows you to keep the clone as it is without updating it.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Clone*. 
+
+. Select the clone you want to skip the refresh for.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Skip refresh*.
+. In the Skip refresh confirmation dialog box, do the following: 
+.. To skip only the next refresh schedule, select *Only skip the next refresh schedule*.
+.. To continue, select *Skip*.    
+
+== Split a clone
+
+You can split a clone of your Microsoft SQL Server workloads. Splitting a clone creates a new backup from the clone. The new backup can be used to restore the workloads.
+
+You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the SVM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes an independent database for protection. 
+
+The clone job is not be removed and it can be reused again for other clones.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Clone*.
+
+. Select a clone.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Split clone*.
+
++
+image:screen-br-sql-clone-split.png[Split clone page for NetApp Backup and Recovery]
+. Review the split clone details and select *Split*.
+
+. When the split clone is created, you can view it in the *Inventory* page.
+image:screen-br-inventory.png[Inventory page screenshot for NetApp Backup and Recovery]
+
+
+== Delete a clone
+You can delete a clone of your Microsoft SQL Server workloads. Deleting a clone removes the clone from the object store and frees up storage space.
+
+If the clone is protected by a policy, the clone is deleted including the job. 
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Clone*.
+
+. Select a clone.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete clone*.
+
+. In the clone Delete confirmation dialog box, review the deletion details.
+.. To delete the cloned resources from SnapCenter even if the clones or their storage is not accessible, select *Force delete*. 
+
+.. Select *Delete*.
+
+. When the clone is deleted, it is removed from the *Inventory* page.
+
+
+
+
+

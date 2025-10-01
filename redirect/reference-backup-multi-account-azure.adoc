@@ -1,0 +1,4 @@
+---
+permalink: reference-backup-multi-account-azure.html
+redirect: data-services-backup-recovery/index.html
+---

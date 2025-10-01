@@ -1,0 +1,91 @@
+---
+sidebar: sidebar
+permalink: reference-policy-differences-snapcenter.html
+keywords: backup policy, backup policies, snapcenter, migration
+summary: There are some differences between policies used in NetApp Backup and Recovery and those used in SnapCenter.
+---
+
+= Policies in SnapCenter compared to those in NetApp Backup and Recovery
+:hardbreaks:
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+There are some differences between policies used in SnapCenter and those used in NetApp Backup and Recovery that might impact what you see after importing resources and policies from SnapCenter.
+
+== Schedule tiers
+
+SnapCenter uses the following schedule tiers:
+
+* *Hourly*: Multiple hours and minutes with any hours (0-23) and any minutes (0-60).
+* *Daily*: Includes an option to repeate every so many days, for example, every 3 days. 
+* *Weekly*: Sunday to Monday, with an option to perform a snapshot on Day 1 of the week or on multiple days of the week. 
+* *Monthly*: Months January to December, with an option to perform on specific days of the month, for example, the 7th of every month and even on multiple days of the month. 
+
+NetApp Backup and Recovery uses the following schedule tiers, which are slightly different: 
+
+* *Hourly*: Performs snapshots only on 15-minute intervals, for example, 1 hour or 15-minute intervals less than 60.
+* *Daily*: Hours of the day (0-23) with start time for example at 10:00 AM with an option to perform every so many hours. 
+* *Weekly*: Day of the week (Sunday to Monday) with an option to perform on 1 day or multiple days. This is the same as SnapCenter. 
+* *Monthly*: Dates of the month (0-30) with a starting time on multiple dates of the month.  
+* *Yearly*: Monthly. This matches SnapCenter's monthly. 
+
+
+== Multiple policies in SnapCenter with the same schedule tier
+
+You can assign multiple policies with the same schedule tier to a resource in SnapCenter. However, NetApp Backup and Recovery does not support multiple policies on a resource that uses the same schedule tier.
+
+*Example*: If you use three policies (for Data, Log, and Log of snapshots) in SnapCenter, after migration from SnapCenter, NetApp Backup and Recovery uses a single policy instead of all three. 
+
+
+== Imported SnapCenter daily schedules
+
+NetApp Backup and Recovery adjusts the SnapCenter schedules as follows: 
+
+* If the SnapCenter schedule is set to less than or equal to 7 days, NetApp Backup and Recovery sets the schedule to weekly. Some snapshots will be skipped during the week. 
++
+*Example*: If you have a SnapCenter daily policy with a repeating interval of every 3 days starting on Monday, NetApp Backup and Recovery sets the schedule to weekly on Monday, Thursday, and Sunday. Some days will be skipped because it is not exactly every 3 days.
+* If the SnapCenter schedule is set to  greater than 7 days, NetApp Backup and Recovery sets the schedule to monthly. Some snapshots will be skipped during the month. 
++
+*Example*: If you have a SnapCenter daily policy with a repeating interval of every 10 days starting on the 2nd of the month, NetApp Backup and Recovery (post migration) sets the schedule to monthly on the 2nd, 12th, and 22nd day of the month. Some days will be skipped the next month.
+
+
+== Imported SnapCenter hourly schedules 
+
+SnapCenter hourly policies with repeating intervals greater than one hour are converted to a daily policy in NetApp Backup and Recovery. 
+
+Any hourly policy with repeating intervals that are not a factor of 24 (for example 5, 7, etc) will skip some snapshots in a day.
+
+*Example*: If you have a SnapCenter hourly policy with a repeating interval every 5 hours starting at 1:00 AM, NetApp Backup and Recovery (after migration) will set the schedule to daily with 5-hour intervals at 1:00 AM, 6:00 AM, 11:00 AM, 4:00 PM, and 9:00 PM. Some hours will be skipped, after 9:00 PM it should be 2:00 AM to repeat after every 5 hours, but it will be always 1:00 AM.
+
+
+== Log retention from SnapCenter policies
+
+If you have a resource in SnapCenter with multiple policies, NetApp Backup and Recovery uses the following priority order to assign the log retention value:
+
+* For "Full backup with log backup policy" plus "log-only" policies in SnapCenter, NetApp Backup and Recovery uses the log-only policy retention value.
+* For "Full backup with log only" and "Full and Log" policies in SnapCenter, NetApp Backup and Recovery uses the log-only retention value. 
+* For "Full backup and log" plus "Full backup" in SnapCenter, NetApp Backup and Recovery uses the "Full backup and log" retention value. 
+* If you have only a full backup in SnapCenter, NetApp Backup and Recovery does not enable the log backup. 
+
+== Log backup retention 
+
+With SnapCenter, you can have multiple retention values across multiple policies attached to a resource. However, NetApp Backup and Recovery supports only a single retention value for all policies attached to a resource.
+
+
+== Retention count from SnapCenter policies
+
+If you have a resource with secondary protection enabled in SnapCenter with multiple source volumes, multiple destination volumes, and multiple SnapMirror relationships, NetApp Backup and Recovery uses only the first policy's retention count.
+
+*Example*: If you have a SnapCenter policy with a retention count of 5 and another policy with a retention count of 10, NetApp Backup and Recovery uses the retention count of 5.
+
+== SnapMirror labels from SnapCenter policies
+
+SnapMirror labels for every policy in SnapCenter remain intact post migration even though the tier is changed. 
+
+*Example*: An hourly policy from SnapCenter might change to daily in NetApp Backup and Recovery. However, the SnapMirror labels remain the same after migration.
+
+
+
+
+

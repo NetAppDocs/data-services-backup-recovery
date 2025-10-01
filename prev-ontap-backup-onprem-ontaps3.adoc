@@ -1,0 +1,347 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-backup-onprem-ontaps3.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Back up on-premises ONTAP data to ONTAP S3 with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your primary on-premises ONTAP systems. You can send backups to a secondary ONTAP storage system (a replicated volume) or to a bucket on an ONTAP system configured as an S3 server (a backup file), or both.
+
+The primary on-premises ONTAP system can be a FAS, AFF, or ONTAP Select system. The secondary ONTAP system can be an on-premises ONTAP or Cloud Volumes ONTAP system. The object storage can be on an on-premises ONTAP system or a Cloud Volumes ONTAP system on which you have enabled a Simple Storage Service (S3) object storage server.
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+
+
+== Identify the connection method
+
+There are many configurations in which you can create backups to an S3 bucket on an ONTAP system. Two scenarios are shown below.
+
+The following image shows each component when backing up a primary on-premises ONTAP system to an on-premises ONTAP system configured for S3 and the connections that you need to prepare between them. It also shows a connection to a secondary ONTAP system in the same on-premises location to replicate volumes.
+
+image:diagram_cloud_backup_onprem_ontap_s3.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+
+When the Console agent and primary on-premises ONTAP system are installed in an on-premises location without internet access (a "private" mode deployment), the ONTAP S3 system must be located in the same on-premises data center. 
+
+The following image shows each component when backing up a primary on-premises ONTAP system to a Cloud Volumes ONTAP system configured for S3 and the connections that you need to prepare between them. It also shows a connection to a secondary Cloud Volumes ONTAP system in the same cloud provider environment to replicate volumes.
+
+image:diagram_cloud_backup_onprem_ontap_s3_cloud.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+
+In this scenario the Console agent should be deployed in the same cloud provider environment in which the Cloud Volumes ONTAP systems are deployed.
+
+== Prepare your Console agent
+
+The Console agent is the main software for Console functionality. A Console agent is required to back up and restore your ONTAP data.
+
+=== Create or switch Console agents
+
+When you back up data to ONTAP S3, a Console agent must be available on your premises or in the cloud. You'll either need to install a new Console agent or make sure that the currently selected Console agent resides in one of these locations. The on-premises Console agent can be installed in a site with or without internet access.
+
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html#how-to-create-a-connector[Install the Console agent in your cloud environment^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-on-prem.html[Installing the Console agent on a Linux host with internet access^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Installing the Console agent on a Linux host without internet access^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors[Switching between Console agents^]
+
+=== Prepare Console agent networking requirements
+
+Ensure that the network where the Console agent is installed enables the following connections:
+
+* An HTTPS connection over port 443 to the ONTAP S3 server
+* An HTTPS connection over port 443 to your source ONTAP cluster management LIF
+* An outbound internet connection over port 443 to NetApp Backup and Recovery (not required when the Console agent is installed in a "dark" site)
+
+==== Private mode (dark site) considerations
+
+NetApp Backup and Recovery functionality is built into the Console agent. When it is installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's New] to see the new features in each NetApp Backup and Recovery release. When you want to use the new features, follow the steps to https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^].
+
+When you use NetApp Backup and Recovery in a standard SaaS environment, the NetApp Backup and Recovery configuration data is backed up to the cloud. When you use NetApp Backup and Recovery in a site with no internet access, the NetApp Backup and Recovery configuration data is backed up to the ONTAP S3 bucket where your backups are being stored. 
+
+== Verify license requirements 
+
+Before you can activate NetApp Backup and Recovery for your cluster, you'll need to purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. The license is for backup and restore to object storage - no license is needed to create Snapshot copies or replicated volumes. This license is for the account and can be used across multiple systems.
+
+You'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses].
+
+TIP: PAYGO licensing is not supported when backing up files to ONTAP S3.
+
+== Prepare your ONTAP clusters
+
+// This section uses an include along with the 2 subsections of "Discover your ONTAP cluster in BlueXP" and "Verify ONTAP requirements"
+
+include::../_include/backup-onprem-prepare-onprem-ONTAP-cluster.adoc[]
+
+// === Discover your ONTAP systems in BlueXP
+// FROM INCLUDE
+
+// === Verify ONTAP system requirements
+// FROM INCLUDE
+
+=== Verify ONTAP networking requirements for backing up data to object storage
+
+You must ensure that the following requirements are met on the system that connects to object storage. 
+
+[NOTE]
+====
+* When you use a fan-out backup architecture, the settings must be configured on the _primary_ storage system. 
+* When you use a cascaded backup architecture, the settings must be configured on the _secondary_ storage system.
++
+link:prev-ontap-protect-journey.html[Learn more about the types of backup architecture].
+====
+
+The following ONTAP cluster networking requirements are needed: 
+
+* The ONTAP cluster initiates an HTTPS connection over a user-specified port from the intercluster LIF to the ONTAP S3 server for backup and restore operations. The port is configurable during backup setup.
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
++
+* ONTAP requires an inbound connection from the Console agent to the cluster management LIF.
+
+* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[Learn more about IPspaces^].
++
+When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+* The nodes' intercluster LIFs are able to access the object store (not required when the Console agent is installed in a "dark" site).
+* DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
+* If you use are using a different IPspace than Default, then you might need to create a static route to get access to the object storage.
+* Update firewall rules, if necessary, to allow NetApp Backup and Recovery service connections from ONTAP to object storage through the port you specified (typically port 443) and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
+
+===  Verify ONTAP networking requirements for replicating volumes
+
+//This section uses an Include for all providers. It includes "Cloud Volumes ONTAP networking requirements", and "On-premises ONTAP networking requirements"   
+
+include::../_include/backup-onprem-prepare-source-destination-systems-for-repl.adoc[]
+
+== Prepare ONTAP S3 as your backup target
+
+You must enable a Simple Storage Service (S3) object storage server in the ONTAP cluster that you plan to use for object storage backups. See the https://docs.netapp.com/us-en/ontap/s3-config/index.html[ONTAP S3 documentation^] for details.
+
+*Note:* You can add this cluster to the Console *Systems* page, but it is not identified as being an S3 object storage server, and you can't drag and drop a source system onto this S3 system to initiate backup activation.
+
+This ONTAP system must meet the following requirements. 
+
+Supported ONTAP versions::
+ONTAP 9.8 and later is required for on-premises ONTAP systems.
+ONTAP 9.9.1 and later is required for Cloud Volumes ONTAP systems.
+//+
+//To use DataLock & Ransomware Protection for your backups, your ONTAP S3 systems must be running version 11.6.0.3 or greater. 
+//+
+//To tier older backups to cloud archival storage, your ONTAP S3 systems must be running version 11.3 or greater. Additionally, your ONTAP S3 systems must be discovered to the NetApp Console.
+
+S3 credentials::
+You must have created an S3 user to control access to your ONTAP S3 storage. https://docs.netapp.com/us-en/ontap/s3-config/create-s3-user-task.html[See the ONTAP S3 docs for details^].
++
+When you set up backup to ONTAP S3, the backup wizard prompts you for an S3 access key and secret key for a user account. The user account enables NetApp Backup and Recovery to authenticate and access the ONTAP S3 buckets used to store backups. The keys are required so that ONTAP S3 knows who is making the request.
++
+These access keys must be associated with a user who has the following permissions:
++
+[source,json]
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+
+//S3 bucket options::
+//The default bucket that NetApp Backup and Recovery creates has a prefix of "netapp-backup". If you want to use your own bucket, you can create it before you start the backup activation wizard and then select that bucket in the wizard. https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-task.html[See the ONTAP docs for details about creating your own S3 bucket^]. 
+//+
+//If you want to use a different prefix for your bucket, you'll need to customize the Console agent permissions with the name you want to use. In the permissions you'll see a line `"Resource": ["arn:aws:s3:::netapp-backup*"]` in three places. You'll need to change "netapp-backup" to the prefix that you want to use. For example, if you want to use "backup-1" as the prefix for your bucket, you'll change this line to `"Resource": ["arn:aws:s3:::backup-1*"]`.
+//+
+//If you want to use a different prefix for buckets that you'll use to back up volume data from additional clusters in this same BlueXP account, you can add another line with the prefix for the other buckets. For example:
+//+
+//`"Resource": ["arn:aws:s3:::backup-1*","arn:aws:s3:::backup-2*"],`
+//+
+//If you are creating your own bucket and do not use a standard prefix, you should change this line to `"Resource": ["arn:aws:s3:::*"]` so that any bucket is recognized. However, this may expose all your buckets instead of those you have designed to hold backup data from your volumes.
+//+
+//link:concept-protection-journey.html#do-you-want-to-create-your-own-object-storage-container[See additional details about creating your own buckets].
+
+//Object versioning::
+//You must not enable ONTAP S3 object versioning manually on the object store bucket.
+
+== Activate backups on your ONTAP volumes
+
+Activate backups at any time directly from your on-premises system.
+
+A wizard takes you through the following major steps: 
+
+* Select the volumes that you want to back up
+* Define the backup strategy and policies
+* Review your selections 
+
+You can also <<Show the API commands>> at the review step, so you can copy the code to automate backup activation for future systems.  
+
+=== Start the wizard 
+
+.Steps 
+
+. Access the Activate backup and recovery wizard using one of the following ways: 
+* From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right-panel.
+//+
+//If the destination for your backups exists as a system on the Canvas, you can drag the ONTAP cluster onto the object storage. 
+* Select *Volumes* in the Backup and recovery bar. From the Volumes tab, select the *Actions (...)* option and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage enabled). 
+
++ 
+The Introduction page of the wizard shows the protection options including local snapshots, replications, and backups. If you did the second option in this step, the Define Backup Strategy page appears with one volume selected. 
+
+. Continue with the following options: 
+
+* If you already have a Console agent, you're all set. Just select *Next*. 
+* If you don't have a Console agent, the *Add a Console agent* option appears. Refer to <<Prepare your Console agent>>. 
+
+=== Select the volumes that you want to back up
+
+Choose the volumes you want to protect. A protected volume is one that has one or more of the following: snapshot policy, replication policy, backup to object policy. 
+
+You can choose to protect FlexVol or FlexGroup volumes; however, you cannot select a mix of these volumes when activating backup for a system. See how to link:prev-ontap-backup-manage.html[activate backup for additional volumes in the system] (FlexVol or FlexGroup) after you have configured backup for the initial volumes.
+
+[NOTE] 
+====
+* You can activate a backup only on a single FlexGroup volume at a time. 
+* The volumes you select must have the same SnapLock setting. All volumes must have SnapLock Enterprise enabled or have SnapLock disabled. 
+//(Volumes with SnapLock Compliance mode require ONTAP 9.14 or later.)
+====
+
+.Steps 
+
+Note that if the volumes you choose already have Snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
+
+. In the Select Volumes page, select the volume or volumes you want to protect. 
++
+* Optionally, filter the rows to show only volumes with certain volume types, styles, and more to make the selection easier. 
+* After you select the first volume, then you can select all FlexVol volumes (FlexGroup volumes can be selected one at a time only). To back up all existing FlexVol volumes, check one volume first and then check the box in the title row. 
+* To back up individual volumes, check the box for each volume.
+
+. Select *Next*.
+
+=== Define the backup strategy 
+
+Defining the backup strategy involves configuring the following options: 
+
+* Protection options: Whether you want to implement one or all of the backup options: local snapshots, replication, and backup to object storage
+* Architecture: Whether you want to use a fan-out or cascading backup architecture
+* Local snapshot policy
+* Replication target and policy
+//+
+//NOTE: If the volumes you choose have different Snapshot and replication policies than the policies you select in this step, the existing policies will be overwritten. 
+* Backup to object storage information (provider, encryption, networking, backup policy, and export options). 
+
+.Steps 
+
+. In the Define Backup Strategy page, choose one or all of the following. All three are selected by default: 
++
+* *Local Snapshots*: Creates local Snapshot copies. 
+* *Replication*: Creates replicated volumes on another ONTAP storage system.  
+* *Backup*: Backs up volumes to a bucket on an ONTAP system configured for S3.  
+
+. *Architecture*: If you chose both replication and backup, choose one of the following flows of information: 
+* *Cascading*: Backup data flows from the primary to the secondary system, and then from the secondary to object storage. 
+* *Fan out*: Backup data flows from the primary to the secondary system _and_ from the primary to object storage. 
++ 
+For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey].  
+
+. *Local Snapshot*: Choose an existing snapshot policy or create a new one. 
++
+TIP: If you want to create a custom policy before activating the Snapshot, you can use System Manager or the ONTAP CLI `snapmirror policy create` command. Refer to https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html[ONTAP CLI for `snapmirror policy`^].
++
+TIP: To create a custom policy using this service, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
+
+* Enter the name of the policy. 
+* Select up to five schedules, typically of different frequencies. 
+* Select *Create*. 
+
+. *Replication*: If you selected *Replication*, set the following options: 
++
+* *Replication target*: Select the destination system and SVM. Optionally, select the destination aggregate (or aggregates for FlexGroup volumes) and a prefix or suffix that will be added to the replicated volume name.
+
+* *Replication policy*: Choose an existing replication policy or create a new one. 
++
+To create a policy, select *Create new policy* and do the following: 
++
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** Select *Create*. 
+
+. *Back up to Object*: If you selected *Backup*, set the following options: 
++
+* *Provider*: Select *ONTAP S3*. 
+* *Provider settings*: Enter the S3 server FQDN details, port, and the users' access key and secret key.
++
+The access key and secret key are for the user you created to give the ONTAP cluster access to the S3 bucket.
+
+* *Networking*: Choose the IPspace in the source ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access (not required when the Console agent is installed in a "dark" site).
++
+TIP: Selecting the correct IPspace ensures that NetApp Backup and Recovery can set up a connection from ONTAP to your ONTAP S3 object storage.
+
+* *Backup policy*: Select an existing backup policy or create a new one. 
++
+TIP: You can create a policy with System Manager or the ONTAP CLI. To create a custom policy using the ONTAP CLI `snapmirror policy create` command, refer to https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html[ONTAP CLI for `snapmirror policy`^].
++
+TIP: To create a custom policy using this service, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
++
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** For backup-to-object policies, set the DataLock and Ransomware Protection settings. For details on DataLock and Ransomware Protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+** Select *Create*. 
+// In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
+
+
++
+//If your cluster is using ONTAP 9.11.1 or greater, you can choose to protect your backups from deletion and ransomware attacks by configuring _DataLock and Ransomware Protection_. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//+
+//If your cluster is using ONTAP 9.12.1 or greater and your ONTAP S3 system is using version 11.4 or greater, you can choose to tier older backups to public cloud archive tiers after a certain number of days. Current support is for AWS S3 Glacier/S3 Glacier Deep Archive or Azure Archive storage tiers. <<Preparing to archive older backup files to public cloud storage,See how to configure your systems for this functionality>>.
+//
+//* *Tier backup to public cloud*: Select the cloud provider that you want to tier backups to and enter the provider details. 
+//+
+//Select or create a new ONTAP S3 cluster. For details about creating a ONTAP S3 cluster so BlueXP can discover it, refer to https://docs.netapp.com/us-en/storagegrid-117/[StorageGRID documentation^]. 
+
+* *Export existing Snapshot copies to object storage as backup files*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+
+. Select *Next*. 
+
+=== Review your selections 
+
+This is the chance to review your selections and make adjustments, if necessary. 
+
+.Steps 
+
+. In the Review page, review your selections. 
+. Optionally check the box to *Automatically synchronize the Snapshot policy labels with the replication and backup policy labels*. This creates Snapshots with a label that matches the labels in the replication and backup policies. If the policies don't match, backups will not be created.
+. Select *Activate Backup*. 
+
+.Result 
+
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the source data. Subsequent transfers contain differential copies of the primary storage data contained in snapshot copies.
+
+A replicated volume is created in the destination cluster that will be synchronized with the primary storage volume. 
+
+An S3 bucket is created in the service account indicated by the S3 access key and secret key you entered, and the backup files are stored there.
+
+The Volume Backup Dashboard is displayed so you can monitor the state of the backups.
+
+You can also monitor the status of backup and restore jobs using the link:br-use-monitor-tasks.html[Job Monitoring page].
+
+=== Show the API commands 
+
+You might want to display and optionally copy the API commands used in the Activate backup and recovery wizard. You might want to do this to automate backup activation in future systems. 
+
+.Steps 
+
+. From the Activate backup and recovery wizard, select *View API request*. 
+. To copy the commands to the clipboard, select the *Copy* icon. 
+
+

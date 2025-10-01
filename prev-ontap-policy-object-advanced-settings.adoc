@@ -1,0 +1,214 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-policy-object-advanced-settings.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Manage backup-to-object storage options in NetApp Backup and Recovery Advanced Settings
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can change cluster-level, backup-to-object storage settings that you set when activating NetApp Backup and Recovery for each ONTAP system by using the Advanced Settings page. You can also modify some settings that are applied as "default" backup settings. This includes changing the transfer rate of backups to object storage, whether historical Snapshot copies are exported as backup files, and enabling or disabling ransomware scans for a system. 
+
+NOTE: These settings are available for backup-to-object storage only. None of these settings affect your Snapshot or replication settings. 
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+//storage keys, 
+
+
+
+You can change the following options in the Advanced Settings page:
+
+//* Changing the storage keys that give your ONTAP system permission to access object storage
+//* Changing the ONTAP IPspace that is connected to object storage
+* Changing the network bandwidth allocated to upload backups to object storage using the Max Transfer Rate option
+//ifdef::aws[]
+//* Changing the archival storage class (AWS only)
+//endif::aws[]
+//* Changing the automatic backup setting (and policy) for future volumes
+* Changing whether historical Snapshot copies are exported as backup files and included in your initial baseline backup files for future volumes
+* Changing whether "yearly" snapshots are removed from the source system
+* Enabling or disabling ransomware scans for a system, including scheduled scans
+
+== View cluster-level backup settings
+
+You can view the cluster-level backup settings for each system.
+
+.Steps
+
+. From the Console menu, select *Protection > Backup and recovery*.
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button so you can see how Backup is configured for all your systems.]
+
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
++
+image:screenshot_backup_advanced_settings_button.png[A screenshot that shows the Advanced Settings button from the Backup Settings page.]
++
+The _Advanced Settings_ page displays the current settings for that system.
++
+image:screenshot_backup_advanced_settings_page2.png[A screenshot that shows the Backup Advanced Settings values for a specific system.]
+
+. Expand the option and make the change. 
+
+All backup operations after the change will use the new values.
+
+Note that some options are unavailable based on the version of ONTAP on the source cluster, and based on the cloud provider destination where the backups reside.
+
+//== Change the storage keys for ONTAP to access cloud storage
+//
+//If you have a company policy that requires you to periodically rotate all credentials, for example, every 6 months or a year, this is how you'll synchronize your cloud provider's access key and secret key with your ONTAP system. This allows you to update your cloud provider credentials, and then change the keys in your ONTAP system so that the two systems will continue to communicate.
+//
+//This option is available for on-premises ONTAP systems only, and only when you're storing backups to Amazon S3, Google Cloud Storage, and StorageGRID.
+//
+//image:screenshot_backup_edit_storage_key.png[A screenshot of the storage key entry in the Advanced Settings page.]
+//
+//Just enter the new access key and secret key, and click *Apply*.
+//
+//== Change the ONTAP IPspace that is connected to object storage
+//
+//You can change the ONTAP IPspace that is connected to object storage. This option is available when backing up data from on-premises ONTAP systems only - it is not available for Cloud Volumes ONTAP systems.
+//
+//This option should not be used on a system that is actively backing up volume data to object storage. It should be used only in the case where an incorrect IPspace was selected when initially activating Backup on an on-premises ONTAP system.
+//
+//Refer to the getting started documentation for backing up data from your on-premises ONTAP systems to your specific cloud provider to make sure your ONTAP setup is configured correctly for the new IPspace. For example:
+//
+//* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. 
+//* The LIF must be associated with the IPspace that ONTAP should use to connect to object storage. 
+//* The nodes' intercluster LIFs must be able to access the object store. 
+//* If you use are using a different IPspace than the _Default_, you might need to create a static route to get access to the object storage.
+//
+//image:screenshot_backup_edit_ipspace.png[A screenshot of the IPspace entry in the Advanced Settings page.]
+//
+//Just select the new IPspace and click *Apply*. After that you'll be able to select the volumes that you want to back up from aggregates in that IPspace.
+
+== Change the network bandwidth available to upload backups to object storage
+
+When you activate NetApp Backup and Recovery for a system, by default, ONTAP can use an unlimited amount of bandwidth to transfer the backup data from volumes in the system to object storage. If you notice that backup traffic is affecting normal user workloads, you can throttle the amount of network bandwidth that is used during the transfer using the Max Transfer Rate option in the Advanced Settings page. 
+
+.Steps 
+
+. From the *Volumes* tab, select *Backup Settings*.
+
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+
+. In the Advanced Settings page, expand the *Max Transfer Rate* section. 
++
+image:screenshot_backup_edit_transfer_rate.png[A screenshot of the Maximum Transfer Rate entry in the Advanced Settings page.]
+
+. Choose a value between 1 and 1,000 Mbps as the maximum transfer rate. 
+
+. Select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit.
+
+
+. Select *Apply*.
+
+This setting does not affect the bandwidth allocated to any other replication relationships that may be configured for volumes in the system.
+
+//ifdef::aws[]
+//== Change the archival storage class
+//
+//If you want to change the archival storage class that's used when your backup files have been stored for a certain number of days (typically more than 30 days), then you can make the change here. Since this is a cluster-level setting, any backup policies that are using archival storage are changed immediately to use this new storage class.
+//
+//This option is available for on-premises ONTAP and Cloud Volumes ONTAP systems (using ONTAP 9.10.1 or greater) when you're writing backups files to Amazon S3.
+//
+//Note that you can only change from _S3 Glacier_ to _S3 Glacier Deep Archive_. Once you've selected Glacier Deep Archive, you can't change back to Glacier.
+//
+//image:screenshot_backup_edit_storage_class.png[A screenshot of the Archival Storage Class entry in the Advanced Settings page.]
+//
+//link:concept-cloud-backup-policies.html#archival-storage-settings[Learn more about archival storage settings].
+//link:reference-aws-backup-tiers.html[Learn more about using AWS archival storage].
+//endif::aws[]
+//
+//== Change the automatic backup setting for future volumes
+//
+//If you did not enable the automatic backup of future volumes when you activated NetApp Backup and Recovery, then you can start making automatic backups of new volumes in the Automatic Backup section. You can also select the backup policy that will be applied to those new volumes. Having a backup policy assigned to newly created volumes ensures that all your data is protected.
+//
+//If you enabled the automatic backup of future volumes when you activated NetApp Backup and Recovery, then you can change the backup policy that will be used for the newly created volumes in the Automatic Backup section. 
+//
+//Note that the policy that you want to apply to new volumes must already exist. link:task-manage-backups-ontap.html#adding-a-new-backup-policy[See how to create a new backup policy for a system].
+//
+//image:screenshot_backup_edit_auto_backup.png[A screenshot of the Automatic Backup entry in the Advanced Settings page.]
+//
+//Once enabled, this backup policy will be applied to any new volume created in this system using BlueXP, System Manager, the ONTAP CLI, or the APIs.
+
+== Change whether historical snapshot copies are exported as backup files
+
+If there are any local snapshot copies for volumes that match the backup schedule label you're using in this system (for example, daily, weekly, etc.), you can export those historic snapshots to object storage as backup files. This enables you to initialize your backups in the cloud by moving older snapshot copies into the baseline backup copy.
+
+Note that this option only applies to new backup files for new read/write volumes, and it is not supported with data protection (DP) volumes.
+
+.Steps 
+
+. From the *Volumes* tab, select *Backup Settings*.
+
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+
+. In the Advanced Settings page, expand the *Export existing Snapshot copies* section. 
++
+image:screenshot_backup_edit_export_snapshots.png[A screenshot of the Export existing Snapshot copies entry in the Advanced Settings page.]
+
+. Select whether you want existing Snapshot copies to be exported. 
+
+. Select *Apply*.
+
+== Change whether "yearly" snapshots are removed from the source system
+
+When you select the "yearly" backup label for a backup policy for any of your volumes, the Snapshot copy that is created is very large. By default, these yearly snapshots are deleted automatically from the source system after being transferred to object storage. You can change this default behavior from the Yearly Snapshot Deletion section.
+
+.Steps 
+
+. From the *Volumes* tab, select *Backup Settings*.
+
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+
+. In the Advanced Settings page, expand the *Yearly Snapshot Deletion* section. 
++
+image:screenshot_backup_edit_yearly_snap_delete.png[A screenshot of the Yearly Snapshots entry in the Advanced Settings page.]
+
+. Select *Disabled* to retain the yearly snapshots on the source system.
+
+. Select *Apply*.
+
+== Enable or disable ransomware scans 
+
+Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot copy. You can enable or disable ransomware scans on the latest snapshot copy by using the option on the Advanced Settings page. If you enable it, scans are performed every 7 days by default. 
+
+For details about DataLock and Ransomware Protection options, refer to link:prev-ontap-policy-object-options.html[DataLock and Ransomware Protection options].
+
+You can change that schedule to days or weeks or disable it, saving costs.  
+
+TIP: Enabling ransomware scans will incur extra charges depending on the cloud provider. 
+
+Scheduled ransomware scans run only on the latest snapshot copy.
+
+If the scheduled ransomware scans are disabled, you can still perform on-demand scans and the scan during a restore operation will still occur. 
+
+Refer to link:prev-ontap-policy-manage.html[Manage policies] for details about managing policies that implement ransomware detection. 
+
+.Steps 
+
+. From the *Volumes* tab, select *Backup Settings*.
+
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+
+. In the Advanced Settings page, expand the *Ransomware scan* section. 
+. Enable or disable *Ransomware scan*. 
+
+. Select *Scheduled ransomware scan*. 
+. Optionally, change the every week default scan to days or weeks. 
+. Set the how often in days or weeks that the scan should run. 
+. Select *Apply*. 
+
+
+

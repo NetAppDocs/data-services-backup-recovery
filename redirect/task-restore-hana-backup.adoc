@@ -1,0 +1,4 @@
+---
+permalink: task-restore-hana-backup.html
+redirect: data-services-backup-recovery/index.html
+---

@@ -1,0 +1,141 @@
+---
+sidebar: sidebar
+permalink: br-start-discover-backup-targets.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Microsoft SQL Server database,
+summary: Complete a few steps to discover offsite backup targets in NetApp Backup and Recovery. These targets could include Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage, and StorageGRID.
+---
+
+= Discover offsite backup targets in NetApp Backup and Recovery 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Complete a few steps to discover or manually add offsite backup targets in NetApp Backup and Recovery. 
+
+== Discover a backup target 
+
+Before you use NetApp Backup and Recovery, you should configure your backup targets of Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID.
+
+You can discover these targets automatically or manually add them.
+
+Provide the credentials needed to access the storage account system. These credentials are used to discover the workloads that you want to back up.
+
+.Before you begin
+
+To add an offsite backup target, at least one workload has to be discovered. 
+
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select the *Offsite backup targets* tab.
+. Select *Discover backup target*. 
+. Select one of the backup target types: *Amazon Web Services (AWS) S3*, *Microsoft Azure Blob Storage*, *StorageGRID* or *ONTAP S3*.
+. In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
+. Select *Next*.
+. Enter the credentials information. The information differs depending on the type of backup target you selected and the credentials location that you chose.
+
+* For AWS: 
+** *Credential name*: Enter the AWS credential name.
+** *Access key*: Enter the AWS secret.
+** *Secret key*: Enter the AWS secret key. 
+
+* For Azure:
+** *Credential name*: Enter the Azure Blob Storage credential name.
+** *Client secret*: Enter the Azure Blob Storage client secret.
+** *Application (client) ID*: Select the Azure Blob Storage application ID.
+** *Directory tenant ID*: Enter the Azure Blob Storage tenant ID.
+
+* For StorageGRID:  
+** *Credential name*: Enter the StorageGRID credential name.
+//** *Bucket target name*: Enter the name of the StorageGRID bucket.
+//** *Tenant ID*: Enter the StorageGRID tenant ID.
+** *Gateway Node FQDN*: Enter a FQDN name for StorageGRID.
+** *Port*: Enter the port number for StorageGRID.
+** *Access key*: Enter the StorageGRID S3 access key. 
+** *Secret key*: Enter the StorageGRID S3 secret key.
+//** *Console agents*: Select the Console agent for StorageGRID.  
+
+* For ONTAP S3: 
+** *Credential name*: Enter the ONTAP S3 credential name.
+//** *Bucket target name*: Enter the name of the StorageGRID bucket.
+//** *Storage working environment*: Select the ONTAP S3 working environment.
+** *Gateway Node FQDN*: Enter a FQDN name for ONTAP S3.
+** *Port*: Enter the port number for ONTAP S3.
+** *Access key*: Enter the ONTAP S3 access key. 
+** *Secret key*: Enter the ONTAP S3 secret key. 
+
+. Select *Discover*.
+
+//+
+//image:screen-br-inventory-offsite-backup-targets.png[Offsite backup targets tab]
+
+== Add a bucket for a backup target 
+
+Rather than have NetApp Backup and Recovery discover buckets automatically, you can manually add a bucket to an offsite backup target.
+
+
+
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select *Offsite backup targets*.
+//. Select *Discover backup target*. 
+. Select the target and on the right, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Add bucket*.
+. Enter the bucket information. The information differs depending on the type of backup target you selected.
+
+* For AWS: 
+** *Bucket name*: Enter the name of the S3 bucket. The prefix of "netapp-backup" is a required prefix and is automatically added to the name you provide. 
+** *AWS account*: Enter the AWS account name.
+** *Bucket region*: Enter the AWS region for the bucket.
+** *Enable S3 Object Lock*: Select this option to enable S3 Object Lock for the bucket. S3 Object Lock prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.
+*** *Governance mode*: Select this option to enable governance mode for the S3 Object Lock bucket. Governance mode enables you to protect objects from being deleted or overwritten by most users, but allows certain users to alter the retention settings.
+*** *Compliance mode*: Select this option to enable compliance mode for the S3 Object Lock bucket. Compliance mode prevents any user, including the root user, from altering the retention settings or deleting objects until the retention period expires.
+** *Versioning*: Select this option to enable versioning for the S3 bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
+** *Tags*: Select tags for the S3 bucket. Tags are key-value pairs that can be used to organize and manage your S3 resources.
+** *Encryption*: Select the type of encryption for the S3 bucket. The options are either AWS S3-managed keys or AWS Key Management Service key. If you select AWS Key Management Service keys, you must provide the key ID.
+//* *Enable bucket key*: Select this option to enable bucket key for the S3 bucket. Bucket key reduces the cost of using server-side encryption with AWS Key Management Service by reducing the number of requests made to the service.
+
+
+
+* For Azure: 
+** *Subscription*: Select the name of the Azure Blob Storage container.
+** *Resource group*: Select the name of the Azure resource group.
+** *Instance details*: 
+*** *Storage account name*: Enter the name of the Azure Blob Storage container.
+*** *Azure region*: Enter the Azure region for the container.
+*** *Performance type*: Select the performance type of either standard or premium for the Azure Blob Storage container indicating the level of performance required. 
+*** *Encryption*: Select the type of encryption for the Azure Blob Storage container. The options are either Microsoft-managed keys or customer-managed keys. If you select customer-managed keys, you must provide the key vault name and key name.
+
+
+
+* For StorageGRID: 
+** *Backup target name*: Select the name of the StorageGRID bucket.
+** *Bucket name*: Enter the name of the StorageGRID bucket.
+** *Region*: Enter the StorageGRID region for the bucket.
+** *Enable versioning*: Select this option to enable versioning for the StorageGRID bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
+** *Object locking*: Select this option to enable object locking for the StorageGRID bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later. 
+** *Capacity*: Enter the capacity for the StorageGRID bucket. This is the maximum amount of data that can be stored in the bucket.
+
+* For ONTAP S3: 
+** *Backup target name*: Select the name of the ONTAP S3 bucket.
+** *Bucket target name*: Enter the name of the ONTAP S3 bucket.
+** *Capacity*: Enter the capacity for the ONTAP S3 bucket. This is the maximum amount of data that can be stored in the bucket.
+** *Enable versioning*: Select this option to enable versioning for the ONTAP S3 bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
+** *Object locking*: Select this option to enable object locking for the ONTAP S3 bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.
+
+. Select *Add*.
+
+== Change credentials for a backup target
+
+Enter the credentials needed to access the backup target. 
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select *Offsite backup targets*.
+//. Select *Discover backup target*. 
+. Select the target and on the right, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Change credentials*.
+. Enter the new credentials for the backup target. The information differs depending on the type of backup target you selected.
+. Select *Done*. 

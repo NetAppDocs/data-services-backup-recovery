@@ -1,0 +1,33 @@
+=== Restore volumes less than 1 GB
+
+With this release, you can now restore volumes that you created in ONTAP that are less than 1 GB. The minimum volume size that you can create using ONTAP is 20 MB.  
+
+=== Tips on how to mitigate DataLock costs
+
+The DataLock feature protects your backup files from being modified or deleted for a specified period of time. This is helpful to protect your files against ransomware attacks. 
+
+//For details about DataLock and tips on how to mitigate the associated costs, refer to link:concept-cloud-backup-policies.html[Backup-to-object policy settings].
+
+For details about DataLock and tips on how to mitigate the associated costs, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+
+=== AWS IAM Roles Anywhere integration 
+
+The Amazon Web Services (AWS) Identity and access Roles Anywhere service enables you to use IAM roles and short-term credentials for your workloads _outside_ of AWS to access AWS APIs securely, the same way that you use IAM roles for workloads _on_ AWS. When you use IAM Roles Anywhere private key infrastructure and AWS tokens, you don't need long-term AWS access keys and secret keys. This enables you to rotate credentials more frequently, improving security.
+
+With this release, support for AWS IAM Roles Anywhere service is a technology preview.
+
+ifdef::aws[]
+This applies to link:prev-ontap-backup-cvo-aws.html[backing up Cloud Volumes ONTAP to AWS].
+ 
+endif::aws[]
+
+Refer to https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-July-2024-Release/ba-p/453993[NetApp Backup and Recovery July 2024 release blog].
+
+=== FlexGroup folder or directory restore now available
+Previously, FlexVol volumes could be restored, but you couldn't restore FlexGroup folders or directories. With ONTAP 9.15.1 p2, you can restore FlexGroup folders using the Browse and restore option.
+
+With this release, support for FlexGroup folder restore is a technology preview.
+
+For details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-restore.html[Restore folders and files using Browse & Restore].
+
+For details to enable it manually, refer to https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-July-2024-Release/ba-p/453993[NetApp Backup and Recovery July 2024 release blog].

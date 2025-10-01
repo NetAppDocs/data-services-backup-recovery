@@ -1,0 +1,89 @@
+---
+sidebar: sidebar
+permalink: prev-vmware-manage.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Manage protection of datastores and VMs in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can view policies, datastores, and virtual machines before you back up and restore data with NetApp Backup and Recovery. Depending upon the change in database, policies, or resource groups, you can view the updates from the NetApp Console UI.
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+
+
+== View policies
+You can view all the default pre-canned policies. For each of these policies, when you view the details, all the associated policies and virtual machines are listed.
+
+. In the Console UI, select *Protection* > *Backup and Recovery* > *Virtual Machines*.
+. From the *Settings* drop-down, select *Policies*.
+. Select *View Details* corresponding to policy whose details you want to view.
+
+The associated policies and virtual machines are listed.
+
+== View datastores and virtual machines
+The datastores and virtual machines that are protected using the registered SnapCenter Plug-in for VMware vSphere host are displayed.
+
+.Steps
+
+. In the Console UI, select *Protection* > *Backup and Recovery* > *Virtual Machines* > *Settings* > *SnapCenter Plug-in for VMware vSphere*.
+. Select the SnapCenter Plug-in for VMware vSphere host for which you want to see the datastores and virtual machines.
+
+== Unprotect datastores
+
+You can unprotect a datastore which was already protected earlier. You can unprotect a datastore when you want to delete the cloud backups or do not want to back it up to the cloud anymore. The datastore can be protected again after the unprotection is successful.
+
+.Steps
+
+. In the Console UI, select *Protection* > *Backup and Recovery* > *Virtual Machines*.
+. Select the Actions icon image:icon-action.png[action] corresponding to the datastore that you want to unprotect and select *Unprotect*.
+
+== Edit the SnapCenter Plug-in for VMware vSphere Instance
+You can edit the details of the SnapCenter Plug-in for VMware vSphere host in the Console.
+
+.Steps
+
+. In the Console UI, select *Protection* > *Backup and Recovery* > *Virtual Machines* > *Settings* > *SnapCenter Plug-in for VMware vSphere*.
+. Select the Actions icon image:icon-action.png[action] and select *Edit*.
+. Modify the details as required.
+. Select *Save*.
+
+== Refresh resources and backups
+If you want to view the latest datastores and backups that have been added to the application, you should refresh the resources and backups. This will initiate the discovery of the resources and backups and the latest details will be displayed.
+
+. Select *Backup and Recovery* > *Virtual Machines*.
+. From the *Settings* drop-down, select *SnapCenter Plug-in for VMware vSphere*.
+. Select the Actions icon image:icon-action.png[action] corresponding to the SnapCenter Plug-in for VMware vSphere host and select *Refresh Resources and Backups*.
+
+== Refresh policy or resource group
+
+If there is a change to the policy or resource group, you should refresh the protection relationship.
+
+. Select *Backup and Recovery* > *Virtual Machines*.
+. Select the Actions icon image:icon-action.png[action] corresponding to the datastore and select *Refresh Protection*. 
+
+== Unregister SnapCenter Plug-in for VMware vSphere host
+All datastores and virtual machines associated with the SnapCenter Plug-in for VMware vSphere host will be unprotected.
+
+. Select *Backup and Recovery* > *Virtual Machines*.
+. From the *Settings* drop-down, select *SnapCenter Plug-in for VMware vSphere*.
+. Select the Actions icon image:icon-action.png[action] corresponding to the SnapCenter Plug-in for VMware vSphere host and select *Unregister*.
+
+== Monitor Jobs
+Jobs are created for all the NetApp Backup and Recovery operations. You can monitor all the jobs and all the sub tasks that are performed as part of each task.
+
+. Select *Backup and Recovery* > *Job Monitoring*.
++
+When you initiate an operation, a window appears stating that the job is initiated. You can select the link to monitor the job.
+
+. Select the primary task to view the sub tasks and status of each of these sub tasks.

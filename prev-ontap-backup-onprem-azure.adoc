@@ -1,0 +1,414 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-backup-onprem-azure.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Back up on-premises ONTAP data to Azure Blob storage with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your on-premises ONTAP systems to a secondary storage system and to Azure Blob storage.
+
+NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+
+
+
+== Identify the connection method
+
+Choose which of the two connection methods you will use when configuring backups from on-premises ONTAP systems to Azure Blob.
+
+* *Public connection* - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.
+* *Private connection* - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.
+
+Optionally, you can connect to a secondary ONTAP system for replicated volumes using the public or private connection as well.
+
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the Azure VNet.
+
+image:diagram_cloud_backup_onprem_azure_public.png[A diagram showing how NetApp Backup and Recovery communicates over a public connection with the volumes on the cluster and the Azure Blob storage where the backup files are located.]
+
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the Azure VNet.
+
+image:diagram_cloud_backup_onprem_azure_private.png[A diagram showing how NetApp Backup and Recovery communicates over a private connection with the volumes on the cluster and the Azure Blob storage where the backup files are located.]
+
+== Prepare your Console agent
+
+The Console agent is the main software for NetApp Console functionality. A Console agent is required to back up and restore your ONTAP data.
+
+=== Create or switch Console agents
+
+If you already have a Console agent deployed in your Azure VNet or on your premises, then you're all set. 
+
+If not, then you'll need to create a Console agent in one of those locations to back up ONTAP data to Azure Blob storage. You can't use a Console agent that's deployed in another cloud provider.
+
+
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html[Install a Console agent in Azure^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-on-prem.html[Install a Console agent in your premises^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-restricted-mode.html[Install a Console agent in an Azure Government region^]
++
+NetApp Backup and Recovery is supported in Azure Government regions when the Console agent is deployed in the cloud - not when it's installed in your premises. Additionally, you must deploy the Console agent from the Azure Marketplace. You can't deploy the Console agent in a Government region from the Console SaaS website. 
+
+=== Prepare networking for the Console agent
+
+Ensure that the Console agent has the required networking connections.
+
+.Steps
+
+. Ensure that the network where the Console agent is installed enables the following connections:
+
+* An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Blob object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-azure.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+* An HTTPS connection over port 443 to your ONTAP cluster management LIF
+* In order for the NetApp Backup and Recovery Search & Restore functionality to work, port 1433 must be open for communication between the Console agent and the Azure Synapse SQL services.
+* Additional inbound security group rules are required for Azure and Azure Government deployments. See https://docs.netapp.com/us-en/console-setup-admin/reference-ports-azure.html[Rules for the Console agent in Azure^] for details.
+
+. Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Console agent and Blob storage to stay in your virtual private network (a *private* connection).
+
+=== Verify or add permissions to the Console agent
+
+To use the NetApp Backup and Recovery Search & Restore functionality, you need to have specific permissions in the role for the Console agent so that it can access the Azure Synapse Workspace and Data Lake Storage Account. See the permissions below, and follow the steps if you need to modify the policy.
+
+.Before you start
+
+You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
+
+.Steps
+
+. Identify the role assigned to the Console agent virtual machine:
+
+.. In the Azure portal, open the Virtual machines service.
+
+.. Select the Console agent virtual machine.
+
+.. Under *Settings*, select *Identity*.
+
+.. Select *Azure role assignments*.
+
+.. Make note of the custom role assigned to the Console agent virtual machine.
+
+. Update the custom role:
+
+.. In the Azure portal, open your Azure subscription.
+
+.. Select *Access control (IAM) > Roles*.
+
+.. Select the ellipsis (*...*) for the custom role and then select *Edit*.
+
+.. Select *JSON* and add the following permissions:
++
+[%collapsible]
+====
+[source,json]
+"Microsoft.Storage/storageAccounts/listkeys/action",
+"Microsoft.Storage/storageAccounts/read",
+"Microsoft.Storage/storageAccounts/write",
+"Microsoft.Storage/storageAccounts/blobServices/containers/read",
+"Microsoft.Storage/storageAccounts/listAccountSas/action",
+"Microsoft.KeyVault/vaults/read",
+"Microsoft.KeyVault/vaults/accessPolicies/write",
+"Microsoft.Network/networkInterfaces/read",
+"Microsoft.Resources/subscriptions/locations/read",
+"Microsoft.Network/virtualNetworks/read",
+"Microsoft.Network/virtualNetworks/subnets/read",
+"Microsoft.Resources/subscriptions/resourceGroups/read",
+"Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+"Microsoft.Resources/subscriptions/resourceGroups/write",
+"Microsoft.Authorization/locks/*",
+"Microsoft.Network/privateEndpoints/write",
+"Microsoft.Network/privateEndpoints/read",
+"Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
+"Microsoft.Network/virtualNetworks/join/action",
+"Microsoft.Network/privateDnsZones/A/write",
+"Microsoft.Network/privateDnsZones/read",
+"Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
+"Microsoft.Network/networkInterfaces/delete",
+"Microsoft.Network/networkSecurityGroups/delete",
+"Microsoft.Resources/deployments/delete",
+"Microsoft.ManagedIdentity/userAssignedIdentities/assign/action",
+"Microsoft.Synapse/workspaces/write",
+"Microsoft.Synapse/workspaces/read",
+"Microsoft.Synapse/workspaces/delete",
+"Microsoft.Synapse/register/action",
+"Microsoft.Synapse/checkNameAvailability/action",
+"Microsoft.Synapse/workspaces/operationStatuses/read",
+"Microsoft.Synapse/workspaces/firewallRules/read",
+"Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
+"Microsoft.Synapse/workspaces/operationResults/read",
+"Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action"
+====
++
+https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html[View the full JSON format for the policy^]
+
+.. Select *Review + update* and then select *Update*.
+
+== Verify license requirements
+
+You'll need to verify license requirements for both Azure and the Console:
+
+* Before you can activate NetApp Backup and Recovery for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Console Marketplace offering from Azure, or purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
+
+** For NetApp Backup and Recovery PAYGO licensing, you'll need a subscription to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[NetApp Console offering from the Azure Marketplace^]. Billing for NetApp Backup and Recovery is done through this subscription.
+** For NetApp Backup and Recovery BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses].
+
+* You need to have an Azure subscription for the object storage space where your backups will be located.
+
+*Supported regions* 
+
+You can create backups from on-premises systems to Azure Blob in all regions, including Azure Government regions. You specify the region where the backups will be stored when you set up the service.
+
+== Prepare your ONTAP clusters
+
+// This section uses an include along with the 2 subsections of "Discover your ONTAP cluster in BlueXP" and "Verify ONTAP requirements"
+
+include::../_include/backup-onprem-prepare-onprem-ONTAP-cluster.adoc[]
+
+=== Verify ONTAP networking requirements for backing up data to object storage
+
+You must configure the following requirements on the system that connects to object storage. 
+
+* For a fan-out backup architecture, configure the following settings on the _primary_ system. 
+* For a cascaded backup architecture, configure the following settings on the _secondary_ system.
+
+The following ONTAP cluster networking requirements are needed: 
+
+* The ONTAP cluster initiates an HTTPS connection over port 443 from the intercluster LIF to Azure Blob storage for backup and restore operations.
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
++
+* ONTAP requires an inbound connection from the Console agent to the cluster management LIF. The Console agent can reside in an Azure VNet.
+
+* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[Learn more about IPspaces^].
++
+When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+* The nodes' and intercluster LIFs are able to access the object store.
+* DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
+* If you use are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
+* Update firewall rules, if necessary, to allow NetApp Backup and Recovery service connections from ONTAP to object storage through port 443 and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
+
+===  Verify ONTAP networking requirements for replicating volumes
+
+//This section uses an Include for all providers. It includes "Cloud Volumes ONTAP networking requirements", and "On-premises ONTAP networking requirements"   
+
+include::../_include/backup-onprem-prepare-source-destination-systems-for-repl.adoc[]
+
+== Prepare Azure Blob as your backup target
+
+. You can use your own custom-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[Learn how to use your own keys^].
++
+Note that Backup and recovery supports _Azure access policies_ as the permission model. The _Azure role-based access control_ (Azure RBAC) permission model is not currently supported.
+
+. If you want to have a more secure connection over the public internet from your on-prem data center to the VNet, there is an option to configure an Azure Private Endpoint in the activation wizard. In this case you will need to know the VNet and Subnet for this connection. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[Refer to details about using a Private Endpoint^].
+
+=== Create your Azure Blob storage account
+
+By default, the service creates storage accounts for you. If you want to use your own storage accounts, you can create them before you start the backup activation wizard and then select those storage accounts in the wizard. 
+
+link:prev-ontap-protect-journey.html[Learn more about creating your own storage accounts].
+
+== Activate backups on your ONTAP volumes 
+
+Activate backups at any time directly from your on-premises system.
+
+A wizard takes you through the following major steps: 
+
+* <<Select the volumes that you want to back up>>
+* <<Define the backup strategy>>
+* <<Review your selections>> 
+
+You can also <<Show the API commands>> at the review step, so you can copy the code to automate backup activation for future systems.  
+
+=== Start the wizard 
+
+.Steps 
+
+. Access the Activate backup and recovery wizard using one of the following ways: 
+* From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to the Backup and recovery service in the right-panel.
++
+image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup and recovery Enable button that is available after you select a system.]
+
++
+If the Azure destination for your backups exists on the Console *Systems* page, you can drag the ONTAP cluster onto the Azure Blob object storage.  
+* Select *Volumes* in the Backup and recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon  and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled).  
+
++ 
+The Introduction page of the wizard shows the protection options including local Snapshots, replication, and backups. If you did the second option in this step, the Define Backup Strategy page appears with one volume selected. 
+
+. Continue with the following options: 
+
+* If you already have a Console agent, you're all set. Just select *Next*. 
+* If you don't already have a Console agent, the *Add a Console agent* option appears. Refer to <<Prepare your Console agent>>. 
+
+=== Select the volumes that you want to back up
+
+Choose the volumes you want to protect. A protected volume is one that has one or more of the following: Snapshot policy, replication policy, backup to object policy. 
+
+You can choose to protect FlexVol or FlexGroup volumes; however, you cannot select a mix of these volumes when activating backup for a system. See how to link:prev-ontap-backup-manage.html[activate backup for additional volumes in the system] (FlexVol or FlexGroup) after you have configured backup for the initial volumes.
+
+[NOTE] 
+====
+* You can activate a backup only on a single FlexGroup volume at a time. 
+* The volumes you select must have the same SnapLock setting. All volumes must have SnapLock Enterprise enabled or have SnapLock disabled. 
+//(Volumes with SnapLock Compliance mode aren't currently supported require ONTAP 9.14 or later.)
+====
+
+.Steps 
+
+Note that if the volumes you choose already have Snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
+
+. In the Select Volumes page, select the volume or volumes you want to protect. 
++
+* Optionally, filter the rows to show only volumes with certain volume types, styles, and more to make the selection easier. 
+* After you select the first volume, then you can select all FlexVol volumes (FlexGroup volumes can be selected one at a time only). To back up all existing FlexVol volumes, check one volume first and then check the box in the title row. 
+* To back up individual volumes, check the box for each volume.
+
+. Select *Next*.
+
+=== Define the backup strategy 
+
+Defining the backup strategy involves setting the following options: 
+
+* Whether you want one or all of the backup options: local Snapshots, replication, and backup to object storage
+* Architecture
+* Local Snapshot policy
+* Replication target and policy
++
+NOTE: If the volumes you choose have different Snapshot and replication policies than the policies you select in this step, the existing policies will be overwritten. 
+
+* Backup to object storage information (provider, encryption, networking, backup policy, and export options). 
+
+.Steps 
+
+. In the Define backup strategy page, choose one or all of the following. All three are selected by default: 
++
+* *Local Snapshots*: If you are performing replication or back up to object storage, local snapshots must be created. 
+* *Replication*: Creates replicated volumes on another ONTAP storage system.  
+* *Backup*: Backs up volumes to object storage.  
+
+. *Architecture*: If you chose replication and backup, choose one of the following flows of information: 
+* *Cascading*: Information flows from the primary to the secondary, and from secondary to object storage. 
+* *Fan out*: Information flows from the primary to the secondary _and_ from the primary to object storage. 
++ 
+For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey]. 
+ 
+. *Local Snapshot*: Choose an existing snapshot policy or create a new one. 
++
+TIP: To create a custom policy before activating the snapshot, refer to link:br-use-policies-create.html[Create a policy].
+
+
++
+To create a policy, select *Create new policy* and do the following: 
+
+* Enter the name of the policy. 
+* Select up to five schedules, typically of different frequencies. 
+* Select *Create*. 
+
+. *Replication*: Set the following options: 
++
+* *Replication target*: Select the destination system and SVM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
+* *Replication policy*: Choose an existing replication policy or create a new one. 
++
+TIP: To create a custom policy before activating the replication, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
++
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** Select *Create*. 
+
+. *Back up to Object*: If you selected *Backup*, set the following options: 
++
+* *Provider*: Select *Microsoft Azure*. 
+* *Provider settings*: Enter the provider details and region where the backups will be stored.
++ 
+Either create a new storage account or select an existing one. 
+
++
+Either create your own resource group that manages the Blob container or select the resource group type and group.  
+
++
+TIP: If you want to protect your backup files from being modified or deleted, ensure that the storage account was created with immutable storage enabled using a 30-day retention period. 
+
++
+TIP: If you want to tier older backup files to Azure Archive Storage for further cost optimization, ensure that the storage account has the appropriate Lifecycle rule. 
+
+* *Encryption key*: If you created a new Azure storage account, enter encryption key information given to you from the provider. Choose whether you'll use the default Azure encryption keys, or choose your own customer-managed keys from your Azure account, to manage encryption of your data. 
+
++ 
+If you choose to use your own customer-managed keys, enter the key vault and key information. 
+
++ 
+NOTE: If you chose an existing Microsoft storage account, encryption information is already available, so you don't need to enter it now. 
+
+* *Networking*: Choose the IPspace, and whether you'll be using a Private Endpoint. Private Endpoint is disabled by default.
+
+.. The IPspace in the ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access.
+.. Optionally, choose whether you'll use an Azure private endpoint that you have previously configured. https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview[Learn about using an Azure private endpoint^].
+
+* *Backup policy*: Select an existing Backup to object storage policy or create a new one. 
++
+TIP: To create a custom policy before activating the backup, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
+
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** For backup-to-object policies, set the DataLock and Ransomware Protection settings. For details on DataLock and Ransomware Protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+** Select *Create*. 
+// In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
+
+
+
+* *Export existing Snapshot copies to object storage as backup copies*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+
+. Select *Next*. 
+
+//.. Enter the name for the default policy. You don't need to change the name.
+//.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings[See the list of existing policies you can choose^].
+
+//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. 
+//+
+//NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
+
+//.. Optionally, when using ONTAP 9.10.1 and greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization. link:prev-reference-aws-archive-storage-tiers.html[Learn more about using archival tiers^].
+
+=== Review your selections 
+
+This is the chance to review your selections and make adjustments, if necessary. 
+
+.Steps 
+
+. In the Review page, review your selections. 
+. Optionally check the box to *Automatically synchronize the Snapshot policy labels with the replication and backup policy labels*. This creates Snapshots with a label that matches the labels in the replication and backup policies.  
+. Select *Activate Backup*. 
+
+.Result 
+
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the primary storage system data. Subsequent transfers contain differential copies of the primary storage system data contained in Snapshot copies.
+
+A replicated volume is created in the destination cluster that will be synchronized with the primary volume. 
+
+A Blob storage account is created in the resource group you entered, and the backup files are stored there. The Volume Backup Dashboard is displayed so you can monitor the state of the backups.
+
+You can also monitor the status of backup and restore jobs using the link:br-use-monitor-tasks.html[Job Monitoring page^].
+
+=== Show the API commands 
+
+You might want to display and optionally copy the API commands used in the Activate backup and recovery wizard. You might want to do this to automate backup activation in future systems. 
+
+.Steps 
+
+. From the Activate backup and recovery wizard, select *View API request*. 
+. To copy the commands to the clipboard, select the *Copy* icon. 
+
+

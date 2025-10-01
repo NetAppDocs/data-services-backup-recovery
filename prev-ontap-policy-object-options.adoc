@@ -1,0 +1,357 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-policy-object-options.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Backup-to-object policy options in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to create backup policies with a variety of settings for your on-premises ONTAP and Cloud Volumes ONTAP systems.
+
+NOTE: These policy settings are relevant for backup-to-object storage only. None of these settings affect your snapshot or replication policies. 
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+== Backup schedule options
+
+NetApp Backup and Recovery enables you to create multiple backup policies with unique schedules for each system (cluster). You can assign different backup policies to volumes that have different recovery point objectives (RPO).
+
+Each backup policy provides a section for _Labels & Retention_ that you can apply to your backup files. Note that the Snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery or backup files will not be created. 
+
+image:screenshot_backup_schedule_settings.png[A screenshot of the Backup Schedule settings when creating a backup policy.]
+
+There are two parts of the schedule; the Label and the Retention value:
+
+* The *label* defines how often a backup file is created (or updated) from the volume. You can select among the following types of labels:
+
+** You can choose one, or a combination of, *hourly*, *daily*, *weekly*, *monthly*, and *yearly* timeframes.
+** You can select one of the system-defined policies that provide backup and retention for 3 months, 1 year, or 7 years.
+** If you have created custom backup protection policies on the cluster using ONTAP System Manager or the ONTAP CLI, you can select one of those policies.
+
+* The *retention* value defines how many backup files for each label (timeframe) are retained. Once the maximum number of backups have been reached in a category, or interval, older backups are removed so you always have the most current backups. This also saves you storage costs because obsolete backups don't continue to take up space in the cloud.
+
+For example, say you create a backup policy that creates 7 *weekly* and 12 *monthly* backups:
+
+* each week and each month a backup file is created for the volume
+* at the 8th week, the first weekly backup is removed, and the new weekly backup for the 8th week is added (keeping a maximum of 7 weekly backups)
+* at the 13th month, the first monthly backup is removed, and the new monthly backup for the 13th month is added (keeping a maximum of 12 monthly backups)
+
+Yearly backups are deleted automatically from the source system after being transferred to object storage. This default behavior can be changed in the Advanced Settings page for the system.
+
+== DataLock and Ransomware protection options
+
+NetApp Backup and Recovery provides support for DataLock and Ransomware protection for your volume backups. These features enable you to lock your backup files and scan them to detect possible ransomware on the backup files. This is an optional setting that you can define in your backup policies when you want extra protection for your volume backups for a cluster.
+
+Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the DataLock and Ransomware Protection option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
+
+https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware[See the DataLock and Ransomware protection blog for more details^].
+
+This feature does not provide protection for your source volumes; only for the backups of those source volumes. Use some of the https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html[anti-ransomware protections provided from ONTAP^] to protect your source volumes.
+
+[CAUTION]
+====
+* If you plan to use DataLock and Ransomware protection, you can enable it when creating your first backup policy and activating NetApp Backup and Recovery for that cluster. You can later enable or disable ransomware scanning using NetApp Backup and Recovery Advanced Settings. 
+* When the Console scans a backup file for ransomware when restoring volume data, you'll incur extra egress costs from your cloud provider to access the contents of the backup file.
+====
+
+=== What is DataLock
+
+With this feature, you can lock the cloud snapshots replicated via SnapMirror to Cloud and also enable the feature to detect a ransomware attack and recover a consistent copy of the snapshot on the object store. This feature is supported on AWS, Azure, and StorageGRID. 
+
+DataLock protects your backup files from being modified or deleted for a certain period of time - also called _immutable storage_. This functionality uses technology from the object storage provider for "object locking." 
+
+Cloud providers use a Retention Until Date (RUD), which is calculated based on the Snapshot Retention Period. The Snapshot Retention Period is calculated based on the label and the retention count defined in the backup policy. 
+
+The minimum Snapshot Retention Period is 30 days. Let's look at some examples of how this works:
+
+* If you choose the *Daily* label with Retention Count 20, the Snapshot Retention Period is 20 days, which defaults to the minimum 30 days.
+* If you choose the *Weekly* label with Retention Count 4, the Snapshot Retention Period is 28 days, which defaults to the minimum of 30 days.
+* If you choose the *Monthly* label with Retention Count 3, the Snapshot Retention Period is 90 days.
+* If you choose the *Yearly* label with Retention Count 1, the Snapshot Retention Period is 365 days.
+
+
+=== What is Retention Until Date (RUD) and how is it calculated?
+
+The Retention Until Date (RUD) is determined based on the Snapshot Retention Period. The Retention Until Date is calculated by summing the Snapshot Retention Period and a Buffer.
+
+* Buffer is the Buffer for Transfer Time (3 days) + Buffer for Cost Optimization (28 days), which totals as 31 days.
+* The minimum Retention Until Date is 30 days + 31 days buffer = 61 days. 
+ 
+
+Here are some examples: 
+
+* If you create a Monthly backup schedule with 12 retentions, your backups are locked for 12 months (plus 31 days) before they are deleted (replaced by the next backup file).
+
+* If you create a backup policy that creates 30 daily, 7 weekly, 12 monthly backups, there are three locked retention periods:  
+** The "30 daily" backups are retained for 61 days (30 days plus 31 days buffer), 
+** The "7 weekly" backups are retained for 11 weeks (7 weeks plus 31 days), and 
+** The "12 monthly" backups are retained for 12 months (plus 31 days).
+
+* If you create an Hourly backup schedule with 24 retentions, you might think that backups are locked for 24 hours. However, since that is less than the minimum of 30 days, each backup will be locked and retained for 61 days (30 days plus 31 days buffer).
+
+
+CAUTION: Old backups are deleted after the DataLock Retention Period expires, not after the backup policy retention period. 
+
+The DataLock retention setting overrides the policy retention setting from your backup policy. This could affect your storage costs as your backup files will be saved in the object store for a longer period of time.
+
+=== Enable DataLock and Ransomware protection
+You can enable DataLock and Ransomware protection when you create a policy. You cannot enable, modify, or disable this after the policy is created. 
+
+. When you create a policy, expand the *DataLock and Ransomware Protection* section.
+
+. Choose one of the following: 
+* *None*: DataLock protection and Ransomware Resilience are disabled.
+* *Unlocked*: DataLock protection and Ransomware Resilience are enabled. Users with specific permissions can overwrite or delete protected backup files during the retention period. 
+
+* *Locked*: DataLock protection and Ransomware Resilience are enabled. No users can overwrite or delete protected backup files during the retention period. This satisfies full regulatory compliance.
+
+
+
+Refer to link:prev-ontap-policy-object-advanced-settings.html[How to update Ransomware protection options in the Advanced Settings page].
+
+
+
+=== What is Ransomware protection
+
+Ransomware protection scans your backup files to look for evidence of a ransomware attack. The detection of ransomware attacks is performed using a checksum comparison. If potential ransomware is identified in a new backup file versus the previous backup file, that newer backup file is replaced by the most recent backup file that does not show any signs of a ransomware attack. (The file that was identified as having a ransomware attack is deleted 1 day after it has been replaced.)
+
+Scans occur in these situations:
+
+* Scans on cloud backup objects are initiated soon after they are transferred to the cloud object storage. The scan is not performed on the backup file when it is first written to cloud storage, but when the next backup file is written. 
+* Ransomware scans can be initiated when the backup is selected for the restore process. 
+* Scans can be performed on-demand at any time. 
+
+*How does the recovery process work?* 
+
+When a ransomware attack is detected, the service uses the Active Data Console agent Integrity Checker REST API to start the recovery process. The oldest version of the data objects is the source of truth and is made into the current version as part of the recovery process.
+ 
+Let's see how this works:
+
+* In the event of a ransomware attack, the service tries to overwrite or delete the object in the bucket.
+* Because the cloud storage is versioning-enabled, it automatically creates a new version of the backup object. If an object is deleted with versioning turned on, it is marked as deleted but is still retrievable. If an object is overwritten, previous versions are stored and marked.
+* When a ransomware scan is initiated, the checksums are validated for both object versions and compared. If the checksums are inconsistent, potential ransomware has been detected.
+* The recovery process involves reverting to the last known good copy. 
+
+
+
+
+
+=== Supported systems and object storage providers
+
+You can enable DataLock and Ransomware protection on ONTAP volumes from the following systems when using object storage in the following public and private cloud providers. Additional cloud providers will be added in future releases.
+
+[cols=2*,options="header",cols="55,45",width="80%"]
+|===
+
+| Source system
+| Backup File Destination
+
+ifdef::aws[]
+| Cloud Volumes ONTAP in AWS
+| Amazon S3
+endif::aws[]
+ifdef::azure[]
+| Cloud Volumes ONTAP in Azure
+| Azure Blob
+endif::azure[]
+//ifdef::gcp[]
+// | Cloud Volumes ONTAP in Google
+// | Google Cloud Storage
+//endif::gcp[]
+| On-premises ONTAP system
+| 
+ifdef::aws[]
+Amazon S3
+endif::aws[]
+ifdef::azure[]
+Azure Blob
+endif::azure[]
+//ifdef::gcp[]
+//Google Cloud Storage
+//endif::gcp[]
+NetApp StorageGRID
+
+|===
+
+=== Requirements
+
+ifdef::aws[]
+* For AWS:
+** Your clusters must running ONTAP 9.11.1 or greater 
+** The Console agent can be deployed in the cloud or on your premises
+** The following S3 permissions must be part of the IAM role that provides the Console agent with permissions. They reside in the "backupS3Policy" section for the resource "arn:aws:s3:::netapp-backup-*":
+// Start snippet: collapsible block (open on page load)
++
+.AWS S3 permissions
+[%collapsible]
+====
+*** s3:GetObjectVersionTagging
+*** s3:GetBucketObjectLockConfiguration
+*** s3:GetObjectVersionAcl
+*** s3:PutObjectTagging
+*** s3:DeleteObject
+*** s3:DeleteObjectTagging
+*** s3:GetObjectRetention
+*** s3:DeleteObjectVersionTagging
+*** s3:PutObject
+*** s3:GetObject
+*** s3:PutBucketObjectLockConfiguration
+*** s3:GetLifecycleConfiguration
+*** s3:GetBucketTagging
+*** s3:DeleteObjectVersion
+*** s3:ListBucketVersions
+*** s3:ListBucket
+*** s3:PutBucketTagging
+*** s3:GetObjectTagging
+*** s3:PutBucketVersioning
+*** s3:PutObjectVersionTagging
+*** s3:GetBucketVersioning
+*** s3:GetBucketAcl
+*** s3:BypassGovernanceRetention
+*** s3:PutObjectRetention
+*** s3:GetBucketLocation
+*** s3:GetObjectVersion
+====
+// End snippet
+//+
+//"s3:BypassGovernanceRetention" must be added only if you want your Admin users to be able to overwrite/delete backup files locked using Governance mode.
++
+https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[View the full JSON format for the policy where you can copy and paste required permissions^].
+endif::aws[]
+ifdef::azure[]
+* For Azure:
+** Your clusters must running ONTAP 9.12.1 or greater
+** The Console agent can be deployed in the cloud or on your premises
+endif::azure[]
+* For StorageGRID:
+** Your clusters must running ONTAP 9.11.1 or greater 
+** Your StorageGRID systems must be running 11.6.0.3 or greater
+** The Console agent must be deployed on your premises (it can be installed in a site with or without internet access)
+** The following S3 permissions must be part of the IAM role that provides the Console agent with permissions:
+// Start snippet: collapsible block (open on page load)
++
+.StorageGRID S3 permissions
+[%collapsible]
+====
+*** s3:GetObjectVersionTagging
+*** s3:GetBucketObjectLockConfiguration
+*** s3:GetObjectVersionAcl
+*** s3:PutObjectTagging
+*** s3:DeleteObject
+*** s3:DeleteObjectTagging
+*** s3:GetObjectRetention
+*** s3:DeleteObjectVersionTagging
+*** s3:PutObject
+*** s3:GetObject
+*** s3:PutBucketObjectLockConfiguration
+*** s3:GetLifecycleConfiguration
+*** s3:GetBucketTagging
+*** s3:DeleteObjectVersion
+*** s3:ListBucketVersions
+*** s3:ListBucket
+*** s3:PutBucketTagging
+*** s3:GetObjectTagging
+*** s3:PutBucketVersioning
+*** s3:PutObjectVersionTagging
+*** s3:GetBucketVersioning
+*** s3:GetBucketAcl
+*** s3:PutObjectRetention
+*** s3:GetBucketLocation
+*** s3:GetObjectVersion
+====
+// End snippet
+
+=== Restrictions
+
+* The DataLock and Ransomware protection feature is not available if you have configured archival storage in the backup policy.
+* The DataLock option you select when activating NetApp Backup and Recovery must be used for all backup policies for that cluster. 
+* You cannot use multiple DataLock modes on a single cluster.
+* If you enable DataLock, all volume backups will be locked. You can't mix locked and non-locked volume backups for a single cluster.
+* DataLock and Ransomware protection is applicable for new volume backups using a backup policy with DataLock and Ransomware protection enabled. You can later enable or disable these features using the Advanced Settings option. 
+* FlexGroup volumes can use DataLock and Ransomware protection only when using ONTAP 9.13.1 or greater.
+
+=== Tips on how to mitigate DataLock costs
+
+You can enable or disable the Ransomware Scan feature while keeping the DataLock feature active. To avoid extra charges, you can disable scheduled ransomware scans. This lets you customize your security settings and avoid incurring costs from the cloud provider. 
+
+Even if scheduled ransomware scans are disabled, you can still perform on-demand scans when needed.
+
+You can choose different levels of protection: 
+
+* *DataLock _without_ ransomware scans*: Provides protection for backup data in the destination storage that can be either in Governance or Compliance mode. 
+
+** *Governance mode*: Offers flexibility to administrators to overwrite or delete protected data. 
+** *Compliance mode*: Provides complete indelibility until the retention period expires. This helps meet the most stringent data security requirements of highly regulated environments. The data cannot be overwritten or modified during its lifecycle, providing the strongest level of protection for your backup copies. 
++
+NOTE: Microsoft Azure uses a Lock and Unlock mode instead.
+
+* *DataLock _with_ ransomware scans*: Provides an additional layer of security for your data. This feature helps detect any attempts to change backup copies. If any attempt is made, a new version of the data is created discreetly. The scan frequency can be changed to 1, 2, 3, 4, 5, 6, or 7 days. If scans are set to every 7 days, the costs decrease significantly. 
+
+For more tips to mitigate DataLock costs, refer to
+https://community.netapp.com/t5/Tech-ONTAP-Blogs/Understanding-NetApp-Backup-and-Recovery-DataLock-and-Ransomware-Feature-TCO/ba-p/453475 
+
+ 
+Additionally, you can get estimates for the cost associated with DataLock by visiting the https://bluexp.netapp.com/cloud-backup-service-tco-calculator[NetApp Backup and Recovery Total Cost of Ownership (TCO) calculator]. 
+
+
+== Archival storage options
+
+When using AWS, Azure, or Google cloud storage, you can move older backup files to a less expensive archival storage class or access tier after a certain number of days. You can also choose to send your backup files to archival storage immediately without being written to standard cloud storage. Just enter *0* as the "Archive After Days" to send your backup file directly to archival storage. This can be especially helpful for users who rarely need to access data from cloud backups or users who are replacing a backup to tape solution.
+
+Data in archival tiers can't be accessed immediately when needed, and will require a higher retrieval cost, so you'll need to consider how often you may need to restore data from backup files before deciding to archive your backup files. 
+
+[NOTE]
+====
+* Even if you select "0" to send all data blocks to archival cloud storage, metadata blocks are always written to standard cloud storage. 
+* Archival storage can't be used if you have enabled DataLock.
+* You can't change the archival policy after selecting *0* days (archive immediately).
+====
+
+Each backup policy provides a section for _Archival Policy_ that you can apply to your backup files.
+
+image:screenshot_archive_tier_settings.png[A screenshot of the Archival Policy settings when creating a backup policy.]
+
+ifdef::aws[]
+* In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
++
+If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage].
++
+** If you select no archive tier in your first backup policy when activating NetApp Backup and Recovery, then _S3 Glacier_ will be your only archive option for future policies.
+** If you select _S3 Glacier_ in your first backup policy, then you can change to the _S3 Glacier Deep Archive_ tier for future backup policies for that cluster.
+** If you select _S3 Glacier Deep Archive_ in your first backup policy, then that tier will be the only archive tier available for future backup policies for that cluster.
+endif::aws[]
+
+ifdef::azure[]
+* In Azure, backups are associated with the _Cool_ access tier.
++
+If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage].
+endif::azure[]
+
+ifdef::gcp[]
+* In GCP, backups are associated with the _Standard_ storage class.
++
+If your on-prem cluster is using ONTAP 9.12.1 or greater, you can choose to tier older backups to _Archive_ storage in the NetApp Backup and Recovery UI after a certain number of days for further cost optimization. link:prev-reference-gcp-archive-storage-tiers.html[Learn more about Google archival storage].
+//You can use the lower cost _Nearline_ storage class, or the _Coldline_ or _Archive_ storage classes. However, you configure these other storage classes through Google, not through the NetApp Backup and Recovery UI. See the Google topic https://cloud.google.com/storage/docs/storage-classes[Storage classes^] for information about changing the default storage class for a Google Cloud Storage bucket.
+endif::gcp[]
+
+* In StorageGRID, backups are associated with the _Standard_ storage class.
++
+If your on-prem cluster is using ONTAP 9.12.1 or greater, and your StorageGRID system is using 11.4 or greater, you can archive older backup files to public cloud archival storage. 
+ifdef::aws[]
++
+** For AWS, you can tier backups to AWS _S3 Glacier_ or _S3 Glacier Deep Archive_ storage. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage^].
+endif::aws[]
+ifdef::azure[]
++
+** For Azure, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage^].
+endif::azure[]

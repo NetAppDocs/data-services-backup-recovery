@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: prev-vmware-policy-create.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Create a policy to back up datastores in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can create a policy or use one of the following predefined policies that are available in NetApp Backup and Recovery.
+
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+
+.Before you begin
+
+* You should create policies if you do not want to edit the predefined policies.
+* To move backups from object store to archival storage, you should be running ONTAP 9.10.1 or later and Amazon Web Services or Microsoft Azure should be the cloud provider.
+* You should configure the archive access tier for each cloud provider.
+
+.About this task
+The following predefined policies are available in the NetApp Console:
+
+|===
+| Policy Name | Label | Retention Value
+
+a|
+1 Year Daily LTR (Long Term Retention)
+a|
+Daily
+a|
+366
+a|
+5 Years Daily LTR
+a|
+Daily
+a|
+1830
+a|
+7 Year Weekly LTR
+a|
+Weekly
+a|
+370
+a|
+10 Year Monthly LTR
+a|
+Monthly
+a|
+120
+|===
+
+.Steps
+
+. In the Virtual machines page, from the Settings drop-down list, select *Policies*.
+. Select *Create policy*.
+. In the Policy Details section, specify the policy name.
+. In the Retention section, select one of the retention type and specify the number of backups to retain.
+. Select Primary or Secondary as the backup storage source.
+. (Optional) If you want to move backups from object store to archival storage after a certain number of days for cost optimization, select the *Tier Backups to Archival* checkbox and enter the number of days after which the backup should be archived.
+. Select *Create*.
++
+NOTE: You cannot edit or delete a policy, which is associated with a datastore.

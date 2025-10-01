@@ -1,0 +1,280 @@
+---
+sidebar: sidebar
+permalink: br-use-mssql-restore.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: Restore database workloads from a snapshot copy, a workload backup replicated to secondary storage, or from backups stored in object storage.
+---
+
+= Restore Microsoft SQL Server workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Restore Microsoft SQL Server workloads from snapshot copies, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. You can restore a workload to the original system, to a different system that's using the same cloud account, or to an on-premises ONTAP system. 
+
+//different types of restore operations, volume restore or file/folder restore, Browse and restore vs Search and restore)
+
+.Restore from these locations
+
+You can restore workloads from different starting locations: 
+
+* Restore from a primary location
+* Restore from a replicated resource
+* Restore from an object store backup
+
+.Restore to these points   
+
+You can restore data to the latest snapshot or to these points: 
+
+* Restore from snapshots
+* Restore to a specific point in time. This is helpful if you know the name and location of the file, and the date when it was last in good shape. 
+* Restore to the latest backup 
+
+.Restore from object storage considerations
+
+If you select a backup file in object storage, and Ransomware Resilience is active for that backup (if you enabled DataLock and Ransomware Resilience in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
+
+TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
+
+
+
+
+== How restoring workloads works
+
+When you restore workloads, the following occurs: 
+
+* When you restore a workload from a backup file, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
+
+* When you restore from a replicated workload, you can restore the workload to the original system or to an on-premises ONTAP system.
++
+image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow to restore a resource"]
+
+* When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
+
+
+//== When to use Quick Restore 
+
+//When you restore a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a resource as soon as possible. A quick restore restores the metadata from the backup file instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
+
+//NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
+
+
+== Restore methods
+
+You can restore workloads using one of the following methods. Typically, choose one of the following methods based on your restore needs:
+
+* *From the Restore page*: Use this when you need to restore a resource, but you don't remember the exact name or the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
+* *From the Inventory page*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
+
+//Inventory is browse and restore. Restore page is Search and restore. 
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+
+== Restore workload data from the Restore option 
+
+Restore database workloads using the Restore option.
+
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Restore*.
++
+image:screen-br-restore.png[A screenshot showing the Restore page.]
+. Select the database that you want to restore. Use the filters to search.  
+
+. Select the restore option: 
++
+* Restore from snapshots
+* Restore to a specific point in time. This is helpful if you know the name and location of the file, and the date when it was last in good shape. 
+
+* Restore to the latest backup
++
+image:screen-br-restore-options2.png[A screenshot showing the Restore options.]
+
+=== Restore workloads from snapshots
+
+. Continuing from the Restore options page, select *Restore from snapshots*. 
++
+A list of snapshots appears. 
++
+image:screen-br-restore-snapshots-snapshotlist.png[A screenshot showing the list of snapshots to restore]
+
+. Select the snapshot you want to restore. 
+. Select *Next*. 
++
+You'll see destination options next.
++
+image:screen-br-restore-destination-original-location.png[A screenshot showing the Restore Destination details page.]
+
+
+. In the Destination details page, enter the following information: 
+** *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the host name and instance, enter the database name, and enter the destination path where you want to restore the snapshot.
+
+** *Pre-restore options*: 
+*** *Overwrite the database with the same name during restore*: During the restore, the original database name is preserved. 
+*** *Retain SQL database replication settings*: Keeps the replication settings for the SQL database after the restore operation.
+*** *Create transaction log backup before restore*: Creates a transaction log backup before the restore operation.*** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails.
+
+
+*** *Prescript*: Enter the full path for a script that should be run before the restore operation, any arguments that the script takes, and how long to wait for the script to complete.
+
+** *Post-restore options*: 
+*** *Operational*, but unavailable for restoring additional transaction logs. This brings the database back online after transaction log backups are applied. 
+*** *Non-operational*, but available for restoring additional transaction logs. Maintains the database in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs.
+*** *Read-only mode* and available for restoring additional transaction logs. Restores the database in a read-only mode and applies transaction log backups. 
+*** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
+
+ 
+. Select *Restore*.
+
+
+=== Restore to specific point in time
+
+NetApp Backup and Recovery uses logs and the most recent snapshots to create a point-in-time restore of your data. 
+
+. Continuing from the Restore options page, select *Restore to specific point in time*. 
+. Select *Next*.
++
+image:screen-br-restore-point-in-time.png[A screenshot showing the Restore to a specific point in time page]
+ 
+. In the Restore to a specific point in time page, enter the following infomation: 
+
+** *Date and time for data restoration*: Enter the exact date and time of the data that you want to restore. This date and time is from the Microsoft SQL Server Database host. 
+
+. Select *Search*. 
+. Select the snapshot that you want to restore.
+. Select *Next*.
+
+. In the Destination details page, enter the following infomation: 
+** *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the host name and instance, enter the database name, and enter the destination path.
+** *Pre-restore options*: 
+*** *Preserve original database name*: During the restore, the original database name is preserved. 
+*** *Retain SQL database replication settings*: Keeps the replication settings for the SQL database after the restore operation.
+*** *Prescript*: Enter the full path for a script that should be run before the restore operation, any arguments that the script takes, and how long to wait for the script to complete.
+** *Post-restore options*: 
+*** *Operational*, but unavailable for restoring additional transaction logs. This brings the database back online after transaction log backups are applied. 
+*** *Non-operational*, but available for restoring additional transaction logs. Maintains the database in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs.
+*** *Read-only mode* and available for restoring additional transaction logs. Restores the database in a read-only mode and applies transaction log backups. 
+*** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
+
+ 
+. Select *Restore*.
+
+
+=== Restore to the latest backup
+
+This option uses the latest full and log backups to restore your data to the last good state. The system scans logs from the last snapshot to the present. The process tracks changes and activities to restore the most recent and accurate version of your data. 
+
+. Continuing from the Restore options page, select *Restore to the latest backup*. 
++
+NetApp Backup and Recovery shows you the snapshots that are available for the restore operation.
++
+image:screen-br-restore-to-latest-state.png[A screenshot showing the Restore to latest state page]
+
+. In the Restore to the latest state page, select the snapshot location of local, secondary storage, or object storage.
+
+    
+. Select *Next*.
+
+. In the Destination details page, enter the following infomation: 
+** *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the host name and instance, enter the database name, and enter the destination path.
+** *Pre-restore options*: 
+*** *Overwrite the database with the same name during restore*: During the restore, the original database name is preserved. 
+*** *Retain SQL database replication settings*: Keeps the replication settings for the SQL database after the restore operation.
+*** *Create transaction log backup before restore*: Creates a transaction log backup before the restore operation.
+*** *Quit restore if transaction log backup before retore fails*: Stops the restore operation if the transaction log backup fails.
+
+*** *Prescript*: Enter the full path for a script that should be run before the restore operation, any arguments that the script takes, and how long to wait for the script to complete.
+
+** *Post-restore options*: 
+*** *Operational*, but unavailable for restoring additional transaction logs. This brings the database back online after transaction log backups are applied. 
+*** *Non-operational*, but available for restoring additional transaction logs. Maintains the database in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs.
+*** *Read-only mode* and available for restoring additional transaction logs. Restores the database in a read-only mode and applies transaction log backups. 
+*** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
+
+  
+. Select *Restore*.
+
+== Restore workload data from the Inventory option 
+
+Restore database workloads from the Inventory page.
+Using the Inventory option, you can restore only databases, not instances. 
+
+
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Choose the host where the resource that you want to restore is located. 
+. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *View details*.
+. On the Microsoft SQL Server page, select the *Databases* tab. 
+. On the Databases tab, select the database that shows a "Protected" status indicating that there's a backup that you can restore.
++
+image:screen-br-restore-inventory-databases-tab.png[A screenshot showing the Inventory page and Databases tab] 
+
+. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Restore*.
++
+The same three options appear as when you restore from the Restore page:
+
+* Restore from snapshots
+* Restore to a specific point in time
+* Restore to the latest backup
+
+. Continue with the same steps for the restore option from the Restore page
++
+image:screen-br-restore-options2.png[A screenshot showing the Restore options.]
+
+//== Restore workloads from cloud storage 
+
+//When you restore workloads from cloud providers, you might be prompted for additional information. 
+
+  
+
+
+//ifdef::aws[]
+//* When restoring from Amazon S3, select the IPspace in the ONTAP cluster where the destination volume will reside, enter the access key and secret key for the user you created to give the ONTAP cluster access to the S3 bucket, and optionally choose a private VPC endpoint for secure data transfer.
+//endif::aws[]
+//ifdef::azure[]
+//* When restoring from Azure Blob, select the IPspace in the ONTAP cluster where the destination volume will reside, select the Azure Subscription to access the object storage, and optionally choose a private endpoint for secure data transfer by selecting the VNet and Subnet.
+//endif::azure[]
+//ifdef::gcp[]
+//* When restoring from Google Cloud Storage, select the Google Cloud Project and the Access Key and Secret Key to access the object storage, the region where the backups are stored, and the IPspace in the ONTAP cluster where the destination volume will reside.
+//endif::gcp[]
+//* When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
+//* When restoring from ONTAP S3, enter the FQDN of the ONTAP S3 server and the port that ONTAP should use for HTTPS communication with ONTAP S3, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
+
+
+//* When restoring a backup from object storage to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation.
+
+//* And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.
+
+//ifdef::aws[]
+//link:reference-aws-backup-tiers.html#restore-data-from-archival-storage[Learn more about restoring from AWS archival storage].
+//endif::aws[]
+//ifdef::azure[]
+//link:reference-azure-backup-tiers.html#restore-data-from-archival-storage[Learn more about restoring from Azure archival storage].
+//endif::azure[]
+//ifdef::gcp[]
+//link:reference-google-backup-tiers.html#restore-data-from-archival-storage[Learn more about restoring from Google archival storage]. Backup files in the Google Archive storage tier are restored almost immediately, and require no Restore Priority.
+//endif::gcp[]
+
+//.Steps
+//. Click *Next* to choose whether you want to do a Normal restore or a Quick Restore process: 
+//+
+//image:screenshot_restore_browse_quick_restore.png[A screenshot showing the normal and Quick restore processes.]
+//+
+//* *Normal restore*: Use normal restore on volumes that require high performance. Volumes will not be available until the restore process is complete. 
+//* *Quick restore*: Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
+
+
+//. Click *Restore* and you are returned to the Restore Dashboard so you can review the progress of the restore operation.
+
+//NOTE: Restoring a volume from a backup file that resides in archival storage can take many minutes or hours depending on the archive tier and the restore priority. You can click the *Job Monitoring* tab to see the restore progress.
+
+
+//== Restore from object storage when archival storage is enabled
+
