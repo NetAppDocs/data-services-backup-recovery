@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: whats-new.html
-keywords: what's new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, backup, restore, bluexp, NetApp Backup and Recovery, protection, sql server, workloads, volumes, snapshots
+keywords: what's new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, backup, restore, NetApp Backup and Recovery, protection, sql server, workloads, volumes, snapshots
 summary: Learn what's new in NetApp Backup and Recovery.
 ---
 = What's new in NetApp Backup and Recovery

@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-start-setup.html
-keywords: bluexp, backup, back up, restore, recovery, aws, azure
+keywords: backup, back up, restore, recovery, aws, azure
 summary: Before you use NetApp Backup and Recovery, perform a few steps to set up backup destinations.  
 ---
 

@@ -133,7 +133,7 @@ This setting does not affect the bandwidth allocated to any other replication re
 //
 //image:screenshot_backup_edit_auto_backup.png[A screenshot of the Automatic Backup entry in the Advanced Settings page.]
 //
-//Once enabled, this backup policy will be applied to any new volume created in this system using BlueXP, System Manager, the ONTAP CLI, or the APIs.
+//Once enabled, this backup policy will be applied to any new volume created in this system using System Manager, the ONTAP CLI, or the APIs.
 
 == Change whether historical snapshot copies are exported as backup files
 

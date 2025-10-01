@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-use-dashboard.html
-keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, bluexp, backup, recovery, dashboard, view, health, status, alerts, notifications
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, backup, recovery, dashboard, view, health, status, alerts, notifications
 summary: Monitoring the health of your workloads ensures that you are aware of issues with workload protection and can take steps to resolve them. View the status of your backups and restores and respond to any alerts that appear on the NetApp Backup and Recovery Dashboard. You can review the Protection summary, Restore summary, System summary, and more.
 ---
 
