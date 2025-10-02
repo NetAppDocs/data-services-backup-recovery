@@ -286,6 +286,8 @@ endif::azure[]
 
 NetApp Backup and Recovery can be used in a site with no internet connectivity (also known as _private mode_ or _dark_ sites) to back up volume data. In this case, you'll need to deploy the Console agent on a Linux host in the same site. 
 
+NOTE: BlueXP private mode (legacy BlueXP interface) is typically used with on-premises environments that have no internet connection and with secure cloud regions, which includes AWS Secret Cloud, AWS Top Secret Cloud, and Azure IL6. NetApp continues to support these environments with the legacy BlueXP interface. For private mode documentation in the legacy BlueXP interface, refer to the https://docs.netapp.com/us-en/console-setup-admin/media/BlueXP-Private-Mode-legacy-interface.pdf[PDF documentation for BlueXP private mode].
+
 * You can back up data from local on-premises ONTAP systems to local NetApp StorageGRID systems.  link:prev-ontap-backup-onprem-storagegrid.html[Back up on-premises ONTAP data to StorageGRID].
 * You can back up data from local on-premises ONTAP systems to local on-premises ONTAP systems or Cloud Volumes ONTAP systems configured for S3 object storage. link:prev-ontap-backup-onprem-ontaps3.html[Back up on-premises ONTAP data to ONTAP S3].
 //ifdef::aws[]
