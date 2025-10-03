@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: You can protect Oracle virtual machines from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID, ensuring that your data is protected. 
 ---
 
-= Protect Oracle workloads overview 
+= Protect Oracle Database workloads overview 
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: You can protect Oracle virtual machines from on-premises ONTAP systems 
 :imagesdir: ./media/
 
 [.lead]
-Protect your Oracle database and logs with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and database-consistent backup and restore operations. You can back up Oracle workloads to Amazon Web Services S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3 and restore them to an on-premises Oracle host. 
+Protect your Oracle databases and logs with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and database-consistent backup and restore operations. You can back up Oracle workloads to Amazon Web Services S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3 and restore them to an on-premises Oracle host. 
 
 image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
 

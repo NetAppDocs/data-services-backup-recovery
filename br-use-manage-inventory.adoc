@@ -41,7 +41,7 @@ You can accomplish the following tasks related to managing your inventory:
 You can manage host information to ensure that the right hosts are protected. You can view, edit, and delete host information. 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, or Backup and Recovery clone admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, or Backup and Recovery clone admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 
 * Configure log directory. For details, refer to link:br-start-setup.html[Configure NetApp Backup and Recovery settings]. 
@@ -58,7 +58,7 @@ TIP: You can manage only those hosts that show an "Unmanaged" status in the Host
 After you manage the hosts in NetApp Backup and Recovery, SnapCenter no longer manages the resources on those hosts. 
 
 *Required NetApp Console role*
-Storage viewer, or Backup and Recovery super admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, or Backup and Recovery super admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . From the menu, select *Inventory*.
@@ -133,7 +133,7 @@ You can manage instances information to ensure that resources have the appropria
 * Back up now   
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 === Protect database instances  
 
@@ -221,7 +221,7 @@ You can manage database information in the following ways:
 You can change the policy, create a new policy, set a schedule, and set retention settings.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -237,7 +237,7 @@ For details about creating a policy, refer to link:br-use-policies-create.html[C
 You can restore a database to ensure that your data is protected.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 . Select the *Databases* tab. 
 . Select the database. 
@@ -250,7 +250,7 @@ For information about restoring workloads, refer to link:br-use-mssql-restore.ht
 You can change the policy, create a new policy, set a schedule, and set retention settings.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 
@@ -267,7 +267,7 @@ For details about creating a policy, refer to link:br-use-policies-create.html[C
 You can back up your Microsoft SQL Server instances and databases now to ensure that your data is protected immediately.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 
 .Steps

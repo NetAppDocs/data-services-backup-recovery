@@ -17,7 +17,7 @@ Monitoring the health of your workloads ensures that you are aware of issues wit
 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^]. 
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
 
 .Steps
 

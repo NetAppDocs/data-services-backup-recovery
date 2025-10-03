@@ -13,9 +13,9 @@ summary: Protect your Oracle workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-You might want to mount an Oracle database recovery point if you need to access the database in a controlled state to perform recovery operations.
+You might want to mount an Oracle Database recovery point if you need to access the database in a controlled state to perform recovery operations.
 
-== Mount an Oracle database restore point
+== Mount an Oracle Database restore point
 
 If you configure the protection policy for a database to retain archive logs, you can mount the recovery points for the database to view the history of all changes made to the database.
 
@@ -24,7 +24,7 @@ If you configure the protection policy for a database to retain archive logs, yo
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . Select the Oracle tile.
 . In the Backup and Recovery menu, select *Inventory*.
-. For the Oracle workload in the list, select *View*.
+. For the Oracle Database workload in the list, select *View*.
 . Select the *Databases* menu.
 . Choose a database from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *View protection details*.
 +

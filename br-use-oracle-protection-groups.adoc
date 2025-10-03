@@ -13,7 +13,7 @@ summary: Create and manage protection groups for Oracle workloads in NetApp Back
 :imagesdir: ./media/
 
 [.lead]
-Create protection groups to manage the backup operations for a set of Oracle resources. A protection group is a logical grouping of resources such as databases that you want to protect together. You need to create a protection group to back up Oracle databases.
+Create protection groups to manage the backup operations for a set of Oracle Database resources. A protection group is a logical grouping of resources such as databases that you want to protect together. You need to create a protection group to back up Oracle databases.
 
 You can perform the following tasks related to protection groups:
 

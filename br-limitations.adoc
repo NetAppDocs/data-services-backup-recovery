@@ -23,13 +23,11 @@ Known limitations identify platforms, devices, or functions that are not support
 * Choosing QOS (maximum throughput) options is not supported.
 
 == Standard deployment mode only
-The NetApp Backup and Recovery version works only in standard deployment mode, not restricted or private modes. 
-
+This NetApp Backup and Recovery version works only in standard deployment mode, not restricted or private modes. 
 
 == Windows cluster name restriction
 
 The Windows cluster name cannot contain an underscore (_) character.
-
 
 == SnapCenter migration issues
 
@@ -51,7 +49,7 @@ You cannot have assign multiple policies that use the same schedule tier (for ex
  
 === Hourly policies must begin at the start of the hour
 
-If you have a SnapCenter policy that repeats every hours, but the hours are not at intervals at the start of the hour, NetApp Backup and Recovery will not import the resource. For example, policies with schedules of 1:30, 2:30, 3:30, etc. are not supported, while policies with schedules of 1:00, 2:00, 3:00, etc. are supported.
+If you have a SnapCenter policy that repeats hourly but does not use intervals at the start of the hour, NetApp Backup and Recovery will not import the resource. For example, policies with schedules of 1:30, 2:30, 3:30, etc. are not supported, while policies with schedules of 1:00, 2:00, 3:00, etc. are supported.
 
 *Workaround*: Use a policy that repeats in 1-hour intervals starting at the top of the hour.
 
@@ -84,7 +82,7 @@ SnapCenter does not have map storage clusters or SVMs for the resources to hosts
 
 === Schedules not in 15-minute intervals 
 
-If you have a SnapCenter policy schedule that starts at a certain time and repeats every so many minutes but the minutes are not in 15-minute intervals, NetApp Backup and Recovery will not import the schedule.
+If you have a SnapCenter policy schedule that starts at a certain time and repeats in intervals other than 15-minute intervals, NetApp Backup and Recovery will not import the schedule.
 
 
 *Workaround*: Use SnapCenter to adjust the policy so that it repeats in 15-minute intervals.

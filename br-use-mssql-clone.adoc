@@ -29,7 +29,7 @@ You can accomplish the following protection goals:
 * Delete a clone
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Create a clone  
 

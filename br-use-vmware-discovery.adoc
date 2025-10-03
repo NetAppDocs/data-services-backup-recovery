@@ -33,7 +33,7 @@ During the import process, NetApp Backup and Recovery performs the following tas
 
 * Enables secure SSH access to the vCenter server.
 * Activates maintenance mode on all Resource Groups in the vCenter server.
-* Prepares the metadata of the vCenter and marks it as unmanaged in BlueXP. 
+* Prepares the metadata of the vCenter and marks it as unmanaged in the NetApp Console. 
 * Configures database access. 
 * Discovers VMware vCenter, datastores, and VMs.
 * Imports existing protection policies, snapshot copies, and backup and restore options from SnapCenter Plug-in for VMware vSphere.
@@ -126,7 +126,7 @@ TIP: After you import vCenter metadata from the SnapCenter Plug-in, NetApp Backu
 
 .Steps 
 
-. From the BlueXP left navigation, select *Protection* > *Backup and Recovery*. 
+. From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 . Select *Inventory*.
 //+
 //image:../media/screen-br-discover-workloads.png[Discover workload resources screenshot]

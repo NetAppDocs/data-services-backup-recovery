@@ -44,7 +44,7 @@ You can create policies that govern your local snapshots, replications to second
 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^]. 
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
 
 .Before you begin
 
@@ -104,8 +104,8 @@ Provide information for the local snapshot.
 * Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
 * *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
 * *Snapshot retention*: Enter the number of snapshots to keep.
-* *Enable log backup*: (Applies to Microsoft SQL Server workloads and Oracle workloads only.) Enable this option to back up logs and set the frequency and retention of the log backups. To do this, you must have already configured a log backup. See link:br-start-configure.html[Configure log directories].
-** *Prune archive logs after backup*: (Oracle workloads only) If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
+* *Enable log backup*: (Applies to Microsoft SQL Server workloads and Oracle Database workloads only.) Enable this option to back up logs and set the frequency and retention of the log backups. To do this, you must have already configured a log backup. See link:br-start-configure.html[Configure log directories].
+** *Prune archive logs after backup*: (Oracle Database workloads only) If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
 * *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources.
 
 ////

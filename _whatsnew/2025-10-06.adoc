@@ -1,6 +1,6 @@
-=== BlueXP backup and recovery is now NetApp Backup and Recovery
+=== NetApp Backup and Recovery is now NetApp Backup and Recovery
  
-BlueXP backup and recovery has been renamed to NetApp Backup and Recovery.
+NetApp Backup and Recovery has been renamed to NetApp Backup and Recovery.
  
 === BlueXP is now NetApp Console
  
@@ -50,17 +50,17 @@ The preview release of Kubernetes workloads introduces the following enhancement
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
  
-=== Oracle workload support as a private preview
+=== Oracle Database workload support as a private preview
 
-This release of of NetApp Backup and Recovery introduces support for discovering and managing Oracle workloads:
+This release of of NetApp Backup and Recovery introduces support for discovering and managing Oracle Database workloads:
 
 * Discover standalone Oracle databases
 * Create protection policies for data only or data and log backups
-* Protect databases with a 3-2-1 backup scheme
+* Protect Oracle databases with a 3-2-1 backup scheme
 * Configure backup retention
 * Mount and unmount ARCHIVELOG backups
 * Virtualized databases
 * Search and restore database backups
 * Oracle dashboard support
 
-For details about protecting Oracle workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle workloads overview].
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle workloads overview].
