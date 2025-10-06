@@ -1,14 +1,119 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
-  tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
+  title: NetApp Backup and Recovery documentation 
+  lead: NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
+  summary: NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
+  keywords: netapp console, netapp backup recovery, ontap, on-premises, data protection, sql, workloads, backup, 
+  tiles:
+    - title: Get started
+      links:
+        - title: Learn about NetApp Backup and Recovery
+          url: concept-backup-to-cloud.html
+        - title: What's new
+          url: whats-new.html
+        - title: Prerequisites 
+          url: concept-start-prereq.html
+        - title: Set up backup destinations before you use NetApp Backup and Recovery
+          url: br-start-setup.html
+        - title: Configure NetApp Backup and Recovery settings
+          url: br-start-configure.html
+#    - title: Manage policies for backups and restores
+#      links:
+#        - title: Create policies to govern backups and restores
+#          url: br-use-policies-create.html
+#        - title: View protection health in the Dashboard
+#          url: br-use-dashboard.html
+    - title: Protect ONTAP volumes workloads 
       links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+        - title: Protect ONTAP volumes workloads overview 
+          url: prev-ontap-protect-overview.html
+        - title: Plan your protection journey for ONTAP volumes workloads
+          url: prev-ontap-protect-journey.html
+        - title: Manage policies for ONTAP volumes workloads
+          url: prev-ontap-policy-manage.html
+        - title: Backup-to-object policy options for ONTAP volumes
+          url: prev-ontap-policy-object-options.html    
+        - title: Restore ONTAP volumes workloads
+          url: prev-ontap-restore.html 
+    - title: Protect Microsoft SQL Server workloads  
+      links:
+        - title: Protect Microsoft SQL Server workloads overview 
+          url: br-use-mssql-protect-overview.html       
+        - title: Discover Microsoft SQL Server workloads & optionally import SnapCenter resources
+          url: br-start-discover.html
+        - title: Back up Microsoft SQL Server workloads 
+          url: br-use-mssql-backup.html
+        - title: Restore Microsoft SQL Server workloads
+          url: br-use-mssql-restore.html
+        - title: Clone Microsoft SQL Server workloads
+          url: br-use-mssql-clone.html
+    - title: Protect VMware workloads (private preview)
+      links:
+        - title: Protect VMware workloads overview
+          url: br-use-vmware-protect-overview.html
+        - title: Discover VMware workloads 
+          url: br-use-vmware-discovery.html
+        - title: Create and manage protection groups for VMware workloads
+          url: br-use-vmware-protection-groups.html
+        - title: Back up VMware workloads
+          url: br-use-vmware-backup.html
+        - title: Restore VMware workloads
+          url: br-use-vmware-restore.html
+    - title: Protect KVM workloads (private preview) 
+      links:
+        - title: Protect KVM workloads overview
+          url: /br-use-kvm-protect-overview.html
+        - title: Discover KVM workloads
+          url: /br-start-discover-kvm.html
+        - title: Create and manage protection groups for KVM workloads
+          url: /br-use-kvm-protection-groups.html
+        - title: Back up KVM workloads 
+          url: /br-use-kvm-backup.html
+        - title: Restore KVM workloads
+          url: /br-use-kvm-restore.html
+    - title: Protect Hyper-V workloads (private preview)
+      links:
+        - title: Protect Hyper-V workloads overview
+          url: /br-use-hyperv-protect-overview.html
+        - title: Discover Hyper-V workloads
+          url: /br-start-discover-hyperv.html
+        - title: Create and manage protection groups for Hyper-V workloads
+          url: /br-use-hyperv-protection-groups.html
+        - title: Back up Hyper-V workloads 
+          url: /br-use-hyperv-backup.html
+        - title: Restore Hyper-V workloads
+          url: /br-use-hyperv-restore.html
+    - title: Protect Oracle workloads (private preview) 
+      links:
+        - title: Protect Oracle workloads overview
+          url: /br-use-oracle-protect-overview.html
+        - title: Discover Oracle workloads
+          url: /br-start-discover-oracle.html
+        - title: Create and manage protection groups for Oracle workloads
+          url: /br-use-oracle-protection-groups.html
+        - title: Back up Oracle workloads 
+          url: /br-use-oracle-backup.html
+        - title: Restore Oracle workloads
+          url: /br-use-oracle-restore.html
+    - title: Protect Kubernetes workloads (preview) 
+      links:
+        - title: Protect Kubernetes workloads overview 
+          url: br-use-kubernetes-protect-overview.html       
+        - title: Discover Kubernetes workloads
+          url: br-start-discover-kubernetes.html
+        - title: Add and protect Kubernetes applications
+          url: br-use-protect-kubernetes-applications.html
+        - title: Manage Kubernetes clusters
+          url: br-use-manage-kubernetes-clusters.html
+        - title: Manage Kubernetes applications
+          url: br-use-manage-kubernetes-applications.html
+        - title: Restore Kubernetes applications
+          url: br-use-restore-kubernetes-applications.html
+    - title: Blogs & community
+      links:
+        - title: NetApp Console
+          url: https://www.netapp.com/console
+        - title: NetApp Data Services
+          url: https://www.netapp.com/data-services/
+        - title: NetApp Community
+          url: https://community.netapp.com/
+

@@ -1,0 +1,82 @@
+---
+sidebar: sidebar
+permalink: br-use-restore-hyperv-vms.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
+---
+
+= Restore Kubernetes applications 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. To restore an application, an application needs to have at least one restore point available. A restore point consists of either the local snapshot or the backup to the object store (or both). You can restore an application using the local, secondary, or object store archive.
+
+.Required NetApp Console role
+
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to restore and select the associated Actions menu.
+. Select *View and restore*.
++
+The list of restore points appears. 
+. Open the Actions menu for the restore point you want to use, and select *Restore*.
+
+[discrete]
+===== General settings
+
+. Choose the source to restore from (local or object store).
+. Choose the destination cluster from the *Cluster* list.
+. Choose the restore destination namespace.
++
+You can restore to the original namespace or restore to a new namespace. 
+. Select *Next*.
+
+[discrete]
+===== Resource selection
+
+. Choose whether you want to restore all resources associated with the application or use a filter to select specific resources to restore:
+
+[role="tabbed-block"]
+====
+
+.Restore all resources
+
+--
+.. Select *Restore all resources*.
+.. Select *Next*.
+--
+
+.Restore specific resources
+
+--
+.. Select *Selective resources*.
+.. Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
+.. Select *Add rules* to add rules that define filters for selecting resources. You need at least one rule to filter resources.
++
+Each rule can filter on criteria such as the resource namespace, labels, group, version, and kind.
+.. Select *Save* to save each rule.
+.. When you have added all the rules you need, select *Search* to see the resources available in the backup archive that match your filter criteria.
++
+NOTE: The resources shown are the resources that currently exist on the cluster.
+.. When satisfied with the results, select *Next*.
+
+--
+
+====
+[discrete]
+===== Destination settings
+
+. Choose to restore either to the default storage class or to a different storage class. 
+. Optionally, if you chose to restore to a different storage class, select a destination storage class to match each source storage class.
+. Select *Restore*.
+
+

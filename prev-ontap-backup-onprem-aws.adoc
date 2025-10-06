@@ -1,0 +1,480 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-backup-onprem-aws.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Back up on-premises ONTAP data to Amazon S3 with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your on-premises ONTAP systems to a secondary storage system and to Amazon S3 cloud storage.
+
+NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+
+
+
+== Identify the connection method
+
+Choose which of the two connection methods you will use when configuring backups from on-premises ONTAP systems to AWS S3.
+
+* *Public connection* - Directly connect the ONTAP system to AWS S3 using a public S3 endpoint.
+* *Private connection* - Use a VPN or AWS Direct Connect and route traffic through a VPC Endpoint interface that uses a private IP address.
+
+Optionally, you can connect to a secondary ONTAP system for replicated volumes using the public or private connection as well.
+
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the AWS VPC.
+
+image:diagram_cloud_backup_onprem_aws_public.png[A diagram showing how NetApp Backup and Recovery communicates over a public connection with the volumes on the cluster and the AWS S3 storage where the backup files are located.]
+
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the AWS VPC.
+
+image:diagram_cloud_backup_onprem_aws_private.png[A diagram showing how NetApp Backup and Recovery communicates over a private connection with the volumes on the cluster and the AWS S3 storage where the backup files are located.]
+
+== Prepare your Console agent
+
+The Console agent is the main software for NetApp Console functionality. A Console agent is required to back up and restore your ONTAP data.
+
+=== Create or switch Console agents
+
+If you already have a Console agent deployed in your AWS VPC or on your premises, then you're all set. 
+
+If not, then you'll need to create a Console agent in one of those locations to back up ONTAP data to AWS S3 storage. You can't use a Console agent that's deployed in another cloud provider.
+
+* https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-aws.html[Install a Console agent in AWS^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-on-prem.html[Install a Console agent in your premises^]
+* https://docs.netapp.com/us-en/console-setup-admin/task-install-restricted-mode.html[Install a Console agent in an AWS GovCloud region^]
++
+NetApp Backup and Recovery is supported in GovCloud regions when the Console agent is deployed in the cloud - not when it's installed in your premises. Additionally, you must deploy the Console agent from the AWS Marketplace. You can't deploy the Console agent in a Government region from the NetApp Console SaaS website.
+
+=== Prepare Console agent networking requirements
+
+Ensure that the following networking requirements are met:
+
+* Ensure that the network where the Console agent is installed enables the following connections:
++
+** An HTTPS connection over port 443 to NetApp Backup and Recovery and to your S3 object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-aws.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+** An HTTPS connection over port 443 to your ONTAP cluster management LIF
+** Additional inbound and outbound security group rules are required for AWS and AWS GovCloud deployments. See https://docs.netapp.com/us-en/console-setup-admin/reference-ports-aws.html[Rules for the Console agent in AWS^] for details.
+
+
+* If you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC, and you want communication between the Console agent and S3 to stay in your AWS internal network (a *private* connection), you'll need to enable a VPC Endpoint interface to S3. <<Configure your system for a private connection using a VPC endpoint interface>>.
+
+== Verify license requirements
+
+You'll need to verify license requirements for both AWS and the NetApp Console: 
+
+* Before you can activate NetApp Backup and Recovery for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) NetApp Console Marketplace offering from AWS, or purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
+
+** For NetApp Backup and Recovery PAYGO licensing, you'll need a subscription to the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[NetApp Console offering from the AWS Marketplace^]. Billing for NetApp Backup and Recovery is done through this subscription.
+** For NetApp Backup and Recovery BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. 
+* You need to have an AWS subscription for the object storage space where your backups will be located.
+
+*Supported regions* 
+
+You can create backups from on-premises systems to Amazon S3 in all regions, including AWS GovCloud regions. You specify the region where backups will be stored when you set up the service.
+
+== Prepare your ONTAP clusters
+
+// This section uses an include along with the 2 subsections of "Discover your ONTAP cluster in BlueXP" and "Verify ONTAP system requirements"
+
+include::../_include/backup-onprem-prepare-onprem-ONTAP-cluster.adoc[]
+
+// === Discover your ONTAP systems in BlueXP
+// FROM INCLUDE
+
+// === Verify ONTAP system requirements
+// FROM INCLUDE
+
+=== Verify ONTAP networking requirements for backing up data to object storage
+
+You must configure the following requirements on the system that connects to object storage. 
+
+* For a fan-out backup architecture, configure the following settings on the _primary_ system. 
+* For a cascaded backup architecture, configure the following settings on the _secondary_ system.
+
+The following ONTAP cluster networking requirements are needed: 
+
+* The cluster requires an inbound HTTPS connection from the Console agent to the cluster management LIF.
+* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. These intercluster LIFs must be able to access the object store.
++
+The cluster initiates an outbound HTTPS connection over port 443 from the intercluster LIFs to Amazon S3 storage for backup and restore operations. ONTAP reads and writes data to and from object storage -- the object storage never initiates, it just responds.
+* The intercluster LIFs must be associated with the _IPspace_ that ONTAP should use to connect to object storage. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[Learn more about IPspaces^].
++
+When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that these LIFs are associated with. That might be the "Default" IPspace or a custom IPspace that you created.
++
+If you use are using a different IPspace than "Default", then you might need to create a static route to get access to the object storage.
++
+All intercluster LIFs within the IPspace must have access to the object store. If you can't configure this for the current IPspace, then you'll need to create a dedicated IPspace where all intercluster LIFs have access to the object store.
+* DNS servers must have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
+* Update firewall rules, if necessary, to allow NetApp Backup and Recovery connections from ONTAP to object storage through port 443 and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
+* If you are using a Private VPC Interface Endpoint in AWS for the S3 connection, then in order for HTTPS/443 to be used, you'll need to load the S3 endpoint certificate into the ONTAP cluster. <<Configure your system for a private connection using a VPC endpoint interface>>.
+*[Ensure that your ONTAP cluster has permissions to access the S3 bucket.
+
+===  Verify ONTAP networking requirements for replicating volumes
+
+//This section uses an Include for all providers. It includes "Cloud Volumes ONTAP networking requirements", and "On-premises ONTAP networking requirements"   
+
+include::../_include/backup-onprem-prepare-source-destination-systems-for-repl.adoc[]
+
+== Prepare Amazon S3 as your backup target
+
+Preparing Amazon S3 as your backup target involves the following steps: 
+
+* Set up S3 permissions.
+* (Optional) Create your own S3 buckets. (The service will create buckets for you if you want.)
+* (Optional) Set up customer-managed AWS keys for data encryption.
+* (Optional) Configure your system for a private connection using a VPC endpoint interface. 
+
+=== Set up S3 permissions
+
+You'll need to configure two sets of permissions:
+
+* Permissions for the Console agent to create and manage the S3 bucket.
+* Permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.
+
+.Steps
+
+. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions^].
++
+NOTE: When creating backups in AWS China regions, you need to change the AWS Resource Name "arn" under all _Resource_ sections in the IAM policies from "aws" to "aws-cn"; for example `arn:aws-cn:s3:::netapp-backup-*`.
+
+. When you activate the service, the Backup wizard will prompt you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you'll need to create an IAM user with the following permissions. 
++ 
+Refer to the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^].
+
++
+
+[%collapsible]
+====
+
+[source,json]
+{
+    "Version": "2012-10-17",
+     "Statement": [
+        {
+           "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketLocation",
+                "s3:PutEncryptionConfiguration"
+            ],
+            "Resource": "arn:aws:s3:::netapp-backup-*",
+            "Effect": "Allow",
+            "Sid": "backupPolicy"
+        },
+        {
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::netapp-backup*",
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:ListAllMyBuckets",
+                "s3:PutObjectTagging",
+                "s3:GetObjectTagging",
+                "s3:RestoreObject",
+                "s3:GetBucketObjectLockConfiguration",
+                "s3:GetObjectRetention",
+                "s3:PutBucketObjectLockConfiguration",
+                "s3:PutObjectRetention"
+            ],
+            "Resource": "arn:aws:s3:::netapp-backup*/*",
+            "Effect": "Allow"
+        }
+    ]
+}
+ 
+====
+
+// end collapsed snippet
+
+=== Create your own buckets
+
+By default, the service creates buckets for you. Or, if you want to use your own buckets, you can create them before you start the backup activation wizard and then select those buckets in the wizard. 
+
+link:prev-ontap-protect-journey.html[Learn more about creating your own buckets^].
+
+If you create your own buckets, you should use a bucket name of "netapp-backup". If you need to use a custom name, edit the `ontapcloud-instance-policy-netapp-backup` IAMRole for the existing CVOs and add the following list to the S3 permissions. You need to include `"Resource": "arn:aws:s3:::*"` and assign all the necessary permissions that need to be associated with the bucket.
+
+[%collapsible]
+
+====
+"Action": [
+    "S3:ListBucket" 
+    "S3:GetBucketLocation" 
+]
+"Resource": "arn:aws:s3:::*",
+"Effect": "Allow" 
+}, 
+{ 
+    "Action": [
+        "S3:GetObject",
+        "S3:PutObject",
+        "S3:DeleteObject",
+        "S3:ListAllMyBuckets",
+        "S3:PutObjectTagging",
+        "S3:GetObjectTagging",
+        "S3:RestoreObject",
+        "S3:GetBucketObjectLockConfiguration",
+        "S3:GetObjectRetention",
+        "S3:PutBucketObjectLockConfiguration",
+        "S3:PutObjectRetention"    
+        ]
+    "Resource": "arn:aws:s3:::*", 
+====
+
+=== Set up customer-managed AWS keys for data encryption
+
+If you want to use the default Amazon S3 encryption keys to encrypt the data passed between your on-prem cluster and the S3 bucket, then you are all set because the default installation uses that type of encryption.
+
+If instead you want to use your own customer-managed keys for data encryption rather than using the default keys, then you'll need to have the encryption managed keys already set up before you start the NetApp Backup and Recovery wizard.
+
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[Refer to how to use your own Amazon encryption keys with Cloud Volumes ONTAP^].
+
+https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html#configure-encryption-settings[Refer to how to use your own Amazon encryption keys with NetApp Backup and Recovery^].
+
+
+=== Configure your system for a private connection using a VPC endpoint interface
+
+If you want to use a standard public internet connection, then all the permissions are set by the Console agent and there is nothing else you need to do. 
+
+If you want to have a more secure connection over the internet from your on-prem data center to the VPC, there's an option to select an AWS PrivateLink connection in the Backup activation wizard. It's required if you plan to use a VPN or AWS Direct Connect to connect your on-premises system through a VPC Endpoint interface that uses a private IP address. 
+
+.Steps
+
+. Create an Interface endpoint configuration using the Amazon VPC console or the command line. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html[Refer to details about using AWS PrivateLink for Amazon S3^].
+
+. Modify the security group configuration that's associated with the Console agent. You must change the policy to "Custom" (from "Full Access"), and you must <<Set up S3 permissions,add the S3 permissions from the backup policy>> as shown earlier.
++
+If you're using port 80 (HTTP) for communication to the private endpoint, you're all set. You can enable NetApp Backup and Recovery on the cluster now.
++
+If you're using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add it to your ONTAP cluster, as shown in the next 4 steps.
++
+. Obtain the DNS name of the endpoint from the AWS Console.
+
+. Obtain the certificate from the VPC S3 endpoint. You do this by https://docs.netapp.com/us-en/console-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[logging into the VM that hosts the Console agent^] and running the following command. When entering the DNS name of the endpoint, add "bucket" to the beginning, replacing the "*":
++
+[source,text]
+[ec2-user@ip-10-160-4-68 ~]$ openssl s_client -connect bucket.vpce-0ff5c15df7e00fbab-yxs7lt8v.s3.us-west-2.vpce.amazonaws.com:443 -showcerts
+
+.	From the output of this command, copy the data for the S3 certificate (all data between, and including, the BEGIN / END CERTIFICATE tags):
++
+[source,text]
+Certificate chain
+0 s:/CN=s3.us-west-2.amazonaws.com`
+   i:/C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+-----BEGIN CERTIFICATE-----
+MIIM6zCCC9OgAwIBAgIQA7MGJ4FaDBR8uL0KR3oltTANBgkqhkiG9w0BAQsFADBG
+…
+…
+GqvbOz/oO2NWLLFCqI+xmkLcMiPrZy+/6Af+HH2mLCM4EsI2b+IpBmPkriWnnxo=
+-----END CERTIFICATE-----
+
+.	Log into the ONTAP cluster CLI and apply the certificate you copied using the following command (substitute your own storage VM name):
++
+[source,text]
+cluster1::> security certificate install -vserver cluster1 -type server-ca
+Please enter Certificate: Press <Enter> when done
+
+== Activate backups on your ONTAP volumes
+
+Activate backups at any time directly from your on-premises system.
+
+A wizard takes you through the following major steps: 
+
+* <<Select the volumes that you want to back up>>
+* <<Define the backup strategy>>
+* <<Review your selections>> 
+
+You can also <<Show the API commands>> at the review step, so you can copy the code to automate backup activation for future systems.  
+
+=== Start the wizard 
+
+.Steps 
+
+. Access the Activate backup and recovery wizard using one of the following ways: 
+* From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right-panel.
++
+If the Amazon S3 destination for your backups exists as a system on the Console *Systems* page, you can drag the ONTAP cluster onto the Amazon S3 object storage. 
+* Select *Volumes* in the Backup and recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled). 
+
++ 
+The Introduction page of the wizard shows the protection options including local Snapshots, replication, and backups. If you did the second option in this step, the Define Backup Strategy page appears with one volume selected. 
+
+. Continue with the following options: 
+
+* If you already have a Console agent, you're all set. Just select *Next*. 
+* If you don't already have a Console agent, the *Add a Console agent* option appears. Refer to <<Prepare your Console agent>>. 
+
+=== Select the volumes that you want to back up
+
+Choose the volumes you want to protect. A protected volume is one that has one or more of the following: Snapshot policy, replication policy, backup to object policy. 
+
+You can choose to protect FlexVol or FlexGroup volumes; however, you cannot select a mix of these volumes when activating backup for a system. See how to link:prev-ontap-backup-manage.html[activate backup for additional volumes in the system] (FlexVol or FlexGroup) after you have configured backup for the initial volumes.
+
+[NOTE] 
+====
+* You can activate a backup only on a single FlexGroup volume at a time. 
+* The volumes you select must have the same SnapLock setting. All volumes must have SnapLock Enterprise enabled or have SnapLock disabled. 
+//(Volumes with SnapLock Compliance mode require ONTAP 9.14 or later.)
+====
+
+.Steps 
+
+If the volumes you choose already have snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
+
+. In the Select Volumes page, select the volume or volumes you want to protect. 
++
+* Optionally, filter the rows to show only volumes with certain volume types, styles, and more to make the selection easier. 
+* After you select the first volume, then you can select all FlexVol volumes (FlexGroup volumes can be selected one at a time only). To back up all existing FlexVol volumes, check one volume first and then check the box in the title row. 
+* To back up individual volumes, check the box for each volume.
+
+. Select *Next*.
+
+=== Define the backup strategy 
+
+Defining the backup strategy involves setting the following options: 
+
+* Whether you want one or all of the backup options: local snapshots, replication, and backup to object storage
+* Architecture
+* Local snapshot policy
+* Replication target and policy
++
+NOTE: If the volumes you choose have different snapshot and replication policies than the policies you select in this step, the existing policies will be overwritten. 
+
+* Backup to object storage information (provider, encryption, networking, backup policy, and export options). 
+
+.Steps 
+
+. In the Define backup strategy page, choose one or all of the following. All three are selected by default: 
++
+* *Local Snapshots*: If you are performing replication or back up to object storage, local snapshots must be created. 
+* *Replication*: Creates replicated volumes on another ONTAP storage system.  
+* *Backup*: Backs up volumes to object storage.  
+
+. *Architecture*: If you chose replication and backup, choose one of the following flows of information: 
+* *Cascading*: Information flows from the primary to the secondary to object storage and from the secondary to object storage. 
+* *Fan out*: Information flows from the primary to the secondary _and_ from the primary to object storage. 
++ 
+For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey]. 
+
+. *Local Snapshot*: Choose an existing snapshot policy or create a policy. 
++
+TIP: To create a custom policy before activating the snapshot, refer to link:br-use-policies-create.html[Create a policy].
+
+. To create a policy, select *Create new policy* and do the following: 
++
+* Enter the name of the policy. 
+* Select up to five schedules, typically of different frequencies. 
+** For backup-to-object policies, set the DataLock and Ransomware Protection settings. For details on DataLock and Ransomware Protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+* Select *Create*.
+// In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
+ 
+
+. *Replication*: Set the following options: 
++
+* *Replication target*: Select the destination system and SVM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
+* *Replication policy*: Choose an existing replication policy or create a policy. 
++
+TIP: To create a custom policy before activating the replication, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
++
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** Select *Create*. 
+
+. *Back up to Object*: If you selected *Backup*, set the following options: 
++
+* *Provider*: Select *Amazon Web Services*. 
+* *Provider settings*: Enter the provider details and AWS region where the backups will be stored.
+
++
+The access key and secret key are for the IAM user you created to give the ONTAP cluster access to the S3 bucket.
+
+* *Bucket*: Either choose an existing S3 bucket or create a new one. Refer to https://docs.netapp.com/us-en/storage-management-s3-storage/task-add-s3-bucket.html[Add S3 buckets^].
+
+* *Encryption key*: If you created a new S3 bucket, enter encryption key information given to you from the provider. Choose whether you'll use the default Amazon S3 encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. 
+
++ 
+NOTE: If you chose an existing bucket, encryption information is already available, so you don't need to enter it now. 
+
+* *Networking*: Choose the IPspace, and whether you'll be using a Private Endpoint. Private Endpoint is disabled by default.
+
+.. The IPspace in the ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access.
+.. Optionally, choose whether you'll use an AWS PrivateLink that you have previously configured. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html[See details about using AWS PrivateLink for Amazon S3^].
+
+* *Backup policy*: Select an existing backup policy or create a policy. 
++
+TIP: To create a custom policy before activating the backup, refer to link:br-use-policies-create.html[Create a policy].
++
+To create a policy, select *Create new policy* and do the following: 
++
+** Enter the name of the policy. 
+** Select up to five schedules, typically of different frequencies. 
+** Select *Create*. 
+
+* *Export existing Snapshot copies to object storage as backup copies*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+
+. Select *Next*. 
+
+//.. Enter the name for the default policy. You don't need to change the name.
+//.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings[See the list of existing policies you can choose^].
+
+//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//+
+//NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
+
+//.. Optionally, when using ONTAP 9.10.1 and greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization. link:reference-aws-backup-tiers.html[Learn more about using archival tiers^].
+
+=== Review your selections 
+
+This is the chance to review your selections and make adjustments, if necessary. 
+
+.Steps 
+
+. In the Review page, review your selections. 
+. Optionally check the box to *Automatically synchronize the Snapshot policy labels with the replication and backup policy labels*. This creates Snapshots with a label that matches the labels in the replication and backup policies.  
+. Select *Activate Backup*. 
+
+.Result 
+
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the primary storage system data. Subsequent transfers contain differential copies of the primary data contained in Snapshot copies.
+
+A replicated volume is created in the destination cluster that will be synchronized with the primary storage volume. 
+
+The S3 bucket is created in the service account indicated by the S3 access key and secret key you entered, and the backup files are stored there. The Volume Backup Dashboard is displayed so you can monitor the state of the backups.
+
+You can also monitor the status of backup and restore jobs using the link:br-use-monitor-tasks.html[Job Monitoring page^].
+
+=== Show the API commands 
+
+You might want to display and optionally copy the API commands used in the Activate backup and recovery wizard. You might want to do this to automate backup activation in future systems. 
+
+.Steps 
+
+. From the Activate backup and recovery wizard, select *View API request*. 
+. To copy the commands to the clipboard, select the *Copy* icon. 
+

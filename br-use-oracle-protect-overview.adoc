@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: br-use-oracle-protect-overview.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: You can protect Oracle virtual machines from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID, ensuring that your data is protected. 
+---
+
+= Protect Oracle Database workloads overview 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Protect your Oracle databases and logs with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and database-consistent backup and restore operations. You can back up Oracle workloads to Amazon Web Services S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3 and restore them to an on-premises Oracle host. 
+
+image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
+
+Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
+
+* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
+* Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
+* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+
+NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
+
+You can use NetApp Backup and Recovery to perform the following tasks related to Oracle workloads:
+
+* link:br-start-discover-oracle.html[Discover Oracle workloads]
+* link:br-use-oracle-protection-groups.html[Create and manage protection groups for Oracle workloads]
+* link:br-use-oracle-backup.html[Back up Oracle workloads]
+* link:br-use-oracle-restore.html[Restore Oracle workloads]
+

@@ -1,0 +1,115 @@
+---
+sidebar: sidebar
+permalink: br-use-settings-advanced.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: Some advanced settings might be helpful in maintaining your backup and recovery environment. You can configure advanced settings to manage your inventory, delete backups, unregister resources, delete relationships, unprotect resources to stop service charges, set the max transfer rate for the SnapMirror relationship, export snapshot copies to an object store, enable automatic yearly snapshot deletion, enable maintenance mode, and update the Application Plugin.
+---
+
+= Configure advanced settings in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Some advanced settings might be helpful in maintaining your backup and recovery environment. You can configure advanced settings to manage your inventory, delete backups, unregister resources, delete relationships, unprotect resources to stop service charges, set the max transfer rate for the SnapMirror relationship, export snapshot copies to an object store, enable automatic yearly snapshot deletion, enable maintenance mode, and update the Application Plugin.
+
+Configure NetApp Backup and Recovery advanced settings in the following ways: 
+
+* Delete backups.
+* Unregister backups, databases, instances, or application hosts. 
+* Delete the relationships.
+* Unprotect databases, instances, application hosts, and work environments to stop service charges. 
+* Set the max transfer rate for the SnapMirror relationship - manage the bandwidth usage, ensuring that SnapMirror operations don't interfere with other network activities.
+* Export snapshot copies to an object store to initialize backups in the cloud by moving older snapshot copies into the baseline backup copy.
+* Enable automatic yearly snapshot deletion
+* Enable maintenance mode so that updates or maintenance tasks can be performed.
+* Update the Application Plugin. 
+
+== Delete backups
+
+You can delete backups to free up space in your storage.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Delete backups**.
+4. Select the backup that you want to delete.
+5. Select **Delete**.
+
+== Unregister backups, databases, instances, or application hosts
+
+You can unregister backups, databases, instances, or application hosts to remove them from the inventory.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Unregister resources**.
+4. Select the resource that you want to unregister.
+5. Select **Unregister**.
+
+
+== Delete relationships
+
+You can delete relationships to remove them from the inventory.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Delete relationships**.
+4. Select the relationship that you want to delete.
+5. Select **Delete**.
+
+== Unprotect databases, instances, application hosts, and work environments
+
+You can unprotect databases, instances, application hosts, and work environments to stop service charges.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Unprotect resources**.
+
+== Set the max transfer rate for the SnapMirror relationship
+
+You can set the max transfer rate for the SnapMirror relationship to manage the bandwidth usage, ensuring that SnapMirror operations don't interfere with other network activities.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Set the max transfer rate for the SnapMirror relationship**.
+4. Enter the max transfer rate.
+5. Select **Save**.
+
+== Export snapshot copies to an object store
+
+You can export snapshot copies to an object store to initialize backups in the cloud by moving older snapshot copies into the baseline backup copy.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Export snapshot copies to an object store**.
+4. Select the snapshot copy that you want to export.
+5. Select **Export**.
+
+== Enable automatic yearly snapshot deletion
+
+You can enable automatic yearly snapshot deletion to delete snapshots that are older than a year.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Enable automatic yearly snapshot deletion**.
+4. Select **Enable**.
+
+== Enable maintenance mode
+
+You can enable maintenance mode so that updates or maintenance tasks can be performed.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Enable maintenance mode**.
+4. Select **Enable**.
+
+== Update the Application Plugin
+
+You can update the Application Plugin to ensure that the latest features are available.
+
+1. In the NetApp Backup and Recovery console, select **Settings**.
+2. Select **Advanced settings**.
+3. Select **Update the Application Plugin**.
+4. Select **Update**.
+

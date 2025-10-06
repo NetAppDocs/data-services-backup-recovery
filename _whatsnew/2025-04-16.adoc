@@ -1,0 +1,67 @@
+=== UI improvements
+
+This release enhances your experience by simplifying the interface:   
+
+* The removal of the Aggregate column from the Volumes tables, along with the Snapshot Policy, Backup Policy, and Replication Policy columns from the Volume table in the V2 Dashboard, results in a more streamlined layout.  
+
+* Excluding non-activated working environments from the drop-down list makes the interface less cluttered, the navigation more efficient, and loading faster. 
+
+* While sorting on the Tags column is disabled, you can still view the tags, ensuring that important information remains easily accessible.  
+
+* The removal of labels on protection icons contributes to a cleaner look and decreases loading time.  
+
+* During the working environment activation process, a dialog box displays a loading icon to provide feedback until the discovery process is complete, enhancing transparency and confidence in the system's operations. 
+
+=== Enhanced Volume Dashboard (Preview)
+
+The Volume Dashboard now loads in under 10 seconds, providing a much faster and more efficient interface. This preview version is available to select customers, offering them an early look at these improvements. 
+
+=== Support for third-party Wasabi object store (Preview) 
+
+NetApp Backup and Recovery now extends its support to third-party object stores with a primary focus on Wasabi. This new preview feature enables you leverage any S3-compatible object store for your backup and recovery needs. 
+
+==== Getting started with Wasabi
+
+To begin using third-party storage as an object store, you must enable a flag within the Console agent. Then, you can enter the connection details for your third-party object store and integrate it into your backup and recovery workflows. 
+
+
+.Steps
+
+. SSH into your connector. 
+. Go into the NetApp Backup and Recovery cbs server container:
++
+----
+docker exec -it cloudmanager_cbs sh
+---- 
+
+. Open the `default.json` file inside the `config` folder via VIM or any other editor:
++
+----
+vi default.json
+----
+
+. Modify `allow-s3-compatible`: false to `allow-s3-compatible`: true. 
+
+. Save the changes. 
+
+. Exit from the container.
+. Restart the NetApp Backup and Recovery cbs server container.
+
+.Result
+
+After the container is ON again, open the NetApp Backup and Recovery UI. When you initiate a backup or edit a backup strategy, you will see the new provider "S3 Compatible" listed along with other backup providers of AWS, Microsoft Azure, Google Cloud, StorageGRID, and ONTAP S3.
+
+
+==== Preview mode limitations 
+
+While this feature is in preview, consider the following limitations: 
+
+* Bring Your Own Bucket (BYOB) is not supported. 
+* Enabling DataLock in a policy is not supported. 
+* Enabling Archival mode in a policy is not supported. 
+* Only on-premises ONTAP environments are supported. 
+* MetroCluster is not supported. 
+* Options to enable bucket-level encryption are not supported. 
+
+During this preview, we encourage you to explore this new feature and provide feedback about integration with third-party object stores before the full functionality is rolled out. 
+

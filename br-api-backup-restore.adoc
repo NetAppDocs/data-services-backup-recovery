@@ -1,0 +1,179 @@
+---
+sidebar: sidebar
+permalink: br-api-backup-restore.html
+keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis
+summary: The NetApp Backup and Recovery capabilities that are available through the web UI are also available through RESTful APIs.
+---
+
+= Automate with NetApp Backup and Recovery REST APIs
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The NetApp Backup and Recovery capabilities that are available through the web UI are also available through the RESTful API.
+
+There are ten categories of endpoints defined within NetApp Backup and Recovery:
+
+*	backup - manages backup operations of cloud and on-premises resources, and retrieves details of the backup data
+*	catalog - manages the indexed catalog search for files based on a query (Search & Restore)
+*	cloud - retrieves information about various cloud provider resources from the NetApp Console
+*	job - manages job detail entries on the NetApp Console database
+*	license - retrieves the license validity of the systems from NetApp Console
+* ransomware scan - initiates a ransomware scan on a specific backup file
+*	restore - enables you to perform volume, file, and folder-level restore operations
+*	sfr - retrieves files from a backup file for single file-level restore operations (Browse & Restore)
+* storagegrid - retrieves details about a StorageGRID server, and enables you to discover a StorageGRID server
+*	system - manages the backup policies, and configures the destination object store associated with a system
+
+== API reference
+
+Documentation for each NetApp Backup and Recovery API is available from https://docs.netapp.com/us-en/console-automation/cbs/overview.html[NetApp Console automation for NetApp Backup and Recovery^].
+
+== Getting started
+
+To get started with the NetApp Backup and Recovery APIs, you'll need to obtain a user token, your NetApp Console account ID, and the Console agent ID.
+
+When making API calls, you'll add the user token in the Authorization header, and the Console agent ID in the x-agent-id header. You should use the NetApp Console account ID in the APIs.
+
+NOTE: If you are using a service account, you should use the service access token instead of a user token. The value for "client_id" ("Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC") is a fixed value and cannot be changed. In this case, follow the instructions here: https://docs.netapp.com/us-en/console-automation/platform/create_service_token.html[Create a service access token^].
+
+.Steps
+
+. Obtain a user token from the NetApp NetApp Console web site.
++
+Make sure you generate the refresh token from the following link: https://services.cloud.netapp.com/refresh-token/. The refresh token is an alpha-numeric string that you'll use to generate a user token.
++
+[source,http]
+curl --location --request POST 'https://netapp-cloud-account.auth0.com/oauth/token?=' \
+--header 'Content-Type: application/json' \
+-d '{
+    "grant_type": "refresh_token",
+    "refresh_token": "JxaVHn9cGkX92aPVCkhat3zxxxxxwsC9qMl_pLHkZtsVA",
+    "client_id": "Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC"
+}'
+
++
+NOTE: The user token from the NetApp Console web site has an expiration date. The API response includes an "expires_in" field that states when the token expires. To refresh the token, you'll need to call this API again. 
+
+. Obtain your NetApp Console account ID.
++
+[source,http]
+GET 'https://api.bluexp.netapp.com/tenancy/account' -H 'authority: api.bluexp.netapp.com'
+Header:
+-H 'accept: application/json'
+-H 'accept-language: en-GB,en;q=0.9'
+-H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR………
+
++
+This API will return a response like the following. You can retrieve the account ID by parsing the output from *[0].[ accountPublicId]*.
++
+//[source,text]
+ [{"accountPublicId":"account-i6vJXvZW","accountName":"rashidn","isSaas":true,"isGov":false,"isPrivatePreviewEnabled":false,"is3rdPartyServicesEnabled":false,"accountSerial":"96064469711530003565","userRole":"Role-1"}………
+
+. Obtain the x-agent-id which contains the Console agent ID.
++
+[source,http]
+GET curl 'https://api.services.cloud.netapp.com/occm/list-occms/account-OOnAR4ZS?excludeStandalone=true&source=saas' \
+Header:
+  -H 'authority: api.services.cloud.netapp.com' \
+  -H 'accept: application/json' \
+  -H 'accept-language: en-GB,en;q=0.9' \
+  -H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5…………
+
++
+This API will return a response like the following. You can retrieve the agent id by parsing the output from *occm.[0].[agent].[agentId]*.
++
+//[source,text]
+ {"occms":[{"account":"account-OOnAR4ZS","accountName":"cbs","occm":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","status":"ready","occmName":"cbsgcpdevcntsg-asia","primaryCallbackUri":"http://34.93.197.21","manualOverrideUris":[],"automaticCallbackUris":["http://34.93.197.21","http://34.93.197.21/occmui","https://34.93.197.21","https://34.93.197.21/occmui","http://10.138.0.16","http://10.138.0.16/occmui","https://10.138.0.16","https://10.138.0.16/occmui","http://localhost","http://localhost/occmui","http://localhost:1337","http://localhost:1337/occmui","https://localhost","https://localhost/occmui","https://localhost:1337","https://localhost:1337/occmui"],"createDate":"1652120369286","agent":{"useDockerInfra":true,"network":"default","name":"cbsgcpdevcntsg-asia","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Zclients","provider":"gcp","systemId":"a3aa3578-bfee-4d16-9e10-
+
+== Example using the APIs
+
+The following example shows an API call to activate NetApp Backup and Recovery on a system with a new policy that has daily, hourly, and weekly labels set, archive after days set to 180 days, in East-US-2 region in Azure cloud. Note that this only enables backup on the system, but no volumes are backed up. 
+
+.API Request
+
+You'll see that we use the NetApp Console account ID `account-DpTFcxN3`, Console agent ID `iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients`, and user token `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g` in this command.
+
+[source,http]
+curl --location --request POST 'https://api.bluexp.netapp.com/account/account-DpTFcxN3/providers/cloudmanager_cbs/api/v3/backup/working-environment/VsaWorkingEnvironment-99hPYEgk' \
+--header 'x-agent-id: iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g' \
+--data-raw '{
+    "provider":"AZURE",
+    "backup-policy": {
+      "archive-after-days": 180,
+      "rule": [
+        {
+          "label": "hourly",
+          "retention": "2"
+        },
+        {
+          "label": "daily",
+          "retention": "30"
+        },
+        {
+          "label": "weekly",
+          "retention": "52"
+        }
+      ]
+    },
+    "ip-space": "Default",
+    "region": "eastus2",
+    "azure": {
+      "resource-group": "rn-test-backup-rg",
+      "subscription": "3beb4dd0-25d4-464f-9bb0-303d7cf5c0c2"
+    }
+  }'
+
+.Response is a job ID that you can then monitor.
+
+[source,text]
+{ 
+ "job-id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a"
+}
+
+.Monitor the response.
+
+[source,http]
+curl --location --request GET 'https://api.bluexp.netapp.com/account/account-DpTFcxN3/providers/cloudmanager_cbs/api/v1/job/1b34b6f6-8f43-40fb-9a52-485b0dfe893a' \
+--header 'x-agent-id: iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…hE9ss2NubK6wZRHUdSaORI7JvcOorUhJ8srqdiUiW6MvuGIFAQIh668of2M3dLbhVDBe8BBMtsa939UGnJx7Qz6Eg'
+
+.Response.
+
+[source,text]
+{
+    "job": [
+        {
+            "id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a",
+            "type": "backup-working-environment",
+            "status": "PENDING",
+            "error": "",
+            "time": 1651852160000
+        }
+    ]
+}
+
+.Monitor until "status" is "COMPLETED".
+
+[source,text]
+{
+    "job": [
+        {
+            "id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a",
+            "type": "backup-working-environment",
+            "status": "COMPLETED",
+            "error": "",
+            "time": 1651852160000
+        }
+    ]
+}
+
+

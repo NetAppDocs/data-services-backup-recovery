@@ -1,0 +1,172 @@
+---
+sidebar: sidebar
+permalink: br-use-monitor-tasks.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, jobs
+summary: With NetApp Backup and Recovery, monitor the status of local Snapshots, replications, and backup to object storage jobs that you initiated, and restore jobs that you initiated. 
+---
+
+= Monitor jobs in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+With NetApp Backup and Recovery, monitor the status of local snapshots, replications, and backup to object storage jobs that you initiated, and restore jobs that you initiated. You can see the jobs that have completed, are in progress, or failed so you can diagnose and fix problems. Using the NetApp Console Notification Center, you can enable notifications to be sent by email so you can be informed of important system activity even when you're not logged into the system. Using the Console Timeline, you can see details of all actions initiated via the UI or API.
+
+NetApp Backup and Recovery retains job information for 15 days, after which it is purged and no longer visible in the Job Monitor. 
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+
+== View job status on the Job Monitor
+
+You can view a list of all the snapshot, replication, backup to object storage, and restore operations and their current status in the *Job Monitoring* tab. This includes operations from your Cloud Volumes ONTAP, on-premises ONTAP, applications, and virtual machines. Each operation, or job, has a unique ID and a status. 
+
+The status can be:
+
+* Success
+* In Progress
+* Queued
+* Warning
+* Failed
+
+//Snapshots, replications, backups to object storage and restore operations that you initiated from the NetApp Backup and Recovery UI and API, and system-initiated jobs such as ongoing scheduled backup operations, are available in the Job Monitoring tab. The Job Monitor includes scheduled jobs for local Snapshots, replications, and backups to object storage. However, this is true only for Cloud Volumes ONTAP systems running ONTAP 9.13.0 or greater and on-premises ONTAP systems running ONTAP 9.13.1 or greater. When running earlier versions of ONTAP, only user-initiated jobs are displayed.
+
+Snapshots, replications, backups to object storage, and restore operations that you initiated from the NetApp Backup and Recovery UI and API are available in the Job Monitoring tab. 
+
+NOTE: If you've upgraded your ONTAP systems to 9.13.x and you don't see ongoing scheduled backup operations in the Job Monitor, then you'll need to restart NetApp Backup and Recovery. link:reference-restart-backup.html[Learn how to restart NetApp Backup and Recovery].
+
+.Steps
+
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+
+. To show additional columns (System, SVM, User Name, Workload, Policy Name, Snapshot Label), select the plus sign.
+
+=== Search and filter the list of jobs
+
+You can filter the operations on the Job Monitoring page using several filters, such as policy, Snapshot label, type of operation (protection, restore, retention, or other) and protection type (local snapshot, replication, or backup to the cloud). 
+
+By default, the Job Monitoring page shows protection and recovery jobs from the last 24 hours. You can change the timeframe using the Timeframe filter.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. To sort the results differently, select each column heading to sort by Status, Start Time, Resource Name, and more. 
+
+. If you're looking for specific jobs, select the *Advanced Search & Filtering* area to open the Search panel. 
++
+Use this panel to enter a free text search for any resource; for example "volume 1" or "application 3". You can also filter the jobs list according to the items in the drop-down menus.
++
+Most of the filters are self-explanatory. The filter for "Workload" enables you to view jobs in the following catagories:
+
+* ONTAP volumes (Cloud Volumes ONTAP and on-premises ONTAP volumes)
+* Microsoft SQL Server 
+* Virtual Machines
+* Kubernetes
+
+
+
++
+[TIP]
+====
+* You can search for data within a specific "SVM" only if you have first selected a System.
+* You can search using the "Protection type" filter only when you have selected the "Type" of "Protection".
+====
+
+. To update the page immediately, select the image:button_refresh.png[Refresh] button. Otherwise, this page refreshes every 15 minutes so that you'll always see the most recent job status results. 
+
+=== View job details
+
+You can view details corresponding to a specific completed job. You can export details for a particular job in a JSON format. 
+
+You can view details such as job type (scheduled or on-demand), SnapMirror backup type (initial or periodic) start and end times, duration, amount of transferred data from system to object storage, average transfer rate, policy name, retention lock enabled, ransomware scan performed, protection source details, and protection target details. 
+
+Restore jobs show details such as backup target provider (Amazon Web Services, Microsoft Azure, Google Cloud, on-premises), S3 bucket name, SVM name, source volume name, destination volume, snapshot label, recovered objects count, file names, file sizes, last modification date, and full file path. 
+
+//NOTE: Job details appear for ONTAP Snapshots, replication, and backup to the cloud jobs (both ad-hoc and scheduled, with scheduled jobs appearing only for ONTAP 9.13.0 or later), and all restore jobs. Job details appear for in-progress and completed jobs.
+
+.Steps 
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. Select the name of the job. 
+. Select the Actions menu image:icon-action.png[Actions icon] and select *View Details*. 
+
+
+. Expand each section to see details. 
+
+=== Download Job Monitoring results as a report
+
+You can download the contents of the main Job Monitoring page as a report after you've refined it. NetApp Backup and Recovery generates and downloads a .CSV file that you can review and send to other groups as needed. The .CSV file includes up to 10,000 rows of data.
+
+From the Job Monitoring Details information, you can download a JSON file containing details for a single job. 
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. To download a CSV file for all jobs, select the Download button and locate the file in your download directory. 
+. To download a JSON file for a single job, select the Actions menu image:icon-action.png[Actions icon] for the job, select *Download JSON File*, and locate the file in your download directory.  
+
+== Review retention (backup lifecycle) jobs
+
+Monitoring of retention (or _backup lifecycle_) flows helps you with audit completeness, accountability, and backup safety. To help you track the backup lifecycle, you might want to identify the expiration of all backup copies. 
+
+A backup lifecycle job tracks all Snapshot copies that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can look at all job types called "Retention" on the Job Monitoring page.
+
+The "Retention" job type captures all Snapshot deletion jobs initiated on a volume that is protected by NetApp Backup and Recovery.  
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. Select the *Advanced Search & Filtering* area to open the Search panel. 
+. Select "Retention" as the job type. 
+
+== Review backup and restore alerts in the NetApp Console Notification Center
+
+The NetApp Console Notification Center tracks the progress of backup and restore jobs that you've initiated so you can verify whether the operation was successful or not. 
+
+In addition to viewing the alerts in the Notification Center, you can configure the Console to send certain types of notifications by email as alerts so you can be informed of important system activity even when you're not logged into the system. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
+
+The Notification Center displays numerous Snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
+
+[cols="1,2,1,1",options="header"]
+|===
+| Operation type
+| Event
+| Alert level
+| Email sent
+
+| Activation |Backup and Recovery activation failed for system | Error | Yes
+| Activation |Backup and Recovery edit failed for system | Error | Yes
+| Local snapshot | NetApp Backup and Recovery ad-hoc snapshot creation job failure | Error | Yes
+//| Local snapshot | *later* NetApp Backup and Recovery scheduled snapshot creation job failure | Error | Yes
+//| Replication | *later* NetApp Backup and Recovery scheduled replication job failure | Error | Yes
+| Replication | NetApp Backup and Recovery ad-hoc replication job failure | Error | Yes
+| Replication | NetApp Backup and Recovery replication pause job failure | Error | No
+| Replication | NetApp Backup and Recovery replication break job failure | Error | No
+| Replication | NetApp Backup and Recovery replication resync job failure | Error | No
+| Replication | NetApp Backup and Recovery replication stop job failure | Error | No
+| Replication | NetApp Backup and Recovery replication reverse resync job failure | Error | Yes
+| Replication | NetApp Backup and Recovery replication delete job failure | Error | Yes
+|===
+
+NOTE: Beginning with ONTAP 9.13.0, all alerts appear for Cloud Volumes ONTAP and on-premises ONTAP systems. For systems with Cloud Volumes ONTAP 9.13.0 and on-premises ONTAP, only the alert related to "Restore job completed, but with warnings" appears. 
+
+By default, NetApp Console organization and account admins receive emails for all "Critical" and "Recommendation" alerts. All other users and recipients are set up, by default, not to receive any notification emails. Emails can be sent to any Console users who are part of your NetApp Cloud Account, or to any other recipients who need to be aware of backup and restore activity. 
+
+To receive the NetApp Backup and Recovery email alerts, you'll need to select the notification severity types "Critical", "Warning", and "Error" in the Notifications settings page.
+
+https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn how to send alert emails for backup and restore jobs^].
+
+.Steps 
+
+. From the Console menu, select the (image:icon_bell.png[notification bell]).
+. Review the notifications.
+
+== Review operation activity in Console Timeline
+
+You can view details of backup and restore operations for further investigation in the Console Timeline. The Console Timeline provides details of each event, whether user-initiated or system-initiated and shows actions initiated in the UI or via the API. 
+
+https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html[Learn about the differences between the Timeline and the Notification Center^].

@@ -1,0 +1,299 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-protect-journey.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+---
+
+= Plan your protection journey with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to create up to three copies of your source volumes to protect your data. There are many options that you can select when enabling this service on your volumes, so you should review your choices so you're prepared.
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+====
+
+
+We'll go over the following options:
+
+* Which protection features will you use: snapshot copies, replicated volumes, and/or backup to cloud
+* Which backup architecture will you use: a cascade or fan-out backup of your volumes
+* Will you use the default backup policies, or do you need to create custom policies 
+* Do you want the service to create the cloud buckets for you, or do you want to make your object storage containers before you begin
+* Which Console agent deployment mode are you using (standard, restricted, or private mode)
+
+== Which protection features will you use
+
+Before you select the features you'll use, here's a quick explanation of what each features does, and what type of protection it provides.
+
+[cols=2*,options="header",cols="20,70",width="90%"]
+|===
+| Backup type
+| Description
+
+| Snapshot | 
+Creates a read-only, point-in-time image of a volume within the source volume as a snapshot copy. You can use the snapshot copy to recover individual files, or to restore the entire contents of a volume. 
+| Replication | 
+Creates a secondary copy of your data on another ONTAP storage system and continually updates the secondary data. Your data is kept current and remains available whenever you need it. 
+| Cloud backup | 
+Creates backups of your data to the cloud for protection and for long-term archival purposes. If necessary, you can restore a volume, folder, or individual files from the backup to the same, or different, system.
+
+|===
+
+Snapshots are the basis of all the backup methods, and they are required to use the backup and recovery service. A snapshot copy is a read-only, point-in-time image of a volume. The image consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot copy was made. The snapshot copy that is created on your volume is used to keep the replicated volume and backup file synchronized with changes made to the source volume - as shown in the figure.
+
+image:diagram-321-overview.png["A diagram showing how backup files exist on the source system as snapshot copies, as replicated volumes on the secondary storage system, and as a backup files in object storage."]
+
+You can choose to create both replicated volumes on another ONTAP storage system and backup files in the cloud. Or you can choose just to create replicated volumes or backup files - it's your choice. 
+//The service also enables you to select two replication destinations if you want to protect your data in an additional location (both with and without creating backup files).
+
+To summarize, these are the valid protection flows you can create for volumes in your ONTAP system:
+
+* Source volume -> Snapshot copy -> Replicated volume -> Backup file
+* Source volume -> Snapshot copy -> Backup file
+* Source volume -> Snapshot copy -> Replicated volume
+//* Source volume -> Snapshot copy -> Replicated volume -> Replicated volume
+
+NOTE: The initial creation of a replicated volume or backup file includes a full copy of the source data -- this is called a _baseline transfer_. Subsequent transfers contain only differential copies of the source data (the snapshot).
+
+*Comparison of the different backup methods*
+
+The following table shows a generalized comparison of the three backup methods. While object storage space is typically less expensive than your on-premises disk storage, if you think you might restore data from the cloud frequently, then the egress fees from cloud providers can reduce some of your savings. You'll need to identify how often you need to restore data from the backup files in the cloud.
+
+In addition to this criteria, cloud storage offers additional security options if you use the DataLock and Ransomware Protection feature, and additional cost savings by selecting archival storage classes for older backup files. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection and archival storage settings].
+
+[cols=5*,options="header",cols="18,18,22,18,22",width="100%"]
+|===
+| Backup type
+| Backup speed
+| Backup cost
+| Restore speed
+| Restore cost
+
+| *Snapshot* | 
+High |
+Low (disk space) |
+High |
+Low
+| *Replication* | 
+Medium |
+Medium (disk space) |
+Medium |
+Medium (network)
+| *Cloud backup* | 
+Low |
+Low (object space)|
+Low |
+High (provider fees)
+
+|===
+
+== Which backup architecture will you use
+
+When creating both replicated volumes and backup files, you can choose a fan-out or cascade architecture to back up your volumes.
+
+A *fan-out* architecture transfers the snapshot copy independently to both the destination storage system and the backup object in the cloud.
+
+image:diagram-321-fanout-detailed.png["A diagram showing how a snapshot copy of a volume is used to create and update a replicated volume and a backup file."]
+
+A *cascade* architecture transfers the snapshot copy to the destination storage system first, and then that system transfers the copy to the backup object in the cloud.
+
+image:diagram-321-cascade-detailed.png["A diagram showing how a snapshot copy of a volume is used to create and update a replicated volume and a backup file."]
+
+*Comparison of the different architecture choices*
+
+This table provides a comparison of the fan-out and cascade architectures.
+
+[cols=2*,options="header",cols="50,50"]
+|===
+
+| Fan-out
+| Cascade
+
+| Small performance impact on the source system because it is sending snapshot copies to 2 distinct systems | Less effect on the performance of the source storage system because it sends the snapshot copy only once
+| Easier to set up because all policies, networking, and ONTAP configurations are done on the source system | Requires some networking and ONTAP configuration to be done from the secondary system as well.
+
+|===
+
+== Will you use the default policies for snapshots, replications, and backups
+
+You can use the default policies provided by NetApp to create your backups, or you can create custom policies. When you use the activation wizard to enable the backup and recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want to use a policy different than those existing policies, you can create the policy before starting or while using the activation wizard.
+
+* The default snapshot policy creates hourly, daily, and weekly snapshot copies, retaining 6 hourly, 2 daily, and 2 weekly snapshot copies.
+* The default replication policy replicates daily and weekly snapshot copies, retaining 7 daily and 52 weekly snapshot copies.
+* The default backup policy replicates daily and weekly snapshot copies, retaining 7 daily and 52 weekly snapshot copies.
+
+If you create custom policies for replication or backup, the policy labels (for example, "daily" or "weekly") must match the labels that exist in your snapshot policies or replicated volumes and backup files won't be created. 
+
+You can create snapshot, replication, and backup to object storage policies in the NetApp Backup and Recovery UI. See the section for link:prev-ontap-backup-manage.html[adding a new backup policy] for details. 
+
+In addition to using using NetApp Backup and Recovery to create custom policies, you can use System Manager or the ONTAP Command Line Interface (CLI):
+
+* https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html[Create a snapshot policy using System Manager or the ONTAP CLI^]
+
+* https://docs.netapp.com/us-en/ontap/task_dp_create_custom_data_protection_policies.html[Create a replication policy using System Manager or the ONTAP CLI^]
+
+
+
+*Note:* When using System Manager, select *Asynchronous* as the policy type for replication policies, and select *Asynchronous* and *Back up to cloud* for backup to object policies.
+
+
+
+Here are a few sample ONTAP CLI commands that might be helpful if you are creating custom policies. Note that you must use the _admin_ vserver (storage VM) as the `<vserver_name>` in these commands.
+
+[cols=2*,options="header",cols="30,70"]
+|===
+
+| Policy Description
+| Command
+
+| Simple snapshot policy
+| `snapshot policy create -policy WeeklySnapshotPolicy -enabled true -schedule1 weekly -count1 10 -vserver ClusterA -snapmirror-label1 weekly`
+| Simple backup to cloud
+| `snapmirror policy create -policy <policy_name> -transfer-priority normal -vserver <vserver_name> -create-snapshot-on-source false -type vault`
+`snapmirror policy add-rule -policy <policy_name> -vserver <vserver_name> -snapmirror-label <snapmirror_label> -keep`
+| Backup to cloud with DataLock and Ransomware protection
+| `snapmirror policy create -policy CloudBackupService-Enterprise -snapshot-lock-mode enterprise -vserver <vserver_name>`
+`snapmirror policy add-rule -policy CloudBackupService-Enterprise -retention-period 30days`
+| Backup to cloud with archival storage class
+| `snapmirror policy create -vserver <vserver_name> -policy <policy_name> -archive-after-days <days> -create-snapshot-on-source false -type vault`
+`snapmirror policy add-rule -policy <policy_name> -vserver <vserver_name> -snapmirror-label <snapmirror_label> -keep`
+| Simple replication to another storage system
+| `snapmirror policy create -policy <policy_name> -type async-mirror -vserver <vserver_name>`
+`snapmirror policy add-rule -policy <policy_name> -vserver <vserver_name> -snapmirror-label <snapmirror_label> -keep`
+
+|===
+
+NOTE: Only vault policies can be used for backup to cloud relationships.
+
+== Where do my policies reside?
+
+Backup policies reside in different locations depending on the backup architecture you plan to use: Fan-out or Cascading. Replication policies and Backup policies are not designed the same way because replications pair two ONTAP storage systems and backup to object uses a storage provider as the destination. 
+
+* Snapshot policies always reside on the primary storage system.
+
+* Replication policies always reside on the secondary storage system.
+
+* Backup-to-object policies are created on the system where the source volume resides - this is the primary cluster for fan-out configurations, and the secondary cluster for cascading configurations. 
+
+These differences are shown in the table.
+
+[cols=4*,options="header",cols="25,25,25,25",width="100%"]
+|===
+| Architecture
+| Snapshot policy
+| Replication policy
+| Backup policy
+
+| *Fan-out* | 
+Primary |
+Secondary |
+Primary 
+| *Cascade* | 
+Primary |
+Secondary |
+Secondary |
+
+|===
+
+So if you're planning to create custom policies when using the cascading architecture, you'll need to create the replication and backup to object policies on the secondary system where the replicated volumes will be created. If you're planning to create custom policies when using the fan-out architecture, you'll need to create the replication policies on the secondary system where the replicated volumes will be created and backup to object policies on the primary system. 
+
+If you're using the default policies that exist on all ONTAP systems, then you're all set.
+
+== Do you want to create your own object storage container
+
+When you create backup files in object storage for a system, by default, the backup and recovery service creates the container (bucket or storage account) for the backup files in the object storage account that you have configured. The AWS or GCP bucket is named "netapp-backup-<uuid>" by default. The Azure Blob storage account is named "netappbackup<uuid>".
+
+You can create the container yourself in the object provider account if you want to use a certain prefix or assign special properties. If you want to create your own container, you must create it before starting the activation wizard. NetApp Backup and Recovery can use any bucket and share buckets. The backup activation wizard will automatically discover your provisioned containers for the selected Account and credentials so that you can select the one you want to use. 
+
+//The container must be used exclusively for storing ONTAP volume backup files - it cannot be used for any other purpose.
+
+You can create the bucket from the Console, or from your cloud provider.
+
+* https://docs.netapp.com/us-en/storage-management-s3-storage/task-add-s3-bucket.html[Create Amazon S3 buckets from the Console^]
+* https://docs.netapp.com/us-en/storage-management-blob-storage/task-add-blob-storage.html[Create Azure Blob storage accounts from the Console^]
+* https://docs.netapp.com/us-en/storage-management-google-cloud-storage/task-add-gcp-bucket.html[Create Google Cloud Storage buckets from the Console^]
+//* https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-task.html[Create S3 buckets for ONTAP S3^]
+//* https://docs.netapp.com/us-en/storagegrid-117/tenant/creating-s3-bucket.html[Create S3 buckets for StorageGRID^]
+
+
+//*Note:* At this time you cannot use your own S3 buckets when creating backups in StorageGRID systems or to ONTAP S3.
+
+If you plan to use a different bucket prefix than "netapp-backup-xxxxxx", then you'll need to modify the S3 permissions for the Console agent IAM Role. 
+
+//For details, refer to how to create backups to AWS S3.
+
+*Advanced bucket settings*
+
+If you plan to move older backup files to archival storage, or if you plan to enable DataLock and Ransomware protection to lock your backup files and scan them for possible ransomware, you'll need to create the container with certain configuration settings:
+
+* Archival storage on your own buckets is supported in AWS S3 storage at this time when using ONTAP 9.10.1 or greater software on your clusters. By default, backups start in the S3 _Standard_ storage class. Ensure that you create the bucket with the appropriate lifecycle rules:
+
+** Move the objects in the entire scope of the bucket to S3 _Standard-IA_ after 30 days.
+** Move the objects with the tag "smc_push_to_archive: true" to _Glacier Flexible Retrieval_ (formerly S3 Glacier)
+
+* DataLock and Ransomware protection are supported in AWS storage when using ONTAP 9.11.1 or greater software on your clusters, and Azure storage when using ONTAP 9.12.1 or greater software. 
+
+** For AWS, you must enable Object Locking on the bucket using a 30-day retention period.
+** For Azure, you need to create the Storage Class with version-level immutability support.
+
+== Which Console agent deployment mode are you using
+
+If you're already using the Console to manage your storage, then a Console agent has already been installed. If you plan to use the same Console agent with NetApp Backup and Recovery, then you're all set. If you need to use a different Console agent, you'll need to install it before starting your backup and recovery implementation.
+
+NetApp Console offers multiple deployment modes that enable you to use the Console in a way that meets your business and security requirements. _Standard mode_ leverages the Console SaaS layer to provide full functionality, while _restricted mode_ and _private mode_ are available for organizations that have connectivity restrictions. 
+
+https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[Learn more about NetApp Console deployment modes^].
+
+
+=== Support for sites with full internet connectivity
+
+When NetApp Backup and Recovery is used in a site with full internet connectivity (also known as _standard mode_ or _SaaS mode_), you can create replicated volumes on any on-premises ONTAP or Cloud Volumes ONTAP systems managed by the  Console, and you can create backup files on object storage in any of the supported cloud providers. link:concept-backup-to-cloud.html[See the full list of supported backup destinations].
+
+For a list of valid Console agent locations, refer to one of the following backup procedures for the cloud provider where you plan to create backup files. There are some restrictions where the Console agent must be installed manually on a Linux machine or deployed in a specific cloud provider.
+
+
+* link:prev-ontap-backup-cvo-aws.html[Back up Cloud Volumes ONTAP data to Amazon S3]
+* link:prev-ontap-backup-cvo-azure.html[Back up Cloud Volumes ONTAP data to Azure Blob]
+* link:prev-ontap-backup-cvo-gcp.html[Back up Cloud Volumes ONTAP data to Google Cloud]
+
+* link:prev-ontap-backup-onprem-aws.html[Back up on-premises ONTAP data to Amazon S3]
+* link:prev-ontap-backup-onprem-azure.html[Back up on-premises ONTAP data to Azure Blob]
+* link:prev-ontap-backup-onprem-gcp.html[Back up on-premises ONTAP data to Google Cloud]
+
+* link:prev-ontap-backup-onprem-storagegrid.html[Back up on-premises ONTAP data to StorageGRID]
+* link:prev-ontap-backup-onprem-ontaps3.html[Back up on-premises ONTAP to ONTAP S3]
+
+=== Support for sites with limited internet connectivity
+
+NetApp Backup and Recovery can be used in a site with limited internet connectivity (also known as _restricted mode_) to back up volume data. In this case, you'll need to deploy the Console agent in the destination cloud region. 
+
+//* You can back up data from local on-premises ONTAP systems to local NetApp StorageGRID systems. link:prev-ontap-backup-onprem-storagegrid.html[Back up on-premises ONTAP data to StorageGRID].
+ifdef::aws[]
+* You can back up data from on-premises ONTAP systems or Cloud Volumes ONTAP systems installed in AWS commercial regions to Amazon S3. link:prev-ontap-backup-cvo-aws.html[Back up Cloud Volumes ONTAP data to Amazon S3].
+endif::aws[]
+ifdef::azure[]
+* You can back up data from on-premises ONTAP systems or Cloud Volumes ONTAP systems installed in Azure commercial regions to Azure Blob.  link:prev-ontap-backup-cvo-azure.html[Back up Cloud Volumes ONTAP data to Azure Blob].
+endif::azure[]
+
+=== Support for sites with no internet connectivity
+
+NetApp Backup and Recovery can be used in a site with no internet connectivity (also known as _private mode_ or _dark_ sites) to back up volume data. In this case, you'll need to deploy the Console agent on a Linux host in the same site. 
+
+NOTE: BlueXP private mode (legacy BlueXP interface) is typically used with on-premises environments that have no internet connection and with secure cloud regions, which includes AWS Secret Cloud, AWS Top Secret Cloud, and Azure IL6. NetApp continues to support these environments with the legacy BlueXP interface. For private mode documentation in the legacy BlueXP interface, refer to the https://docs.netapp.com/us-en/console-setup-admin/media/BlueXP-Private-Mode-legacy-interface.pdf[PDF documentation for BlueXP private mode].
+
+* You can back up data from local on-premises ONTAP systems to local NetApp StorageGRID systems.  link:prev-ontap-backup-onprem-storagegrid.html[Back up on-premises ONTAP data to StorageGRID].
+* You can back up data from local on-premises ONTAP systems to local on-premises ONTAP systems or Cloud Volumes ONTAP systems configured for S3 object storage. link:prev-ontap-backup-onprem-ontaps3.html[Back up on-premises ONTAP data to ONTAP S3].
+//ifdef::aws[]
+//* You can back up data from Cloud Volumes ONTAP systems installed in AWS commercial regions and AWS C2S/SC2S secure regions to Amazon S3. link:task-backup-to-s3.html[Back up Cloud Volumes ONTAP data to Amazon S3].
+//endif::aws[]
+//ifdef::azure[]
+//* You can back up data from Cloud Volumes ONTAP systems installed in Azure commercial regions and Azure IL6 secure regions to Azure Blob. link:task-backup-to-azure.html[Back up Cloud Volumes ONTAP data to Azure Blob].
+//endif::azure[]
+

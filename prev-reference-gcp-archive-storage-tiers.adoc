@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: prev-reference-gcp-archive-storage-tiers.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: NetApp Backup and Recovery supports one Google archival storage class and most regions.
+---
+
+= Supported Google archive storage tiers with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery supports one Google archival storage class and most regions.
+
+
+====
+*NOTE*   To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
+====
+
+
+
+== Supported Google archival storage classes for NetApp Backup and Recovery
+
+When backup files are initially created they're stored in _Standard_ storage. This tier is optimized for storing data that's infrequently accessed; but that also allows you to access it immediately.
+
+
+If your on-prem cluster is using ONTAP 9.12.1 or greater, you can choose to tier older backups to _Archive_ storage in the NetApp Backup and Recovery UI after a certain number of days (typically more than 30 days) for further cost optimization. Data in this tier will require a higher retrieval cost, so you need to consider how often you may need to restore data from these archived backup files. See the section on this page about restoring data from archival storage.
+
+
+Note that when you configure NetApp Backup and Recovery with this type of lifecycle rule, you must not configure any lifecycle rules when setting up the bucket in your Google account.
+
+https://cloud.google.com/storage/docs/storage-classes[Learn about Google storage classes^].
+
+== Restore data from archival storage
+
+While storing older backup files in Archive storage is much less expensive than Standard storage, accessing data from a backup file in Archive storage for restore operations will take a slightly longer amount of time and will cost more money.
+
+How much does it cost to restore data from Google Archive?::
+For detailed Google Cloud Storage pricing by region, visit the https://cloud.google.com/storage/pricing[Google Cloud Storage pricing page^].
+
+How long will it take to restore my objects archived in Google Archive?::
+There are 2 parts that make up the total restore time:
+
+* *Retrieval time*: The time to retrieve the backup file from Archive and place it in Standard storage. This is sometimes called the "rehydration" time. Unlike the "coldest" storage solutions provided by other cloud providers, your data is accessible within milliseconds.
+
+* *Restore time*: The time to restore the data from the backup file in Standard storage. This time is no different than the typical restore operation directly from Standard storage - when not using an archival tier.

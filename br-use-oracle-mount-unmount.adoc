@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: br-use-oracle-mount-unmount.html
+keywords: restore, vm, oracle, databases, snapshots, object storage, cloud storage, backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Protect your Oracle workloads with NetApp Backup and Recovery. 
+---
+
+= Mount and unmount Oracle database recovery points with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You might want to mount an Oracle Database recovery point if you need to access the database in a controlled state to perform recovery operations.
+
+== Mount an Oracle Database restore point
+
+If you configure the protection policy for a database to retain archive logs, you can mount the recovery points for the database to view the history of all changes made to the database.
+
+.Steps
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Select the Oracle tile.
+. In the Backup and Recovery menu, select *Inventory*.
+. For the Oracle Database workload in the list, select *View*.
+. Select the *Databases* menu.
+. Choose a database from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *View protection details*.
++
+A list of recovery points for that database appears.
+. Choose a recovery point from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *Mount*.
+. In the dialog that appears, do the following:
+.. Choose the host that should mount the recovery point from the list.
+.. Select which location Backup and Recovery should use to mount the recovery point. For the preview release, mounting from the object store is not supported.
++
+The mount path that Backup and Recovery should use is displayed.
+. Select *Mount*.
++
+The recovery point is mounted on the Oracle host.
+
+
+
+== Unmount an Oracle database restore point
+Unmount the recovery point when you no longer need to view changes made to that database.
+
+.Steps
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Select the Oracle tile.
+. In the Backup and Recovery menu, select *Inventory*.
+. For the Oracle workload in the list, select *View*.
+. Select the *Databases* menu.
+. Choose a database from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *View protection details*.
++
+A list of recovery points for that database appears.
+. Choose a recovery point from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *Unmount*.
+. Confirm the action by selecting *Unmount*.

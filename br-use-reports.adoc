@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: br-use-reports.html
+keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
+summary: In NetApp Backup and Recovery, create reports to view the status of your backups, including the number of backups, the number of successful backups, and the number of failed backups. You can also view the details of each backup, including the backup type, the storage system used for the backup, and the time of the backup. 
+---
+
+= Create reports for Microsoft SQL Server workloads in NetApp Backup and Recovery
+:hardbreaks:
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+In NetApp Backup and Recovery, create reports for Microsoft SQL Server workloadsto view the status of your backups, including the number of backups, the number of successful backups, and the number of failed backups. You can also view the details of each backup, including the backup type, the storage system used for the backup, and the time of the backup.
+
+== Create a report
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+
+. From the NetApp Backup and Recovery menu, select the *Reports* option.
+
+. Select *Create report*.
+. Enter report scope details: 
+
+* *Report name*: Enter a unique name for the report.
+* *Report type*: Choose whether you want a report by account or by workload (Microsoft SQL Server). 
+* *Select host*: If you selected by workload, select the host for which you want to generate the report.
+* *Select contents*: Choose whether you want the report to include a summary of all backups or details of each backup. (If you chose "By account")
+
+
+. Enter reporting range: Choose whether you want the report to be include data from the last day, last 7 days, last 30 days, last quarter, or last year.
+. Enter report delivery details: If you want the report to be delivered by email, check *Send report using email*. Enter the email addresWs where you want the report sent.
+
++
+Configure email notifications in the Settings page. For details about configuring email notifications, see link:br-use-settings-advanced.html[Configure settings].
+

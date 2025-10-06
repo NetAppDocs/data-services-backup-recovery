@@ -1,0 +1,12 @@
+=== Podman support on RHEL 8 or 9 with Browse and Restore
+NetApp Backup and Recovery now supports file and folder restores on Red Hat Enterprise Linux (RHEL) versions 8 and 9 using the Podman engine. This applies to the NetApp Backup and Recovery Browse and Restore method. 
+
+Console agent version 3.9.40 supports certain versions of Red Hat Enterprise Linux versions 8 and 9 for any manual installation of the Console agent software on a RHEL 8 or 9 host, regardless of the location in addition to the operating systems mentioned in the https://docs.netapp.com/us-en/console-setup-admin/task-prepare-private-mode.html#step-3-review-host-requirements[host requirements^]. These newer RHEL versions require the Podman engine instead of the Docker engine. Previously, NetApp Backup and Recovery had two limitations when using the Podman engine. These limitations have been removed. 
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-restore.html[Learn more about restoring ONTAP data from backup files].
+
+
+=== Faster catalog indexing improves Search and Restore
+This release includes an improved catalog index that completes the baseline indexing much faster. Faster indexing enables you to use the Search and Restore feature more quickly. 
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-restore.html[Learn more about restoring ONTAP data from backup files].

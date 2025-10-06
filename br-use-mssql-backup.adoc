@@ -1,0 +1,163 @@
+---
+sidebar: sidebar
+permalink: br-use-mssql-backup.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
+summary: Back up Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID to ensure that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. You can implement a 3-2-1 strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud.
+---
+
+= Back up Microsoft SQL Server workloads with NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Back up Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, and StorageGRID to ensure that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. 
+
+* To back up workloads on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
+
+* Configure the log directory for discovered hosts before you initiate a backup. 
+
+* Back up workloads now (create an on-demand backup now).  
+
+
+
+== View workload protection status
+Before you initiate a backup, view the protection status of your workloads.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+
+.Steps 
+. From the NetApp Backup and Recovery menu, select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Review details on the Hosts, Protection groups, Availability groups, Instances, and Databases tabs. 
+
+
+== Configure the log directory for discovered hosts
+
+Before you back up your workloads, set the path for the activity logs for discovered hosts. This helps you to track the status of operations.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+
+.Steps 
+. From the NetApp Backup and Recovery menu, select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select a host. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Configure log directory*. 
+. Provide the host path or browse through a list of hosts or nodes hosts on the host to locate where you want the host log to be stored.
+. Select those on which you want to store the logs. 
++
+NOTE: The fields that appear differ depending on the selected deployment model, for example, failover cluster instance or standalone. 
+. Select *Save*.
+
+
+== Create a protection group 
+You can create a protection group to manage the backup and restore operations for a set of workloads. A protection group is a logical grouping of workloads that you want to protect together.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select *Create protection group*.
+
+. Provide a name for the protection group.
+. Select the instances or databases that you want to include in the protection group.
+. Select *Next*. 
+
+. Select the *Backup policy* that you want to apply to the protection group.
++
+If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
+
+. Select *Next*. 
+. Review the configuration.
+. Select *Create* to create the protection group.
+
+== Back up workloads now with an on-demand backup
+
+Create an on-demand backup immediately. You might want to run an on-demand backup if you're about to make changes to your system and want to ensure that you have a backup before you start.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps 
+
+. From the menu, select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select the *Protection Group*, *Instances* or *Databases* tab. 
+. Select the instance or database you want to back up.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
+
+. Select the policy that you want to apply to the backup.
+. Select the schedule tier.
+. Select *Back up now*. 
+
+
+
+//. Select the backup type:
+//** *Full backup*: Backs up workloads and logs.
+//** *Log backup*: Backs up only the logs. To choose a log backup, you must have already configured a log backup location. See link:br-use-backup-mssql.html#configure-logs-for-discovered-hosts[Configure logs for discovered hosts] for more information.
+
+
+
+== Suspend the backup schedule
+
+Suspending the schedule prevents the backup from running at the scheduled time temporarily. You might want to do this if you're performing maintenance on the system or if you're experiencing issues with the backup.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps 
+
+. From the NetApp Backup and Recovery menu, select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select the *Protection Group*, *Instances* or *Databases* tab. 
+. Select the protection group, instance, or database you want to suspend.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Suspend*.
+
+
+
+== Delete a protection group 
+You can create a protection group to manage the backup and restore operations for a set of workloads. A protection group is a logical grouping of workloads that you want to protect together.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete protection group*.
+
+
+
+== Remove protection from a workload 
+You can remove protection from a workload if you no longer want to back it up or if you want to stop managing it in NetApp Backup and Recovery.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps 
+
+. From the NetApp Backup and Recovery menu, select *Inventory*. 
+. Select a workload to view the protection details. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
+. Select the *Protection Group*, *Instances* or *Databases* tab. 
+. Select the protection group, instance, or database.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Remove protection*.
+
+. In the Remove protection dialog box, select whether you want to keep backups and metadata or delete them.
+
+. Select *Remove* to confirm the action.

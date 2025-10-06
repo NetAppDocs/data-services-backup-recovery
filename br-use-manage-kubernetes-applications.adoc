@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: br-use-manage-kubernetes-applications.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
+summary: NetApp Backup and Recovery enables you to unprotect and delete your Kubernetes applications and associated resources.  
+---
+
+= Manage Kubernetes applications 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to unprotect and delete your Kubernetes applications and associated resources.
+
+.Required NetApp Console role
+
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+////
+== Edit a Kubernetes application
+You can modify the settings of an existing Kubernetes application if the resources associated with the application have changed.
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory* > *Applications*.
+. In the list of applications, choose an application you want to edit and select the associated Actions menu.
+. Select *Edit*.
+. Make any required changes to the application definition, such as the name or included resources.
+. When finished, select *Next*.
+. Make any required changes to the protection settings.
+. When finished, select *Done*.
+
+////
+
+== Unprotect a Kubernetes application
+You can unprotect an application if you no longer want to protect it. When you unprotect an application, NetApp Backup and Recovery stops protecting the application but keeps all associated backups and snapshots.
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to unprotect and select the associated Actions menu.
+. Select *Unprotect*.
+. Read the notice, and when ready, select *Unprotect*.
+
+== Delete a Kubernetes application
+You can delete an application if you no longer need it. When you delete an application, NetApp Backup and Recovery stops protecting the application and deletes all associated backups and snapshots.
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to delete and select the associated Actions menu.
+. Select *Delete*.
+. Enable *Delete snapshots and backups* to remove all snapshots and backups of the application.
++
+CAUTION: You will no longer be able to restore the application using these snapshots and backups.
+
+. Confirm the action and select *Delete*.

@@ -1,0 +1,16 @@
+=== SnapLock Compliance and SnapLock Enterprise protection modes 
+
+NetApp Backup and Recovery now can back up both FlexVol and FlexGroup on-premises volumes that are configured using either SnapLock Compliance or SnapLock Enterprise protection modes. Your clusters must be running ONTAP 9.14 or greater for this support. Backing up FlexVol volumes using SnapLock Enterprise mode has been supported since ONTAP version 9.11.1. Earlier ONTAP releases provide no support for backing up SnapLock protection volumes.
+
+See the complete list of supported volumes in the https://docs.netapp.com/us-en/data-services-backup-recovery/concept-backup-to-cloud.html[Learn about NetApp Backup and Recovery].
+
+
+=== Indexing for Search & Restore process on Volumes page
+Before you can use Search & Restore, you need to enable "Indexing" on each source system from which you'll want to restore volume data. This enables the Indexed Catalog to track the backup files for every volume. The Volumes page now shows the indexing status: 
+
+* Indexed: Volumes have been indexed.
+* In-progress 
+* Not Indexed 
+* Indexing paused
+* Error
+* Not Enabled

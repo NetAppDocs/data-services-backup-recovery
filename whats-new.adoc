@@ -1,0 +1,117 @@
+---
+sidebar: sidebar
+permalink: whats-new.html
+keywords: what's new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, backup, restore, NetApp Backup and Recovery, protection, sql server, workloads, volumes, snapshots
+summary: Learn what's new in NetApp Backup and Recovery.
+---
+= What's new in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Learn what's new in NetApp Backup and Recovery.
+
+// tag::whats-new[]
+
+== 06 October 2025
+
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-10-06.adoc[]
+
+== 25 August 2025
+
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-08-25.adoc[]
+
+
+
+== 12 August 2025
+//v4.0.6
+
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-08-11.adoc[]
+
+== 28 July 2025
+
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-07-28.adoc[]
+
+== 14 July 2025
+//v4.0.5
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-06-07.adoc[]
+
+== 09 June 2025 
+//v4.0.4
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-06-09.adoc[]
+
+// end::whats-new[] 
+
+== 13 May 2025
+//v4.0.3
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2025-05-12.adoc[]
+
+// end::whats-new[] 
+
+== 16 April 2025
+//v4.0.2
+This NetApp Backup and Recovery release includes the following updates. 
+
+include::_whatsnew/2025-04-16.adoc[]
+
+== 17 March 2025 
+//v4.0.1
+
+This NetApp Backup and Recovery release includes the following updates. 
+
+include::_whatsnew/2025-03-17.adoc[]
+
+== 21 February 2025 
+//v3.0.9
+
+This NetApp Backup and Recovery release includes the following updates. 
+
+
+include::_whatsnew/2025-02-18.adoc[]
+
+== 13 February 2025
+
+This NetApp Backup and Recovery release includes the following updates.
+//v3.0.9
+
+include::_whatsnew/2025-02-05.adoc[]    
+
+
+
+== 22 November 2024
+//v3.0.8
+
+This NetApp Backup and Recovery release includes the following updates.
+
+
+include::_whatsnew/2024-11-22.adoc[]
+
+
+== 27 September 2024
+//v3.0.7 
+
+This NetApp Backup and Recovery release includes the following updates.
+
+
+include::_whatsnew/2024-09-27.adoc[]
+
+
+
+

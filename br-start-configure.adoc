@@ -1,0 +1,256 @@
+---
+sidebar: sidebar
+permalink: br-start-configure.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+summary: Complete a few steps to configure NetApp Backup and Recovery.
+---
+
+= Configure NetApp Backup and Recovery settings 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+After you set up NetApp Console, configure the backup and recovery settings, which include adding credentials for host resources, importing SnapCenter resources, configuring log directories, and configuring VMware vCenter settings. You should do this before you actively start backing up and recovering your data. 
+
+* <<Add credentials for host resources>> for the Windows and SQL Server hosts that you imported from SnapCenter and add credentials. (Microsoft SQL Server workloads only)
+* <<Maintain VMware vCenter settings>>.
+* <<Import and manage SnapCenter host resources>>. (Microsoft SQL Server workloads only)
+//* link:br-use-manage-execution-hook-templates.html[Set up script execution hooks] to run scripts before and after backup jobs. (Kubernetes workloads only)
+* <<Configure log directories in snapshots for Windows hosts>>.
+//* Enable DataLock and integrity scanning. 
+//* <<Enable the Certificate Authority certificates>>.
+
+
+*Required NetApp Console role*
+Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
+
+== Add credentials for host resources
+
+Add credentials for the host resources that you want to import from SnapCenter. Host credentials are used to discover new workloads and apply backup policies.
+
+If you don't already have credentials, you can create them. These credentials must have required permissions to access and manage the host workloads.
+
+You need to configure the following types of credentials: 
+
+* Microsoft SQL Server credentials
+* SnapCenter Windows host credentials 
+
+//After NetApp Backup and Recovery discovers hosts, you can change the password, but you cannot delete the credentials for that host. 
+
+//+
+//image:../media/screen-br-settings-all.png[Settings option showing the options]
+//+
+//image:../media/screen-br-settings-credentials.png[Settings option]
+//+
+//image:../media/screen-br-settings-credentials-add.png[Settings option to add new credentials]
+.Steps
+. From the NetApp Backup and Recovery menu, select *Settings*.
+
+
+. Select the down arrow for *Credentials*.
+
+
+
+. Select *Add new credentials*.
+
+. Enter information for the credentials. Different fields appear depending on the Authentication mode you select. Select the Information *i* for more information about the fields. 
+* *Credentials name*: Enter a name for the credentials.
+* *Authentication mode*: Select *Windows* or *Microsoft SQL*. 
++
+TIP: You need to enter credentials for both Windows and Microsoft SQL Server, so you'll need to add two sets of credentials.
+
+.  If you selected *Windows*:
+* *Console agent*: Enter the Console agent IP address. 
+* *Domain and user name*: Enter the NetBIOS or domain FQDN and user name for the credentials.
+* *Password*: Enter the password for the credentials.
+
+. If you selected *Microsoft SQL*:
+*  *Host*: Select a discovered SQL Server host address.
+*  *SQL Server instance*: Select a discovered SQL Server instance.
+
+. Select *Add*.
+
+//+
+//image:../media/screen-br-settings-credentials-edit.png[Settings option]
+//+
+//image:../media/screen-br-settings-all.png[Settings option showing the options]
+//+
+//image:../media/screen-br-settings-vmware-open.png[Settings option showing the VMware vCenter settings]
+=== Edit credentials for host resources
+
+You can later edit the password for the host resources that you imported from SnapCenter.
+
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Settings*.
+. Select the down arrow to expand the *Credentials* section. 
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit credentials*.   
++
+* *Password*: Enter the password for the credentials.
+
+. Select *Save*.
+
+== Maintain VMware vCenter settings 
+
+Provide the VMware vCenter credentials to discover the VMware vCenter Server workloads that you want to back up. If you don't have existing credentials, you can create them with the required permissions to access and manage the VMware vCenter Server workloads.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Settings*.
+
+. Select the down arrow to expand the *VMware vCenter* section.
+
+
+. Select *Add vCenter*.
+
+. Enter the VMware vCenter Server information.
+* *vCenter FQDN or IP address*: Enter a FQDN name or the IP address for the VMware vCenter Server.
+* *Username* and *Password*: Enter the username and password for the VMware vCenter Server.
+* *Port*: Enter the port number for the VMware vCenter Server.
+* *Protocol*: Select *HTTP* or *HTTPS*. 
+
+. Select *Add*.
+
+
+
+
+== Import and manage SnapCenter host resources
+
+If you previously used SnapCenter to back up your resources, you can import and manage those resources in NetApp Backup and Recovery. With this option, you can import SnapCenter Server information to register multiple Snapcenter servers and discover the database workloads.
+
+This is a two-part process:
+
+* Import SnapCenter Server application and host resources
+* Manage selected SnapCenter host resources
+
+=== Import SnapCenter Server application and host resources
+
+This first step imports host resources from SnapCenter and displays those resources in the NetApp Backup and Recovery Inventory page. At that point, the resources are not yet managed by NetApp Backup and Recovery.
+
+TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does not take over protection management. To do so, you must explicitly select to manage these resources in NetApp Backup and Recovery.  
+
+.Steps 
+
+. From the NetApp Backup and Recovery menu, select *Settings*. 
+
+. Select the down arrow to expand the *Import from SnapCenter* section.
+
+
+. Select *Import from SnapCenter* to import the SnapCenter resources.
+
+
+. Enter *SnapCenter application credentials*:
+.. *SnapCenter FQDN or IP address*: Enter the FQDN or IP address of the SnapCenter application itself.
+.. *Port*: Enter the port number for the SnapCenter Server.
+.. *Username* and *Password*: Enter the username and password for the SnapCenter Server.
+.. *Console agent*: Select the Console agent for SnapCenter.
+
+
+. Enter *SnapCenter server host credentials*:
+.. *Existing credentials*: If you select this option, you can use the existing credentials that you have already added. Enter the credentials name. 
+.. *Add new credentials*: If you don't have existing SnapCenter host credentials, you can add new credentials. Enter the credentials name, authentication mode, user name, and password.
+
+. Select *Import* to validate your entries and register the SnapCenter Server.
++
+NOTE: If the SnapCenter Server is already registered, you can  update the existing registration details.
+
+.Result
+The Inventory page shows the imported SnapCenter resources.
+
+
+=== Manage SnapCenter host resources
+
+After you import the SnapCenter resources, manage those host resources in NetApp Backup and Recovery. After you select to manage those imported resources, NetApp Backup and Recovery can back up and recover the resources that you are importing from SnapCenter. You no longer need to manage those resources in SnapCenter Server. 
+
+.Steps 
+. After you import the SnapCenter resources, on the Inventory page that appears, select the SnapCenter resources that you imported that you want to have NetApp Backup and Recovery manage from now on.  
+
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to manage the resources.   
+
+. Select *Manage in NetApp Console*. 
++
+The Inventory page shows *Managed* under the host name to indicate that the selected host resources are now managed by NetApp Backup and Recovery.
+
+
+=== Edit imported SnapCenter resources
+
+You can later re-import SnapCenter resources our edit the imported SnapCenter resources to update the registration details.
+
+You can change only the port and password details for the SnapCenter Server.
+
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Settings*. 
+. Select the down arrow for *Import from SnapCenter*.
++ 
+The Import from SnapCenter page shows all previous imports. 
+
+
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit* to update the resources.   
+
+. Update the SnapCenter password and port details, as needed.
+. Select *Import*. 
+
+
+
+
+//== Enable the Certificate Authority certificates
+
+//Enable Certificate Authority (CA) certificates to secure communication among components of the NetApp Backup and Recovery system, including the Console agent, ONTAP, and the SnapCenter plug-in. This ensures that the data transmitted is encrypted and authenticated, protecting against unauthorized access. 
+
+//You can upload the CA certificates for:
+
+//* ONTAP: The ONTAP certificate is used to secure communication between the Console agent and ONTAP.
+//* SnapCenter plug-in: The SnapCenter plug-in certificate is used to secure communication between the Console agent and the SnapCenter plug-in.
+
+//.Steps
+//. From the NetApp Backup and Recovery menu, select *Settings*.
+//+
+//image:../media/screen-br-settings-certificates.png[Settings option]
+//. Select the down arrow for *Enable CA certificates*.
+
+//. Enter information for the ONTAP or plug-in certificates: 
+//* *ONTAP*: Select *Upload* for the ONTAP certificate. Locate and select the certificate file.
+//* *SnapCenter plug-in*: Select *Upload* for the SnapCenter plug-in certificate. Locate and select the certificate file.
+
+//. Locate and select the certificate file.
+
+//. Select *Save*.
+
+
+
+
+== Configure log directories in snapshots for Windows hosts
+
+Before you create policies for Windows hosts, you should configure log directories in snapshots for Windows hosts. Log directories are used to store the logs that are generated during the backup process. 
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+
+. From the Inventory page, select a workload and then select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.   
+
+. From the Inventory details page showing Microsoft SQL Server, select the Hosts tab. 
+ 
+
+. From the Inventory details page, select a host and select the Actions icon image:../media/icon-action.png[Actions option] > *Configure log directory*.   
+
+. Either browse or enter the path for the log directory.
+. Select *Save*.
+
+//+//
+//image:../media/screen-br-inventory-configure-log.png[Configure log screen] 
+
+//== Configure buckets in working environments
+
+//Using the NetApp Backup and Recovery Advanced Settings options, you can configure buckets in working environments. Buckets are the storage locations where you store your backup data. You should configure these settings when you first begin using NetApp Backup and Recovery.   
+
+//You can configure the following settings:   
+
+//* Enable DataLock on a bucket
+//* Enable integrity scanning on a bucket
+//* Set the scan interval between 1 and 7 days
+
+//NOTE: These features are not available in the Preview 2025 version.  
+
