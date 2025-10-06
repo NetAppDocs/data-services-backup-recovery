@@ -40,7 +40,7 @@ Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended.
 
 Required information for using customer-managed keys for data encryption::
 
-You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
+You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
 
 == Verify license requirements
 
@@ -140,7 +140,7 @@ Here are the specific permissions from the policy:
 NOTE: When creating backups in AWS China regions, you need to change the AWS Resource Name "arn" under all _Resource_ sections in the IAM policies from "aws" to "aws-cn"; for example `arn:aws-cn:s3:::netapp-backup-*`.
 
 Required AWS Cloud Volumes ONTAP permissions::
-When your Cloud Volumes ONTAP system is running ONTAP 9.12.1 or greater software, the IAM role that provides that system with permissions must include a new set of S3 permissions specifically for NetApp Backup and Recovery from the latest https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-set-up-iam-roles.html[Cloud Volumes ONTAP policy^].
+When your Cloud Volumes ONTAP system is running ONTAP 9.12.1 or greater software, the IAM role that provides that system with permissions must include a new set of S3 permissions specifically for NetApp Backup and Recovery from the latest https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-set-up-iam-roles.html[Cloud Volumes ONTAP policy^].
 +
 If you created the Cloud Volumes ONTAP system using Console version 3.9.23 or greater, these permissions should be part of the IAM role already. Otherwise you'll need to add the missing permissions. 
 
@@ -187,7 +187,7 @@ Enabling NetApp Backup and Recovery is easy. The steps differ slightly depending
 
 NetApp Backup and Recovery is enabled by default in the system wizard. Be sure to keep the option enabled.
 
-See https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-aws.html[Launching Cloud Volumes ONTAP in AWS^] for requirements and details for creating your Cloud Volumes ONTAP system.
+See https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-aws.html[Launching Cloud Volumes ONTAP in AWS^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
 .Steps
 
@@ -235,9 +235,6 @@ You can also <<Show the API commands>> at the review step, so you can copy the c
 
 . Access the Activate backup and recovery wizard using one of the following ways: 
 * From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right-panel.
-+
-image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup and recovery Enable button that is available after you select a system.]
-
 +
 If the AWS destination for your backups exists as a system on the Console *Systems* page, you can drag the ONTAP cluster onto the AWS object storage.  
 * Select *Volumes* in the Backup and Recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon option and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled).  
@@ -340,7 +337,7 @@ Select the region where the backups will be stored. This can be a different regi
 + 
 Either create a new bucket or select an existing one. 
 
-* *Encryption key*: If you created a new bucket, enter encryption key information given to you from the provider. Choose whether you'll use the default AWS encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. (https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own encryption keys^]).
+* *Encryption key*: If you created a new bucket, enter encryption key information given to you from the provider. Choose whether you'll use the default AWS encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. (https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own encryption keys^]).
 
 + 
 If you choose to use your own customer-managed keys, enter the key vault and key information. 

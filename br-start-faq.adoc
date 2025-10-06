@@ -15,7 +15,7 @@ This FAQ can help if you're just looking for a quick answer to a question.
 
 == Deployment
 
-*Do you need a license to use NetApp Backup and RecoveryPreview version?*
+*Do you need a license to use NetApp Backup and Recovery preview version?*
 
 You can use the following license types:
 

@@ -34,7 +34,7 @@ Create an on-demand backup immediately. You might want to run an on-demand backu
 //* The VMware workload does not include multiple resource groups (protection groups) for the same datastore. You can remove the datastores from that protection group.  
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about BlueXP access roles for all services^].
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 

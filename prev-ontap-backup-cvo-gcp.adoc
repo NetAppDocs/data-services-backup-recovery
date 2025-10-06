@@ -40,13 +40,13 @@ Supported GCP regions::
 NetApp Backup and Recovery is supported in all GCP regions.
 
 GCP Service Account::
-You need to have a service account in your Google Cloud Project that has the custom role. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
+You need to have a service account in your Google Cloud Project that has the custom role. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
 
 NOTE: The Storage Admin role is no longer required for the service account that enables NetApp Backup and Recovery to access Google Cloud Storage buckets. 
 
 == Verify license requirements
 
-For NetApp Backup and Recovery PAYGO licensing, a Console subscription is available in the Google Marketplace that enables deployments of Cloud Volumes ONTAP and NetApp Backup and Recovery. You need to https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[subscribe to this Console subscription^] before you enable NetApp Backup and Recovery. Billing for NetApp Backup and Recovery is done through this subscription. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html[You can subscribe from the Details & Credentials page of the system wizard^].
+For NetApp Backup and Recovery PAYGO licensing, a Console subscription is available in the Google Marketplace that enables deployments of Cloud Volumes ONTAP and NetApp Backup and Recovery. You need to https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[subscribe to this Console subscription^] before you enable NetApp Backup and Recovery. Billing for NetApp Backup and Recovery is done through this subscription. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html[You can subscribe from the Details & Credentials page of the system wizard^].
 
 For NetApp Backup and Recovery BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses].
 
@@ -142,7 +142,7 @@ NetApp Backup and Recovery can be enabled when you complete the system wizard to
 
 You must have a Service Account already configured. If you don't select a service account when you create the Cloud Volumes ONTAP system, then you'll need to turn off the system and add the service account to Cloud Volumes ONTAP from the GCP console.
 
-See https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP^] for requirements and details for creating your Cloud Volumes ONTAP system.
+See https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
 .Steps
 
@@ -164,7 +164,7 @@ Make sure that a GCP Marketplace subscription is in place.
 
 . *Services*: Leave NetApp Backup and Recovery enabled and click *Continue*.
 
-. Complete the pages in the wizard to deploy the system as described in https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP^].
+. Complete the pages in the wizard to deploy the system as described in https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP^].
 
 
 

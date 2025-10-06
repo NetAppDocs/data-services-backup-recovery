@@ -15,14 +15,11 @@ summary: Known limitations identify functions that are not supported by this rel
 [.lead]
 Known limitations identify functions that are not supported by this release of NetApp Backup and Recovery, or that do not interoperate correctly with it. Review these limitations carefully.
 
-
-
-* NetApp Backup and Recovery backing up Cloud Volume ONTAP to an object store in the AWS China regions (including Beijing and Ningxia); however, you might need to manually modify Identity and access policies first. 
+* NetApp Backup and Recovery can back up Cloud Volumes ONTAP to an object store in the AWS China regions (including Beijing and Ningxia); however, you might need to manually modify Identity and access policies first. 
 +
 For details about creating a Console agent in AWS, refer to https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html[Installing a Console agent in AWS^]. 
 +
-For additional details in a blog post, refer to 
-https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feature-Blog-May-23-Updates/ba-p/444052[NetApp Backup and Recovery Feature Blog May 2023^].
+For additional details, refer to the blog post https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feature-Blog-May-23-Updates/ba-p/444052[NetApp Backup and Recovery Feature Blog May 2023^].
 
 
 * NetApp Backup and Recovery does not support Microsoft Azure China regions.
@@ -33,12 +30,11 @@ For details about creating a Console agent in Azure, refer to https://docs.netap
 
 == Replication limitations for ONTAP volumes
 
-
 * You can select only one FlexGroup volume at a time for replication. You'll need to activate backups separately for each FlexGroup volume.
 +
 There is no limitation for FlexVol volumes - you can select all FlexVol volumes in your system and assign the same backup policies.
 
-* The following functionality is supported in https://docs.netapp.com/us-en/bluexp-replication/index.html[NetApp Replication], but not when using the replication feature of NetApp Backup and Recovery:
+* The following functionality is supported in https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp Replication], but not when using the replication feature of NetApp Backup and Recovery:
 
 ** There is no support for a cascade configuration where replication occurs from volume A to volume B and from volume B to volume C. Support includes replication from volume A to volume B.
 ** There is no support for replicating data to and from FSx for ONTAP systems.
@@ -49,7 +45,6 @@ There is no limitation for FlexVol volumes - you can select all FlexVol volumes 
 
 == Backup-to-object limitations for ONTAP volumes
 
-
 * When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
 + 
 For an explanation about these encryption types, refer to 
@@ -59,7 +54,6 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 
 * If long-term retention snapshots are enabled on a SnapMirror destination volume using the schedule in the SnapMirror policy, snapshots are created directly on the destination volume. In this case, you should not back up those volumes using NetApp Backup and Recovery because those snapshots will not be moved to object storage.
 
-
 * When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
 + 
 For an explanation about these encryption types, refer to 
@@ -68,7 +62,6 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 //* If a volume has long-term retention enabled in the SnapMirror relationship in ONTAP, you should not back up those volumes using NetApp Backup and Recovery, because those snapshots will not be moved to object storage.
 
 * If long-term retention snapshots are enabled on a SnapMirror destination volume using the schedule in the SnapMirror policy, snapshots are created directly on the destination volume. In this case, you should not back up those volumes using NetApp Backup and Recovery because those snapshots will not be moved to object storage.
-
 
 * When you create or edit a backup policy when no volumes are assigned to the policy, the number of retained backups can be a maximum of 1018. After you assign volumes to the policy, you can edit the policy to create up to 4000 backups.
 

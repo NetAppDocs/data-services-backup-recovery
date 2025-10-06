@@ -15,14 +15,14 @@ summary: NetApp Backup and Recovery needs to first discover data in order for yo
 [.lead]
 Known limitations identify platforms, devices, or functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
 
-The following actions are not supported in the Preview version of Oracle workloads in NetApp Backup and Recovery: 
+The following actions are not supported in the private preview version of Oracle Database workloads in NetApp Backup and Recovery: 
 
 * Offline backup
 * Clone
 * ASM configuration
 * Protecting databases stored on SAN
 
-Oracle Database is only supported as a standalone deployment in the Preview version of Oracle workloads.
+Oracle Database is supported only as a standalone deployment using NFS in the private preview version of Oracle workloads.
 
 
 

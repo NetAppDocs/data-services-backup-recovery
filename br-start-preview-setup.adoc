@@ -13,14 +13,12 @@ summary: By participating in the NetApp Backup and Recovery Preview, you play a 
 :imagesdir: ./media/
 
 [.lead]
-By participating in one of the NetApp Backup and Recovery Preview versions, you play a crucial role in refining and enhancing NetApp Backup and Recovery. For the Preview version of NetApp Backup and Recovery, we will assist with the setup. Here is the process.
+By participating in one of the NetApp Backup and Recovery preview versions, you play a crucial role in refining and enhancing NetApp Backup and Recovery. For the preview version of NetApp Backup and Recovery, we will assist with the setup. Here is the process.
 
 
 . *Registration*: If you don't already have a NetApp Console account, sign up for one. Here's how: 
 
 .. Visit the https://bluexp.netapp.com/[NetApp Console Portal].
-+
-image:screen-preview-bluexp-portal.png[NetApp Console portal screen]
 .. Select *Get Started*.
 +
 image:screen-preview-login.png[Log in to the portal screen]

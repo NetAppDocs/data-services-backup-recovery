@@ -47,9 +47,7 @@ You use the Restore Dashboard to perform volume, folder, and file restore operat
 
 NOTE: NetApp Backup and Recovery must already be activated for at least one system and initial backup files must exist.
 
-image:screenshot_restore_dashboard.png["The Restore Dashboard showing the options to use the Browse & Restore or Search & Restore functionality."]
-
-As you can see, the Restore Dashboard provides two different ways to restore data from backup files: *Browse & Restore* and *Search & Restore*.
+The Restore Dashboard provides two different ways to restore data from backup files: *Browse & Restore* and *Search & Restore*.
 
 == Comparing Browse & Restore and Search & Restore
 
@@ -239,23 +237,19 @@ As you can see, you'll need to know the source system name, storage VM, volume n
 . Select the *Restore* tab and the Restore Dashboard is displayed.
 
 . From the _Browse & Restore_ section, select *Restore Volume*.
-+
-image:screenshot_restore_dashboard.png["The Restore Dashboard showing the options to use the Browse & Restore or Search & Restore functionality."]
+
 
 . In the _Select Source_ page, navigate to the backup file for the volume you want to restore. Select the *system*, the *Volume*, and the *Backup* file that has the date/time stamp from which you want to restore.
 +
 The *Location* column shows whether the backup file (Snapshot) is *Local* (a Snapshot copy on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
-+
-image:screenshot_restore_select_volume_snapshot.png["A screenshot of selecting the system, volume, and volume backup file that you want to restore."]
+
 
 . Select *Next*.
 +
 Note that if you select a backup file in object storage, and Ransomware Resilience is active for that backup (if you enabled DataLock and Ransomware Protection in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
 
 . In the _Select Destination_ page, select the *system* where you want to restore the volume.
-+
-image:screenshot_restore_select_work_env_volume.png[A screenshot of selecting the destination system for the volume you want to restore.]
-+
+
 . When restoring a backup file from object storage, if you select an on-premises ONTAP system and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
 ifdef::aws[]
@@ -272,8 +266,6 @@ endif::gcp[]
 
 . Enter the name you want to use for the restored volume, and select the Storage VM and Aggregate where the volume will reside. When restoring a FlexGroup volume you'll need to select multiple aggregates. By default, *<source_volume_name>_restore* is used as the volume name.
 +
-image:screenshot_restore_new_vol_name.png[A screenshot of entering the name of the new volume that you want to restore.]
-+
 When restoring a backup from object storage to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation.
 +
 And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.
@@ -289,8 +281,6 @@ link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring fr
 endif::gcp[]
 
 . Select *Next* to choose whether you want to do a Normal restore or a Quick Restore process: 
-+
-image:screenshot_restore_browse_quick_restore.png[A screenshot showing the normal and Quick restore processes.]
 +
 * *Normal restore*: Use normal restore on volumes that require high performance. Volumes will not be available until the restore process is complete. 
 * *Quick restore*: Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
@@ -369,12 +359,10 @@ Follow these steps to restore folders or files to a volume from an ONTAP volume 
 . Select the *Restore* tab and the Restore Dashboard is displayed.
 
 . From the _Browse & Restore_ section, select *Restore Files or Folder*.
-+
-image:screenshot_restore_dashboard.png["The Restore Dashboard showing the options to use the Browse & Restore or Search & Restore functionality."]
+
 
 . In the _Select Source_ page, navigate to the backup file for the volume that contains the folder or files you want to restore. Select the *system*, the *Volume*, and the *Backup* that has the date/time stamp from which you want to restore files.
-+
-image:screenshot_restore_select_source.png[A screenshot of selecting the volume and backup for the items you want to restore.]
+
 
 . Select *Next* and the list of folders and files from the volume backup are displayed.
 +
@@ -385,8 +373,7 @@ link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring 
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage]. Backup files in the Google Archive storage tier are restored almost immediately, and require no Restore Priority.
 +
 And if Ransomware Resilience is active for the backup file (if you enabled DataLock and Ransomware Protection in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
-+
-image:screenshot_restore_select_files.png[A screenshot of the Select Items page so you can navigate to the items you want to restore.]
+
 
 . In the _Select Items_ page, select the folder or file(s) that you want to restore and select *Continue*. To assist you in finding the item:
 * You can select the folder or file name if you see it.
@@ -396,8 +383,7 @@ image:screenshot_restore_select_files.png[A screenshot of the Select Items page 
 As you select files they are added to the left side of the page so you can see the files that you have already chosen. You can remove a file from this list if needed by selecting the *x* next to the file name.
 
 . In the _Select Destination_ page, select the *system* where you want to restore the items.
-+
-image:screenshot_restore_select_work_env.png[A screenshot of selecting the destination system for the items you want to restore.]
+
 +
 If you select an on-premises cluster and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
@@ -433,7 +419,7 @@ You have a few options for the location when restoring folders and file(s).
 You can restore a volume, folder, or files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume, folder, or file from all backups, and then perform a restore. You don't need to know the exact system name, volume name, or file name - the search looks through all volume backup files.
 
 The search operation looks across all local snapshot copies that exist for your ONTAP volumes, all replicated volumes on secondary storage systems, and all backup files that exist in object storage. Since restoring data from a local Snapshot copy or replicated volume can be faster and less costly than restoring from a backup file in object storage, you may want to restore data from these other locations. 
-//You can restore the Snapshot as a new volume https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[from the Volume Details page on the Canvas^] (not from NetApp Backup and Recovery).
+//You can restore the Snapshot as a new volume https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[from the Volume Details page on the Canvas^] (not from NetApp Backup and Recovery).
 
 When you restore a _full volume_ from a backup file, NetApp Backup and Recovery creates a _new_ volume using the data from the backup. You can restore the data as a volume in the original system, to a different system that's located in the same cloud account as the source system, or to an on-premises ONTAP system.
 
@@ -678,8 +664,6 @@ After you have <<enable-the-indexed-catalog-for-each-working-environment,enabled
 
 
 . From the _Search & Restore_ section, select *Search & Restore*.
-+
-image:screenshot_restore_dashboard.png["The Restore Dashboard showing the options to use the Browse & Restore or Search & Restore functionality."]
 
 . From the Search & Restore page:
 .. In the _Search bar_, enter a full or partial volume name, folder name, or file name.

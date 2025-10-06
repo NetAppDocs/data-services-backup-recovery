@@ -166,7 +166,7 @@ Current support enables you to archive backups to AWS _S3 Glacier_/_S3 Glacier D
 *StorageGRID Requirements*
 
 * Your StorageGRID must be using 11.4 or greater.
-* Your StorageGRID must be https://docs.netapp.com/us-en/bluexp-storagegrid/task-discover-storagegrid.html[discovered and available in the Console^].
+* Your StorageGRID must be https://docs.netapp.com/us-en/storage-management-storagegrid/task-discover-storagegrid.html[discovered and available in the Console^].
 
 *Amazon S3 requirements*
 

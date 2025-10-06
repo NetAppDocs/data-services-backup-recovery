@@ -29,7 +29,7 @@ You can restore databases from different starting locations:
 
 .Restore to these points   
 
-You can restore data to the original location; restoring to an alternate location is not available in this Preview release.
+You can restore data to the original location; restoring to an alternate location is not available in this private preview release.
 
 * Restore to the original location
 //* Restore to an alternate location
@@ -45,13 +45,11 @@ You can restore data to the original location; restoring to an alternate locatio
 
 When you restore Oracle databases, the following occurs: 
 
-* When you restore a database from a local backup file, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
+* When you restore a database from a local snapshot, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
 
-* When you restore from a replicated database, you can restore it to the original system or to an on-premises ONTAP system.
-//+
-//image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow to restore a resource"]
+* When you restore from replicated storage, you can restore it to the original location.
 
-* When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
+* When you restore a backup from object storage, you can restore the data to the source storage or to an on-premises ONTAP system and recover the database from there.
 
 
 //== When to use Quick Restore 
@@ -73,7 +71,7 @@ From the Restore page (also known as Search & Restore), you can restore a databa
 
 == Restore an Oracle database
 
-Restore an Oracle database to a specific point in time, to a specific system change number (SCN), or to the last good state. You can search for the database by its name or by using filters. 
+Depending on your needs, restore an Oracle database to a specific point in time, to a specific system change number (SCN), or to the last good state. You can also simply restore the database from snapshots and skip the automated recovery process. You might want to skip the automated recovery process if you want to perform recovery manually. You can search for the database using its name or with specific filters.
 
 *Required Console role*
 Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -82,7 +80,7 @@ Organization admin, Folder or project admin, Backup and Recovery super admin, Ba
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . From the NetApp Backup and Recovery menu, select *Restore*.
-. From the drop-down list to the right of the name search field, select *Oracle databases*. 
+. From the drop-down list to the right of the name search field, select *Oracle*. 
 . Enter the name of the database you want to restore or filter for the database host where the database that you want to restore is located. 
 +
 A list of snapshots appears that match your search criteria.
@@ -109,13 +107,22 @@ A list of matching snapshots on the specified date are displayed.
 +
 A list of matching snapshots for the specified SCN are displayed.
 --
-.Restore to last good state
+.Restore to the latest backup (last good state)
 --
 [loweralpha, start=1]
-. Select *Restore to last good state*.
+. Select *Restore to the latest backup*.
 . Select *Next*.
 +
-The matching snapshot is displayed.
+The latest full and log backups are displayed.
+--
+
+.Restore from snapshots with no recovery
+--
+[loweralpha, start=1]
+. Select *Restore from snapshots with no recovery*.
+. Select *Next*.
++
+The matching snapshots are displayed.
 --
 ====
 
@@ -140,25 +147,19 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 [start=2]
 . *Destination settings*: 
 +
-* Choose to restore the entire database, only the tablespaces for the database, or only the pluggable databases (PDB). 
+* Choose to restore the entire database or only the tablespaces for the database.
 * *Control files*: Optionally, enable this option to also restore the database control files.
 
 
 . *Pre-restore options*:
 +
-* Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+* Optionally, enable this option and enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
 * Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
 
 . *Post-restore options*:
 + 
-* Choose which state the database should be in after the restore operation is complete:
-** *Operational, but unavailable for restoring additional transaction logs*: This brings the database back online after transaction log backups are applied.(Applies only to object storage to an alternate location.)
-** *Non-operational, but available for restoring additional transaction logs*: Maintains the database in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-** *Read-only mode, but available for restoring additional transaction logs*: Restores the database in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//** *Operational*: The database is online and unavailable for restoring additional transaction logs.
-//** *Non-operational*: The database is offline, but you can restore additional transaction logs.
-//** *Read-only mode*: The database cannot be written to, but you can restore additional transaction logs.
 * *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
+* *Open the database or container database in READ-WRITE mode after recovery*: After the restore operation is complete, Backup and Recovery will enable READ-WRITE mode for the database.
 
 . *Notification* section: 
 ** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
@@ -207,8 +208,8 @@ Not available for Oracle workloads preview.
 //** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
 //** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
 
-[start=2]
-. Select *Restore*.
+//[start=2]
+//. Select *Restore*.
 //
 
 --

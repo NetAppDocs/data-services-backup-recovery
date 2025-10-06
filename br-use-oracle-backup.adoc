@@ -13,7 +13,7 @@ summary: Protect your Oracle workloads with NetApp backup and recovery.
 :imagesdir: ./media/
 
 [.lead]
-Back up Oracle protection groups or databases from on-premises ONTAP systems to Amazon Web Services or StorageGRID to ensure that your data is protected. When you back up a protection group, the NetApp Console backs up the databases and log data contained in the protection group. 
+Back up Oracle Database protection groups or databases from on-premises ONTAP systems to Amazon Web Services S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3 to ensure that your data is protected. When you back up a protection group, the NetApp Console backs up the databases and log data contained in the protection group. 
 //Backups are automatically generated and stored in an object store in your public or private cloud account. 
 
 NOTE: To back up protection groups or single databases on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.

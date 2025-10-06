@@ -17,13 +17,13 @@ NetApp Backup and Recovery employs Identity and Access Management (IAM) to gover
 
 The service uses the following roles that are specific to NetApp Backup and Recovery. 
 
-* *Backup and recovery super admin*: Perform any actions in BlueXP backup and recovery.
-* *Backup and Recovery Backup admin*: Perform backups to local snapshots, replicate to secondary storage, and back up to object storage actions in BlueXP backup and recovery. 
-* *Backup and Recovery Restore admin*: Restore workloads using BlueXP backup and recovery. 
-* *Backup and Recovery Clone admin*: Clone applications and data using BlueXP backup and recovery. 
-* *Backup and recovery viewer*: View information in BlueXP backup and recovery, but not perform any actions.
+* *Backup and recovery super admin*: Perform any actions in NetApp Backup and Recovery.
+* *Backup and Recovery Backup admin*: Perform backups to local snapshots, replicate to secondary storage, and back up to object storage actions in NetApp Backup and Recovery. 
+* *Backup and Recovery Restore admin*: Restore workloads using NetApp Backup and Recovery. 
+* *Backup and Recovery Clone admin*: Clone applications and data using NetApp Backup and Recovery. 
+* *Backup and recovery viewer*: View information in NetApp Backup and Recovery, but not perform any actions.
 
-For details about all NetApp Console access roles, see https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[the BlueXP setup and administration documentation^].
+For details about all NetApp Console access roles, see https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[the Console setup and administration documentation^].
 
 == Roles used for common actions
 

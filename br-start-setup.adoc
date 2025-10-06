@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-start-setup.html
-keywords: bluexp, backup, back up, restore, recovery, aws, azure
+keywords: backup, back up, restore, recovery, aws, azure
 summary: Before you use NetApp Backup and Recovery, perform a few steps to set up backup destinations.  
 ---
 
@@ -22,11 +22,11 @@ Prepare one or more of the following backup destinations:
 
 * NetApp StorageGRID. 
 +
-Refer to https://docs.netapp.com/us-en/bluexp-storagegrid/task-discover-storagegrid.html[Discover StorageGRID^].
+Refer to https://docs.netapp.com/us-en/storage-management-storagegrid/task-discover-storagegrid.html[Discover StorageGRID^].
 +
 Refer to https://docs.netapp.com/us-en/storagegrid/index.html[StorageGRID documentation^] for details about StorageGRID. 
 
-* Amazon Web Services. Refer to https://docs.netapp.com/us-en/bluexp-s3-storage/index.html[Amazon S3 documentation^].
+* Amazon Web Services. Refer to https://docs.netapp.com/us-en/storage-management-s3-storage/index.html[Amazon S3 documentation^].
 +
 Do the following to prepare AWS as a backup destination: 
 
@@ -35,14 +35,14 @@ Do the following to prepare AWS as a backup destination:
 ** For details about managing your AWS storage in the Console, refer to https://docs.netapp.com/us-en/console-setup-admin/task-viewing-amazon-s3.html[Manage your Amazon S3 buckets^].
 
  
-//* Google Cloud Storage. Refer to https://docs.netapp.com/us-en/bluexp-google-cloud-storage/index.html[Google Cloud Storage documentation^].
+//* Google Cloud Storage. Refer to https://docs.netapp.com/us-en/storage-management-google-cloud-storage/index.html[Google Cloud Storage documentation^].
 * Microsoft Azure. 
-** Refer to https://docs.netapp.com/us-en/bluexp-azure-netapp-files/index.html[Azure NetApp Files documentation^].
+** Refer to https://docs.netapp.com/us-en/storage-management-azure-netapp-files/index.html[Azure NetApp Files documentation^].
 ** Set up an account in Azure.
 ** Configure https://docs.netapp.com/us-en/console-setup-admin/reference-permissions.html[Azure permissions^] in Azure. 
  
 
-** For details about managing your Azure storage in the Console, refer to https://docs.netapp.com/us-en/bluexp-blob-storage/task-view-azure-blob-storage.html[Manage your Azure storage accounts^].
+** For details about managing your Azure storage in the Console, refer to https://docs.netapp.com/us-en/storage-management-blob-storage/task-view-azure-blob-storage.html[Manage your Azure storage accounts^].
 
 
 After you configure options in the backup destination itself, you will later configure it as a backup destination in NetApp Backup and Recovery. For details about how to configure the backup destination in NetApp Backup and Recovery, refer to link:br-start-discover-backup-targets.html[Discover backup targets].
