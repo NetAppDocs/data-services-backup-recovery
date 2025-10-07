@@ -13,7 +13,7 @@ summary: Complete a few steps to configure NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-After you set up NetApp Console, configure the backup and recovery settings, which include adding credentials for host resources, importing SnapCenter resources, configuring log directories, and configuring VMware vCenter settings. You should do this before you actively start backing up and recovering your data. 
+After you set up NetApp Console, configure Backup and Recovery settings. Add credentials for host resources, import SnapCenter resources, configure log directories, and set VMware vCenter settings. Complete these steps before backing up or recovering data.
 
 * <<Add credentials for host resources>> for the Windows and SQL Server hosts that you imported from SnapCenter and add credentials. (Microsoft SQL Server workloads only)
 * <<Maintain VMware vCenter settings>>.
@@ -29,9 +29,9 @@ Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Re
 
 == Add credentials for host resources
 
-Add credentials for the host resources that you want to import from SnapCenter. Host credentials are used to discover new workloads and apply backup policies.
+Add credentials for host resources to import from SnapCenter. NetApp Backup and Recovery uses these credentials to discover workloads and apply backup policies.
 
-If you don't already have credentials, you can create them. These credentials must have required permissions to access and manage the host workloads.
+If you don't have credentials, create them with permissions to access and manage host workloads.
 
 You need to configure the following types of credentials: 
 
@@ -95,7 +95,7 @@ You can later edit the password for the host resources that you imported from Sn
 
 == Maintain VMware vCenter settings 
 
-Provide the VMware vCenter credentials to discover the VMware vCenter Server workloads that you want to back up. If you don't have existing credentials, you can create them with the required permissions to access and manage the VMware vCenter Server workloads.
+Provide VMware vCenter credentials to discover workloads for backup. If you don't have credentials, create them with permissions to access and manage the VMware vCenter Server workloads.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
@@ -106,7 +106,7 @@ Provide the VMware vCenter credentials to discover the VMware vCenter Server wor
 . Select *Add vCenter*.
 
 . Enter the VMware vCenter Server information.
-* *vCenter FQDN or IP address*: Enter a FQDN name or the IP address for the VMware vCenter Server.
+* *vCenter FQDN or IP address*: Enter an FQDN name or the IP address for the VMware vCenter Server.
 * *Username* and *Password*: Enter the username and password for the VMware vCenter Server.
 * *Port*: Enter the port number for the VMware vCenter Server.
 * *Protocol*: Select *HTTP* or *HTTPS*. 
@@ -118,7 +118,7 @@ Provide the VMware vCenter credentials to discover the VMware vCenter Server wor
 
 == Import and manage SnapCenter host resources
 
-If you previously used SnapCenter to back up your resources, you can import and manage those resources in NetApp Backup and Recovery. With this option, you can import SnapCenter Server information to register multiple Snapcenter servers and discover the database workloads.
+If you previously used SnapCenter to back up your resources, you can import and manage those resources in NetApp Backup and Recovery. This option enables you to import SnapCenter server information to register multiple Snapcenter servers and discover database workloads.
 
 This is a two-part process:
 

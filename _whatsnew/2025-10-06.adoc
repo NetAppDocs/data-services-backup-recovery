@@ -29,7 +29,7 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 * Back up storage pools
 * Bulk VM and storage pool protection using protection groups
 * VM consistent and crash consistent VM backups
-* Search and restore VM backups
+* Search and restore VM backups from primary, secondary, and object storage
 * Guided process to back up and restore KVM-based VMs and VM data
 
 For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].

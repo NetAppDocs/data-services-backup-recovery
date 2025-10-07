@@ -28,7 +28,7 @@ You can perform the following tasks related to protection groups:
 Group workloads that you want to protect together into a protection group. You can create a protection group for a set of workloads that you want to back up and restore together.
 
 *Required Console role*
-Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.

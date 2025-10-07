@@ -27,7 +27,7 @@ NOTE: To back up protection groups or single databases on a schedule, create pol
 You can run an on-demand backup immediately. This is helpful if you're about to make changes to your system and want to ensure that you have a backup before you start.
 
 *Required Console role*
-Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 
@@ -50,7 +50,7 @@ NOTE: The policy that is applied to the backup is the same policy that is assign
 You can run an on-demand backup of a single database. 
 
 *Required Console role*
-Organization admin, Folder or project admin, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 
