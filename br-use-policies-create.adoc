@@ -264,7 +264,7 @@ If you imported resources from SnapCenter, you might encounter some differences 
 
 .Required NetApp Console role
 
-Organization admin or Folder or project admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . In the NetApp Console, got to *Protection* > *Backup and Recovery*.
