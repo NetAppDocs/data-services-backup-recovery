@@ -33,7 +33,7 @@ You can view a list of all the volumes that are currently being backed up in the
 
 . From the Console menu, select *Protection > Backup and recovery*.
 
-. Select the *Volumes* tab to view the list of backed up volumes for your Cloud Volumes ONTAP and on-premises ONTAP systems.
+. Select the *Volumes* menu to view the list of backed up volumes for your Cloud Volumes ONTAP and on-premises ONTAP systems.
 
 
 . If you are looking for specific volumes in certain systems, you can refine the list by system and volume. You can also use the search filter, or you can sort the columns based on volume style (FlexVol or FlexGroup), volume type, and more.
@@ -41,8 +41,6 @@ You can view a list of all the volumes that are currently being backed up in the
 To show additional columns (aggregates, security style (Windows or UNIX), snapshot policy, replication policy, and backup policy), select the plus sign.
 
 . Review the status of the protection options in the "Existing protection" column. The 3 icons stand for "Local snapshot copies", "Replicated volumes", and "Backups in object storage". 
-+
-image:screenshot_backup_protection_status.png["A screenshot showing the status of the three types of protection: snapshots, replications, and backups."]
 +
 Each icon is blue when that backup type is activated, and it's grey when the backup type is inactive. You can hover your cursor over each icon to see the backup policy that is being used, and other pertinent information for each type of backup.
 
@@ -54,8 +52,6 @@ If you activated backup only on some of the volumes in a system when you first e
 .Steps
 
 . From the *Volumes* tab, identify the volume on which you want to activate backups, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Activate backup*.
-+
-image:screenshot_backup_additional_volume.png[A screenshot showing how to activate backup on additional volumes in a system.]
 
 . In the _Define backup strategy_ page, select the backup architecture, and then define the policies and other details for Local Snapshot copies, Replicated volumes, and Backup files. See the details for backup options from the initial volumes you activated in this system. Then select *Next*.
 
@@ -73,8 +69,6 @@ You can change the backup policies assigned to your existing volumes that have a
 .Steps
 
 . From the *Volumes* tab, identify the volume that you want to make policy changes, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Edit backup strategy*.
-+
-image:screenshot_edit_backup_strategy.png[A screenshot that shows the Edit backup strategy button which is available after you select a volume.]
 
 . In the _Edit backup strategy_ page, make changes to the existing backup policies for Local Snapshot copies, Replicated volumes, and Backup files and select *Next*.
 +
@@ -147,8 +141,6 @@ You can view the list of all backup files that exist for each volume. This page 
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *View volume details*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the View Volume Details button which is available for a single volume.]
-+
 The details for the volume and the list of snapshot copies are displayed.
 
 . Select *Snapshot*, *Replication*, or *Backup* to see the list of all backup files for each type of backup.
@@ -164,16 +156,12 @@ This feature is available only if the volume backup was created from a system wi
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *View volume details*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the View Volume Details button which is available for a single volume.]
-+
 The details for the volume are displayed.
 
 . Select *Backup* to see the list of backup files in object storage.
 
 
 . Select image:icon-actions-horizontal.gif[Actions icon] for the volume backup file you want to scan for ransomware and click *Scan for Ransomware*. 
-+
-image:screenshot_scan_one_backup.png[A screenshot showing how to run a ransomware scan on a single backup file.]
 +
 The Ransomware Protection column shows that the scan is In Progress.
 
@@ -206,8 +194,6 @@ After you set up data replication between two systems, you can manage the data r
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select the *Replication* option. You can see all of the available options.
 
 . Select the replication action that you want to perform.
-+
-image:screenshot_replication_managing.png[A screenshot showing the list of actions available from the Replication action menu.]
 +
 The following table describes the available actions:
 +
@@ -261,16 +247,11 @@ You can change the attributes for a backup policy that is currently applied to v
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-+
-image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button from the Volumes tab.]
-
 . From the _Backup Settings_ page, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to change the policy settings, and select *Manage Policies*.
 
 . From the _Manage Policies_ page, select *Edit* for the backup policy you want to change in that system.
 
 . From the _Edit Policy_ page, select the down arrow to expand the _Labels & Retention_ section to change the schedule and/or backup retention, and select *Save*.
-+
-image:screenshot_backup_edit_policy.png[A screenshot that shows the backup policy settings where you can modify the backup schedule and backup retention setting.]
 +
 If your cluster is running ONTAP 9.10.1 or greater, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
 +
@@ -301,18 +282,10 @@ If you want to apply a new backup policy to certain volumes in a system, you fir
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-+
-image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button from the Volumes tab.]
-
 . From the _Backup Settings_ page, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to add the new policy, and select *Manage Policies*.
-+
-image:screenshot_backup_modify_policy.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
-
 . From the _Manage Policies_ page, select *Add New Policy*.
 
 . From the _Add New Policy_ page, select down arrow to expand the _Labels & Retention_ section to define the schedule and backup retention, and select *Save*.
-+
-image:screenshot_backup_add_new_policy.png[A screenshot that shows the backup policy settings where you can add the backup schedule and backup retention setting.]
 +
 If your cluster is running ONTAP 9.10.1 or greater, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
 +
@@ -346,13 +319,7 @@ Note that this action does not affect Snapshot copies or replicated volumes - th
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-+
-image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a system.]
-
 . Select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to delete all backups and select *Delete All Backups*.
-+
-image:screenshot_backup_delete_all_backups-working-env.png[A screenshot that shows the Delete All Backups option]
-
 . In the confirmation dialog box, enter the name of the system. 
 
 . Select *Advanced settings*. 
@@ -374,14 +341,8 @@ Deleting all backups for a volume also disables future backups for that volume.
 
 . From the *Volumes* tab, click image:icon-actions-horizontal.gif[More icon] for the source volume and select *Details & Backup List*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
-+
 The list of all backup files is displayed.
-
 . Select *Actions* > *Delete all Backups*.
-+
-image:screenshot_backup_delete_all_backups.png[A screenshot that shows the Delete All Backups option]
-
 . Enter the volume name.
 . Select *Advanced settings*. 
 
@@ -403,8 +364,6 @@ You can't delete replicated volumes (data protection volumes).
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[More icon] for the source volume and select *View volume details*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the View Volume Details button which is available for a single volume.]
-+
 The details for the volume are displayed, and you can select *Snapshot*, *Replication*, or *Backup* to see the list of all backup files for the volume. By default, the available snapshot copies are displayed.
 
 . Select *Snapshot* or *Backup* to see the type of backup files that you want to delete.
@@ -422,7 +381,7 @@ You don't necessarily need to delete the source volume. You can delete the backu
 
 This feature is available only if your system is running ONTAP 9.12.1 or greater.
 
-You can't delete the source volume from the NetApp Backup and Recovery user interface. However, you can open the Volume Details page on the Console *Systems* page, and https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[delete the volume from there].
+You can't delete the source volume from the NetApp Backup and Recovery user interface. However, you can open the Volume Details page on the Console *Systems* page, and https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[delete the volume from there].
 
 NOTE: You can't delete individual volume backup files once the relationship has been deleted. You can, however, you can delete all backups for the volume. 
 
@@ -448,8 +407,6 @@ Note that you'll continue to be charged by your cloud provider for object storag
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-+
-image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a system.]
 
 . From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to disable backups and select *Deactivate Backup*.
 
@@ -474,8 +431,6 @@ The unregister option is not available until these two actions are complete.
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-+
-image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a system.]
 
 . From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to unregister the backup service and select *Unregister*.
 

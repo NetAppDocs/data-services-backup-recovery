@@ -15,7 +15,7 @@ summary: The NetApp Backup and Recovery service needs to first discover data in 
 [.lead]
 Known limitations identify platforms, devices, or functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
 
-The following actions are not supported in the Preview version of VMware workloads in NetApp Backup and Recovery: 
+The following actions are not supported in the preview version of VMware workloads in NetApp Backup and Recovery: 
 
 * Mount
 * Unmount

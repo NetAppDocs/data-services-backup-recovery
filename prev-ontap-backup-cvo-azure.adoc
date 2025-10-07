@@ -49,7 +49,7 @@ By default, backups are created using the same subscription as the one used for 
 
 == Verify license requirements
 
-For NetApp Backup and Recovery PAYGO licensing, a subscription through the Azure Marketplace is required before you enable NetApp Backup and Recovery. Billing for NetApp Backup and Recovery is done through this subscription. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the system wizard^].
+For NetApp Backup and Recovery PAYGO licensing, a subscription through the Azure Marketplace is required before you enable NetApp Backup and Recovery. Billing for NetApp Backup and Recovery is done through this subscription. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the system wizard^].
 
 For NetApp Backup and Recovery BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses]. You must use a BYOL license when the Console agent and Cloud Volumes ONTAP system are deployed in a dark site ("private mode").
 
@@ -178,7 +178,7 @@ Enabling NetApp Backup and Recovery is easy. The steps differ slightly depending
 
 NetApp Backup and Recovery is enabled by default in the system wizard. Be sure to keep the option enabled.
 
-See https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html[Launching Cloud Volumes ONTAP in Azure^] for requirements and details for creating your Cloud Volumes ONTAP system.
+See https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-azure.html[Launching Cloud Volumes ONTAP in Azure^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
 NOTE: If you want to pick the name of the resource group, *disable* NetApp Backup and Recovery when deploying Cloud Volumes ONTAP. 
 

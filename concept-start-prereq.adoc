@@ -188,7 +188,8 @@ Ensure NetApp Console meets the following requirements.
 
 * A Console user should have the required role and privileges to perform operations on Microsoft SQL Server and Kubernetes workloads. To discover the resources, you must have the NetApp Backup and Recovery role of Super admin. See link:reference-roles.html[NetApp Backup and Recovery role-based access to features] for details about the roles and permissions required to perform operations in NetApp Backup and Recovery.
 
-* A Console organization with at least one active Console agent that connects to on-premises ONTAP clusters or Cloud Volumes ONTAP. Refer to the *Initial Preview setup process* below. 
+* A Console organization with at least one active Console agent that connects to on-premises ONTAP clusters or Cloud Volumes ONTAP. 
+//Refer to the *Initial preview setup process* below. 
 //* A BlueXP organization with at least one active Console agent that connects to on-premises ONTAP clusters or to Cloud Volumes ONTAP in AWS or Azure.
 
 
@@ -199,7 +200,7 @@ Ensure NetApp Console meets the following requirements.
 +
 Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn how to configure a Console agent] and https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[standard NetApp Console requirements^].
 
-** The Preview version requires the Ubuntu 22.04 LTS operating system for the Console agent. 
+** The preview version requires the Ubuntu 22.04 LTS operating system for the Console agent. 
 
 //RHEL connector will be supported during GA.
  

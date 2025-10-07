@@ -172,4 +172,4 @@ curl --location --request GET 'https://api.bluexp.netapp.com/account/account-DpT
 
 == API reference
 
-Documentation for each NetApp Backup and Recovery API is available from https://docs.netapp.com/us-en/bluexp-automation/cbs/overview.html[NetApp Console automation^].
+Documentation for each NetApp Backup and Recovery API is available from https://docs.netapp.com/us-en/console-automation/cbs/overview.html[NetApp Console automation^].

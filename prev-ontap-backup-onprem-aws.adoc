@@ -251,7 +251,7 @@ If you want to use the default Amazon S3 encryption keys to encrypt the data pas
 
 If instead you want to use your own customer-managed keys for data encryption rather than using the default keys, then you'll need to have the encryption managed keys already set up before you start the NetApp Backup and Recovery wizard.
 
-https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-setting-up-kms.html[Refer to how to use your own Amazon encryption keys with Cloud Volumes ONTAP^].
+https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[Refer to how to use your own Amazon encryption keys with Cloud Volumes ONTAP^].
 
 https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html#configure-encryption-settings[Refer to how to use your own Amazon encryption keys with NetApp Backup and Recovery^].
 
@@ -268,15 +268,11 @@ If you want to have a more secure connection over the internet from your on-prem
 
 . Modify the security group configuration that's associated with the Console agent. You must change the policy to "Custom" (from "Full Access"), and you must <<Set up S3 permissions,add the S3 permissions from the backup policy>> as shown earlier.
 +
-image:screenshot_backup_aws_sec_group.png[A screenshot of the AWS security group associated with the Console agent.]
-+
 If you're using port 80 (HTTP) for communication to the private endpoint, you're all set. You can enable NetApp Backup and Recovery on the cluster now.
 +
 If you're using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add it to your ONTAP cluster, as shown in the next 4 steps.
 +
 . Obtain the DNS name of the endpoint from the AWS Console.
-+
-image:screenshot_endpoint_dns_aws_console.png[A screenshot of the DNS name of the VPC endpoint from the AWS Console.]
 
 . Obtain the certificate from the VPC S3 endpoint. You do this by https://docs.netapp.com/us-en/console-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[logging into the VM that hosts the Console agent^] and running the following command. When entering the DNS name of the endpoint, add "bucket" to the beginning, replacing the "*":
 +
@@ -418,7 +414,7 @@ To create a policy, select *Create new policy* and do the following:
 +
 The access key and secret key are for the IAM user you created to give the ONTAP cluster access to the S3 bucket.
 
-* *Bucket*: Either choose an existing S3 bucket or create a new one. Refer to https://docs.netapp.com/us-en/bluexp-s3-storage/task-add-s3-bucket.html[Add S3 buckets^].
+* *Bucket*: Either choose an existing S3 bucket or create a new one. Refer to https://docs.netapp.com/us-en/storage-management-s3-storage/task-add-s3-bucket.html[Add S3 buckets^].
 
 * *Encryption key*: If you created a new S3 bucket, enter encryption key information given to you from the provider. Choose whether you'll use the default Amazon S3 encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. 
 

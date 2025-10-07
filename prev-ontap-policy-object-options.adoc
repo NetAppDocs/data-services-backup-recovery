@@ -28,8 +28,6 @@ NetApp Backup and Recovery enables you to create multiple backup policies with u
 
 Each backup policy provides a section for _Labels & Retention_ that you can apply to your backup files. Note that the Snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery or backup files will not be created. 
 
-image:screenshot_backup_schedule_settings.png[A screenshot of the Backup Schedule settings when creating a backup policy.]
-
 There are two parts of the schedule; the Label and the Retention value:
 
 * The *label* defines how often a backup file is created (or updated) from the volume. You can select among the following types of labels:
@@ -319,7 +317,6 @@ Data in archival tiers can't be accessed immediately when needed, and will requi
 
 Each backup policy provides a section for _Archival Policy_ that you can apply to your backup files.
 
-image:screenshot_archive_tier_settings.png[A screenshot of the Archival Policy settings when creating a backup policy.]
 
 ifdef::aws[]
 * In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.

@@ -30,7 +30,7 @@ There are ten categories of endpoints defined within NetApp Backup and Recovery:
 
 == API reference
 
-Documentation for each NetApp Backup and Recovery API is available from https://docs.netapp.com/us-en/bluexp-automation/cbs/overview.html[NetApp Console automation for NetApp Backup and Recovery^].
+Documentation for each NetApp Backup and Recovery API is available from https://docs.netapp.com/us-en/console-automation/cbs/overview.html[NetApp Console automation for NetApp Backup and Recovery^].
 
 == Getting started
 
@@ -38,7 +38,7 @@ To get started with the NetApp Backup and Recovery APIs, you'll need to obtain a
 
 When making API calls, you'll add the user token in the Authorization header, and the Console agent ID in the x-agent-id header. You should use the NetApp Console account ID in the APIs.
 
-NOTE: If you are using a service account, you should use the service access token instead of a user token. The value for "client_id" ("Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC") is a fixed value and cannot be changed. In this case, follow the instructions here: https://docs.netapp.com/us-en/bluexp-automation/platform/create_service_token.html[Create a service access token^].
+NOTE: If you are using a service account, you should use the service access token instead of a user token. The value for "client_id" ("Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC") is a fixed value and cannot be changed. In this case, follow the instructions here: https://docs.netapp.com/us-en/console-automation/platform/create_service_token.html[Create a service access token^].
 
 .Steps
 
