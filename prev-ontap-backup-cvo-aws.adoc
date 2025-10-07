@@ -353,7 +353,7 @@ To create a policy, select *Create new policy* and do the following:
 +
 ** Enter the name of the policy. 
 ** Select up to five schedules, typically of different frequencies. 
-** For backup-to-object policies, set the DataLock and Ransomware Protection settings. For details on DataLock and Ransomware Protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+** For backup-to-object policies, set the DataLock and Ransomware Resilience settings. For details on DataLock and Ransomware Resilience, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
 // In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
 ** Select *Create*. 
 * *Export existing Snapshot copies to object storage as backup copies*: If there are any local Snapshot copies for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
@@ -363,7 +363,7 @@ To create a policy, select *Create new policy* and do the following:
 //.. Enter the name for the default policy. You don't need to change the name.
 
 
-//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Resilience_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
 //+
 //NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
 

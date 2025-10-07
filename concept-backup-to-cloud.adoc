@@ -138,7 +138,7 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
-* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled DataLock and Ransomware Protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
+* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled DataLock and Ransomware Resilience for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
 
 *Service charges*
 

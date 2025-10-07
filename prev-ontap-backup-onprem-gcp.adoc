@@ -397,7 +397,7 @@ To create a policy, select *Create new policy* and do the following:
 //.. Enter the name for the default policy. You don't need to change the name.
 //.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings[See the list of existing policies you can choose^].
 
-//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Resilience_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
 //+
 //NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
 

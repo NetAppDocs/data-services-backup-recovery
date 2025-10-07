@@ -222,7 +222,7 @@ endif::gcp[]
 
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
-* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you have enabled DataLock and Ransomware Protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
+* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you have enabled DataLock and Ransomware Resilience for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
 
 *Service charges*
 
@@ -354,7 +354,7 @@ TIP: The retention period for backups of data protection volumes is the same as 
 
 === Backup file protection settings
 
-If your cluster is using ONTAP 9.11.1 or greater, you can protect your backups in object storage from deletion and ransomware attacks. Each backup policy provides a section for _DataLock and Ransomware Protection_ that can be applied to your backup files for a specific period of time - the _retention period_. 
+If your cluster is using ONTAP 9.11.1 or greater, you can protect your backups in object storage from deletion and ransomware attacks. Each backup policy provides a section for _DataLock and Ransomware Resilience_ that can be applied to your backup files for a specific period of time - the _retention period_. 
 
 * _DataLock_ protects your backup files from being modified or deleted. 
 * _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack when a backup file is created, and when data from a backup file is being restored.

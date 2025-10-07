@@ -66,7 +66,7 @@ NOTE: The initial creation of a replicated volume or backup file includes a full
 
 The following table shows a generalized comparison of the three backup methods. While object storage space is typically less expensive than your on-premises disk storage, if you think you might restore data from the cloud frequently, then the egress fees from cloud providers can reduce some of your savings. You'll need to identify how often you need to restore data from the backup files in the cloud.
 
-In addition to this criteria, cloud storage offers additional security options if you use the DataLock and Ransomware Protection feature, and additional cost savings by selecting archival storage classes for older backup files. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection and archival storage settings].
+In addition to this criteria, cloud storage offers additional security options if you use the DataLock and Ransomware Resilience feature, and additional cost savings by selecting archival storage classes for older backup files. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection and archival storage settings].
 
 [cols=5*,options="header",cols="18,18,22,18,22",width="100%"]
 |===

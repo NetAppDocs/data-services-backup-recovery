@@ -72,7 +72,7 @@ You can change the backup policies assigned to your existing volumes that have a
 
 . In the _Edit backup strategy_ page, make changes to the existing backup policies for Local Snapshot copies, Replicated volumes, and Backup files and select *Next*.
 +
-If you enabled _DataLock and Ransomware Protection_ for cloud backups in the initial backup policy when activating NetApp Backup and Recovery for this cluster, you'll only see other policies that have been configured with DataLock. And if you did not enable _DataLock and Ransomware Protection_ when activating NetApp Backup and Recovery, you'll only see other cloud backup policies that don't have DataLock configured.
+If you enabled _DataLock and Ransomware Resilience_ for cloud backups in the initial backup policy when activating NetApp Backup and Recovery for this cluster, you'll only see other policies that have been configured with DataLock. And if you did not enable _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery, you'll only see other cloud backup policies that don't have DataLock configured.
 
 . Review the backup settings for this volume, and then select *Activate Backup*.
 
@@ -110,7 +110,7 @@ When more than five volumes are enabled for backup, NetApp Backup and Recovery i
 
 . In the backup page that appears, make changes to the existing backup policies for Local Snapshot copies, Replicated volumes, or Backup files and select *Save*.
 +
-If you enabled _DataLock and Ransomware Protection_ for cloud backups in the initial backup policy when activating NetApp Backup and Recovery for this cluster, you'll only see other policies that have been configured with DataLock. And if you did not enable _DataLock and Ransomware Protection_ when activating NetApp Backup and Recovery, you'll only see other cloud backup policies that don't have DataLock configured.
+If you enabled _DataLock and Ransomware Resilience_ for cloud backups in the initial backup policy when activating NetApp Backup and Recovery for this cluster, you'll only see other policies that have been configured with DataLock. And if you did not enable _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery, you'll only see other cloud backup policies that don't have DataLock configured.
 
 == Create a manual volume backup at any time
 
@@ -120,7 +120,7 @@ You can create an ad-hoc snapshot copy or backup to object of a volume. You can'
 
 The backup name includes the timestamp so you can identify your on-demand backup from other scheduled backups.
 
-If you enabled _DataLock and Ransomware Protection_ when activating NetApp Backup and Recovery for this cluster, the on-demand backup also will be configured with DataLock, and the retention period will be 30 days. Ransomware scans are not supported for ad-hoc backups. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection^].
+If you enabled _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery for this cluster, the on-demand backup also will be configured with DataLock, and the retention period will be 30 days. Ransomware scans are not supported for ad-hoc backups. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection^].
 
 When you create an ad-hoc backup, a snapshot is created on the source volume. Because this snapshot is not part of a normal snapshot schedule, it will not rotate off. You may want to manually delete this snapshot from the source volume once the backup is complete. This will allow blocks related to this snapshot to be freed up. The name of the Snapshot will begin with `cbs-snapshot-adhoc-`. https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html[See how to delete a Snapshot using the ONTAP CLI^].
 
@@ -150,7 +150,7 @@ The details for the volume and the list of snapshot copies are displayed.
 
 NetApp Backup and Recovery scans your backup files to look for evidence of a ransomware attack when a backup to object file is created, and when data from a backup file is being restored. You can also run an on-demand scan at any time to verify the usability of a specific backup file in object storage. This can be useful if you have had a ransomware issue on a particular volume and you want to verify that the backups for that volume are not affected.
 
-This feature is available only if the volume backup was created from a system with ONTAP 9.11.1 or greater, and if you enabled _DataLock and Ransomware Protection_ in the backup-to-object policy.
+This feature is available only if the volume backup was created from a system with ONTAP 9.11.1 or greater, and if you enabled _DataLock and Ransomware Resilience_ in the backup-to-object policy.
 
 .Steps
 
@@ -163,7 +163,7 @@ The details for the volume are displayed.
 
 . Select image:icon-actions-horizontal.gif[Actions icon] for the volume backup file you want to scan for ransomware and click *Scan for Ransomware*. 
 +
-The Ransomware Protection column shows that the scan is In Progress.
+The Ransomware Resilience column shows that the scan is In Progress.
 
 //== Disable backups of volumes
 //
@@ -240,7 +240,7 @@ You can change the attributes for a backup policy that is currently applied to v
 
 [NOTE]
 ====
-* If you enabled _DataLock and Ransomware Protection_ in the initial policy when activating NetApp Backup and Recovery for this cluster, any policies that you edit must be configured with the same DataLock setting (Governance or Compliance). And if you did not enable _DataLock and Ransomware Protection_ when activating NetApp Backup and Recovery, you can't enable DataLock now.
+* If you enabled _DataLock and Ransomware Resilience_ in the initial policy when activating NetApp Backup and Recovery for this cluster, any policies that you edit must be configured with the same DataLock setting (Governance or Compliance). And if you did not enable _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery, you can't enable DataLock now.
 * When creating backups on AWS, if you chose _S3 Glacier_ or _S3 Glacier Deep Archive_ in your first backup policy when activating NetApp Backup and Recovery, then that tier will be the only archive tier available when editing backup policies. And if you selected no archive tier in your first backup policy, then _S3 Glacier_ will be your only archive option when editing a policy.
 ====
 
@@ -275,7 +275,7 @@ If you want to apply a new backup policy to certain volumes in a system, you fir
 
 [NOTE]
 ====
-* If you enabled _DataLock and Ransomware Protection_ in the initial policy when activating NetApp Backup and Recovery for this cluster, any additional policies you create must be configured with the same DataLock setting (Governance or Compliance). And if you did not enable _DataLock and Ransomware Protection_ when activating NetApp Backup and Recovery, you can't create new policies that use DataLock.
+* If you enabled _DataLock and Ransomware Resilience_ in the initial policy when activating NetApp Backup and Recovery for this cluster, any additional policies you create must be configured with the same DataLock setting (Governance or Compliance). And if you did not enable _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery, you can't create new policies that use DataLock.
 * When creating backups on AWS, if you chose _S3 Glacier_ or _S3 Glacier Deep Archive_ in your first backup policy when activating NetApp Backup and Recovery, then that tier will be the only archive tier available for future backup policies for that cluster. And if you selected no archive tier in your first backup policy, then _S3 Glacier_ will be your only archive option for future policies.
 ====
 
