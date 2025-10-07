@@ -22,7 +22,7 @@ For details about the actions that each role can perform, see link:reference-rol
 To log in to the NetApp Console, you can use your NetApp Support Site credentials or you can sign up for a NetApp Console login using your email and a password. https://docs.netapp.com/us-en/console-setup-admin/task-logging-in.html[Learn more about logging in^].
 
 *Required NetApp Console role*
-Organization admin, Folder or project admin, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 To add a Console agent, you must have the Organization admin or the Backup and Recovery super admin role. 
 

@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery needs to first discover data in order for yo
 :imagesdir: ./media/
 
 [.lead]
-Known limitations identify platforms, devices, or functions that are not supported by this release of the product, or that do not interoperate correctly with it. Review these limitations carefully.
+Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
 The following actions are not supported in the private preview version of Hyper-V workloads in NetApp Backup and Recovery: 
 

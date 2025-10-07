@@ -13,7 +13,7 @@ summary: Known limitations identify functions that are not supported by this rel
 :imagesdir: ./media/
 
 [.lead]
-Known limitations identify functions that are not supported by this release of NetApp Backup and Recovery, or that do not interoperate correctly with it. Review these limitations carefully.
+Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
 * NetApp Backup and Recovery can back up Cloud Volumes ONTAP to an object store in the AWS China regions (including Beijing and Ningxia); however, you might need to manually modify Identity and access policies first. 
 +
