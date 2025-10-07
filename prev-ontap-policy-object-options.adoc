@@ -50,7 +50,7 @@ Yearly backups are deleted automatically from the source system after being tran
 
 NetApp Backup and Recovery provides support for DataLock and Ransomware protection for your volume backups. These features enable you to lock your backup files and scan them to detect possible ransomware on the backup files. This is an optional setting that you can define in your backup policies when you want extra protection for your volume backups for a cluster.
 
-Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the DataLock and Ransomware Protection option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
+Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the DataLock and Ransomware Resilience option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
 
 https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware[See the DataLock and Ransomware protection blog for more details^].
 
@@ -105,7 +105,7 @@ The DataLock retention setting overrides the policy retention setting from your 
 === Enable DataLock and Ransomware protection
 You can enable DataLock and Ransomware protection when you create a policy. You cannot enable, modify, or disable this after the policy is created. 
 
-. When you create a policy, expand the *DataLock and Ransomware Protection* section.
+. When you create a policy, expand the *DataLock and Ransomware Resilience* section.
 
 . Choose one of the following: 
 * *None*: DataLock protection and Ransomware Resilience are disabled.
@@ -140,13 +140,9 @@ Let's see how this works:
 * When a ransomware scan is initiated, the checksums are validated for both object versions and compared. If the checksums are inconsistent, potential ransomware has been detected.
 * The recovery process involves reverting to the last known good copy. 
 
-
-
-
-
 === Supported systems and object storage providers
 
-You can enable DataLock and Ransomware protection on ONTAP volumes from the following systems when using object storage in the following public and private cloud providers. Additional cloud providers will be added in future releases.
+You can enable DataLock and Ransomware protection on ONTAP volumes from the following systems when using object storage in the following public and private cloud providers.
 
 [cols=2*,options="header",cols="55,45",width="80%"]
 |===
@@ -162,10 +158,10 @@ ifdef::azure[]
 | Cloud Volumes ONTAP in Azure
 | Azure Blob
 endif::azure[]
-//ifdef::gcp[]
-// | Cloud Volumes ONTAP in Google
-// | Google Cloud Storage
-//endif::gcp[]
+ifdef::gcp[]
+| Cloud Volumes ONTAP in Google Cloud
+| Google Cloud
+endif::gcp[]
 | On-premises ONTAP system
 | 
 ifdef::aws[]
@@ -174,9 +170,9 @@ endif::aws[]
 ifdef::azure[]
 Azure Blob
 endif::azure[]
-//ifdef::gcp[]
-//Google Cloud Storage
-//endif::gcp[]
+ifdef::gcp[]
+Google Cloud
+endif::gcp[]
 NetApp StorageGRID
 
 |===
@@ -231,6 +227,11 @@ ifdef::azure[]
 ** Your clusters must running ONTAP 9.12.1 or greater
 ** The Console agent can be deployed in the cloud or on your premises
 endif::azure[]
+ifdef::gcp[]
+* For Google Cloud:
+** Your clusters must be running ONTAP 9.17.1 or greater
+** The Console agent can be deployed in the cloud or on your premises
+endif::gcp[]
 * For StorageGRID:
 ** Your clusters must running ONTAP 9.11.1 or greater 
 ** Your StorageGRID systems must be running 11.6.0.3 or greater

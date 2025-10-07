@@ -134,7 +134,7 @@ Supported ONTAP versions::
 ONTAP 9.8 and later is required for on-premises ONTAP systems.
 ONTAP 9.9.1 and later is required for Cloud Volumes ONTAP systems.
 //+
-//To use DataLock & Ransomware Protection for your backups, your ONTAP S3 systems must be running version 11.6.0.3 or greater. 
+//To use DataLock & Ransomware Resilience for your backups, your ONTAP S3 systems must be running version 11.6.0.3 or greater. 
 //+
 //To tier older backups to cloud archival storage, your ONTAP S3 systems must be running version 11.3 or greater. Additionally, your ONTAP S3 systems must be discovered to the NetApp Console.
 
@@ -295,13 +295,13 @@ To create a policy, select *Create new policy* and do the following:
 +
 ** Enter the name of the policy. 
 ** Select up to five schedules, typically of different frequencies. 
-** For backup-to-object policies, set the DataLock and Ransomware Protection settings. For details on DataLock and Ransomware Protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+** For backup-to-object policies, set the DataLock and Ransomware Resilience settings. For details on DataLock and Ransomware Resilience, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
 ** Select *Create*. 
 // In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
 
 
 +
-//If your cluster is using ONTAP 9.11.1 or greater, you can choose to protect your backups from deletion and ransomware attacks by configuring _DataLock and Ransomware Protection_. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//If your cluster is using ONTAP 9.11.1 or greater, you can choose to protect your backups from deletion and ransomware attacks by configuring _DataLock and Ransomware Resilience_. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
 //+
 //If your cluster is using ONTAP 9.12.1 or greater and your ONTAP S3 system is using version 11.4 or greater, you can choose to tier older backups to public cloud archive tiers after a certain number of days. Current support is for AWS S3 Glacier/S3 Glacier Deep Archive or Azure Archive storage tiers. <<Preparing to archive older backup files to public cloud storage,See how to configure your systems for this functionality>>.
 //
