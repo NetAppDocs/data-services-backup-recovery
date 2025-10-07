@@ -246,7 +246,7 @@ The *Location* column shows whether the backup file (Snapshot) is *Local* (a Sna
 
 . Select *Next*.
 +
-Note that if you select a backup file in object storage, and Ransomware Resilience is active for that backup (if you enabled DataLock and Ransomware Protection in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
+Note that if you select a backup file in object storage, and Ransomware Resilience is active for that backup (if you enabled DataLock and Ransomware Resilience in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
 
 . In the _Select Destination_ page, select the *system* where you want to restore the volume.
 
@@ -372,7 +372,7 @@ link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring fr
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage]. Backup files in the Google Archive storage tier are restored almost immediately, and require no Restore Priority.
 +
-And if Ransomware Resilience is active for the backup file (if you enabled DataLock and Ransomware Protection in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
+And if Ransomware Resilience is active for the backup file (if you enabled DataLock and Ransomware Resilience in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
 
 
 . In the _Select Items_ page, select the folder or file(s) that you want to restore and select *Continue*. To assist you in finding the item:

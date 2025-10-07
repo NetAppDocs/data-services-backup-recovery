@@ -36,7 +36,7 @@ You can restore data to the original location; restoring to an alternate locatio
 
 //.Restore from object storage considerations
 
-//If you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled DataLock and Ransomware Protection in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
+//If you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled DataLock and Ransomware Resilience in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
 
 //TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
 
