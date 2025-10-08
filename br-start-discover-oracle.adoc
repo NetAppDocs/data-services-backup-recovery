@@ -75,7 +75,7 @@ Add Oracle host information and let NetApp Backup and Recovery discover workload
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . In the Oracle tile, select *Discover and manage*.
 +
-If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+If this is your first time logging in to Backup and Recovery, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
 
 . Select *Discover resources*.
 

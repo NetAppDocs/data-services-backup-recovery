@@ -13,18 +13,18 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to first discover Kubernetes workloads in order for you to use the service. 
+NetApp Backup and Recovery needs to discover Kubernetes workloads before protecting them. 
 
 *Required NetApp Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 
 == Discover Kubernetes workloads
-In the backup and recovery inventory, you can discover Kubernetes workloads that are running in your environment. Discovering a workload adds a Kubernetes cluster to NetApp Backup and Recovery, enabling you to then add applications to the cluster and protect the resources hosted by the cluster.
+In Backup and Recovery inventory, discover Kubernetes workloads in your environment. Adding a workload adds a Kubernetes cluster to NetApp Backup and Recovery. You can then add applications and protect cluster resources.
 
 .Steps
 . Do one of the following:
-
++
 * If you are discovering Kubernetes workloads for the first time, in NetApp Backup and Recovery, select *Discover and Manage* under the Kubernetes workload type.
 * If you have already discovered Kubernetes workloads, in NetApp Backup and Recovery, select *Inventory* > *Workloads* and then select *Discover resources*.
 
@@ -44,12 +44,10 @@ The cluster is added to the inventory.
 . Select *View* in the associated Kubernetes workload to see the list of applications, clusters, and namespaces for that workload.
 
 == Continue to the NetApp Backup and Recovery Dashboard
-To display the NetApp Backup and Recovery Dashboard, follow these steps. 
+Follow these steps to view the NetApp Backup and Recovery Dashboard. 
 
 . From the top menu, select *Dashboard*.   
 
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
-//+
-//image:screen-br-dashboard2.png[NetApp Backup and Recovery Dashboard]
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].

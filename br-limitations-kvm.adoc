@@ -39,3 +39,16 @@ The following configurations are not supported:
 * Disks spanned across multiple NFS mount points or shares
 * RAW disk format
 * Storage pool types other than NetFS (only NetFS is supported)
+
+== Unsupported legacy NetApp Console accounts
+Legacy NetApp Console accounts don't support the features required to protect KVM workloads. Check if you are using a legacy account in the Console web UI. If you have a legacy Console account, create a new account before protecting KVM workloads.
+
+.Steps
+
+. From the NetApp Console menu, select *Administration > Identity and access*.
+. Under *Organization*, check to see if an *Account ID* is shown next to the organization ID. 
++
+If an *Account ID* is shown, you are using a legacy account.
+. If you are using a legacy account, do the following:
+.. Log out of the Console and then browse to the https://console.netapp.com/[Console login page^].
+.. Select *Sign up* to create a new account.

@@ -27,7 +27,7 @@ You can use the following license types:
 *How do you enable NetApp Backup and Recovery?* 
 NetApp Backup and Recovery does not require any enablement. The backup and recovery option is automatically enabled on the Console left navigation. 
 
-To get going, you need to sign up or reach out to your NetApp Sales representative to try out this service. Then, when you use the Console agent, it will include the appropriate capabilities for the service.
+To get going, you need to sign up or reach out to your NetApp Sales representative to try out Backup and Recovery. Then, when you use the Console agent, it will include the appropriate capabilities for the service.
 
 To get started with NetApp Backup and Recovery, select "Start discovering workloads" from its initial landing page. 
 
@@ -59,7 +59,7 @@ Any modern browser will work.
 *Is NetApp Backup and Recovery aware of protection settings made in NetApp ONTAP?*
 Yes, NetApp Backup and Recovery discovers snapshot schedules set in ONTAP. 
 
-*If you set a policy using NetApp Backup and Recovery, do you have to make future changes only in this service?* 
+*If you set a policy using NetApp Backup and Recovery, do you have to make future changes only in Backup and Recovery?* 
 We recommend that you make policy changes from NetApp Backup and Recovery.
 
 //*How does NetApp Backup and Recovery interact with SnapCenter?*

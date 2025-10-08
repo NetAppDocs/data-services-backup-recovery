@@ -254,7 +254,7 @@ For details about these architectures, refer to link:prev-ontap-protect-journey.
 +
 TIP: If you want to create a custom policy before activating the Snapshot, you can use System Manager or the ONTAP CLI `snapmirror policy create` command. Refer to https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html[ONTAP CLI for `snapmirror policy`^].
 +
-TIP: To create a custom policy using this service, refer to link:br-use-policies-create.html[Create a policy].
+TIP: To create a custom policy using Backup and Recovery, refer to link:br-use-policies-create.html[Create a policy].
 +
 To create a policy, select *Create new policy* and do the following: 
 
@@ -289,7 +289,7 @@ TIP: Selecting the correct IPspace ensures that NetApp Backup and Recovery can s
 +
 TIP: You can create a policy with System Manager or the ONTAP CLI. To create a custom policy using the ONTAP CLI `snapmirror policy create` command, refer to https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html[ONTAP CLI for `snapmirror policy`^].
 +
-TIP: To create a custom policy using this service, refer to link:br-use-policies-create.html[Create a policy].
+TIP: To create a custom policy using Backup and Recovery, refer to link:br-use-policies-create.html[Create a policy].
 +
 To create a policy, select *Create new policy* and do the following: 
 +
