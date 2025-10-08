@@ -13,20 +13,20 @@ summary: The NetApp Backup and Recovery capabilities that are available through 
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Backup and Recovery capabilities that are available through the web UI are also available through the RESTful API.
+The NetApp Backup and Recovery capabilities that are available through the web UI are also available through the Backup and Recovery REST API.
 
 There are ten categories of endpoints defined within NetApp Backup and Recovery:
 
-*	backup - manages backup operations of cloud and on-premises resources, and retrieves details of the backup data
-*	catalog - manages the indexed catalog search for files based on a query (Search & Restore)
-*	cloud - retrieves information about various cloud provider resources from the NetApp Console
-*	job - manages job detail entries on the NetApp Console database
-*	license - retrieves the license validity of the systems from NetApp Console
-* ransomware scan - initiates a ransomware scan on a specific backup file
-*	restore - enables you to perform volume, file, and folder-level restore operations
-*	sfr - retrieves files from a backup file for single file-level restore operations (Browse & Restore)
-* storagegrid - retrieves details about a StorageGRID server, and enables you to discover a StorageGRID server
-*	system - manages the backup policies, and configures the destination object store associated with a system
+*	`backup` - manages backup operations of cloud and on-premises resources, and retrieves details of the backup data
+*	`catalog` - manages the indexed catalog search for files based on a query (Search & Restore)
+*	`cloud` - retrieves information about various cloud provider resources from the NetApp Console
+*	`job` - manages job detail entries on the NetApp Console database
+*	`license` - retrieves the license validity of the systems from NetApp Console
+* `ransomware scan` - initiates a ransomware scan on a specific backup file
+*	`restore` - enables you to perform volume, file, and folder-level restore operations
+*	`sfr` - retrieves files from a backup file for single file-level restore operations (Browse & Restore)
+* `storagegrid` - retrieves details about a StorageGRID server, and enables you to discover a StorageGRID server
+*	`system` - manages the backup policies, and configures the destination object store associated with a system
 
 == API reference
 
