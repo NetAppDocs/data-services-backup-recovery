@@ -17,15 +17,15 @@ Complete a few steps to discover or manually add offsite backup targets in NetAp
 
 == Discover a backup target 
 
-Before you use NetApp Backup and Recovery, you should configure your backup targets of Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID.
+Configure your backup targets (Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID) before using NetApp Backup and Recovery.
 
 You can discover these targets automatically or manually add them.
 
-Provide the credentials needed to access the storage account system. These credentials are used to discover the workloads that you want to back up.
+Provide credentials to access the storage account. NetApp Backup and Recovery uses these credentials to discover the workloads you want to back up.
 
 .Before you begin
 
-To add an offsite backup target, at least one workload has to be discovered. 
+You need to discover at least one workload before you can add an offsite backup target. 
 
 
 .Steps

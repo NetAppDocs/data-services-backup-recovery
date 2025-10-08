@@ -221,7 +221,7 @@ Review https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checkli
 
 === Create a Console agent
 
-You should reach out to your NetApp Product Team to try out this service. Then, when you use the Console agent, it will include the appropriate capabilities for the service. 
+You should reach out to your NetApp Product Team to try out Backup and Recovery. Then, when you use the Console agent, it will include the appropriate capabilities for the service. 
 
 To create a Console agent in the NetApp Console before using the service, refer to the Console documentation that describes https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[how to create a Console agent^]. 
 

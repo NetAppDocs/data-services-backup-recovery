@@ -25,7 +25,7 @@ You can start the free trial in NetApp Backup and Recovery after you log in to t
 .Steps 
 . From the Console left navigation, select *Protection* > *Backup and recovery*. 
 
-. If this is your first time logging in to this service, you already have a system in the NetApp Console, but you haven't started the free trial, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Start free trial*. 
+. If this is your first time logging in to Backup and Recovery, you already have a system in the NetApp Console, but you haven't started the free trial, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Start free trial*. 
 +
 image:screen-br-landing-unified-start-trial.png[Landing page screenshot for NetApp Backup and Recovery without a free trial]
 
@@ -33,7 +33,7 @@ image:screen-br-landing-unified-start-trial.png[Landing page screenshot for NetA
 
 After you start the free trial, you can discover workloads and create policies to back up your workloads.
 
-If this is your first time logging in to this service, you already have a system in the NetApp Console, and you started the free trial, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+If this is your first time logging in to Backup and Recovery, you already have a system in the NetApp Console, and you started the free trial, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
 
 For details about discovering workloads, see link:br-start-discover.html[Discover workloads].
 
