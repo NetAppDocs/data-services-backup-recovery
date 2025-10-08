@@ -131,7 +131,7 @@ This is optional if you have a VMware environment.
 
 . From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 +
-If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+If this is your first time logging in to Backup and Recovery, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
 
 
 . Select *Discover resources*.

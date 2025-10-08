@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to create up to three copies of your source volumes to protect your data. There are many options that you can select when enabling this service on your volumes, so you should review your choices so you're prepared.
+NetApp Backup and Recovery enables you to create up to three copies of your source volumes to protect your data. There are many options that you can select when enabling Backup and Recovery on your volumes, so you should review your choices so you're prepared.
 
 ====
 *NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].

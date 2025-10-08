@@ -13,58 +13,10 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to first discover KVM hosts and virtual machines so that you can protect them.
-
+NetApp Backup and Recovery needs to discover KVM hosts and virtual machines before protecting them. 
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
-//== Discover KVM workloads
-
-//During discovery, NetApp Backup and Recovery analyzes KVM workloads within your organization and assesses and imports existing protection policies, snapshot copies, and backup and restore options. 
-
-//You can import KVM NFS and VMFS datastores and VMs from their on-premises SnapCenter Plug-in for KVM vSphere into NetApp Backup and Recovery inventory. 
-
-//You can import entire vCenter resources or select specific protection groups. For Preview, you cannot select a specific resource group. 
-
-//NOTE: This version of NetApp Backup and Recovery supports only KVM vCenter and does not discover vVols or VMs on vVols.  
-
-//During the discovery process, NetApp Backup and Recovery performs the following tasks:
-
-//* Enables secure SSH access to the vCenter server.
-//* Activates maintenance mode on all Resource Groups in the vCenter server.
-//* Prepares the metadata of the vCenter and marks it as unmanaged in NetApp Console. 
-//* Configures database access. 
-//* Discovers KVM datastores and VMs.
-//* Imports existing protection policies, snapshot copies, and backup and restore options from SnapCenter Plug-in for KVM vSphere.
-//* Displays the discovered resources in the NetApp Backup and Recovery Inventory page.
-
-//In future releases, you will be able to discover KVM and Hyper-V hypervisors and other applications.
-
-//Discovery occurs in the following ways: 
-
-//* If you already have SnapCenter Plug-in for KVM vSphere, import SnapCenter resources into NetApp Backup and Recovery by using the NetApp Backup and Recovery UI.
-//+
-//NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisites before importing from SnapCenter. For example, you should create systems in NetApp Console for all on-premises SnapCenter cluster storage first before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
-//+
-//* If you don't already have the SnapCenter Plug-in, you can still discover workloads within your systems by adding a vCenter manually and performing discovery.
-
-
-
-
-//Notes from JIRA: 
-//* Note- Users can choose between physical resources to discover workload on bare metal or virtualized resources to discover VMs and underlying applications with virtualized as default.
-//* Note- In future, 3 hypervisors - KVM, KVM, Hyper-V will be supported with KVM as default selection.
-//* Select KVM as the hypervisor, user can add and register a vCenter to discover NFS, VMFS datastores and VMs  within this vCenter to backup and restore.
-
-//* An option to select Use self-signed certificates ( "Use self-signed certificates" checkbox is selected by default, if you already have authoritative certificates for your vCenter environment, you should uncheck this checkbox.)
-
-//* User can choose to discover underlying applications as part of the discovery process. The scope of application discovered in 25H1 is MSSQL.
-//* Click on Discover to add vcenter, push KVM plug-in per vcenter , discover NFS and VMFS datastores, VMs and list all discovered datastores and VMs. ( Agentless)
-
-//* Workload type – KVM, no of vCenters, resources – datastores/VMs discovered, protected resources and total protected capacity as nil
-//* If user has selected “discover underlying applications “ KVM tools will be used to identify VMs which has MSSQL applications and a summary of MSSQL discovered resources will be displayed as a new row. 
-
 
 == Add a KVM host and discover resources
 
@@ -75,7 +27,7 @@ Add KVM host information and let NetApp Backup and Recovery discover workloads. 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . In the KVM tile, select *Discover and manage*.
 +
-If this is your first time logging in to this service, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+If this is your first time logging in to Backup and Recovery, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
 
 . Select *Discover resources*.
 
@@ -97,6 +49,7 @@ The KVM workload is displayed in the list of workloads on the Inventory page.
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
+.Steps
 
 . To display the NetApp Backup and Recovery Dashboard, from the top menu, select *Dashboard*.   
 
