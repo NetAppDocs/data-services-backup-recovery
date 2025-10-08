@@ -15,6 +15,8 @@ summary: NetApp Backup and Recovery needs to first discover data in order for yo
 [.lead]
 Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
+== Unsupported actions
+
 The following actions are not supported in the private preview version of Hyper-V workloads in NetApp Backup and Recovery: 
 
 * Create resource groups
@@ -22,3 +24,17 @@ The following actions are not supported in the private preview version of Hyper-
 * Protect VMs over SAN
 * Restore from object store
 * Protect Hyper-V hosts that are clustered using System Center Virtual Machine Manager (SCVMM)
+
+== Unsupported legacy NetApp Console accounts
+
+Legacy NetApp Console accounts don't support the features required to protect Hyper-V workloads. You can check to see if your account is a legacy account in the Console web UI. If you have a legacy Console account, recreate the account (possibly using a different email address) before protecting Hyper-V workloads.
+
+.Steps
+
+. From the NetApp Console menu, select *Administration > Identity and access*.
+. Under *Organization*, check to see if an *Account ID* is shown next to the organization ID. 
++
+If an *Account ID* is shown, you are using a legacy account.
+. If you are using a legacy account, do the following:
+.. Log out of the Console and then browse to the https://console.netapp.com/[Console login page^].
+.. Select *Sign up* to create a new account.
