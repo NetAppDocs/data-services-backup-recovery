@@ -46,7 +46,7 @@ indexpage:
           url: br-use-mssql-restore.html
         - title: Clone Microsoft SQL Server workloads
           url: br-use-mssql-clone.html
-    - title: Protect VMware workloads (private preview)
+    - title: Protect VMware workloads (preview)
       links:
         - title: Protect VMware workloads overview
           url: br-use-vmware-protect-overview.html
