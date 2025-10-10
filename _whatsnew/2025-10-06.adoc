@@ -53,15 +53,16 @@ For details about protecting Kubernetes workloads, refer to https://docs.netapp.
 === VMware preview enhancements
 The preview release of VMware workloads introduces the following enhanced capabilities:
 
-* Support for restoring to object storage
+* Support for restoring from object storage
 * NetApp Console Dashboard now displays VMware workload status information
 * Demo Mode support: Explore the features of VMware workloads without adding a VMware vCenter Server environment
 * Role-based access control (RBAC) support
-* Dynatrace observability matrix and service dashboard support
 * Email alert and notification support for job events
 * Support for backing up and restoring to NVMe-based storage
 * Edit protection groups
 * Edit protection policies
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
 
 === Oracle Database workload support as a private preview
 
