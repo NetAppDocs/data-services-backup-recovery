@@ -25,7 +25,6 @@ The following actions are not supported in the private preview release:
 * Restore VMs to an alternate location
 * Protect VMs stored on SAN
 * Protect applications
-* Backup or restore from object stores
 * Edit protection groups
 * Create protection groups using VMs from multiple KVM hosts
 * Create user-defined backups (only backups initiated from the NetApp Console are supported)
