@@ -93,14 +93,15 @@ cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 cd cbs_config
 ----
 
-. Create a configuration file as shown below with one of the following names based on your deployment environment: 
+. Create and save a configuration file as shown below with one of the following names based on your deployment environment: 
 +
 * `production-customer.json` Used for Standard mode and Restricted mode deployments. 
 * `darksite-customer.json` Used for Private mode deployments. 
 +
 Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
- 
++
 *Configuration file* 
++
 [source,json]
 ----
 {
@@ -114,8 +115,6 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[Ne
   }
 }
 ----
-
-*Continue with the procedure*
 
 . Exit the container. Run: 
 +
@@ -198,7 +197,7 @@ where `sgws.crt` is the root CA certificate.
 sudo update-ca-certificates
 ----
 
-==== RHEL
+==== Red Hat Enterprise Linux
 
 . Copy the SGWS certificate to `/etc/pki/ca-trust/source/anchors/`.
 +
