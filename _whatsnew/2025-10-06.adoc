@@ -34,8 +34,8 @@ This release of of NetApp Backup and Recovery introduces support for discovering
 
 For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
 
-=== Kubernetes preview improvements
-The preview release of Kubernetes workloads introduces the following enhancements:
+=== Kubernetes preview enhancements
+The preview release of Kubernetes workloads introduces the following enhanced capabilities:
 
 * 3-2-1 Fan out backup architecture support
 * Support for ONTAP S3 as a backup target
@@ -49,7 +49,21 @@ The preview release of Kubernetes workloads introduces the following enhancement
 * Multi-bucket support: You can now protect the volumes within a system with multiple buckets per system across different cloud providers
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
- 
+
+=== VMware preview enhancements
+The preview release of VMware workloads introduces the following enhanced capabilities:
+
+* Support for restoring from object storage
+* NetApp Console Dashboard now displays VMware workload status information
+* Demo Mode support: Explore the features of VMware workloads without adding a VMware vCenter Server environment
+* Role-based access control (RBAC) support
+* Email alert and notification support for job events
+* Support for backing up and restoring to NVMe-based storage
+* Edit protection groups
+* Edit protection policies
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
+
 === Oracle Database workload support as a private preview
 
 This release of of NetApp Backup and Recovery introduces support for discovering and managing Oracle Database workloads:

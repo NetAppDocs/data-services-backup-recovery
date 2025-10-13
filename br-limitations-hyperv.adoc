@@ -22,7 +22,7 @@ The following actions are not supported in the private preview version of Hyper-
 * Create resource groups
 * Spanning disks (across multiple CIFS shares)
 * Protect VMs over SAN
-* Restore from object store
+* Edit protection groups
 * Protect Hyper-V hosts that are clustered using System Center Virtual Machine Manager (SCVMM)
 
 == Unsupported legacy NetApp Console accounts
