@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task-setup-ca-certificates.html
 keywords: cloud backup, backup and recovery, backup, restore, certificates, protection, security, storagegrid, backup, back up
-summary: For communication between Backup and Recovery and StorageGRID or ONTAP to occur, you'll need to create a security certificate. 
+summary: Create a security certificate to enable communication between NetApp Backup and Recovery and StorageGRID or ONTAP. 
 ---
 
 = Set up security certificates for StorageGRID and ONTAP in NetApp Backup and Recovery
@@ -13,7 +13,7 @@ summary: For communication between Backup and Recovery and StorageGRID or ONTAP 
 :imagesdir: ./media/
 
 [.lead]
-For communication between NetApp Backup and Recovery and StorageGRID or ONTAP to occur, you'll need to create a security certificate. 
+Create a security certificate to enable communication between NetApp Backup and Recovery and StorageGRID or ONTAP. 
 
 == Create a security certificate for StorageGRID
 
@@ -23,10 +23,10 @@ The generated certificate should have CN and Subject Alternative Name as the nam
 
 .Steps
 
-. Follow the steps mentioned in the StorageGRID documentation to create the certificate for StorageGRID.
+. Follow the steps in the StorageGRID documentation to create the StorageGRID certificate.
 +
 https://docs.netapp.com/us-en/storagegrid-118/admin/configuring-load-balancer-endpoints.html#attach-certificate[StorageGRID information on configuring certificates]
-. Update StorageGRID with the certificate if not performed already. 
+. Update StorageGRID with the certificate if you have not already done so.
 
 . Log in to the Console agent as a root user. Run: 
 +
@@ -49,7 +49,7 @@ Output:
 local service-manager-2_cloudmanager_cbs_volume" 
 ----
 +
-NOTE: The volume name differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. 
+NOTE: Volume names vary by deployment mode. This example uses Standard mode. 
 
 . Find the mount point of the NetApp Backup and Recovery volume. Run: 
 +
@@ -64,9 +64,9 @@ Output:
 "Mountpoint": "/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data" 
 ----
 +
-NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a  cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
+NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
-. Change directories to the MountPoint directory. Run: 
+. Change to the MountPoint directory. Run: 
 +
 [source,console]
 ----
@@ -95,7 +95,6 @@ cd cbs_config
 
 . Create a configuration file as shown below with one of the following names based on your deployment environment: 
 +
-//* `development-customer.json` Used for Dev
 * `production-customer.json` Used for Standard mode and Restricted mode deployments. 
 * `darksite-customer.json` Used for Private mode deployments. 
 +
@@ -152,7 +151,6 @@ cd cbs_catalog_config
 
 . Create a config file as shown below with one of the following names based on your deployment environment: 
 +
-//* `development-customer.json` Used for Dev
 * `production-customer.json` Used for Standard mode and Restricted mode deployments. 
 * `darksite-customer.json` Used for Private mode deployments. 
 +
@@ -237,9 +235,9 @@ openssl crl2pkcs7 -nocrl -certfile /etc/pki/tls/certs/ca-bundle.crt | openssl pk
 
 If the communication between the NetApp Backup and Recovery containers and ONTAP should validate the ONTAP certificate, then complete the following steps. 
 
-NetApp Backup and Recovery uses the Cluster Management IP to connect to ONTAP. Enter the IP address of the cluster in the Subject Alternative names of the Certificate. This step has to be mentioned while generating the CSR using the System Manager UI. 
+NetApp Backup and Recovery uses the Cluster Management IP to connect to ONTAP. Enter the IP address of the cluster in the Subject Alternative names of the Certificate. Specify this step when you generate the CSR using the System Manager UI. 
 
-Follow the System Manager documentation to create a new CA certificate for ONTAP. 
+Use the System Manager documentation to create a new CA certificate for ONTAP. 
 
 * https://docs.netapp.com/us-en/ontap/authentication/manage-certificates-sm-task.html[Manage certificates with System Manager]
 * https://kb.netapp.com/on-prem/ontap/DM/System_Manager/SM-KBs/How_to_manage_ONTAP_SSL_certificates_via_System_Manager[How to manage ONTAP SSL certificates with System Manager]
@@ -316,7 +314,6 @@ cd cbs_config
 
 . Create a configuration file as shown below with one of the following names based on your deployment environment: 
 +
-//* `development-customer.json` Used for Dev
 * `production-customer.json` Used for Standard mode and Restricted mode deployments. 
 * `darksite-customer.json` Used for Private mode deployments. 
 +
@@ -354,7 +351,6 @@ docker restart cloudmanager_cbs
 
 Enable the ONTAP Server certificate verification for the Cataloging Service. 
 
-
 . Change directories to the Docker volume. Run: 
 +
 [source,console]
@@ -371,7 +367,6 @@ cd cbs_catalog_config
 
 . Create a configuration file as shown below with one of the following names based on your deployment environment: 
 +
-//* `development-customer.json` Used for Dev
 * `production-customer.json` Used for Standard mode and Restricted mode deployments. 
 * `darksite-customer.json` Used for Private mode deployments. 
 +
@@ -400,7 +395,7 @@ docker restart cloudmanager_cbs_catalog
 
 == Create a certificate for both ONTAP and StorageGRID
 
-If the certificate has to be enabled for both ONTAP and StorageGRID, then the configuration file will look like this:  
+If you need to enable the certificate for both ONTAP and StorageGRID, then the configuration file looks like this:
 
 *Configuration file for both ONTAP and StorageGRID*
 [source,json]
