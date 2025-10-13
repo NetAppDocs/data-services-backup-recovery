@@ -49,7 +49,7 @@ Output:
 local service-manager-2_cloudmanager_cbs_volume" 
 ----
 +
-NOTE: Volume names vary by deployment mode. This example uses Standard mode. 
+NOTE: The volume name differs among Standard, Private, and Restricted deployment modes. This example uses Standard mode. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
 . Find the mount point of the NetApp Backup and Recovery volume. Run: 
 +
@@ -64,7 +64,7 @@ Output:
 "Mountpoint": "/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data" 
 ----
 +
-NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
+NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
 . Change to the MountPoint directory. Run: 
 +
@@ -264,7 +264,7 @@ local service-manager-2_cloudmanager_cbs_volume
 ----
 
 +
-NOTE: The volume name differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. 
+NOTE: The volume name differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
 . Obtain the mount for the volume. Run: 
 +
@@ -279,7 +279,7 @@ Output:
 "Mountpoint": "/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 ----
 +
-NOTE: The mount point differs Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment.
+NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
 . Change to the mountpoint directory. Run: 
 +
