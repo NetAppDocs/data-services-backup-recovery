@@ -43,7 +43,7 @@ docker volume ls | grep cbs
 ----
 
 +
-Output: 
+Output example: 
 +
 ----
 local service-manager-2_cloudmanager_cbs_volume" 
@@ -58,7 +58,7 @@ NOTE: The volume name differs among Standard, Private, and Restricted deployment
 docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
 ----
 +
-Output: 
+Output example: 
 +
 ----
 "Mountpoint": "/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data" 
@@ -257,7 +257,7 @@ sudo su
 docker volume ls | grep cbs
 ----
 +
-Output: 
+Output example: 
 +
 ----
 local service-manager-2_cloudmanager_cbs_volume
@@ -273,7 +273,7 @@ NOTE: The volume name differs among Standard, Private, and Restricted deployment
 docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
 ----
 +
-Output: 
+Output example: 
 +
 ----
 "Mountpoint": "/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
