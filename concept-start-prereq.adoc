@@ -169,10 +169,11 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
 
-* Software requirements for the Hyper-V host:
+* Software requirements for the Hyper-V Windows Server host:
 ** Microsoft Hyper-V 2019, 2022 & 2025 editions
 ** ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
 ** PowerShell 7.4.2 or later
+** Ensure that the Host Guardian Service role is installed (refer to the https://learn.microsoft.com/en-us/windows-server/administration/server-manager/add-remove-roles-features?tabs=gui#add-roles-and-features-to-windows-server[Microsoft Windows Server documentation^] for instructions)
 ** Ensure that two-way HTTPS traffic is allowed for the following ports in the Windows Firewall settings:
 *** 8144 (NetApp Plugin for Hyper-V)
 *** 8145 (NetApp Plugin for Windows)
