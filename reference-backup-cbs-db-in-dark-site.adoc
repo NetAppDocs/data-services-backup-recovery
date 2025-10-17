@@ -17,20 +17,20 @@ When using NetApp Backup and Recovery in a site with no internet access, known a
 
 NOTE: This procedure applies only to ONTAP volume data.
 
-When you use NetApp Backup and Recovery in a SaaS environment where the Console agent is deployed at your cloud provider, or on your own host system that has internet access, all the important NetApp Backup and Recovery configuration data is backed up and protected in the cloud. If you have an issue with the Console agent, just create a new Console agent and add your systems and the backup details are automatically restored.
+When you use NetApp Backup and Recovery in a SaaS environment with the Console agent deployed at your cloud provider or on your own internet-connected host, the system backs up and protects all important configuration data in the cloud. If you have an issue with the Console agent, create a new Console agent and add your systems. The backup details are automatically restored.
 
 There are two types of data that are backed up:
 
 * NetApp Backup and Recovery database - contains a listing of all the volumes, backup files, backup policies, and configuration information.
 * Indexed Catalog files - contains detailed indexes that are used for Search & Restore functionality that make your searches very quick and efficient when looking for volume data that you want to restore.
 
-This data is backed up once per day at midnight, and a maximum of 7 copies of each file are retained. If the Console agent is managing multiple on-premises ONTAP systems, the NetApp Backup and Recovery files will be located in the bucket of the system that was activated first. 
+This data is backed up once per day at midnight, and a maximum of 7 copies of each file are retained. If the Console agent is managing multiple on-premises ONTAP systems, the NetApp Backup and Recovery files are stored in the bucket of the system that was activated first. 
 
 TIP: No volume data is ever included in the NetApp Backup and Recovery database or Indexed Catalog files.
 
 == Restore NetApp Backup and Recovery data to a new Console agent
 
-If your on-premises Console agent has a catastrophic failure, you'll need to install a new Console agent, and then restore the NetApp Backup and Recovery data to the new Console agent.
+If your on-premises Console agent stops working, you'll need to install a new Console agent, and then restore the NetApp Backup and Recovery data to the new Console agent.
 
 You'll need to perform the following tasks to return your NetApp Backup and Recovery system to a working state:
 
@@ -39,7 +39,7 @@ You'll need to perform the following tasks to return your NetApp Backup and Reco
 * Restore the Indexed Catalog files
 * Rediscover all of your on-prem ONTAP systems and StorageGRID systems to the NetApp Console UI
 
-Once you verify that your system is back in a working order, we recommend that you create new backup files.
+After you check that your system is working, create new backup files.
 
 .What you'll need
 
@@ -54,7 +54,7 @@ This file is located in the following location in the bucket `netapp-backup-<GUI
 
 === Install a new Console agent on a new on-premises Linux host
 
-When installing a new Console agent, make sure you download the same release of software as you had installed on the original Console agent. Periodic changes to the NetApp Backup and Recovery database structure may make newer software releases incompatible with the original database backups. You can https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
+WhWhen installing a new Console agent, download the same software version as the original agent. Changes to the NetApp Backup and Recovery database may cause newer software versions to not work with old database backups. You can https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
 
 . https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Install the Console agent on a new on-premises Linux host^]
 
@@ -165,7 +165,7 @@ curl -X POST 'http://10.193.192.202/account/account-DARKSITE1/providers/cloudman
 
 . Select each ONTAP system and click *View Backups* next to the Backup and recovery service in the right-panel.
 +
-You should be able to see all the backups that have been created for your volumes.
+You should see all backups created for your volumes.
 
 . From the Restore Dashboard, under the Search & Restore section, click *Indexing Settings*.
 +

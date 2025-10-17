@@ -1,12 +1,12 @@
 
 //== Verify ONTAP networking requirements for replicating volumes
-If you plan to create replicated volumes on a secondary ONTAP system using NetApp Backup and Recovery, ensure that the source and destination systems meet following networking requirements. 
+If you plan to create replicated volumes on a secondary ONTAP system using NetApp Backup and Recovery, make sure that the source and destination systems meet the following networking requirements. 
 
 //This section and its subsections are an Include for Back up on-premises ONTAP to AWS, Azure, GCP, StorageGRID, and ONTAP S3. 
 
 ==== On-premises ONTAP networking requirements
 
-* If the cluster is in your premises, you should have a connection from your corporate network to your virtual network in the cloud provider. This is typically a VPN connection.
+* If the cluster is on-premises, you should have a connection from your corporate network to your virtual network in the cloud provider. This is typically a VPN connection.
 
 * ONTAP clusters must meet additional subnet, port, firewall, and cluster requirements.
 +

@@ -38,10 +38,9 @@ You can restore data to these points:
 
 .Restore from object storage considerations
 
-If you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled DataLock and Ransomware Resilience in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
+If Ransomware Resilience is enabled for a backup file in object storage, you are asked to run an extra check before restoring. We recommend performing the scan.
 
-TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
-
+TIP: You might pay extra fees to your cloud provider to access the backup file.
 
 == How restoring workloads works
 
@@ -67,7 +66,7 @@ image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow t
 
 //You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
 
-From the Restore page (also known as Search & Restore), you can restore a resource, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
+From the Restore page (Search & Restore), you can restore a resource by searching for the snapshot with filters, even if you do not remember its exact name, location, or last known date.
 
 //* *From the Inventory page (also known as Browse & Restore)*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
 
@@ -101,14 +100,14 @@ A list of restore location options appears.
 * Local: Restores the snapshot to the original location.
 * Secondary storage: Restores the snapshot to a secondary storage location. 
 +
-If you choose secondary storage, enter the source and destination location information and also the source and secondary location for the logs. 
+If you choose secondary storage, enter the source and destination locations for both data and logs. 
 * Object storage: Restores the snapshot to an object storage location.  
 +
 If you choose object storage, check whether you want to scan the snapshot again before restoring. 
 
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
-Next, you can choose the destination settings and the pre-restore and post-restore options.
+Next, choose the destination settings and pre- and post-restore options.
 
 [discrete]
 ===== Destination selection
@@ -126,7 +125,7 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 
 In the Restore Destination details page, enter the following information:
 
-. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
+. *Enable quick restore*: Select this to perform a quick restore operation. You can use the restored volumes and data immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
 //This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
 
 
@@ -145,7 +144,7 @@ In the Restore Destination details page, enter the following information:
 //image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
 
 . *Notification* section: 
-** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
+** *Enable email notifications*: Select to get email notifications about the restore operation and choose the notification types you want.
 //** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
 
 . Select *Restore*.
@@ -172,7 +171,7 @@ Not available for VMware preview.
 //. In the Restore Destination details page, enter the following information:
 //+
 //.. *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the VM name, and enter the destination path where you want to restore the snapshot.
-//.. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
+//.. *Enable quick restore*: Select this to perform a quick restore operation. You can use the restored volumes and data immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
 //This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
 
 
@@ -194,7 +193,7 @@ Not available for VMware preview.
 //** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
 //** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
 
-. Select *Restore*.
+//. Select *Restore*.
 //
 
 --
@@ -277,7 +276,7 @@ Not available for VMware preview.
 //image:screenshot_restore_browse_quick_restore.png[A screenshot showing the normal and Quick restore processes.]
 //+
 //* *Normal restore*: Use normal restore on volumes that require high performance. Volumes will not be available until the restore process is complete. 
-//* *Quick restore*: Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
+//* *Quick restore*: You can use the restored volumes and data immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
 
 
 //. Click *Restore* and you are returned to the Restore Dashboard so you can review the progress of the restore operation.
