@@ -19,8 +19,6 @@ Backups of your ONTAP volume data are available from the locations where you cre
 *NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 ====
 
-
-
 * You can restore a *volume* (as a new volume) to the original system, to a different system that's using the same cloud account, or to an on-premises ONTAP system.
 
 * You can restore a *folder* to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
@@ -35,9 +33,7 @@ To summarize, these are the valid flows you can use to restore volume data to an
 * Replicated volume -> restored volume
 * Snapshot copy -> restored volume
 
-NOTE: If the restore operation does not complete, do not try the restore process again until the Job Monitor shows that the restore operation has failed. If you try the restore process again before the Job Monitor shows that the restore operation has failed, the restore operation will fail again. When you see the Job Monitor status as "Failed," you can try the restore process again. 
-
-
+NOTE: If the restore operation does not complete, wait until the Job Monitor shows "Failed" before you retry the restore operation.
 
 NOTE: For limitations related to restoring ONTAP data, see link:br-reference-limitations.html[Backup and restore limitations for ONTAP volumes].
 

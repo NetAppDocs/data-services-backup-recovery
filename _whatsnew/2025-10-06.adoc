@@ -45,7 +45,7 @@ The preview release of Kubernetes workloads introduces the following enhanced ca
 ** Backup and Recovery backup admin
 ** Backup and Recovery restore admin
 ** Backup and Recovery viewer
-* Support for SUSE Rancher Kubernetes distribution
+* Support for the SUSE Rancher Kubernetes distribution
 * Multi-bucket support: You can now protect the volumes within a system with multiple buckets per system across different cloud providers
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
@@ -66,7 +66,7 @@ For details about protecting VMware workloads, refer to https://docs.netapp.com/
 
 === Oracle Database workload support as a private preview
 
-This release of of NetApp Backup and Recovery introduces support for discovering and managing Oracle Database workloads:
+This release of NetApp Backup and Recovery introduces support for discovering and managing Oracle Database workloads:
 
 * Discover standalone Oracle databases
 * Create protection policies for data only or data and log backups

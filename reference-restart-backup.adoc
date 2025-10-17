@@ -15,7 +15,7 @@ summary: There may be situations where you'll need to restart NetApp Backup and 
 [.lead]
 There may be situations where you'll need to restart NetApp Backup and Recovery. 
 
-NetApp Backup and Recovery functionality is built into the Console agent. 
+The Console agent includes NetApp Backup and Recovery functionality.
 
 .Steps
 
