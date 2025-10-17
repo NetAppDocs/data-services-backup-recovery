@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to manage execution hooks to tak
 :imagesdir: ./media/
 
 [.lead]
-An execution hook is a custom action that you can configure to run in conjunction with a data protection operation of a managed Kubernetes application. For example, if you have a database app, you can use an execution hook to pause all database transactions before a snapshot, and resume transactions after the snapshot is complete. This ensures application-consistent snapshots. When you create an execution hook template, you can specify the type of hook, the script to run, and any filters that determine which containers the hook applies to. You can then use the template to associate execution hooks with your applications.
+An execution hook is a custom action that runs with a data protection operation in a managed Kubernetes application. For example, create application-consistent snapshots by using an execution hook to pause database transactions before a snapshot and resume them after. When you create an execution hook template, specify the hook type, the script to run, and filters for target containers. Use the template to link execution hooks to your applications.
 
 [NOTE]
 ======
@@ -52,11 +52,6 @@ If you create multiple hooks of the same type, their execution order is not guar
 . Post-snapshot hooks executed
 . Pre-backup hooks executed
 . Post-backup hooks executed
-//. Post-restore hooks executed (Removed at request of Kevin Hicks)
-
-//NOTE: The preceding order example only applies when you run a backup that does not use an existing snapshot.
-
-//You can see an example of this configuration in scenario number 2 from the table in <<Determine whether a hook will run>>.
 
 NOTE: Test execution hook scripts before enabling them in production. Use 'kubectl exec' to test scripts, then verify snapshots and backups by cloning the app to a temporary namespace and restoring.
 
