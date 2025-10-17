@@ -53,7 +53,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 You can manage the hosts that are discovered in your system. You can manage them separately or as a group. 
 
-TIP: You can manage only those hosts that show an "Unmanaged" status in the Hosts column. If the status is "Managed", it means that the host is already being managed by NetApp Backup and Recovery.
+TIP: You can manage hosts with an "Unmanaged" status in the Hosts column. NetApp Backup and Recovery already manages hosts with a "Managed" status.
 
 After you manage the hosts in NetApp Backup and Recovery, SnapCenter no longer manages the resources on those hosts. 
 
@@ -79,7 +79,7 @@ Storage viewer, or Backup and Recovery super admin. https://docs.netapp.com/us-e
 
 === Suspend schedules 
 
-You can suspend schedules to stop the backup and restore operations for a host. You might want to do this if you need to perform maintenance activities on the host.
+Suspend schedules to stop backup and restore operations during host maintenance.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -124,7 +124,7 @@ You can delete the host information to stop service charges.
 
 == Manage instances information 
 
-You can manage instances information to ensure that resources have the appropriate credentials for protection and you can back up resources in the following ways:  
+You can manage instances information to assign the appropriate credentials for resource protection and back up resources in the following ways:
 
 * Protect instances
 * Associate credentials
@@ -193,7 +193,7 @@ For details about creating a policy, refer to link:br-use-policies-create.html[C
 
 === Back up now 
 
-You can back up your data now to ensure that your data is protected immediately.
+Back up your data now to protect it immediately.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -234,7 +234,7 @@ For details about creating a policy, refer to link:br-use-policies-create.html[C
 
 === Restore databases
 
-You can restore a database to ensure that your data is protected.
+Restore a database to protect your data.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -264,7 +264,7 @@ For details about creating a policy, refer to link:br-use-policies-create.html[C
 
 === Back up now 
 
-You can back up your Microsoft SQL Server instances and databases now to ensure that your data is protected immediately.
+You can back up your Microsoft SQL Server instances and databases now to protect your data immediately.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
