@@ -25,7 +25,7 @@ You can perform the following tasks related to protection groups:
 
 == Create a protection group 
 
-Group workloads that you want to protect together into a protection group. You can create a protection group for a set of workloads that you want to back up and restore together.
+Group workloads you want to protect into a protection group to back up and restore them together.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -52,7 +52,7 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 
 == Suspend a protection group's backup schedule
 
-Suspending a protection group pauses the scheduled backups for the protection group. You might want to suspend a protection group if you want to temporarily stop backups for the workloads in that group. 
+Suspend a protection group to pause its scheduled backups.
 
 The protection status changes to "Under maintenance" when you suspend a protection group. You can resume the backup schedule at any time.
 
@@ -86,7 +86,7 @@ The system validates the schedules and changes the protection status to "Protect
 
 == Delete a protection group
 
-Deleting a protection group removes it and all associated backup schedules. You might want to delete a protection group if it is no longer needed.
+When you delete a protection group, you remove it and all backup schedules for the group. Delete a protection group if you do not need it anymore.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.

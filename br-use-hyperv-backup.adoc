@@ -21,7 +21,7 @@ Back up Hyper-V VMs from on-premises ONTAP systems to Amazon Web Services, Azure
 
 == Back up workloads now with an on-demand backup
 
-You can run an on-demand backup immediately. This is helpful if you're about to make changes to your system and want to ensure that you have a backup before you start.
+Use on-demand backup so that your data is protected before making system changes.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -35,7 +35,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the protection group or virtual machines that you want to back up.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
 +
-NOTE: The policy that is applied to the backup is the same policy that is assigned to the protection group or virtual machine.
+NOTE: The backup uses the same policy that you assigned to the protection group or virtual machine.
 
 . Select the schedule tier.
 . Select *Back up*. 
