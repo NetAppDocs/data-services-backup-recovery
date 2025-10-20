@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-monitor-tasks.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, jobs
-summary: With NetApp Backup and Recovery, monitor the status of local Snapshots, replications, and backup to object storage jobs that you initiated, and restore jobs that you initiated. 
+summary: With NetApp Backup and Recovery, monitor local snapshots, replications, and backup jobs you start. 
 ---
 
 = Monitor jobs in NetApp Backup and Recovery
@@ -13,9 +13,9 @@ summary: With NetApp Backup and Recovery, monitor the status of local Snapshots,
 :imagesdir: ./media/
 
 [.lead]
-With NetApp Backup and Recovery, monitor the status of local snapshots, replications, and backup to object storage jobs that you initiated, and restore jobs that you initiated. You can see the jobs that have completed, are in progress, or failed so you can diagnose and fix problems. Using the NetApp Console Notification Center, you can enable notifications to be sent by email so you can be informed of important system activity even when you're not logged into the system. Using the Console Timeline, you can see details of all actions initiated via the UI or API.
+With NetApp Backup and Recovery, monitor local snapshots, replications, and backup jobs you start. Track restore jobs you initiate. View jobs that are complete, in progress, or failed to help diagnose problems. Enable email notifications in the NetApp Console Notification Center to stay informed about system activity when not logged in. Use the Console Timeline to see details of all actions started from the UI or API.
 
-NetApp Backup and Recovery retains job information for 15 days, after which it is purged and no longer visible in the Job Monitor. 
+NetApp Backup and Recovery keeps job information for 15 days, then deletes the job information and removes it from the Job Monitor. 
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
@@ -36,13 +36,11 @@ The status can be:
 
 Snapshots, replications, backups to object storage, and restore operations that you initiated from the NetApp Backup and Recovery UI and API are available in the Job Monitoring tab. 
 
-NOTE: If you've upgraded your ONTAP systems to 9.13.x and you don't see ongoing scheduled backup operations in the Job Monitor, then you'll need to restart NetApp Backup and Recovery. link:reference-restart-backup.html[Learn how to restart NetApp Backup and Recovery].
+NOTE: If you have upgraded your ONTAP systems to 9.13.x and do not see ongoing scheduled backup operations in the Job Monitor, restart NetApp Backup and Recovery. link:reference-restart-backup.html[Learn how to restart NetApp Backup and Recovery].
 
 .Steps
 
-
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
-
 . To show additional columns (System, SVM, User Name, Workload, Policy Name, Snapshot Label), select the plus sign.
 
 === Search and filter the list of jobs
@@ -60,7 +58,7 @@ By default, the Job Monitoring page shows protection and recovery jobs from the 
 +
 Use this panel to enter a free text search for any resource; for example "volume 1" or "application 3". You can also filter the jobs list according to the items in the drop-down menus.
 +
-Most of the filters are self-explanatory. The filter for "Workload" enables you to view jobs in the following catagories:
+Most of the filters are self-explanatory. The filter for "Workload" enables you to view jobs in the following categories:
 
 * ONTAP volumes (Cloud Volumes ONTAP and on-premises ONTAP volumes)
 * Microsoft SQL Server 
@@ -99,7 +97,7 @@ Restore jobs show details such as backup target provider (Amazon Web Services, M
 
 === Download Job Monitoring results as a report
 
-You can download the contents of the main Job Monitoring page as a report after you've refined it. NetApp Backup and Recovery generates and downloads a .CSV file that you can review and send to other groups as needed. The .CSV file includes up to 10,000 rows of data.
+You can download the contents of the main Job Monitoring page as a report after you filter or sort the results. NetApp Backup and Recovery generates and downloads a .CSV file that you can review and send to other groups as needed. The .CSV file includes up to 10,000 rows of data.
 
 From the Job Monitoring Details information, you can download a JSON file containing details for a single job. 
 
@@ -111,7 +109,7 @@ From the Job Monitoring Details information, you can download a JSON file contai
 
 == Review retention (backup lifecycle) jobs
 
-Monitoring of retention (or _backup lifecycle_) flows helps you with audit completeness, accountability, and backup safety. To help you track the backup lifecycle, you might want to identify the expiration of all backup copies. 
+Monitor retention (_backup lifecycle_) flows to check backups, keep them safe, and support audits. Identify when backup copies expire to track the lifecycle. 
 
 A backup lifecycle job tracks all Snapshot copies that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can look at all job types called "Retention" on the Job Monitoring page.
 
@@ -127,7 +125,7 @@ The "Retention" job type captures all Snapshot deletion jobs initiated on a volu
 
 The NetApp Console Notification Center tracks the progress of backup and restore jobs that you've initiated so you can verify whether the operation was successful or not. 
 
-In addition to viewing the alerts in the Notification Center, you can configure the Console to send certain types of notifications by email as alerts so you can be informed of important system activity even when you're not logged into the system. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
+You can view alerts in the Notification Center and configure the Console to send email alerts for important system activity, even when you are not logged in. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
 
 The Notification Center displays numerous Snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
 
@@ -154,7 +152,7 @@ The Notification Center displays numerous Snapshot, replication, backup to cloud
 
 NOTE: Beginning with ONTAP 9.13.0, all alerts appear for Cloud Volumes ONTAP and on-premises ONTAP systems. For systems with Cloud Volumes ONTAP 9.13.0 and on-premises ONTAP, only the alert related to "Restore job completed, but with warnings" appears. 
 
-By default, NetApp Console organization and account admins receive emails for all "Critical" and "Recommendation" alerts. All other users and recipients are set up, by default, not to receive any notification emails. Emails can be sent to any Console users who are part of your NetApp Cloud Account, or to any other recipients who need to be aware of backup and restore activity. 
+By default, NetApp Console organization and account admins receive emails for all "Critical" and "Recommendation" alerts. By default, the system does not set up other users and recipients to receive notification emails. Configure email alerts for any Console users in your NetApp Cloud Account or to other recipients who need to know about backup and restore activity. 
 
 To receive the NetApp Backup and Recovery email alerts, you'll need to select the notification severity types "Critical", "Warning", and "Error" in the Notifications settings page.
 

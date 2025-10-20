@@ -13,15 +13,15 @@ summary: You can protect Oracle virtual machines from on-premises ONTAP systems 
 :imagesdir: ./media/
 
 [.lead]
-Protect your Oracle databases and logs with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and database-consistent backup and restore operations. You can back up Oracle workloads to Amazon Web Services S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3 and restore them to an on-premises Oracle host. 
+Protect Oracle databases and logs using NetApp Backup and Recovery. Get fast, space-efficient, crash-consistent, and database-consistent backups and restores. Back up Oracle workloads to AWS S3, NetApp StorageGRID, Azure Blob Storage, or ONTAP S3. Restore backups to an on-premises Oracle host.
 
 image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
 
 Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
 
-* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
-* Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
-* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+* Multiple data copies protect against internal and external cybersecurity threats.
+* Using different types of media helps you recover if one type fails.
+* You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
 NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
 

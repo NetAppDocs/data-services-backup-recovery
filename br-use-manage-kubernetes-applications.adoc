@@ -46,7 +46,7 @@ You can unprotect an application if you no longer want to protect it. When you u
 . Read the notice, and when ready, select *Unprotect*.
 
 == Delete a Kubernetes application
-You can delete an application if you no longer need it. When you delete an application, NetApp Backup and Recovery stops protecting the application and deletes all associated backups and snapshots.
+Delete an application you no longer need. NetApp Backup and Recovery stops protection and removes all backups and snapshots for deleted applications.
 
 .Steps
 . In NetApp Backup and Recovery, select *Inventory*.

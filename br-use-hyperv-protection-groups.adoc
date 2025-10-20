@@ -25,7 +25,7 @@ You can perform the following tasks related to protection groups:
 
 == Create a protection group 
 
-Group workloads that you want to protect together into a protection group. You can create a protection group for a set of workloads that you want to back up and restore together.
+Group workloads that you want to protect together into a protection group. Create a protection group to back up and restore workloads together.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].

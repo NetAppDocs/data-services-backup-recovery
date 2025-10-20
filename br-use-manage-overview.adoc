@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-manage-overview.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
-summary: You can back up Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID, ensuring that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. You can implement a 3-2-1 strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud.
+summary: Manage resources in NetApp Backup and Recovery to protect your data.
 ---
 
 = Manage resources with NetApp Backup and Recovery overview 
@@ -13,7 +13,7 @@ summary: You can back up Microsoft SQL Server applications data from on-premises
 :imagesdir: ./media/
 
 [.lead]
-Managing resources in NetApp Backup and Recovery is essential to ensure that your data is protected. You can manage resources such as backups, databases, instances, application hosts, and work environments. You can view, edit, and delete protection settings of your resources.
+Manage resources in NetApp Backup and Recovery to protect your data. Control backups, databases, instances, application hosts, and systems. View, edit, or delete resource protection settings.
 
 You can accomplish the following tasks related to managing your resources:
 

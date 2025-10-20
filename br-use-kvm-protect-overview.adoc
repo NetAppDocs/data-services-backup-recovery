@@ -23,9 +23,9 @@ Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where y
 
 //The benefits of using NetApp Backup and Recovery to protect your KVM resources include:
 
-* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
-* Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
-* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+* Multiple data copies protect against internal and external cybersecurity threats.
+* Using different types of media helps you recover if one type fails.
+* You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
 NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
 
