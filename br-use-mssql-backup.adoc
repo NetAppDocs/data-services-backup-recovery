@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-mssql-backup.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
-summary: Back up Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID to ensure that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. You can implement a 3-2-1 strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud.
+summary: Back up Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, and StorageGRID to ensure that your data is protected.
 ---
 
 = Back up Microsoft SQL Server workloads with NetApp Backup and Recovery
@@ -13,18 +13,18 @@ summary: Back up Microsoft SQL Server applications data from on-premises ONTAP s
 :imagesdir: ./media/
 
 [.lead]
-Back up Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, and StorageGRID to ensure that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. 
+Back up Microsoft SQL Server application data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, or StorageGRID. The system automatically creates backups and stores them in an object store in your cloud account for data protection. 
 
-* To back up workloads on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
+* To back up workloads on a schedule, create policies that manage backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
 
-* Configure the log directory for discovered hosts before you initiate a backup. 
+* Configure the log directory for discovered hosts before starting a backup. 
 
 * Back up workloads now (create an on-demand backup now).  
 
 
 
 == View workload protection status
-Before you initiate a backup, view the protection status of your workloads.
+Before you start a backup, view the protection status of your workloads.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
@@ -38,7 +38,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 == Configure the log directory for discovered hosts
 
-Before you back up your workloads, set the path for the activity logs for discovered hosts. This helps you to track the status of operations.
+Set the activity log path for discovered hosts to track operation status before backing up workloads.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -50,7 +50,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select a host. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Configure log directory*. 
-. Provide the host path or browse through a list of hosts or nodes hosts on the host to locate where you want the host log to be stored.
+. Enter the host path or browse through a list of hosts or nodes to find where you want to store the host log.
 . Select those on which you want to store the logs. 
 +
 NOTE: The fields that appear differ depending on the selected deployment model, for example, failover cluster instance or standalone. 
@@ -58,7 +58,7 @@ NOTE: The fields that appear differ depending on the selected deployment model, 
 
 
 == Create a protection group 
-You can create a protection group to manage the backup and restore operations for a set of workloads. A protection group is a logical grouping of workloads that you want to protect together.
+Create a protection group to manage backup and restore operations for multiple workloads. A protection group is a logical grouping of workloads.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -84,7 +84,7 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 
 == Back up workloads now with an on-demand backup
 
-Create an on-demand backup immediately. You might want to run an on-demand backup if you're about to make changes to your system and want to ensure that you have a backup before you start.
+Run an on-demand backup before making changes to your system to ensure your data is protected.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -112,7 +112,7 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 
 == Suspend the backup schedule
 
-Suspending the schedule prevents the backup from running at the scheduled time temporarily. You might want to do this if you're performing maintenance on the system or if you're experiencing issues with the backup.
+Suspend the schedule to temporarily stop backups during maintenance or troubleshooting.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -129,7 +129,7 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 
 
 == Delete a protection group 
-You can create a protection group to manage the backup and restore operations for a set of workloads. A protection group is a logical grouping of workloads that you want to protect together.
+Deleting a protection group removes it and all associated backup schedules. You might want to delete a protection group if it is no longer needed.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].

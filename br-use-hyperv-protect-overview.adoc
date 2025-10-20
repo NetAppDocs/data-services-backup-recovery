@@ -22,9 +22,9 @@ image:../media/diagram-backup-recovery-general.png[Architecture diagram of backu
 Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
 //The benefits of using NetApp Backup and Recovery to protect your Hyper-V resources include:
 
-* Multiple data copies provide multi-layer protection against both internal (insider) and external cybersecurity threats.
+* Multiple data copies protect against internal and external cybersecurity threats.
 * Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
-* The onsite copy facilitates quick restores, with the offsite copies available just in case the onsite copy is compromised.
+* The onsite copy helps you quickly restore data, and you can use the offsite copies if the onsite copy is compromised.
 
 When you add Hyper-V hosts and discover resources, NetApp Backup and Recovery installs the NetApp Hyper-V plug-in and the NetApp SnapCenter Windows FileSystem plug-in on the Hyper-V host to help with managing and protecting virtual machines.
 

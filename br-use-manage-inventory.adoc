@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-manage-inventory.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
-summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
+summary: NetApp Backup and Recovery helps you manage your Microsoft SQL Server hosts, databases, and instances.
 ---
 
 = Manage Microsoft SQL Server inventory with NetApp Backup and Recovery
@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to manage your workload host inf
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to manage your Microsoft SQL Server workload host information, database information, and instances information. You can view, edit, and delete protection settings of your inventory.      
+NetApp Backup and Recovery helps you manage your Microsoft SQL Server hosts, databases, and instances. You can view, change, or remove protection settings for your inventory.    
 
 You can accomplish the following tasks related to managing your inventory: 
 

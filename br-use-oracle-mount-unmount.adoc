@@ -17,7 +17,7 @@ You might want to mount an Oracle Database recovery point if you need to access 
 
 == Mount an Oracle Database restore point
 
-If you configure the protection policy for a database to retain archive logs, you can mount the recovery points for the database to view the history of all changes made to the database.
+If you configure the protection policy for a database to retain archive logs, you can mount recovery points to view the database change history.
 
 .Steps
 
