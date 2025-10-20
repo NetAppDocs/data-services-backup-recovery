@@ -254,8 +254,6 @@ Additionally, configure the following options:
 
 You can edit backup architecture, backup frequency, retention policy, and other settings for a policy.
 
-NOTE: This feature is not available for VMware Preview workloads.
-
 You can add another protection level when you edit a policy, but you cannot remove a protection level. For example, if the policy is only protecting local snapshots, you can add replication to secondary storage or backups to object storage. If you have local snapshots and replication, you can add object storage. However, if you have local snapshots, replication, and object storage, you cannot remove one of these levels. 
 
 If you are editing a policy that backs up to object storage, you can enable archival.   
