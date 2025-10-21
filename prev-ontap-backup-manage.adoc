@@ -348,7 +348,7 @@ The list of all backup files is displayed.
 
 . *Force delete backups*: Indicate whether or not you want to force the deletion of all backups.
 +
-In some extreme cases, you might want NetApp Backup and Recovery not to have access to backups any longer. This might happen for example, if the service no loWnger has access to the backup bucket or backups are DataLock protected but you don't want them anymore. Previously, you could not delete these yourself and needed to call NetApp Support. With this release, you can use the option to force delete backups (at volume and system levels).
+In some extreme cases, you might want NetApp Backup and Recovery not to have access to backups any longer. This might happen for example, if the service no longer has access to the backup bucket or backups are DataLock protected but you don't want them anymore. Previously, you could not delete these yourself and needed to call NetApp Support. With this release, you can use the option to force delete backups (at volume and system levels).
 +
 CAUTION: Use this option carefully and only in extreme cleanup needs. NetApp Backup and Recovery will not have access to these backups any longer even if they are not deleted in the object storage. You will need to go to your cloud provider and manually delete the backups.
 

@@ -118,7 +118,7 @@ Provide VMware vCenter credentials to discover workloads for backup. If you don'
 
 == Import and manage SnapCenter host resources
 
-If you previously used SnapCenter to back up your resources, you can import and manage those resources in NetApp Backup and Recovery. This option enables you to import SnapCenter server information to register multiple Snapcenter servers and discover database workloads.
+If you previously used SnapCenter to back up your resources, you can import and manage those resources in NetApp Backup and Recovery. This option enables you to import SnapCenter server information to register multiple SnapCenter servers and discover database workloads.
 
 This is a two-part process:
 

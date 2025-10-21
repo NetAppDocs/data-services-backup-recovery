@@ -86,7 +86,7 @@ Optionally, select *Suffix* from the target name drop-down list and add a suffix
 * *Clone refresh schedule and expiration*: If you chose *Instant clone*, enter the date when to begin refreshing the clone. The clone schedule defines when the clone will be created.
 ** *Delete clone if schedule expires*: If you want to delete the clone upon the clone expiration date.
 ** *Refresh clone every*: Select how often the clone should be refreshed. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option is useful if you want to keep the clone up to date with the source workload.
-//* *iGroup settings*: Select the igroup for the clone. The igroup is a logical grouping of initiators that are used to access the clone. You can select an existing igroup or create a new one. Select the igroup from the primary or secondary ONTAP storage system. 
+//* *iGroup settings*: Select the iGroup for the clone. The iGroup is a logical grouping of initiators that are used to access the clone. You can select an existing iGroup or create a new one. Select the iGroup from the primary or secondary ONTAP storage system. 
 
 * *Prescripts and postscripts*: Optionally, add scripts to run before and after the clone is created. These scripts can do extra tasks, such as setting up the clone or sending notifications.
 
@@ -125,7 +125,7 @@ You have the option to change the database name, use the latest instant snapshot
 ** *Delete clone if schedule expires*: If you want to delete the clone upon the clone expiration date.
 ** *Refresh clone every*: Select how often the clone should be refreshed. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option is useful if you want to keep the clone up to date with the source workload.
 
-* *iGroup settings*: Select the igroup for the clone. The igroup is a logical grouping of initiators that are used to access the clone. You can select an existing igroup or create a new one. Select the igroup from the primary or secondary ONTAP storage system. 
+* *iGroup settings*: Select the iGroup for the clone. The iGroup is a logical grouping of initiators that are used to access the clone. You can select an existing iGroup or create a new one. Select the iGroup from the primary or secondary ONTAP storage system. 
 
 * *Prescripts and postscripts*: Optionally, add scripts to run before and after the clone is created. These scripts can do extra tasks, such as setting up the clone or sending notifications.
 
