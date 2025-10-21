@@ -170,7 +170,7 @@ NetApp Backup and Recovery shows you the snapshots that are available for the re
 *** *Overwrite the database with the same name during restore*: During the restore, the original database name is preserved. 
 *** *Retain SQL database replication settings*: Keeps the replication settings for the SQL database after the restore operation.
 *** *Create transaction log backup before restore*: Creates a transaction log backup before the restore operation.
-*** *Quit restore if transaction log backup before retore fails*: Stops the restore operation if the transaction log backup fails.
+*** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails.
 
 *** *Prescript*: Enter the full path for a script that should be run before the restore operation, any arguments that the script takes, and how long to wait for the script to complete.
 

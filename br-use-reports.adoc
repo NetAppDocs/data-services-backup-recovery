@@ -30,7 +30,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 
 . Enter reporting range: Choose whether you want the report to be include data from the last day, last 7 days, last 30 days, last quarter, or last year.
-. Enter report delivery details: If you want the report to be delivered by email, check *Send report using email*. Enter the email addresWs where you want the report sent.
+. Enter report delivery details: If you want the report to be delivered by email, check *Send report using email*. Enter the email address where you want the report sent.
 
 +
 Configure email notifications in the Settings page. For details about configuring email notifications, see link:br-use-settings-advanced.html[Configure settings].
