@@ -183,8 +183,9 @@ With Advanced Settings, you can manually install the plugin agent on all servers
 ==== Continue to the NetApp Backup and Recovery Dashboard
 
 
-. To display the NetApp Backup and Recovery Dashboard, from the Backup and Recovery menu, select *Dashboard*.   
-
+. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. Select a workload tile (for example, Microsoft SQL Server).
+. From the Backup and Recovery menu, select *Dashboard*.
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].
