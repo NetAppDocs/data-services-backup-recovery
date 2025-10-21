@@ -46,7 +46,9 @@ The cluster is added to the inventory.
 == Continue to the NetApp Backup and Recovery Dashboard
 Follow these steps to view the NetApp Backup and Recovery Dashboard. 
 
-. From the top menu, select *Dashboard*.   
+. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. Select a workload tile (for example, Microsoft SQL Server).
+. From the Backup and Recovery menu, select *Dashboard*.
 
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
 +
