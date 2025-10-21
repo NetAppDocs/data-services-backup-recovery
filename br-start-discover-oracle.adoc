@@ -97,8 +97,9 @@ The Oracle workload is displayed in the list of workloads on the Inventory page.
 == Continue to the NetApp Backup and Recovery Dashboard
 
 
-. To display the NetApp Backup and Recovery Dashboard, from the top menu, select *Dashboard*.   
-
+. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. Select a workload tile (for example, Microsoft SQL Server).
+. From the Backup and Recovery menu, select *Dashboard*.
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
 
 

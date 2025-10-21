@@ -51,6 +51,7 @@ After NetApp Backup and Recovery discovers resources, the Inventory page display
 
 .Steps
 
-. To display the NetApp Backup and Recovery Dashboard, from the NetApp Console menu, select *Dashboard*.   
-
+. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. Select a workload tile (for example, Microsoft SQL Server).
+. From the Backup and Recovery menu, select *Dashboard*.
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
