@@ -637,13 +637,14 @@ If Indexing has already been enabled for your system, go to the next section to 
 You will first need to mount a separate volume to hold catalog files. This prevents data loss if the size of the files that hold the snapshots becomes too large. This is not required on every cluster; you can mount any one volume from any of the clusters in your environment. If you don't do this, indexing might not function correctly.
 
 For the mounted volume, use the following sizing guidance:
+
 * Use a NetApp NVS volume
 * Recommended AFF storage with 300 MB/s disk throughput. Less throughput will impact search and other operations.
 * Enable NetApp snapshots to secure the catalog metadata in addition to the catalog backup zip files
 * 50 GB per 1 billion files
 * 20 GB for the catalog data with additional space for zip file creation and temporary files
 
-.Steps to mount the volume to reindex the catalog
+.Step to mount the volume to reindex the catalog
 
 . Mount the volume to `/opt/application/netapp/cbs` by entering the following command, where:
 +
