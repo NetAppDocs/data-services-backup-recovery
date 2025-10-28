@@ -675,7 +675,6 @@ mount 10.192.24.17:/CATALOG_SCALE_234 /opt/application/netapp/cbs
 
 After all the services are provisioned and the Indexed Catalog has been activated, the system is shown as "Active".
 
-
 Depending on the size of the volumes in the system, and the number of backup files in all 3 backup locations, the initial indexing process could take up to an hour. After that it is transparently updated hourly with incremental changes to stay current.
 
 === Restore volumes, folders, and files using Search & Restore
@@ -700,9 +699,7 @@ After you have <<enable-the-indexed-catalog-for-each-working-environment,enabled
 
 . Select *Search* and the Search Results area displays all the resources that have a file, folder, or volume that matches your search.
 
-
 . Locate the resource that has the data you want to restore and select *View All Backups* to display all the backup files that contain the matching volume, folder, or file.
-
 
 . Locate the backup file that you want to use to restore the data and select *Restore*.
 +
