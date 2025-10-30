@@ -152,7 +152,7 @@ usermod -aG qemu <non-root-user>
 +
 [source,console]
 ----
-chown -R qemu:qemu /mnt/kvm_vm & chmod 771
+chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 ----
 . Delete the existing NetApp_SnapCenter_Backups directory if present.
 =====
