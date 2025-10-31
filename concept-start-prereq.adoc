@@ -137,6 +137,26 @@ You need specific requirements to discover and protect KVM virtual machines.
 * QEMU Guest Agent version 9.0.0 or later
 * libvirt version 10.5.0 or later
 
+[NOTE]
+=====
+To enable protection of KVM VMs administered by non-root users, use the following steps:
+
+. Mount the volume as type NFS3 to avoid the use of the `nobody` user and group.
+. Use the following command to add a non-root user to the `qemu` group wile preserving their existing groups:
++
+[source,console]
+----
+usermod -aG qemu <non-root-user>
+----
+. Use the following command to grant ownership of the mount path to the `qemu` user and group and change permissions for the mount path:
++
+[source,console]
+----
+chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
+----
+. Delete the existing NetApp_SnapCenter_Backups directory if present.
+=====
+
 == Requirements for protecting Oracle workloads
 Ensure your environment meets specific requirements to discover and protect Oracle resources.
 
