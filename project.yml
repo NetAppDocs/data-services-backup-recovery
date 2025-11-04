@@ -43,8 +43,6 @@ sidebar:
       entries:
         - title: Learn about NetApp Backup and Recovery
           url: /concept-backup-to-cloud.html
-#        - title: Set up a NetApp Backup and Recovery Preview version
-#          url: /br-start-preview-setup.html
         - title: Prerequisites for NetApp Backup and Recovery
           url: /concept-start-prereq.html  
         - title: Set up licensing for NetApp Backup and Recovery
@@ -181,12 +179,6 @@ sidebar:
               url: /br-use-hyperv-backup.html
             - title: Restore Hyper-V workloads
               url: /br-use-hyperv-restore.html
-#            - title: Manage KVM clusters
-#              url: /br-use-manage-kvm-clusters.html
-#            - title: Manage KVM virtual machines
-#              url: /br-use-manage-kvm-vms.html
-#            - title: Manage execution hook templates for Kubernetes workloads
-#              url: /br-use-manage-execution-hook-templates.html 
         - title: Protect Oracle workloads (Preview)
           entries:
             - title: Protect Oracle workloads overview
