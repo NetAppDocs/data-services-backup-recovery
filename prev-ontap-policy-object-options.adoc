@@ -17,9 +17,7 @@ NetApp Backup and Recovery enables you to create backup policies with a variety 
 
 NOTE: These policy settings are relevant for backup-to-object storage only. None of these settings affect your snapshot or replication policies. 
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 == Backup schedule options

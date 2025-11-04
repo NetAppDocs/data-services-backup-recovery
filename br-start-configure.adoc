@@ -38,14 +38,6 @@ You need to configure the following types of credentials:
 * Microsoft SQL Server credentials
 * SnapCenter Windows host credentials 
 
-//After NetApp Backup and Recovery discovers hosts, you can change the password, but you cannot delete the credentials for that host. 
-
-//+
-//image:../media/screen-br-settings-all.png[Settings option showing the options]
-//+
-//image:../media/screen-br-settings-credentials.png[Settings option]
-//+
-//image:../media/screen-br-settings-credentials-add.png[Settings option to add new credentials]
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
 
@@ -73,12 +65,6 @@ TIP: You need to enter credentials for both Windows and Microsoft SQL Server, so
 
 . Select *Add*.
 
-//+
-//image:../media/screen-br-settings-credentials-edit.png[Settings option]
-//+
-//image:../media/screen-br-settings-all.png[Settings option showing the options]
-//+
-//image:../media/screen-br-settings-vmware-open.png[Settings option showing the VMware vCenter settings]
 === Edit credentials for host resources
 
 You can later edit the password for the host resources that you imported from SnapCenter.
@@ -195,33 +181,6 @@ The Import from SnapCenter page shows all previous imports.
 
 
 
-
-//== Enable the Certificate Authority certificates
-
-//Enable Certificate Authority (CA) certificates to secure communication among components of the NetApp Backup and Recovery system, including the Console agent, ONTAP, and the SnapCenter plug-in. This ensures that the data transmitted is encrypted and authenticated, protecting against unauthorized access. 
-
-//You can upload the CA certificates for:
-
-//* ONTAP: The ONTAP certificate is used to secure communication between the Console agent and ONTAP.
-//* SnapCenter plug-in: The SnapCenter plug-in certificate is used to secure communication between the Console agent and the SnapCenter plug-in.
-
-//.Steps
-//. From the NetApp Backup and Recovery menu, select *Settings*.
-//+
-//image:../media/screen-br-settings-certificates.png[Settings option]
-//. Select the down arrow for *Enable CA certificates*.
-
-//. Enter information for the ONTAP or plug-in certificates: 
-//* *ONTAP*: Select *Upload* for the ONTAP certificate. Locate and select the certificate file.
-//* *SnapCenter plug-in*: Select *Upload* for the SnapCenter plug-in certificate. Locate and select the certificate file.
-
-//. Locate and select the certificate file.
-
-//. Select *Save*.
-
-
-
-
 == Configure log directories in snapshots for Windows hosts
 
 Before you create policies for Windows hosts, you should configure log directories in snapshots for Windows hosts. Log directories are used to store the logs that are generated during the backup process. 
@@ -238,19 +197,3 @@ Before you create policies for Windows hosts, you should configure log directori
 
 . Either browse or enter the path for the log directory.
 . Select *Save*.
-
-//+//
-//image:../media/screen-br-inventory-configure-log.png[Configure log screen] 
-
-//== Configure buckets in working environments
-
-//Using the NetApp Backup and Recovery Advanced Settings options, you can configure buckets in working environments. Buckets are the storage locations where you store your backup data. You should configure these settings when you first begin using NetApp Backup and Recovery.   
-
-//You can configure the following settings:   
-
-//* Enable DataLock on a bucket
-//* Enable integrity scanning on a bucket
-//* Set the scan interval between 1 and 7 days
-
-//NOTE: These features are not available in the Preview 2025 version.  
-

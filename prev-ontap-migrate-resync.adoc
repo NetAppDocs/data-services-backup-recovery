@@ -21,9 +21,7 @@ NOTE: This feature is available starting with NetApp Backup and Recovery version
 
 SnapMirror to Cloud Resync maintains backup continuity across environments, making it easier to manage data in hybrid and multi-cloud setups. 
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 .Before you begin
 
