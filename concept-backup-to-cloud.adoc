@@ -245,9 +245,6 @@ NetApp Backup and Recovery protects the following workloads:
 
 //NetApp Backup and Recovery installs the Plug-in for Microsoft SQL Server on the server that hosts Microsoft SQL Server. The  Plug-in is a host-side component that enables application-aware data protection management of Microsoft SQL Server databases and instances. 
 
-
-
-
 == How NetApp Backup and Recovery works
 
 When you enable NetApp Backup and Recovery, the service performs a full backup of your data. After the initial backup, all additional backups are incremental. This keeps network traffic to a minimum.
@@ -270,17 +267,10 @@ NOTE: Primary to object storage is also supported, not just from secondary stora
 
 Backup copies are stored in an object store that the NetApp Console creates in your cloud account. There's one object store per cluster or system, and the Console names the object store as follows: `netapp-backup-clusteruuid`. Be sure not to delete this object store.
 
-//ifdef::aws[]
+
 * In AWS, the NetApp Console enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
-//endif::aws[]
 
-//ifdef::azure[]
 * In Azure, the NetApp Console uses a new or existing resource group with a storage account for the Blob container. the Console https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
-//endif::azure[]
-
-//ifdef::gcp[]
-//* In GCP, the Console uses a new or existing project with a storage account for the Google Cloud Storage bucket.
-endif::gcp[]
 
 * In StorageGRID, the Console uses an existing storage account for the object store bucket.
 
