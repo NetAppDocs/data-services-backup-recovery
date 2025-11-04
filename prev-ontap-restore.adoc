@@ -99,9 +99,9 @@ See the requirements and restore steps for the type of restore operation you wan
 
 == Restore ONTAP data using Browse & Restore
 
-Before you start restoring a volume, folder, or file, you should know the name of the volume from which you want to restore, the name of the system and SVM where the volume resides, and the approximate date of the backup file that you want to restore from. You can restore ONTAP data from a Snapshot copy, a replicated volume, or from backups stored in object storage.
+Before restoring, note the source volume name, source system and SVM, and backup file date. You can restore ONTAP data from a Snapshot copy, a replicated volume, or from backups stored in object storage.
 
-*Note:* If the backup file containing the data that you want to restore resides in archival cloud storage (starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
+NOTE: If the backup file you want to restore resides in archival cloud storage (starting with ONTAP 9.10.1), the restore operation takes longer and incurs a cost. The destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
 
 ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
@@ -152,41 +152,6 @@ Cloud Volumes ONTAP
 Cloud Volumes ONTAP
 | To on-premises ONTAP system
 |===
-
-
-//[cols=3*,options="header",cols="33,33,33",width="90%"]
-//|===
-
-//2+^| Backup File Location
-//| Destination system
-//| *Object Store (Backup)* | *Secondary System (Replication)* |
-//ifdef::aws[]
-//| Amazon S3 | Cloud Volumes ONTAP in AWS
-//On-premises ONTAP system
-//| Cloud Volumes ONTAP in AWS
-//On-premises ONTAP system
-//endif::aws[]
-//ifdef::azure[]
-//| Azure Blob | Cloud Volumes ONTAP in Azure
-//On-premises ONTAP system
-//| Cloud Volumes ONTAP in Azure
-//On-premises ONTAP system
-//endif::azure[]
-//ifdef::gcp[]
-//| Google Cloud Storage | Cloud Volumes ONTAP in Google
-//On-premises ONTAP system
-//| Cloud Volumes ONTAP in Google
-//On-premises ONTAP system
-//endif::gcp[]
-//| NetApp StorageGRID | On-premises ONTAP system
-//Cloud Volumes ONTAP
-//| On-premises ONTAP system
-//| ONTAP S3 | On-premises ONTAP system
-//Cloud Volumes ONTAP
-//| On-premises ONTAP system
-//Cloud Volumes ONTAP
-
-//|===
 
 
 
@@ -299,7 +264,7 @@ If you need to restore only a few files from an ONTAP volume backup, you can cho
 
 NOTE: You can restore a folder or individual files only from a backup file in object storage at this time. Restoring files and folders is not currently supported from a local snapshot copy or from a backup file that resides in a secondary system (a replicated volume).
 
-If you select multiple files, all the files are restored to the same destination volume that you choose. So if you want to restore files to different volumes, you'll need to run the restore process multiple times.
+If you select multiple files, they are restored to the same destination volume. To restore files to different volumes, run the process multiple times.
 
 When using ONTAP 9.13.0 or greater, you can restore a folder along with all files and sub-folders within it. When using a version of ONTAP before 9.13.0, only files from that folder are restored - no sub-folders, or files in sub-folders, are restored.
 
@@ -324,7 +289,7 @@ You can test it using a special flag described in the https://community.netapp.c
 
 The process goes like this:
 
-. When you want to restore a folder, or one or more files, from a volume backup, click the *Restore* tab, and click *Restore Files or Folder* under _Browse & Restore_.
+. To restore a folder or files from a volume backup, select the *Restore* menu, then select *Restore Files or Folder* under _Browse & Restore_.
 
 . Select the source system, volume, and backup file in which the folder or file(s) reside.
 
@@ -338,15 +303,11 @@ The process goes like this:
 
 image:diagram_browse_restore_file.png["A diagram that shows the flow to perform a file restore operation using Browse & Restore."]
 
-As you can see, you need to know the system name, volume name, backup file date, and folder/file name to perform a folder or file restore.
+You need the source system name, storage VM, volume name, and backup file date to restore a volume.
 
 ==== Restore folders and files
 
 Follow these steps to restore folders or files to a volume from an ONTAP volume backup. You should know the name of the volume and the date of the backup file that you want to use to restore the folder or file(s). This functionality uses Live Browsing so that you can view the list of directories and files within each backup file.
-
-//The following video shows a quick walkthrough of restoring a single file:
-
-//video::9Og5agUWyRk[youtube, width=848, height=480, start=165]
 
 .Steps
 
@@ -393,7 +354,6 @@ ifdef::gcp[]
 * When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
 endif::gcp[]
 * When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides.
-//* When restoring from ONTAP S3, enter the FQDN of the ONTAP S3 server and the port that ONTAP should use for HTTPS communication with ONTAP S3, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
 
 . Then select the *Volume* and the *Folder* where you want to restore the folder or file(s).
 +
@@ -408,18 +368,17 @@ You have a few options for the location when restoring folders and file(s).
 +
 * If you have selected the same destination system and Volume as where the source folder/file was located, you can select *Maintain Source Folder Path* to restore the folder, or file(s), to the same folder where they existed in the source structure. All the same folders and sub-folders must already exist; folders are not created. When restoring files to their original location, you can choose to overwrite the source file(s) or to create new file(s).
 
-. Select *Restore* and you are returned to the Restore Dashboard so you can review the progress of the restore operation. You can also click the *Job Monitoring* tab to see the restore progress.
+. Select *Restore* to return to the Restore Dashboard and review the progress of the restore operation.
 
 == Restore ONTAP data using Search & Restore
 
 You can restore a volume, folder, or files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume, folder, or file from all backups, and then perform a restore. You don't need to know the exact system name, volume name, or file name - the search looks through all volume backup files.
 
 The search operation looks across all local snapshot copies that exist for your ONTAP volumes, all replicated volumes on secondary storage systems, and all backup files that exist in object storage. Since restoring data from a local Snapshot copy or replicated volume can be faster and less costly than restoring from a backup file in object storage, you may want to restore data from these other locations. 
-//You can restore the Snapshot as a new volume https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[from the Volume Details page on the Canvas^] (not from NetApp Backup and Recovery).
+
 
 When you restore a _full volume_ from a backup file, NetApp Backup and Recovery creates a _new_ volume using the data from the backup. You can restore the data as a volume in the original system, to a different system that's located in the same cloud account as the source system, or to an on-premises ONTAP system.
 
-//When restoring a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater, you'll have the option to perform a "quick restore" operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a volume as soon as possible. A quick restore restores the metadata from the backup file to a volume instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
 
 You can restore _folders or files_ to the original volume location, to a different volume in the same system, to a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
 
@@ -441,16 +400,11 @@ endif::gcp[]
 ====
 * If the backup file in object storage has been configured with DataLock & Ransomware protection, then folder-level restore is supported only if the ONTAP version is 9.13.1 or greater. If you are using an earlier version of ONTAP, you can restore the entire volume from the backup file and then access the folder and files you need.
 * If the backup file in object storage resides in archival storage, then folder-level restore is supported only if the ONTAP version is 9.13.1 or greater. If you are using an earlier version of ONTAP, you can restore the folder from a newer backup file that has not been archived, or you can restore the entire volume from the archived backup and then access the folder and files you need.
-//* Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. Quick restore for SnapLock volumes is supported only if the source system from which the cloud backup was created was running ONTAP 9.11.0 or greater. There is no minimum requirement for FlexVol volumes.
 * The "High" restore priority is not supported when restoring data from Azure archival storage to StorageGRID systems.
 * Restoring folders is not currently supported from volumes in ONTAP S3 object storage.
 ====
 
 Before you start, you should have some idea of the name or location of the volume or file you want to restore.
-
-//The following video shows a quick walkthrough of restoring a single file:
-
-//video::RZktLe32hhQ[youtube, width=848, height=480]
 
 === Search & Restore supported systems and object storage providers
 
@@ -489,7 +443,6 @@ Cloud Volumes ONTAP
 | ONTAP S3 | On-premises ONTAP system
 Cloud Volumes ONTAP
 | On-premises ONTAP system
-//Cloud Volumes ONTAP
 
 |===
 
@@ -648,7 +601,7 @@ Depending on the size of the volumes in the system, and the number of backup fil
 
 === Restore volumes, folders, and files using Search & Restore
 
-After you have <<enable-the-indexed-catalog-for-each-working-environment,enabled Indexing for your system>>, you can restore volumes, folders, and files using Search & Restore. This allows you to use a broad range of filters to find the exact file or volume that you want to restore from all backup files.
+After you have <<enable-the-indexed-catalog-for-each-system,enabled Indexing for your system>>, you can restore volumes, folders, and files using Search & Restore. This allows you to use a broad range of filters to find the exact file or volume that you want to restore from all backup files.
 
 .Steps
 
@@ -675,13 +628,11 @@ After you have <<enable-the-indexed-catalog-for-each-working-environment,enabled
 . Locate the backup file that you want to use to restore the data and select *Restore*.
 +
 Note that the results identify local volume Snapshot copies and remote Replicated volumes that contain the file in your search. You can choose to restore from the cloud backup file, from the Snapshot copy, or from the Replicated volume.
-//The *Restore* button is not functional for Snapshots at this time, but if you want to restore the data from the Snapshot copy instead of from the Backup file, write down the name and location of the volume, open the Volume Details page on the Canvas, and use the *Restore from Snapshot copy* option.
+
 
 . Select the destination location where you want the volume, folder, or file(s) to be restored and select *Restore*.
 +
 * For volumes, you can select the original destination system or you can select an alternate system. When restoring a FlexGroup volume you'll need to choose multiple aggregates. 
-//+
-//When restoring a backup from object storage to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater, you'll have the option to perform a _quick restore_ operation.
 * For folders, you can restore to the original location or you can select an alternate location; including the system, volume, and folder.
 * For files, you can restore to the original location or you can select an alternate location; including the system, volume, and folder. When selecting the original location, you can choose to overwrite the source file(s) or to create new file(s).
 +

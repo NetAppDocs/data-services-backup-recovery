@@ -33,5 +33,5 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . Enter report delivery details: If you want the report to be delivered by email, check *Send report using email*. Enter the email address where you want the report sent.
 
 +
-Configure email notifications in the Settings page. For details about configuring email notifications, see link:br-use-settings-advanced.html[Configure settings].
+Configure email notifications in the Settings page. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
 

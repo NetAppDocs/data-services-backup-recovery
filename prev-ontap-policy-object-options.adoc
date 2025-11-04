@@ -52,8 +52,6 @@ NetApp Backup and Recovery provides support for DataLock and Ransomware protecti
 
 Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the DataLock and Ransomware Resilience option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
 
-https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware[See the DataLock and Ransomware protection blog for more details^].
-
 This feature does not provide protection for your source volumes; only for the backups of those source volumes. Use some of the https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html[anti-ransomware protections provided from ONTAP^] to protect your source volumes.
 
 [CAUTION]
@@ -300,7 +298,7 @@ For more tips to mitigate DataLock costs, refer to
 https://community.netapp.com/t5/Tech-ONTAP-Blogs/Understanding-NetApp-Backup-and-Recovery-DataLock-and-Ransomware-Feature-TCO/ba-p/453475 
 
  
-Additionally, you can get estimates for the cost associated with DataLock by visiting the https://bluexp.netapp.com/cloud-backup-service-tco-calculator[NetApp Backup and Recovery Total Cost of Ownership (TCO) calculator]. 
+Additionally, you can get estimates for the cost associated with DataLock by visiting the https://www.netapp.com/data-services/backup-and-recovery-tco-calculator/[NetApp Backup and Recovery Total Cost of Ownership (TCO) calculator]. 
 
 
 == Archival storage options
