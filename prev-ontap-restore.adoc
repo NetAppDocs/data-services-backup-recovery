@@ -601,7 +601,7 @@ Depending on the size of the volumes in the system, and the number of backup fil
 
 === Restore volumes, folders, and files using Search & Restore
 
-After you have <<enable-the-indexed-catalog-for-each-working-environment,enabled Indexing for your system>>, you can restore volumes, folders, and files using Search & Restore. This allows you to use a broad range of filters to find the exact file or volume that you want to restore from all backup files.
+After you have <<enable-the-indexed-catalog-for-each-system,enabled Indexing for your system>>, you can restore volumes, folders, and files using Search & Restore. This allows you to use a broad range of filters to find the exact file or volume that you want to restore from all backup files.
 
 .Steps
 

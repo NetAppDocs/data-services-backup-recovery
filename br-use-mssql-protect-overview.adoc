@@ -31,7 +31,7 @@ You can do the following to protect your data:
 * link:br-use-mssql-backup.html[Replicate workloads to ONTAP secondary storage]
 * link:br-use-mssql-backup.html[Back up workloads to an object store location] 
 * link:br-use-mssql-backup.html[Back up workloads now]
-* link:br-use-mssql-restore-overview.html[Restore workloads ]
+* link:br-use-mssql-restore.html[Restore workloads ]
 * link:br-use-mssql-clone.html[Clone workloads]
 * link:br-use-manage-inventory.html[Manage inventory of workloads]
 * link:br-use-manage-snapshots.html[Manage snapshots]
