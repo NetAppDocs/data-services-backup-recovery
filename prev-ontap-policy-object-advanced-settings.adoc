@@ -17,9 +17,7 @@ You can change cluster-level, backup-to-object storage settings that you set whe
 
 NOTE: These settings are available for backup-to-object storage only. None of these settings affect your Snapshot or replication settings. 
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 //storage keys, 

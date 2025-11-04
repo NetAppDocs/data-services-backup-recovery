@@ -15,9 +15,7 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 [.lead]
 Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your Cloud Volumes ONTAP systems to Google Cloud Storage.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 == Verify support for your configuration
 
@@ -71,7 +69,8 @@ To use the NetApp Backup and Recovery "Search & Restore" functionality, you need
 
 . Select *Add Permissions* to add the following new permissions to the role.
 +
-[source,json]
+[source,console]
+----
 bigquery.jobs.get
 bigquery.jobs.list
 bigquery.jobs.listAll
@@ -82,6 +81,7 @@ bigquery.tables.get
 bigquery.tables.getData
 bigquery.tables.list
 bigquery.tables.create
+----
 
 . Select *Update* to save the edited role.
 
@@ -93,7 +93,8 @@ You can use your own customer-managed keys for data encryption instead of using 
 
 * You'll need to verify that these required permissions are included in the role for the Console agent:
 
-[source,json]
+[source,console]
+----
 cloudkms.cryptoKeys.get
 cloudkms.cryptoKeys.getIamPolicy
 cloudkms.cryptoKeys.list
@@ -102,6 +103,7 @@ cloudkms.keyRings.get
 cloudkms.keyRings.getIamPolicy
 cloudkms.keyRings.list
 cloudkms.keyRings.setIamPolicy
+----
 
 * You'll need to verify that the Google "Cloud Key Management Service (KMS)" API is enabled in your project. See the https://cloud.google.com/apis/docs/getting-started#enabling_apis[Google Cloud documentation: Enabling APIs^] for details.
 
@@ -202,7 +204,8 @@ You need to provide storage access keys for a service account that has specific 
 
 . https://cloud.google.com/iam/docs/creating-custom-roles#creating_a_custom_role[Create a new role^] with the following permissions:
 +
-[source,json]
+[source,console]
+----
 storage.buckets.create
 storage.buckets.delete
 storage.buckets.get
@@ -215,6 +218,7 @@ storage.objects.delete
 storage.objects.get
 storage.objects.list
 storage.objects.update
+----
 
 . In the Google Cloud console, https://console.cloud.google.com/iam-admin/serviceaccounts[go to the Service accounts page^].
 
@@ -250,7 +254,8 @@ If you're planning to use your own customer-managed keys:
 
 * You'll need to verify that these required permissions are included in the role for the Console agent:
 +
-[source,json]
+[source,console]
+----
 cloudkms.cryptoKeys.get
 cloudkms.cryptoKeys.getIamPolicy
 cloudkms.cryptoKeys.list
@@ -259,6 +264,7 @@ cloudkms.keyRings.get
 cloudkms.keyRings.getIamPolicy
 cloudkms.keyRings.list
 cloudkms.keyRings.setIamPolicy
+----
 
 * You'll need to verify that the Google "Cloud Key Management Service (KMS)" API is enabled in your project. See the https://cloud.google.com/apis/docs/getting-started#enabling_apis[Google Cloud documentation: Enabling APIs^] for details.
 

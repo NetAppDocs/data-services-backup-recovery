@@ -17,9 +17,7 @@ Complete a few steps in NetApp Backup and Recovery to get started backing up vol
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 
@@ -142,13 +140,15 @@ When you set up backup to StorageGRID, the backup wizard prompts you for an S3 a
 +
 These access keys must be associated with a user who has the following permissions:
 +
-[source,json]
+[source,console]
+----
 "s3:ListAllMyBuckets",
 "s3:ListBucket",
 "s3:GetObject",
 "s3:PutObject",
 "s3:DeleteObject",
 "s3:CreateBucket"
+----
 
 Object versioning::
 You must not enable StorageGRID object versioning manually on the object store bucket.

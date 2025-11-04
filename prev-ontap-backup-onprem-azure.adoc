@@ -17,9 +17,7 @@ Complete a few steps in NetApp Backup and Recovery to get started backing up vol
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 
@@ -109,7 +107,8 @@ You must register the Azure Synapse Analytics Resource Provider (called "Microso
 +
 [%collapsible]
 ====
-[source,json]
+[source,console]
+----
 "Microsoft.Storage/storageAccounts/listkeys/action",
 "Microsoft.Storage/storageAccounts/read",
 "Microsoft.Storage/storageAccounts/write",
@@ -146,6 +145,7 @@ You must register the Azure Synapse Analytics Resource Provider (called "Microso
 "Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
 "Microsoft.Synapse/workspaces/operationResults/read",
 "Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action"
+----
 ====
 +
 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html[View the full JSON format for the policy^]

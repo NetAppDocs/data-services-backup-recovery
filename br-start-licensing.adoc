@@ -89,15 +89,11 @@ When you use AWS, there are two annual contracts available from the https://aws.
 If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription[associate the subscription with your AWS credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
-//+
-//Note that this option also requires a Backup and recovery subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
 +
 See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the AWS Marketplace.
-//endif::aws[]
 
-//ifdef::azure[]
 When you use Azure, there are two annual contracts available from the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-bluexp[Azure Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
@@ -105,19 +101,15 @@ When you use Azure, there are two annual contracts available from the https://az
 If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[associate the subscription with your Azure credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your Azure credentials in the Console.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
-//+
-//Note that this option also requires a Backup and recovery subscription, but no charges will be incurred for eligible Cloud Volumes ONTAP systems.
 +
 See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the Azure Marketplace.
-//endif::azure[]
 
-//ifdef::gcp[]
 When you use GCP, contact your NetApp sales representative to purchase an annual contract. The contract is available as a private offer in the Google Cloud Marketplace.
 
 After NetApp shares the private offer with you, you can select the annual plan when you subscribe from the Google Cloud Marketplace during NetApp Backup and Recovery activation.
-//endif::gcp[]
+
 
 == Use a NetApp Backup and Recovery BYOL license
 
