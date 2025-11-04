@@ -17,9 +17,7 @@ Complete a few steps in NetApp Backup and Recovery to get started backing up vol
 
 The primary on-premises ONTAP system can be a FAS, AFF, or ONTAP Select system. The secondary ONTAP system can be an on-premises ONTAP or Cloud Volumes ONTAP system. The object storage can be on an on-premises ONTAP system or a Cloud Volumes ONTAP system on which you have enabled a Simple Storage Service (S3) object storage server.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 
@@ -145,13 +143,15 @@ When you set up backup to ONTAP S3, the backup wizard prompts you for an S3 acce
 +
 These access keys must be associated with a user who has the following permissions:
 +
-[source,json]
+[source,console]
+----
 "s3:ListAllMyBuckets",
 "s3:ListBucket",
 "s3:GetObject",
 "s3:PutObject",
 "s3:DeleteObject",
 "s3:CreateBucket"
+----
 
 //S3 bucket options::
 //The default bucket that NetApp Backup and Recovery creates has a prefix of "netapp-backup". If you want to use your own bucket, you can create it before you start the backup activation wizard and then select that bucket in the wizard. https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-task.html[See the ONTAP docs for details about creating your own S3 bucket^]. 

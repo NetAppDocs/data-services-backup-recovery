@@ -20,7 +20,6 @@ You can back up Hyper-V workloads to Amazon Web Services S3 or StorageGRID and r
 image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
 
 Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
-//The benefits of using NetApp Backup and Recovery to protect your Hyper-V resources include:
 
 * Multiple data copies protect against internal and external cybersecurity threats.
 * Multiple media types ensure failover viability in the case of physical or logical failure of one media type.

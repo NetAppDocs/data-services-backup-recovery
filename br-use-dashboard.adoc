@@ -46,27 +46,6 @@ TIP: A protected database is one that has a backup policy assigned. An unprotect
 
 
 
-//== View and respond to alerts
-
-//The Alerts section provides the following information:
-
-//* The total number of alerts that are active, resolved, or acknowledged.
-//* The total number of alerts that are critical, warning, or informational.
-//* The total number of alerts that are new or have been updated.
-//* The total number of alerts that are open or closed.
-//* The total number of alerts that are related to backup, restore, database, plugin, or system issues.
-
-//.Steps
-
-//You should view the alerts often, remediate the alert, or delete them.   
-
-//. From the NetApp Backup and Recovery menu, select *Dashboard*.
-//. In the Alerts section, slect the alert to view the details.
-//. To remediate the alert, select the down arrow next to the alert and select *Resolve* or *Acknowledge*.
-//. To delete the alert, select the *Delete* trash can.
-
-
-
 == View the Job summary
 
 Review the total jobs completed, running or failed in the Job summary.  
@@ -76,14 +55,6 @@ Review the total jobs completed, running or failed in the Job summary.
 . For each job distribution, change a filter to show the summary of failed, running and complete based on the number of days, for example, the last 30 days, last 7 days, last 24 hours, or last 1 year.
 
 . View details of the failed, running and complete jobs by selecting *View job monitoring*.
-
-//== View the Total Cost of Ownership
-
-//The Total Cost of Ownership (TCO) summary provides the following information:
-
-//* The details of infrastructure cost (object storage, API cost, retrieval, egress, ingress, networking) and catalog cost (amount incurred by cataloging the files)
-//* Datalocking cost (amount incurred by locking the backups)
-//* Licensing (only for PAYGO customers, not available in the Preview version)
 
  
 
@@ -95,25 +66,6 @@ Review the following information on the Restore summary:
 * The total amount of capacity that has been restored
 * The number of restore jobs performed on local, secondary, and object storage. Hover over the chart to see the details.
 
-
-
-//== View the Recommendations
-
-//The Recommendations section provides intelligent suggestions to help you optimize your backup and recovery environment. For example, the recommendations might suggest that you protect more databases, or that you move backups to a different storage location to improve performance.
-
-//Here are examples of recommendations that might appear:
-
-//* The number of environments that are not protected         
-//* Service Leval Agreement (SLA) or SLO is not being met with suggestions on how to fix this
-//* Restore jobs are running slowly and how to remediate it by keeping application storage on dedicated volumes or LUNs. 
-//* Backups are running slowly due to noisy neighbour issues
-//* More coming soon  
-
-//== View the Licensing capacity consumption 
-
-//The Licensing capacity consumption section provides the following information:
-
-//* The total capacity consumed by the backup service compared to the total capacity that is licensed.
 
 
 

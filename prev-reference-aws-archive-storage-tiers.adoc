@@ -17,7 +17,7 @@ NetApp Backup and Recovery supports two S3 archival storage classes and most reg
 
 
 ====
-*NOTE*   To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
+NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
 ====
 
 == Supported S3 archival storage classes for NetApp Backup and Recovery
