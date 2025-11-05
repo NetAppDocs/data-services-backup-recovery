@@ -113,40 +113,26 @@ You have the option to change the database name, use the latest instant snapshot
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Clone*. 
-
-
 . Select the clone you want to refresh. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Refresh clone*.
-
 . Complete the *Advanced settings* section:
-
++
 * *Recovery scope*: Choose whether to recover all log backups or log backups until a specific point in time. This option is useful if you want to recover the clone to a specific point in time.
 * *Clone refresh schedule and expiration*: If you chose *Instant clone*, enter the date when to begin refreshing the clone. The clone schedule defines when the clone will be created.
 ** *Delete clone if schedule expires*: If you want to delete the clone upon the clone expiration date.
 ** *Refresh clone every*: Select how often the clone should be refreshed. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option is useful if you want to keep the clone up to date with the source workload.
-
 * *iGroup settings*: Select the iGroup for the clone. The iGroup is a logical grouping of initiators that are used to access the clone. You can select an existing iGroup or create a new one. Select the iGroup from the primary or secondary ONTAP storage system. 
-
 * *Prescripts and postscripts*: Optionally, add scripts to run before and after the clone is created. These scripts can do extra tasks, such as setting up the clone or sending notifications.
-
 * *Notification*: Optionally, specify email addresses to receive notifications about the clone creation status along with the Job report. You can also specify a webhook URL to receive notifications about the clone creation status. You can specify whether you want success and failure notifications or only one or the other. 
-
-
 * *Tags*: Enter one or more labels that will help you later search for the resource group. For example, if you add "HR" as a tag to multiple resource groups, you can later find all resource groups associated with the HR tag.
 
-
-
-
 . In the Refresh confirmation dialog box, to continue, select *Refresh*.
-
-
 
 == Skip a clone refresh 
 Skip a clone refresh to keep the clone unchanged.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Clone*. 
-
 . Select the clone you want to skip the refresh for.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Skip refresh*.
 . In the Skip refresh confirmation dialog box, do the following: 
@@ -163,12 +149,10 @@ The clone job is not be removed and it can be reused again for other clones.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Clone*.
-
 . Select a clone.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Split clone*.
 . Review the split clone details and select *Split*.
 . When the split clone is created, you can view it in the *Inventory* page.
-
 
 == Delete a clone
 You can delete a clone of your Microsoft SQL Server workloads. Deleting a clone removes the clone from the object store and frees up storage space.
@@ -178,15 +162,11 @@ If a policy protects the clone, both the clone and its job are deleted.
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Clone*.
-
 . Select a clone.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete clone*.
-
 . In the clone Delete confirmation dialog box, review the deletion details.
 .. To delete the cloned resources from SnapCenter even if the clones or their storage is not accessible, select *Force delete*. 
-
 .. Select *Delete*.
-
 . When the clone is deleted, it is removed from the *Inventory* page.
 
 

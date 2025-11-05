@@ -16,12 +16,6 @@ indexpage:
           url: br-start-setup.html
         - title: Configure NetApp Backup and Recovery settings
           url: br-start-configure.html
-#    - title: Manage policies for backups and restores
-#      links:
-#        - title: Create policies to govern backups and restores
-#          url: br-use-policies-create.html
-#        - title: View protection health in the Dashboard
-#          url: br-use-dashboard.html
     - title: Protect ONTAP volumes workloads 
       links: 
         - title: Protect ONTAP volumes workloads overview 

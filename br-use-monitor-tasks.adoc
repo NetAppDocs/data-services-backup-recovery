@@ -32,8 +32,6 @@ The status can be:
 * Warning
 * Failed
 
-//Snapshots, replications, backups to object storage and restore operations that you initiated from the NetApp Backup and Recovery UI and API, and system-initiated jobs such as ongoing scheduled backup operations, are available in the Job Monitoring tab. The Job Monitor includes scheduled jobs for local Snapshots, replications, and backups to object storage. However, this is true only for Cloud Volumes ONTAP systems running ONTAP 9.13.0 or greater and on-premises ONTAP systems running ONTAP 9.13.1 or greater. When running earlier versions of ONTAP, only user-initiated jobs are displayed.
-
 Snapshots, replications, backups to object storage, and restore operations that you initiated from the NetApp Backup and Recovery UI and API are available in the Job Monitoring tab. 
 
 NOTE: If you have upgraded your ONTAP systems to 9.13.x and do not see ongoing scheduled backup operations in the Job Monitor, restart NetApp Backup and Recovery. link:reference-restart-backup.html[Learn how to restart NetApp Backup and Recovery].
@@ -65,8 +63,6 @@ Most of the filters are self-explanatory. The filter for "Workload" enables you 
 * Virtual Machines
 * Kubernetes
 
-
-
 +
 [TIP]
 ====
@@ -84,15 +80,11 @@ You can view details such as job type (scheduled or on-demand), SnapMirror backu
 
 Restore jobs show details such as backup target provider (Amazon Web Services, Microsoft Azure, Google Cloud, on-premises), S3 bucket name, SVM name, source volume name, destination volume, snapshot label, recovered objects count, file names, file sizes, last modification date, and full file path. 
 
-//NOTE: Job details appear for ONTAP Snapshots, replication, and backup to the cloud jobs (both ad-hoc and scheduled, with scheduled jobs appearing only for ONTAP 9.13.0 or later), and all restore jobs. Job details appear for in-progress and completed jobs.
-
 .Steps 
 
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
 . Select the name of the job. 
 . Select the Actions menu image:icon-action.png[Actions icon] and select *View Details*. 
-
-
 . Expand each section to see details. 
 
 === Download Job Monitoring results as a report

@@ -38,8 +38,6 @@ You can do the following to protect your data:
 
 To back up workloads, you create policies that manage backup and restore operations. See link:br-use-policies-create.html[Create policies] for more information.
 
-
-
 .Supported backup destinations
 
 NetApp Backup and Recovery enables you to back up Microsoft SQL Server instances and databases from the following source systems to the following secondary systems and object storage in public and private cloud providers. Snapshot copies reside on the source system.
@@ -50,7 +48,6 @@ NetApp Backup and Recovery enables you to back up Microsoft SQL Server instances
 | Source system
 | Secondary system (Replication)
 | Destination Object Store (Backup)
-
 
 | Cloud Volumes ONTAP in AWS
 | Cloud Volumes ONTAP in AWS
@@ -64,7 +61,6 @@ On-premises ONTAP system
 | Azure Blob
 ONTAP S3
 
-
 | On-premises ONTAP system | 
 Cloud Volumes ONTAP 
 On-premises ONTAP system  
@@ -76,19 +72,6 @@ ONTAP S3
 | Amazon FSx for NetApp ONTAP 
 | Amazon FSx for NetApp ONTAP 
 | NA
-
-
-
-//ifdef::gcp[]
-//Google Cloud Storage
-endif::gcp[]
-
-//ifdef::gcp[]
-//| Cloud Volumes ONTAP in Google
-//On-premises ONTAP system
-//| Google Cloud Storage
-//endif::gcp[]
-
 |===
 
 .Supported restore destinations
@@ -108,28 +91,16 @@ On-premises ONTAP system |  Cloud Volumes in AWS
 On-premises ONTAP system 
 ONTAP S3
 
-
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system 
 ONTAP S3
-
-//ifdef::gcp[]
-//| Google Cloud Storage | Cloud Volumes ONTAP in Google
-//On-premises ONTAP system
-//| Cloud Volumes ONTAP in Google
-//On-premises ONTAP system
-//endif::gcp[]
 
 | StorageGRID | Cloud Volumes ONTAP 
 On-premises ONTAP system  | On-premises ONTAP system
 ONTAP S3
 
 | Amazon FSx for NetApp ONTAP | Amazon FSx for NetApp ONTAP |NA
-
-
-
-
 |===
 
 NOTE: References to "on-premises ONTAP systems" include FAS and AFF systems.

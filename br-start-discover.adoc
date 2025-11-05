@@ -15,13 +15,8 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 [.lead]
 NetApp Backup and Recovery needs to first discover Microsoft SQL Server workloads in order for you to use the service. You can optionally import backup data and policies from SnapCenter if you already have SnapCenter installed. 
 
-//* <<Discover Microsoft SQL Server workloads and optionally import SnapCenter resources>>
-//* <<Discover Kubernetes workloads>>
-
 *Required NetApp Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
-
 
 == Discover Microsoft SQL Server workloads and optionally import SnapCenter resources
 
@@ -54,7 +49,7 @@ This is a two-part process:
 
 ==== Import SnapCenter Server application and host resources
 
-This first step imports host resources from SnapCenter and displays those resources in the NetApp Backup and Recovery Inventory page. At that point, the resources are not yet managed by NetApp Backup and Recovery.
+This first step imports host rsesources from SnapCenter and displays those resources in the NetApp Backup and Recovery Inventory page. At that point, the resources are not yet managed by NetApp Backup and Recovery.
 
 TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does not take over protection management automatically. To do so, you must explicitly select to manage the imported resources in NetApp Backup and Recovery. This ensures that you are ready to have those resources backed up by NetApp Backup and Recovery. 
 
@@ -95,8 +90,6 @@ After you import the SnapCenter resources, manage those host resources in NetApp
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.  
 
 . From the Inventory > workload page, select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to display the Manage host page.   
-//+
-//image:../media/screen-br-inventory-manage-host.png[Inventory page showing the imported SnapCenter resources and the Manage option]
 
 . Select *Manage*. 
 
@@ -157,9 +150,6 @@ TIP: This process might take a few minutes.
 
 With Advanced Settings, you can manually install the plugin agent on all servers being registered. This enables you to import all SnapCenter workloads into NetApp Backup and Recovery so you can manage backups and restores there. NetApp Backup and Recovery shows the steps needed to install the plugin. 
 
-//If you entered vCenter information during discovery, you need to add plugin information in Advanced Settings.
-
-
 .Steps
 
 . From the Discover resources page, continue to Advanced Settings by clicking the down arrow on the right. 
@@ -176,12 +166,7 @@ With Advanced Settings, you can manually install the plugin agent on all servers
 
 . Select *Discover*.
 
-
-
-//. To enable the ability to add tags to your resources for easier management, check *Add tag option for resources*. (This feature is not available for the Preview 2025 version.)    
- 
 ==== Continue to the NetApp Backup and Recovery Dashboard
-
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
 . Select a workload tile (for example, Microsoft SQL Server).
@@ -189,33 +174,4 @@ With Advanced Settings, you can manually install the plugin agent on all servers
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].
-
- 
-
-
-
-
-//== Discover Kubernetes workloads
-//In the backup and recovery inventory, you can discover Kubernetes workloads that are running in your environment. Discovering a workload adds a Kubernetes cluster to NetApp Backup and Recovery, enabling you to then add applications to the cluster and protect the resources hosted by the cluster.
-
-//.Steps
-//. Do one of the following:
-
-//* If you are discovering Kubernetes workloads for the first time, in NetApp Backup and Recovery, select *Discover and Manage* under the Kubernetes workload type.
-//* If you have already discovered Kubernetes workloads, in NetApp Backup and Recovery, select *Inventory* > *Workloads* and then select *Discover resources*.
-
-//. Select the *Kubernetes* workload type.
-//. Enter a cluster name and choose a connector to use with the cluster.
-//. Follow the command line instructions that appear:
-//+
-//* Create a Trident protect namespace
-//* Create a Kubernetes secret
-//* Add a Helm repository
-//* Install Trident protect and the Trident protect connector
-//+
-//These steps ensure that NetApp Backup and Recovery can interact with the cluster.
-//. After you complete the steps, select *Discover*.
-//+
-//The cluster is added to the inventory.
-//. Select *View* in the associated Kubernetes workload to see the list of applications, clusters, and namespaces for that workload.
 
