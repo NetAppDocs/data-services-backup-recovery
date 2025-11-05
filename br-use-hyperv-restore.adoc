@@ -15,12 +15,6 @@ summary: Protect your Hyper-V workloads with NetApp Backup and Recovery.
 [.lead]
 Restore Hyper-V workloads from snapshot copies, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
 
-//You can restore a workload to the original working environment, to a different working environment that's using the same cloud account, or to an on-premises ONTAP system. 
-
-//different types of restore operations, volume restore or file/folder restore, Browse and restore vs Search and restore)
-
-
-
 .Restore from these locations
 
 You can restore workloads from different starting locations: 
@@ -85,22 +79,14 @@ Backup and Recovery super admin or Backup and Recovery restore admin role. https
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Restore*.
-//+
-//image:screen-vm-restore-dropdown.png[A screenshot showing the Restore page.]
 . From the drop-down list to the right of the name search field, select *Hyper-V*. 
 
 . Enter the name of the resource you want to restore or filter for the VM name, VM host, or storage pool where the resource that you want to restore is located. 
 +
 A list of snapshots appears that match your search criteria.
-//+
-//image:screen-vm-restore-snapshot.png[A screenshot showing the list of snapshots to restore.]    
-
 . Select the *Restore* button for the snapshot that you want to restore. 
 +
 A list of possible restore points appears.
-//+
-//image:screen-vm-restore-location.png[A screenshot showing the Restore options page.]
-
 . Select the restore point that you want to use.
 . Select a snapshot source location.
 
@@ -111,8 +97,6 @@ A list of possible restore points appears.
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
 Next, you can choose the destination settings and the pre-restore and post-restore options.
-//+
-//image:screen-vm-restore-destination.png[A screenshot showing the Restore Destination details page.]
 
 [discrete]
 ===== Destination selection

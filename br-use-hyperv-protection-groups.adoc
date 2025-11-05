@@ -32,8 +32,6 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-//+
-//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
@@ -46,8 +44,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Review the configuration.
 . Select *Create* to create the protection group.
 
-//+ Unsupported in preview
-//If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
+
 
 ////
 

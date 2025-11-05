@@ -16,12 +16,8 @@ summary: Back up Microsoft SQL Server applications data from on-premises ONTAP s
 Back up Microsoft SQL Server application data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, or StorageGRID. The system automatically creates backups and stores them in an object store in your cloud account for data protection. 
 
 * To back up workloads on a schedule, create policies that manage backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
-
 * Configure the log directory for discovered hosts before starting a backup. 
-
 * Back up workloads now (create an on-demand backup now).  
-
-
 
 == View workload protection status
 Before you start a backup, view the protection status of your workloads.
@@ -35,14 +31,12 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Review details on the Hosts, Protection groups, Availability groups, Instances, and Databases tabs. 
 
-
 == Configure the log directory for discovered hosts
 
 Set the activity log path for discovered hosts to track operation status before backing up workloads.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
 
 .Steps 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
@@ -56,7 +50,6 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 NOTE: The fields that appear differ depending on the selected deployment model, for example, failover cluster instance or standalone. 
 . Select *Save*.
 
-
 == Create a protection group 
 Create a protection group to manage backup and restore operations for multiple workloads. A protection group is a logical grouping of workloads.
 
@@ -69,15 +62,12 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
-
 . Provide a name for the protection group.
 . Select the instances or databases that you want to include in the protection group.
 . Select *Next*. 
-
 . Select the *Backup policy* that you want to apply to the protection group.
 +
 If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
-
 . Select *Next*. 
 . Review the configuration.
 . Select *Create* to create the protection group.
@@ -102,14 +92,6 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 . Select the schedule tier.
 . Select *Back up now*. 
 
-
-
-//. Select the backup type:
-//** *Full backup*: Backs up workloads and logs.
-//** *Log backup*: Backs up only the logs. To choose a log backup, you must have already configured a log backup location. See link:br-use-backup-mssql.html#configure-logs-for-discovered-hosts[Configure logs for discovered hosts] for more information.
-
-
-
 == Suspend the backup schedule
 
 Suspend the schedule to temporarily stop backups during maintenance or troubleshooting.
@@ -126,8 +108,6 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 . Select the protection group, instance, or database you want to suspend.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Suspend*.
 
-
-
 == Delete a protection group 
 Deleting a protection group removes it and all associated backup schedules. You might want to delete a protection group if it is no longer needed.
 
@@ -140,8 +120,6 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete protection group*.
-
-
 
 == Remove protection from a workload 
 You can remove protection from a workload if you no longer want to back it up or if you want to stop managing it in NetApp Backup and Recovery.
@@ -157,7 +135,5 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 . Select the *Protection Group*, *Instances* or *Databases* tab. 
 . Select the protection group, instance, or database.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Remove protection*.
-
 . In the Remove protection dialog box, select whether you want to keep backups and metadata or delete them.
-
 . Select *Remove* to confirm the action.
