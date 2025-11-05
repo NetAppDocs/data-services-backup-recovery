@@ -15,10 +15,6 @@ summary: Protect your Oracle workloads with NetApp Backup and Recovery.
 [.lead]
 Restore Oracle databases from snapshot copies, from a backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
 
-//You can restore a workload to the original working environment, to a different working environment that's using the same cloud account, or to an on-premises ONTAP system. 
-
-//different types of restore operations, volume restore or file/folder restore, Browse and restore vs Search and restore)
-
 .Restore from these locations
 
 You can restore databases from different starting locations: 

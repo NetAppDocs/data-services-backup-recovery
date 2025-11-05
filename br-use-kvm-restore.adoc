@@ -121,8 +121,7 @@ A list of possible restore points appears.
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
 Next, you can choose the destination settings and the pre-restore and post-restore options.
-//+
-//image:screen-vm-restore-destination.png[A screenshot showing the Restore Destination details page.]
+
 
 [discrete]
 ===== Destination selection

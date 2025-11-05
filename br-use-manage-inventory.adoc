@@ -32,7 +32,7 @@ You can accomplish the following tasks related to managing your inventory:
 ** Edit protection settings
 ** Back up now by starting an on-demand backup  
 
-* Configure the log directory (from Inventory > Hosts). If you want to back up logs for your database hosts in the snapshot, first configure the logs in NetApp Backup and Recovery. For details, refer to link:br-start-setup.html[Configure NetApp Backup and Recovery settings].  
+* Configure the log directory (from *Inventory* > *Hosts*). If you want to back up logs for your database hosts in the snapshot, first configure the logs in NetApp Backup and Recovery. For details, refer to link:br-start-setup.html[Configure NetApp Backup and Recovery settings].  
 
 
 

@@ -65,15 +65,13 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-lic
 
 Use these links to subscribe to NetApp Backup and Recovery from your cloud provider marketplace:
 
-//ifdef::aws[]
+
 * AWS: https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
-//endif::aws[]
-//ifdef::azure[]
+
 * Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the  Marketplace offering for NetApp Intelligent Services for pricing details^].
-//endif::azure[]
-//ifdef::gcp[]
+
 * Google Cloud: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
-//endif::gcp[]
+
 
 == Use an annual contract
 
@@ -81,7 +79,6 @@ Pay for NetApp Backup and Recovery annually by purchasing an annual contract. Th
 
 If you have an annual contract from a marketplace, all NetApp Backup and Recovery consumption is charged against that contract. You can't mix and match an annual marketplace contract with a BYOL.
 
-//ifdef::aws[]
 When you use AWS, there are two annual contracts available from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
