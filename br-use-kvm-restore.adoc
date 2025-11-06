@@ -13,7 +13,7 @@ summary: Protect your KVM workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore KVM virtual machines from snapshot copies, from a protection group backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
+Restore KVM virtual machines from snapshots, from a protection group backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
 
 //Restore KVM virtual machines from a protection group backup replicated to secondary storage using NetApp Backup and Recovery.
 

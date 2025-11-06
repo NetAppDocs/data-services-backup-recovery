@@ -21,7 +21,7 @@ The benefits of the 3-2-1 approach include:
 * Using different types of media helps you recover if one type fails.
 * You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
-NetApp Backup and Recovery uses NetApp SnapMirror to synchronize backups by creating snapshot copies and and transferring them tothe backup locations.
+NetApp Backup and Recovery uses NetApp SnapMirror to synchronize backups by creating snapshots and and transferring them tothe backup locations.
 
 You can do the following to protect your data: 
 
@@ -40,7 +40,7 @@ To back up workloads, you create policies that manage backup and restore operati
 
 .Supported backup destinations
 
-NetApp Backup and Recovery enables you to back up Microsoft SQL Server instances and databases from the following source systems to the following secondary systems and object storage in public and private cloud providers. Snapshot copies reside on the source system.
+NetApp Backup and Recovery enables you to back up Microsoft SQL Server instances and databases from the following source systems to the following secondary systems and object storage in public and private cloud providers. snapshots reside on the source system.
 
 [cols=3*,options="header",cols="33,33,33",width="90%"]
 |===
@@ -76,7 +76,7 @@ ONTAP S3
 
 .Supported restore destinations
 
-You can restore Microsoft SQL Server instances and databases from a backup that resides in primary storage or a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshot copies reside on the source system and can be restored only to that same system.
+You can restore Microsoft SQL Server instances and databases from a backup that resides in primary storage or a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshots reside on the source system and can be restored only to that same system.
 
 [cols=3*,options="header",cols="33,33,33",width="100%"]
 |===

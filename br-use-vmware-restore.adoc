@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore VMware workloads from snapshot copies, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
+Restore VMware workloads from snapshots, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
 
 //You can restore a workload to the original working environment, to a different working environment that's using the same cloud account, or to an on-premises ONTAP system. 
 

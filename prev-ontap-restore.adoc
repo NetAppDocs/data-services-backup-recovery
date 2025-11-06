@@ -13,7 +13,7 @@ summary: With NetApp Backup and Recovery, restore an entire ONTAP volume from a 
 :imagesdir: ./media/
 
 [.lead]
-Backups of your ONTAP volume data are available from the locations where you created backups: Snapshot copies, replicated volumes, and backups stored in object storage. You can restore data from a specific point in time from any of these backup locations. With NetApp Backup and Recovery, restore an entire ONTAP volume from a backup file, or if you only need to restore a few files, restore a folder or individual files.
+Backups of your ONTAP volume data are available from the locations where you created backups: snapshots, replicated volumes, and backups stored in object storage. You can restore data from a specific point in time from any of these backup locations. With NetApp Backup and Recovery, restore an entire ONTAP volume from a backup file, or if you only need to restore a few files, restore a folder or individual files.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
@@ -29,7 +29,7 @@ To summarize, these are the valid flows you can use to restore volume data to an
 
 * Backup file -> restored volume
 * Replicated volume -> restored volume
-* Snapshot copy -> restored volume
+* Snapshot -> restored volume
 
 NOTE: If the restore operation does not complete, wait until the Job Monitor shows "Failed" before you retry the restore operation.
 
@@ -73,7 +73,7 @@ This table provides a list of valid restore operations based on the location whe
 3+^| Search & Restore
 
 |  | *Restore volume* | *Restore files* | *Restore folder* | *Restore volume* | *Restore files* | *Restore folder* 
-| Snapshot copy | Yes | No | No | Yes | Yes | Yes 
+| Snapshot | Yes | No | No | Yes | Yes | Yes 
 | Replicated volume | Yes | No | No | Yes | Yes | Yes 
 | Backup file | Yes | Yes | Yes | Yes | Yes | Yes 
 
@@ -97,7 +97,7 @@ See the requirements and restore steps for the type of restore operation you wan
 
 == Restore ONTAP data using Browse & Restore
 
-Before restoring, note the source volume name, source system and SVM, and backup file date. You can restore ONTAP data from a Snapshot copy, a replicated volume, or from backups stored in object storage.
+Before restoring, note the source volume name, source system and SVM, and backup file date. You can restore ONTAP data from a snapshot, a replicated volume, or from backups stored in object storage.
 
 NOTE: If the backup file you want to restore resides in archival cloud storage (starting with ONTAP 9.10.1), the restore operation takes longer and incurs a cost. The destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
 
@@ -115,7 +115,7 @@ NOTE: The High priority isn't supported when restoring data from Azure archival 
 
 === Browse & Restore supported systems and object storage providers
 
-You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshot copies reside on the source system and can be restored only to that same system.
+You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshots reside on the source system and can be restored only to that same system.
 
 *Note:* You can restore a volume from any type of backup file, but you can restore a folder or individual files only from a backup file in object storage at this time.
 
@@ -200,7 +200,7 @@ As you can see, you'll need to know the source system name, storage VM, volume n
 
 . In the _Select Source_ page, navigate to the backup file for the volume you want to restore. Select the *system*, the *Volume*, and the *Backup* file that has the date/time stamp from which you want to restore.
 +
-The *Location* column shows whether the backup file (Snapshot) is *Local* (a Snapshot copy on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
+The *Location* column shows whether the backup file (Snapshot) is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
 
 
 . Select *Next*.
@@ -260,7 +260,7 @@ Note that restoring a volume from a backup file that resides in archival storage
 
 If you need to restore only a few files from an ONTAP volume backup, you can choose to restore a folder or individual files instead of restoring the entire volume. You can restore folders and files to an existing volume in the original system, or to a different system that's using the same cloud account. You can also restore folders and files to a volume on an on-premises ONTAP system.
 
-NOTE: You can restore a folder or individual files only from a backup file in object storage at this time. Restoring files and folders is not currently supported from a local snapshot copy or from a backup file that resides in a secondary system (a replicated volume).
+NOTE: You can restore a folder or individual files only from a backup file in object storage at this time. Restoring files and folders is not currently supported from a local snapshot or from a backup file that resides in a secondary system (a replicated volume).
 
 If you select multiple files, they are restored to the same destination volume. To restore files to different volumes, run the process multiple times.
 
@@ -372,7 +372,7 @@ You have a few options for the location when restoring folders and file(s).
 
 You can restore a volume, folder, or files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume, folder, or file from all backups, and then perform a restore. You don't need to know the exact system name, volume name, or file name - the search looks through all volume backup files.
 
-The search operation looks across all local snapshot copies that exist for your ONTAP volumes, all replicated volumes on secondary storage systems, and all backup files that exist in object storage. Since restoring data from a local Snapshot copy or replicated volume can be faster and less costly than restoring from a backup file in object storage, you may want to restore data from these other locations. 
+The search operation looks across all local snapshots that exist for your ONTAP volumes, all replicated volumes on secondary storage systems, and all backup files that exist in object storage. Since restoring data from a local snapshot or replicated volume can be faster and less costly than restoring from a backup file in object storage, you may want to restore data from these other locations. 
 
 
 When you restore a _full volume_ from a backup file, NetApp Backup and Recovery creates a _new_ volume using the data from the backup. You can restore the data as a volume in the original system, to a different system that's located in the same cloud account as the source system, or to an on-premises ONTAP system.
@@ -406,7 +406,7 @@ Before you start, you should have some idea of the name or location of the volum
 
 === Search & Restore supported systems and object storage providers
 
-You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshot copies reside on the source system and can be restored only to that same system.
+You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshots reside on the source system and can be restored only to that same system.
 
 *Note:* You can restore volumes and files from any type of backup file, but you can restore a folder only from backup files in object storage at this time.
 
@@ -467,7 +467,7 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 ** The ONTAP version must be 9.8 or greater.
 ** The storage VM (SVM) on which the volume resides must have a configured data LIF.
 ** NFS must be enabled on the volume (both NFS and SMB/CIFS volumes are supported).
-** The SnapDiff RPC Server must be activated on the SVM. The Console does this automatically when you enable Indexing on the system. (SnapDiff is the technology that quickly identifies the file and directory differences between Snapshot copies.)
+** The SnapDiff RPC Server must be activated on the SVM. The Console does this automatically when you enable Indexing on the system. (SnapDiff is the technology that quickly identifies the file and directory differences between snapshots.)
 
 ifdef::aws[]
 * AWS requirements:
@@ -615,7 +615,7 @@ After you have <<enable-the-indexed-catalog-for-each-system,enabled Indexing for
 . From the Search & Restore page:
 .. In the _Search bar_, enter a full or partial volume name, folder name, or file name.
 .. Select the type of resource: *Volumes*, *Files*, *Folders*, or *All*.
-.. In the _Filter by_ area, select the filter criteria. For example, you can select the system where the data resides and the file type, for example a .JPEG file. Or you can select the type of Backup Location if you want to search for results only within available Snapshot copies or backup files in object storage.
+.. In the _Filter by_ area, select the filter criteria. For example, you can select the system where the data resides and the file type, for example a .JPEG file. Or you can select the type of Backup Location if you want to search for results only within available snapshots or backup files in object storage.
 
 . Select *Search* and the Search Results area displays all the resources that have a file, folder, or volume that matches your search.
 
@@ -625,7 +625,7 @@ After you have <<enable-the-indexed-catalog-for-each-system,enabled Indexing for
 
 . Locate the backup file that you want to use to restore the data and select *Restore*.
 +
-Note that the results identify local volume Snapshot copies and remote Replicated volumes that contain the file in your search. You can choose to restore from the cloud backup file, from the Snapshot copy, or from the Replicated volume.
+Note that the results identify local volume snapshots and remote Replicated volumes that contain the file in your search. You can choose to restore from the cloud backup file, from the snapshot, or from the Replicated volume.
 
 
 . Select the destination location where you want the volume, folder, or file(s) to be restored and select *Restore*.
