@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-mssql-restore.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
-summary: Restore database workloads from a snapshot copy, a workload backup replicated to secondary storage, or from backups stored in object storage.
+summary: Restore database workloads from a snapshot, a workload backup replicated to secondary storage, or from backups stored in object storage.
 ---
 
 = Restore Microsoft SQL Server workloads with NetApp Backup and Recovery
@@ -13,7 +13,7 @@ summary: Restore database workloads from a snapshot copy, a workload backup repl
 :imagesdir: ./media/
 
 [.lead]
-Restore Microsoft SQL Server workloads using NetApp Backup and Recovery. Use snapshot copies, backups replicated to secondary storage, or backups in object storage. Restore workloads to the original system, a different system with the same cloud account, or an on-premises ONTAP system.
+Restore Microsoft SQL Server workloads using NetApp Backup and Recovery. Use snapshots, backups replicated to secondary storage, or backups in object storage. Restore workloads to the original system, a different system with the same cloud account, or an on-premises ONTAP system.
 
 .Restore from these locations
 

@@ -21,7 +21,7 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 == Discover VMware workloads and optionally import SnapCenter resources
 
-During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshot copies, and backup and restore options. 
+During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshots, and backup and restore options. 
 
 You can import VMware NFS and VMFS datastores and VMs from their on-premises SnapCenter Plug-in for VMware vSphere into NetApp Backup and Recovery inventory. 
 
@@ -34,7 +34,7 @@ During the import process, NetApp Backup and Recovery performs the following tas
 * Prepares the metadata of the vCenter and marks it as unmanaged in the NetApp Console. 
 * Configures database access. 
 * Discovers VMware vCenter, datastores, and VMs.
-* Imports existing protection policies, snapshot copies, and backup and restore options from SnapCenter Plug-in for VMware vSphere.
+* Imports existing protection policies, snapshots, and backup and restore options from SnapCenter Plug-in for VMware vSphere.
 * Displays the discovered resources in the NetApp Backup and Recovery Inventory page.
 
 Discovery occurs in the following ways: 

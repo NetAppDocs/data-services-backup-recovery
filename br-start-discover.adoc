@@ -22,7 +22,7 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 During discovery, NetApp Backup and Recovery analyzes Microsoft SQL Server instances and databases in systems within your organization. 
 
-NetApp Backup and Recovery assesses Microsoft SQL Server applications. The service assesses the existing protection level including the current backup protection policies, snapshot copies, and backup and recovery options.
+NetApp Backup and Recovery assesses Microsoft SQL Server applications. The service assesses the existing protection level including the current backup protection policies, snapshots, and backup and recovery options.
 
 Discovery occurs in the following ways: 
 

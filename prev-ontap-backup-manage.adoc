@@ -13,7 +13,7 @@ summary: With NetApp Backup and Recovery, manage backups for your Cloud Volumes 
 :imagesdir: ./media/
 
 [.lead]
-With NetApp Backup and Recovery, manage backups for your Cloud Volumes ONTAP and on-premises ONTAP systems by changing the backup schedule, enabling/disabling volume backups, pausing backups, deleting backups, force deleting backups, and more. This includes all types of backups, including snapshot copies, replicated volumes, and backup files in object storage. You can also unregister NetApp Backup and Recovery. 
+With NetApp Backup and Recovery, manage backups for your Cloud Volumes ONTAP and on-premises ONTAP systems by changing the backup schedule, enabling/disabling volume backups, pausing backups, deleting backups, force deleting backups, and more. This includes all types of backups, including snapshots, replicated volumes, and backup files in object storage. You can also unregister NetApp Backup and Recovery. 
 
 //creating new backup policies, 
 
@@ -23,7 +23,7 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 == View the backup status of volumes in your systems
 
-You can view a list of all the volumes that are currently being backed up in the Volumes Backup Dashboard. This includes all types of backups, including snapshot copies, replicated volumes, and backup files in object storage. You can also view the volumes in those systems that are not currently being backed up.
+You can view a list of all the volumes that are currently being backed up in the Volumes Backup Dashboard. This includes all types of backups, including snapshots, replicated volumes, and backup files in object storage. You can also view the volumes in those systems that are not currently being backed up.
 
 .Steps
 
@@ -36,7 +36,7 @@ You can view a list of all the volumes that are currently being backed up in the
 +
 To show additional columns (aggregates, security style (Windows or UNIX), snapshot policy, replication policy, and backup policy), select the plus sign.
 
-. Review the status of the protection options in the "Existing protection" column. The 3 icons stand for "Local snapshot copies", "Replicated volumes", and "Backups in object storage". 
+. Review the status of the protection options in the "Existing protection" column. The 3 icons stand for "Local snapshots", "Replicated volumes", and "Backups in object storage". 
 +
 Each icon is blue when that backup type is activated, and it's grey when the backup type is inactive. You can hover your cursor over each icon to see the backup policy that is being used, and other pertinent information for each type of backup.
 
@@ -49,7 +49,7 @@ If you activated backup only on some of the volumes in a system when you first e
 
 . From the *Volumes* tab, identify the volume on which you want to activate backups, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Activate backup*.
 
-. In the _Define backup strategy_ page, select the backup architecture, and then define the policies and other details for Local Snapshot copies, Replicated volumes, and Backup files. See the details for backup options from the initial volumes you activated in this system. Then select *Next*.
+. In the _Define backup strategy_ page, select the backup architecture, and then define the policies and other details for Local snapshots, Replicated volumes, and Backup files. See the details for backup options from the initial volumes you activated in this system. Then select *Next*.
 
 . Review the backup settings for this volume, and then select *Activate Backup*.
 
@@ -57,7 +57,7 @@ If you activated backup only on some of the volumes in a system when you first e
 
 == Change the backup settings assigned to existing volumes
 
-You can change the backup policies assigned to your existing volumes that have assigned policies. You can change the policies for your local snapshot copies, replicated volumes, and backup files. Any new snapshot, replication, or backup policy that you want to apply to the volumes must already exist. 
+You can change the backup policies assigned to your existing volumes that have assigned policies. You can change the policies for your local snapshots, replicated volumes, and backup files. Any new snapshot, replication, or backup policy that you want to apply to the volumes must already exist. 
 //<<Add a new backup policy,See how to add a new backup policy for a system>>.
 
 === Edit backup settings on a single volume
@@ -66,7 +66,7 @@ You can change the backup policies assigned to your existing volumes that have a
 
 . From the *Volumes* tab, identify the volume that you want to make policy changes, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Edit backup strategy*.
 
-. In the _Edit backup strategy_ page, make changes to the existing backup policies for Local Snapshot copies, Replicated volumes, and Backup files and select *Next*.
+. In the _Edit backup strategy_ page, make changes to the existing backup policies for Local snapshots, Replicated volumes, and Backup files and select *Next*.
 +
 If you enabled _DataLock and Ransomware Resilience_ for cloud backups in the initial backup policy when activating NetApp Backup and Recovery for this cluster, you'll only see other policies that have been configured with DataLock. And if you did not enable _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery, you'll only see other cloud backup policies that don't have DataLock configured.
 
@@ -104,7 +104,7 @@ When more than five volumes are enabled for backup, NetApp Backup and Recovery i
 
 |===
 
-. In the backup page that appears, make changes to the existing backup policies for Local Snapshot copies, Replicated volumes, or Backup files and select *Save*.
+. In the backup page that appears, make changes to the existing backup policies for Local snapshots, Replicated volumes, or Backup files and select *Save*.
 +
 If you enabled _DataLock and Ransomware Resilience_ for cloud backups in the initial backup policy when activating NetApp Backup and Recovery for this cluster, you'll only see other policies that have been configured with DataLock. And if you did not enable _DataLock and Ransomware Resilience_ when activating NetApp Backup and Recovery, you'll only see other cloud backup policies that don't have DataLock configured.
 
@@ -112,7 +112,7 @@ If you enabled _DataLock and Ransomware Resilience_ for cloud backups in the ini
 
 You can create an on-demand backup at any time to capture the current state of the volume. This can be useful if very important changes have been made to a volume and you don't want to wait for the next scheduled backup to protect that data. You can also use this functionality to create a backup for a volume that is not currently being backed up and you want to capture its current state.
 
-You can create an ad-hoc snapshot copy or backup to object of a volume. You can't create an ad-hoc replicated volume. 
+You can create an ad-hoc snapshot or backup to object of a volume. You can't create an ad-hoc replicated volume. 
 
 The backup name includes the timestamp so you can identify your on-demand backup from other scheduled backups.
 
@@ -137,7 +137,7 @@ You can view the list of all backup files that exist for each volume. This page 
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *View volume details*.
 +
-The details for the volume and the list of snapshot copies are displayed.
+The details for the volume and the list of snapshots are displayed.
 
 . Select *Snapshot*, *Replication*, or *Backup* to see the list of all backup files for each type of backup.
 
@@ -202,7 +202,7 @@ The following table describes the available actions:
 
 | Update Replication | Starts an incremental transfer to update the destination volume to be synchronized with the source volume.
 
-| Pause Replication | Pause the incremental transfer of Snapshot copies to update the destination volume. You can Resume later if you want to restart the incremental updates.
+| Pause Replication | Pause the incremental transfer of snapshots to update the destination volume. You can Resume later if you want to restart the incremental updates.
 
 | Break Replication | Breaks the relationship between the source and destination volumes, and activates the destination volume for data access - makes it read-write.
 
@@ -310,7 +310,7 @@ CAUTION: If you plan to delete a system or cluster that has backups, you must de
 
 Deleting all backups on object storage for a system does not disable future backups of volumes in this system. If you want to stop creating backups of all volumes in a system, you can deactivate backups <<Deactivate NetApp Backup and Recovery for a system,as described here>>.
 
-Note that this action does not affect Snapshot copies or replicated volumes - these types of backup files are not deleted.
+Note that this action does not affect snapshots or replicated volumes - these types of backup files are not deleted.
 
 .Steps
 
@@ -352,7 +352,7 @@ CAUTION: Use this option carefully and only in extreme cleanup needs. NetApp Bac
 
 === Delete a single backup file for a volume
 
-You can delete a single backup file if you no longer need it. This includes deleting a single backup of a volume Snapshot copy or of a backup in object storage. 
+You can delete a single backup file if you no longer need it. This includes deleting a single backup of a volume snapshot or of a backup in object storage. 
 
 You can't delete replicated volumes (data protection volumes).
 
@@ -360,7 +360,7 @@ You can't delete replicated volumes (data protection volumes).
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[More icon] for the source volume and select *View volume details*.
 +
-The details for the volume are displayed, and you can select *Snapshot*, *Replication*, or *Backup* to see the list of all backup files for the volume. By default, the available snapshot copies are displayed.
+The details for the volume are displayed, and you can select *Snapshot*, *Replication*, or *Backup* to see the list of all backup files for the volume. By default, the available snapshots are displayed.
 
 . Select *Snapshot* or *Backup* to see the type of backup files that you want to delete.
 

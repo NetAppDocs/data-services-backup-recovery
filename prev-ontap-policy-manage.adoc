@@ -62,7 +62,7 @@ The Policies management page appears. Snapshot policies are displayed by default
 
 == Create policies 
 
-You can create policies that govern your snapshot copies, replications and backups to object storage: 
+You can create policies that govern your snapshots, replications and backups to object storage: 
 
 * <<Create a snapshot policy before initiating the snapshot>>
 * <<Create a replication policy before initiating the replication>>
@@ -70,7 +70,7 @@ You can create policies that govern your snapshot copies, replications and backu
 
 === Create a snapshot policy before initiating the snapshot
 
-Part of your 3-2-1 strategy involves creating a snapshot copy of the volume on the *primary* storage system. 
+Part of your 3-2-1 strategy involves creating a snapshot of the volume on the *primary* storage system. 
 
 Part of the policy creation process involves identifying snapshot and SnapMirror labels that denote the schedule and retention. You can use predefined labels or create your own. 
 
