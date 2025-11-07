@@ -15,9 +15,7 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 [.lead]
 You should register the SnapCenter Plug-in for VMware vSphere host in NetApp Backup and Recovery for the datastores and virtual machines to be displayed. Only a user with administrative access can register the SnapCenter Plug-in for VMware vSphere host.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 

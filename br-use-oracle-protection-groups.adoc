@@ -38,11 +38,9 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
-
 . Provide a name for the protection group.
 . Select the VMs or storage pools that you want to include in the protection group.
 . Select *Next*. 
-
 . Select the *Backup policy* that you want to apply to the protection group.
 +
 If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.

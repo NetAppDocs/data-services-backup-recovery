@@ -16,9 +16,7 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your Cloud Volumes ONTAP systems to Azure Blob storage.
 
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 
@@ -106,7 +104,8 @@ To use the NetApp Backup and Recovery Search & Restore functionality, you need t
 +
 [%collapsible]
 ====
-[source,json]
+[source,console]
+----
 "Microsoft.Storage/storageAccounts/listkeys/action",
 "Microsoft.Storage/storageAccounts/read",
 "Microsoft.Storage/storageAccounts/write",
@@ -143,6 +142,7 @@ To use the NetApp Backup and Recovery Search & Restore functionality, you need t
 "Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
 "Microsoft.Synapse/workspaces/operationResults/read",
 "Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action"
+----
 ====
 +
 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html[View the full JSON format for the policy^]
@@ -368,7 +368,7 @@ To create a policy, select *Create new policy* and do the following:
 ** Select up to five schedules, typically of different frequencies. 
 ** Select *Create*. 
 
-* *Export existing Snapshot copies to object storage as backup copies*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+* *Export existing snapshots to object storage as backup copies*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
 
@@ -393,7 +393,7 @@ This is the chance to review your selections and make adjustments, if necessary.
 
 .Result 
 
-NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the primary storage system data. Subsequent transfers contain differential copies of the primary storage data contained in Snapshot copies.
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the primary storage system data. Subsequent transfers contain differential copies of the primary storage data contained in snapshots.
 
 A replicated volume is created in the destination cluster that will be synchronized with the primary volume. 
 

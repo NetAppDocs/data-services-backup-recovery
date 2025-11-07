@@ -15,14 +15,12 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 [.lead]
 NetApp Backup and Recovery enables you to create up to three copies of your source volumes to protect your data. There are many options that you can select when enabling Backup and Recovery on your volumes, so you should review your choices so you're prepared.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 We'll go over the following options:
 
-* Which protection features will you use: snapshot copies, replicated volumes, and/or backup to cloud
+* Which protection features will you use: snapshots, replicated volumes, and/or backup to cloud
 * Which backup architecture will you use: a cascade or fan-out backup of your volumes
 * Will you use the default backup policies, or do you need to create custom policies 
 * Do you want the service to create the cloud buckets for you, or do you want to make your object storage containers before you begin
@@ -38,7 +36,7 @@ Before you select the features you'll use, here's a quick explanation of what ea
 | Description
 
 | Snapshot | 
-Creates a read-only, point-in-time image of a volume within the source volume as a snapshot copy. You can use the snapshot copy to recover individual files, or to restore the entire contents of a volume. 
+Creates a read-only, point-in-time image of a volume within the source volume as a snapshot. You can use the snapshot to recover individual files, or to restore the entire contents of a volume. 
 | Replication | 
 Creates a secondary copy of your data on another ONTAP storage system and continually updates the secondary data. Your data is kept current and remains available whenever you need it. 
 | Cloud backup | 
@@ -46,19 +44,19 @@ Creates backups of your data to the cloud for protection and for long-term archi
 
 |===
 
-Snapshots are the basis of all the backup methods, and they are required to use the backup and recovery service. A snapshot copy is a read-only, point-in-time image of a volume. The image consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot copy was made. The snapshot copy that is created on your volume is used to keep the replicated volume and backup file synchronized with changes made to the source volume - as shown in the figure.
+Snapshots are the basis of all the backup methods, and they are required to use the backup and recovery service. A snapshot is a read-only, point-in-time image of a volume. The image consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot was made. The snapshot that is created on your volume is used to keep the replicated volume and backup file synchronized with changes made to the source volume - as shown in the figure.
 
-image:diagram-321-overview.png["A diagram showing how backup files exist on the source system as snapshot copies, as replicated volumes on the secondary storage system, and as a backup files in object storage."]
+image:diagram-321-overview.png["A diagram showing how backup files exist on the source system as snapshots, as replicated volumes on the secondary storage system, and as a backup files in object storage."]
 
 You can choose to create both replicated volumes on another ONTAP storage system and backup files in the cloud. Or you can choose just to create replicated volumes or backup files - it's your choice. 
 //The service also enables you to select two replication destinations if you want to protect your data in an additional location (both with and without creating backup files).
 
 To summarize, these are the valid protection flows you can create for volumes in your ONTAP system:
 
-* Source volume -> Snapshot copy -> Replicated volume -> Backup file
-* Source volume -> Snapshot copy -> Backup file
-* Source volume -> Snapshot copy -> Replicated volume
-//* Source volume -> Snapshot copy -> Replicated volume -> Replicated volume
+* Source volume -> Snapshot -> Replicated volume -> Backup file
+* Source volume -> Snapshot -> Backup file
+* Source volume -> Snapshot -> Replicated volume
+//* Source volume -> Snapshot -> Replicated volume -> Replicated volume
 
 NOTE: The initial creation of a replicated volume or backup file includes a full copy of the source data -- this is called a _baseline transfer_. Subsequent transfers contain only differential copies of the source data (the snapshot).
 
@@ -98,13 +96,13 @@ High (provider fees)
 
 When creating both replicated volumes and backup files, you can choose a fan-out or cascade architecture to back up your volumes.
 
-A *fan-out* architecture transfers the snapshot copy independently to both the destination storage system and the backup object in the cloud.
+A *fan-out* architecture transfers the snapshot independently to both the destination storage system and the backup object in the cloud.
 
-image:diagram-321-fanout-detailed.png["A diagram showing how a snapshot copy of a volume is used to create and update a replicated volume and a backup file."]
+image:diagram-321-fanout-detailed.png["A diagram showing how a snapshot of a volume is used to create and update a replicated volume and a backup file."]
 
-A *cascade* architecture transfers the snapshot copy to the destination storage system first, and then that system transfers the copy to the backup object in the cloud.
+A *cascade* architecture transfers the snapshot to the destination storage system first, and then that system transfers the copy to the backup object in the cloud.
 
-image:diagram-321-cascade-detailed.png["A diagram showing how a snapshot copy of a volume is used to create and update a replicated volume and a backup file."]
+image:diagram-321-cascade-detailed.png["A diagram showing how a snapshot of a volume is used to create and update a replicated volume and a backup file."]
 
 *Comparison of the different architecture choices*
 
@@ -116,7 +114,7 @@ This table provides a comparison of the fan-out and cascade architectures.
 | Fan-out
 | Cascade
 
-| Small performance impact on the source system because it is sending snapshot copies to 2 distinct systems | Less effect on the performance of the source storage system because it sends the snapshot copy only once
+| Small performance impact on the source system because it is sending snapshots to 2 distinct systems | Less effect on the performance of the source storage system because it sends the snapshot only once
 | Easier to set up because all policies, networking, and ONTAP configurations are done on the source system | Requires some networking and ONTAP configuration to be done from the secondary system as well.
 
 |===
@@ -125,9 +123,9 @@ This table provides a comparison of the fan-out and cascade architectures.
 
 You can use the default policies provided by NetApp to create your backups, or you can create custom policies. When you use the activation wizard to enable the backup and recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want to use a policy different than those existing policies, you can create the policy before starting or while using the activation wizard.
 
-* The default snapshot policy creates hourly, daily, and weekly snapshot copies, retaining 6 hourly, 2 daily, and 2 weekly snapshot copies.
-* The default replication policy replicates daily and weekly snapshot copies, retaining 7 daily and 52 weekly snapshot copies.
-* The default backup policy replicates daily and weekly snapshot copies, retaining 7 daily and 52 weekly snapshot copies.
+* The default snapshot policy creates hourly, daily, and weekly snapshots, retaining 6 hourly, 2 daily, and 2 weekly snapshots.
+* The default replication policy replicates daily and weekly snapshots, retaining 7 daily and 52 weekly snapshots.
+* The default backup policy replicates daily and weekly snapshots, retaining 7 daily and 52 weekly snapshots.
 
 If you create custom policies for replication or backup, the policy labels (for example, "daily" or "weekly") must match the labels that exist in your snapshot policies or replicated volumes and backup files won't be created. 
 

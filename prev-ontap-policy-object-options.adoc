@@ -17,9 +17,7 @@ NetApp Backup and Recovery enables you to create backup policies with a variety 
 
 NOTE: These policy settings are relevant for backup-to-object storage only. None of these settings affect your snapshot or replication policies. 
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 == Backup schedule options
@@ -51,8 +49,6 @@ Yearly backups are deleted automatically from the source system after being tran
 NetApp Backup and Recovery provides support for DataLock and Ransomware protection for your volume backups. These features enable you to lock your backup files and scan them to detect possible ransomware on the backup files. This is an optional setting that you can define in your backup policies when you want extra protection for your volume backups for a cluster.
 
 Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the DataLock and Ransomware Resilience option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
-
-https://bluexp.netapp.com/blog/cbs-blg-the-bluexp-feature-that-protects-backups-from-ransomware[See the DataLock and Ransomware protection blog for more details^].
 
 This feature does not provide protection for your source volumes; only for the backups of those source volumes. Use some of the https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html[anti-ransomware protections provided from ONTAP^] to protect your source volumes.
 
@@ -300,7 +296,7 @@ For more tips to mitigate DataLock costs, refer to
 https://community.netapp.com/t5/Tech-ONTAP-Blogs/Understanding-NetApp-Backup-and-Recovery-DataLock-and-Ransomware-Feature-TCO/ba-p/453475 
 
  
-Additionally, you can get estimates for the cost associated with DataLock by visiting the https://bluexp.netapp.com/cloud-backup-service-tco-calculator[NetApp Backup and Recovery Total Cost of Ownership (TCO) calculator]. 
+Additionally, you can get estimates for the cost associated with DataLock by visiting the https://www.netapp.com/data-services/backup-and-recovery-tco-calculator/[NetApp Backup and Recovery Total Cost of Ownership (TCO) calculator]. 
 
 
 == Archival storage options

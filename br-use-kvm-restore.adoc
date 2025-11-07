@@ -13,7 +13,7 @@ summary: Protect your KVM workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore KVM virtual machines from snapshot copies, from a protection group backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
+Restore KVM virtual machines from snapshots, from a protection group backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
 
 //Restore KVM virtual machines from a protection group backup replicated to secondary storage using NetApp Backup and Recovery.
 
@@ -121,8 +121,7 @@ A list of possible restore points appears.
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
 Next, you can choose the destination settings and the pre-restore and post-restore options.
-//+
-//image:screen-vm-restore-destination.png[A screenshot showing the Restore Destination details page.]
+
 
 [discrete]
 ===== Destination selection
