@@ -50,27 +50,20 @@ You need to discover at least one workload before you can add an offsite backup 
 
 * For StorageGRID:  
 ** *Credential name*: Enter the StorageGRID credential name.
-//** *Bucket target name*: Enter the name of the StorageGRID bucket.
-//** *Tenant ID*: Enter the StorageGRID tenant ID.
 ** *Gateway Node FQDN*: Enter a FQDN name for StorageGRID.
 ** *Port*: Enter the port number for StorageGRID.
 ** *Access key*: Enter the StorageGRID S3 access key. 
 ** *Secret key*: Enter the StorageGRID S3 secret key.
-//** *Console agents*: Select the Console agent for StorageGRID.  
+ 
 
 * For ONTAP S3: 
 ** *Credential name*: Enter the ONTAP S3 credential name.
-//** *Bucket target name*: Enter the name of the StorageGRID bucket.
-//** *Storage working environment*: Select the ONTAP S3 working environment.
 ** *Gateway Node FQDN*: Enter a FQDN name for ONTAP S3.
 ** *Port*: Enter the port number for ONTAP S3.
 ** *Access key*: Enter the ONTAP S3 access key. 
 ** *Secret key*: Enter the ONTAP S3 secret key. 
 
 . Select *Discover*.
-
-//+
-//image:screen-br-inventory-offsite-backup-targets.png[Offsite backup targets tab]
 
 == Add a bucket for a backup target 
 
@@ -81,8 +74,7 @@ Rather than have NetApp Backup and Recovery discover buckets automatically, you 
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-. Select *Offsite backup targets*.
-//. Select *Discover backup target*. 
+. Select *Offsite backup targets*. 
 . Select the target and on the right, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Add bucket*.
 . Enter the bucket information. The information differs depending on the type of backup target you selected.
 
@@ -96,8 +88,6 @@ Rather than have NetApp Backup and Recovery discover buckets automatically, you 
 ** *Versioning*: Select this option to enable versioning for the S3 bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
 ** *Tags*: Select tags for the S3 bucket. Tags are key-value pairs that can be used to organize and manage your S3 resources.
 ** *Encryption*: Select the type of encryption for the S3 bucket. The options are either AWS S3-managed keys or AWS Key Management Service key. If you select AWS Key Management Service keys, you must provide the key ID.
-//* *Enable bucket key*: Select this option to enable bucket key for the S3 bucket. Bucket key reduces the cost of using server-side encryption with AWS Key Management Service by reducing the number of requests made to the service.
-
 
 
 * For Azure: 
@@ -135,7 +125,6 @@ Enter the credentials needed to access the backup target.
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select *Offsite backup targets*.
-//. Select *Discover backup target*. 
 . Select the target and on the right, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Change credentials*.
 . Enter the new credentials for the backup target. The information differs depending on the type of backup target you selected.
 . Select *Done*. 

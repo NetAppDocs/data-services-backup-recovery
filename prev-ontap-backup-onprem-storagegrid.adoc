@@ -17,9 +17,7 @@ Complete a few steps in NetApp Backup and Recovery to get started backing up vol
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
 
@@ -59,7 +57,7 @@ Ensure that the network where the Console agent is installed enables the followi
 
 * NetApp Backup and Recovery functionality is built into the Console agent. When it is installed in private mode, you'll need to update the Console agent software periodically to get access to new features. Check the link:whats-new.html[NetApp Backup and Recovery What's New] to see the new features in each NetApp Backup and Recovery release. When you want to use the new features, follow the steps to https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software^].
 +
-The new version of NetApp Backup and Recovery that includes the ability to schedule and create Snapshot copies and replicated volumes, in addition to creating backups to object storage, requires that you are using version 3.9.31 or greater of the Console agent. So it is recommended that you get this newest release to manage all your backups.
+The new version of NetApp Backup and Recovery that includes the ability to schedule and create snapshots and replicated volumes, in addition to creating backups to object storage, requires that you are using version 3.9.31 or greater of the Console agent. So it is recommended that you get this newest release to manage all your backups.
 
 * When you use NetApp Backup and Recovery in a SaaS environment, the NetApp Backup and Recovery configuration data is backed up to the cloud. When you use NetApp Backup and Recovery in a site with no internet access, the NetApp Backup and Recovery configuration data is backed up to the StorageGRID bucket where your backups are being stored. 
 
@@ -142,13 +140,15 @@ When you set up backup to StorageGRID, the backup wizard prompts you for an S3 a
 +
 These access keys must be associated with a user who has the following permissions:
 +
-[source,json]
+[source,console]
+----
 "s3:ListAllMyBuckets",
 "s3:ListBucket",
 "s3:GetObject",
 "s3:PutObject",
 "s3:DeleteObject",
 "s3:CreateBucket"
+----
 
 Object versioning::
 You must not enable StorageGRID object versioning manually on the object store bucket.
@@ -335,7 +335,7 @@ If your cluster is using ONTAP 9.12.1 or greater and your StorageGRID system is 
 +
 Select or create a new StorageGRID cluster. For details about creating a StorageGRID cluster so the Console can discover it, refer to https://docs.netapp.com/us-en/storagegrid-117/[StorageGRID documentation^]. 
 
-* *Export existing Snapshot copies to object storage as backup copies*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+* *Export existing snapshots to object storage as backup copies*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
 
@@ -354,7 +354,7 @@ This is the chance to review your selections and make adjustments, if necessary.
 
 .Result 
 
-NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the source data. Subsequent transfers contain differential copies of the primary storage data contained in Snapshot copies.
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the source data. Subsequent transfers contain differential copies of the primary storage data contained in snapshots.
 
 A replicated volume is created in the destination cluster that will be synchronized with the primary storage volume. 
 

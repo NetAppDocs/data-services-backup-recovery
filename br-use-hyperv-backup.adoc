@@ -16,7 +16,7 @@ summary: Protect your Hyper-V workloads with NetApp backup and recovery.
 Back up Hyper-V VMs from on-premises ONTAP systems to Amazon Web Services, Azure NetApp Files, or StorageGRID to ensure that your data is protected. Backups are automatically generated and stored in an object store in your public or private cloud account. 
 
 * To back up workloads on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
-* Create protection groups to manage the backup and restore operations for a set of resources. See link:br-use-hyper-v-protection-groups.html[Create and manage protection groups for Hyper-V workloads with NetApp Backup and Recovery] for more information.
+* Create protection groups to manage the backup and restore operations for a set of resources. See link:br-use-hyperv-protection-groups.html[Create and manage protection groups for Hyper-V workloads with NetApp Backup and Recovery] for more information.
 * Back up workloads now (create an on-demand backup now).  
 
 == Back up workloads now with an on-demand backup

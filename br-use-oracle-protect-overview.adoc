@@ -31,4 +31,3 @@ You can use NetApp Backup and Recovery to perform the following tasks related to
 * link:br-use-oracle-protection-groups.html[Create and manage protection groups for Oracle workloads]
 * link:br-use-oracle-backup.html[Back up Oracle workloads]
 * link:br-use-oracle-restore.html[Restore Oracle workloads]
-

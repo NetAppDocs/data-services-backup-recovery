@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: prev-ontap-migrate-resync.html
-keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database, migrate volumes, SnapMirror to Cloud Resync, ONTAP, NetApp, NetApp ONTAP, NetApp Cloud Volumes ONTAP, NetApp Cloud Volumes Service, FlexVols, FlexGroups
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database, migrate volumes, SnapMirror to Cloud Resync, ONTAP, NetApp, NetApp ONTAP, NetApp Cloud Volumes ONTAP, FlexVols, FlexGroups
 summary: The SnapMirror to Cloud Resync feature in NetApp Backup and Recovery streamlines data protection and continuity during volume migrations in NetApp environments.  
 ---
 
@@ -13,18 +13,15 @@ summary: The SnapMirror to Cloud Resync feature in NetApp Backup and Recovery st
 :imagesdir: ./media/
 
 [.lead]
-The SnapMirror to Cloud Resync feature in NetApp Backup and Recovery streamlines data protection and continuity during volume migrations in NetApp environments. When a volume is migrated using SnapMirror Logical Replication (LRSE), from one on-premises NetApp deployment to another, or to a cloud-based solution such as Cloud Volumes ONTAP or Cloud Volumes Service, SnapMirror to Cloud Resync ensures that existing cloud backups remain intact and operational. 
+The SnapMirror to Cloud Resync feature in NetApp Backup and Recovery streamlines data protection and continuity during volume migrations in NetApp environments. When a volume is migrated using SnapMirror Logical Replication (LRSE) from one on-premises NetApp deployment to another, or to a cloud-based solution such as Cloud Volumes ONTAP, SnapMirror to Cloud Resync ensures that existing cloud backups remain intact and operational. 
 
-This feature eliminates the need for a time-consuming and resource-intensive re-baseline operation, enabling backup operations to continue post-migration. This feature is valuable in workload migration scenarios, supporting both FlexVols and FlexGroups, and is available starting with ONTAP version 9.16.1.
+This feature removes the need for a re-baseline process and lets backups continue after migration. This feature is valuable in workload migration scenarios, supporting both FlexVols and FlexGroups, and is available starting with ONTAP version 9.16.1.
 
 NOTE: This feature is available starting with NetApp Backup and Recovery version 4.0.3 released May 2025. 
 
-By maintaining backup continuity across environments, SnapMirror to Cloud Resync enhances operational efficiency and reduces the complexity of hybrid and multi-cloud data management. 
+SnapMirror to Cloud Resync maintains backup continuity across environments, making it easier to manage data in hybrid and multi-cloud setups. 
 
-====
-*NOTE*   To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-====
-
+NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 .Before you begin
 
@@ -36,16 +33,13 @@ Ensure that these prerequisites have been met:
 
 * The SnapMirror to Cloud Resync feature is available starting with NetApp Backup and Recovery version 4.0.3 released May 2025.
 
-* The latest backup in the object storage must be the common snapshot across the old source, the new source, and the object store. The common snapshot cannot be older than the latest snapshot that is backed up to the object store. 
+* Ensure that the latest backup in the object storage is the common snapshot across the old source, the new source, and the object store. Do not use a common snapshot that is older than the latest snapshot backed up to the object store. 
 
-* Both the snapshot and SnapMirror policies, which were used on the older ONTAP must be created on the new ONTAP cluster before starting the resync operation. If any policy is going to be used in the resync process, then that policy must also be created. The Resync operation does not create the policies. 
+* Both the snapshot and SnapMirror policies used on the older ONTAP cluster must be created on the new ONTAP cluster before starting the resync operation. If you use any policy in the resync process, you must also create that policy. The Resync operation does not create policies. 
 
 * Ensure that the SnapMirror policy that is applied to the migration volume SnapMirror relationship includes the same label that the cloud relationship uses. To avoid issues, use the policy that governs an exact mirror of the volume and all snapshots. 
 
-
-
 NOTE: SnapMirror to Cloud Resync after migrations using SVM-Migrate, SVM-DR, or Head Swap methods are not currently supported.
-
 
 == How NetApp Backup and Recovery SnapMirror to Cloud Resync works 
 
@@ -53,7 +47,7 @@ If you complete a technical refresh or migrate volumes from one ONTAP cluster to
 
 Here's an example: 
 
-Imagine you have an on-premises volume called Vol1a. This volume has three snapshots: S1, S2, and S3. These snapshots are like restore points. Vol1 is already being backed up to a cloud object store endpoint using SnapMirror to Cloud (SM-C). However, only S1 and S2 have been backed up to object store so far. 
+Imagine you have an on-premises volume called Vol1a. This volume has three snapshots: S1, S2, and S3. These snapshots are restore points. Vol1 is backed up to the cloud using SnapMirror to Cloud (SM-C), but only S1 and S2 are in the object store. 
 
 Now, you want to migrate Vol1 to another ONTAP cluster. To do this, you create a SnapMirror Logical Replication (LRSE) relationship to a new cloud volume called Vol1b. This transfers all three snapshots—S1, S2, and S3—from Vol1a to Vol1b. 
 
@@ -75,21 +69,17 @@ Here's how the resync works:
 
 This means only the new data added after S2 is sent to object store, not the entire volume. 
 
-This process avoids re-sending data that's already backed up, saves bandwidth, and ensures that your backup chain continues smoothly after migration. 
+This process prevents duplicate backups, saves bandwidth, and keeps backups running after migration. 
 
 image:diagram-snapmirror-cloud-resync-migration.png[NetApp Backup and Recovery SnapMirror to Cloud Resync]  
 
-
 == Procedure notes
-
 
 * Migrations and tech refreshes are not performed using NetApp Backup and Recovery. They should be carried out by a professional services team or a qualified storage administrator. 
 
-* A NetApp migration team is responsible for creating the SnapMirror relationship between the source and destination ONTAP clusters to facilitate volume migration. 
+* A NetApp migration team creates the SnapMirror relationship between the source and destination ONTAP clusters to help move volumes.
 
 * Ensure that the migration during a tech refresh is based on SnapMirror-based migration. 
-
-
 
 == How to migrate volumes using SnapMirror to Cloud Resync
 
@@ -106,7 +96,7 @@ image:diagram-snapmirror-cloud-resync-migration-steps.png[Steps to migrate volum
 
 === Follow a pre-migration checklist
 
-Before starting the migration, a NetApp Tech Refresh team ensures the following prerequisites are met to avoid data loss and ensure a smooth migration process.
+Before migration, the NetApp Tech Refresh team checks these prerequisites to prevent data loss and ensure a smooth process.
 
 . Ensure all volumes that are to be migrated are protected using NetApp Backup and Recovery.
 . Record volume instance UUIDs. Write down the Instance UUIDs of all volumes before starting the migration. These identifiers are crucial for mapping and resync operations later. 
@@ -114,7 +104,6 @@ Before starting the migration, a NetApp Tech Refresh team ensures the following 
 . Document SnapMirror policies. Record the SnapMirror policy currently attached to each volume's relationship. This will be needed later during the SnapMirror to Cloud Resync process.
 . Delete the SnapMirror Cloud relationships with the object store. 
 . Create a standard SnapMirror relationship with the new ONTAP cluster to migrate the volume to the new target ONTAP cluster. 
-
 
 === Follow a post-migration checklist
 
@@ -128,14 +117,9 @@ After the migration, a NetApp Tech Refresh team ensures the following steps are 
 +
 NOTE: The volume instance UUID should be used, not the volume ID. The volume instance UUID is a unique identifier that remains consistent across migrations, while the volume ID may change after migration.
 
-
-
 === Perform a SnapMirror to Cloud Resync
 
 After the migration, a NetApp Tech Refresh team performs a SnapMirror to Cloud Resync operation to resume cloud backups from the newly migrated volumes.
-
-
-
 
 . Add the new ONTAP cluster as a system in the Console *Systems* page. 
 
@@ -156,12 +140,10 @@ After the migration, a NetApp Tech Refresh team performs a SnapMirror to Cloud R
 * The new volume instance UUID from the destination cluster
 * The SnapMirror policy to be applied to the new relationship. 
 
-
 . Select *Upload* under the *Upload Volume Mapping Details* to upload the completed CSV sheet into the NetApp Backup and Recovery UI.  
 +
 NOTE: The volume instance UUID should be used, not the volume ID. The volume instance UUID is a unique identifier that remains consistent across migrations, while the volume ID may change after migration.
  
-
 . Enter provider and network configuration information required for the resync operation. 
 
 . Select *Submit* to start the validation process. 
@@ -177,6 +159,5 @@ NetApp Backup and Recovery validates that each volume selected for resync is the
 IMPORTANT: To ensure that volumes remain eligible for the SnapMirror to Cloud Resync operation, take a final snapshot of each volume before deleting any SnapMirror relationships during the pre-migration phase. This preserves the latest state of the data. 
 
 . Select *Resync* to start the resync operation. The system uses the latest and common snapshot to transfer only the incremental changes, ensuring backup continuity.
-
 
 . Monitor the resync process in the Job Monitor page. 

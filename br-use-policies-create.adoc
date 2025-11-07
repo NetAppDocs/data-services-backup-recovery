@@ -40,7 +40,7 @@ You can accomplish the following goals related to policies:
 
 == Create a policy
 
-You can create policies that govern your local snapshots, replications to secondary storage, and backups to object storage. Part of your 3-2-1 strategy involves creating a snapshot copy of the instances, databases, applications, or VMs on the *primary* storage system. 
+You can create policies that govern your local snapshots, replications to secondary storage, and backups to object storage. Part of your 3-2-1 strategy involves creating a snapshot of the instances, databases, applications, or VMs on the *primary* storage system. 
 
 
 *Required NetApp Console role*

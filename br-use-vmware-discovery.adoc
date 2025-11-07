@@ -21,11 +21,9 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 == Discover VMware workloads and optionally import SnapCenter resources
 
-During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshot copies, and backup and restore options. 
+During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshots, and backup and restore options. 
 
 You can import VMware NFS and VMFS datastores and VMs from their on-premises SnapCenter Plug-in for VMware vSphere into NetApp Backup and Recovery inventory. 
-
-//You can import entire vCenter resources or select specific protection groups. For Preview, you cannot select a specific resource group. 
 
 NOTE: This version of NetApp Backup and Recovery supports only VMware vCenter and does not discover vVols or VMs on vVols.  
 
@@ -36,10 +34,8 @@ During the import process, NetApp Backup and Recovery performs the following tas
 * Prepares the metadata of the vCenter and marks it as unmanaged in the NetApp Console. 
 * Configures database access. 
 * Discovers VMware vCenter, datastores, and VMs.
-* Imports existing protection policies, snapshot copies, and backup and restore options from SnapCenter Plug-in for VMware vSphere.
+* Imports existing protection policies, snapshots, and backup and restore options from SnapCenter Plug-in for VMware vSphere.
 * Displays the discovered resources in the NetApp Backup and Recovery Inventory page.
-
-//In future releases, you will be able to discover KVM and Hyper-V hypervisors and other applications.
 
 Discovery occurs in the following ways: 
 
@@ -49,26 +45,6 @@ NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisite
 +
 * If you don't already have the SnapCenter Plug-in, you can still discover workloads within your systems by adding a vCenter manually and performing discovery.
 
-
-
-
-//Notes from JIRA: 
-//* Note- Users can choose between physical resources to discover workload on bare metal or virtualized resources to discover VMs and underlying applications with virtualized as default.
-//* Note- In future, 3 hypervisors - VMware, KVM, Hyper-V will be supported with VMware as default selection.
-//* Select VMware as the hypervisor, user can add and register a vCenter to discover NFS, VMFS datastores and VMs  within this vCenter to backup and restore.
-
-//* An option to select Use self-signed certificates ( "Use self-signed certificates" checkbox is selected by default, if you already have authoritative certificates for your vCenter environment, you should uncheck this checkbox.)
-
-//* User can choose to discover underlying applications as part of the discovery process. The scope of application discovered in 25H1 is MSSQL.
-//* Click on Discover to add vcenter, push VMware plug-in per vcenter , discover NFS and VMFS datastores, VMs and list all discovered datastores and VMs. ( Agentless)
-
-//* Workload type – VMware, no of vCenters, resources – datastores/VMs discovered, protected resources and total protected capacity as nil
-//* If user has selected “discover underlying applications “ VMware tools will be used to identify VMs which has MSSQL applications and a summary of MSSQL discovered resources will be displayed as a new row. 
-
-//+
-//image:screen-br-landing-discover-import-buttons.png[Landing page screenshot for NetApp Backup and Recovery without discovered resources]
-//+
-//image:screen-br-discover-workloads.png[Discover workload resources screenshot]
 === If SnapCenter Plug-in is not already installed, add a vCenter and discover resources
 
 If you don't already have SnapCenter Plug-in for VMware installed, add vCenter information and have NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
@@ -128,8 +104,6 @@ TIP: After you import vCenter metadata from the SnapCenter Plug-in, NetApp Backu
 
 . From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 . Select *Inventory*.
-//+
-//image:../media/screen-br-discover-workloads.png[Discover workload resources screenshot]
 . From the NetApp Backup and Recovery Discover workload resources page, select *Import from SnapCenter*.
 
 . In the Import from field, select *SnapCenter Plug-in for VMware*.
@@ -153,10 +127,6 @@ NOTE: If the SnapCenter Plug-in is already registered, you can  update the exist
 .Result
 The Inventory page shows the vCenter as unmanaged in NetApp Backup and Recovery until you explicitly select to manage it.
 
-//image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter as unmanaged]
-
-
-
 ==== Manage resources imported from SnapCenter Plug-in
 
 After you import the vCenter metadata from the SnapCenter Plug-in for VMware, manage the resources in NetApp Backup and Recovery. After you select to manage those resources, NetApp Backup and Recovery is able to back up and recover the resources that you imported. After you initiate the management in NetApp Backup and Recovery, you no longer manage those resources in SnapCenter Plug-in. 
@@ -178,26 +148,6 @@ After you select to manage the resources, the resources, VMs, and policies are i
 
 The Inventory page shows the newly managed vCenter resources.
 
-////
-image:../media/screen-vm-inventory-managed.png[Inventory page showing the managed vCenter resources]
-+
-image:../media/screen-vm-inventory.png[Inventory page showing the imported vCenter resources]
-+
-image:../media/screen-vm-discover-import-manage.png[Manage vCenter in NetApp Console page]
-/////
-
-
-
-
-
-//==== Set Advanced settings options during discovery and install the plugin
-
-
-//Not supported in VMware.  
-
-
-
- 
 ==== Continue to the NetApp Backup and Recovery Dashboard
 
 
