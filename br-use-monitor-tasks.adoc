@@ -103,7 +103,7 @@ From the Job Monitoring Details information, you can download a JSON file contai
 
 Monitor retention (_backup lifecycle_) flows to check backups, keep them safe, and support audits. Identify when backup copies expire to track the lifecycle. 
 
-A backup lifecycle job tracks all Snapshot copies that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can look at all job types called "Retention" on the Job Monitoring page.
+A backup lifecycle job tracks all snapshots that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can look at all job types called "Retention" on the Job Monitoring page.
 
 The "Retention" job type captures all Snapshot deletion jobs initiated on a volume that is protected by NetApp Backup and Recovery.  
 

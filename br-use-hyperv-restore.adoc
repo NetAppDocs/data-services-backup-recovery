@@ -13,7 +13,7 @@ summary: Protect your Hyper-V workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore Hyper-V workloads from snapshot copies, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
+Restore Hyper-V workloads from snapshots, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
 
 .Restore from these locations
 

@@ -13,7 +13,7 @@ summary: Protect your Oracle workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore Oracle databases from snapshot copies, from a backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
+Restore Oracle databases from snapshots, from a backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
 
 .Restore from these locations
 

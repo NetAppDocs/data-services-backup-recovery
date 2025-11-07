@@ -20,13 +20,13 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 After activation, backup and recovery creates block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud. In addition to your source volume, you'll have a:
 
-* Snapshot copy of the volume on the source system
+* Snapshot of the volume on the source system
 * Replicated volume on a different storage system
 * Backup of the volume in object storage 
 
-image:diagram-321-overview-unified.png[A diagram showing how backup files exist on the source system as Snapshot copies, as replicated volumes on the secondary storage system, and as a backup files in object storage.]
+image:diagram-321-overview-unified.png[A diagram showing how backup files exist on the source system as snapshots, as replicated volumes on the secondary storage system, and as a backup files in object storage.]
 
-NetApp Backup and Recovery leverages NetApp's SnapMirror data replication technology to ensure that all the backups are fully synchronized by creating Snapshot copies and transferring them to the backup locations.
+NetApp Backup and Recovery leverages NetApp's SnapMirror data replication technology to ensure that all the backups are fully synchronized by creating snapshots and transferring them to the backup locations.
 
 The benefits of the 3-2-1 approach include:
 
@@ -69,7 +69,7 @@ See link:br-reference-limitations.html[Replication limitations for ONTAP volumes
 
 *Restore features:*
 
-* Restore data from a specific point in time from local Snapshot copies, replicated volumes, or backed up volumes in object storage.
+* Restore data from a specific point in time from local snapshots, replicated volumes, or backed up volumes in object storage.
 * Restore a volume, a folder, or individual files, to the source system or to a different system.
 * Restore data to a system using a different subscription/account or that is in a different region.
 * Perform a _quick restore_ of a volume from cloud storage to a Cloud Volumes ONTAP system or to an on-premises system; perfect for disaster recovery situations where you need to provide access to a volume as soon as possible.
@@ -88,7 +88,7 @@ https://bluexp.netapp.com/cloud-volumes-global-regions[Learn more using the Glob
 
 === Supported backup destinations
 
-NetApp Backup and Recovery enables you to back up ONTAP volumes from the following source systems to the following secondary systems and object storage in public and private cloud providers. Snapshot copies reside on the source system.
+NetApp Backup and Recovery enables you to back up ONTAP volumes from the following source systems to the following secondary systems and object storage in public and private cloud providers. snapshots reside on the source system.
 
 [cols=3*,options="header",cols="33,33,33",width="90%"]
 |===
@@ -135,7 +135,7 @@ ONTAP S3
 
 === Supported restore destinations
 
-You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshot copies reside on the source system and can be restored only to that same system.
+You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. snapshots reside on the source system and can be restored only to that same system.
 
 [cols=3*,options="header",cols="33,33,33",width="90%"]
 |===
@@ -193,7 +193,7 @@ See the sections on link:br-reference-limitations.html[Backup and restore limita
 
 There are two types of costs associated with using NetApp Backup and Recovery with ONTAP systems: resource charges and service charges. Both of these charges are for the backup to object portion of the service. 
 
-There is no charge to create Snapshot copies or replicated volumes - other than the disk space required to store the Snapshot copies and replicated volumes.
+There is no charge to create snapshots or replicated volumes - other than the disk space required to store the snapshots and replicated volumes.
 
 *Resource charges*
 
@@ -236,7 +236,7 @@ NetApp Backup and Recovery is available with the following consumption models:
 * *PAYGO*: An hourly subscription from your cloud provider's marketplace.
 * *Annual*: An annual contract from your cloud provider's marketplace.
 
-A Backup license is required only for backup and restore from object storage. Creating Snapshot copies and replicated volumes do not require a license.
+A Backup license is required only for backup and restore from object storage. Creating snapshots and replicated volumes do not require a license.
 
 === Bring your own license
 
@@ -295,7 +295,7 @@ This diagram shows volumes being replicated to a Cloud Volumes ONTAP system, but
 
 Backups reside in different locations based on the type of backup:
 
-* _Snapshot copies_ reside on the source volume in the source system.
+* _Snapshots_ reside on the source volume in the source system.
 
 * _Replicated volumes_ reside on the secondary storage system - a Cloud Volumes ONTAP or on-premises ONTAP system.
 
@@ -321,11 +321,11 @@ If you want to change the destination object store for a cluster in the future, 
 
 === Customizable backup schedule and retention settings
 
-When you enable NetApp Backup and Recovery for a system, all the volumes you initially select are backed up using the policies that you select. You can select separate policies for Snapshot copies, replicated volumes, and backup files. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to the other volumes after NetApp Backup and Recovery is activated.
+When you enable NetApp Backup and Recovery for a system, all the volumes you initially select are backed up using the policies that you select. You can select separate policies for snapshots, replicated volumes, and backup files. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to the other volumes after NetApp Backup and Recovery is activated.
 
 You can choose a combination of hourly, daily, weekly, monthly, and yearly backups of all volumes. For backup to object you can also select one of the system-defined policies that provide backups and retention for 3 months, 1 year, and 7 years. Backup protection policies that you have created on the cluster using ONTAP System Manager or the ONTAP CLI will also appear as selections. This includes policies created using custom SnapMirror labels. 
 
-NOTE: The Snapshot policy applied to the volume must have one of the labels that you're using in your replication policy and backup to object policy. If matching labels are not found, no backup files will be created. For example, if you want to create "weekly" replicated volumes and backup files, you must use a Snapshot policy that creates "weekly" Snapshot copies.
+NOTE: The Snapshot policy applied to the volume must have one of the labels that you're using in your replication policy and backup to object policy. If matching labels are not found, no backup files will be created. For example, if you want to create "weekly" replicated volumes and backup files, you must use a Snapshot policy that creates "weekly" snapshots.
 
 //These policies are:
 //
@@ -357,7 +357,7 @@ If your cluster is using ONTAP 9.11.1 or greater, you can protect your backups i
 * _DataLock_ protects your backup files from being modified or deleted. 
 * _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack when a backup file is created, and when data from a backup file is being restored.
 
-Scheduled ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest Snapshot copy. The scheduled scans can be disabled to reduce your costs. You can enable or disable scheduled ransomware scans on the latest Snapshot copy by using the option on the Advanced Settings page. If you enable it, scans are performed weekly by default. You can change that schedule to days or weeks or disable it, saving costs.  
+Scheduled ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. The scheduled scans can be disabled to reduce your costs. You can enable or disable scheduled ransomware scans on the latest snapshot by using the option on the Advanced Settings page. If you enable it, scans are performed weekly by default. You can change that schedule to days or weeks or disable it, saving costs.  
 
 The backup retention period is the same as the backup schedule retention period, plus a maximum 31-day buffer. For example, _weekly_ backups with _5_ copies retained will lock each backup file for 5 weeks. _Monthly_ backups with _6_ copies retained will lock each backup file for 6 months.
 

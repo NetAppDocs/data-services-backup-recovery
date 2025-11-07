@@ -19,9 +19,6 @@ The primary on-premises ONTAP system can be a FAS, AFF, or ONTAP Select system. 
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
-
-
-
 == Identify the connection method
 
 There are many configurations in which you can create backups to an S3 bucket on an ONTAP system. Two scenarios are shown below.
@@ -68,7 +65,7 @@ When you use NetApp Backup and Recovery in a standard SaaS environment, the NetA
 
 == Verify license requirements 
 
-Before you can activate NetApp Backup and Recovery for your cluster, you'll need to purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. The license is for backup and restore to object storage - no license is needed to create Snapshot copies or replicated volumes. This license is for the account and can be used across multiple systems.
+Before you can activate NetApp Backup and Recovery for your cluster, you'll need to purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. The license is for backup and restore to object storage - no license is needed to create snapshots or replicated volumes. This license is for the account and can be used across multiple systems.
 
 You'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses].
 
@@ -150,7 +147,8 @@ These access keys must be associated with a user who has the following permissio
 "s3:GetObject",
 "s3:PutObject",
 "s3:DeleteObject",
-"s3:CreateBucket"
+"s3:CreateBucket",
+"s3:GetBucketLocation"
 ----
 
 //S3 bucket options::
@@ -240,7 +238,7 @@ Defining the backup strategy involves configuring the following options:
 
 . In the Define Backup Strategy page, choose one or all of the following. All three are selected by default: 
 +
-* *Local Snapshots*: Creates local Snapshot copies. 
+* *Local Snapshots*: Creates local snapshots. 
 * *Replication*: Creates replicated volumes on another ONTAP storage system.  
 * *Backup*: Backs up volumes to a bucket on an ONTAP system configured for S3.  
 
@@ -309,7 +307,7 @@ To create a policy, select *Create new policy* and do the following:
 //+
 //Select or create a new ONTAP S3 cluster. For details about creating a ONTAP S3 cluster so BlueXP can discover it, refer to https://docs.netapp.com/us-en/storagegrid-117/[StorageGRID documentation^]. 
 
-* *Export existing Snapshot copies to object storage as backup files*: If there are any local snapshot copies for volumes in this system that match the backup schedule label you just selected (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+* *Export existing snapshots to object storage as backup files*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
 
@@ -325,7 +323,7 @@ This is the chance to review your selections and make adjustments, if necessary.
 
 .Result 
 
-NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the source data. Subsequent transfers contain differential copies of the primary storage data contained in snapshot copies.
+NetApp Backup and Recovery starts taking the initial backups of your volumes. The baseline transfer of the replicated volume and the backup file includes a full copy of the source data. Subsequent transfers contain differential copies of the primary storage data contained in snapshots.
 
 A replicated volume is created in the destination cluster that will be synchronized with the primary storage volume. 
 
