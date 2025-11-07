@@ -19,9 +19,6 @@ The primary on-premises ONTAP system can be a FAS, AFF, or ONTAP Select system. 
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
-
-
-
 == Identify the connection method
 
 There are many configurations in which you can create backups to an S3 bucket on an ONTAP system. Two scenarios are shown below.
@@ -150,7 +147,8 @@ These access keys must be associated with a user who has the following permissio
 "s3:GetObject",
 "s3:PutObject",
 "s3:DeleteObject",
-"s3:CreateBucket"
+"s3:CreateBucket",
+"s3:GetBucketLocation"
 ----
 
 //S3 bucket options::
