@@ -1,0 +1,8 @@
+=== VMware preview enhancements
+The preview release of VMware workloads introduces the following enhanced capabilities:
+
+* Support for restoring VMDKs from backups
+* Support for mounting datastores
+* Support for restoring to an alternate location
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
