@@ -85,5 +85,5 @@ See the requirements and restore steps for the type of restore operation you wan
 
 * link:prev-ontap-restore-browse.html[Restore volumes using Browse & Restore]
 * link:prev-ontap-restore-browse.html[Restore folders and files using Browse & Restore]
-* link:prev-ontap-restore-browse.html[Restore volumes, folders, and files using Search & Restore]
+* link:prev-ontap-restore-search.html[Restore volumes, folders, and files using Search & Restore]
 
