@@ -101,14 +101,16 @@ endif::gcp[]
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
-== Prerequisites
+== Search & Restore prerequisites
 
 * Cluster requirements:
-
 ** The ONTAP version must be 9.8 or greater.
 ** The storage VM (SVM) on which the volume resides must have a configured data LIF.
 ** NFS must be enabled on the volume (both NFS and SMB/CIFS volumes are supported).
 ** The SnapDiff RPC Server must be activated on the SVM. The Console does this automatically when you enable Indexing on the system. (SnapDiff is the technology that quickly identifies the file and directory differences between snapshots.)
+* Optionally, you can increase resiliency of Search & Restore by performing an additionaly step when you enable Search & Restore. For instructions, refer to <<mount-volume-steps,Mount the volume to reindex the catalog>>.
+
+=== Legacy Search & Restore prerequisites (using Indexed Catalog v1)
 
 ifdef::aws[]
 * AWS requirements:
@@ -155,22 +157,17 @@ Even though you are using an on-premises Console agent, the cloud provider requi
 The process goes like this:
 
 . Before you can use Search & Restore, you need to enable "Indexing" on each source system from which you'll want to restore volume data. This allows the Indexed Catalog to track the backup files for every volume.
-
 . When you want to restore a volume or files from a volume backup, under _Search & Restore_, select *Search & Restore*.
-
 . Enter the search criteria for a volume, folder, or file by partial or full volume name, partial or full file name, backup location, size range, creation date range, other search filters, and select *Search*.
 +
 The Search Results page displays all the locations that have a file or volume that matches your search criteria.
-
 . Select *View All Backups* for the location you want to use to restore the volume or file, and then select *Restore* on the actual backup file you want to use.
-
 . Select the location where you want the volume, folder, or file(s) to be restored and select *Restore*.
-
 . The volume, folder, or file(s) are restored.
 
 image:diagram_search_restore_vol_file.png["A diagram that shows the flow to perform a volume, folder, or file restore operation using Search & Restore."]
 
-As you can see, you really only need to know a partial name and NetApp Backup and Recovery searches through all backup files that match your search.
+You only need to know a partial name and NetApp Backup and Recovery searches through all backup files that match your search.
 
 == Enable the Indexed Catalog for each system
 
@@ -178,9 +175,11 @@ Before you can use Search & Restore, you need to enable "Indexing" on each sourc
 
 The Indexed Catalog is a database that stores metadata about all the volumes and backup files in your system. It is used by the Search & Restore functionality to quickly find the backup files that contain the data you want to restore.
 
-.Indexed Catalog v2 features
+.Indexed Catalog features
 
-The Indexed Catalog v2, released in February 2025 and updated in June 2025, includes features that make it more efficient and easier to use. This version has a significant performance enhancement and is enabled by default for all new customers.  
+
+////
+The Indexed Catalog includes features that make it more efficient and easier to use. This version has a significant performance enhancement and is enabled by default for all new customers.  
 
 Review the following considerations regarding v2: 
 
@@ -193,9 +192,10 @@ Review the following considerations regarding v2:
 * NetApp Backup and Recovery will index volumes and snapshots associated with systems protected by NetApp Backup and Recovery only with the Catalog v2. Other systems discovered on the Console platform will not be indexed.
 
 * Data indexing with Catalog v2 occurs in on-premises environments and in Amazon Web Services, Microsoft Azure, and Google Cloud Platform (GCP) environments.
+////
+NetApp Backup and Recovery does not provision a separate bucket when you use the Indexed Catalog. Instead, for backups stored in AWS, Azure, Google Cloud Platform, StorageGRID, or ONTAP S3, the service provisions space on the Console agent or on the cloud provider environment. 
 
-
-The Indexed Catalog v2 supports the following: 
+The Indexed Catalog supports the following: 
 
 * Global search efficiency in less than 3 minutes
 * Up to 5 billion files 
@@ -203,11 +203,12 @@ The Indexed Catalog v2 supports the following:
 * Up to 100K snapshots per volume
 * Maximum time for baseline indexing is less than 7 days. The actual time will vary depending on your environment.
 
-.Enabling the Indexed Catalog for a system
+//.Enabling the Indexed Catalog for a system
 
-The service does not provision a separate bucket when you use the Indexed Catalog v2. Instead, for backups stored in AWS, Azure, Google Cloud Platform, StorageGRID, or ONTAP S3, the service provisions space on the Console agent or on the cloud provider environment. 
 
-If you enabled the Indexed Catalog prior to the v2 release, the following occurs with systems: 
+
+////
+If you are using the legacy Indexed Catalog, the following occurs with systems: 
 
 
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
@@ -219,8 +220,9 @@ If you enabled the Indexed Catalog prior to the v2 release, the following occurs
 * For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 
 * For backups stored in StorageGRID or ONTAP S3, it provisions space on the Console agent, or on the cloud provider environment.
+////
 
-If Indexing has already been enabled for your system, go to the next section to restore your data.
+//If Indexing has already been enabled for your system, go to the next section to restore your data.
 
 .Steps to enable Indexing for a system:
 
@@ -236,6 +238,7 @@ For the mounted volume, use the following sizing guidance:
 * 50 GB per 1 billion files
 * 20 GB for the catalog data with additional space for zip file creation and temporary files
 
+[#mount-volume-steps]
 .Step to mount the volume to reindex the catalog
 
 . Mount the volume to `/opt/application/netapp/cbs` by entering the following command, where:
@@ -277,27 +280,19 @@ After you have <<enable-the-indexed-catalog-for-each-system,enabled Indexing for
 .Steps
 
 . From the Console menu, select *Protection > Backup and recovery*.
-
 . Select the *Restore* tab and the Restore Dashboard is displayed.
-
 . From the _Search & Restore_ section, select *Search & Restore*.
-
-
 . From the _Search & Restore_ section, select *Search & Restore*.
-
 . From the Search & Restore page:
 .. In the _Search bar_, enter a full or partial volume name, folder name, or file name.
 .. Select the type of resource: *Volumes*, *Files*, *Folders*, or *All*.
 .. In the _Filter by_ area, select the filter criteria. For example, you can select the system where the data resides and the file type, for example a .JPEG file. Or you can select the type of Backup Location if you want to search for results only within available snapshots or backup files in object storage.
 
 . Select *Search* and the Search Results area displays all the resources that have a file, folder, or volume that matches your search.
-
 . Locate the resource that has the data you want to restore and select *View All Backups* to display all the backup files that contain the matching volume, folder, or file.
-
 . Locate the backup file that you want to use to restore the data and select *Restore*.
 +
 Note that the results identify local volume snapshots and remote Replicated volumes that contain the file in your search. You can choose to restore from the cloud backup file, from the snapshot, or from the Replicated volume.
-
 
 . Select the destination location where you want the volume, folder, or file(s) to be restored and select *Restore*.
 +
