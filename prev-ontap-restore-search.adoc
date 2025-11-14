@@ -13,17 +13,21 @@ summary: With NetApp Backup and Recovery, restore an entire ONTAP volume from a 
 :imagesdir: ./media/
 
 [.lead]
-You can restore a volume, folder, or files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume, folder, or file from all backups, and then perform a restore. You don't need to know the exact system name, volume name, or file name - the search looks through all volume backup files.
+You can use Search & Restore to recover volumes, folders, or files from ONTAP backup files. Search & Rrestore enables you to search across all backups—including local snapshots, replicated volumes, and object storage—without needing exact system, volume, or file names.
 
-The search operation looks across all local snapshots that exist for your ONTAP volumes, all replicated volumes on secondary storage systems, and all backup files that exist in object storage. Since restoring data from a local snapshot or replicated volume can be faster and less costly than restoring from a backup file in object storage, you may want to restore data from these other locations. 
+Restoring from local snapshots or replicated volumes is typically faster and less expensive than restoring from object storage.
 
-When you restore a _full volume_ from a backup file, NetApp Backup and Recovery creates a _new_ volume using the data from the backup. You can restore the data as a volume in the original system, to a different system that's located in the same cloud account as the source system, or to an on-premises ONTAP system.
+When restoring a full volume, NetApp Backup and Recovery creates a new volume using the backup data. You can restore to the original system, another system within the same cloud account, or an on-premises ONTAP system. Folders and files can be restored to their original location, a different volume in the same system, another system in the same cloud account, or an on-premises system.
 
-You can restore _folders or files_ to the original volume location, to a different volume in the same system, to a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
+Restore capabilities depend on your ONTAP version:
 
-When using ONTAP 9.13.0 or greater, you can restore a folder along with all files and sub-folders within it. When using a version of ONTAP before 9.13.0, only files from that folder are restored - no sub-folders, or files in sub-folders, are restored.
-
-If the backup file for the volume that you want to restore resides in archival storage (available starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
+* *Folders:* Using ONTAP 9.13.0 or greater, you can restore folders with all files and sub-folders; with earlier versions, you can restore only files in the folder.
+* *Archival Storage:* Restoring from archival storage (available with ONTAP 9.10.1 or greater) is slower and might incur additional costs.
+* *Destination Cluster Requirements:*
+** Volume restore: ONTAP 9.10.1 or greater
+** File restore: ONTAP 9.11.1 or greater
+** Google Archive and StorageGRID: ONTAP 9.12.1 or greater
+** Folder restore: ONTAP 9.13.1 or greater
 
 ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
@@ -108,7 +112,7 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 ** The storage VM (SVM) on which the volume resides must have a configured data LIF.
 ** NFS must be enabled on the volume (both NFS and SMB/CIFS volumes are supported).
 ** The SnapDiff RPC Server must be activated on the SVM. The Console does this automatically when you enable Indexing on the system. (SnapDiff is the technology that quickly identifies the file and directory differences between snapshots.)
-* Optionally, you can increase resiliency of Search & Restore by performing an additionaly step when you enable Search & Restore. For instructions, refer to <<mount-volume-steps,Mount the volume to reindex the catalog>>.
+* NetApp recommends mounting a separate volume on the Console agent to increase resiliency of Search & Restore. For instructions, refer to <<mount-volume-steps,Mount the volume to reindex the catalog>>.
 
 === Legacy Search & Restore prerequisites (using Indexed Catalog v1)
 

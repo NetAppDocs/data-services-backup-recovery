@@ -67,8 +67,6 @@ Cloud Volumes ONTAP
 | To on-premises ONTAP system
 |===
 
-
-
 For Browse & Restore, the Console agent can be installed in the following locations:
 
 ifdef::aws[]
@@ -99,7 +97,7 @@ When restoring from a replicated volume, you can restore the volume to the origi
 
 image:diagram_browse_restore_volume.png["A diagram that shows the flow to perform a volume restore operation using Browse & Restore."]
 
-As you can see, you'll need to know the source system name, storage VM, volume name, and backup file date to perform a volume restore.
+You need the source system name, storage VM, volume name, and backup file date to restore a volume.
 
 .Steps
 
@@ -175,30 +173,17 @@ When using ONTAP 9.13.0 or greater, you can restore a folder along with all file
 You can test it using a special flag described in the https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-July-2024-Release/ba-p/453993#toc-hId-1830672444[NetApp Backup and Recovery July 2024 Release blog^].
 ====
 
-=== Prerequisites
+=== Restore folders and files
+
+Follow these steps to restore folders or files to a volume from an ONTAP volume backup. You should know the name of the volume and the date of the backup file that you want to use to restore the folder or file(s). This functionality uses Live Browsing so that you can view the list of directories and files within each backup file.
+
+image:diagram_browse_restore_file.png["A diagram that shows the flow to perform a file restore operation using Browse & Restore."]
+
+.Before you begin
 
 * The ONTAP version must be 9.6 or greater to perform _file_ restore operations.
 * The ONTAP version must be 9.11.1 or greater to perform _folder_ restore operations. ONTAP version 9.13.1 is required if the data is in archival storage, or if the backup file is using DataLock and Ransomware protection.
 * The ONTAP version must be 9.15.1 p2 or greater to restore FlexGroup directories using the Browse and restore option.
-
-=== Folder and file restore process
-
-The process goes like this:
-
-. To restore a folder or files from a volume backup, select the *Restore* menu, then select *Restore Files or Folder* under _Browse & Restore_.
-. Select the source system, volume, and backup file in which the folder or file(s) reside.
-. NetApp Backup and Recovery displays the folders and files that exist within the selected backup file.
-. Select the folder or file(s) that you want to restore from that backup.
-. Select the destination location where you want the folder or file(s) to be restored (the system, volume, and folder), and click *Restore*.
-. The file(s) are restored.
-
-image:diagram_browse_restore_file.png["A diagram that shows the flow to perform a file restore operation using Browse & Restore."]
-
-You need the source system name, storage VM, volume name, and backup file date to restore a volume.
-
-=== Restore folders and files
-
-Follow these steps to restore folders or files to a volume from an ONTAP volume backup. You should know the name of the volume and the date of the backup file that you want to use to restore the folder or file(s). This functionality uses Live Browsing so that you can view the list of directories and files within each backup file.
 
 .Steps
 

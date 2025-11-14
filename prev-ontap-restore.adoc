@@ -13,7 +13,7 @@ summary: With NetApp Backup and Recovery, restore an entire ONTAP volume from a 
 :imagesdir: ./media/
 
 [.lead]
-Backups of your ONTAP volume data are available from the locations where you created backups: snapshots, replicated volumes, and backups stored in object storage. You can restore data from a specific point in time from any of these backup locations. With NetApp Backup and Recovery, restore an entire ONTAP volume from a backup file, or if you only need to restore a few files, restore a folder or individual files.
+Backups of your ONTAP volume data are stored as snapshots, on replicated volumes, or in object storage. You can restore data from any of these locations at a specific point in time. With NetApp Backup and Recovery, you can restore an entire volume, a folder, or individual files as needed.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
@@ -23,7 +23,7 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 * You can restore *files* to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
 
-A valid NetApp Backup and Recovery license is required to restore data from backup files to a production system.
+You need a valid NetApp Backup and Recovery license to restore data to a production system.
 
 To summarize, these are the valid flows you can use to restore volume data to an ONTAP system:
 
@@ -37,7 +37,7 @@ NOTE: For limitations related to restoring ONTAP data, see link:br-reference-lim
 
 == The Restore Dashboard
 
-You use the Restore Dashboard to perform volume, folder, and file restore operations. You access the Restore Dashboard by clicking *Backup and recovery* from the Console menu, and then clicking the *Restore* tab. You can also click image:icon-options-vertical.gif[More button] > *View Restore Dashboard* from the Backup and recovery service from the Services panel.
+You use the Restore Dashboard to perform volume, folder, and file restore operations. To access the Restore Dashboard, select *Backup and recovery* from the Console menu, and then select the *Restore* tab. You can also select image:icon-options-vertical.gif[More button] > *View Restore Dashboard* from the Backup and recovery service from the Services panel.
 
 NOTE: NetApp Backup and Recovery must already be activated for at least one system and initial backup files must exist.
 
@@ -79,7 +79,7 @@ This table provides a list of valid restore operations based on the location whe
 
 |===
 
-Before you can use either restore method, make sure you have configured your environment for the unique resource requirements. Those requirements are described in the sections below.
+Before you use either restore method, configure your environment to meet the resource requirements. See the following sections for details.
 
 See the requirements and restore steps for the type of restore operation you want to use:
 
