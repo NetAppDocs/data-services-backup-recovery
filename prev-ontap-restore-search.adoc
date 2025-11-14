@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-restore-search.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: With NetApp Backup and Recovery, restore an entire ONTAP volume from a backup file, or if you only need to restore a few files, restore a folder or individual files.
+summary: You can use Search & Restore to recover volumes, folders, or files from ONTAP backup files.
 ---
 
 = Restore from ONTAP backups using Search & Restore
@@ -13,7 +13,7 @@ summary: With NetApp Backup and Recovery, restore an entire ONTAP volume from a 
 :imagesdir: ./media/
 
 [.lead]
-You can use Search & Restore to recover volumes, folders, or files from ONTAP backup files. Search & Rrestore enables you to search across all backups—including local snapshots, replicated volumes, and object storage—without needing exact system, volume, or file names.
+You can use Search & Restore to recover volumes, folders, or files from ONTAP backup files. Search & Restore enables you to search across all backups (including local snapshots, replicated volumes, and object storage) without needing exact system, volume, or file names.
 
 Restoring from local snapshots or replicated volumes is typically faster and less expensive than restoring from object storage.
 
@@ -112,13 +112,12 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 ** The storage VM (SVM) on which the volume resides must have a configured data LIF.
 ** NFS must be enabled on the volume (both NFS and SMB/CIFS volumes are supported).
 ** The SnapDiff RPC Server must be activated on the SVM. The Console does this automatically when you enable Indexing on the system. (SnapDiff is the technology that quickly identifies the file and directory differences between snapshots.)
-* NetApp recommends mounting a separate volume on the Console agent to increase resiliency of Search & Restore. For instructions, refer to <<mount-volume-steps,Mount the volume to reindex the catalog>>.
+* NetApp recommends mounting a separate volume on the Console agent to increase resiliency of Search & Restore. For instructions, refer to <<mount-volume-steps,mount the volume to reindex the catalog>>.
 
 === Legacy Search & Restore prerequisites (using Indexed Catalog v1)
 
 ifdef::aws[]
 * AWS requirements:
-
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides the Console with permissions. link:prev-ontap-backup-onprem-aws.html[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the Athena and Glue permissions to the Console user role now. They are required for Search & Restore.
@@ -126,9 +125,7 @@ endif::aws[]
 
 ifdef::azure[]
 * Azure requirements:
-
 ** You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
-
 ** Specific Azure Synapse Workspace and Data Lake Storage Account permissions must be added to the user role that provides the Console with permissions. link:prev-ontap-backup-onprem-azure.html[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the Azure Synapse Workspace and Data Lake Storage Account permissions to the Console user role now. They are required for Search & Restore.
@@ -138,7 +135,6 @@ endif::azure[]
 
 ifdef::gcp[]
 * Google Cloud requirements:
-
 ** Specific Google BigQuery permissions must be added to the user role that provides the NetApp Console with permissions. link:prev-ontap-backup-onprem-gcp.html[Make sure all the permissions are configured correctly].
 +
 If you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the BigQuery permissions to the Console user role now. They are required for Search & Restore.

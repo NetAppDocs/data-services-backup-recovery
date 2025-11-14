@@ -15,7 +15,17 @@ summary: With NetApp Backup and Recovery, restore ONTAP data using Browse & Rest
 [.lead]
 With NetApp Backup and Recovery, restore ONTAP data using Browse & Restore. Before restoring, note the source volume name, source system and SVM, and backup file date. You can restore ONTAP data from a snapshot, a replicated volume, or from backups stored in object storage.
 
-NOTE: If the backup file you want to restore resides in archival cloud storage (starting with ONTAP 9.10.1), the restore operation takes longer and incurs a cost. The destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
+Restore capabilities depend on your ONTAP version:
+
+* *Folders:* Using ONTAP 9.13.0 or greater, you can restore folders with all files and sub-folders; with earlier versions, you can restore only files in the folder.
+* *Archival Storage:* Restoring from archival storage (available with ONTAP 9.10.1 or greater) is slower and might incur additional costs.
+* *Destination Cluster Requirements:*
+** Volume restore: ONTAP 9.10.1 or greater
+** File restore: ONTAP 9.11.1 or greater
+** Google Archive and StorageGRID: ONTAP 9.12.1 or greater
+** Folder restore: ONTAP 9.13.1 or greater
+
+//If the backup file you want to restore resides in archival cloud storage (starting with ONTAP 9.10.1), the restore operation takes longer and incurs a cost. The destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
 
 ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
