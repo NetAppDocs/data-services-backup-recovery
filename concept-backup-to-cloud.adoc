@@ -164,13 +164,13 @@ You can choose from three licensing options:
 * *Bring Your Own License (BYOL)*:
 Purchase a term-based (1, 2, or 3 years) and capacity-based (in 1-TiB increments) license from NetApp. Enter the provided serial number in the NetApp Console to activate. The license covers all source systems in your organization. Renewal is required when the term or capacity limit is reached.
 * *Pay As You Go (PAYGO)*:
-Subscribe through your cloud provider's marketplace and pay per GiB of backed-up data, billed monthly. No upfront payment is required. A 30-day free trial is available when you first sign up. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html#use-a-netapp-backup-and-recovery-paygo-subscription[Use a NetApp Backup and Recovery PAYGO subscription].
+Subscribe through your cloud provider's marketplace and pay per GiB of backed-up data, billed monthly. No upfront payment is required. A 30-day free trial is available when you first sign up. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html#use-a-netapp-backup-and-recovery-paygo-subscription[use a NetApp Backup and Recovery PAYGO subscription].
 * *Annual Contract*:
 Available through AWS and Azure marketplaces for 1, 2, or 3 years. Two annual contracts are available:
 ** *Cloud Backup*: Backs up Cloud Volumes ONTAP and on-premises ONTAP data.  
 ** *CVO Professional*: Bundles Cloud Volumes ONTAP and NetApp Backup and Recovery, with unlimited backups for Cloud Volumes ONTAP volumes (backup capacity is not counted against the license).  
 *** With the CVO Professional plan, there are two types of charges:
-**** *Resource charges*: Based on storage usage. For more information, refer to https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#packages[Licensing for Cloud Volumes ONTAP].
+**** *Resource charges*: Based on storage usage. For more information, refer to https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html#packages[licensing for Cloud Volumes ONTAP].
 **** *Service charges*: Fees for NetApp Backup and Recovery. However, if the source volume is in a storage system using the CVO Professional plan, NetApp Backup and Recovery is provided free of charge.
 
 When you use Google Cloud Platform, request a private offer from NetApp and select your plan during activation in the Google Cloud Marketplace.
