@@ -193,7 +193,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 ** Microsoft Hyper-V 2019, 2022 & 2025 editions
 ** ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
 ** PowerShell 7.4.2 or later
-** If users that are not part of an administrator domain will be protecting Hyper-V VMs using Backup and Recovery, ensure that the user has the following permission changes:
+** If users that are not part of an administrator domain will be protecting Hyper-V VMs, ensure that the user has the following permission changes:
 *** Ensure the user is a member of the local administrators group.
 *** Ensure the user is part of the "Log on as service" local security policy.
 ** Ensure that two-way HTTPS traffic is allowed for the following ports in the Windows Firewall settings:
