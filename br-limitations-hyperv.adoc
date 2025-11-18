@@ -19,7 +19,8 @@ Platforms, devices, or features that do not work or do not work well with this v
 
 The following actions are not supported in the private preview version of Hyper-V workloads in NetApp Backup and Recovery: 
 
-* Create resource groups
+* Create resource groups using VMs from multiple Hyper-V hosts
+* Restore VMs to an alternate location
 * Spanning disks (across multiple CIFS shares)
 * Protect VMs over SAN
 * Edit protection groups
