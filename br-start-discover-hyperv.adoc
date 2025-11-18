@@ -39,7 +39,7 @@ If this is your first time logging in to NetApp Backup and Recovery, you already
 ... Enter a name for this credential.
 ... Enter the user name and password for the account.
 ... Select *Done*.
-.. *Host registration*: Add a new Hyper-V host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
+.. *Host registration*: Add a new Hyper-V host by entering the host's FQDN or IP address, credentials, Console agent, and port number. If the FQDN is not resolvable by the Console agent, use the IP address instead. For FCI clusters, enter only the FCI cluster management IP address.
 . Select *Discover*. 
 +
 TIP: This process might take a few minutes.
