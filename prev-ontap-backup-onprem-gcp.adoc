@@ -88,7 +88,7 @@ To use the NetApp Backup and Recovery "Search & Restore" functionality, you need
 
 . Select *Add Permissions* to add the following new permissions to the role.
 +
-[source,console]
+[source,text]
 ----
 bigquery.jobs.get
 bigquery.jobs.list
@@ -181,7 +181,7 @@ You need to provide storage access keys for a service account that has specific 
 
 . https://cloud.google.com/iam/docs/creating-custom-roles#creating_a_custom_role[Create a new role^] with the following permissions:
 +
-[source,console]
+[source,text]
 ----
 storage.buckets.create
 storage.buckets.delete
@@ -231,7 +231,7 @@ If you're planning to use your own customer-managed keys:
 
 * You'll need to verify that these required permissions are included in the role for the Console agent:
 +
-[source,console]
+[source,text]
 ----
 cloudkms.cryptoKeys.get
 cloudkms.cryptoKeys.getIamPolicy
