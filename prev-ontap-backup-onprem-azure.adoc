@@ -107,7 +107,7 @@ You must register the Azure Synapse Analytics Resource Provider (called "Microso
 +
 [%collapsible]
 ====
-[source,console]
+[source,text]
 ----
 "Microsoft.Storage/storageAccounts/listkeys/action",
 "Microsoft.Storage/storageAccounts/read",

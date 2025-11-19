@@ -140,7 +140,7 @@ When you set up backup to StorageGRID, the backup wizard prompts you for an S3 a
 +
 These access keys must be associated with a user who has the following permissions:
 +
-[source,console]
+[source,text]
 ----
 "s3:ListAllMyBuckets",
 "s3:ListBucket",
