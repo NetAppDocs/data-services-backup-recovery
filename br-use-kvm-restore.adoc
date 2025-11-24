@@ -34,7 +34,7 @@ You can restore virtual machines from different starting locations:
 You can restore data to these points: 
 
 * Restore to the original location
-* Restore to an alternate location
+//* Restore to an alternate location
 
 .Restore from object storage considerations
 
@@ -169,7 +169,9 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 .Restore to alternate location
 
 --
+Not available for KVM workloads preview. 
 
+////
 . If you chose to restore to an alternate location, enter the following:
 
 
@@ -206,7 +208,7 @@ This option is available only if the source system from which the cloud backup w
 [start=2]
 . Select *Restore*.
 
-
+////
 --
 
 ====
