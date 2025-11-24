@@ -42,7 +42,6 @@ There is no limitation for FlexVol volumes - you can select all FlexVol volumes 
 
 * When creating replications from on-premises ONTAP systems, if the ONTAP version on the target Cloud Volumes ONTAP system is 9.8, 9.9, or 9.11, only mirror-vault policies are allowed.
 
-// BLUEXPDOC-888
 * NetApp Backup & Recovery does not support converting a FlexVol volume with an active cloud backup relationship to a FlexGroup volume while maintaining cloud backup functionality.
 
 == Backup-to-object limitations for ONTAP volumes
