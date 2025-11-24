@@ -132,17 +132,17 @@ If you choose secondary storage, enter the source and destination locations for 
 ** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot.
 
-* *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage to an alternate location.)
-** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage to an alternate location.)
+* *Pre-restore options* section: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage restore to an alternate location.)
+** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage restore to an alternate location.)
+** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage restore to an alternate location.)
 
-* *Post-restore options*:
-** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
+* *Post-restore options* section:
+** *Restart VM*: Select to restart the VM after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
+** *Operational, but unavailable for restoring additional transaction logs*: Brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
+** *Non-operational, but available for restoring additional transaction logs*: Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
+** *Read-only mode*: Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
 
 * *Notification* section: 
 ** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
@@ -180,17 +180,17 @@ If you choose secondary storage, enter the source and destination locations for 
 ** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot.
 
-* *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage to an alternate location.)
-** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage to an alternate location.)
+* *Pre-restore options* section: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage restore to an alternate location.)
+** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage restore to an alternate location.)
+** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage restore to an alternate location.)
 
-* *Post-restore options*:
-** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
+* *Post-restore options* section:
+** *Restart VM*: Select to restart the VM after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
+** *Operational, but unavailable for restoring additional transaction logs*: Brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
+** *Non-operational, but available for restoring additional transaction logs*: Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
+** *Read-only mode*: Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
 
 * *Notification* section: 
 ** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
