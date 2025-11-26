@@ -127,7 +127,7 @@ If you choose secondary storage, enter the source and destination locations for 
 * *Destination settings* section:
 
 ** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
-** *ESXI host*: Select the host where you want to restore the snapshot.
+** *ESXi host*: Select the host where you want to restore the snapshot.
 ** *Network*: Select the network where you want to restore the snapshot.
 ** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot.
@@ -176,7 +176,7 @@ If you choose secondary storage, enter the source and destination locations for 
 * *Destination settings* section:
 
 ** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
-** *ESXI host*: Select the host where you want to restore the snapshot.
+** *ESXi host*: Select the host where you want to restore the snapshot.
 ** *Network*: Select the network where you want to restore the snapshot.
 ** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot.
