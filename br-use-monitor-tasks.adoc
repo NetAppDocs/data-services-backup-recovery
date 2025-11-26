@@ -130,9 +130,24 @@ The Notification Center displays numerous Snapshot, replication, backup to cloud
 
 | Activation |Backup and Recovery activation failed for system | Error | Yes
 | Activation |Backup and Recovery edit failed for system | Error | Yes
+| Activation |Volume will be patched with Snapshot policy | Error | Yes
+| Activation |Modify volume backup or state | Error | Yes
+| Activation |Backup activated successfully for working environment | Error | Yes
+| Activation |Ad-hoc volume backup failed | Error | Yes
+| Activation |Modifying panoramic protection volumes failures | Error | Yes
+| Cron operations |Checking for missing snapshot labels | Error | Yes
+| Cron operations |Failed to send security token to ONTAP for this working environment | Error | Yes
+| Pub/Sub events |Connection failure | Error | No
+| Pub/Sub events |Failed to delete a scheduled snapshot | Error | No
+| Pub/Sub events |Scheduled backup of volume failed | Error | No
+| Pub/Sub events |Restore of volume succeeded  | Error | No
+| Pub/Sub events |Restore of volume failed | Error | No
+| Ransomware |Potential Ransomware attack identified on backup copy | Error | Yes
+| Ransomware |Potential Ransomware attack identified on backup copy for system | Error | Yes
 | Local snapshot | NetApp Backup and Recovery ad-hoc snapshot creation job failure | Error | Yes
 //| Local snapshot | *later* NetApp Backup and Recovery scheduled snapshot creation job failure | Error | Yes
 //| Replication | *later* NetApp Backup and Recovery scheduled replication job failure | Error | Yes
+| Replication | Modification of replication relationship of volume failure | Error | Yes
 | Replication | NetApp Backup and Recovery ad-hoc replication job failure | Error | Yes
 | Replication | NetApp Backup and Recovery replication pause job failure | Error | No
 | Replication | NetApp Backup and Recovery replication break job failure | Error | No
@@ -140,6 +155,10 @@ The Notification Center displays numerous Snapshot, replication, backup to cloud
 | Replication | NetApp Backup and Recovery replication stop job failure | Error | No
 | Replication | NetApp Backup and Recovery replication reverse resync job failure | Error | Yes
 | Replication | NetApp Backup and Recovery replication delete job failure | Error | Yes
+| Target operations | Restore to local or cloud destination failure | Error | Yes
+| Target operations | On-demand restore failure | Error | Yes
+| System operations | Ad-hoc volume snapshot creation failure | Error | Yes
+
 |===
 
 NOTE: Beginning with ONTAP 9.13.0, all alerts appear for Cloud Volumes ONTAP and on-premises ONTAP systems. For systems with Cloud Volumes ONTAP 9.13.0 and on-premises ONTAP, only the alert related to "Restore job completed, but with warnings" appears. 
