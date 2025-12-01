@@ -106,6 +106,7 @@ endif::gcp[]
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
 == Search & Restore prerequisites
+Ensure your environment meets these requirements before enabling Search & Restore:
 
 * Cluster requirements:
 ** The ONTAP version must be 9.8 or greater.
@@ -115,7 +116,10 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 * NetApp recommends mounting a separate volume on the Console agent to increase resiliency of Search & Restore. For instructions, refer to <<mount-volume-steps,mount the volume to reindex the catalog>>.
 
 === Legacy Search & Restore prerequisites (using Indexed Catalog v1)
+The following are the requirements for Search & Restore when using legacy indexing:
 
+[%collapsible]
+====
 ifdef::aws[]
 * AWS requirements:
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides the Console with permissions. link:prev-ontap-backup-onprem-aws.html[Make sure all the permissions are configured correctly].
@@ -150,7 +154,8 @@ For information about the Indexed Catalog v2, see the section below about how to
 ** If you are using a Console agent in a private (dark) site, then the Indexed Catalog information is stored on the Console agent (requires Console agent version 3.9.25 or greater).
 ** If you have https://docs.netapp.com/us-en/console-setup-admin/concept-accounts-aws.html[AWS credentials^] or https://docs.netapp.com/us-en/console-setup-admin/concept-accounts-azure.html[Azure credentials^] in the account, then the Indexed Catalog is stored at the cloud provider, just like with a Console agent deployed in the cloud. (If you have both credentials, AWS is selected by default.)
 +
-Even though you are using an on-premises Console agent, the cloud provider requirements must be met for both Console agent permissions and cloud provider resources. See the AWS and Azure requirements above when using this implementation. 
+Even though you are using an on-premises Console agent, the cloud provider requirements must be met for both Console agent permissions and cloud provider resources. See the AWS and Azure requirements above when using this implementation.
+====
  
 == Search & Restore process
 
@@ -232,7 +237,7 @@ You will first need to mount a separate volume to hold catalog files. This preve
 
 For the mounted volume, use the following sizing guidance:
 
-* Use a NetApp NVS volume
+* Use a NetApp NFS volume
 * Recommended AFF storage with 300 MB/s disk throughput. Less throughput will impact search and other operations.
 * Enable NetApp snapshots to secure the catalog metadata in addition to the catalog backup zip files
 * 50 GB per 1 billion files
