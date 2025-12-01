@@ -43,7 +43,7 @@ NOTE: If you have upgraded your ONTAP systems to 9.13.x and do not see ongoing s
 
 === Search and filter the list of jobs
 
-You can filter the operations on the Job Monitoring page using several filters, such as policy, Snapshot label, type of operation (protection, restore, retention, or other) and protection type (local snapshot, replication, or backup to the cloud). 
+You can filter the operations on the Job Monitoring page using several filters, such as policy, snapshot label, type of operation (protection, restore, retention, or other) and protection type (local snapshot, replication, or backup to the cloud). 
 
 By default, the Job Monitoring page shows protection and recovery jobs from the last 24 hours. You can change the timeframe using the Timeframe filter.
 
@@ -103,9 +103,9 @@ From the Job Monitoring Details information, you can download a JSON file contai
 
 Monitor retention (_backup lifecycle_) flows to check backups, keep them safe, and support audits. Identify when backup copies expire to track the lifecycle. 
 
-A backup lifecycle job tracks all snapshots that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can look at all job types called "Retention" on the Job Monitoring page.
+A backup lifecycle job tracks all snapshots that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can view all job types called "Retention" on the Job Monitoring page.
 
-The "Retention" job type captures all Snapshot deletion jobs initiated on a volume that is protected by NetApp Backup and Recovery.  
+The "Retention" job type captures all snapshot deletion jobs initiated on a volume that is protected by NetApp Backup and Recovery.  
 
 .Steps
 
@@ -119,7 +119,7 @@ The NetApp Console Notification Center tracks the progress of backup and restore
 
 You can view alerts in the Notification Center and configure the Console to send email alerts for important system activity, even when you are not logged in. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
 
-The Notification Center displays numerous Snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
+The Notification Center displays numerous snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
 
 [cols="1,2,1,1",options="header"]
 |===
