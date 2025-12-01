@@ -130,7 +130,7 @@ The Notification Center displays numerous snapshot, replication, backup to cloud
 
 | Activation |Backup and Recovery activation failed for system | Yes | Yes
 | Activation |Backup and Recovery edit failed for system | Yes | Yes
-| Activation |Volume will be patched with snapshot policy | Yes | Yes
+| Activation |Volume now associated with snapshot policy | Yes | Yes
 | Activation |Volume backup or state modified | Yes | Yes
 | Activation |Backup and Recovery activation successful for system | Yes | Yes
 | Activation |Ad-hoc volume backup failed | Yes | Yes
