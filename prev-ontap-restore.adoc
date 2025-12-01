@@ -57,8 +57,6 @@ This table provides a feature comparison of the two methods.
 
 | Browse through a folder-style structure to find the volume, folder, or file within a single backup file. | Search for a volume, folder, or file across *all backup files* by partial or full volume name, partial or full folder/file name, size range, and additional search filters.
 | Does not handle file recovery if the file has been deleted or renamed, and the user doesn't know the original file name | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
-| No additional cloud provider resources required | When you restore from the cloud, additional bucket and public cloud provider resources required per account.
-| No additional cloud provider costs required | When you restore from the cloud, additional costs are required when scanning your backups and volumes for search results.
 | Quick restore is supported. | Quick restore is not supported. 
 
 
