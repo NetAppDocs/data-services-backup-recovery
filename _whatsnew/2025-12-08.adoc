@@ -1,0 +1,4 @@
+=== VMware workloads preview enhancements
+The preview release of VMware workloads now enables you to restore backups to an alternate location, in case you need to restore data to a host that is not the original backup source.
+
+link:br-use-vmware-restore.html[Learn more about restoring VMware workloads with NetApp Backup and Recovery].
