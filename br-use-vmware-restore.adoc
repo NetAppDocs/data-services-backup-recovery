@@ -31,8 +31,8 @@ You can restore workloads from different starting locations:
 
 You can restore data to these points: 
 
-* Restore to the original location: The VM is restored in the original location, to the same vCenter deployment, ESXi host, and datastore. The VM and all of its data is overwritten.
-* Restore to an alternate location: You can choose a different vCenter, ESXi host, or datastore as a restore target for the VM. This is useful for managing different copies of the same VM in different locations and states.
+* *Restore to the original location*: The VM is restored in the original location, to the same vCenter deployment, ESXi host, and datastore. The VM and all of its data is overwritten.
+* *Restore to an alternate location*: You can choose a different vCenter, ESXi host, or datastore as a restore target for the VM. This is useful for managing different copies of the same VM in different locations and states.
 
 .Restore from object storage considerations
 
@@ -110,9 +110,8 @@ If you choose secondary storage, enter the source and destination locations for 
 
 .Restore to original location
 --
-. Select the *Original location* pane.
-+
 When restoring to the original location, you cannot change the destination vCenter, ESXi host, datastore, or name of the VM. The original VM is overwritten with the restore operation.
+. Select the *Original location* pane.
 . Enter the following information:
 +
 * *Pre-restore options* section:
@@ -125,10 +124,8 @@ When restoring to the original location, you cannot change the destination vCent
 --
 .Restore to alternate location
 --
-
+When restoring to an alternate location, you can change the destination vCenter, ESXi host, datastore, and name of the VM to create a new copy of the VM in a different location or with a different name.
 . Select the *Alternate location* pane.
-+
-When restoring to an alternate location, you can change the destination vCenter, ESXi host, datastore, and name of the VM to create a new copy of the VM in a different location or with a different name. 
 . Enter the following information:
 +
 * *Destination settings* section:
