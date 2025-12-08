@@ -75,7 +75,7 @@ When restoring to the original location, you cannot change the destination vCent
 
 .. Select the *Original location* pane.
 .. In the *Destination settings* section, enable the check box for any virtual disks you want to restore.
-.. Enter the following information:
+.. Choose from the following options:
 +
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
@@ -97,7 +97,7 @@ When restoring to an alternate location, you can change the destination datastor
 .. For any virtual disks you selected:
 ... Choose *Select datastore* to choose a different datastore restore target for the virtual disk.
 ... Select *Select* to confirm your choice and close the selection window.
-.. Enter the following information:
+.. Choose from the following options:
 +
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
