@@ -99,12 +99,6 @@ When restoring to an alternate location, you can change the destination datastor
 ... Select *Select* to confirm your choice and close the selection window.
 .. Enter the following information:
 +
-* *Destination settings* section:
-** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
-** *ESXi host*: Select the host where you want to restore the snapshot.
-** *Network*: Select the network where you want to restore the snapshot.
-** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
-** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot. If the name matches a VM that already exists in the datastore, Backup and Recovery makes the name unique by appending a current timestamp.
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
 * *Post-restore options* section:
