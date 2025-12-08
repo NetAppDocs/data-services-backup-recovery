@@ -125,31 +125,16 @@ If you choose secondary storage, enter the source and destination locations for 
 . Enter the following information:
 +
 * *Destination settings* section:
-
 ** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
 ** *ESXi host*: Select the host where you want to restore the snapshot.
 ** *Network*: Select the network where you want to restore the snapshot.
 ** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot.
-
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
-// *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage restore to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage restore to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage restore to an alternate location.)
-
 * *Post-restore options* section:
 ** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*: Brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*: Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*: Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-
-//* *Notification* section: 
-//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-
 
 . Select *Restore*.
 
@@ -174,29 +159,16 @@ If you choose secondary storage, enter the source and destination locations for 
 . Enter the following information:
 +
 * *Destination settings* section:
-
 ** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
 ** *ESXi host*: Select the host where you want to restore the snapshot.
 ** *Network*: Select the network where you want to restore the snapshot.
 ** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot.
-
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
-// *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage restore to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage restore to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage restore to an alternate location.)
-
 * *Post-restore options* section:
 ** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*: Brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*: Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*: Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-
-//* *Notification* section: 
-//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
 
 . Select *Restore*.
 
@@ -206,6 +178,16 @@ If you choose secondary storage, enter the source and destination locations for 
 .. *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the VM name, and enter the destination path where you want to restore the snapshot.
 .. *Enable quick restore*: Select this to perform a quick restore operation. You can use the restored volumes and data immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
 This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
+//** *Operational, but unavailable for restoring additional transaction logs*: Brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
+//** *Non-operational, but available for restoring additional transaction logs*: Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
+//** *Read-only mode*: Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
+
+//* *Notification* section: 
+//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
+//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
+// *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage restore to an alternate location.)
+//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage restore to an alternate location.)
+//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage restore to an alternate location.)
 ////
 
 
