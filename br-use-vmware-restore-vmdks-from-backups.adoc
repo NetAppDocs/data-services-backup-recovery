@@ -13,7 +13,7 @@ summary: You can restore existing VMDKs, or deleted or detached VMDKs, from eith
 :imagesdir: ./media/
 
 [.lead]
-You can restore existing virtual disks (VMDKs), or deleted or detached virtual disks, from either a primary or secondary backups of traditional VMs or vVol VMs. This enables you to restore only specific VM data or applications, so that you don't need to restore the entire VM and all of its associated virtual disks in situations where only specific data is affected. After the virtual disk is restored, it is attached to the VM and is ready to  use.
+You can restore existing virtual disks (VMDKs), or deleted or detached virtual disks, from either a primary or secondary backups of traditional VMs or vVol VMs. This enables you to restore only specific VM data or applications, so that you don't need to restore the entire VM and all of its associated virtual disks in situations where only specific data is affected. After the virtual disk is restored, it is attached to its original VM and is ready to use.
 
 You can restore one or more virtual machine disks (VMDKs) on a VM to the same datastore or to different datastores.
 
@@ -42,7 +42,8 @@ However, when VMDKs that are attached to a VM with a NVMe disk are backed up, th
 +
 A list of virtual machines appears that match your search criteria.
 
-. Find the VM that you want to restore from in the list, and select the *Restore virtual disks* button for that VM. 
+. Find the VM that you want to restore from in the list, and select the options menu button for that VM.
+. In the resulting menu, select *Restore virtual disks*.
 +
 A list of snapshots (restore points) created on that virtual machine appears.
 . Enable the check box for the snapshot you want to restore.
@@ -50,15 +51,15 @@ A list of snapshots (restore points) created on that virtual machine appears.
 +
 Snapshot location options appear.
 
-. Select the restore destination for the snapshot:  
+. Select the restore location for the snapshot:  
 +
-* *Local*: Restores the snapshot to the original location.
-* *Secondary*: Restores the snapshot to a secondary storage location. 
+* *Local*: Restores the snapshot from the local location.
+* *Secondary*: Restores the snapshot from a remote storage location. 
 +
 If you choose secondary storage, enter the source and destination locations for both data and logs. 
-* *Object store*: Restores the snapshot to an object storage location.  
+//* *Object store*: Restores the snapshot from an object storage location.  
 
-. Select *Next* to continue to the Restore destination settings page.
+. Select *Next* to select options regarding the virtual disks.
 . Choose the destination settings and pre- and post-restore options.
 
 [discrete]
@@ -75,7 +76,7 @@ If you choose secondary storage, enter the source and destination locations for 
 --
 When restoring to the original location, you cannot change the destination vCenter, ESXi host, datastore, or name of the VM. The original VM is overwritten with the restore operation.
 . Select the *Original location* pane.
-. Enter the following information:
+. Enable the check box for the virtual disk or disks you want to restore. the following information:
 +
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
