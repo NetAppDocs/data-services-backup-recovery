@@ -5,7 +5,7 @@ keywords:
 summary: You can restore existing VMDKs, or deleted or detached VMDKs, from either a primary or secondary backup of traditional VMs or vVol VMs.
 ---
 
-= Restore VMDKs from backups
+= Restore specific virtual disks from backups
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,13 +13,12 @@ summary: You can restore existing VMDKs, or deleted or detached VMDKs, from eith
 :imagesdir: ./media/
 
 [.lead]
-You can restore existing VMDKs, or deleted or detached VMDKs, from either a primary or secondary backup of traditional VMs or vVol VMs.
+You can restore existing virtual disks (VMDKs), or deleted or detached virtual disks, from either a primary or secondary backups of traditional VMs or vVol VMs. This enables you to restore only specific VM data or applications, so that you don't need to restore the entire VM and all of its associated virtual disks in situations where only specific data is affected. After the virtual disk is restored, it is attached to the VM and is ready to  use.
 
-You can restore one or more virtual machine disks (VMDKs) on a VM to the same datastore.
+You can restore one or more virtual machine disks (VMDKs) on a VM to the same datastore or to different datastores.
 
 [TIP]
 For improved performance of restore operations in NFS environments, enable the VMware application vStorage API for Array Integration (VAAI).
-
 
 .Before you begin
 
@@ -36,6 +35,8 @@ The VM that you want to restore must not be in a state of vMotion or Storage vMo
 However, when VMDKs that are attached to a VM with a NVMe disk are backed up, the attach and restore operations use NVMe controller if available.
 
 .Steps
+
+
 
 ////
 .Steps
