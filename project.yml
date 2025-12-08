@@ -1,12 +1,12 @@
 settings:
   name: NetApp Backup and Recovery
+  release_notes_autogen:
+    release_notes_repo: console-relnotes
   internal:
     pdf_enabled: true
   prod:
     pdf_enabled: true
     harmony_enabled: true
-    release_notes_autogen:
-      release_notes_repo: console-relnotes
   rss_page: "whats-new.html"
   filter:
     label: Cloud provider
@@ -101,8 +101,14 @@ sidebar:
               url: /reference-backup-cbs-db-in-dark-site.html
             - title: Manage ONTAP backups
               url: /prev-ontap-backup-manage.html
-            - title: Restore from ONTAP backups 
-              url: /prev-ontap-restore.html
+            - title: Restore from ONTAP backups
+              entries:
+                - title: Restore overview
+                  url: /prev-ontap-restore.html
+                - title: Restore from ONTAP backups using Search & Restore
+                  url: /prev-ontap-restore-search.html
+                - title: Restore from ONTAP backups using Browse & Restore
+                  url: /prev-ontap-restore-browse.html
         - title: Protect Microsoft SQL Server workloads 
           entries:
             - title: Protect Microsoft SQL Server workloads overview

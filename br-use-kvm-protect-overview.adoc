@@ -17,7 +17,7 @@ Protect your KVM VMs and storage pools with NetApp Backup and Recovery. NetApp B
 
 You can back up KVM workloads to Amazon Web Services S3, Azure NetApp Files, or StorageGRID and restore KVM workloads back to an on-premises KVM host. 
 
-image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
+//image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
 
 Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
 

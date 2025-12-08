@@ -140,7 +140,7 @@ When you set up backup to ONTAP S3, the backup wizard prompts you for an S3 acce
 +
 These access keys must be associated with a user who has the following permissions:
 +
-[source,console]
+[source,text]
 ----
 "s3:ListAllMyBuckets",
 "s3:ListBucket",
