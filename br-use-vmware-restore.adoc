@@ -13,13 +13,11 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore VMware workloads from snapshots, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
+Restore VMware workloads from snapshots, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
 
 //You can restore a workload to the original working environment, to a different working environment that's using the same cloud account, or to an on-premises ONTAP system. 
 
 //different types of restore operations, volume restore or file/folder restore, Browse and restore vs Search and restore)
-
-
 
 .Restore from these locations
 
@@ -33,8 +31,8 @@ You can restore workloads from different starting locations:
 
 You can restore data to these points: 
 
-* Restore to the original location
-//* Restore to an alternate location
+* *Restore to the original location*: The VM is restored in the original location, to the same vCenter deployment, ESXi host, and datastore. The VM and all of its data is overwritten.
+* *Restore to an alternate location*: You can choose a different vCenter, ESXi host, or datastore as a restore target for the VM. This is useful for managing different copies of the same VM in different locations and states.
 
 .Restore from object storage considerations
 
@@ -55,13 +53,6 @@ image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow t
 * When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
 
 
-//== When to use Quick Restore 
-
-//When you restore a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a resource as soon as possible. A quick restore restores the metadata from the backup file instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
-
-//NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
-
-
 //== Restore methods
 
 //You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
@@ -71,7 +62,6 @@ From the Restore page (Search & Restore), you can restore a resource by searchin
 //* *From the Inventory page (also known as Browse & Restore)*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
 
 //Inventory is browse and restore. Restore page is Search and restore. 
-
 
 
 == Restore workload data from the Restore option (Search & Restore)
@@ -84,37 +74,31 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery restore adm
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Restore*.
-. From the drop-down list to the right of the name search field, select *Virtual machines*. 
-
+. From the drop-down list to the right of the name search field, select *VMware*. 
 . Enter the name of the resource you want to restore or filter for the vCenter, datacenter, or datastore where the resource that you want to restore is located. 
 +
-A list of snapshots appears that match your search criteria.
-   
+A list of virtual machines appears that match your search criteria.
 
-. Select the snapshot that you want to restore. 
+. Find the VM that you want to restore from in the list, and select the *Restore virtual machine* button for that VM. 
 +
-A list of restore location options appears.
+A list of snapshots (restore points) created on that virtual machine appears.
+. Enable the check box for the snapshot you want to restore.
+. Select *Next*.
++
+Snapshot location options appear.
 
-. Select the restore location where you want to restore the snapshot:  
-
-* Local: Restores the snapshot to the original location.
-* Secondary storage: Restores the snapshot to a secondary storage location. 
+. Select the restore destination for the snapshot:  
++
+* *Local*: Restores the snapshot from the local location.
+* *Secondary*: Restores the snapshot from a remote storage location. 
 +
 If you choose secondary storage, enter the source and destination locations for both data and logs. 
-* Object storage: Restores the snapshot to an object storage location.  
-+
-If you choose object storage, check whether you want to scan the snapshot again before restoring. 
-
-. Select *Done* or *Next* to continue to the Restore destination settings page.
-+
-Next, choose the destination settings and pre- and post-restore options.
+  
+. Select *Next* to continue to the Restore destination settings page.
+. Choose the destination settings and pre- and post-restore options.
 
 [discrete]
 ===== Destination selection
-
-. Choose the destination settings and the pre-restore and post-restore options.
-
-//Start tabbed area 
 
 [role="tabbed-block"]
 ====
@@ -123,79 +107,43 @@ Next, choose the destination settings and pre- and post-restore options.
 
 --
 
-In the Restore Destination details page, enter the following information:
+When restoring to the original location, you cannot change the destination vCenter, ESXi host, datastore, or name of the VM. The original VM is overwritten with the restore operation.
 
-. *Enable quick restore*: Select this to perform a quick restore operation. You can use the restored volumes and data immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
+.. Select the *Original location* pane.
+.. Choose from the following options:
++
+* *Pre-restore options* section:
+** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
+* *Post-restore options* section:
+** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
+** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
 
-
-. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation.(Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails.(Applies only to object storage to an alternate location.)
-
-. *Post-restore options*:  
-** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied.(Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//+
-//image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
-
-. *Notification* section: 
-** *Enable email notifications*: Select to get email notifications about the restore operation and choose the notification types you want.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-. Select *Restore*.
-
+.. Select *Restore*.
 
 --
 
 .Restore to alternate location
 
 --
-Not available for VMware preview. 
 
-//. If you chose to restore to an alternate location, enter the following:
+When restoring to an alternate location, you can change the destination vCenter, ESXi host, datastore, and name of the VM to create a new copy of the VM in a different location or with a different name.
 
+.. Select the *Alternate location* pane.
+.. Enter the following information:
++
+* *Destination settings* section:
+** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
+** *ESXi host*: Select the host where you want to restore the snapshot.
+** *Network*: Select the network where you want to restore the snapshot.
+** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
+** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot. If the name matches a VM that already exists in the datastore, Backup and Recovery makes the name unique by appending a current timestamp.
+* *Pre-restore options* section:
+** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
+* *Post-restore options* section:
+** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
+** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
 
-//.. *vCenter Server*: Select the vCenter server where you want to restore the snapshot.
-//.. *ESXI host*: Select the host where you want to restore the snapshot.
-//.. *Datastore name*: Enter the name of the datastore where you want to restore the snapshot.
-//.. *VM network*: Select the network where you want to restore the snapshot.
-//.. *VM name after restore*: Enter the name of the VM where you want to restore the snapshot.
-//.. *Enable change storage location*: By default, the backup from object storage will be restored in the source SVM. Select this to choose alternate storage if the source storage is down or does not have enough space. Select the cluster, storage VM, aggregate, and volumes where you want to restore the snapshot. You can do this for storage layout 1 and 2. WHAT ARE STORAGE LAYOUTS 1 AND 2? 
-//+
-//image:screen-vm-restore-destination-alt-change-storage-loc.png[A screenshot showing the Restore Destination details page with the change storage location option.]
-//. In the Restore Destination details page, enter the following information:
-//+
-//.. *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the VM name, and enter the destination path where you want to restore the snapshot.
-//.. *Enable quick restore*: Select this to perform a quick restore operation. You can use the restored volumes and data immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
-
-
-//.. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage to an alternate location.)
-
-//.. *Post-restore options*:  
-//** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-//** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//+
-//image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
-
-//. *Notification* section: 
-//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-//. Select *Restore*.
-//
-
+.. Select *Restore*.
 --
 
 ====
