@@ -36,6 +36,77 @@ However, when VMDKs that are attached to a VM with a NVMe disk are backed up, th
 
 .Steps
 
+. From the NetApp Backup and Recovery menu, select *Restore*.
+. From the drop-down list to the right of the name search field, select *VMware*. 
+. Enter the name of the resource you want to restore or filter for the vCenter, datacenter, or datastore where the resource that you want to restore is located. 
++
+A list of virtual machines appears that match your search criteria.
+
+. Find the VM that you want to restore from in the list, and select the *Restore virtual disks* button for that VM. 
++
+A list of snapshots (restore points) created on that virtual machine appears.
+. Enable the check box for the snapshot you want to restore.
+. Select *Next*.
++
+Snapshot location options appear.
+
+. Select the restore destination for the snapshot:  
++
+* *Local*: Restores the snapshot to the original location.
+* *Secondary*: Restores the snapshot to a secondary storage location. 
++
+If you choose secondary storage, enter the source and destination locations for both data and logs. 
+* *Object store*: Restores the snapshot to an object storage location.  
+
+. Select *Next* to continue to the Restore destination settings page.
+. Choose the destination settings and pre- and post-restore options.
+
+[discrete]
+===== Destination selection
+
+. Choose the destination settings and the pre-restore and post-restore options.
+
+//Start tabbed area 
+
+[role="tabbed-block"]
+====
+
+.Restore to original location
+--
+When restoring to the original location, you cannot change the destination vCenter, ESXi host, datastore, or name of the VM. The original VM is overwritten with the restore operation.
+. Select the *Original location* pane.
+. Enter the following information:
++
+* *Pre-restore options* section:
+** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
+* *Post-restore options* section:
+** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
+** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
+
+. Select *Restore*.
+--
+.Restore to alternate location
+--
+When restoring to an alternate location, you can change the destination vCenter, ESXi host, datastore, and name of the VM to create a new copy of the VM in a different location or with a different name.
+. Select the *Alternate location* pane.
+. Enter the following information:
++
+* *Destination settings* section:
+** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
+** *ESXi host*: Select the host where you want to restore the snapshot.
+** *Network*: Select the network where you want to restore the snapshot.
+** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
+** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot. If the name matches a VM that already exists in the datastore, Backup and Recovery makes the name unique by appending a current timestamp.
+* *Pre-restore options* section:
+** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
+* *Post-restore options* section:
+** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
+** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
+
+. Select *Restore*.
+--
+
+====
 
 
 ////
