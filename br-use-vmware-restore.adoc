@@ -96,24 +96,21 @@ If you choose secondary storage, enter the source and destination locations for 
   
 . Select *Next* to continue to the Restore destination settings page.
 . Choose the destination settings and pre- and post-restore options.
-//* *Object store*: Restores the snapshot from an object storage location.
-
 
 [discrete]
 ===== Destination selection
-
-. Choose the destination settings and the pre-restore and post-restore options.
-
-//Start tabbed area 
 
 [role="tabbed-block"]
 ====
 
 .Restore to original location
+
 --
+
 When restoring to the original location, you cannot change the destination vCenter, ESXi host, datastore, or name of the VM. The original VM is overwritten with the restore operation.
-. Select the *Original location* pane.
-. Enter the following information:
+
+.. Select the *Original location* pane.
+.. Enter the following information:
 +
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
@@ -121,13 +118,18 @@ When restoring to the original location, you cannot change the destination vCent
 ** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
 
-. Select *Restore*.
+.. Select *Restore*.
+
 --
+
 .Restore to alternate location
+
 --
+
 When restoring to an alternate location, you can change the destination vCenter, ESXi host, datastore, and name of the VM to create a new copy of the VM in a different location or with a different name.
-. Select the *Alternate location* pane.
-. Enter the following information:
+
+.. Select the *Alternate location* pane.
+.. Enter the following information:
 +
 * *Destination settings* section:
 ** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
@@ -141,7 +143,7 @@ When restoring to an alternate location, you can change the destination vCenter,
 ** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
 
-. Select *Restore*.
+.. Select *Restore*.
 --
 
 ====
