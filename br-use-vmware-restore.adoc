@@ -89,14 +89,15 @@ Snapshot location options appear.
 
 . Select the restore destination for the snapshot:  
 +
-* *Local*: Restores the snapshot to the original location.
-* *Secondary*: Restores the snapshot to a secondary storage location. 
+* *Local*: Restores the snapshot from the local location.
+* *Secondary*: Restores the snapshot from a remote storage location. 
 +
 If you choose secondary storage, enter the source and destination locations for both data and logs. 
-* *Object store*: Restores the snapshot to an object storage location.  
-
+  
 . Select *Next* to continue to the Restore destination settings page.
 . Choose the destination settings and pre- and post-restore options.
+//* *Object store*: Restores the snapshot from an object storage location.
+
 
 [discrete]
 ===== Destination selection
