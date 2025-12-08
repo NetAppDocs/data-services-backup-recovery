@@ -1,4 +1,4 @@
 === VMware workloads preview enhancements
-The preview release of VMware workloads now enables you to restore backups to an alternate location.
+The preview release of VMware workloads now enables you to restore backups and snapshots to an alternate location. This is useful if you want to manage versions of a VM on a different vCenter deployment, ESXi host, or datastore.
 
 link:br-use-vmware-restore.html[Learn more about restoring VMware workloads with NetApp Backup and Recovery].
