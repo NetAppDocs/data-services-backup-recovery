@@ -15,11 +15,7 @@ summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery.
 [.lead]
 Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your Cloud Volumes ONTAP systems to Azure Blob storage.
 
-
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
-
-
-
 
 == Verify support for your configuration
 
