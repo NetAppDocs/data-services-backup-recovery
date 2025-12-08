@@ -59,7 +59,7 @@ Snapshot location options appear.
 If you choose secondary storage, enter the source and destination locations for both data and logs. 
 
 . Select *Next* to select options regarding the virtual disks.
-. Choose the destination settings and pre- and post-restore options.
+. Choose the destination settings and pre- and post-restore options:
 
 [discrete]
 ===== Destination selection
