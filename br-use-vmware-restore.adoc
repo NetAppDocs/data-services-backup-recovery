@@ -79,7 +79,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery restore adm
 +
 A list of virtual machines appears that match your search criteria.
 
-. Find the VM that you want to restore from in the list, and select the *Restore* button for that VM. 
+. Find the VM that you want to restore from in the list, and select the *Restore virtual machine* button for that VM. 
 +
 A list of snapshots (restore points) created on that virtual machine appears.
 . Enable the check box for the snapshot you want to restore.
