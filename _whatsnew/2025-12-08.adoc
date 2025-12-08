@@ -8,5 +8,3 @@ link:br-use-vmware-restore.html[Learn more about restoring VMware VMs with NetAp
 * You can now restore specific VMware virtual disks (VMDK images) from either a primary or secondary location, enabling more granular control over restoring VM data.
 
 link:br-use-vmware-restore-vmdks-from-backups.html[Learn more about restoring VMware virtual disks with NetApp Backup and Recovery].
-
-
