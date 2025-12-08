@@ -57,7 +57,6 @@ Snapshot location options appear.
 * *Secondary*: Restores the snapshot from a remote storage location. 
 +
 If you choose secondary storage, enter the source and destination locations for both data and logs. 
-//* *Object store*: Restores the snapshot from an object storage location.  
 
 . Select *Next* to select options regarding the virtual disks.
 . Choose the destination settings and pre- and post-restore options.
@@ -67,14 +66,15 @@ If you choose secondary storage, enter the source and destination locations for 
 
 . Choose the destination settings and the pre-restore and post-restore options.
 
-//Start tabbed area 
-
 [role="tabbed-block"]
 ====
 
 .Restore to original location
+
 --
+
 When restoring to the original location, you cannot change the destination vCenter, ESXi host, datastore, or name of the VM. The original VM is overwritten with the restore operation.
+
 . Select the *Original location* pane.
 . Enable the check box for the virtual disk or disks you want to restore. the following information:
 +
@@ -86,9 +86,13 @@ When restoring to the original location, you cannot change the destination vCent
 
 . Select *Restore*.
 --
+
 .Restore to alternate location
+
 --
+
 When restoring to an alternate location, you can change the destination vCenter, ESXi host, datastore, and name of the VM to create a new copy of the VM in a different location or with a different name.
+
 . Select the *Alternate location* pane.
 . Enter the following information:
 +
