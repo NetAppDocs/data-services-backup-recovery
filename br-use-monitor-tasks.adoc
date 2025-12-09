@@ -43,7 +43,7 @@ NOTE: If you have upgraded your ONTAP systems to 9.13.x and do not see ongoing s
 
 === Search and filter the list of jobs
 
-You can filter the operations on the Job Monitoring page using several filters, such as policy, Snapshot label, type of operation (protection, restore, retention, or other) and protection type (local snapshot, replication, or backup to the cloud). 
+You can filter the operations on the Job Monitoring page using several filters, such as policy, snapshot label, type of operation (protection, restore, retention, or other) and protection type (local snapshot, replication, or backup to the cloud). 
 
 By default, the Job Monitoring page shows protection and recovery jobs from the last 24 hours. You can change the timeframe using the Timeframe filter.
 
@@ -103,9 +103,9 @@ From the Job Monitoring Details information, you can download a JSON file contai
 
 Monitor retention (_backup lifecycle_) flows to check backups, keep them safe, and support audits. Identify when backup copies expire to track the lifecycle. 
 
-A backup lifecycle job tracks all snapshots that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can look at all job types called "Retention" on the Job Monitoring page.
+A backup lifecycle job tracks all snapshots that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can view all job types called "Retention" on the Job Monitoring page.
 
-The "Retention" job type captures all Snapshot deletion jobs initiated on a volume that is protected by NetApp Backup and Recovery.  
+The "Retention" job type captures all snapshot deletion jobs initiated on a volume that is protected by NetApp Backup and Recovery.  
 
 .Steps
 
@@ -119,27 +119,45 @@ The NetApp Console Notification Center tracks the progress of backup and restore
 
 You can view alerts in the Notification Center and configure the Console to send email alerts for important system activity, even when you are not logged in. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
 
-The Notification Center displays numerous Snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
+The Notification Center displays numerous snapshot, replication, backup to cloud, and restore events, but only certain events trigger email alerts:
 
 [cols="1,2,1,1",options="header"]
 |===
 | Operation type
 | Event
-| Alert level
+| Alert generated
 | Email sent
 
-| Activation |Backup and Recovery activation failed for system | Error | Yes
-| Activation |Backup and Recovery edit failed for system | Error | Yes
-| Local snapshot | NetApp Backup and Recovery ad-hoc snapshot creation job failure | Error | Yes
-//| Local snapshot | *later* NetApp Backup and Recovery scheduled snapshot creation job failure | Error | Yes
-//| Replication | *later* NetApp Backup and Recovery scheduled replication job failure | Error | Yes
-| Replication | NetApp Backup and Recovery ad-hoc replication job failure | Error | Yes
-| Replication | NetApp Backup and Recovery replication pause job failure | Error | No
-| Replication | NetApp Backup and Recovery replication break job failure | Error | No
-| Replication | NetApp Backup and Recovery replication resync job failure | Error | No
-| Replication | NetApp Backup and Recovery replication stop job failure | Error | No
-| Replication | NetApp Backup and Recovery replication reverse resync job failure | Error | Yes
-| Replication | NetApp Backup and Recovery replication delete job failure | Error | Yes
+| Activation |Backup and Recovery activation failed for system | Yes | Yes
+| Activation |Backup and Recovery edit failed for system | Yes | Yes
+| Activation |Volume now associated with snapshot policy | Yes | Yes
+| Activation |Volume backup or state modified | Yes | Yes
+| Activation |Backup and Recovery activation successful for system | Yes | Yes
+| Activation |Ad-hoc volume backup failed | Yes | Yes
+| Activation |Ad-hoc volume backup successful | Yes | No
+| Activation |Multi-volume backup failed | Yes | Yes
+| Cron operations |Checking for missing snapshot labels | Yes | Yes
+| Cron operations |Failed to send security token to ONTAP for this system | Yes | Yes
+| Pub/Sub events |Connection failure | Yes | No
+| Pub/Sub events |Failed to delete a scheduled snapshot | Yes | No
+| Pub/Sub events |Scheduled backup of volume failed | Yes | No
+| Pub/Sub events |Restore of volume succeeded  | Yes | No
+| Pub/Sub events |Restore of volume failed | Yes | No
+| Ransomware |Potential Ransomware attack identified on backup copy | Yes | Yes
+| Ransomware |Potential Ransomware attack identified on backup copy for this system | Yes | Yes
+| Local snapshot | NetApp Backup and Recovery ad-hoc snapshot creation job failure | Yes | Yes
+| Replication | Modification of replication relationship of volume failure | Yes | Yes
+| Replication | NetApp Backup and Recovery ad-hoc replication job failure | Yes | Yes
+| Replication | NetApp Backup and Recovery replication pause job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication break job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication resync job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication stop job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication reverse resync job failure | Yes | Yes
+| Replication | NetApp Backup and Recovery replication delete job failure | Yes | Yes
+| Target operations | Restore to local or cloud destination failure | Yes | Yes
+| Target operations | On-demand restore failure | Yes | Yes
+| System operations | Ad-hoc volume snapshot creation failure | Yes | Yes
+
 |===
 
 NOTE: Beginning with ONTAP 9.13.0, all alerts appear for Cloud Volumes ONTAP and on-premises ONTAP systems. For systems with Cloud Volumes ONTAP 9.13.0 and on-premises ONTAP, only the alert related to "Restore job completed, but with warnings" appears. 
