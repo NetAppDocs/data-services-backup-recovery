@@ -44,9 +44,9 @@ TIP: You might pay extra fees to your cloud provider to access the backup file.
 
 When you restore workloads, the following occurs: 
 
-* When you restore a workload from a local backup file, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
+* When you restore a workload from a local snapshot or remote backup, NetApp Backup and Recovery overwrites the original VM if you restore to the original location, and creates a _new_ resource if you restore to an alternate location.
 
-* When you restore from a replicated workload, you can restore the workload to the original system or to an on-premises ONTAP system.
+* When you restore from a replicated workload, you can restore the workload to the original on-premises ONTAP system or to a different on-premises ONTAP system.
 +
 image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow to restore a resource"]
 
@@ -79,10 +79,13 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery restore adm
 +
 A list of virtual machines appears that match your search criteria.
 
-. Find the VM that you want to restore from in the list, and select the *Restore virtual machine* button for that VM. 
+. Find the VM that you want to restore from in the list, and select the options menu button for that VM.
+. In the resulting menu, select *Restore virtual machine*. 
 +
-A list of snapshots (restore points) created on that virtual machine appears.
-. Enable the check box for the snapshot you want to restore.
+A list of snapshots (restore points) created on that virtual machine appears. By default, the latest snapshots are shown for the time frame that you select in the *Time frame* dropdown.
++
+For each snapshot, any illuminated icons in the *Location* column indicate the storage locations where the snapshot is available (primary, secondary, or object storage). 
+. Enable the radio button for the snapshot you want to restore.
 . Select *Next*.
 +
 Snapshot location options appear.
@@ -90,11 +93,12 @@ Snapshot location options appear.
 . Select the restore destination for the snapshot:  
 +
 * *Local*: Restores the snapshot from the local location.
-* *Secondary*: Restores the snapshot from a remote storage location. 
+* *Secondary*: Restores the snapshot from a remote storage location.
+* *Object store*: Restores the snapshot from object storage.
 +
-If you choose secondary storage, enter the source and destination locations for both data and logs. 
+If you choose secondary storage, select the destination location from the drop-down list. 
   
-. Select *Next* to continue to the Restore destination settings page.
+. Select *Next*.
 . Choose the destination settings and pre- and post-restore options.
 
 [discrete]
@@ -135,7 +139,7 @@ When restoring to an alternate location, you can change the destination vCenter,
 ** *vCenter FQDN or IP address*: Select the vCenter server where you want to restore the snapshot.
 ** *ESXi host*: Select the host where you want to restore the snapshot.
 ** *Network*: Select the network where you want to restore the snapshot.
-** *Datastore*: Enter the name of the datastore where you want to restore the snapshot.
+** *Datastore*: From the drop-down list, select the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot. If the name matches a VM that already exists in the datastore, Backup and Recovery makes the name unique by appending a current timestamp.
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
