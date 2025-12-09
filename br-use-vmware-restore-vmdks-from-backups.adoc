@@ -13,7 +13,7 @@ summary: You can restore existing VMDKs, or deleted or detached VMDKs, from eith
 :imagesdir: ./media/
 
 [.lead]
-You can restore existing virtual disks (VMDKs), or deleted or detached virtual disks, from either a primary or secondary backups of traditional VMs or vVol VMs. This enables you to restore only specific VM data or applications, so that you don't need to restore the entire VM and all of its associated virtual disks in situations where only specific data is affected. After the virtual disk is restored, it is attached to its original VM and is ready to use.
+You can restore existing virtual disks (VMDKs), or deleted or detached virtual disks, from either a primary or secondary backups of traditional VMs. This enables you to restore only specific VM data or applications, so that you don't need to restore the entire VM and all of its associated virtual disks in situations where only specific data is affected. After the virtual disk is restored, it is attached to its original VM and is ready to use.
 
 You can restore one or more virtual machine disks (VMDKs) on a VM to the same datastore or to different datastores.
 
@@ -45,20 +45,23 @@ A list of virtual machines appears that match your search criteria.
 . Find the VM that you want to restore from in the list, and select the options menu button for that VM.
 . In the resulting menu, select *Restore virtual disks*.
 +
-A list of snapshots (restore points) created on that virtual machine appears.
-. Enable the check box for the snapshot you want to restore.
+A list of snapshots (restore points) created on that virtual machine appears. By default, the latest snapshots are shown for the time frame that you select in the *Time frame* dropdown.
++
+For each snapshot, any illuminated icons in the *Location* column indicate the storage locations where the snapshot is available (primary, secondary, or object storage). 
+. Enable the radio button for the snapshot you want to restore.
 . Select *Next*.
 +
 Snapshot location options appear.
 
-. Select the restore location for the snapshot:  
+. Select the restore destination for the snapshot:  
 +
 * *Local*: Restores the snapshot from the local location.
-* *Secondary*: Restores the snapshot from a remote storage location. 
+* *Secondary*: Restores the snapshot from a remote storage location.
+* *Object store*: Restores the snapshot from object storage.
 +
-If you choose secondary storage, enter the source and destination locations for both data and logs. 
+If you choose secondary storage, select the destination location from the drop-down list. 
 
-. Select *Next* to select options regarding the virtual disks.
+. Select *Next*.
 . Choose the destination settings and pre- and post-restore options:
 
 [discrete]
@@ -80,7 +83,6 @@ When restoring to the original location, you cannot change the destination vCent
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
 * *Post-restore options* section:
-** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
 
 .. Select *Restore*.
@@ -102,7 +104,6 @@ When restoring to an alternate location, you can change the destination datastor
 * *Pre-restore options* section:
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.
 * *Post-restore options* section:
-** *Restart virtual machine*: Enable this option to restart the virtual machine after the restore operation completes and after the post-restore script is applied.
 ** *Postscript*: Enable this option to automate additional tasks by running a custom script after the restore is complete. Enter the full path for the script that should be run and any arguments that the script takes.
 
 .. Select *Restore*.
