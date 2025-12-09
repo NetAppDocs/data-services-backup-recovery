@@ -141,8 +141,8 @@ sidebar:
               url: /br-use-vmware-backup.html
             - title: Restore VMware workloads
               url: /br-use-vmware-restore.html
-            #- title: Restore VMDKs from backups (will not release in Dec 2025)
-            #  url: /br-use-vmware-restore-vmdks-from-backups.html (will not release in Dec 2025)
+            - title: Restore specific virtual disks from backups
+              url: /br-use-vmware-restore-vmdks-from-backups.html
         - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
           entries:  
             - title: Protect virtual machine workloads overview

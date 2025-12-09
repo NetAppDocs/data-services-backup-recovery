@@ -2,8 +2,9 @@
 The preview release of VMware workloads introduces the following enhanced capabilities:
 
 * You can now restore backups and snapshots to an alternate location. This is useful if you want to manage versions of a VM on different VMware vCenter deployments, VMware ESXi hosts, or VMware datastores.
+
+link:br-use-vmware-restore.html[Learn more about restoring VMware VMs with NetApp Backup and Recovery].
+
 * You can now restore specific VMware virtual disks (VMDK images) from either a primary or secondary location, enabling more granular control over restoring VM data.
 
-link:br-use-vmware-restore.html[Learn more about restoring VMware workloads with NetApp Backup and Recovery].
-
-
+link:br-use-vmware-restore-vmdks-from-backups.html[Learn more about restoring VMware virtual disks with NetApp Backup and Recovery].
