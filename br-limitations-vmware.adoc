@@ -19,8 +19,6 @@ The following actions are not supported in the preview version of VMware workloa
 
 * Mount
 * Unmount
-* Restore to alternate location
-* Restore VMDK
 * Attach VMDK 
 * Detach VMDK
 * vVol support
