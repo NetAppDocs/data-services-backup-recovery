@@ -45,7 +45,7 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Protect your VMware VMs and datastores with NetApp Backup and Recovery. 
 ** Back up VMware workloads to Amazon Web Services S3 or StorageGRID (for Preview). 
 ** Restore VMware data from the cloud back to the on-premises vCenter. 
-//You can restore the VM to the exact same location from where the backup was taken or to an alternate location. 
+** You can restore the VM to the exact same location from where the backup was taken or to an alternate location. 
 ** Use NetApp Backup and Recovery without SnapCenter Plug-in for VMware vSphere. 
 ** Refer to link:br-use-vmware-protect-overview.html[Protect VMware workloads].
 
