@@ -287,83 +287,72 @@ NOTE: If the volumes you choose have different snapshot and replication policies
 +
 * *Local Snapshots*: If you are performing replication or back up to object storage, local snapshots must be created. 
 * *Replication*: Creates replicated volumes on another ONTAP storage system.  
-* *Backup*: Backs up volumes to object storage.  
+* *Backup*: Backs up volumes to object storage. When selecting existing buckets or configuring new buckets, you can back up volumes to up to six buckets per cluster.   
 
-. *Architecture*: If you chose replication and backup, choose one of the following flows of information: 
+. *Architecture*: If you chose replication and backup, choose one of the following flows of information:
++
 * *Cascading*: Information flows from the primary storage system to the secondary, and from secondary to object storage. 
 * *Fan out*: Information flows from the primary storage system to the secondary _and_ from the primary to object storage. 
-+ 
++
 For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey]. 
  
-. *Local Snapshot*: Choose an existing snapshot policy or create a new one. 
+. *Local Snapshot*: Choose an existing snapshot policy or create a new one.
 +
 TIP: To create a custom policy before activating the snapshot, refer to link:br-use-policies-create.html[Create a policy].
 +
 To create a policy, select *Create new policy* and do the following: 
 +
-** Enter the name of the policy. 
-** Select up to five schedules, typically of different frequencies. 
-** Select *Create*. 
+.. Enter the name of the policy. 
+.. Select up to five schedules, typically of different frequencies. 
+.. Select *Create*. 
 
 . *Replication*: Set the following options: 
 +
-* *Replication target*: Select the destination system and SVM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
+* *Replication target*: Select the destination system and storage VM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
 * *Replication policy*: Choose an existing replication policy or create one. 
 +
 TIP: To create a custom policy, refer to link:br-use-policies-create.html[Create a policy].
 +
 To create a policy, select *Create new policy* and do the following: 
 +
-** Enter the name of the policy. 
-** Select up to five schedules, typically of different frequencies. 
-** Select *Create*. 
-. *Back up to Object*: If you selected *Backup*, set the following options: 
+.. Enter the name of the policy. 
+.. Select up to five schedules, typically of different frequencies. 
+.. Select *Create*.
+
+. *Backup*: Set the following options: 
 +
 * *Provider*: Select *Amazon Web Services*. 
 * *Provider settings*: Enter the provider details and region where the backups will be stored.
-
 +
 Enter the AWS Account used to store the backups. This can be a different account than where the Cloud Volumes ONTAP system resides.
 +
 If you want to use a different AWS account for your backups, you must add the destination AWS account credentials in the Console, and add the permissions "s3:PutBucketPolicy" and "s3:PutBucketOwnershipControls" to the IAM role that provides the Console with permissions.
-
 +
 Select the region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
-
 + 
-Either create a new bucket or select an existing one. 
-
-* *Encryption key*: If you created a new bucket, enter encryption key information given to you from the provider. Choose whether you'll use the default AWS encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. (https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own encryption keys^]).
-
+Either create a new bucket or select an existing one.
++
+* *Encryption*: If you created a new bucket, enter encryption key information given to you from the provider. Choose whether you'll use the default AWS encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. (https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own encryption keys^]).
 + 
 If you choose to use your own customer-managed keys, enter the key vault and key information. 
-
 + 
 NOTE: If you chose an existing bucket, encryption information is already available, so you don't need to enter it now. 
-
++
+* *Networking*: Configure networking options for this provider.
 * *Backup policy*: Select an existing backup-to-object storage policy or create one. 
 +
 TIP: To create a custom policy before activating the backup, refer to link:br-use-policies-create.html[Create a policy].
 +
 To create a policy, select *Create new policy* and do the following: 
 +
-** Enter the name of the policy. 
-** Select up to five schedules, typically of different frequencies. 
-** For backup-to-object policies, set the DataLock and Ransomware Resilience settings. For details on DataLock and Ransomware Resilience, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
-// In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
-** Select *Create*. 
-* *Export existing snapshots to object storage as backup copies*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+.. Enter the name of the policy. 
+.. Select up to five schedules, typically of different frequencies. 
+.. For backup-to-object policies, set the DataLock and Ransomware Resilience settings. For details on DataLock and Ransomware Resilience, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+.. Select *Create*.
+
+* *Export existing snapshot*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
-
-//.. Enter the name for the default policy. You don't need to change the name.
-
-
-//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware Resilience_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
-//+
-//NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
-
-//.. Optionally, when using ONTAP 9.10.1 and greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization. link:reference-aws-backup-tiers.html[Learn more about using archival tiers^].
 
 === Review your selections 
 
@@ -372,7 +361,7 @@ This is the chance to review your selections and make adjustments, if necessary.
 .Steps 
 
 . In the Review page, review your selections. 
-. Optionally check the box to *Automatically synchronize the Snapshot policy labels with the replication and backup policy labels*. This creates snapshots with a label that matches the labels in the replication and backup policies.  
+. Optionally check the box to *Automatically fix mismatched labels on local Snapshot, replication and backup*. This creates snapshots with a label that matches the labels in the snapshot, replication and backup policies.  
 . Select *Activate Backup*. 
 
 .Result 
