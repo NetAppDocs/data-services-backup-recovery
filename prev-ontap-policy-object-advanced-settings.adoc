@@ -157,9 +157,8 @@ image:screenshot_backup_edit_yearly_snap_delete.png[A screenshot of the Yearly S
 
 . Select *Apply*.
 
-== Enable or disable ransomware scans for a system
-
-Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. You can enable or disable ransomware scans on the latest snapshot by using the option on the Advanced Settings page. If you enable it, scans are performed every 7 days by default. 
+== Enable or disable ransomware scans
+Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. 
 
 For details about DataLock and Ransomware Resilience options, refer to link:prev-ontap-policy-object-options.html[DataLock and Ransomware Resilience options].
 
@@ -167,11 +166,12 @@ You can change that schedule to days or weeks or disable it, saving costs.
 
 TIP: Enabling ransomware scans will incur extra charges depending on the cloud provider. 
 
-Scheduled ransomware scans run only on the latest snapshot.
-
 If the scheduled ransomware scans are disabled, you can still perform on-demand scans and the scan during a restore operation will still occur. 
 
 Refer to link:prev-ontap-policy-manage.html[Manage policies] for details about managing policies that implement ransomware detection. 
+
+=== Enable or disable ransomware scans for a system
+You can enable or disable ransomware scans for a cluster.
 
 .Steps 
 
@@ -186,21 +186,8 @@ Refer to link:prev-ontap-policy-manage.html[Manage policies] for details about m
 . Set the how often in days or weeks that the scan should run. 
 . Select *Apply*. 
 
-== Enable or disable ransomware scans for a system
-
-Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. You can enable or disable ransomware scans on the latest snapshot by using the option on the Advanced Settings page. If you enable it, scans are performed every 7 days by default. 
-
-For details about DataLock and Ransomware Resilience options, refer to link:prev-ontap-policy-object-options.html[DataLock and Ransomware Resilience options].
-
-You can change that schedule to days or weeks or disable it, saving costs.  
-
-TIP: Enabling ransomware scans will incur extra charges depending on the cloud provider. 
-
-Scheduled ransomware scans run only on the latest snapshot.
-
-If the scheduled ransomware scans are disabled, you can still perform on-demand scans and the scan during a restore operation will still occur. 
-
-Refer to link:prev-ontap-policy-manage.html[Manage policies] for details about managing policies that implement ransomware detection. 
+=== Enable or disable ransomware scans for a provider
+You can enable or disable ransomware scans at the provider level by using the provider settings page. The settings on the page are relevant to the bucket that you select at the top of the page. 
 
 .Steps 
 
