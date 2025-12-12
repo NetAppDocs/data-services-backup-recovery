@@ -42,7 +42,7 @@ You can view the cluster-level system settings and provider settings for each sy
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, select the image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > *System settings* to view system settings and *Configure advanced settings > *Provider settings* to view provider settings.
+. From the _Backup Settings page_, select the image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings* to view system settings and *Configure advanced settings > *Provider settings* to view provider settings.
 +
 The resulting page displays the current settings for that system. When viewing provider settings, the provider settings shown are relevant for the bucket that you select at the top of the page.
 
@@ -83,7 +83,7 @@ When you activate NetApp Backup and Recovery for a system, by default, ONTAP can
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > *System settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Max Transfer Rate* section. 
 
@@ -132,7 +132,7 @@ Note that this option only applies to new backup files for new read/write volume
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > *System settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Export existing snapshot copies* section. 
 . Select whether you want existing snapshots to be exported. 
@@ -147,7 +147,7 @@ When you select the "yearly" backup label for a backup policy for any of your vo
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > *System settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Yearly Snapshot Deletion* section. 
 +
@@ -177,7 +177,7 @@ You can enable or disable ransomware scans for a cluster.
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > *System settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the resulting page, expand the *Ransomware scan* section. 
 . Enable or disable *Ransomware scan*. 
@@ -193,7 +193,7 @@ You can enable or disable ransomware scans at the provider level by using the pr
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > *Provider settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > Provider settings*.
 
 . At the top of the resulting page, select the bucket for which you need to change settings.
 . Expand the *Ransomware scan* section. 
