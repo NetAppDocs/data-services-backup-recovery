@@ -150,8 +150,6 @@ When you select the "yearly" backup label for a backup policy for any of your vo
 . From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Yearly Snapshot Deletion* section. 
-+
-image:screenshot_backup_edit_yearly_snap_delete.png[A screenshot of the Yearly Snapshots entry in the Advanced Settings page.]
 
 . Select *Disabled* to retain the yearly snapshots on the source system.
 
