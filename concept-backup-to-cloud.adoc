@@ -15,7 +15,7 @@ summary: NetApp Backup and Recovery is a data service that provides efficient, s
 [.lead]
 NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
 
-Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware, software licenses or media gateways. This makes backup operations simple and cost effective. The NetApp console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
+Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware, software licenses or media gateways. This makes backup operations simple and cost effective. The NetApp Console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
 
 NOTE: Documentation about protecting VMware, KVM, Hyper-V, and Kubernetes workloads is provided as a technology preview. With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before General Availability.   
 
@@ -100,8 +100,6 @@ NetApp Backup and Recovery provides the following benefits:
 
 * **Flexible**: NetApp Backup and Recovery enables you to restore data to the same or different system, which provides flexibility in data recovery.
 
-
-
 == Cost 
 
 NetApp doesn't charge you for using the trial version. However, you are responsible for the costs associated with the cloud resources that you use, such as storage and data transfer costs.  
@@ -151,7 +149,7 @@ There are three ways to pay for Backup and Recovery:
 
 * The first option is to subscribe from your cloud provider, which enables you to pay per month. 
 * The second option is to purchase an annual contract. 
-* The third option is to purchase licenses directly from NetApp. Read the <<Licensing,Licensing>> section for details.
+* The third option is to purchase licenses directly from NetApp. Refer to the <<Licensing,Licensing>> section for details.
 
 == Licensing
 
