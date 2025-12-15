@@ -21,7 +21,7 @@ The benefits of the 3-2-1 approach include:
 * Using different types of media helps you recover if one type fails.
 * You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
-NetApp Backup and Recovery uses NetApp SnapMirror to synchronize backups by creating snapshots and and transferring them tothe backup locations.
+NetApp Backup and Recovery uses NetApp SnapMirror to synchronize backups by creating snapshots and transferring them to the backup locations.
 
 You can do the following to protect your data: 
 
