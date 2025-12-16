@@ -141,9 +141,9 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 *Service charges*
 
 // BLUEXPDOC-1011
-Service charges are paid to NetApp and cover both the cost to create backups to object storage or an ONTAP target and to restore volumes, or files, from those backups. You pay only for the data that you protect in object storage or in ONTAP (this includes SnapMirror configurations). Charges are calculated using the source logical used capacity (before ONTAP efficiencies) of ONTAP volumes that are backed up to object storage or to an ONTAP target. This capacity is also known as Front-End Terabytes (FETB). 
+For ONTAP volume workloads, you are only charged for volumes protected to object storage. Charges are based on the logical used capacity of the source ONTAP volumes before efficiencies are applied, also known as Front-End Terabytes (FETB).
 
-NOTE: For Microsoft SQL Server, charges apply when you initiate the replication of snapshots to a secondary ONTAP target or object storage.
+For all other workloads, you are charged for resources protected to at least one secondary or object storage target. Charges are calculated using the logical size of the source workload. For databases, this means the database size; for VMs, the VM size.
 
 There are three ways to pay for Backup and Recovery: 
 
