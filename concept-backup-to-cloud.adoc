@@ -175,35 +175,32 @@ When you use Google Cloud Platform, request a private offer from NetApp and sele
 
 link:br-start-licensing.html[Learn how to set up licenses].
 
-== Supported data sources, systems, and backup targets
+== Supported workloads, backup sources, and backup targets
 
-.Workload data sources supported
+.Supported workloads
 
-NetApp Backup and Recovery protects the following workloads:
+NetApp Backup and Recovery protects the following types of workloads:
 
 * ONTAP volumes 
-* Microsoft SQL Server instances and databases for physical, VMware Virtual Machine File System (VMFS), and VMware Virtual Machine Disk (VMDK) NFS 
+* Microsoft SQL Server instances and databases, VMware Virtual Machine File System (VMFS), and VMware Virtual Machine Disk (VMDK) NFS 
 * VMware VMs and datastores
 * KVM workloads (Preview)
 * Hyper-V workloads (Preview)
 * Oracle workloads (Preview)
 * Kubernetes workloads (Preview)
 
-.Systems supported
+.Supported backup sources
 
 * On-premises ONTAP SAN (iSCSI protocol) and NAS (using NFS and CIFS protocols) with ONTAP version 9.8 and greater
-
 * Cloud Volumes ONTAP 9.8 or greater for AWS (using SAN and NAS)
-
-//* Cloud Volumes ONTAP 9.8 or greater for Google Cloud Platform (using NFS and CIFS protocols)
-
+* Cloud Volumes ONTAP 9.8 or greater for Google Cloud Platform (using NFS and CIFS protocols)
 * Cloud Volumes ONTAP 9.8 or greater for Microsoft Azure (using SAN and NAS)
-* Amazon FSx for NetApp ONTAP 
+* Amazon FSx for NetApp ONTAP (Microsoft SQL Server workloads only) 
 
-.Backup targets supported
+.Supported backup targets
 
 * Amazon Web Services (AWS) S3
-//* Google Cloud Storage
+* Google Cloud Storage
 * Microsoft Azure Blob (not available for VMware workloads in Preview)
 * StorageGRID
 * ONTAP S3 (Not available for VMware workloads in Preview)
