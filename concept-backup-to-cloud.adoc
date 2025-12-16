@@ -191,7 +191,7 @@ NetApp Backup and Recovery protects the following types of workloads:
 
 .Supported backup sources
 
-* On-premises ONTAP SAN (iSCSI protocol) and NAS (using NFS and CIFS protocols) with ONTAP version 9.8 and greater
+* On-premises ONTAP SAN (iSCSI protocol) and NAS (using NFS and CIFS protocols) with ONTAP version 9.8 or greater
 * Cloud Volumes ONTAP 9.8 or greater for AWS (using SAN and NAS)
 * Cloud Volumes ONTAP 9.8 or greater for Google Cloud Platform (using NFS and CIFS protocols)
 * Cloud Volumes ONTAP 9.8 or greater for Microsoft Azure (using SAN and NAS)
