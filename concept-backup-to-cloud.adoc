@@ -186,7 +186,7 @@ NetApp Backup and Recovery protects the following types of workloads:
 * VMware VMs and datastores
 * KVM workloads (Preview)
 * Hyper-V workloads (Preview)
-* Oracle workloads (Preview)
+* Oracle Database workloads (Preview)
 * Kubernetes workloads (Preview)
 
 .Supported backup sources
