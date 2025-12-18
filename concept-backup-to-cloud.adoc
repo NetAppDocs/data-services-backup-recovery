@@ -175,21 +175,21 @@ When you use Google Cloud Platform, request a private offer from NetApp and sele
 
 link:br-start-licensing.html[Learn how to set up licenses].
 
-== Supported workloads, backup sources, and backup targets
+== Supported workloads, systems, and backup targets
 
 .Supported workloads
 
 NetApp Backup and Recovery protects the following types of workloads:
 
 * ONTAP volumes 
-* Microsoft SQL Server instances and databases, VMware Virtual Machine File System (VMFS), and VMware Virtual Machine Disk (VMDK) NFS 
+* Microsoft SQL Server instances and databases stored on physical disk and VMware Virtual Machine Disk (VMDK) over VMFS or NFS
 * VMware VMs and datastores
 * KVM workloads (Preview)
 * Hyper-V workloads (Preview)
 * Oracle Database workloads (Preview)
 * Kubernetes workloads (Preview)
 
-.Supported backup sources
+.Supported systems
 
 * On-premises ONTAP SAN (iSCSI protocol) and NAS (using NFS and CIFS protocols) with ONTAP version 9.8 or greater
 * Cloud Volumes ONTAP 9.8 or greater for AWS (using SAN and NAS)
@@ -205,29 +205,15 @@ NetApp Backup and Recovery protects the following types of workloads:
 * StorageGRID
 * ONTAP S3 (Not available for VMware workloads in Preview)
 
-
-//== NetApp Backup and Recovery uses the Plug-in for Microsoft SQL Server
-//== NetApp Backup and Recovery uses the SnapCenter Plugin for Microsoft SQL Server
-
-//NetApp Backup and Recovery installs the Plug-in for Microsoft SQL Server on the server that hosts Microsoft SQL Server. The  Plug-in is a host-side component that enables application-aware data protection management of Microsoft SQL Server databases and instances. 
-
 == How NetApp Backup and Recovery works
 
 When you enable NetApp Backup and Recovery, the service performs a full backup of your data. After the initial backup, all additional backups are incremental. This keeps network traffic to a minimum.
-
 
 The following image shows the relationship among components. 
 
 image:diagram-br-321-aff-a.png[A diagram showing how NetApp Backup and Recovery uses a 3-2-1 protection strategy]
 
 NOTE: Primary to object storage is also supported, not just from secondary storage to object storage.
-
-//image:diagram-workloads-onprem.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
-
-//The following image shows the relationship among components for a cloud deployment:
-
-//image:diagram-workloads-cloud.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
-
 
 === Where backups reside in object store locations
 
