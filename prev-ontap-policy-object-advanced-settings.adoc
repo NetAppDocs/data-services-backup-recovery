@@ -42,7 +42,7 @@ You can view the cluster-level system settings and provider settings for each sy
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, select the image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings* to view system settings and *Configure advanced settings > *Provider settings* to view provider settings.
+. From the _Backup Settings page_, select the image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings* to view system settings and *Configure advanced settings > Provider settings* to view provider settings.
 +
 The resulting page displays the current settings for that system. When viewing provider settings, the provider settings shown are relevant for the bucket that you select at the top of the page.
 
