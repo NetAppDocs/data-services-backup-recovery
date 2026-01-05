@@ -102,32 +102,32 @@ NetApp Backup and Recovery enables you to back up ONTAP volumes from the followi
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Amazon S3
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 | Cloud Volumes ONTAP in Azure
 | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 | Azure Blob
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 | Cloud Volumes ONTAP in Google
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 | Google Cloud Storage
-endif::gcp[]
+//endif::gcp[]
 | On-premises ONTAP system
 | Cloud Volumes ONTAP
 On-premises ONTAP system
 |
 //ifdef::aws[]
 Amazon S3
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 Azure Blob
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 Google Cloud Storage
-endif::gcp[]
+//endif::gcp[]
 NetApp StorageGRID
 ONTAP S3
 
@@ -149,19 +149,19 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
-endif::gcp[]
+//endif::gcp[]
 | NetApp StorageGRID | On-premises ONTAP system
 Cloud Volumes ONTAP
 | On-premises ONTAP system
@@ -208,15 +208,15 @@ Since NetApp Backup and Recovery preserves the storage efficiencies of the sourc
 //ifdef::aws[]
 ** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
 +
-endif::aws[]
+//endif::aws[]
 +
 //ifdef::azure[]
 ** In Azure, an https://azure.microsoft.com/en-us/services/synapse-analytics/?&ef_id=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&gclid=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE[Azure Synapse workspace^] and https://azure.microsoft.com/en-us/services/storage/data-lake-storage/?&ef_id=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&gclid=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE[Azure Data Lake Storage^] are provisioned in your storage account to store and analyze your data.
 +
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 ** In Google, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
-endif::gcp[]
+//endif::gcp[]
 
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
@@ -262,7 +262,7 @@ When you use AWS, two annual contracts are available for 1, 2, or 3 year terms:
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
-endif::aws[]
+//endif::aws[]
 
 //ifdef::azure[]
 When you use Azure, two annual contracts are available for 1, 2, or 3 year terms:
@@ -270,11 +270,11 @@ When you use Azure, two annual contracts are available for 1, 2, or 3 year terms
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
-endif::azure[]
+//endif::azure[]
 
-ifdef::gcp[]
+//ifdef::gcp[]
 When you use GCP, you can request a private offer from NetApp, and then select the plan when you subscribe from the Google Cloud Marketplace during NetApp Backup and Recovery activation.
-endif::gcp[]
+//endif::gcp[]
 
 link:br-start-licensing.html[Learn how to set up annual contracts].
 
@@ -303,15 +303,15 @@ Backups reside in different locations based on the type of backup:
 //ifdef::aws[]
 +
 ** In AWS, the Console enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 +
 ** In Azure, the Console uses a new or existing resource group with a storage account for the Blob container. The Console https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 +
 ** In GCP, the Console uses a new or existing project with a storage account for the Google Cloud Storage bucket.
-endif::gcp[]
+//endif::gcp[]
 +
 ** In StorageGRID, the Console uses an existing tenant account for the S3 bucket.
 +
@@ -379,19 +379,19 @@ When using certain cloud storage you can move older backup files to a less expen
 * In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier older backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage in the NetApp Backup and Recovery UI after a certain number of days for further cost optimization. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage].
-endif::aws[]
+//endif::aws[]
 
 //ifdef::azure[]
 * In Azure, backups are associated with the _Cool_ access tier.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier older backups to _Azure Archive_ storage in the NetApp Backup and Recovery UI after a certain number of days for further cost optimization. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage].
-endif::azure[]
+//endif::azure[]
 
-ifdef::gcp[]
+//ifdef::gcp[]
 * In GCP, backups are associated with the _Standard_ storage class.
 +
 If your cluster is using ONTAP 9.12.1 or greater, you can choose to tier older backups to _Archive_ storage in the NetApp Backup and Recovery UI after a certain number of days for further cost optimization. link:prev-reference-gcp-archive-storage-tiers.html[Learn more about Google archival storage].
-endif::gcp[]
+//endif::gcp[]
 
 * In StorageGRID, backups are associated with the _Standard_ storage class.
 +

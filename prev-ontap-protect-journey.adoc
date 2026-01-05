@@ -275,10 +275,10 @@ NetApp Backup and Recovery can be used in a site with limited internet connectiv
 //* You can back up data from local on-premises ONTAP systems to local NetApp StorageGRID systems. link:prev-ontap-backup-onprem-storagegrid.html[Back up on-premises ONTAP data to StorageGRID].
 //ifdef::aws[]
 * You can back up data from on-premises ONTAP systems or Cloud Volumes ONTAP systems installed in AWS commercial regions to Amazon S3. link:prev-ontap-backup-cvo-aws.html[Back up Cloud Volumes ONTAP data to Amazon S3].
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 * You can back up data from on-premises ONTAP systems or Cloud Volumes ONTAP systems installed in Azure commercial regions to Azure Blob.  link:prev-ontap-backup-cvo-azure.html[Back up Cloud Volumes ONTAP data to Azure Blob].
-endif::azure[]
+//endif::azure[]
 
 === Support for sites with no internet connectivity
 

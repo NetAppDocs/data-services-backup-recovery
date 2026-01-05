@@ -253,13 +253,13 @@ If your cluster is running ONTAP 9.10.1 or greater, you also have the option to 
 +
 //ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about using AWS archival storage].
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about using Azure archival storage].
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about using Google archival storage]. (Requires ONTAP 9.12.1.)
-endif::gcp[]
+//endif::gcp[]
 +
 Note that any backup files that have been tiered to archival storage are left in that tier if you stop tiering backups to archive - they are not automatically moved back to the standard tier. Only new volume backups will reside in the standard tier.
 
@@ -287,13 +287,13 @@ If your cluster is running ONTAP 9.10.1 or greater, you also have the option to 
 +
 //ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about using AWS archival storage].
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about using Azure archival storage].
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about using Google archival storage]. (Requires ONTAP 9.12.1.)
-endif::gcp[]
+//endif::gcp[]
 
 
 == Delete backups

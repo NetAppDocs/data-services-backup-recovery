@@ -31,13 +31,13 @@ Restore capabilities depend on your ONTAP version:
 
 //ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage].
-endif::gcp[]
+//endif::gcp[]
 
 [NOTE] 
 ====
@@ -67,19 +67,19 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
-endif::gcp[]
+//endif::gcp[]
 | NetApp StorageGRID | On-premises ONTAP system
 Cloud Volumes ONTAP
 | On-premises ONTAP system
@@ -93,13 +93,13 @@ For Search & Restore, the Console agent can be installed in the following locati
 
 //ifdef::aws[]
 * For Amazon S3, the Console agent can be deployed in AWS or in your premises 
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 * For Azure Blob, the Console agent can be deployed in Azure or in your premises 
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 * For Google Cloud Storage, the Console agent must be deployed in your Google Cloud Platform VPC
-endif::gcp[]
+//endif::gcp[]
 * For StorageGRID, the Console agent must be deployed in your premises; with or without internet access
 * For ONTAP S3, the Console agent can be deployed in your premises (with or without internet access) or in a cloud provider environment
 
@@ -125,7 +125,7 @@ The following are the requirements for Search & Restore when using legacy indexi
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides the Console with permissions. link:prev-ontap-backup-onprem-aws.html[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the Athena and Glue permissions to the Console user role now. They are required for Search & Restore.
-endif::aws[]
+//endif::aws[]
 
 //ifdef::azure[]
 * Azure requirements:
@@ -135,14 +135,14 @@ endif::aws[]
 Note that if you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the Azure Synapse Workspace and Data Lake Storage Account permissions to the Console user role now. They are required for Search & Restore.
 
 ** The Console agent must be configured *without* a proxy server for HTTP communication to the internet. If you have configured an HTTP proxy server for your Console agent, you can't use Search & Restore functionality.
-endif::azure[]
+//endif::azure[]
 
-ifdef::gcp[]
+//ifdef::gcp[]
 * Google Cloud requirements:
 ** Specific Google BigQuery permissions must be added to the user role that provides the NetApp Console with permissions. link:prev-ontap-backup-onprem-gcp.html[Make sure all the permissions are configured correctly].
 +
 If you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the BigQuery permissions to the Console user role now. They are required for Search & Restore.
-endif::gcp[]
+//endif::gcp[]
 
 * StorageGRID and ONTAP S3 requirements:
 +
@@ -309,13 +309,13 @@ If you select an on-premises ONTAP system and you haven't already configured the
 +
 //ifdef::aws[]
 ** When restoring from Amazon S3, select the IPspace in the ONTAP cluster where the destination volume will reside, enter the access key and secret key for the user you created to give the ONTAP cluster access to the S3 bucket, and optionally choose a private VPC endpoint for secure data transfer. link:prev-ontap-backup-onprem-aws.html[See details about these requirements].
-endif::aws[]
+//endif::aws[]
 //ifdef::azure[]
 ** When restoring from Azure Blob, select the IPspace in the ONTAP cluster where the destination volume will reside, and optionally choose a private endpoint for secure data transfer by selecting the VNet and Subnet. link:prev-ontap-backup-onprem-azure.html[See details about these requirements].
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 ** When restoring from Google Cloud Storage, select the IPspace in the ONTAP cluster where the destination volume will reside, and the Access Key and Secret Key to access the object storage. link:prev-ontap-backup-onprem-gcp.html[See details about these requirements].
-endif::gcp[]
+//endif::gcp[]
 ** When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides. link:prev-ontap-backup-onprem-storagegrid.html[See details about these requirements].
 ** When restoring from ONTAP S3, enter the FQDN of the ONTAP S3 server and the port that ONTAP should use for HTTPS communication with ONTAP S3, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside. link:prev-ontap-backup-onprem-ontaps3.html[See details about these requirements].
 
