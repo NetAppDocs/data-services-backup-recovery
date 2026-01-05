@@ -29,7 +29,7 @@ You can change the following options in the Advanced Settings page:
 //* Changing the storage keys that give your ONTAP system permission to access object storage
 //* Changing the ONTAP IPspace that is connected to object storage
 * Changing the network bandwidth allocated to upload backups to object storage using the Max Transfer Rate option
-//ifdef::aws[]
+//ifdef::azure[]
 //* Changing the archival storage class (AWS only)
 //endif::aws[]
 //* Changing the automatic backup setting (and policy) for future volumes
@@ -106,7 +106,7 @@ When you activate NetApp Backup and Recovery for a system, by default, ONTAP can
 
 This setting does not affect the bandwidth allocated to any other replication relationships that may be configured for volumes in the system.
 
-//ifdef::aws[]
+//ifdef::azure[]
 //== Change the archival storage class
 //
 //If you want to change the archival storage class that's used when your backup files have been stored for a certain number of days (typically more than 30 days), then you can make the change here. Since this is a cluster-level setting, any backup policies that are using archival storage are changed immediately to use this new storage class.

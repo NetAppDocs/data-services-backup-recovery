@@ -253,12 +253,12 @@ To create a Console agent in the NetApp Console before using the service, refer 
 
 To complete a restore operation, the Console agent can be installed in the following locations:
 
-ifdef::aws[]
+//ifdef::azure[]
 * For Amazon S3, the Console agent can be deployed on your premises. 
-endif::aws[]
-ifdef::azure[]
+//endif::aws[]
+//ifdef::azure[]
 * For Azure Blob, the Console agent can be deployed on your premises. 
-endif::azure[]
+//endif::azure[]
 //ifdef::gcp[]
 //* For Google Cloud Storage, the Connector must be deployed in your Google Cloud Platform VPC.
 //endif::gcp[]

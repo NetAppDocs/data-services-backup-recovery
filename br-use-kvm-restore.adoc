@@ -258,7 +258,7 @@ This option is available only if the source system from which the cloud backup w
 //[TO BR TEAM: Is this the correct information?]   
 
 
-//ifdef::aws[]
+//ifdef::azure[]
 //* When restoring from Amazon S3, select the IPspace in the ONTAP cluster where the destination volume will reside, enter the access key and secret key for the user you created to give the ONTAP cluster access to the S3 bucket, and optionally choose a private VPC endpoint for secure data transfer.
 //endif::aws[]
 //ifdef::azure[]
@@ -275,7 +275,7 @@ This option is available only if the source system from which the cloud backup w
 
 //* And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.
 
-//ifdef::aws[]
+//ifdef::azure[]
 //link:reference-aws-backup-tiers.html#restore-data-from-archival-storage[Learn more about restoring from AWS archival storage].
 //endif::aws[]
 //ifdef::azure[]
