@@ -14,11 +14,11 @@ summary: Learn what's new in NetApp Backup and Recovery.
 [.lead]
 Learn what's new in NetApp Backup and Recovery.
 
-== 15 December 2025
+== 12 January 2026
 
 This NetApp Backup and Recovery release includes the following updates.
 
-include::_whatsnew/2025-12-15.adoc[]
+include::_whatsnew/2026-1-12.adoc[]
 
 == 08 December 2025
 
