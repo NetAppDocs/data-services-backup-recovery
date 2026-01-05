@@ -29,10 +29,10 @@ Restore capabilities depend on your ONTAP version:
 ** Google Archive and StorageGRID: ONTAP 9.12.1 or greater
 ** Folder restore: ONTAP 9.13.1 or greater
 
-ifdef::aws[]
+//ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
 endif::azure[]
 ifdef::gcp[]
@@ -62,13 +62,13 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 | Destination system
 
 | *Object Store (Backup)* | *Secondary System (Replication)* |
-ifdef::aws[]
+//ifdef::aws[]
 | Amazon S3 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Azure
@@ -91,10 +91,10 @@ Cloud Volumes ONTAP
 
 For Search & Restore, the Console agent can be installed in the following locations:
 
-ifdef::aws[]
+//ifdef::aws[]
 * For Amazon S3, the Console agent can be deployed in AWS or in your premises 
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 * For Azure Blob, the Console agent can be deployed in Azure or in your premises 
 endif::azure[]
 ifdef::gcp[]
@@ -120,14 +120,14 @@ The following are the requirements for Search & Restore when using legacy indexi
 
 [%collapsible]
 ====
-ifdef::aws[]
+//ifdef::aws[]
 * AWS requirements:
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides the Console with permissions. link:prev-ontap-backup-onprem-aws.html[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using NetApp Backup and Recovery with a Console agent you configured in the past, you'll need to add the Athena and Glue permissions to the Console user role now. They are required for Search & Restore.
 endif::aws[]
 
-ifdef::azure[]
+//ifdef::azure[]
 * Azure requirements:
 ** You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
 ** Specific Azure Synapse Workspace and Data Lake Storage Account permissions must be added to the user role that provides the Console with permissions. link:prev-ontap-backup-onprem-azure.html[Make sure all the permissions are configured correctly].
@@ -307,10 +307,10 @@ Note that the results identify local volume snapshots and remote Replicated volu
 +
 If you select an on-premises ONTAP system and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
-ifdef::aws[]
+//ifdef::aws[]
 ** When restoring from Amazon S3, select the IPspace in the ONTAP cluster where the destination volume will reside, enter the access key and secret key for the user you created to give the ONTAP cluster access to the S3 bucket, and optionally choose a private VPC endpoint for secure data transfer. link:prev-ontap-backup-onprem-aws.html[See details about these requirements].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 ** When restoring from Azure Blob, select the IPspace in the ONTAP cluster where the destination volume will reside, and optionally choose a private endpoint for secure data transfer by selecting the VNet and Subnet. link:prev-ontap-backup-onprem-azure.html[See details about these requirements].
 endif::azure[]
 ifdef::gcp[]

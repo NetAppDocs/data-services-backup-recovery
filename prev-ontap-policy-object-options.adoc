@@ -146,11 +146,11 @@ You can enable DataLock and Ransomware protection on ONTAP volumes from the foll
 | Source system
 | Backup File Destination
 
-ifdef::aws[]
+//ifdef::aws[]
 | Cloud Volumes ONTAP in AWS
 | Amazon S3
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 | Cloud Volumes ONTAP in Azure
 | Azure Blob
 endif::azure[]
@@ -160,10 +160,10 @@ ifdef::gcp[]
 endif::gcp[]
 | On-premises ONTAP system
 | 
-ifdef::aws[]
+//ifdef::aws[]
 Amazon S3
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 Azure Blob
 endif::azure[]
 ifdef::gcp[]
@@ -175,7 +175,7 @@ NetApp StorageGRID
 
 === Requirements
 
-ifdef::aws[]
+//ifdef::aws[]
 * For AWS:
 ** Your clusters must running ONTAP 9.11.1 or greater 
 ** The Console agent can be deployed in the cloud or on your premises
@@ -218,7 +218,7 @@ ifdef::aws[]
 +
 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[View the full JSON format for the policy where you can copy and paste required permissions^].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 * For Azure:
 ** Your clusters must running ONTAP 9.12.1 or greater
 ** The Console agent can be deployed in the cloud or on your premises
@@ -315,7 +315,7 @@ Data in archival tiers can't be accessed immediately when needed, and will requi
 Each backup policy provides a section for _Archival Policy_ that you can apply to your backup files.
 
 
-ifdef::aws[]
+//ifdef::aws[]
 * In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage].
@@ -325,7 +325,7 @@ If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to 
 ** If you select _S3 Glacier Deep Archive_ in your first backup policy, then that tier will be the only archive tier available for future backup policies for that cluster.
 endif::aws[]
 
-ifdef::azure[]
+//ifdef::azure[]
 * In Azure, backups are associated with the _Cool_ access tier.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage].
@@ -341,11 +341,11 @@ endif::gcp[]
 * In StorageGRID, backups are associated with the _Standard_ storage class.
 +
 If your on-prem cluster is using ONTAP 9.12.1 or greater, and your StorageGRID system is using 11.4 or greater, you can archive older backup files to public cloud archival storage. 
-ifdef::aws[]
+//ifdef::aws[]
 +
 ** For AWS, you can tier backups to AWS _S3 Glacier_ or _S3 Glacier Deep Archive_ storage. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage^].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 +
 ** For Azure, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage^].
 endif::azure[]

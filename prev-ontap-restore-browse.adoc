@@ -27,10 +27,10 @@ Restore capabilities depend on your ONTAP version:
 
 //If the backup file you want to restore resides in archival cloud storage (starting with ONTAP 9.10.1), the restore operation takes longer and incurs a cost. The destination cluster must also be running ONTAP 9.10.1 or greater for volume restore, 9.11.1 for file restore, 9.12.1 for Google Archive and StorageGRID, and 9.13.1 for folder restore.
 
-ifdef::aws[]
+//ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
 endif::azure[]
 ifdef::gcp[]
@@ -49,14 +49,14 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 |===
 
 |*From Object Store (Backup)* | *From Primary (Snapshot)* | *From Secondary System (Replication)* | To Destination system
-ifdef::aws[]
+//ifdef::aws[]
 | Amazon S3 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 endif::aws[]
 
-ifdef::azure[]
+//ifdef::azure[]
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Azure
@@ -79,10 +79,10 @@ Cloud Volumes ONTAP
 
 For Browse & Restore, the Console agent can be installed in the following locations:
 
-ifdef::aws[]
+//ifdef::aws[]
 * For Amazon S3, the Console agent can be deployed in AWS or in your premises 
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 * For Azure Blob, the Console agent can be deployed in Azure or in your premises 
 endif::azure[]
 ifdef::gcp[]
@@ -123,10 +123,10 @@ Note that if you select a backup file in object storage, and Ransomware Resilien
 . In the _Select Destination_ page, select the *system* where you want to restore the volume.
 . When restoring a backup file from object storage, if you select an on-premises ONTAP system and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
-ifdef::aws[]
+//ifdef::aws[]
 * When restoring from Amazon S3, select the IPspace in the ONTAP cluster where the destination volume will reside, enter the access key and secret key for the user you created to give the ONTAP cluster access to the S3 bucket, and optionally choose a private VPC endpoint for secure data transfer.
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 * When restoring from Azure Blob, select the IPspace in the ONTAP cluster where the destination volume will reside, select the Azure Subscription to access the object storage, and optionally choose a private endpoint for secure data transfer by selecting the VNet and Subnet.
 endif::azure[]
 ifdef::gcp[]
@@ -141,10 +141,10 @@ When restoring a backup from object storage to a Cloud Volumes ONTAP system usin
 +
 And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.
 +
-ifdef::aws[]
+//ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
 endif::azure[]
 ifdef::gcp[]
@@ -221,10 +221,10 @@ As you select files they are added to the left side of the page so you can see t
 +
 If you select an on-premises cluster and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
-ifdef::aws[]
+//ifdef::aws[]
 * When restoring from Amazon S3, enter the IPspace in the ONTAP cluster where the destination volume resides, and the AWS Access Key and Secret Key needed to access the object storage. You can also select a Private Link Configuration for the connection to the cluster.
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 * When restoring from Azure Blob, enter the IPspace in the ONTAP cluster where the destination volume resides. You can also select a Private Endpoint Configuration for the connection to the cluster.
 endif::azure[]
 ifdef::gcp[]

@@ -121,7 +121,7 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 
 * For restoring data using Search & Restore, certain resources are provisioned by your cloud provider, and there is per-TiB cost associated with the amount of data that is scanned by your search requests. (These resources are not needed for Browse & Restore.)
 +
-//ifdef::aws[]
+//ifdef::azure[]
 ** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
 +
 //endif::aws[]

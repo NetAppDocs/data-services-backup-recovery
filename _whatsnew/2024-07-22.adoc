@@ -16,7 +16,7 @@ The Amazon Web Services (AWS) Identity and access Roles Anywhere service enables
 
 With this release, support for AWS IAM Roles Anywhere service is a technology preview.
 
-ifdef::aws[]
+//ifdef::aws[]
 This applies to link:prev-ontap-backup-cvo-aws.html[backing up Cloud Volumes ONTAP to AWS].
  
 endif::aws[]

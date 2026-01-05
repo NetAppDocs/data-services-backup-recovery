@@ -251,10 +251,10 @@ You can change the attributes for a backup policy that is currently applied to v
 +
 If your cluster is running ONTAP 9.10.1 or greater, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
 +
-ifdef::aws[]
+//ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about using AWS archival storage].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about using Azure archival storage].
 endif::azure[]
 ifdef::gcp[]
@@ -285,10 +285,10 @@ If you want to apply a new backup policy to certain volumes in a system, you fir
 +
 If your cluster is running ONTAP 9.10.1 or greater, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
 +
-ifdef::aws[]
+//ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about using AWS archival storage].
 endif::aws[]
-ifdef::azure[]
+//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about using Azure archival storage].
 endif::azure[]
 ifdef::gcp[]
