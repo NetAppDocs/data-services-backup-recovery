@@ -61,7 +61,7 @@ When you restore workloads, the following occurs:
 
 //You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
 
-From the Restore page (also known as Search & Restore)*, you can restore a resource, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
+From the Restore page (also known as Search & Restore), you can restore a resource, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
 
 //* *From the Inventory page (also known as Browse & Restore)*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
 
@@ -89,11 +89,6 @@ A list of snapshots appears that match your search criteria.
 A list of possible restore points appears.
 . Select the restore point that you want to use.
 . Select a snapshot source location.
-
-
-
-
-
 . Select *Done* or *Next* to continue to the Restore destination settings page.
 +
 Next, you can choose the destination settings and the pre-restore and post-restore options.
@@ -138,7 +133,6 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 
 . Select *Restore*.
 
-
 --
 
 .Restore to alternate location
@@ -163,10 +157,6 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 
 ====
 //end of tabbed area
-
-
-
-
 
 //== Restore workload data from the Inventory option (Browse & Restore)
 
