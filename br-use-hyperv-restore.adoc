@@ -109,17 +109,20 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 --
 
 .. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-.. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+.. In the *Pre-restore options* section, consider the following options:
++ 
+* *Prescript*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+
 .. In the *Post-restore options* section, consider the following options:
 + 
 * *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
 * *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
 
-.. *Notification* section:
+.. In the *Notification* section, consider the following options:
 +
 * *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
 
-. Select *Restore*.
+.. Select *Restore*.
 
 //** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
 
@@ -136,7 +139,7 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 
 --
 
-.. In the *Destination settings*: section, enter the following:
+.. In the *Destination settings*: section, enter the following information:
 +
 * *Hyper-V FQDN or IP address*: Enter the fully qualified domain name or IP address of the destination Hyper-V host.
 * *Network*: Select the destination network where you want to restore the snapshot.
