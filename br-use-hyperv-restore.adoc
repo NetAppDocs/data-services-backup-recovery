@@ -89,15 +89,11 @@ A list of snapshots appears that match your search criteria.
 A list of possible restore points appears.
 . Select the restore point that you want to use.
 . Select a snapshot source location.
-. Select *Done* or *Next* to continue to the Restore destination settings page.
-+
-Next, you can choose the destination settings and the pre-restore and post-restore options.
+. Select *Next* to continue.
+. Choose the restore destination and settings:
 
 [discrete]
 ===== Destination selection
-
-[start=8]
-. Choose the destination settings and the pre-restore and post-restore options.
 
 //Start tabbed area 
 
@@ -109,12 +105,11 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 --
 When you restore to the original location, you can view the destination settings by expanding the *Destination settings* section, but you cannot change them.
 
-.. In the *Post-restore options* section, consider the following options:
+.. In the *Post-restore options* section, consider the following option:
 + 
 * *Start the virtual machine*: Enable this option to boot the new virtual machine after it is restored.
 
 .. Select *Restore*.
-
 
 --
 

@@ -60,7 +60,7 @@ This feature does not provide protection for your source volumes; only for the b
 
 === What is DataLock
 
-With this feature, you can lock the cloud snapshots replicated via SnapMirror to Cloud and also enable the feature to detect a ransomware attack and recover a consistent copy of the snapshot on the object store. This feature is supported on AWS, Azure, and StorageGRID. 
+With this feature, you can lock the cloud snapshots replicated via SnapMirror to Cloud and also enable the feature to detect a ransomware attack and recover a consistent copy of the snapshot on the object store. This feature is supported on AWS, Azure, Google Cloud Platform, and StorageGRID. 
 
 DataLock protects your backup files from being modified or deleted for a certain period of time - also called _immutable storage_. This functionality uses technology from the object storage provider for "object locking." 
 
@@ -348,4 +348,3 @@ If your on-prem cluster is using ONTAP 9.12.1 or greater, and your StorageGRID s
 //ifdef::azure[]
 +
 ** For Azure, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage^].
-//endif::azure[]
