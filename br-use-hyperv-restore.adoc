@@ -89,20 +89,11 @@ A list of snapshots appears that match your search criteria.
 A list of possible restore points appears.
 . Select the restore point that you want to use.
 . Select a snapshot source location.
-
-
-
-
-
-. Select *Done* or *Next* to continue to the Restore destination settings page.
-+
-Next, you can choose the destination settings and the pre-restore and post-restore options.
+. Select *Next* to continue.
+. Choose the restore destination and settings:
 
 [discrete]
 ===== Destination selection
-
-[start=8]
-. Choose the destination settings and the pre-restore and post-restore options.
 
 //Start tabbed area 
 

@@ -98,8 +98,8 @@ Snapshot location options appear.
 +
 If you choose secondary storage, select the destination location from the drop-down list. 
   
-. Select *Next*.
-. Choose the destination settings and pre- and post-restore options.
+. Select *Next* to continue.
+. Choose the restore destination and settings:
 
 [discrete]
 ===== Destination selection
