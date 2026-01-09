@@ -118,15 +118,12 @@ A list of possible restore points appears.
 //+
 //image:screen-vm-restore-location-objectstore-cost.png[A screenshot showing the Restore options for object storage.]
 
-. Select *Done* or *Next* to continue to the Restore destination settings page.
-+
-Next, you can choose the destination settings and the pre-restore and post-restore options.
+. Select *Next* to continue.
+. Choose the restore destination and settings:
 
 
 [discrete]
 ===== Destination selection
-
-. Choose the destination settings and the pre-restore and post-restore options.
 
 //Start tabbed area 
 
