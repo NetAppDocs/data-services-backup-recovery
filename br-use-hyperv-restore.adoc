@@ -101,6 +101,7 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 [discrete]
 ===== Destination selection
 
+[start=8]
 . Choose the destination settings and the pre-restore and post-restore options.
 
 //Start tabbed area 
