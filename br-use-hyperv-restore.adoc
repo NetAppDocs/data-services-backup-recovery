@@ -107,32 +107,15 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 .Restore to original location
 
 --
-
-.. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-.. In the *Pre-restore options* section, consider the following options:
-+ 
-* *Prescript*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+When you restore to the original location, you can view the destination settings by expanding the *Destination settings* section, but you cannot change them.
 
 .. In the *Post-restore options* section, consider the following options:
 + 
-* *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-* *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-
-.. In the *Notification* section, consider the following options:
-+
-* *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
+* *Start the virtual machine*: Enable this option to boot the new virtual machine after it is restored.
 
 .. Select *Restore*.
 
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
 
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation.(Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails.(Applies only to object storage to an alternate location.)
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied.(Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
 --
 
 .Restore to alternate location
@@ -148,7 +131,7 @@ Next, you can choose the destination settings and the pre-restore and post-resto
 
 .. In the *Post restore options* section, consider the following options:
 +
-* *Start virtual machine*: Enable this option to boot the new virtual machine after it is restored.
+* *Start the virtual machine*: Enable this option to boot the new virtual machine after it is restored.
 
 .. Select *Restore*.
 

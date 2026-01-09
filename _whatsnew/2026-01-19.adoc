@@ -1,0 +1,10 @@
+=== VMware workloads supported in General Availability (GA)
+VMware workload support is now is now generally available (GA) in NetApp Backup and Recovery.
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Learn more about restoring VMware VMs with NetApp Backup and Recovery].
+
+=== Hyper-V workloads preview enhancements 
+
+You can now restore Hyper-V VM backups and snapshots to an alternate location. This is useful if you want to manage versions of a VM on different Hyper-V hosts.
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-restore.html[Learn more about restoring Hyper-V VMs with NetApp Backup and Recovery].
