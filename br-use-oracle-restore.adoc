@@ -123,14 +123,11 @@ The matching snapshots are displayed.
 ====
 
 . Select a snapshot source location.
-. Select *Next* to continue to the Restore destination settings page.
-+
-Next, you can choose the destination settings and the pre-restore and post-restore options.
+. Select *Next* to continue.
+. Choose the restore destination and settings:
 
 [discrete]
 ===== Destination selection
-
-. Choose the destination settings and the pre-restore and post-restore options.
 
 //Start tabbed area 
 
