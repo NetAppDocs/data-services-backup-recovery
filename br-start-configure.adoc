@@ -18,7 +18,8 @@ After you set up NetApp Console, configure Backup and Recovery settings. Add cre
 * <<Add credentials for host resources>> for the Windows and SQL Server hosts that you imported from SnapCenter and add credentials. (Microsoft SQL Server workloads only)
 * <<Maintain VMware vCenter settings>>.
 * <<Import and manage SnapCenter host resources>>. (Microsoft SQL Server workloads only)
-//* link:br-use-manage-execution-hook-templates.html[Set up script execution hooks] to run scripts before and after backup jobs. (Kubernetes workloads only)
+* <<Add a KVM management platform>>. (KVM workloads only)
+//* link:br-use-manage-execution-hook-templates.html[Create execution hook templates] to run scripts before and after backup jobs. (Kubernetes workloads only) (This is handled in the exec hook topic)
 * <<Configure log directories in snapshots for Windows hosts>>.
 //* Enable DataLock and integrity scanning. 
 //* <<Enable the Certificate Authority certificates>>.
@@ -179,6 +180,24 @@ The Import from SnapCenter page shows all previous imports.
 . Update the SnapCenter password and port details, as needed.
 . Select *Import*. 
 
+== Add a KVM management platform
+
+If you use the Apache CloudStack management platform to manage KVM resources, you need to integrate it with NetApp Backup and Recovery so that Backup and Recovery can discover and protect the managed KVM hosts and VMs.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Settings*.
+. Select the down arrow to expand the *Management platform* section.
+. Select *Add management platform credential*.
+. Enter the following information:
++
+* *Management platform IP address or FQDN*: Enter the IP address or fully qualified domain name of the management platform.
+* *API key*: Enter the API key to use to authenticate API requests.
+* *Secret Key*: Enter the secret key to use to authenticate API requests.
+* *Port*: Enter the port to use for communication between Backup and Recovery and the management platform.
+* *Agents*: Select a Console agent to use to facilitate communication between Backup and Recovery and the management platform.
+
+. When finished, select *Add*.
 
 
 == Configure log directories in snapshots for Windows hosts
