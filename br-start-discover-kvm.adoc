@@ -28,7 +28,7 @@ Add KVM host information and let NetApp Backup and Recovery discover workloads. 
 .Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. Select the KVM tile.
+. Under *Workloads*, select the *KVM* tile.
 +
 If you are logging in to Backup and Recovery for the first time and have a system in the Console but no discovered resources, the _Welcome to the new NetApp Backup and Recovery_ page appears with an option to *Discover resources*.
 
