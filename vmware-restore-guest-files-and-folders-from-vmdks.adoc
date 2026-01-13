@@ -38,7 +38,7 @@ The guest restore feature allows you to view and restore system and hidden files
 .Steps
 
 . From the vSphere client shortcuts window, select *Hosts and Clusters* and select a VM.
-. Right-click on the VM and select *SnapCenter Plug-in for VMware vSphere* > *Guest File Restore*.
+. Right-click on the VM and select *SnapCenter Plug-in for VMware vSphere > Guest File Restore*.
 . On the *Restore Scope* page, specify the backup that contains the virtual disk you want to attach by doing the following:
 .. In the *Backup Name* table, select the backup that contains the virtual disk that you want attach.
 .. In the *VMDK* table, select the virtual disk that contains the files or folders you want to restore.
