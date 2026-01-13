@@ -32,7 +32,7 @@ a|
 . In the *Run As Credentials* dialog box, enter the credentials.
 . Select *Select VM*, then select a VM in the *Proxy VM* dialog box. Select *Save* to return to the *Run As Credentials* dialog box.
 . Enter the credentials.
-For Username, you must enter “Administrator”.
+For Username, you must enter "Administrator".
 |===
 +
 SnapCenter Plug-in for VMware vSphere uses the selected credentials to log into the selected proxy VM.
