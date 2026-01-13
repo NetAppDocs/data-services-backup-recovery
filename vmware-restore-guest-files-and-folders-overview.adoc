@@ -26,11 +26,7 @@ Attach a virtual disk to a guest VM or proxy VM and start a guest file restore s
 
 . Wait
 +
-Wait for the attach operation to complete before you can browse and restore. When the attach
-+
-operation finishes, a guest file restore session is automatically created and an email notification is
-+
-sent.
+Wait for the attach operation to complete before you can browse and restore. When the attach operation finishes, a guest file restore session is automatically created and an email notification is sent.
 
 . Select files or folders
 +
@@ -52,7 +48,7 @@ NetApp Backup and Recovery uses information from VMware tools to establish a con
 +
 For the latest information about supported versions, refer to https://imt.netapp.com/imt/imt.jsp?components=180121;&solution=1517&isHWU&src=IMT[NetApp Interoperability Matrix Tool (IMT)^].
 
-* Credentials for the target VM must specify the built-in domain administrator account or the built-in local administrator account. The username must be "Administrator." Before starting the restore operation, the credentials must be configured for the VM to which you want to attach the virtual disk. The credentials are required for both the attach operation and the subsequent restore operation. Workgroup users can use the built-in local administrator account.
+* Credentials for the target VM must specify the built-in domain administrator account or the built-in local administrator account. The username must be "Administrator". Before starting the restore operation, the credentials must be configured for the VM to which you want to attach the virtual disk. The credentials are required for both the attach operation and the subsequent restore operation. Workgroup users can use the built-in local administrator account.
 +
 [IMPORTANT]
 If you must use an account that is not the built-in administrator account, but has administrative privileges within the VM, you must disable UAC on the guest VM.
