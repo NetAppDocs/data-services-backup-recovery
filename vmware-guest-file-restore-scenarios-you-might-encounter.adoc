@@ -5,31 +5,25 @@ keywords:
 summary: 'When attempting to restore a guest file, you might encounter scenarios where guest file restore session is blank, guest file restore attach disk operation fails, or backups are not detached after guest file restore session is discontinued. '
 ---
 
-= Guest file restore scenarios you might encounter
+= Guest file restore troubleshooting
 :hardbreaks:
 :nofooter:
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
 
-//
-// This file was created with NDAC Version 2.0 (August 17, 2020)
-//
-// 2020-09-09 12:24:26.242804
-//
-
 [.lead]
 When attempting to restore a guest file, you might encounter any of the following scenarios.
 
 == Guest file restore session is blank
 
-This issue occurs when you create a guest file restore session and while that session was active, the guest operating system is rebooted. When this occurs, VMDKs in the guest OS might remain offline. Therefore, when you try to browse the guest file restore session, the list is blank.
+This issue occurs if you create a guest file restore session and the guest operating system reboots during the session. VMDKs in the guest OS might stay offline, so the guest file restore session list is blank.
 
 To correct the issue, manually put the VMDKs back online in the guest OS. When the VMDKs are online, the guest file restore session will display the correct contents.
 
 == Guest file restore attach disk operation fails
 
-This issue occurs when you start a guest file restore operation,  but the attach disk operation fails even though VMware tools is running and the Guest OS credentials are correct. If this occurs, the following error is returned:
+This issue occurs when you start a guest file restore operation, but the attach disk operation fails even though VMware tools is running and the Guest OS credentials are correct. If this occurs, the following error is returned:
 
 `Error while validating guest credentials, failed to access guest system using specified credentials: Verify VMWare tools is running properly on system and account used is Administrator account, Error is SystemError vix error codes = (3016, 0).`
 

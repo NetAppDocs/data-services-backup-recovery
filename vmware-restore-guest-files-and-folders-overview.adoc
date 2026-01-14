@@ -38,7 +38,7 @@ Restore the selected files or folders to a specified location.
 
 == Prerequisites for restoring guest files and folders
 
-Before you restore one or more files or folders from a VMDK on a Windows guest OS, you must be aware of all the requirements.
+Review all requirements before restoring files or folders from a VMDK on a Windows guest OS.
 
 * VMware tools must be installed and running.
 +
@@ -48,14 +48,14 @@ NetApp Backup and Recovery uses information from VMware tools to establish a con
 +
 For the latest information about supported versions, refer to https://imt.netapp.com/imt/imt.jsp?components=180121;&solution=1517&isHWU&src=IMT[NetApp Interoperability Matrix Tool (IMT)^].
 
-* Credentials for the target VM must specify the built-in domain administrator account or the built-in local administrator account. The username must be "Administrator". Before starting the restore operation, the credentials must be configured for the VM to which you want to attach the virtual disk. The credentials are required for both the attach operation and the subsequent restore operation. Workgroup users can use the built-in local administrator account.
+* Credentials for the target VM use the built-in domain or local administrator account with the username "Administrator". Before starting the restore operation, configure the credentials for the VM where you want to attach the virtual disk. Credentials are required for both attach and restore operations. Workgroup users can use the built-in local administrator account.
 +
 [IMPORTANT]
 If you must use an account that is not the built-in administrator account, but has administrative privileges within the VM, you must disable UAC on the guest VM.
 
 * You must know the backup snapshot and VMDK to restore from.
 +
-NetApp Backup and Recovery does not support searching of files or folders to restore. Therefore, before you begin you must know the location of the files or folders with respect to the snapshot and the corresponding VMDK.
+NetApp Backup and Recovery does not support searching of files or folders to restore. Before you begin you must know where the files or folders are in the snapshot and the corresponding VMDK.
 
 * Virtual disk to be attached must be in a NetApp Backup and Recovery backup.
 +
@@ -75,7 +75,7 @@ You cannot restore files and folders from a VM that is running Linux guest OS. H
 
 == Guest file restore limitations
 
-Before you restore a file or folder from a guest OS, you should be aware of what the feature does not support.
+Before you restore a file or folder from a guest OS, you should be aware of the feature limitations.
 
 * You cannot restore dynamic disk types inside a guest OS.
 * If you restore an encrypted file or folder, the encryption attribute is not retained. You cannot restore files or folders to an encrypted folder.
@@ -89,12 +89,10 @@ You cannot restore files and folders from a VM that is running Linux guest OS. H
 When you try to restore from NTFS-format to FAT-format, the NTFS security descriptor is not copied because the FAT file system does not support Windows security attributes.
 
 * You cannot restore guest files from a cloned VMDK or an uninitialized VMDK.
-// https://jira.ngage.netapp.com/browse/SNAPCDOC-322 updates
 * You cannot restore the directory structure for a file.
 +
-If a file in a nested directory is selected to be restored, the file is not restored with the same directory structure. The directory tree is not restored, only the file. If you want to restore a directory tree, you can copy the directory itself at the top of the structure.
+When you restore a file from a nested directory, the system restores only the file, not its directory structure. To restore the entire directory tree, copy the top-level directory.
 
 * You cannot restore guest files from a vVol VM to an alternate host.
 
 * You cannot restore encrypted guest files.
-//Burt 1416895  23Nov2021 Ronya
