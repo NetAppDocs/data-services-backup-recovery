@@ -151,13 +151,13 @@ sidebar:
                       url: /vmware-restore-guest-files-and-folders-overview.html
                     - title: Restore guest files and folders from VMDKs
                       url: /vmware-restore-guest-files-and-folders-from-vmdks.html
-                    - title: Set up proxy VMs for restore operations
-                      url: /vmware-set-up-proxy-vms-for-restore-operations.html
+                #    - title: Set up proxy VMs for restore operations
+                #      url: /vmware-set-up-proxy-vms-for-restore-operations.html
                     - title: Configure credentials for VM guest file restores
                       url: /vmware-configure-credentials-for-vm-guest-file-restores.html
-                    - title: Extend the time of a guest file restore session
-                      url: /vmware-extend-the-time-of-a-guest-file-restore-session.html
-                    - title: Guest file restore scenarios you might encounter
+                   # - title: Extend the time of a guest file restore session
+                   #   url: /vmware-extend-the-time-of-a-guest-file-restore-session.html
+                    - title: Guest file restore troubleshooting
                       url: /vmware-guest-file-restore-scenarios-you-might-encounter.html
         - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
           entries:  

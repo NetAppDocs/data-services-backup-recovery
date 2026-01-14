@@ -5,7 +5,7 @@ keywords:
 summary: 'You can restore files or folders from a virtual machine disk (VMDK) on a Windows guest OS.'
 ---
 
-= Workflow, prerequisites, and limitations
+= Requirements and limitations when restoring guest files and folders
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -61,9 +61,9 @@ NetApp Backup and Recovery does not support searching of files or folders to res
 +
 The virtual disk that contains the file or folder you want to restore must be in a VM backup that was performed using NetApp Backup and Recovery.
 
-* To use a proxy VM, the proxy VM must be configured.
-+
-If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
+//* To use a proxy VM, the proxy VM must be configured.
+//+
+//If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
 
 * For files with non-English-alphabet names, you must restore them in a directory, not as a single file.
 +

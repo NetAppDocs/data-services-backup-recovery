@@ -35,10 +35,6 @@ This issue occurs when you start a guest file restore operation,  but the attach
 
 To correct the issue, restart the VMware Tools Windows service on the Guest OS, and then retry the guest file restore operation.
 
-== Guest email shows ?????? for the file name
-
-This issue occurs when you use the guest file restore feature to restore files or folders with non-English characters in the names and the email notification displays "??????" for the restored file names. The email attachment correctly lists the names of the restored files and folders.
-
 == Backups are not detached after guest file restore session is discontinued
 
 This issue occurs when you perform a guest file restore operation from a VM-consistent backup. While the guest file restore session is active, another VM-consistent backup is performed for the same VM. When the guest file restore session is disconnected, either manually or automatically after 24 hours, the backups for the session are not detached.
