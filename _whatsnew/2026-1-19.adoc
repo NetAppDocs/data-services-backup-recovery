@@ -1,0 +1,7 @@
+=== VMware workloads enhancements
+This release of VMware workloads introduces the following enhanced capabilities:
+
+* VMware workload support is now is now generally available (GA) in NetApp Backup and Recovery.
+* You can now restore VMs to an alternate location.
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Learn more about restoring VMware VMs with NetApp Backup and Recovery].
