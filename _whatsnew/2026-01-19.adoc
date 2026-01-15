@@ -2,4 +2,6 @@
 
 You can now restore Hyper-V VM backups and snapshots to an alternate location. This is useful if you want to manage versions of a VM on different Hyper-V hosts.
 
+NOTE: In this release only, you cannot upgrade the NetApp plugins for Hyper-V or Windows using the *Upgrade* option in the Actions menu. Instead, remove each Hyper-V host and add it again to update the plugins.
+
 https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-restore.html[Learn more about restoring Hyper-V VMs with NetApp Backup and Recovery].

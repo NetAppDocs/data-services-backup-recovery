@@ -25,3 +25,6 @@ The following actions are not supported in the private preview version of Hyper-
 * Protect VMs over SAN
 * Edit protection groups
 * Protect Hyper-V hosts that are clustered using System Center Virtual Machine Manager (SCVMM)
+* You cannot restore VMs or VM data between systems with different CPU vendors (Intel to AMD or vice versa), regardless of the "Processor compatibility" setting in Hyper-V. This setting only supports compatibility between different generations of the same vendor (e.g., Intel to Intel or AMD to AMD).
+
+NOTE: In the January 19 2026 release, you cannot upgrade the NetApp plugins for Hyper-V or Windows using the *Upgrade* option in the Actions menu. Instead, remove each Hyper-V host and add it again to update the plugins.

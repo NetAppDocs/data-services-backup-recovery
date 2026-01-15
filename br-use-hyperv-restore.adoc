@@ -124,6 +124,10 @@ When you restore to the original location, you can view the destination settings
 * *Virtual machine name*: Enter the name of the VM that you want to restore.
 * *Destination location*: Enter the destination folder or CIFS share that should contain the restored data.
 
+.. In the *Pre restore options* section, consider the following options:
++
+* *Quick restore*: Enable this option to make the restored VM available immediately. Only the files needed to run the VM are restored from the object store, rather than the entire volume.
+
 .. In the *Post restore options* section, consider the following options:
 +
 * *Start the virtual machine*: Enable this option to boot the new virtual machine after it is restored.
