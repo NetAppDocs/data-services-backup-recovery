@@ -19,7 +19,7 @@ You can restore one or more files or folders from a VMDK on a Windows guest OS.
 .Before you begin
 
 [NOTE]
-Credentials must already be created for the VM.
+You need to create credentials for the guest VM in NetApp Backup and Recovery before you can restore files and folders from it. NetApp Backup and Recovery uses these credentials to authenticate with the guest VM when attaching the virtual disk.
 
 .About this task
 
@@ -53,8 +53,7 @@ With the guest restore feature, you can view and restore system and hidden files
 .. Select *Add*.
 . Choose a virtual machine credential to use to authenticate with the guest VM.
 +
-NetApp Backup and Recovery attaches the virtual disk to the VM. Once attached, a list of files and folders appears. Hidden files and folders as well as other files and folders are displayed. NetApp Backup and Recovery assigns a drive letter to all partitions, including system reserved partitions.
-. Browse the file list and choose files and folders that you want to restore.
+NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. It assigns a drive letter to every partition, including system reserved partitions.
 +
 Files and folders you have selected are listed in the right pane of the screen.
 . Select *Next*.
@@ -62,6 +61,7 @@ Files and folders you have selected are listed in the right pane of the screen.
 +
 * IPv4 address example: `\\10.60.136.65\c$`
 * IPv6 address example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
 . Select *Restore*.
