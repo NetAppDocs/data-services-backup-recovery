@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
+keywords:
+summary: 'You can restore one or more files or folders from a VMDK on a Windows guest OS.'
+---
+
+= Restore guest files and folders from VMDKs
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+You can restore one or more files or folders from a VMDK on a Windows guest OS.
+
+.Before you begin
+
+[NOTE]
+Credentials must already be created for the VM.
+
+.About this task
+
+By default, NetApp Backup and Recovery makes the attached virtual disk available for 24 hours, then automatically detaches it. In the wizard, you can choose to delete the guest file restore session automatically after the restore operation or delete the session manually.
+
+Guest file or folder restore performance depends upon two factors: the size of the files or folders being restored; and the number of files or folders being restored. Restoring a large number of small-sized files might take a longer time than anticipated compared to restoring a small number of large-sized files, if the data set to be restored is of same size.
+
+[IMPORTANT]
+Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
+
+[IMPORTANT]
+With the guest restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select the *Virtual machines* menu.
+. Choose a virtual machine from the list that contains files that you want to restore.
+. Select the Actions icon image:../media/icon-action.png[Actions option] for that VM.
+. Select *Restore files and folders*.
+. Select a snapshot from which to restore and then select *Next*.
+. Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
+. Select *Next*.
+. Choose virtual disk from the list to attach to the VM and then select *Next*.
+. Choose a virtual machine credential to use to authenticate with the guest VM and select *Next*.
++
+NetApp Backup and Recovery attaches the virtual disk to the VM. Once attached, a list of files and folders appears. Hidden files and folders as well as other files and folders are displayed. NetApp Backup and Recovery assigns a drive letter to all partitions, including system reserved partitions.
+. Browse the file list and choose files and folders that you want to restore.
++
+Files and folders you have selected are listed in the right pane of the screen.
+. Select *Next*.
+. Enter the UNC share path to the guest where the selected files will be restored.
++
+* IPv4 address example: `\\10.60.136.65\c$`
+* IPv6 address example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
++
+If there are existing files with the same name, you can choose to overwrite or skip them.
+. Select *Restore*.
++
+You can view the restore progress on the Job Monitoring page.

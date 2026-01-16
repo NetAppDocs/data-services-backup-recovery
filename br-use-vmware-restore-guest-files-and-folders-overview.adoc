@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: vmware-restore-guest-files-and-folders-overview.html
+permalink: br-use-vmware-restore-guest-files-and-folders-overview.html
 keywords:
 summary: 'You can restore files or folders from a virtual machine disk (VMDK) on a Windows guest OS.'
 ---
