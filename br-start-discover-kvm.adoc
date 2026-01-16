@@ -13,17 +13,14 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to discover KVM hosts and virtual machines before protecting them. 
+NetApp Backup and Recovery needs to discover KVM hosts and virtual machines before protecting them. Your KVM hosts and VMs must be managed by a management platform such as Apache CloudStack before you can add them to Backup and Recovery.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Add a KVM host and discover resources
+== Add a management platform, KVM host, and discover resources
 
-Add KVM host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads.
-
-//.Before you begin
-//If you use a management platform to manage KVM hosts and VMs, you need to integrate the management platform with Backup and Recovery so that you can discover the managed resources. Refer to link:br-start-configure.html#add-a-kvm-management-platform[Backup and Recovery global settings] for instructions.
+Add management platform and KVM host information and let NetApp Backup and Recovery discover workloads.
 
 .Steps
 
@@ -36,7 +33,7 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 
 . Enter the following information: 
 .. *Workload type*: Select *KVM*.
-.. If you use a management platform to manage KVM resources and haven't yet integrated it with Backup and Recovery, select *Add management platform*.
+.. If you haven't yet integrated your management platform with Backup and Recovery, select *Add management platform*.
 ... Enter the following information:
 +
 * *Management platform IP address or FQDN*: Enter the IP address or fully qualified domain name of the management platform.
