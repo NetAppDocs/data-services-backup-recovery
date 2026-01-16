@@ -2,6 +2,8 @@
 This release of VMware workloads introduces the following enhanced capabilities:
 
 * VMware workload support is now is now generally available (GA) in NetApp Backup and Recovery.
-* You can now restore VMs to an alternate location.
+* You can now restore guest OS files and folders.
 
 https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Learn more about restoring VMware VMs with NetApp Backup and Recovery].
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore-guest-files-and-folders-overview.html[Learn more about restoring guest files and folders].
