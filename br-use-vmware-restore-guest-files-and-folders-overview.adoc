@@ -26,11 +26,11 @@ Attach a virtual disk to a guest VM or proxy VM and start a guest file restore s
 
 . Wait
 +
-Wait for the attach operation to complete before you can browse and restore. When the attach operation finishes, a guest file restore session is automatically created and an email notification is sent.
+Wait for the attach operation to complete before you can browse and restore. When the attach operation finishes, a guest file restore session is automatically created.
 
 . Select files or folders
 +
-Browse the VMDK in the Guest File Restore session and select one or more files or folders to restore.
+Browse the VMDK files and select one or more files or folders to restore.
 
 . Restore
 +
@@ -68,10 +68,6 @@ The virtual disk that contains the file or folder you want to restore must be in
 * For files with non-English-alphabet names, you must restore them in a directory, not as a single file.
 +
 You can restore files with non-alphabetic names, such as Japanese Kanji, by restoring the directory in which the files are located.
-
-* Restoring from a Linux guest OS is not supported
-+
-You cannot restore files and folders from a VM that is running Linux guest OS. However, you can attach a VMDK and then manually restore the files and folders. For the latest information on supported guest OS, refer to https://imt.netapp.com/imt/imt.jsp?components=180121;&solution=1517&isHWU&src=IMT[NetApp Interoperability Matrix Tool (IMT)^].
 
 == Guest file restore limitations
 
