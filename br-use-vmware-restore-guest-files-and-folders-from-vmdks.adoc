@@ -44,7 +44,14 @@ With the guest restore feature, you can view and restore system and hidden files
 . Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
 . Select *Next*.
 . Choose virtual disk from the list to attach to the VM and then select *Next*.
-. Choose a virtual machine credential to use to authenticate with the guest VM and select *Next*.
+. On the _Select virtual machine credential_ page, if you haven't yet stored a credential for the guest VM, select *Add credentials* and do the following:
+.. *Credentials name*: Enter a name for the credentials.
+.. *Authentication mode*: Select *Windows*.
+.. *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
+.. *Domain and user name*: Enter the NetBIOS or domain FQDN and user name for the credentials.
+.. *Password*: Enter a password for the credential.
+.. Select *Add*.
+. Choose a virtual machine credential to use to authenticate with the guest VM.
 +
 NetApp Backup and Recovery attaches the virtual disk to the VM. Once attached, a list of files and folders appears. Hidden files and folders as well as other files and folders are displayed. NetApp Backup and Recovery assigns a drive letter to all partitions, including system reserved partitions.
 . Browse the file list and choose files and folders that you want to restore.

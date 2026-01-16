@@ -153,8 +153,8 @@ sidebar:
                       url: /br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
                 #    - title: Set up proxy VMs for restore operations
                 #      url: /vmware-set-up-proxy-vms-for-restore-operations.html
-                    - title: Configure credentials for VM guest file restores
-                      url: /br-use-vmware-configure-credentials-for-vm-guest-file-restores.html
+                 #   - title: Configure credentials for VM guest file restores
+                  #    url: /br-use-vmware-configure-credentials-for-vm-guest-file-restores.html
                    # - title: Extend the time of a guest file restore session
                    #   url: /vmware-extend-the-time-of-a-guest-file-restore-session.html
                     - title: Guest file restore troubleshooting
