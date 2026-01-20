@@ -18,7 +18,6 @@ You can restore one or more files or folders from a VMDK on a Windows guest OS.
 
 .Before you begin
 
-[NOTE]
 You need to create credentials for the guest VM in NetApp Backup and Recovery before you can restore files and folders from it. NetApp Backup and Recovery uses these credentials to authenticate with the guest VM when attaching the virtual disk.
 
 .About this task
