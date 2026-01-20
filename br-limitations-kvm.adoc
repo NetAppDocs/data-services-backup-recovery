@@ -40,8 +40,8 @@ The following configurations are not supported:
 * Storage pool types other than NetFS (only NetFS is supported)
 
 == Troubleshooting notes
-Note the following scenarios when using the private preview of KVM workloads with NetApp Backup and Recovery:
+Make note of the following when using the private preview of KVM workloads with NetApp Backup and Recovery:
 
-* You cannot restore KVM workload backups that were made with the *Enable VM-consistent snapshot* setting enabled in the protection policy. As a workaround, enable this setting when backing up KVM workloads.
-* You cannot back up a storage pool with KVM hosts managed by Apache CloudStack unless you add all those hosts to NetApp Backup and Recovery. As a workaround, add every CloudStack-managed KVM host to NetApp Backup and Recovery.
+* To ensure that KVM workload restores complete successfully, make sure that the *Enable VM-consistent snapshot* setting is active in the protection policy you use for KVM backups.
+* You cannot back up a storage pool with KVM hosts managed by Apache CloudStack unless you add all managed hosts to NetApp Backup and Recovery. As a workaround, add every CloudStack-managed KVM host to NetApp Backup and Recovery.
 * You cannot back up a stopped VM that belongs to a protection group. As a workaround, remove the stopped VM from the protection group before starting the backup.
