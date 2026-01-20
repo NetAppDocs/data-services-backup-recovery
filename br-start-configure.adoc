@@ -15,7 +15,7 @@ summary: Complete a few steps to configure NetApp Backup and Recovery.
 [.lead]
 After you set up NetApp Console, configure Backup and Recovery settings. Add credentials for host resources, import SnapCenter resources, configure log directories, and set VMware vCenter settings. Complete these steps before backing up or recovering data.
 
-* <<Add credentials for host resources>> for the Windows and SQL Server hosts that you imported from SnapCenter and add credentials. (Microsoft SQL Server workloads only)
+* <<Add credentials for host resources>> for any Windows, Microsoft SQL Server, Oracle Database, or Linux hosts that NetApp Backup and Recovery needs to authenticate with. This includes Windows guest OS credentials used when restoring guest files or folders.
 * <<Maintain VMware vCenter settings>>.
 * <<Import and manage SnapCenter host resources>>. (Microsoft SQL Server workloads only)
 * <<Add a KVM management platform>>. (KVM workloads only)
@@ -30,46 +30,81 @@ Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Re
 
 == Add credentials for host resources
 
-Add credentials for host resources to import from SnapCenter. NetApp Backup and Recovery uses these credentials to discover workloads and apply backup policies.
+Add credentials for host resources. NetApp Backup and Recovery uses these credentials to discover workloads and apply backup policies.
 
 If you don't have credentials, create them with permissions to access and manage host workloads.
 
 You need to configure the following types of credentials: 
 
 * Microsoft SQL Server credentials
-* SnapCenter Windows host credentials 
+* SnapCenter Windows host credentials
+* Windows guest OS credentials used when restoring guest files or folders
+* Oracle Database credentials
+* Linux host credentials
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
-
-
 . Select the down arrow for *Credentials*.
-
-
-
 . Select *Add new credentials*.
-
-. Enter information for the credentials. Different fields appear depending on the Authentication mode you select. Select the Information *i* for more information about the fields. 
+. Enter information for the credentials. Different fields appear depending on the Authentication mode you select. Hover over the Information *i* icon for more information about the fields. 
 * *Credentials name*: Enter a name for the credentials.
-* *Authentication mode*: Select *Windows* or *Microsoft SQL*. 
+* *Authentication mode*: Select *Windows*, *Microsoft SQL*, *Oracle Database*, or *Linux*. 
 +
-TIP: You need to enter credentials for both Windows and Microsoft SQL Server, so you'll need to add two sets of credentials.
+TIP: For Microsoft SQL Server workloads, you need to enter credentials for both Windows and Microsoft SQL Server, so you'll need to add two sets of credentials.
++
+[role="tabbed-block"]
+====
 
+.Windows
+
+--
 .  If you selected *Windows*:
-* *Console agent*: Enter the Console agent IP address. 
+* *Agents*: Select a Console agent from the list. 
 * *Domain and user name*: Enter the NetBIOS or domain FQDN and user name for the credentials.
 * *Password*: Enter the password for the credentials.
 
-. If you selected *Microsoft SQL*:
-*  *Host*: Select a discovered SQL Server host address.
-*  *SQL Server instance*: Select a discovered SQL Server instance.
+--
+
+.Microsoft SQL Server
+
+--
+. If you selected *Microsoft SQL Server*:
+* *Domain and user name*: Enter the NetBIOS or domain FQDN and user name for the credentials.
+* *Password*: Enter the password for the credentials.
+* *Hosts*: Select a discovered SQL Server host address.
+* *SQL Server instance*: Select a discovered SQL Server instance.
+
+--
+
+.Oracle Database
+
+--
+. If you selected *Oracle Database*:
+* *Agents*: Select a Console agent from the list.
+* *User name*: Enter the user name for the credentials.
+* *Password*: Enter the password for the credentials.
+
+--
+
+.Linux
+
+--
+. If you selected *Linux*:
+* *Agents*: Select a Console agent from the list.
+* *User name*: Enter the user name for the credentials.
+* *Password*: Enter the password for the credentials.
+
+--
+
+
+====
+//end of tabbed area
 
 . Select *Add*.
 
 === Edit credentials for host resources
 
-You can later edit the password for the host resources that you imported from SnapCenter.
-
+You can later edit the password for any credentials that you have created.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
@@ -100,9 +135,6 @@ Provide VMware vCenter credentials to discover workloads for backup. If you don'
 
 . Select *Add*.
 
-
-
-
 == Import and manage SnapCenter host resources
 
 If you previously used SnapCenter to back up your resources, you can import and manage those resources in NetApp Backup and Recovery. This option enables you to import SnapCenter server information to register multiple SnapCenter servers and discover database workloads.
@@ -121,19 +153,13 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 .Steps 
 
 . From the NetApp Backup and Recovery menu, select *Settings*. 
-
 . Select the down arrow to expand the *Import from SnapCenter* section.
-
-
 . Select *Import from SnapCenter* to import the SnapCenter resources.
-
-
 . Enter *SnapCenter application credentials*:
 .. *SnapCenter FQDN or IP address*: Enter the FQDN or IP address of the SnapCenter application itself.
 .. *Port*: Enter the port number for the SnapCenter Server.
 .. *Username* and *Password*: Enter the username and password for the SnapCenter Server.
 .. *Console agent*: Select the Console agent for SnapCenter.
-
 
 . Enter *SnapCenter server host credentials*:
 .. *Existing credentials*: If you select this option, you can use the existing credentials that you have already added. Enter the credentials name. 
@@ -145,7 +171,6 @@ NOTE: If the SnapCenter Server is already registered, you can  update the existi
 
 .Result
 The Inventory page shows the imported SnapCenter resources.
-
 
 === Manage SnapCenter host resources
 
@@ -160,20 +185,17 @@ After you import the SnapCenter resources, manage those host resources in NetApp
 +
 The Inventory page shows *Managed* under the host name to indicate that the selected host resources are now managed by NetApp Backup and Recovery.
 
-
 === Edit imported SnapCenter resources
 
 You can later re-import SnapCenter resources our edit the imported SnapCenter resources to update the registration details.
 
 You can change only the port and password details for the SnapCenter Server.
 
-
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*. 
 . Select the down arrow for *Import from SnapCenter*.
 + 
 The Import from SnapCenter page shows all previous imports. 
-
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit* to update the resources.   
 
