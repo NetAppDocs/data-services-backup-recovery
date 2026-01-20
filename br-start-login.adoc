@@ -34,8 +34,8 @@ The NetApp Console login page appears.
 . Log in to the Console. 
 . From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 +
-* If this is your first time logging in to Backup and Recovery and you haven't yet added a system to the *Systems* page, the Backup and Recovery displays the "Welcome to the new NetApp Backup and Recovery" landing page and provides an option to add a system. For details about adding a system to the *Systems* page, refer to https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
-* If this is your first time logging in to Backup and Recovery and you have already added a system to the *Systems* page, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+* If this is your first time logging in to Backup and Recovery and you haven't yet added a system to the *Systems* page, the Backup and Recovery displays the "Welcome to the new NetApp Backup and Recovery" landing page with an option to add a system. For details about adding a system to the *Systems* page, refer to https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
+* If you are logging in to Backup and Recovery for the first time and have a system in the Console but no discovered resources, the _Welcome to the new NetApp Backup and Recovery_ page appears with an option to *Discover resources*.
 
 . If you haven't done so already, select the *Discover and manage* option. 
 +

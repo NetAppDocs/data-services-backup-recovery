@@ -140,9 +140,25 @@ sidebar:
             - title: Back up VMware workloads
               url: /br-use-vmware-backup.html
             - title: Restore VMware workloads
-              url: /br-use-vmware-restore.html
-            - title: Restore specific virtual disks from backups
-              url: /br-use-vmware-restore-vmdks-from-backups.html
+              entries:
+                - title: Restore VMware virtual machines
+                  url: /br-use-vmware-restore.html
+                - title: Restore specific virtual disks
+                  url: /br-use-vmware-restore-vmdks-from-backups.html
+                - title: Restore guest files and folders
+                  entries:
+                    - title: Workflow, prerequisites, and limitations
+                      url: /br-use-vmware-restore-guest-files-and-folders-overview.html
+                    - title: Restore guest files and folders from VMDKs
+                      url: /br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
+                #    - title: Set up proxy VMs for restore operations
+                #      url: /vmware-set-up-proxy-vms-for-restore-operations.html
+                 #   - title: Configure credentials for VM guest file restores
+                  #    url: /br-use-vmware-configure-credentials-for-vm-guest-file-restores.html
+                   # - title: Extend the time of a guest file restore session
+                   #   url: /vmware-extend-the-time-of-a-guest-file-restore-session.html
+                    - title: Guest file restore troubleshooting
+                      url: /br-use-vmware-guest-file-restore-scenarios-you-might-encounter.html
         - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
           entries:  
             - title: Protect virtual machine workloads overview

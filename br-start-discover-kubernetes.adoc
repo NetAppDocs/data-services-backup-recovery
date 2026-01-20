@@ -25,7 +25,7 @@ In Backup and Recovery inventory, discover Kubernetes workloads in your environm
 .Steps
 . Do one of the following:
 +
-* If you are discovering Kubernetes workloads for the first time, in NetApp Backup and Recovery, select *Discover and Manage* under the Kubernetes workload type.
+* If you are discovering Kubernetes workloads for the first time, in NetApp Backup and Recovery, under *Workloads*, select the *Kubernetes* tile.
 * If you have already discovered Kubernetes workloads, in NetApp Backup and Recovery, select *Inventory* > *Workloads* and then select *Discover resources*.
 
 . Select the *Kubernetes* workload type.

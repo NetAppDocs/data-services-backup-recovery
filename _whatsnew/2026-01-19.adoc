@@ -1,0 +1,33 @@
+=== ONTAP volume workloads enhancements
+This release of ONTAP volume workloads introduces the following enhanced capability:
+
+*Support for multiple buckets*: (Private preview) Beginning with ONTAP 9.17.1 and newer, you can now protect the volumes within a system with up to 6 buckets per system across different cloud providers.
+
+link:prev-ontap-backup-manage.html[Learn more about backing up ONTAP volume data using NetApp Backup and Recovery].
+
+=== VMware workloads enhancements
+This release of VMware workloads introduces the following enhanced capabilities:
+
+* VMware workload support is now is now generally available (GA) in NetApp Backup and Recovery.
+* You can now restore guest OS files and folders.
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Learn more about restoring VMware VMs with NetApp Backup and Recovery].
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore-guest-files-and-folders-overview.html[Learn more about restoring guest files and folders].
+
+=== Hyper-V workloads preview enhancements
+This release of Hyper-V workloads introduces the following enhanced capabilities:
+
+* You can now restore Hyper-V VM backups and snapshots to an alternate location. This is useful if you want to manage versions of a VM on different Hyper-V hosts.
+* Hyper-V virtual machines provisioned by System Center Virtual Machine Manager (SCVMM) and hosted on a CIFS share are now supported by NetApp Backup and Recovery.
+* You can now edit protection groups.
+
+NOTE: In this release only, you cannot upgrade the NetApp plugins for Hyper-V or Windows using the *Upgrade* option in the Actions menu. Instead, remove each Hyper-V host and add it again to update the plugins.
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-restore.html[Learn more about restoring Hyper-V VMs with NetApp Backup and Recovery].
+
+=== KVM workloads preview enhancements
+
+The KVM workloads preview now supports integration with the Apache CloudStack management platform, enabling you to protect KVM hosts and virtual machines that are managed by Apache CloudStack.
+
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].

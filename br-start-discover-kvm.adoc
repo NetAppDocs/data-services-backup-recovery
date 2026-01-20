@@ -13,39 +13,55 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to discover KVM hosts and virtual machines before protecting them. 
+NetApp Backup and Recovery needs to discover KVM hosts and virtual machines before protecting them. Your KVM hosts and VMs must be managed by a management platform such as Apache CloudStack before you can add them to Backup and Recovery.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Add a KVM host and discover resources
+== Add a management platform, KVM host, and discover resources
 
-Add KVM host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads.  
+Add management platform and KVM host information and let NetApp Backup and Recovery discover workloads.
 
 .Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. In the KVM tile, select *Discover and manage*.
+. Under *Workloads*, select the *KVM* tile.
 +
-If this is your first time logging in to Backup and Recovery, you already have a system in the Console, but haven't discovered any resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears and shows an option to *Discover resources*. 
+If you are logging in to Backup and Recovery for the first time and have a system in the Console but no discovered resources, the _Welcome to the new NetApp Backup and Recovery_ page appears with an option to *Discover resources*.
 
 . Select *Discover resources*.
 
 . Enter the following information: 
 .. *Workload type*: Select *KVM*.
-.. If you haven't yet stored credentials for this KVM host, select *Add credentials*.
-... Select the Console agent to use with this host.
-... Enter a name for this credential.
-... Choose whether to use root credentials or non-root credentials.
-... Enter the user name and password for the account.
-... Select *Done*.
-.. *Host registration*: Add a new KVM host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
+.. If you haven't yet integrated your management platform with Backup and Recovery, select *Add management platform*.
+... Enter the following information:
++
+* *Management platform IP address or FQDN*: Enter the IP address or fully qualified domain name of the management platform.
+* *API key*: Enter the API key to use to authenticate API requests.
+* *Secret Key*: Enter the secret key to use to authenticate API requests.
+* *Port*: Enter the port to use for communication between Backup and Recovery and the management platform.
+* *Agents*: Select a Console agent to use to facilitate communication between Backup and Recovery and the management platform.
+... When finished, select *Add*.
+.. *KVM settings*: Add a new KVM host by entering the following information:
++
+* *KVM FQDN or IP address*: Enter the host's FQDN or IP address.
+* *Credentials*: Enter the username and password for the KVM host.
+* *Console agent*: Choose the Console agent to use for communication between Backup and Recovery and the KVM host.
+* *Port number*: Enter the port to use for communication between Backup and Recovery and the KVM host.
+* *Management platform*: If the KVM host is managed and you have added the management platform to Backup and Recovery, select the management platform from the list.
 . Select *Discover*. 
 +
 TIP: This process might take a few minutes.
 
 .Result
 The KVM workload is displayed in the list of workloads on the Inventory page.
+
+//.. If you haven't yet stored credentials for this KVM host, select *Add credentials*.
+//... Select the Console agent to use with this host.
+//... Enter a name for this credential.
+//... Choose whether to use root credentials or non-root credentials.
+//... Enter the user name and password for the account.
+//... Select *Done*.
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
