@@ -19,15 +19,10 @@ NOTE: These settings are available for backup-to-object storage only. None of th
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
-
-//storage keys, 
-
-
-
 You can change the following options in the Advanced Settings page:
 
-//* Changing the storage keys that give your ONTAP system permission to access object storage
-//* Changing the ONTAP IPspace that is connected to object storage
+* Changing the storage keys that give your ONTAP system permission to access object storage
+* Changing the ONTAP IPspace that is connected to object storage
 * Changing the network bandwidth allocated to upload backups to object storage using the Max Transfer Rate option
 //ifdef::azure[]
 //* Changing the archival storage class (AWS only)
@@ -39,7 +34,7 @@ You can change the following options in the Advanced Settings page:
 
 == View cluster-level backup settings
 
-You can view the cluster-level backup settings for each system.
+You can view the cluster-level system settings and provider settings for each system.
 
 .Steps
 
@@ -47,16 +42,11 @@ You can view the cluster-level backup settings for each system.
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+. From the _Backup Settings page_, select the image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings* to view system settings and *Configure advanced settings > Provider settings* to view provider settings.
 +
-The _Advanced Settings_ page displays the current settings for that system.
+The resulting page displays the current settings for that system. When viewing provider settings, the provider settings shown are relevant for the bucket that you select at the top of the page.
 
-
-. Expand the option and make the change. 
-
-All backup operations after the change will use the new values.
-
-Note that some options are unavailable based on the version of ONTAP on the source cluster, and based on the cloud provider destination where the backups reside.
+Note that some options are unavailable based on the version of ONTAP on the source cluster and the cloud provider destination where the backups reside.
 
 //== Change the storage keys for ONTAP to access cloud storage
 //
@@ -93,14 +83,13 @@ When you activate NetApp Backup and Recovery for a system, by default, ONTAP can
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Max Transfer Rate* section. 
 
 . Choose a value between 1 and 1,000 Mbps as the maximum transfer rate. 
 
 . Select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit.
-
 
 . Select *Apply*.
 
@@ -143,9 +132,9 @@ Note that this option only applies to new backup files for new read/write volume
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
-. In the Advanced Settings page, expand the *Export existing snapshots* section. 
+. In the Advanced Settings page, expand the *Export existing snapshot copies* section. 
 . Select whether you want existing snapshots to be exported. 
 
 . Select *Apply*.
@@ -158,19 +147,16 @@ When you select the "yearly" backup label for a backup policy for any of your vo
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Yearly Snapshot Deletion* section. 
-+
-image:screenshot_backup_edit_yearly_snap_delete.png[A screenshot of the Yearly Snapshots entry in the Advanced Settings page.]
 
 . Select *Disabled* to retain the yearly snapshots on the source system.
 
 . Select *Apply*.
 
-== Enable or disable ransomware scans 
-
-Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. You can enable or disable ransomware scans on the latest snapshot by using the option on the Advanced Settings page. If you enable it, scans are performed every 7 days by default. 
+== Enable or disable ransomware scans
+Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. 
 
 For details about DataLock and Ransomware Resilience options, refer to link:prev-ontap-policy-object-options.html[DataLock and Ransomware Resilience options].
 
@@ -178,25 +164,41 @@ You can change that schedule to days or weeks or disable it, saving costs.
 
 TIP: Enabling ransomware scans will incur extra charges depending on the cloud provider. 
 
-Scheduled ransomware scans run only on the latest snapshot.
-
 If the scheduled ransomware scans are disabled, you can still perform on-demand scans and the scan during a restore operation will still occur. 
 
 Refer to link:prev-ontap-policy-manage.html[Manage policies] for details about managing policies that implement ransomware detection. 
+
+=== Enable or disable ransomware scans for a system
+You can enable or disable ransomware scans for a cluster.
 
 .Steps 
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Advanced Settings*.
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
-. In the Advanced Settings page, expand the *Ransomware scan* section. 
+. In the resulting page, expand the *Ransomware scan* section. 
 . Enable or disable *Ransomware scan*. 
-
 . Select *Scheduled ransomware scan*. 
 . Optionally, change the every week default scan to days or weeks. 
 . Set the how often in days or weeks that the scan should run. 
 . Select *Apply*. 
 
+=== Enable or disable ransomware scans for a provider
+You can enable or disable ransomware scans at the provider level by using the provider settings page. The settings on the page are relevant to the bucket that you select at the top of the page. 
+
+.Steps 
+
+. From the *Volumes* tab, select *Backup Settings*.
+
+. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > Provider settings*.
+
+. At the top of the resulting page, select the bucket for which you need to change settings.
+. Expand the *Ransomware scan* section. 
+. Enable or disable *Ransomware scan*. 
+. Select *Scheduled ransomware scan*. 
+. Optionally, change the every week default scan to days or weeks. 
+. Set the how often in days or weeks that the scan should run. 
+. Select *Apply*. 
 
 

@@ -3,3 +3,10 @@
 The KVM workloads preview now supports integration with the Apache CloudStack management platform, enabling you to protect KVM hosts and virtual machines that are managed by Apache CloudStack.
 
 For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
+
+=== ONTAP volume workload enhancements
+This release of ONTAP volume workloads introduces the following enhanced capability:
+
+*Support for multiple buckets*: (Private preview) Beginning with ONTAP 9.17.1 and newer, you can now protect the volumes within a system with up to 6 buckets per system across different cloud providers.
+
+link:prev-ontap-backup-manage.html[Learn more about backing up ONTAP volume data using NetApp Backup and Recovery].
