@@ -44,7 +44,7 @@ Review all requirements before restoring files or folders from a VMDK on a Windo
 +
 NetApp Backup and Recovery uses information from VMware tools to establish a connection to the VMware Guest OS.
 
-* The Windows Guest OS must be running Windows Server 2008 R2 or later.
+* The Windows guest OS must be running Windows Server 2008 R2 or later.
 +
 For the latest information about supported versions, refer to https://imt.netapp.com/imt/imt.jsp?components=180121;&solution=1517&isHWU&src=IMT[NetApp Interoperability Matrix Tool (IMT)^].
 
