@@ -60,7 +60,7 @@ This feature does not provide protection for your source volumes; only for the b
 
 === What is DataLock
 
-With this feature, you can lock the cloud snapshots replicated via SnapMirror to Cloud and also enable the feature to detect a ransomware attack and recover a consistent copy of the snapshot on the object store. This feature is supported on AWS, Azure, and StorageGRID. 
+With this feature, you can lock the cloud snapshots replicated via SnapMirror to Cloud and also enable the feature to detect a ransomware attack and recover a consistent copy of the snapshot on the object store. This feature is supported on AWS, Azure, Google Cloud Platform, and StorageGRID. 
 
 DataLock protects your backup files from being modified or deleted for a certain period of time - also called _immutable storage_. This functionality uses technology from the object storage provider for "object locking." 
 
@@ -146,36 +146,36 @@ You can enable DataLock and Ransomware protection on ONTAP volumes from the foll
 | Source system
 | Backup File Destination
 
-ifdef::aws[]
+//ifdef::aws[]
 | Cloud Volumes ONTAP in AWS
 | Amazon S3
-endif::aws[]
-ifdef::azure[]
+//endif::aws[]
+//ifdef::azure[]
 | Cloud Volumes ONTAP in Azure
 | Azure Blob
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 | Cloud Volumes ONTAP in Google Cloud
 | Google Cloud
-endif::gcp[]
+//endif::gcp[]
 | On-premises ONTAP system
 | 
-ifdef::aws[]
+//ifdef::aws[]
 Amazon S3
-endif::aws[]
-ifdef::azure[]
+//endif::aws[]
+//ifdef::azure[]
 Azure Blob
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 Google Cloud
-endif::gcp[]
+//endif::gcp[]
 NetApp StorageGRID
 
 |===
 
 === Requirements
 
-ifdef::aws[]
+//ifdef::aws[]
 * For AWS:
 ** Your clusters must running ONTAP 9.11.1 or greater 
 ** The Console agent can be deployed in the cloud or on your premises
@@ -217,17 +217,17 @@ ifdef::aws[]
 //"s3:BypassGovernanceRetention" must be added only if you want your Admin users to be able to overwrite/delete backup files locked using Governance mode.
 +
 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[View the full JSON format for the policy where you can copy and paste required permissions^].
-endif::aws[]
-ifdef::azure[]
+//endif::aws[]
+//ifdef::azure[]
 * For Azure:
 ** Your clusters must running ONTAP 9.12.1 or greater
 ** The Console agent can be deployed in the cloud or on your premises
-endif::azure[]
-ifdef::gcp[]
+//endif::azure[]
+//ifdef::gcp[]
 * For Google Cloud:
 ** Your clusters must be running ONTAP 9.17.1 or greater
 ** The Console agent can be deployed in the cloud or on your premises
-endif::gcp[]
+//endif::gcp[]
 * For StorageGRID:
 ** Your clusters must running ONTAP 9.11.1 or greater 
 ** Your StorageGRID systems must be running 11.6.0.3 or greater
@@ -315,7 +315,7 @@ Data in archival tiers can't be accessed immediately when needed, and will requi
 Each backup policy provides a section for _Archival Policy_ that you can apply to your backup files.
 
 
-ifdef::aws[]
+//ifdef::aws[]
 * In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage].
@@ -323,29 +323,28 @@ If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to 
 ** If you select no archive tier in your first backup policy when activating NetApp Backup and Recovery, then _S3 Glacier_ will be your only archive option for future policies.
 ** If you select _S3 Glacier_ in your first backup policy, then you can change to the _S3 Glacier Deep Archive_ tier for future backup policies for that cluster.
 ** If you select _S3 Glacier Deep Archive_ in your first backup policy, then that tier will be the only archive tier available for future backup policies for that cluster.
-endif::aws[]
+//endif::aws[]
 
-ifdef::azure[]
+//ifdef::azure[]
 * In Azure, backups are associated with the _Cool_ access tier.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage].
-endif::azure[]
+//endif::azure[]
 
-ifdef::gcp[]
+//ifdef::gcp[]
 * In GCP, backups are associated with the _Standard_ storage class.
 +
 If your on-prem cluster is using ONTAP 9.12.1 or greater, you can choose to tier older backups to _Archive_ storage in the NetApp Backup and Recovery UI after a certain number of days for further cost optimization. link:prev-reference-gcp-archive-storage-tiers.html[Learn more about Google archival storage].
 //You can use the lower cost _Nearline_ storage class, or the _Coldline_ or _Archive_ storage classes. However, you configure these other storage classes through Google, not through the NetApp Backup and Recovery UI. See the Google topic https://cloud.google.com/storage/docs/storage-classes[Storage classes^] for information about changing the default storage class for a Google Cloud Storage bucket.
-endif::gcp[]
+//endif::gcp[]
 
 * In StorageGRID, backups are associated with the _Standard_ storage class.
 +
 If your on-prem cluster is using ONTAP 9.12.1 or greater, and your StorageGRID system is using 11.4 or greater, you can archive older backup files to public cloud archival storage. 
-ifdef::aws[]
+//ifdef::aws[]
 +
 ** For AWS, you can tier backups to AWS _S3 Glacier_ or _S3 Glacier Deep Archive_ storage. link:prev-reference-aws-archive-storage-tiers.html[Learn more about AWS archival storage^].
-endif::aws[]
-ifdef::azure[]
+//endif::aws[]
+//ifdef::azure[]
 +
 ** For Azure, you can tier older backups to _Azure Archive_ storage. link:prev-reference-azure-archive-storage-tiers.html[Learn more about Azure archival storage^].
-endif::azure[]

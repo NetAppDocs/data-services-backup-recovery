@@ -17,7 +17,7 @@ Protect your VMware VMs and datastores with NetApp Backup and Recovery. NetApp B
 
 NOTE: This version of NetApp Backup and Recovery supports only VMware vCenter and does not discover vVols or VMs on vVols.  
 
-//You can back up VMware workloads to Amazon Web Services S3 or StorageGRID and restore VMware workloads back to the the same or alternate on-premises VMware host. 
+//You can back up VMware workloads to Amazon Web Services S3 or StorageGRID and restore VMware workloads back to the same or alternate on-premises VMware host. 
 
 //NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations for VMs, datastores, and VMDKs. 
 

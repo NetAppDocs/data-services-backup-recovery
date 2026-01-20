@@ -15,7 +15,7 @@ summary: NetApp Backup and Recovery is a data service that provides efficient, s
 [.lead]
 NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
 
-Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware, software licenses or media gateways. This makes backup operations simple and cost effective. The NetApp console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
+Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware, software licenses or media gateways. This makes backup operations simple and cost effective. The NetApp Console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
 
 NOTE: Documentation about protecting VMware, KVM, Hyper-V, and Kubernetes workloads is provided as a technology preview. With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before General Availability.   
 
@@ -100,8 +100,6 @@ NetApp Backup and Recovery provides the following benefits:
 
 * **Flexible**: NetApp Backup and Recovery enables you to restore data to the same or different system, which provides flexibility in data recovery.
 
-
-
 == Cost 
 
 NetApp doesn't charge you for using the trial version. However, you are responsible for the costs associated with the cloud resources that you use, such as storage and data transfer costs.  
@@ -123,7 +121,7 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 
 * For restoring data using Search & Restore, certain resources are provisioned by your cloud provider, and there is per-TiB cost associated with the amount of data that is scanned by your search requests. (These resources are not needed for Browse & Restore.)
 +
-//ifdef::aws[]
+//ifdef::azure[]
 ** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
 +
 //endif::aws[]
@@ -143,15 +141,15 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 *Service charges*
 
 // BLUEXPDOC-1011
-Service charges are paid to NetApp and cover both the cost to create backups to object storage or an ONTAP target and to restore volumes, or files, from those backups. You pay only for the data that you protect in object storage or in ONTAP (this includes SnapMirror configurations). Charges are calculated using the source logical used capacity (before ONTAP efficiencies) of ONTAP volumes that are backed up to object storage or to an ONTAP target. This capacity is also known as Front-End Terabytes (FETB). 
+For ONTAP volume workloads, you are only charged for volumes protected to object storage. Charges are based on the logical used capacity of the source ONTAP volumes before efficiencies are applied, also known as Front-End Terabytes (FETB).
 
-NOTE: For Microsoft SQL Server, charges apply when you initiate the replication of snapshots to a secondary ONTAP target or object storage.
+For all other workloads, you are charged for resources protected to at least one secondary or object storage target. Charges are calculated using the logical size of the source workload. For databases, this means the database size; for VMs, the VM size.
 
 There are three ways to pay for Backup and Recovery: 
 
 * The first option is to subscribe from your cloud provider, which enables you to pay per month. 
 * The second option is to purchase an annual contract. 
-* The third option is to purchase licenses directly from NetApp. Read the <<Licensing,Licensing>> section for details.
+* The third option is to purchase licenses directly from NetApp. Refer to the <<Licensing,Licensing>> section for details.
 
 == Licensing
 
@@ -177,62 +175,45 @@ When you use Google Cloud Platform, request a private offer from NetApp and sele
 
 link:br-start-licensing.html[Learn how to set up licenses].
 
-== Supported data sources, systems, and backup targets
+== Supported workloads, systems, and backup targets
 
-.Workload data sources supported
+.Supported workloads
 
-NetApp Backup and Recovery protects the following workloads:
+NetApp Backup and Recovery protects the following types of workloads:
 
 * ONTAP volumes 
-* Microsoft SQL Server instances and databases for physical, VMware Virtual Machine File System (VMFS), and VMware Virtual Machine Disk (VMDK) NFS 
+* Microsoft SQL Server instances and databases stored on physical disk and VMware Virtual Machine Disk (VMDK) over VMFS or NFS
 * VMware VMs and datastores
 * KVM workloads (Preview)
 * Hyper-V workloads (Preview)
-* Oracle workloads (Preview)
+* Oracle Database workloads (Preview)
 * Kubernetes workloads (Preview)
 
-.Systems supported
+.Supported systems
 
-* On-premises ONTAP SAN (iSCSI protocol) and NAS (using NFS and CIFS protocols) with ONTAP version 9.8 and greater
-
+* On-premises ONTAP SAN (iSCSI protocol) and NAS (using NFS and CIFS protocols) with ONTAP version 9.8 or greater
 * Cloud Volumes ONTAP 9.8 or greater for AWS (using SAN and NAS)
-
-//* Cloud Volumes ONTAP 9.8 or greater for Google Cloud Platform (using NFS and CIFS protocols)
-
+* Cloud Volumes ONTAP 9.8 or greater for Google Cloud Platform (using NFS and CIFS protocols)
 * Cloud Volumes ONTAP 9.8 or greater for Microsoft Azure (using SAN and NAS)
-* Amazon FSx for NetApp ONTAP 
+* Amazon FSx for NetApp ONTAP (Microsoft SQL Server workloads only) 
 
-.Backup targets supported
+.Supported backup targets
 
 * Amazon Web Services (AWS) S3
-//* Google Cloud Storage
+* Google Cloud Storage
 * Microsoft Azure Blob (not available for VMware workloads in Preview)
 * StorageGRID
 * ONTAP S3 (Not available for VMware workloads in Preview)
 
-
-//== NetApp Backup and Recovery uses the Plug-in for Microsoft SQL Server
-//== NetApp Backup and Recovery uses the SnapCenter Plugin for Microsoft SQL Server
-
-//NetApp Backup and Recovery installs the Plug-in for Microsoft SQL Server on the server that hosts Microsoft SQL Server. The  Plug-in is a host-side component that enables application-aware data protection management of Microsoft SQL Server databases and instances. 
-
 == How NetApp Backup and Recovery works
 
 When you enable NetApp Backup and Recovery, the service performs a full backup of your data. After the initial backup, all additional backups are incremental. This keeps network traffic to a minimum.
-
 
 The following image shows the relationship among components. 
 
 image:diagram-br-321-aff-a.png[A diagram showing how NetApp Backup and Recovery uses a 3-2-1 protection strategy]
 
 NOTE: Primary to object storage is also supported, not just from secondary storage to object storage.
-
-//image:diagram-workloads-onprem.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
-
-//The following image shows the relationship among components for a cloud deployment:
-
-//image:diagram-workloads-cloud.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
-
 
 === Where backups reside in object store locations
 

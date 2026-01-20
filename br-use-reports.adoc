@@ -11,7 +11,7 @@ summary: In NetApp Backup and Recovery, create reports to view the status of you
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, create reports for Microsoft SQL Server workloadsto view the status of your backups, including the number of backups, the number of successful backups, and the number of failed backups. You can also view the details of each backup, including the backup type, the storage system used for the backup, and the time of the backup.
+In NetApp Backup and Recovery, create reports for Microsoft SQL Server workloads to view backup status and details, including counts of successful and failed backups, backup types, storage systems, and timestamps.
 
 == Create a report
 
