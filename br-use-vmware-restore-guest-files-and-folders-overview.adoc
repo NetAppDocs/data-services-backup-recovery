@@ -74,8 +74,9 @@ You can restore files with non-alphabetic names, such as Japanese Kanji, by rest
 Before you restore a file or folder from a guest OS, you should be aware of the feature limitations.
 
 * You cannot restore dynamic disk types inside a guest OS.
-* If you restore an encrypted file or folder, the encryption attribute is not retained. You cannot restore files or folders to an encrypted folder.
-* The Guest File Browse page displays the hidden files and folder, which you cannot filter.
+* If you restore an encrypted file or folder, the encryption attribute is not retained. 
+* You cannot restore files or folders to an encrypted folder.
+* Hidden files and folders are displayed in the file browse page, and you cannot filter them.
 * You cannot restore from a Linux guest OS.
 +
 You cannot restore files and folders from a VM that is running Linux guest OS. However, you can attach a VMDK and then manually restore the files and folders. For the latest information on supported guest OS, refer to the https://imt.netapp.com/imt/imt.jsp?components=180121;&solution=1517&isHWU&src=IMT[NetApp Interoperability Matrix Tool (IMT)^].
