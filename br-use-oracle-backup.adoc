@@ -31,7 +31,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 .Steps 
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. In the Oracle tile, select *Discover and manage*.
+. Under *Workloads*, select the *Oracle* tile.
 . Select *Inventory*. 
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
@@ -54,7 +54,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 .Steps 
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. In the Oracle tile, select *Discover and manage*.
+. Under *Workloads*, select the *Oracle* tile.
 . Select *Inventory*. 
 . Select a workload to view the protection details. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
