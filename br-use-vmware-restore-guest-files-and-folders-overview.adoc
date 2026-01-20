@@ -22,7 +22,7 @@ Guest OS restore operations include the following steps:
 
 . Attach
 +
-Attach a virtual disk to a guest VM or proxy VM and start a guest file restore session.
+Attach a virtual disk to a guest VM and start a guest file restore session.
 
 . Wait
 +

@@ -23,8 +23,6 @@ You need to create credentials for the guest VM in NetApp Backup and Recovery be
 
 .About this task
 
-By default, NetApp Backup and Recovery makes the attached virtual disk available for 24 hours, then automatically detaches it. In the wizard, you can choose to delete the guest file restore session automatically after the restore operation or delete the session manually.
-
 Guest file or folder restore performance depends upon two factors: the size of the files or folders being restored; and the number of files or folders being restored. Restoring a large number of small-sized files might take a longer time than anticipated compared to restoring a small number of large-sized files, if the data set to be restored is of same size.
 
 [IMPORTANT]
