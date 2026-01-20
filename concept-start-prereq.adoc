@@ -133,9 +133,13 @@ For a list of vCenter privileges needed, see https://docs.netapp.com/us-en/sc-pl
 You need specific requirements to discover and protect KVM virtual machines.
 
 * A modern Linux distribution running kernel version 5.14.0-503.22.1.el9_5.x86_64 (longterm) or later
-* Ensure that inbound traffic to port 22 is allowed from the Console agent to the KVM host
+* Your KVM hosts and VMs must be managed by a management platform. NetApp Backup and Recovery supports the following management platforms:
+** Apache CloudStack 4.22.0.0
+* Ensure that inbound network traffic to port 22 is allowed from the Console agent to the KVM host
 * QEMU Guest Agent version 9.0.0 or later
 * libvirt version 10.5.0 or later
+
+NOTE: To ensure that KVM workload restores complete successfully, make sure that the *Enable VM-consistent snapshot* setting is active in the protection policy you use for KVM backups.
 
 [NOTE]
 =====
