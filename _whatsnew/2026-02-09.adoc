@@ -1,0 +1,10 @@
+=== Kubernetes workloads enhancements
+Kubernetes workload support is now generally available (GA) in NetApp Backup and Recovery. This release of Kubernetes workloads also introduces the following enhanced capabilities:
+
+* Free trial mode for Kubernetes workloads
+* CR workflow support for protection operations
+* Support for adding existing Kubernetes clusters protected with Trident protect to Backup and Recovery
+* Enhanced post-restore script support
+* Alerting framework support
+* Support for creating, viewing, and downloading protection status reports
+* Restore tab integration
