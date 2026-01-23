@@ -13,7 +13,7 @@ summary: For increased security, configure access for specific roles in NetApp B
 [.lead]
 For increased security and more granular control over access to resources, you can configure resource access for specific roles in NetApp Backup and Recovery. The NetApp Console now supports role-based access control (RBAC) for some Backup and Recovery workloads. You can assign administrative or viewer roles specific to these workloads. Other workloads that do not yet support role-based access control remain accessible to all users with Backup and Recovery roles until project-level association is supported. 
 
-The following are general steps that you can use to form a strategy around controlling access to resources in your organization. Make these changes in the *Administration > Identity and access* page in the NetApp Console menu.
+Follow these steps to control access to resources in your organization. Make changes in the *Administration > Identity and access* page in the NetApp Console menu.
 
 NOTE: These steps assume that you are assigned the Organization Admin role in the Console.
 
@@ -38,11 +38,11 @@ Instead of granting a user full Backup and Recovery admin access, you can assign
 
 . Discover workloads in Backup and Recovery.
 +
-You or the Folder or project admin discover the workloads that are available and select the appropriate project (such as US East or US West). Each workload is automatically associated with the selected project. 
+Organization admins or Folder or project admins discover the workloads that are available and select the appropriate project (such as US East or US West). Each workload is automatically associated with the selected project. 
 
 . Add users to projects.
 +
-Either you as the Organization admin or the Folder or project admin add Console users to the projects that contain workloads. You need to give users the Organization viewer role and one of the Backup and Recovery roles, depending on their required level of access. Any new workloads added to these projects later will automatically be accessible to users with the appropriate Backup and Recovery role.  
+Organization admins or Folder/project admins add Console users to projects with workloads. Assign users the Organization viewer role and a Backup and Recovery role based on their access needs. Users with the right Backup and Recovery role will automatically gain access to new workloads in these projects.  
 
 .Learn more
 
