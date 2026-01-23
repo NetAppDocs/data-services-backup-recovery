@@ -11,7 +11,7 @@ summary: For increased security, configure access for specific roles in NetApp B
 :imagesdir: ./media/
 
 [.lead]
-For increased security and more granular control over access to resources, you can configure resource access for specific roles in NetApp Backup and Recovery. The NetApp Console now supports role-based access control (RBAC) for some Backup and Recovery workloads. You can assign administrative or viewer roles specific to these workloads. Other workloads that do not yet support role-based access control remain accessible to all users with Backup and Recovery roles until project-level association is supported. 
+To increase security and control resource access, configure role-based access for NetApp Backup and Recovery. The NetApp Console supports role-based access control (RBAC) for some Backup and Recovery workloads. You can assign administrative or viewer roles specific to these workloads. Other workloads that do not yet support role-based access control remain accessible to all users with Backup and Recovery roles until project-level association is supported. 
 
 Follow these steps to control access to resources in your organization. Make changes in the *Administration > Identity and access* page in the NetApp Console menu.
 
