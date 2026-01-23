@@ -44,7 +44,7 @@ Organization admins or Folder or project admins discover the workloads that are 
 +
 Organization admins or Folder/project admins add Console users to projects with workloads. Assign users the Organization viewer role and a Backup and Recovery role based on their access needs. Users with the right Backup and Recovery role will automatically gain access to new workloads in these projects.  
 
-.Learn more
+== Related information
 
-* For more information about managing identity and access in NetApp Console, refer to link:https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console identity and access management^].
-* For more information about Backup and Recovery roles in NetApp Console, refer to link:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console^].
+* link:https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console identity and access management^].
+* link:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console^].
