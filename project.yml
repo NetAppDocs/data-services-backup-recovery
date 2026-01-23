@@ -61,6 +61,8 @@ sidebar:
           url: /br-start-switch-ui.html
         - title: Configure NetApp Backup and Recovery general settings
           url: /br-start-configure.html
+        - title: Set up role-based access control in NetApp Backup and Recovery
+          url: /br-rbac-setup.html
     - title: Use NetApp Backup and Recovery
       entries:
         - title: View protection health in the Dashboard 
