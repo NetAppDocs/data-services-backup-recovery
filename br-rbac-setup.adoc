@@ -44,5 +44,7 @@ You or the Folder or project admin discover the workloads that are available and
 +
 Either you as the Organization admin or the Folder or project admin add Console users to the projects that contain workloads. You need to give users the Organization viewer role and one of the Backup and Recovery roles, depending on their required level of access. Any new workloads added to these projects later will automatically be accessible to users with the appropriate Backup and Recovery role.  
 
+.Learn more
+
 * For more information about managing identity and access in NetApp Console, refer to link:https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console identity and access management^].
 * For more information about Backup and Recovery roles in NetApp Console, refer to link:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console^].
