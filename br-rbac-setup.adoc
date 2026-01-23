@@ -13,7 +13,7 @@ summary: For increased security, configure access for specific roles in NetApp B
 [.lead]
 For increased security and more granular control over access to resources, you can configure resource access for specific roles in NetApp Backup and Recovery. The NetApp Console now supports role-based access control (RBAC) for some Backup and Recovery workloads. You can assign administrative or viewer roles specific to these workloads. Other workloads that do not yet support role-based access control remain accessible to all users with Backup and Recovery roles until project-level association is supported. 
 
-The following are general steps that you can use to form a strategy around controlling access to resources in your organization. Make these changes in the Console Identity and access page, which you can access by navigating to *Administration > Identity and access* in the Console menu.
+The following are general steps that you can use to form a strategy around controlling access to resources in your organization. Make these changes in the *Administration > Identity and access* page in the NetApp Console menu.
 
 NOTE: These steps assume that you are assigned the Organization Admin role in the Console.
 
@@ -24,9 +24,12 @@ NOTE: These steps assume that you are assigned the Organization Admin role in th
 As an Organization admin, set up the Identity and access folder and project structure where workloads will reside. 
 
 . Assign user roles.
+.. Primary option:
 +
 Add users to each project designated for workloads and grant them the appropriate role. For example:
++
 * *Organization admin* and *Backup and Recovery super admin*: A user with these roles can see all resources in all organizations, and discover Backup and Recovery workloads and assign them to projects (for example, US East or US West).
++
 * *Folder or project admin* and *Backup and Recovery super admin*: A user with these roles can see only the resources in the folder or project they have permissions for, but can discover Backup and Recovery workloads and assign them to that project. 
 
 .. Alternative option:
@@ -35,11 +38,11 @@ Instead of granting a user full Backup and Recovery admin access, you can assign
 
 . Discover workloads in Backup and Recovery.
 +
-You or the Folder or project admin discovers the workloads that are available and selects the appropriate project (such as US East or US West). Each workload is automatically associated with the selected project. 
+You or the Folder or project admin discover the workloads that are available and select the appropriate project (such as US East or US West). Each workload is automatically associated with the selected project. 
 
 . Add users to projects.
 +
-Either you as the Organization admin or the Folder or project admin adds Console users to the projects that contain workloads. You need to give users the Organization viewer role and one of the five Backup and Recovery roles, depending on their required level of access. Any new workloads added to these projects later will automatically be accessible to users with the appropriate Backup and Recovery role.  
+Either you as the Organization admin or the Folder or project admin add Console users to the projects that contain workloads. You need to give users the Organization viewer role and one of the Backup and Recovery roles, depending on their required level of access. Any new workloads added to these projects later will automatically be accessible to users with the appropriate Backup and Recovery role.  
 
 * For more information about managing identity and access in NetApp Console, refer to link:https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console identity and access management^].
 * For more information about Backup and Recovery roles in NetApp Console, refer to link:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console^].
