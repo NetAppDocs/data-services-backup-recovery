@@ -75,8 +75,7 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 [discrete]
 ===== Destination settings
 
-. Choose to restore either to the default storage class or to a different storage class. 
+. Choose to restore either to the default storage class or to a different storage class.
+. Optionally, if you are restoring from a cluster that was previously managed by Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. You can sync the AppVault to refresh the details.
 . Optionally, if you chose to restore to a different storage class, select a destination storage class to match each source storage class.
 . Select *Restore*.
-
-
