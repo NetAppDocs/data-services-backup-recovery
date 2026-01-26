@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: trident-protect/trident-protect-restore-settings.html
 keywords: trident, protect, restore, data, backup
-summary: You can customize Trident Protect restore operations using annotations, namespace settings, and storage options. 
+summary: You can customize CR restore operations using annotations, namespace settings, and storage options. 
 ---
 = Use advanced custom resource restore settings
 :hardbreaks:
