@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
-permalink: trident-protect/trident-protect-restore-settings.html
-keywords: trident, protect, restore, data, backup
+permalink: br-use-kubernetes-advanced-restore-settings.html
+keywords: cr, custom resource, restore, data, backup, advanced, settings
 summary: You can customize CR restore operations using annotations, namespace settings, and storage options. 
 ---
 = Use advanced custom resource restore settings
