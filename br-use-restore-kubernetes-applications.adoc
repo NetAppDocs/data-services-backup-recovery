@@ -21,14 +21,11 @@ Organization admin or SnapCenter admin. link:reference-roles.html[Learn about Ne
 
 .Steps
 
-. In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
-. Select the *Applications* tab.
-. In the list of applications, choose an application you want to restore and select the associated Actions menu.
-. Select *View and restore*.
+. In the NetApp Backup and Recovery menu, select *Restore*.
+. Choose a Kubernetes application from the list, and select *View and Restore* for that application.
 +
 The list of restore points appears. 
-. Open the Actions menu for the restore point you want to use, and select *Restore*.
+. Select the *Restore* button for the restore point you want to use.
 
 [discrete]
 ===== General settings
