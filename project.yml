@@ -235,6 +235,8 @@ sidebar:
                   url: /br-use-restore-kubernetes-applications-cr.html
                 - title: Use advanced custom resource restore settings
                   url: /br-use-kubernetes-advanced-restore-settings.html
+                - title: Create AppVault objects for compatibility with Trident Protect backups
+                  url: /br-use-kubernetes-appvault-custom-resources.html
             - title: Manage Kubernetes clusters
               url: /br-use-manage-kubernetes-clusters.html
             - title: Manage Kubernetes applications
