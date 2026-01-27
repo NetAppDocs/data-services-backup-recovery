@@ -75,8 +75,6 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 [discrete]
 ===== Destination settings
 
-. Choose to restore either to the default storage class or to a different storage class. 
-. Optionally, if you chose to restore to a different storage class, select a destination storage class to match each source storage class.
+. Expand the *Destination settings* section and choose to restore either to the default storage class or to map the storage classes to the destination cluster. 
+. Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
 . Select *Restore*.
-
-
