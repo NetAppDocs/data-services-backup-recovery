@@ -80,5 +80,7 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 
 . Choose to restore either to the default storage class or to a different storage class.
 . Optionally, if you are restoring a backup that was made using Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. If there is a change in your environment or the AppVault status, select *Sync App Vault* to refresh the details.
++
+NOTE: If you need to create an AppVault on a Kubernetes cluster, refer to link:br-use-kubernetes-appvault-custom-resources.html[Create AppVault objects for compatibility with Trident Protect backups].
 . Optionally, if you chose to restore to a different storage class, select a destination storage class to match each source storage class.
 . Select *Restore*.
