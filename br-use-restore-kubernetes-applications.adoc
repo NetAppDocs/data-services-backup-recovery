@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
 ---
 
-= Restore Kubernetes applications 
+= Restore Kubernetes applications using the web UI
 :hardbreaks:
 :nofooter:
 :icons: font
