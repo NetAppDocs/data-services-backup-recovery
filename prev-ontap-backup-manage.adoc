@@ -31,23 +31,21 @@ You can view a list of all the volumes that are currently being backed up in the
 
 . Select the *Volumes* menu to view the list of backed up volumes for your Cloud Volumes ONTAP and on-premises ONTAP systems.
 
-
 . If you are looking for specific volumes in certain systems, you can refine the list by system and volume. You can also use the search filter, or you can sort the columns based on volume style (FlexVol or FlexGroup), volume type, and more.
 +
 To show additional columns (aggregates, security style (Windows or UNIX), snapshot policy, replication policy, and backup policy), select the plus sign.
 
 . Review the status of the protection options in the "Existing protection" column. The 3 icons stand for "Local snapshots", "Replicated volumes", and "Backups in object storage". 
 +
-Each icon is blue when that backup type is activated, and it's grey when the backup type is inactive. You can hover your cursor over each icon to see the backup policy that is being used, and other pertinent information for each type of backup.
+Each icon is illuminated when that backup type is activated, and it's grey when the backup type is inactive. You can hover your cursor over each icon to see the backup policy that is being used, and other pertinent information for each type of backup.
 
 == Activate backup on additional volumes in a system
 
 If you activated backup only on some of the volumes in a system when you first enabled NetApp Backup and Recovery, you can activate backups on additional volumes later. 
-//You can also activate backups for any volumes that you had previously deactivated.
 
 .Steps
 
-. From the *Volumes* tab, identify the volume on which you want to activate backups, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Activate backup*.
+. From the *Volumes* tab, identify the volume on which you want to activate backups, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Activate 3-2-1 Protection*.
 
 . In the _Define backup strategy_ page, select the backup architecture, and then define the policies and other details for Local snapshots, Replicated volumes, and Backup files. See the details for backup options from the initial volumes you activated in this system. Then select *Next*.
 
@@ -64,7 +62,7 @@ You can change the backup policies assigned to your existing volumes that have a
 
 .Steps
 
-. From the *Volumes* tab, identify the volume that you want to make policy changes, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Edit backup strategy*.
+. From the *Volumes* menu,  locate the volume for which you want to modify the policy settings, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Edit backup strategy*.
 
 . In the _Edit backup strategy_ page, make changes to the existing backup policies for Local snapshots, Replicated volumes, and Backup files and select *Next*.
 +
@@ -82,7 +80,7 @@ When working with multiple volumes, all volumes must have these common character
 * same style (FlexVol or FlexGroup volume)
 * same type (Read-write or Data Protection volume)
 
-When more than five volumes are enabled for backup, NetApp Backup and Recovery initializes only five volumes at a time. When those are finished, it creates the next batch of five subjobs to start the next set and continues until all volumes are initialized.
+When more than five volumes are enabled for backup, NetApp Backup and Recovery initializes only five volumes at a time. When those are finished, it continues in groups of 5 until all volumes are initialized.
 
 .Steps
 
@@ -112,7 +110,7 @@ If you enabled _DataLock and Ransomware Resilience_ for cloud backups in the ini
 
 You can create an on-demand backup at any time to capture the current state of the volume. This can be useful if very important changes have been made to a volume and you don't want to wait for the next scheduled backup to protect that data. You can also use this functionality to create a backup for a volume that is not currently being backed up and you want to capture its current state.
 
-You can create an ad-hoc snapshot or backup to object of a volume. You can't create an ad-hoc replicated volume. 
+You can create an ad-hoc snapshot or backup to object store of a volume. You can't create an ad-hoc replicated volume. 
 
 The backup name includes the timestamp so you can identify your on-demand backup from other scheduled backups.
 
@@ -303,8 +301,6 @@ NetApp Backup and Recovery enables you to delete a single backup file, delete al
 You can't delete backup files that you have locked using DataLock and Ransomware protection. The "Delete" option will be unavailable from the UI if you selected one or more locked backup files.
 
 CAUTION: If you plan to delete a system or cluster that has backups, you must delete the backups *before* deleting the system. NetApp Backup and Recovery doesn't automatically delete backups when you delete a system, and there is no current support in the UI to delete the backups after the system has been deleted. You'll continue to be charged for object storage costs for any remaining backups.
-
-
 
 === Delete all backup files for a system
 

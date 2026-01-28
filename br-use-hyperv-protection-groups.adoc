@@ -34,7 +34,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
-. Select the *Protection groups* tab.
+. Select the *Protection groups* menu.
 . Select *Create protection group*.
 . Provide a name for the protection group.
 . Select the VMs that you want to include in the protection group.
@@ -88,6 +88,22 @@ The system validates the schedules and changes the protection status to "Protect
 
 ////
 
+== Edit a protection group
+
+Edit a protection group to change its name or settings. You might want to edit a protection group if the resources in the group have changed.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the protection group that you want to edit.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit*.
+. Change any settings for the protection group such as the name or what virtual machines are in the group.
+. Select *Next*.
+. Change the protection policy if needed. When finished, select *Next*.
+. Review the configuration and select *Submit*.
+
 == Delete a protection group
 
 Deleting a protection group removes it and all associated backup schedules. You might want to delete a protection group if it is no longer needed.
@@ -100,3 +116,4 @@ Deleting a protection group removes it and all associated backup schedules. You 
 . Select the protection group that you want to delete.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
 . Review the confirmation message about deleting the associated backups and confirm the deletion.
+
