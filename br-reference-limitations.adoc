@@ -80,8 +80,6 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 ** When you use ONTAP 9.12.0 and earlier, backup is supported only from the ONTAP secondary system.
 ** Beginning with ONTAP 9.18.1, FlexGroup volume backups are supported in MetroCluster configurations.
 
-// 28 Jan 2026, IDR-578
-
 * Ad-hoc volume backup using the *Backup Now* button isn't supported on data protection volumes.
 
 * SM-BC configurations are not supported.
@@ -125,3 +123,6 @@ When using a version of ONTAP before 9.11.1, folder restore is not supported.
 ** It is not supported with backups located in archived storage.
 ** FlexGroup volumes are supported only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. 
 ** SnapLock volumes are supported only if the source system from which the cloud backup was created was running ONTAP 9.11.0 or greater.
+
+
+// 28 Jan 2026, IDR-578
