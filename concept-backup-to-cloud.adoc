@@ -143,6 +143,8 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 // BLUEXPDOC-1011
 For ONTAP volume workloads, you are only charged for volumes protected to object storage. Charges are based on the logical used capacity of the source ONTAP volumes before efficiencies are applied, also known as Front-End Terabytes (FETB).
 
+For Kubernetes workloads, you are charged based on the combined size of all persistent volumes.
+
 For all other workloads, you are charged for resources protected to at least one secondary or object storage target. Charges are calculated using the logical size of the source workload. For databases, this means the database size; for VMs, the VM size.
 
 There are three ways to pay for Backup and Recovery: 
