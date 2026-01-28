@@ -15,6 +15,9 @@ summary: NetApp Backup and Recovery enables you to restore applications that you
 [.lead]
 NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. To restore an application, an application needs to have at least one restore point available. A restore point consists of either the local snapshot or the backup to the object store (or both). You can restore an application using the local, secondary, or object store archive.
 
+.Before you begin
+If you are restoring an application that was backed up using Trident Protect, ensure that Trident protect is installed on both the source and destination clusters.
+
 .Required NetApp Console role
 
 Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -33,11 +36,13 @@ The list of restore points appears.
 [discrete]
 ===== General settings
 
-. Choose the source to restore from (local or object store).
+. Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
-. Choose the restore destination namespace.
 +
-You can restore to the original namespace or restore to a new namespace. 
+NOTE: Restoring a local snapshot created by Trident Protect to a different cluster is not supported at this time.
+
+. Choose to restore to the original namespaces or new namespaces.
+. If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
 . Select *Next*.
 
 [discrete]
@@ -75,8 +80,9 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 [discrete]
 ===== Destination settings
 
-. Choose to restore either to the default storage class or to a different storage class. 
+. Choose to restore either to the default storage class or to a different storage class.
+. Optionally, if you are restoring a backup or snapshot that was made using Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. If there is a change in your environment or the AppVault status, select *Sync App Vault* to refresh the details.
++
+NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to link:br-use-kubernetes-appvault-custom-resources.html[Create AppVault objects for compatibility with Trident Protect backups].
 . Optionally, if you chose to restore to a different storage class, select a destination storage class to match each source storage class.
 . Select *Restore*.
-
-
