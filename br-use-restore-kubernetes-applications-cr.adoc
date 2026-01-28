@@ -22,7 +22,7 @@ You can use custom resources to restore your applications from a snapshot or bac
 * You can use advanced settings to customize restore operations. To learn more, refer to link:br-use-kubernetes-advanced-restore-settings.html[Use advanced custom resource restore settings].
 ====
 
-== Restore from a backup to a different namespace
+== Restore a backup to a different namespace
 
 When you restore a backup to a different namespace using a BackupRestore CR, Backup and Recovery restores the application in a new namespace and creates an application CR for the restored application. To protect the restored application, create on-demand backups or snapshots, or establish a protection schedule.
 
@@ -73,7 +73,7 @@ include::../_include/restore-include-selective-restore.adoc[]
 kubectl apply -f trident-protect-backup-restore-cr.yaml
 -----
 
-== Restore from a backup to the original namespace
+== Restore a backup to the original namespace
 You can restore a backup to the original namespace at any time.
 
 include::../_include/restore-include-sessiontoken-note.adoc[]
@@ -116,7 +116,7 @@ include::../_include/restore-include-selective-restore.adoc[]
 kubectl apply -f trident-protect-backup-ipr-cr.yaml
 ------
 
-== Restore from a backup to a different cluster
+== Restore a backup to a different cluster
 
 You can restore a backup to a different cluster if there is an issue with the original cluster.
 
@@ -210,7 +210,7 @@ spec:
 kubectl apply -f trident-protect-backup-restore-cr.yaml
 ----
 
-== Restore from a snapshot to a different namespace
+== Restore a snapshot to a different namespace
 
 You can restore data from a snapshot using a custom resource (CR) file either to a different namespace or the original source namespace. When you restore a snapshot to a different namespace using a SnapshotRestore CR, Backup and Recovery restores the application in a new namespace and creates an application CR for the restored application. To protect the restored application, create on-demand backups or snapshots, or establish a protection schedule.
 
@@ -260,7 +260,7 @@ kubectl apply -f trident-protect-snapshot-restore-cr.yaml
 -----
 
 
-== Restore from a snapshot to the original namespace
+== Restore a snapshot to the original namespace
 You can restore a snapshot to the original namespace at any time.
 
 include::../_include/restore-include-sessiontoken-note.adoc[]
