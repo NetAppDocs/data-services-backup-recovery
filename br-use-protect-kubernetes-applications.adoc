@@ -234,7 +234,8 @@ spec:
 kubectl apply -f manual-backup-cr.yaml
 ----
 
-=== Supported backup annotations
+.Supported backup annotations
+
 The following table describes the annotations you can use when creating a backup CR:
 
 [cols="2,1,3,1",options="header"]
@@ -289,7 +290,7 @@ The Console creates a backup of the application and displays the progress in the
 // end tabbed block
 
 == View collected resources for a backup using a custom resource (CR)
-Use a CR to see what resources were collected as part of a snapshot or backup.
+Use a ResourceViewer CR to see what resources were collected as part of a snapshot or backup.
 
 .Steps
 . Create the view resources CR file:

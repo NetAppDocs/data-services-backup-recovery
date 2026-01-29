@@ -81,7 +81,7 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 . If you chose to restore to a different storage class, select a destination storage class to match each source storage class.
 . Optionally, if you are restoring a backup or snapshot that was made using Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. If there is a change in your environment or the AppVault status, select *Sync App Vault* to refresh the details.
 +
-NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to link:br-use-kubernetes-appvault-custom-resources.html[Create AppVault objects for compatibility with Trident Protect backups].
+NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-custom-resources.html[Use Trident Protect AppVault objects to manage buckets].
 
 . Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
 . Select *Restore*.
