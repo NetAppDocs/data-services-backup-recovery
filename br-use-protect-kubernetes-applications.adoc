@@ -234,29 +234,6 @@ spec:
 kubectl apply -f manual-backup-cr.yaml
 ----
 
---
-
-.Create a backup using the web UI
-
---
-
-.Steps
-. In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
-. Select the *Applications* tab.
-. In the list of applications, choose an application you want to back up and select the associated Actions menu.
-. Select *Backup now*.
-. Ensure the correct application name is selected.
-. Select *Back up*.
-
-.Result
-The Console creates a backup of the application and displays the progress in the *Monitoring* area of Backup and Recovery. The backup is created based on the protection policy associated with the application.
-
---
-
-====
-// end tabbed block
-
 === Supported backup annotations
 The following table describes the annotations you can use when creating a backup CR:
 
@@ -287,5 +264,98 @@ The following table describes the annotations you can use when creating a backup
 |Maximum time (in seconds) to wait for any newly created PersistentVolumeClaims (PVCs) to reach the `Bound` phase before the operations fails.
 |"1200" (20 minutes)
 |===
+
+--
+
+.Create a backup using the web UI
+
+--
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to back up and select the associated Actions menu.
+. Select *Backup now*.
+. Ensure the correct application name is selected.
+. Select *Back up*.
+
+.Result
+The Console creates a backup of the application and displays the progress in the *Monitoring* area of Backup and Recovery. The backup is created based on the protection policy associated with the application.
+
+--
+
+====
+// end tabbed block
+
+== View collected resources for a backup using a custom resource (CR)
+Use a CR to see what resources were collected as part of a snapshot or backup.
+
+.Steps
+. Create the view resources CR file:
+.. Create the custom resource (CR) file and name it (for example, `view-resources.yaml`).
+.. Configure the following attributes:
++
+* *metadata.name*: (_Required_) The name of the application custom resource. Note the name you choose because other CR files needed for protection operations refer to this value.
+* *metadata.ui-correclation-id*: (_Required_) 
+* *spec.includedNamespaces*: (_Required_) Use namespace and label selector to specify the namespaces and resources that the application uses. The application namespace must be part of this list. The label selector is optional and can be used to filter resources within each specified namespace.
+* *spec.includedClusterScopedResources*: (_Optional_) Use this attribute to specify cluster-scoped resources to be included in the application definition. This attribute allows you to select these resources based on their group, version, kind, and labels.
++
+** *groupVersionKind*: (_Required_) Specifies the API group, version, and kind of the cluster-scoped resource.
++
+** *labelSelector*: (_Optional_)  Filters the cluster-scoped resources based on their labels.
++
+Example YAML:
++
+[source, yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: ResourceViewer
+metadata:
+  name: name
+  namespace: <namespace of application, or an includedNamespace>
+  annotations:
+	ui-correlation-id: <correlationID from Trident Protect>
+  ownerReferences: # optional based on creator
+  - apiVersion: protect.trident.netapp.io/v1
+	blockOwnerDeletion: true
+	controller: true
+	kind: Application
+	name: ns1-app
+	uid: c1a6d240-7a97-42cd-80c3-b003c09aea73
+spec:
+  applicationRef: # optional, based on the creator of this CR
+	- namespace: ns1
+	  name: ns1-app
+  definition:
+    includedNamespaces:
+    - namespace: ns1
+      labelSelector: 
+        matchLabels:
+          color: blue
+      matchExpressions:
+      - key: color
+        operator: notin
+        values:
+        - orange
+    includedClusterScopedResources:
+    - groupVersionKind:
+        group: ""
+        kind: Node
+        version: v1
+      labelSelector: {}
+status:
+  totalParts: 5 # calculated number of chunks
+  currentPart: 1 # which chunk the below data pertains to
+  data: '{"apps/v1/ControllerRevision":["mysql/mysql-5dbcf9cf88"],"apps/v1/StatefulSet":["mysql/mysql"],"networking.k8s.io/v1/NetworkPolicy":["mysql/mysql"],"policy/v1/PodDisruptionBudget":["mysql/mysql"],"rbac.authorization.k8s.io/v1/ClusterRole":["/system:basic-user","/system:discovery","/system:public-info-viewer","/system:service-account-issuer-discovery"],"rbac.authorization.k8s.io/v1/ClusterRoleBinding":'
+----
+
++
+. After you populate the `view-resources-cr.yaml` file with the correct values, apply the CR:
++
+[source,console]
+----
+kubectl apply -f view-resources-cr.yaml
+----
 
 
