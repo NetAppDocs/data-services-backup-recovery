@@ -228,6 +228,15 @@ sidebar:
             - title: Discover Kubernetes workloads
               url: /br-start-discover-kubernetes.html
             - title: Add and protect Kubernetes applications 
+              entries:
+                - title: Add Kubernetes applications
+                  url: /br-use-add-kubernetes-applications.html
+                - title: Protect Kubernetes applications
+                  url: /br-use-protect-kubernetes-applications.html
+                - title: Back up a Kubernetes application now using the web UI
+                  url: /br-use-back-up-now-kubernetes-applications-web-ui.html
+                - title: Back up a Kubernetes application now using a custom resource
+                  url: /br-use-back-up-now-kubernetes-applications-cr.html
               url: /br-use-protect-kubernetes-applications.html
             - title: Restore Kubernetes applications
               entries:

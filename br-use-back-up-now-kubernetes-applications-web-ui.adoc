@@ -1,0 +1,367 @@
+---
+sidebar: sidebar
+permalink: br-use-back-up-now-kubernetes-applications-web-ui.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
+summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
+---
+
+= Back up Kubernetes applications now using the web UI 
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to easily discover your Kubernetes clusters, without generating and uploading kubeconfig files. You can connect Kubernetes clusters and install the required software using simple commands copied from the NetApp Console user interface.
+
+.Required NetApp Console role
+
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Add and protect a new Kubernetes application
+The first step in protecting Kubernetes applications is to create an application within NetApp Backup and Recovery. When you create an application, you make the Console aware of the running application on the Kubernetes cluster.
+
+.Before you begin
+Before you can add and protect a Kubernetes application, you need to link:br-start-discover.html[discover Kubernetes workloads].
+
+[role="tabbed-block"]
+====
+
+.Add an application using a CR
+
+--
+
+.Steps
+. Create the destination application CR file:
+.. Create the custom resource (CR) file and name it (for example, `maria-app.yaml`).
+.. Configure the following attributes:
++
+* *metadata.name*: (_Required_) The name of the application custom resource. Note the name you choose because other CR files needed for protection operations refer to this value.
++
+* *spec.includedNamespaces*: (_Required_) Use namespace and label selector to specify the namespaces and resources that the application uses. The application namespace must be part of this list. The label selector is optional and can be used to filter resources within each specified namespace.
+* *spec.includedClusterScopedResources*: (_Optional_) Use this attribute to specify cluster-scoped resources to be included in the application definition. This attribute allows you to select these resources based on their group, version, kind, and labels.
++
+** *groupVersionKind*: (_Required_) Specifies the API group, version, and kind of the cluster-scoped resource.
++
+** *labelSelector*: (_Optional_)  Filters the cluster-scoped resources based on their labels.
+
+.. Configure the following annotations, if needed:
++
+* *metadata.annotations.protect.trident.netapp.io/skip-vm-freeze*: (_Optional_) This annotation is only applicable to applications defined from virtual machines, such as in KubeVirt environments, where filesystem freezes occur before snapshots. Specify whether this application can write to the filesystem during a snapshot. If set to true, the application ignores the global setting and can write to the filesystem during a snapshot. If set to false, the application ignores the global setting and the filesystem is frozen during a snapshot. If specified but the application has no virtual machines in the application definition, the annotation is ignored. If not specified, the application follows the link:trident-protect-requirements.html#protecting-data-with-kubevirt-vms[global filesystem freeze setting].
+* *protect.trident.netapp.io/protection-command*: (_Optional_) Use this annotation to instruct Backup and Recovery to protect or stop protecting the application. The possible values are `protect` or `unprotect`.
+* *protect.trident.netapp.io/protection-policy-name*: (_Optional_) Use this annotation to specify the name of the Backup and Recovery protection policy that you want to use to protect this application. This protection policy must already exist in Backup and Recovery.
++
+[NOTE]
+=====
+If you need to apply this annotation after an application has already been created, you can use the following command:
+[source,console]
+----
+kubectl annotate application -n <application CR namespace> <application CR name> protect.trident.netapp.io/skip-vm-freeze="true"
+----
+=====
++
+Example YAML:
++
+[source, yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
+metadata:
+  annotations:
+    protect.trident.netapp.io/skip-vm-freeze: "false"
+    protect.trident.netapp.io/protection-command: "protect"
+    protect.trident.netapp.io/protection-policy-name: "policy-name"
+  creationTimestamp: "2026-01-28T22:33:28Z"
+  name: my-app-name
+  namespace: my-app-namespace
+spec:
+  includedNamespaces:
+    - namespace: namespace-1
+      labelSelector:
+        matchLabels:
+          app: example-app
+    - namespace: namespace-2
+      labelSelector:
+        matchLabels:
+          app: another-example-app
+  includedClusterScopedResources:
+    - groupVersionKind:
+        group: rbac.authorization.k8s.io
+        kind: ClusterRole
+        version: v1
+      labelSelector:
+        matchLabels:
+          mylabel: test 
+----
+
+. (_Optional_) Add filtering that includes or excludes resources marked with particular labels:
++
+* *resourceFilter.resourceSelectionCriteria*: (Required for filtering) Use `Include` or `Exclude` to include or exclude a resource defined in resourceMatchers. Add the following resourceMatchers parameters to define the resources to be included or excluded:
+** *resourceFilter.resourceMatchers*: An array of resourceMatcher objects. If you define multiple elements in this array, they match as an OR operation, and the fields inside each element (group, kind, version) match as an AND operation.
+*** *resourceMatchers[].group*: (_Optional_) Group of the resource to be filtered.
+*** *resourceMatchers[].kind*: (_Optional_) Kind of the resource to be filtered.
+*** *resourceMatchers[].version*: (_Optional_) Version of the resource to be filtered.
+*** *resourceMatchers[].names*: (_Optional_) Names in the Kubernetes metadata.name field of the resource to be filtered.
+*** *resourceMatchers[].namespaces*: (_Optional_) Namespaces in the Kubernetes metadata.name field of the resource to be filtered.
+*** *resourceMatchers[].labelSelectors*: (_Optional_) Label selector string in the Kubernetes metadata.name field of the resource as defined in the https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors[Kubernetes documentation^]. For example: `"trident.netapp.io/os=linux"`.
++
+NOTE: When both `resourceFilter` and `labelSelector` are used, `resourceFilter` runs first, and then `labelSelector` is applied to the resulting resources.
++
+For example:
++
+[source,yaml]
+-------
+spec:    
+  resourceFilter: 
+    resourceSelectionCriteria: "Include"
+    resourceMatchers:
+      - group: my-resource-group-1
+        kind: my-resource-kind-1
+        version: my-resource-version-1
+        names: ["my-resource-names"]
+        namespaces: ["my-resource-namespaces"]
+        labelSelectors: ["trident.netapp.io/os=linux"]
+      - group: my-resource-group-2
+        kind: my-resource-kind-2
+        version: my-resource-version-2
+        names: ["my-resource-names"]
+        namespaces: ["my-resource-namespaces"]
+        labelSelectors: ["trident.netapp.io/os=linux"]
+-------
+. After you create the application CR to match your environment, apply the CR. For example:
++
+[source,console]
+----
+kubectl apply -f maria-app.yaml
+----
+
+--
+
+.Add an application using the web UI
+
+--
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. Select *Create application*.
+. Enter a name for the application.
+. Optionally, choose any of the following fields to search for the resources you want to protect:
++
+* Associated cluster
+* Associated namespaces 
+* Resource types
+* Label selectors
+. Optionally, select *Cluster Scoped Resources* to choose any resources that are scoped at the cluster level. If you include them, they are added to the application when you create it.
+. Optionally, select *Search* to find the resources based on your search criteria.
++
+NOTE: The Console does not store the search parameters or results; the parameters are used to search the selected Kubernetes cluster for resources that can be included in the application. 
+. The Console displays a list of resources that match your search criteria.
+. If the list contains the resources you want to protect, select *Next*.
+. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-create.html#create-a-policy[add a protection policy] later.
+. In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. To enable prescripts or postscripts, you must have already created at least one link:br-use-manage-execution-hook-templates.html[execution hook template].
+. Select *Create*.
+
+.Result 
+The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. The NetApp Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery.
+
+--
+
+====
+
+// end tabbed area
+
+== Protect an existing Kubernetes application
+Enable a protection policy on a Kubernetes application that you have already added. 
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to protect and select the associated Actions menu.
+. Select *Protect*.
+. In the *Policy* area, choose an existing protection policy to protect the application or create a new policy. Refer to link:br-use-policies-create.html#create-a-policy[Create a policy] for more information about creating protection policies.
+. In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. You can configure the type of execution hook, the template it uses, arguments, and label selectors.
+. Select *Done*.
+
+.Result
+The Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery. As soon as you enable protection for an application, the Console creates a full backup of the application. Any future incremental backups are created based on the schedule that you define in the protection policy associated with the application.
+
+== Back up a Kubernetes application now
+Manually create a backup of a Kubernetes application to establish a baseline for future backups and snapshots, or to ensure the most recent data is protected.
+
+NOTE: Cluster-scoped resources are included in a backup, snapshot, or clone if they are explicitly referenced in the application definition or if they have references to any of the application namespaces.
+
+include::../_include/backup-include-sessiontoken-note.adoc[]
+
+// begin tabbed block
+[role="tabbed-block"]
+====
+
+.Create a backup using a CR
+
+--
+
+.Steps
+. Create the custom resource (CR) file and name it `manual-backup-cr.yaml`. 
+. In the file you created, configure the following attributes:
+* *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
+* *spec.applicationRef*: (_Required_) The Kubernetes name of the application to back up.
+* *spec.appVaultRef*: (_Required_) The name of the AppVault where the backup contents should be stored.
+* *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. The value is case sensitive and must be `CBS`.
+* *spec.reclaimPolicy*: (_Optional_) Defines what happens to a backup when released from its claim. Possible values:
+** `Delete`
+** `Retain` (default)
+* *spec.snapshotRef*: (_Optional_): Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
++
+Example YAML:
++
+[source,yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: Backup
+metadata:
+  namespace: my-app-namespace
+  name: my-cr-name
+spec: 
+  applicationRef: my-application
+  appVaultRef: appvault-name
+  dataMover: CBS
+----
++
+. After you populate the `manual-backup-cr.yaml` file with the correct values, apply the CR:
++
+[source,console]
+----
+kubectl apply -f manual-backup-cr.yaml
+----
+
+.Supported backup annotations
+
+The following table describes the annotations you can use when creating a backup CR:
+
+[cols="2,1,3,1",options="header"]
+|===
+|Annotation
+|Type
+|Description
+|Default value
+|protect.trident.netapp.io/full-backup
+|string
+|Specifies whether a backup should be non-incremental. Set to `true` to create a non-incremental backup. It is best practice to perform a full backup periodically and then perform incremental backups in between full backups to minimize the risk associated with restores.
+|"false"
+|protect.trident.netapp.io/snapshot-completion-timeout
+|string
+|The maximum time allowed for the overall snapshot operation to complete.
+|"60m"
+|protect.trident.netapp.io/volume-snapshots-ready-to-use-timeout
+|string
+|The maximum time allowed for volume snapshots to reach the ready-to-use state.
+|"30m"
+|protect.trident.netapp.io/volume-snapshots-created-timeout
+|string
+|The maximum time allowed for volume snapshots to be created.
+|"5m"
+|protect.trident.netapp.io/pvc-bind-timeout-sec
+|string
+|Maximum time (in seconds) to wait for any newly created PersistentVolumeClaims (PVCs) to reach the `Bound` phase before the operations fails.
+|"1200" (20 minutes)
+|===
+
+--
+
+.Create a backup using the web UI
+
+--
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to back up and select the associated Actions menu.
+. Select *Backup now*.
+. Ensure the correct application name is selected.
+. Select *Back up*.
+
+.Result
+The Console creates a backup of the application and displays the progress in the *Monitoring* area of Backup and Recovery. The backup is created based on the protection policy associated with the application.
+
+--
+
+====
+// end tabbed block
+
+== View collected resources for a backup using a custom resource (CR)
+Use a ResourceViewer CR to see what resources were collected as part of a snapshot or backup.
+
+.Steps
+. Create the view resources CR file:
+.. Create the custom resource (CR) file and name it (for example, `view-resources.yaml`).
+.. Configure the following attributes:
++
+* *metadata.name*: (_Required_) The name of the application custom resource. Note the name you choose because other CR files needed for protection operations refer to this value.
+* *metadata.ui-correclation-id*: (_Required_) 
+* *spec.includedNamespaces*: (_Required_) Use namespace and label selector to specify the namespaces and resources that the application uses. The application namespace must be part of this list. The label selector is optional and can be used to filter resources within each specified namespace.
+* *spec.includedClusterScopedResources*: (_Optional_) Use this attribute to specify cluster-scoped resources to be included in the application definition. This attribute allows you to select these resources based on their group, version, kind, and labels.
++
+** *groupVersionKind*: (_Required_) Specifies the API group, version, and kind of the cluster-scoped resource.
++
+** *labelSelector*: (_Optional_)  Filters the cluster-scoped resources based on their labels.
++
+Example YAML:
++
+[source, yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: ResourceViewer
+metadata:
+  name: name
+  namespace: <namespace of application, or an includedNamespace>
+  annotations:
+	ui-correlation-id: <correlationID from Trident Protect>
+  ownerReferences: # optional based on creator
+  - apiVersion: protect.trident.netapp.io/v1
+	blockOwnerDeletion: true
+	controller: true
+	kind: Application
+	name: ns1-app
+	uid: c1a6d240-7a97-42cd-80c3-b003c09aea73
+spec:
+  applicationRef: # optional, based on the creator of this CR
+	- namespace: ns1
+	  name: ns1-app
+  definition:
+    includedNamespaces:
+    - namespace: ns1
+      labelSelector: 
+        matchLabels:
+          color: blue
+      matchExpressions:
+      - key: color
+        operator: notin
+        values:
+        - orange
+    includedClusterScopedResources:
+    - groupVersionKind:
+        group: ""
+        kind: Node
+        version: v1
+      labelSelector: {}
+status:
+  totalParts: 5 # calculated number of chunks
+  currentPart: 1 # which chunk the below data pertains to
+  data: '{"apps/v1/ControllerRevision":["mysql/mysql-5dbcf9cf88"],"apps/v1/StatefulSet":["mysql/mysql"],"networking.k8s.io/v1/NetworkPolicy":["mysql/mysql"],"policy/v1/PodDisruptionBudget":["mysql/mysql"],"rbac.authorization.k8s.io/v1/ClusterRole":["/system:basic-user","/system:discovery","/system:public-info-viewer","/system:service-account-issuer-discovery"],"rbac.authorization.k8s.io/v1/ClusterRoleBinding":'
+----
+
++
+. After you populate the `view-resources-cr.yaml` file with the correct values, apply the CR:
++
+[source,console]
+----
+kubectl apply -f view-resources-cr.yaml
+----
+
+
