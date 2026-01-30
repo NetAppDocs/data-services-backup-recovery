@@ -49,11 +49,8 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 .. Configure the following annotations, if needed:
 +
 * *metadata.annotations.protect.trident.netapp.io/skip-vm-freeze*: (_Optional_) This annotation is only applicable to applications defined from virtual machines, such as in KubeVirt environments, where filesystem freezes occur before snapshots. Specify whether this application can write to the filesystem during a snapshot. If set to true, the application ignores the global setting and can write to the filesystem during a snapshot. If set to false, the application ignores the global setting and the filesystem is frozen during a snapshot. If specified but the application has no virtual machines in the application definition, the annotation is ignored. If not specified, the application follows the link:trident-protect-requirements.html#protecting-data-with-kubevirt-vms[global filesystem freeze setting].
-* *application.protect.trident.netapp.io/correlationid*: (_Optional_) ???
-* *application.protect.trident.netapp.io/protection-state*: (_Optional_) The desired protection state of the application. The possible values are `Protected` or `Unprotected`.
-* *application.protect.trident.netapp.io/protection-state-at*: (_Optional_) The time and date to apply this protection status to the application. You can use this annotation to set a time to start protecting the app.
-* *application.protect.trident.netapp.io/protection-state-msg*: (_Optional_) A message to include with the application.???
-* *application.protect.trident.netapp.io/protection-state-policy-name*: (_Optional_) Use this annotation to specify the name of the Backup and Recovery protection policy that you want to use to protect this application. This protection policy must already exist in Backup and Recovery.
+* *protect.trident.netapp.io/protection-command*: (_Optional_) Use this annotation to instruct Backup and Recovery to protect or stop protecting the application. The possible values are `protect` or `unprotect`.
+* *protect.trident.netapp.io/protection-policy-name*: (_Optional_) Use this annotation to specify the name of the Backup and Recovery protection policy that you want to use to protect this application. This protection policy must already exist in Backup and Recovery.
 +
 [NOTE]
 =====
@@ -73,11 +70,8 @@ kind: Application
 metadata:
   annotations:
     protect.trident.netapp.io/skip-vm-freeze: "false"
-    protect.trident.netapp.io/correlationid: 6c03bdb7-11c3-4d49-ac0a-5b8371fb4f6
-    protect.trident.netapp.io/protection-state: Protected
-    protect.trident.netapp.io/protection-state-at: "2026-01-28T22:38:50Z"
-    protect.trident.netapp.io/protection-state-msg: "Optional message"
-    protect.trident.netapp.io/protection-state-policy-name: protection-policy-name
+    protect.trident.netapp.io/protection-command: "protect"
+    protect.trident.netapp.io/protection-policy-name: "policy-name"
   creationTimestamp: "2026-01-28T22:33:28Z"
   name: my-app-name
   namespace: my-app-namespace
@@ -217,9 +211,7 @@ include::../_include/backup-include-sessiontoken-note.adoc[]
 * *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
 * *spec.applicationRef*: (_Required_) The Kubernetes name of the application to back up.
 * *spec.appVaultRef*: (_Required_) The name of the AppVault where the backup contents should be stored.
-* *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. Possible values (case sensitive):
-** `Restic`
-** `Kopia` (default)
+* *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. The value is case sensitive and must be `CBS`.
 * *spec.reclaimPolicy*: (_Optional_) Defines what happens to a backup when released from its claim. Possible values:
 ** `Delete`
 ** `Retain` (default)
@@ -237,7 +229,7 @@ metadata:
 spec: 
   applicationRef: my-application
   appVaultRef: appvault-name
-  dataMover: Kopia
+  dataMover: CBS
 ----
 +
 . After you populate the `manual-backup-cr.yaml` file with the correct values, apply the CR:
