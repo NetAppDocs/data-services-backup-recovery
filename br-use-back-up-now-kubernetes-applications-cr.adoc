@@ -46,7 +46,7 @@ metadata:
 spec: 
   applicationRef: my-application
   appVaultRef: appvault-name
-  reclaimPolicy: Delete
+  reclaimPolicy: Retain
 ----
 +
 . After you populate the `local-snapshot-cr.yaml` file with the correct values, apply the CR:
@@ -64,14 +64,16 @@ Create a Backup CR with specific attributes to back up your application to an ob
 . In the file you created, configure the following attributes:
 * *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
 * *spec.applicationRef*: (_Required_) The Kubernetes name of the application to back up.
-* *spec.appVaultRef*: (_Required_) The name of the AppVault where the backup contents should be stored.
+* *spec.appVaultRef*: (_Required_) If you use the same bucket to store the snapshot and backup, this is the name of the AppVault where the backup contents should be stored.
+* *spec.appVaultTargetsRef*: (_Required_) If you use different buckets to store the snapshot and backup, this is the name of the AppVault where the backup contents should be stored.
 * *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. The value is case sensitive and must be `CBS`.
 * *spec.reclaimPolicy*: (_Optional_) Defines what happens to a backup when released from its claim. Possible values:
 ** `Delete`
 ** `Retain` (default)
-* *spec.snapshotRef*: (_Optional_): Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
+//* *spec.snapshotRef*: (_Optional_) Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
+* *spec.cleanupSnapshot*: (_Required_) Ensures that the temporary snapshot created by the Backup CR is not deleted after the backup operation completes. Recommended value: `false`.
 +
-Example YAML:
+Example YAML when using the same bucket to store the snapshot and backup:
 +
 [source,yaml]
 ----
@@ -84,6 +86,25 @@ spec:
   applicationRef: my-application
   appVaultRef: appvault-name
   dataMover: CBS
+  reclaimPolicy: Retain
+  cleanupSnapshot: false
+----
++
+Example YAML when using different buckets to store the snapshot and backup:
++
+[source,yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: Backup
+metadata:
+  namespace: my-app-namespace
+  name: my-cr-name
+spec: 
+  applicationRef: my-application
+  appVaultTargetsRef: appvault-targets-name
+  dataMover: CBS
+  reclaimPolicy: Retain
+  cleanupSnapshot: false
 ----
 +
 . After you populate the `object-store-backup-cr.yaml` file with the correct values, apply the CR:
@@ -96,18 +117,22 @@ kubectl apply -f object-store-backup-cr.yaml
 === Create a 3-2-1 fanout backup using a custom resource
 Backing up using a 3-2-1 fanout architecture copies a backup to secondary storage as well as to an object store. To create a 3-2-1 fanout backup, create a Backup CR with specific attributes.
 
-
 .Steps
 . Create the custom resource (CR) file and name it `3-2-1-fanout-backup-cr.yaml`. 
 . In the file you created, configure the following attributes:
 * *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
 * *spec.applicationRef*: (_Required_) The Kubernetes name of the application to back up.
-* *spec.appVaultRef*: (_Required_) The name of the AppVault where the backup contents should be stored.
+* *spec.appVaultTargetsRef*: (_Required_) The name of the AppVault where the backup contents should be stored.
 * *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. The value is case sensitive and must be `CBS`.
 * *spec.reclaimPolicy*: (_Optional_) Defines what happens to a backup when released from its claim. Possible values:
 ** `Delete`
 ** `Retain` (default)
-* *spec.snapshotRef*: (_Optional_): Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
+//* *spec.snapshotRef*: (_Optional_): Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
+* *spec.cleanupSnapshot*: (_Required_) Ensures that the temporary snapshot created by the Backup CR is not deleted after the backup operation completes. Recommended value: `false`.
+* *spec.replicateSnapshot*: (_Required_) Instructs Backup and Recovery to replicate the snapshot to secondary storage. Required value: `true`.
+* *spec.replicateSnapshotReclaimPolicy*: (_Optional_) Defines what happens to a snapshot when the original is deleted. Possible values:
+** `Delete`
+** `Retain` (default)
 +
 Example YAML:
 +
@@ -120,8 +145,12 @@ metadata:
   name: my-cr-name
 spec: 
   applicationRef: my-application
-  appVaultRef: appvault-name
+  appVaultTargetsRef: appvault-targets-name
   dataMover: CBS
+  reclaimPolicy: Retain
+  cleanupSnapshot: false
+  replicateSnapshot: true
+  replicateSnapshotReclaimPolicy: Retain
 ----
 +
 . After you populate the `3-2-1-fanout-backup-cr.yaml` file with the correct values, apply the CR:
@@ -131,7 +160,43 @@ spec:
 kubectl apply -f 3-2-1-fanout-backup-cr.yaml
 ----
 
+////
+==== Create a ReplicateSnapshot custom resource
+Create a ReplicateSnapshot custom resource to copy the local snapshot to secondary storage, which completes the 3-2-1 backup architecture.
 
+.Steps
+. Create the custom resource (CR) file and name it `3-2-1-fanout-replicateSnapshot-cr.yaml`. 
+. In the file you created, configure the following attributes:
+* *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
+* *spec.applicationRef*: (_Required_) The Kubernetes name of the application whose snapshot will be replicated to secondary storage.
+* *spec.reclaimPolicy*: (_Optional_) Defines what happens to the replicated snapshot when the original is deleted. Possible values:
+** `Delete`
+** `Retain` (default)
+* *spec.snapshotRef*: (_Required_): The name of the snapshot to copy to secondary storage.
++
+Example YAML:
++
+[source,yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: ReplicateSnapshot
+metadata:
+  namespace: my-app-namespace
+  name: my-cr-name
+spec:
+  applicationRef: my-application 
+  reclaimPolicy: Retain 
+  snapshotRef: snapshot-name
+----
++
+. After you populate the `3-2-1-fanout-replicateSnapshot-cr.yaml` file with the correct values, apply the CR:
++
+[source,console]
+----
+kubectl apply -f 3-2-1-fanout-replicateSnapshot-cr.yaml
+----
+
+////
 
 == Supported backup annotations
 The following table describes the annotations you can use when creating a backup CR.
