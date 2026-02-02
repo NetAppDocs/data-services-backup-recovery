@@ -238,7 +238,7 @@ Use a ResourceViewer CR to see what resources were collected as part of a snapsh
 .. Configure the following attributes:
 +
 * *metadata.name*: (_Required_) The name of the application custom resource. Note the name you choose because other CR files needed for protection operations refer to this value.
-* *metadata.ui-correclation-id*: (_Required_) 
+* *metadata.ui-correlation-id*: (_Required_) 
 * *spec.includedNamespaces*: (_Required_) Use namespace and label selector to specify the namespaces and resources that the application uses. The application namespace must be part of this list. The label selector is optional and can be used to filter resources within each specified namespace.
 * *spec.includedClusterScopedResources*: (_Optional_) Use this attribute to specify cluster-scoped resources to be included in the application definition. This attribute allows you to select these resources based on their group, version, kind, and labels.
 +
@@ -257,7 +257,7 @@ metadata:
   namespace: <namespace of application, or an includedNamespace>
   annotations:
 	ui-correlation-id: <correlationID from Trident Protect>
-  ownerReferences: # optional based on creator
+  ownerReferences:
   - apiVersion: protect.trident.netapp.io/v1
 	blockOwnerDeletion: true
 	controller: true
@@ -265,7 +265,7 @@ metadata:
 	name: ns1-app
 	uid: c1a6d240-7a97-42cd-80c3-b003c09aea73
 spec:
-  applicationRef: # optional, based on the creator of this CR
+  applicationRef: 
 	- namespace: ns1
 	  name: ns1-app
   definition:
