@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: br-use-back-up-now-kubernetes-applications-cr.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
-summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
+summary: NetApp Backup and Recovery enables you to manually back up Kubernetes applications using custom resources (CRs).   
 ---
 
-= Back up Kubernetes applications now using custom resources
+= Back up Kubernetes applications now using custom resources in Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to manage your workload host inf
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to easily discover your Kubernetes clusters, without generating and uploading kubeconfig files. You can connect Kubernetes clusters and install the required software using simple commands copied from the NetApp Console user interface.
+NetApp Backup and Recovery enables you to manually back up Kubernetes applications using custom resources (CRs).
 
 == Back up a Kubernetes application now using custom resources
 Manually create a backup of a Kubernetes application to establish a baseline for future backups and snapshots, or to ensure the most recent data is protected.
@@ -42,7 +42,7 @@ apiVersion: protect.trident.netapp.io/v1
 kind: Snapshot
 metadata:
   namespace: my-app-namespace
-  name: my-cr-name
+  name: local-snapshot-cr
 spec: 
   applicationRef: my-application
   appVaultRef: appvault-name
@@ -64,10 +64,10 @@ Create a Backup CR with specific attributes to back up your application to an ob
 . In the file you created, configure the following attributes:
 * *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
 * *spec.applicationRef*: (_Required_) The Kubernetes name of the application to back up.
-* *spec.appVaultRef*: (_Required_) If you use the same bucket to store the snapshot and backup, this is the name of the AppVault where the backup contents should be stored.
-* *spec.appVaultTargetsRef*: (_Required_) If you use different buckets to store the snapshot and backup, this is the name of the AppVault where the backup contents should be stored.
+* *spec.appVaultRef*: (_Required, mutually exclusive with spec.appVaultTargetsRef_) If you use the same bucket to store the snapshot and backup, this is the name of the AppVault where the backup contents should be stored.
+* *spec.appVaultTargetsRef*: (_Required, mutually exclusive with spec.appVaultRef_) If you use different buckets to store the snapshot and backup, this is the name of the AppVault where the backup contents should be stored.
 * *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. The value is case sensitive and must be `CBS`.
-* *spec.reclaimPolicy*: (_Optional_) Defines what happens to a backup when released from its claim. Possible values:
+* *spec.reclaimPolicy*: (_Optional_) Defines what happens to the backup contents (metadata/volume data) when the Backup CR is deleted. Possible values:
 ** `Delete`
 ** `Retain` (default)
 //* *spec.snapshotRef*: (_Optional_) Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
@@ -98,7 +98,7 @@ apiVersion: protect.trident.netapp.io/v1
 kind: Backup
 metadata:
   namespace: my-app-namespace
-  name: my-cr-name
+  name: object-store-backup-cr
 spec: 
   applicationRef: my-application
   appVaultTargetsRef: appvault-targets-name
@@ -124,13 +124,13 @@ Backing up using a 3-2-1 fanout architecture copies a backup to secondary storag
 * *spec.applicationRef*: (_Required_) The Kubernetes name of the application to back up.
 * *spec.appVaultTargetsRef*: (_Required_) The name of the AppVault where the backup contents should be stored.
 * *spec.dataMover*: (_Optional_) A string indicating which backup tool to use for the backup operation. The value is case sensitive and must be `CBS`.
-* *spec.reclaimPolicy*: (_Optional_) Defines what happens to a backup when released from its claim. Possible values:
+* *spec.reclaimPolicy*: (_Optional_) Defines what happens to the backup contents (metadata/volume data) when the Backup CR is deleted. Possible values:
 ** `Delete`
 ** `Retain` (default)
 //* *spec.snapshotRef*: (_Optional_): Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
 * *spec.cleanupSnapshot*: (_Required_) Ensures that the temporary snapshot created by the Backup CR is not deleted after the backup operation completes. Recommended value: `false`.
 * *spec.replicateSnapshot*: (_Required_) Instructs Backup and Recovery to replicate the snapshot to secondary storage. Required value: `true`.
-* *spec.replicateSnapshotReclaimPolicy*: (_Optional_) Defines what happens to a snapshot when the original is deleted. Possible values:
+* *spec.replicateSnapshotReclaimPolicy*: (_Optional_) Defines what happens to the replicated snapshot when it is deleted. Possible values:
 ** `Delete`
 ** `Retain` (default)
 +
@@ -142,7 +142,7 @@ apiVersion: protect.trident.netapp.io/v1
 kind: Backup
 metadata:
   namespace: my-app-namespace
-  name: my-cr-name
+  name: 3-2-1-fanout-backup-cr
 spec: 
   applicationRef: my-application
   appVaultTargetsRef: appvault-targets-name
@@ -229,12 +229,12 @@ The following table describes the annotations you can use when creating a backup
 |"1200" (20 minutes)
 |===
 
-== View collected resources for a backup using a custom resource
-Use a ResourceViewer CR to see what resources were collected as part of a snapshot or backup.
+== View collected resources for a snapshot or backup using a custom resource
+Use a ResourceViewer CR to see what resources have been collected as part of a completed snapshot or backup.
 
 .Steps
 . Create the view resources CR file:
-.. Create the custom resource (CR) file and name it (for example, `view-resources.yaml`).
+.. Create the custom resource (CR) file and name it (for example, `view-resources-cr.yaml`).
 .. Configure the following attributes:
 +
 * *metadata.name*: (_Required_) The name of the application custom resource. Note the name you choose because other CR files needed for protection operations refer to this value.
@@ -253,7 +253,7 @@ Example YAML:
 apiVersion: protect.trident.netapp.io/v1
 kind: ResourceViewer
 metadata:
-  name: name
+  name: view-resources-cr
   namespace: <namespace of application, or an includedNamespace>
   annotations:
 	ui-correlation-id: <correlationID from Trident Protect>
@@ -285,10 +285,6 @@ spec:
         kind: Node
         version: v1
       labelSelector: {}
-status:
-  totalParts: 5 # calculated number of chunks
-  currentPart: 1 # which chunk the below data pertains to
-  data: '{"apps/v1/ControllerRevision":["mysql/mysql-5dbcf9cf88"],"apps/v1/StatefulSet":["mysql/mysql"],"networking.k8s.io/v1/NetworkPolicy":["mysql/mysql"],"policy/v1/PodDisruptionBudget":["mysql/mysql"],"rbac.authorization.k8s.io/v1/ClusterRole":["/system:basic-user","/system:discovery","/system:public-info-viewer","/system:service-account-issuer-discovery"],"rbac.authorization.k8s.io/v1/ClusterRoleBinding":'
 ----
 
 +

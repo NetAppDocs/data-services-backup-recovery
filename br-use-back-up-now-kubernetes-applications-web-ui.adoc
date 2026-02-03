@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
 ---
 
-= Back up Kubernetes applications now using the web UI
+= Back up Kubernetes applications now using the Backup and Recovery web UI
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,13 +13,13 @@ summary: NetApp Backup and Recovery enables you to manage your workload host inf
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to easily discover your Kubernetes clusters, without generating and uploading kubeconfig files. You can connect Kubernetes clusters and install the required software using simple commands copied from the NetApp Console user interface.
+NetApp Backup and Recovery enables you to manually back up Kubernetes applications using the web interface.
 
 .Required NetApp Console role
 
 Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Back up a Kubernetes application now  using the web UI
+== Back up a Kubernetes application now using the web UI
 Manually create a backup of a Kubernetes application to establish a baseline for future backups and snapshots, or to ensure the most recent data is protected.
 
 .Steps
