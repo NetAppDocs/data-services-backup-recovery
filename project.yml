@@ -235,7 +235,6 @@ sidebar:
                   url: /br-use-back-up-now-kubernetes-applications-web-ui.html
                 - title: Back up a Kubernetes application now using custom resources
                   url: /br-use-back-up-now-kubernetes-applications-cr.html
-              url: /br-use-protect-kubernetes-applications.html
             - title: Restore Kubernetes applications
               entries:
                 - title: Restore Kubernetes applications using the web UI
