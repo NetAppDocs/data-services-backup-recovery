@@ -70,7 +70,6 @@ Create a Backup CR with specific attributes to back up your application to an ob
 * *spec.reclaimPolicy*: (_Optional_) Defines what happens to the backup contents (metadata/volume data) when the Backup CR is deleted. Possible values:
 ** `Delete`
 ** `Retain` (default)
-//* *spec.snapshotRef*: (_Optional_) Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
 * *spec.cleanupSnapshot*: (_Required_) Ensures that the temporary snapshot created by the Backup CR is not deleted after the backup operation completes. Recommended value: `false`.
 +
 Example YAML when using the same bucket to store the snapshot and backup:
@@ -127,7 +126,6 @@ Backing up using a 3-2-1 fanout architecture copies a backup to secondary storag
 * *spec.reclaimPolicy*: (_Optional_) Defines what happens to the backup contents (metadata/volume data) when the Backup CR is deleted. Possible values:
 ** `Delete`
 ** `Retain` (default)
-//* *spec.snapshotRef*: (_Optional_): Name of the snapshot to use as the source of the backup. If not provided, a temporary snapshot will be created and backed up.
 * *spec.cleanupSnapshot*: (_Required_) Ensures that the temporary snapshot created by the Backup CR is not deleted after the backup operation completes. Recommended value: `false`.
 * *spec.replicateSnapshot*: (_Required_) Instructs Backup and Recovery to replicate the snapshot to secondary storage. Required value: `true`.
 * *spec.replicateSnapshotReclaimPolicy*: (_Optional_) Defines what happens to the replicated snapshot when it is deleted. Possible values:
@@ -160,44 +158,6 @@ spec:
 kubectl apply -f 3-2-1-fanout-backup-cr.yaml
 ----
 
-////
-==== Create a ReplicateSnapshot custom resource
-Create a ReplicateSnapshot custom resource to copy the local snapshot to secondary storage, which completes the 3-2-1 backup architecture.
-
-.Steps
-. Create the custom resource (CR) file and name it `3-2-1-fanout-replicateSnapshot-cr.yaml`. 
-. In the file you created, configure the following attributes:
-* *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
-* *spec.applicationRef*: (_Required_) The Kubernetes name of the application whose snapshot will be replicated to secondary storage.
-* *spec.reclaimPolicy*: (_Optional_) Defines what happens to the replicated snapshot when the original is deleted. Possible values:
-** `Delete`
-** `Retain` (default)
-* *spec.snapshotRef*: (_Required_): The name of the snapshot to copy to secondary storage.
-+
-Example YAML:
-+
-[source,yaml]
-----
-apiVersion: protect.trident.netapp.io/v1
-kind: ReplicateSnapshot
-metadata:
-  namespace: my-app-namespace
-  name: my-cr-name
-spec:
-  applicationRef: my-application 
-  reclaimPolicy: Retain 
-  snapshotRef: snapshot-name
-----
-+
-. After you populate the `3-2-1-fanout-replicateSnapshot-cr.yaml` file with the correct values, apply the CR:
-+
-[source,console]
-----
-kubectl apply -f 3-2-1-fanout-replicateSnapshot-cr.yaml
-----
-
-////
-
 == Supported backup annotations
 The following table describes the annotations you can use when creating a backup CR.
 
@@ -228,71 +188,3 @@ The following table describes the annotations you can use when creating a backup
 |Maximum time (in seconds) to wait for any newly created PersistentVolumeClaims (PVCs) to reach the `Bound` phase before the operations fails.
 |"1200" (20 minutes)
 |===
-
-== View collected resources for a snapshot or backup using a custom resource
-Use a ResourceViewer CR to see what resources have been collected as part of a completed snapshot or backup.
-
-.Steps
-. Create the view resources CR file:
-.. Create the custom resource (CR) file and name it (for example, `view-resources-cr.yaml`).
-.. Configure the following attributes:
-+
-* *metadata.name*: (_Required_) The name of the application custom resource. Note the name you choose because other CR files needed for protection operations refer to this value.
-* *metadata.ui-correlation-id*: (_Required_) 
-* *spec.includedNamespaces*: (_Required_) Use namespace and label selector to specify the namespaces and resources that the application uses. The application namespace must be part of this list. The label selector is optional and can be used to filter resources within each specified namespace.
-* *spec.includedClusterScopedResources*: (_Optional_) Use this attribute to specify cluster-scoped resources to be included in the application definition. This attribute allows you to select these resources based on their group, version, kind, and labels.
-+
-** *groupVersionKind*: (_Required_) Specifies the API group, version, and kind of the cluster-scoped resource.
-+
-** *labelSelector*: (_Optional_)  Filters the cluster-scoped resources based on their labels.
-+
-Example YAML:
-+
-[source, yaml]
-----
-apiVersion: protect.trident.netapp.io/v1
-kind: ResourceViewer
-metadata:
-  name: view-resources-cr
-  namespace: <namespace of application, or an includedNamespace>
-  annotations:
-	ui-correlation-id: <correlationID from Trident Protect>
-  ownerReferences:
-  - apiVersion: protect.trident.netapp.io/v1
-	blockOwnerDeletion: true
-	controller: true
-	kind: Application
-	name: ns1-app
-	uid: c1a6d240-7a97-42cd-80c3-b003c09aea73
-spec:
-  applicationRef: 
-	- namespace: ns1
-	  name: ns1-app
-  definition:
-    includedNamespaces:
-    - namespace: ns1
-      labelSelector: 
-        matchLabels:
-          color: blue
-      matchExpressions:
-      - key: color
-        operator: notin
-        values:
-        - orange
-    includedClusterScopedResources:
-    - groupVersionKind:
-        group: ""
-        kind: Node
-        version: v1
-      labelSelector: {}
-----
-
-+
-. After you populate the `view-resources-cr.yaml` file with the correct values, apply the CR:
-+
-[source,console]
-----
-kubectl apply -f view-resources-cr.yaml
-----
-
-
