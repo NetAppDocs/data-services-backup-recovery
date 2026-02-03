@@ -186,9 +186,9 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 ** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
 ** Suse Rancher
 * NetApp Trident 24.10 or later 
-* NetApp Trident protect 25.07 or later (installed during Kubernetes workload discovery)
-* NetApp Trident protect Connector 25.07 or later (installed during Kubernetes workload discovery)
-** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident protect Connector, and the Trident protect proxy.
+* NetApp Trident Protect 25.07 or later (installed during Kubernetes workload discovery)
+* NetApp Trident Protect Connector 25.07 or later (installed during Kubernetes workload discovery)
+** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
 
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.

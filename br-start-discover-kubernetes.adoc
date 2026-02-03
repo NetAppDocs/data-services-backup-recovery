@@ -24,10 +24,7 @@ In Backup and Recovery inventory, discover Kubernetes workloads in your environm
 
 [NOTE]
 =====
-If you are discovering an existing cluster that is protected with Trident Protect:
-
-* Backup and Recovery detects clusters that are managed with Trident Protect and displays slightly different instructions during the following steps.
-* When the cluster is discovered and added to Backup and Recovery, the backup schedule used with Trident Protect is no longer active. You need to protect the cluster's applications by link:br-use-policies-create.html[creating a new protection policy] or associating the applications with an existing policy.
+When you discover a cluster that is currently protected with Trident Protect, any backup schedules that were used with Trident Protect are disabled during the discovery process (Trident Protect backup schedules are not compatible with Backup and Recovery). To protect the cluster's applications, link:br-use-policies-create.html[create a new protection policy] or associate the applications with an existing policy. You can then remove the Trident Protect backup schedules if needed.
 =====
 
 .Steps
@@ -40,10 +37,10 @@ If you are discovering an existing cluster that is protected with Trident Protec
 . Enter a cluster name and choose a connector to use with the cluster.
 . Follow the command line instructions that appear:
 +
-* Create a Trident protect namespace
+* Create a Trident Protect namespace
 * Create a Kubernetes secret
 * Add a Helm repository
-* Install or upgrade Trident protect and the Trident protect connector
+* Install or upgrade Trident Protect and the Trident Protect connector
 +
 These steps ensure that NetApp Backup and Recovery can interact with the cluster.
 . After you complete the steps, select *Discover*.

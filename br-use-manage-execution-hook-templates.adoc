@@ -17,7 +17,7 @@ An execution hook is a custom action that runs with a data protection operation 
 
 [NOTE]
 ======
-NetApp Backup and Recovery freezes and unfreezes filesystems for applications like KubeVirt during data protection. You can disable this behavior globally or for specific applications using the Trident protect documentation:
+NetApp Backup and Recovery freezes and unfreezes filesystems for applications like KubeVirt during data protection. You can disable this behavior globally or for specific applications using the Trident Protect documentation:
 
 * To disable this behavior for all applications, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html#protecting-data-with-kubevirt-vms[Protecting data with KubeVirt VMs].
 * To disable this behavior for a specific application, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-manage-applications.html#define-an-application[Define an application].

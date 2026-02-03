@@ -16,7 +16,7 @@ summary: NetApp Backup and Recovery enables you to restore applications that you
 NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. To restore an application, an application needs to have at least one restore point available. A restore point consists of either the local snapshot or the backup to the object store (or both). You can restore an application using the local, secondary, or object store archive.
 
 .Before you begin
-If you are restoring an application that was backed up using Trident Protect, ensure that Trident protect is installed on both the source and destination clusters.
+If you are restoring an application that was backed up using Trident Protect, ensure that Trident Protect is installed on both the source and destination clusters.
 
 .Required NetApp Console role
 
