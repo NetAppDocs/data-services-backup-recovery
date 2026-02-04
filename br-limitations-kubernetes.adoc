@@ -26,25 +26,3 @@ When you change the associated protection policy for an application to use a dif
 When you create a 3-2-1 protection policy where no object storage backups occur at the same time as replication to secondary storage, the protection policy hangs when protecting the application.
 
 *Workaround*: Remove and re-add the application and protect it with a different protection policy.
-
-== Windows cluster name restriction
-
-The Windows cluster name cannot contain an underscore (_) character.
-
-== SnapCenter migration issues
-
-The migration of resources from SnapCenter into NetApp Backup and Recovery has the following limitations.
-
-For details about how SnapCenter policies migrate to NetApp Backup and Recovery policies, see link:reference-policy-differences-snapcenter.html[Policies in SnapCenter compared to those in NetApp Backup and Recovery].
-
-=== Resource group limitations 
-
-If all the resources in a resource group are protected and one of those resources is also protected outside of the resource group, the migration from SnapCenter is blocked. 
-
-*Workaround*: Protect the resource either in a resource group or by itself, but not in both. 
-
-=== Resources with multiple policies using the same schedule tier not supported
-
-You cannot have assign multiple policies that use the same schedule tier (for example, hourly, daily, weekly, etc.) to a resource. NetApp Backup and Recovery will not import those resources from SnapCenter.
-
-*Workaround*: Attach only one policy using the same schedule tier to a resource.
