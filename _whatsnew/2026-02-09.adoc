@@ -7,8 +7,11 @@ Kubernetes workload support is now generally available (GA) in NetApp Backup and
 * Restore tab integration: You can now access the Kubernetes workload restore actions from the Restore menu.
 * Support for the 3-2-1 fanout backup architecture: You can now use a 3-2-1 fanout architecture in your protection policy when protecting Kubernetes workloads.
 
-//=== Oracle Database workloads enhancements
-//This release of Oracle Database workloads introduces the following enhanced capabilities:
+=== Oracle Database workloads enhancements
+This release of Oracle Database workloads introduces the following enhanced capabilities:
 
-//* SAN support
-//* Clone support
+* SAN support
+* Clone support
+
+=== Other enhancements
+Hyper-V workloads, KVM workloads, and VMware workloads are now generally available (GA) in NetApp Backup and Recovery.
