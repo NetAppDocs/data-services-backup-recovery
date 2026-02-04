@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-limitations-oracle.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, KVM, SAP HANA database, virtual machine, vm
-summary: NetApp Backup and Recovery needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
+summary: Review these NetApp Backup and recovery limitations before using Backup and Recovery in your environment.
 ---
 
 = Known limitations with NetApp Backup and Recovery for Oracle workloads
