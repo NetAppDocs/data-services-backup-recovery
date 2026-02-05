@@ -1,0 +1,17 @@
+== Create an execution hook template
+You can create a custom execution hook template that you can use to perform actions before or after a data protection operation on an application. 
+
+NOTE: Templates that you create here are only usable when protecting Kubernetes workloads.
+
+.Steps
+
+. In the Console, go to *Protection* > *Backup and recovery*.
+. Select the *Settings* tab.
+. Expand the *Execution hook template* section.
+. Select *Create execution hook template*.
+. Enter a name for the execution hook.
+. Optionally, choose a type of hook. For example, a post-restore hook is run after the restore operation is complete.
+. In the *Script* text box, enter the executable shell script that you want to run as part of the execution hook template. Optionally, you can select *Upload script* to upload a script file instead.
+. Select *Create*.
++
+After you create the template, it appears in the list of templates in the *Execution hook template* section.

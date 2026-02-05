@@ -77,18 +77,4 @@ NOTE: If you add a namespace filter to an execution hook that runs after a resto
 == Execution hook examples
 Visit the https://github.com/NetApp/Verda[NetApp Verda GitHub project] to download real execution hooks for popular apps such as Apache Cassandra and Elasticsearch. You can also see examples and get ideas for structuring your own custom execution hooks.
 
-== Create an execution hook template
-You can create a custom execution hook template that you can use to perform actions before or after a data protection operation on an application. 
-
-.Steps
-
-. In the Console, go to *Protection* > *Backup and recovery*.
-. Select the *Settings* tab.
-. Expand the *Execution hook template* section.
-. Select *Create execution hook template*.
-. Enter a name for the execution hook.
-. Optionally, choose a type of hook. For example, a post-restore hook is run after the restore operation is complete.
-. In the *Script* text box, enter the executable shell script that you want to run as part of the execution hook template. Optionally, you can select *Upload script* to upload a script file instead.
-. Select *Create*.
-+
-After you create the template, it appears in the list of templates in the *Execution hook template* section.
+include::_include/create-exec-hook-template.adoc[]
