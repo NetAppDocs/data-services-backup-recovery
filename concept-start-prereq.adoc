@@ -167,6 +167,7 @@ Ensure your environment meets specific requirements to discover and protect Orac
 * Oracle Database:
 ** Oracle 19C and 21C are supported in a standalone deployment.
 ** Oracle Database must be deployed in primary or secondary NetApp ONTAP storage. 
+** Host OS support: Red Hat Enterprise Linux 8 and 9
 * Object storage support:
 ** Azure Object Storage
 ** Amazon AWS

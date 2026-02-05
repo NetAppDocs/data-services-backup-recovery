@@ -10,8 +10,20 @@ Kubernetes workload support is now generally available (GA) in NetApp Backup and
 === Oracle Database workloads enhancements
 This release of Oracle Database workloads introduces the following enhanced capabilities:
 
-* SAN support
-* Clone support
+* Non-root user support: Backup, recovery, and clone operations can be executed by non-root users, improving security and compliance.
+* Backup, Recovery, and Clone for primary and secondary storage: Identical backup, recovery, and clone capabilities are now supported for primary and secondary (replicated) storage, enabling coordinated disaster recovery and backup workflows.
+* Backup and Restore for object store: Native backup and restore capabilities for object-based storage targets (S3-compatible).
+* Backup, Restore, and Clone for NAS, SAN, and ASM (ASM Lib v2): Unified backup, restore, and clone support across NAS, SAN, and ASM environments using ASM library v2.
+* Clone Split: Ability to split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
+* CLM from Primary and Secondary: Clone Lifecycle Management (CLM) operations on both primary and secondary systems for efficient data provisioning.
+* Clone to Alternate Host from Primary and Secondary: Provision clones directly onto a different host (for testing or analytics) from both primary and secondary arrays.
+* CG Supported: Consistency Group (CG) functionality is fully supported, ensuring application-consistent snapshots across multiple volumes.
+* Backup and Recovery now supports the following protection policy architectures for Oracle workloads:
+** 3-2-1 Fanout
+** Disk-to-Disk (D2D)
+** Disk-to-Object Storage
+** Cascading
+** Local Snapshot
 
 === Other enhancements
 Hyper-V workloads, KVM workloads, and VMware workloads are now generally available (GA) in NetApp Backup and Recovery.
