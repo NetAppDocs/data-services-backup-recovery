@@ -10,14 +10,14 @@ Kubernetes workload support is now generally available (GA) in NetApp Backup and
 === Oracle Database workloads enhancements
 This release of Oracle Database workloads introduces the following enhanced capabilities:
 
-* Non-root user support: Backup, restore, and clone operations can be executed by non-root users, improving security and compliance.
+* Non-root user support: Non-root users can now perform backup, restore, and clone operations, improving security and compliance.
 * Backup, restore, and clone for primary and secondary storage: Identical backup, restore, and clone capabilities are now supported for primary and secondary (replicated) storage, enabling coordinated disaster restore and backup workflows.
 * Backup and restore for object store: Native backup and restore capabilities for object-based storage targets (S3-compatible).
 * Backup, restore, and clone for NAS, SAN, and ASM (ASM lib v2): Backup and Recovery now supports unified backup, restore, and clone operations across NAS, SAN, and ASM environments using ASM library v2.
 * Clone Split: You can now split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
-* Clone Lifecycle Management (CLM) operations are supported on both primary and secondary storage for efficient data provisioning.
+* Clone Lifecycle Management (CLM): Clone refresh operations are supported on both primary and secondary storage for efficient data provisioning.
 * Clone to alternate host from primary and secondary: You can now provision clones directly onto a different host (for testing or analytics) from both primary and secondary arrays.
-* Consistency Groups are fully supported, ensuring application-consistent snapshots across multiple volumes.
+* Consistency Group support: Consistency Groups are now supported, ensuring application-consistent snapshots across multiple volumes.
 * Backup and Recovery now supports the following protection policy architectures for Oracle workloads:
 ** 3-2-1 fanout
 ** Disk to disk
