@@ -1,23 +1,22 @@
 === Kubernetes workloads enhancements
 Kubernetes workload support is now generally available (GA) in NetApp Backup and Recovery. This release of Kubernetes workloads also introduces the following enhanced capabilities:
 
-* CR workflow support for protection operations: You can now perform common protection tasks using CRs as well as the Backup and Recovery web UI.
-* You can now add existing Kubernetes clusters protected with Trident Protect to Backup and Recovery.
-* Alerting framework support: You now receive email and UI alerts for certain Kubernetes workload events.
-* Restore tab integration: You can now access the Kubernetes workload restore actions from the Restore menu.
-* Support for the 3-2-1 fanout backup architecture: You can now use a 3-2-1 fanout architecture in your protection policy when protecting Kubernetes workloads.
+* *CR workflow support*: You can now perform common protection tasks using CRs as well as the Backup and Recovery web UI.
+* *Cluster migration*: You can now add existing Kubernetes clusters protected with Trident Protect to Backup and Recovery.
+* *Alerting framework support*: You now receive email and UI alerts for certain Kubernetes workload events.
+* *Restore tab integration*: You can now access the Kubernetes workload restore actions from the Restore menu.
+* *Support for the 3-2-1 fanout backup architecture*: You can now use a 3-2-1 fanout architecture in your protection policy when protecting Kubernetes workloads.
 
 === Oracle Database workloads enhancements
 This release of Oracle Database workloads introduces the following enhanced capabilities:
 
-* Non-root user support: Non-root users can now perform backup, restore, and clone operations, improving security and compliance.
-* Backup, restore, and clone for primary and secondary storage: Identical backup, restore, and clone capabilities are now supported for primary and secondary (replicated) storage, enabling coordinated disaster restore and backup workflows.
-* Backup and restore for object store: Native backup and restore capabilities for object-based storage targets (S3-compatible).
-* Backup, restore, and clone for NAS, SAN, and ASM (ASM lib v2): Backup and Recovery now supports unified backup, restore, and clone operations across NAS, SAN, and ASM environments using ASM library v2.
-* Clone Split: You can now split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
-* Clone Lifecycle Management (CLM): Clone refresh operations are supported on both primary and secondary storage for efficient data provisioning.
-* Clone to alternate host from primary and secondary: You can now provision clones directly onto a different host (for testing or analytics) from both primary and secondary arrays.
-* Consistency Group support: Consistency Groups are now supported, ensuring application-consistent snapshots across multiple volumes.
+* *Non-root user support*: Non-root users can now perform backup, restore, and clone operations, improving security and compliance.
+* *Clone support*: Identical backup, restore, and clone capabilities are now supported across NAS, SAN, and ASM environments using ASM library v2 for primary and secondary (replicated) storage, enabling coordinated disaster restore and backup workflows.
+* *Clone Split*: You can now split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
+* *Backup and restore for object store*: Native backup and restore capabilities for object-based storage targets (S3-compatible).
+* *Clone Lifecycle Management (CLM)*: Clone refresh operations are supported on both primary and secondary storage for efficient data provisioning.
+* *Clone to alternate host*: You can now provision clones directly onto a different host (for testing or analytics) from both primary and secondary arrays.
+* *Consistency Group support*: Consistency Groups are now supported, ensuring application-consistent snapshots across multiple volumes.
 * Backup and Recovery now supports the following protection policy architectures for Oracle workloads:
 ** 3-2-1 fanout
 ** Disk to disk
