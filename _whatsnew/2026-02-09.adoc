@@ -12,7 +12,7 @@ This release of Oracle Database workloads introduces the following enhanced capa
 
 * *Non-root user support*: Non-root users can now perform backup, restore, and clone operations, improving security and compliance.
 * *Clone support*: Identical backup, restore, and clone capabilities are now supported across NAS, SAN, and ASM environments using ASM library v2 for primary and secondary (replicated) storage, enabling coordinated disaster restore and backup workflows.
-* *Clone Split*: You can now split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
+* *Clone split support*: You can now split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
 * *Backup and restore for object store*: Native backup and restore capabilities for object-based storage targets (S3-compatible).
 * *Clone Lifecycle Management (CLM)*: Clone refresh operations are supported on both primary and secondary storage for efficient data provisioning.
 * *Clone to alternate host*: You can now provision clones directly onto a different host (for testing or analytics) from both primary and secondary arrays.
