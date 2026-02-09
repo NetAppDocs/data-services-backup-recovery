@@ -20,7 +20,3 @@ The following action is not supported in the private preview version of Oracle D
 * Offline backup
 
 Oracle Database is supported only as a standalone deployment using NFS, SAN, or ASM SAN in the private preview version of Oracle Database workloads.
-
-
-
-
