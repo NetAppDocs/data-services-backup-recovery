@@ -3,7 +3,7 @@ This release of ONTAP volume workloads introduces the following enhanced capabil
 
 *Support for multiple buckets*: (Private preview) Beginning with ONTAP 9.17.1 and newer, you can now protect the volumes within a system with up to 6 buckets per system across different cloud providers.
 
-link:prev-ontap-backup-manage.html[Learn more about backing up ONTAP volume data using NetApp Backup and Recovery].
+link:https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html[Learn more about backing up ONTAP volume data using NetApp Backup and Recovery].
 
 === VMware workloads enhancements
 This release of VMware workloads introduces the following enhanced capabilities:
