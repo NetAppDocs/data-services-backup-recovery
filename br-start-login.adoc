@@ -42,7 +42,7 @@ The NetApp Console login page appears.
 * For Microsoft SQL Server workloads, refer to link:br-start-discover.html[Discover Microsoft SQL Server workloads].
 * For VMware workloads, refer to link:br-use-vmware-discovery.html[Discover VMware workloads].
 * For KVM workloads, refer to link:br-start-discover-kvm.html[Discover KVM workloads].
-* For Oracle workloads, refer to link:br-start-discover-oracle.html[Discover Oracle workloads].
+* For Oracle Database workloads, refer to link:br-start-discover-oracle.html[Discover Oracle Database workloads].
 * For Hyper-V workloads, refer to link:br-start-discover-hyperv.html[Discover Hyper-V workloads].
 * For Kubernetes workloads, refer to link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
  
