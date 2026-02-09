@@ -32,7 +32,7 @@ You can accomplish the following goals related to policies:
 
 . Review these policy details. 
 +
-* *Workload*: Examples include Microsoft SQL Server, Volumes, VMware, KVM, Hyper-V, or Kubernetes. 
+* *Workload*: Examples include Microsoft SQL Server, Volumes, VMware, KVM, Hyper-V, Oracle Database, or Kubernetes. 
 * *Backup type*: Examples include full backup and log backup.
 * *Architecture*: Examples include local snapshot, fan-out, cascading, disk to disk, and disk to object store. 
 * *Resources protected*: Shows how many resources out of the total resources on that workload are protected.
@@ -69,7 +69,7 @@ TIP: For a list of characters to avoid, see the hover tip.
 ** Select a Console agent from the *Agent* list.
  
 * *Backup architecture* section: Select the down arrow and choose the data flow for the backup, such as 3-2-1 fan-out, 3-2-1 cascade, or disk to disk.
-** *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store -- StorageGRID. These configurations help in achieving optimal data protection and disaster recovery.
+** *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. These configurations help in achieving optimal data protection and disaster recovery.
 +
 NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
 +
