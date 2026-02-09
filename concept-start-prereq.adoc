@@ -161,12 +161,13 @@ chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 . Delete the existing NetApp_SnapCenter_Backups directory if present.
 =====
 
-== Requirements for protecting Oracle workloads
+== Requirements for protecting Oracle Database workloads
 Ensure your environment meets specific requirements to discover and protect Oracle resources.
 
 * Oracle Database:
 ** Oracle 19C and 21C are supported in a standalone deployment.
 ** Oracle Database must be deployed in primary or secondary NetApp ONTAP storage. 
+** Host OS support: Red Hat Enterprise Linux 8 and 9
 * Object storage support:
 ** Azure Object Storage
 ** Amazon AWS
@@ -186,9 +187,9 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 ** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
 ** Suse Rancher
 * NetApp Trident 24.10 or later 
-* NetApp Trident protect 25.07 or later (installed during Kubernetes workload discovery)
-* NetApp Trident protect Connector 25.07 or later (installed during Kubernetes workload discovery)
-** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident protect Connector, and the Trident protect proxy.
+* NetApp Trident Protect 25.07 or later (installed during Kubernetes workload discovery)
+* NetApp Trident Protect Connector 25.07 or later (installed during Kubernetes workload discovery)
+** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
 
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.

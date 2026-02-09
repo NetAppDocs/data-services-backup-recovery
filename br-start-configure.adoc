@@ -19,8 +19,8 @@ After you set up NetApp Console, configure Backup and Recovery settings. Add cre
 * <<Maintain VMware vCenter settings>>.
 * <<Import and manage SnapCenter host resources>>. (Microsoft SQL Server workloads only)
 * <<Add a KVM management platform>>. (KVM workloads only)
-//* link:br-use-manage-execution-hook-templates.html[Create execution hook templates] to run scripts before and after backup jobs. (Kubernetes workloads only) (This is handled in the exec hook topic)
 * <<Configure log directories in snapshots for Windows hosts>>.
+* <<Create an execution hook template>> to run scripts before and after backup jobs. (Kubernetes workloads only)
 //* Enable DataLock and integrity scanning. 
 //* <<Enable the Certificate Authority certificates>>.
 
@@ -238,3 +238,5 @@ Before you create policies for Windows hosts, you should configure log directori
 
 . Either browse or enter the path for the log directory.
 . Select *Save*.
+
+include::_include/create-exec-hook-template.adoc[]

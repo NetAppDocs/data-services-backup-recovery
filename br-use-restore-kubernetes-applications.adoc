@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
 ---
 
-= Restore Kubernetes applications 
+= Restore Kubernetes applications using the web UI
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -15,29 +15,31 @@ summary: NetApp Backup and Recovery enables you to restore applications that you
 [.lead]
 NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. To restore an application, an application needs to have at least one restore point available. A restore point consists of either the local snapshot or the backup to the object store (or both). You can restore an application using the local, secondary, or object store archive.
 
+.Before you begin
+If you are restoring an application that was backed up using Trident Protect, ensure that Trident Protect is installed on both the source and destination clusters.
+
 .Required NetApp Console role
 
 Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 
-. In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
-. Select the *Applications* tab.
-. In the list of applications, choose an application you want to restore and select the associated Actions menu.
-. Select *View and restore*.
+. In the NetApp Backup and Recovery menu, select *Restore*.
+. Choose a Kubernetes application from the list, and select *View and Restore* for that application.
 +
 The list of restore points appears. 
-. Open the Actions menu for the restore point you want to use, and select *Restore*.
+. Select the *Restore* button for the restore point you want to use.
 
 [discrete]
 ===== General settings
 
-. Choose the source to restore from (local or object store).
+. Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
-. Choose the restore destination namespace.
 +
-You can restore to the original namespace or restore to a new namespace. 
+NOTE: Restoring a local snapshot created by Trident Protect to a different cluster is not supported at this time.
+
+. Choose to restore to the original namespaces or new namespaces.
+. If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
 . Select *Next*.
 
 [discrete]
@@ -75,8 +77,11 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 [discrete]
 ===== Destination settings
 
-. Choose to restore either to the default storage class or to a different storage class. 
-. Optionally, if you chose to restore to a different storage class, select a destination storage class to match each source storage class.
+. Expand the *Destination settings* section and choose to restore either to the default storage class, a different storage class, or if you are restoring to a different cluster, to map the storage classes to the destination cluster.
+. If you chose to restore to a different storage class, select a destination storage class to match each source storage class.
+. Optionally, if you are restoring a backup or snapshot that was made using Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. If there is a change in your environment or the AppVault status, select *Sync App Vault* to refresh the details.
++
+NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-custom-resources.html[Use Trident Protect AppVault objects to manage buckets].
+
+. Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
 . Select *Restore*.
-
-
