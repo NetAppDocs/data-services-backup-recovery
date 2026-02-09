@@ -131,7 +131,7 @@ sidebar:
               url: /br-use-manage-snapshots.html
             - title: Create Microsoft SQL Server reports 
               url: /br-use-reports.html
-        - title: Protect VMware workloads (Preview without SnapCenter Plug-in for VMware)
+        - title: Protect VMware workloads (without SnapCenter Plug-in for VMware)
           entries:
             - title: Protect VMware workloads overview
               url: /br-use-vmware-protect-overview.html
@@ -195,7 +195,7 @@ sidebar:
               url: /br-use-kvm-backup.html
             - title: Restore KVM workloads
               url: /br-use-kvm-restore.html
-        - title: Protect Hyper-V workloads (Preview)
+        - title: Protect Hyper-V workloads
           entries:
             - title: Protect Hyper-V workloads overview
               url: /br-use-hyperv-protect-overview.html
