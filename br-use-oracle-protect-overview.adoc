@@ -13,7 +13,7 @@ summary: You can protect Oracle virtual machines from on-premises ONTAP systems 
 :imagesdir: ./media/
 
 [.lead]
-Protect Oracle databases and logs using NetApp Backup and Recovery. Get fast, space-efficient, crash-consistent, and database-consistent backups and restores. Back up Oracle workloads to AWS S3, NetApp StorageGRID, Azure Blob Storage, or ONTAP S3. Restore backups to an on-premises Oracle host.
+Protect Oracle databases and logs using NetApp Backup and Recovery. Get fast, space-efficient, crash-consistent, and database-consistent backups and restores. Back up Oracle Database workloads to AWS S3, NetApp StorageGRID, Azure Blob Storage, or ONTAP S3. Restore backups to an on-premises Oracle host.
 
 //image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
 
@@ -25,9 +25,9 @@ Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where y
 
 NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
 
-You can use NetApp Backup and Recovery to perform the following tasks related to Oracle workloads:
+You can use NetApp Backup and Recovery to perform the following tasks related to Oracle Database workloads:
 
-* link:br-start-discover-oracle.html[Discover Oracle workloads]
-* link:br-use-oracle-protection-groups.html[Create and manage protection groups for Oracle workloads]
-* link:br-use-oracle-backup.html[Back up Oracle workloads]
-* link:br-use-oracle-restore.html[Restore Oracle workloads]
+* link:br-start-discover-oracle.html[Discover Oracle Database workloads]
+* link:br-use-oracle-protection-groups.html[Create and manage protection groups for Oracle Database workloads]
+* link:br-use-oracle-backup.html[Back up Oracle Database workloads]
+* link:br-use-oracle-restore.html[Restore Oracle Database workloads]

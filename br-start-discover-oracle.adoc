@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: NetApp Backup and Recovery needs to first discover workloads in order for you to protect them.  
 ---
 
-= Discover Oracle workloads in NetApp Backup and Recovery
+= Discover Oracle Database workloads in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

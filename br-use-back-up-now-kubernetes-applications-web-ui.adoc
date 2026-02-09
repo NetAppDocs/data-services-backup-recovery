@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: br-use-back-up-now-kubernetes-applications-web-ui.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
+summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
+---
+
+= Back up Kubernetes applications now using the Backup and Recovery web UI
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp Backup and Recovery enables you to manually back up Kubernetes applications using the web interface.
+
+.Required NetApp Console role
+
+Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Back up a Kubernetes application now using the web UI
+Manually create a backup of a Kubernetes application to establish a baseline for future backups and snapshots, or to ensure the most recent data is protected.
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. In the list of applications, choose an application you want to back up and select the associated Actions menu.
+. Select *Backup now*.
+. Ensure the correct application name is selected.
+. Select *Back up*.
+
+.Result
+The Console creates a backup of the application and displays the progress in the *Monitoring* area of Backup and Recovery. The backup is created based on the protection policy associated with the application.
