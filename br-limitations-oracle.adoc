@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Review these NetApp Backup and recovery limitations before using Backup and Recovery in your environment.
 ---
 
-= Known limitations with NetApp Backup and Recovery for Oracle workloads
+= Known limitations with NetApp Backup and Recovery for Oracle Database workloads
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -15,13 +15,11 @@ summary: Review these NetApp Backup and recovery limitations before using Backup
 [.lead]
 Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
-The following actions are not supported in the private preview version of Oracle Database workloads in NetApp Backup and Recovery: 
+The following action is not supported in the private preview version of Oracle Database workloads in NetApp Backup and Recovery: 
 
 * Offline backup
-* Protecting databases stored on SAN
 
-Oracle Database is supported only as a standalone deployment using NFS, SAN, or ASM SAN in the private preview version of Oracle workloads.
-
+Oracle Database is supported only as a standalone deployment using NFS, SAN, or ASM SAN in the private preview version of Oracle Database workloads.
 
 
 

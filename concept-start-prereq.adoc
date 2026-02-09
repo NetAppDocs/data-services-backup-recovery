@@ -161,7 +161,7 @@ chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 . Delete the existing NetApp_SnapCenter_Backups directory if present.
 =====
 
-== Requirements for protecting Oracle workloads
+== Requirements for protecting Oracle Database workloads
 Ensure your environment meets specific requirements to discover and protect Oracle resources.
 
 * Oracle Database:

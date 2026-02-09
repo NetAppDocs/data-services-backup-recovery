@@ -39,7 +39,7 @@ sidebar:
           url: /br-limitations-hyperv.html
         - title: Known limitations for KVM workloads
           url: /br-limitations-kvm.html
-        - title: Known limitations for Oracle workloads
+        - title: Known limitations for Oracle Database workloads
           url: /br-limitations-oracle.html
     - title: Get started
       entries:
@@ -207,17 +207,17 @@ sidebar:
               url: /br-use-hyperv-backup.html
             - title: Restore Hyper-V workloads
               url: /br-use-hyperv-restore.html
-        - title: Protect Oracle workloads (Preview)
+        - title: Protect Oracle Database workloads (Preview)
           entries:
-            - title: Protect Oracle workloads overview
+            - title: Protect Oracle Database workloads overview
               url: /br-use-oracle-protect-overview.html
-            - title: Discover Oracle workloads
+            - title: Discover Oracle Database workloads
               url: /br-start-discover-oracle.html
-            - title: Create and manage protection groups for Oracle workloads
+            - title: Create and manage protection groups for Oracle Database workloads
               url: /br-use-oracle-protection-groups.html
-            - title: Back up Oracle workloads 
+            - title: Back up Oracle Database workloads 
               url: /br-use-oracle-backup.html
-            - title: Restore Oracle workloads
+            - title: Restore Oracle Database workloads
               url: /br-use-oracle-restore.html
             - title: Mount and unmount recovery points
               url: /br-use-oracle-mount-unmount.html

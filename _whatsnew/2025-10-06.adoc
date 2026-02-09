@@ -76,7 +76,7 @@ This release of NetApp Backup and Recovery introduces support for discovering an
 * Search and restore database backups
 * Oracle dashboard support
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle workloads overview].
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
 
 === ONTAP volume workload enhancements
 This release of ONTAP volume workloads introduces the following enhanced capability:

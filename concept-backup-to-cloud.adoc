@@ -67,14 +67,14 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Back up and restore virtual machines
 ** Use protection groups to manage backup tasks
 ** Refer to link:br-use-hyperv-protect-overview.html[Protect Hyper-V workloads].
-* *Oracle workloads (Preview)*:
+* *Oracle Database workloads (Preview)*:
 ** Back up and restore databases and logs
 ** Use protection groups to manage backup tasks
 ** Create policies to manage database and log backups
 ** Protecting a database with a 3-2-1 backup architecture
 ** Configure backup retention
 ** Mount and unmount ARCHIVELOG backups
-** Refer to link:br-use-oracle-protect-overview.html[Protect Oracle workloads].
+** Refer to link:br-use-oracle-protect-overview.html[Protect Oracle Database workloads].
 
 * *Kubernetes workloads (Preview)*: 
 ** Manage and protect your Kubernetes applications and resources all in one place.
