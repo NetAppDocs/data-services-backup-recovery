@@ -13,12 +13,12 @@ For details about protecting Kubernetes workloads, refer to https://docs.netapp.
 This release of Oracle Database workloads introduces the following enhanced capabilities:
 
 * *Non-root user support*: Non-root users can now perform backup, restore, and clone operations, improving security and compliance.
-* *Clone support*: Identical backup, restore, and clone capabilities are now supported across primary and secondary NAS, SAN, and ASM environments using ASM library v2, enabling coordinated protection workflows.
+* *Clone support*: Clone capabilities are now supported across primary and secondary NAS, SAN, and ASM environments using ASM library v2, enabling coordinated protection workflows.
 * *Clone split support*: You can now split writable snapshots (clones) from their parent volumes, freeing up storage and enabling independent operations.
 * *Backup and restore for object store*: Native backup and restore capabilities are now supported for object-based S3-compatible storage targets.
-* *Clone Lifecycle Management (CLM)*: Clone refresh operations are supported on both primary and secondary storage for efficient data provisioning.
-* *Clone to alternate host*: You can now clone databases directly to a different host (for testing or analytics) from both primary and secondary storage.
-* *Consistency Group support*: Consistency Groups are now supported, ensuring application-consistent snapshots across multiple volumes.
+* *Clone Lifecycle Management (CLM)*: Clone refresh operations are supported on primary storage.
+* *Clone to alternate host*: You can now clone databases to a different host (for testing or analytics) from both primary and secondary storage.
+* *ONTAP consistency group support*: ONTAP consistency groups are now supported, ensuring application-consistent snapshots across multiple volumes.
 * Backup and Recovery now supports the following protection policy architectures for Oracle Database workloads:
 ** 3-2-1 fanout
 ** Disk to disk
