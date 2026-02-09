@@ -1,3 +1,9 @@
+=== Microsoft Hyper-V workloads supported in General Availability (GA)
+Microsoft Hyper-V workload support is now generally available (GA) in NetApp Backup and Recovery.
+
+=== KVM workloads supported in General Availability (GA)
+KVM workload support is now generally available (GA) in NetApp Backup and Recovery.
+
 === Kubernetes workloads enhancements
 This release of Kubernetes workloads introduces the following enhanced capabilities:
 
@@ -27,6 +33,3 @@ This release of Oracle Database workloads introduces the following enhanced capa
 ** Local snapshot
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
-
-=== Other enhancements
-Hyper-V workloads, KVM workloads, and VMware workloads are now generally available (GA) in NetApp Backup and Recovery.
