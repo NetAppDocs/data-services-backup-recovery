@@ -167,8 +167,6 @@ sidebar:
               url: /prev-vmware-protect-overview.html
             - title: Prerequisites for protecting virtual machines workloads
               url: /prev-vmware-prereqs.html
-            - title: Register SnapCenter Plug-in for VMware vSphere host
-              url: /prev-vmware-register-snapcenter.html
             - title: Create a policy to back up virtual machine data
               url: /prev-vmware-policy-create.html         
             - title: Back up datastores to Amazon Web Services
