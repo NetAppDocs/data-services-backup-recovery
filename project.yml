@@ -161,26 +161,26 @@ sidebar:
                    #   url: /vmware-extend-the-time-of-a-guest-file-restore-session.html
                     - title: Guest file restore troubleshooting
                       url: /br-use-vmware-guest-file-restore-scenarios-you-might-encounter.html
-        - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
-          entries:  
-            - title: Protect virtual machine workloads overview
-              url: /prev-vmware-protect-overview.html
-            - title: Prerequisites for protecting virtual machines workloads
-              url: /prev-vmware-prereqs.html
-            - title: Create a policy to back up virtual machine data
-              url: /prev-vmware-policy-create.html         
-            - title: Back up datastores to Amazon Web Services
-              url: /prev-vmware-backup-aws.html
-            - title: Back up datastores to Microsoft Azure
-              url: /prev-vmware-backup-azure.html
-            - title: Back up datastores to Google Cloud Platform
-              url: /prev-vmware-backup-gcp.html
-            - title: Back up datastores to StorageGRID
-              url: /prev-vmware-backup-storagegrid.html 
-            - title: Manage protection of datastores and virtual machines data
-              url: /prev-vmware-manage.html
-            - title: Restore virtual machine data and datastores
-              url: /prev-vmware-restore.html
+       # - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
+       #   entries:  
+       #     - title: Protect virtual machine workloads overview
+       #       url: /prev-vmware-protect-overview.html
+       #     - title: Prerequisites for protecting virtual machines workloads
+       #       url: /prev-vmware-prereqs.html
+       #     - title: Create a policy to back up virtual machine data
+       #       url: /prev-vmware-policy-create.html         
+       #     - title: Back up datastores to Amazon Web Services
+       #       url: /prev-vmware-backup-aws.html
+       #     - title: Back up datastores to Microsoft Azure
+       #       url: /prev-vmware-backup-azure.html
+       #     - title: Back up datastores to Google Cloud Platform
+       #       url: /prev-vmware-backup-gcp.html
+       #     - title: Back up datastores to StorageGRID
+       #       url: /prev-vmware-backup-storagegrid.html 
+       #     - title: Manage protection of datastores and virtual machines data
+       #       url: /prev-vmware-manage.html
+       #     - title: Restore virtual machine data and datastores
+       #       url: /prev-vmware-restore.html
         - title: Protect KVM workloads (Preview)
           entries:
             - title: Protect KVM workloads overview
