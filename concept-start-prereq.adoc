@@ -92,7 +92,7 @@ You need specific requirements to discover and protect your VMware workloads.
 
 *Software support*
 
-* NFS and VMFS datastores are supported. vVols are not supported. 
+* NFS and VMFS datastores are supported.
 * NFS versions supported: NFS 3 and NFS 4.1
 * VMware ESXi Server versions supported: 7.0U1 and above
 * VMware vCenter vSphere versions supported: 7.0U1 and above
@@ -114,9 +114,6 @@ You need specific requirements to discover and protect your VMware workloads.
 
 //8080 bidirectional. This port is used to manage virtual appliances. 
 //A custom port for the addition of an SCV host to SnapCenter is supported. 
-
-| VMware vSphere vCenter Server port | If you are protecting vVol VMs, you must use port 443. 
-
 
 | Storage cluster or storage VM port | 443 (HTTPS), bidirectional. 
 80 (HTTP), bidirectional. This port is used for communication between the virtual appliance and the storage VM or the cluster containing the storage VM. 
