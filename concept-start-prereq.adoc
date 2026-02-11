@@ -98,6 +98,7 @@ You need specific requirements to discover and protect your VMware workloads.
 * VMware vCenter vSphere versions supported: 7.0U1 and above
 * IP addresses: IPv4 and IPv6 
 * VMware TLS: 1.2, 1.3
+* Connected storage supported: ONTAP 9.13 or later
 
 *Connection and port requirements for protecting VMware workloads*
 
