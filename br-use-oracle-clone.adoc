@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: br-use-oracle-clone.html
+keywords: clone, clone application data, Amazon Web services, AWS, NetApp backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database, protection group
+summary: Clone your Oracle Database workloads with NetApp Backup and Recovery. 
+---
+
+= Clone Oracle Database workloads using NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Use NetApp Backup and Recovery to create writeable clones of Oracle databases from on-premises ONTAP systems to cloud storage, including Amazon S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3.
+
+*Required Console role*
+Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Create a clone of a database from an existing snapshot
+
+Create a clone immediately from an existing snapshot.
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Under *Workloads*, select the *Oracle* tile.
+. Select *Clone*. 
+. Select *Create new clone*.
+. In the *Database source* section, choose the source host and database from the lists.
+. In the *Database target* section, choose the target host and database from the lists.
+. Select *Next*.
+. In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*.
+. Choose an existing snapshot (restore point) from the list to use as a base for the clone and select *Next*.
++
+The *Select snapshot location* appears if the snapshot is stored in more than one location.
+. Choose the snapshot location to use and select *Next*.
+. On the *Advanced options* page, do the following:
+.. If you have previously saved a specification file, you can upload it to customize the cloned database settings. You can also download the default specification file for the database snapshot.
+.. In the *Recovery scope* section, choose how to limit what is restored to create the clone and enter the required information for the option you choose. Choosing *None* restores all data.
+.. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
+. Select *Clone*.
+
+== Schedule a snapshot and clone of a database
+
+Schedule an instant snapshot and clone creation.
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Under *Workloads*, select the *Oracle* tile.
+. Select *Clone*. 
+. Select *Create new clone*.
+. In the *Database source* section, choose the source host and database from the lists.
+. In the *Database target* section, choose the target host and database from the lists.
+. Select *Next*.
+. In the *Clone from* section on the *Select restore point* page, select *Instant snapshot and clone*.
+. Choose a location to store the snapshot when it is created.
+. Select *Next*.
+. On the *Advanced options* page, do the following:
+.. To customize the cloned database settings, enable the *Customize target database parameters* option. If you have previously saved a specification file, this option enables you to upload it to customize the cloned database settings. You can also download the default specification file for the database that reflects its current settings.
+.. In the *Clone refresh schedule* section, choose when and how often to refresh the clone. Refreshing the clone recreates the instant snapshot and overwrites the existing clone with a new clone. 
+.. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
+. Select *Clone*.
