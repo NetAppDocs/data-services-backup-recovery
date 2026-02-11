@@ -13,14 +13,14 @@ summary: Clone your Oracle Database workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Use NetApp Backup and Recovery to create writeable clones of Oracle databases from on-premises ONTAP systems to cloud storage, including Amazon S3, NetApp StorageGRID, Microsoft Azure Blob Storage, or ONTAP S3.
+Use NetApp Backup and Recovery to create writeable clones of Oracle databases from on-premises ONTAP systems to primary or secondary storage. Manage the lifecycle of clones so that they are periodically refreshed according to a schedule.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Create a clone of a database from an existing snapshot
 
-Create a clone immediately from an existing snapshot.
+Create a clone immediately from an existing snapshot. Use this method to create a one-time clone that is not continuously refreshed from a snapshot.
 
 .Steps 
 
@@ -44,7 +44,7 @@ The *Select snapshot location* appears if the snapshot is stored in more than on
 
 == Schedule a snapshot and clone of a database
 
-Schedule an instant snapshot and clone creation.
+Schedule an instant snapshot and clone creation. You can use this method if you want to continuously refresh the clone according to a schedule you choose.
 
 .Steps 
 
