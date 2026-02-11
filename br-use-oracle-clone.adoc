@@ -44,7 +44,7 @@ The *Select snapshot location* appears if the snapshot is stored in more than on
 
 == Schedule a snapshot and clone of a database
 
-Schedule an instant snapshot and clone creation. You can use this method if you want to continuously refresh the clone according to a schedule you choose.
+Schedule an instant snapshot and clone creation. This creates the most up-to-date possible clone of the database. Use this method if you want to continuously refresh the clone from the latest state of the database according to a schedule you choose.
 
 .Steps 
 
