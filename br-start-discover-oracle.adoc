@@ -13,15 +13,14 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to first discover your Oracle databases so that you can protect them.
-
+Discovering Oracle databases enables NetApp Backup and Recovery to protect them by creating and restoring backups and snapshots.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Add an Oracle host and discover resources
 
-Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads.  
+Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
 
 .Steps
 
@@ -40,6 +39,13 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 ... Enter the user name and password for the account.
 ... Select *Done*.
 .. *Host registration*: Add a new Oracle host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
++ If you choose credentials for a non-root user, The *Configure sudoers* link appears.
+.. (Optional) For instructions on how to add the non-root user you have selected to the sudoers file on the Oracle Database host, select *Configure sudoers*.
+... Follow the instructions in the dialog, enable the checkbox when complete, and select *Done*.
+.. *Advanced settings*: Do the following:
+... Enter the port and installation path to use for the NetApp plug-in. The plug-in enables communication between the Oracle Database host and NetApp Backup and Recovery.
+... Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically or skip installation (you will need to manually install the plug-in on the host).
+... Choose whether to perform pre-installation checks or to skip them.
 . Select *Discover*. 
 +
 TIP: This process might take a few minutes.
