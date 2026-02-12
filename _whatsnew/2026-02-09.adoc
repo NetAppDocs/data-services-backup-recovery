@@ -1,8 +1,8 @@
 === Microsoft Hyper-V workloads supported in General Availability (GA)
 Microsoft Hyper-V workload support is now generally available (GA) in NetApp Backup and Recovery.
 
-=== KVM workloads supported in General Availability (GA)
-KVM workload support is now generally available (GA) in NetApp Backup and Recovery.
+=== VMware workloads supported in General Availability (GA)
+VMware workload support is now generally available (GA) in NetApp Backup and Recovery.
 
 === Kubernetes workloads enhancements
 This release of Kubernetes workloads introduces the following enhanced capabilities:

@@ -131,7 +131,7 @@ sidebar:
               url: /br-use-manage-snapshots.html
             - title: Create Microsoft SQL Server reports 
               url: /br-use-reports.html
-        - title: Protect VMware workloads (without SnapCenter Plug-in for VMware)
+        - title: Protect VMware workloads
           entries:
             - title: Protect VMware workloads overview
               url: /br-use-vmware-protect-overview.html
