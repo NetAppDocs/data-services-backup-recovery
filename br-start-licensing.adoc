@@ -21,8 +21,6 @@ A few notes before you read any further:
 * The NetApp Backup and Recovery bring-your-own-license (BYOL) is a floating license that you can use across all systems associated with your NetApp Console organization or account. So if you have sufficient backup capacity available from an existing BYOL license, you won't need to purchase another BYOL license.
 * If you are using a BYOL license, it is recommended that you subscribe to a PAYGO subscription as well. If you back up more data than allowed by your BYOL license, or if the term of your license expires, then backup continues through your pay-as-you-go subscription - there is no disruption of service.
 * When backing up on-prem ONTAP data to StorageGRID, you need a BYOL license, but there's no cost for cloud provider storage space.
-* Renew your license before it expires; an expired license prevents new backups and disrupts service.
-* Exceeding capacity triggers PAYGO rates; without a PAYGO subscription, you cannot create new backups, though existing backups remain restorable without a service guarantee.
 
 link:concept-backup-to-cloud.html[Learn more about the costs related to using NetApp Backup and Recovery.]
 
@@ -124,4 +122,5 @@ You use the NetApp Console to manage BYOL licenses. You can add new licenses, up
 
 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html[Learn about adding licenses^].
 
-
+== Exceeding license capacity
+Exceeding your licensed capacity triggers PAYGO rates; without a PAYGO subscription, you cannot create new backups, though existing backups remain restorable without a service guarantee. Be sure to renew your license before it expires; an expired license prevents new backups and disrupts service.
