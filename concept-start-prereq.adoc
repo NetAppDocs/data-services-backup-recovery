@@ -61,23 +61,10 @@ NOTE: If you already have SnapCenter, first check to be sure you've met the prer
 Allocate sufficient disk space and monitor the storage consumption by the logs folder. The log space required varies depending on the number of backups performed and the frequency of data protection operations. If there is not sufficient space, the logs will not be created for the operations. 
 
 |Required software packages
-| * ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
-
-//* Java 11 Oracle Java and OpenJDK
-
-//* Java 11 Oracle Java and OpenJDK are required only for SAP HANA, IBM Db2, PostgreSQL, MySQL, NetApp supported plug-ins, and other custom applications that can be installed on Windows hosts.
-
-* PowerShell 7.4.2
+| * ASP.NET Core Runtime 8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
+* PowerShell 7.4.13
 
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
-
-//|Required software packages if using SnapCenter 5.0
-//| * Microsoft .NET Framework 4.7.2 or later
-
-//* Windows Management Framework (WMF) 4.0 or later
-
-//* PowerShell 4.0 or later
-
 
 |===
 
@@ -194,8 +181,8 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 
 * Software requirements for the Hyper-V Windows Server host:
 ** Microsoft Hyper-V 2019, 2022 & 2025 editions
-** ASP.NET Core Runtime 8.0.12 Hosting Bundle (and all subsequent 8.0.x patches)
-** PowerShell 7.4.2 or later
+** ASP.NET Core Runtime 8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
+** PowerShell 7.4.13 or later
 ** If users that are not part of an administrator domain will be protecting Hyper-V VMs, ensure that the user has the following permissions:
 *** Ensure the user is a member of the local administrators group.
 *** Ensure the user is part of the "Log on as service" local security policy.
