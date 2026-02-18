@@ -6,6 +6,6 @@ For details about protecting KVM workloads, refer to https://docs.netapp.com/us-
 === Kubernetes workloads enhancements
 Kubernetes workload support is now generally available (GA) in NetApp Backup and Recovery. This release of Kubernetes workloads also introduces the following enhanced capabilities:
 
-* *Reporting support*: You can now view a status snapshot of your protected Kubernetes workloads and generate reports from the Reporting page within the Backup and Recovery web UI.
+* *Cluster status and reporting support*: You can now view a real-time status dashboard of your protected Kubernetes workloads and generate reports of protection activity.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
