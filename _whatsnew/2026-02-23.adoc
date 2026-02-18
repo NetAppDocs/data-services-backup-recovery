@@ -3,7 +3,7 @@ Microsoft Hyper-V workload support is now generally available (GA) in NetApp Bac
 
 For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
 
-=== Kubernetes workloads enhancements
+=== Kubernetes supported in General Availability (GA)
 Kubernetes workload support is now generally available (GA) in NetApp Backup and Recovery. This release of Kubernetes workloads also introduces the following enhanced capabilities:
 
 * *Cluster status and reporting support*: You can now view a real-time status dashboard of your protected Kubernetes workloads and generate reports of protection activity.
