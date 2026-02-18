@@ -32,7 +32,7 @@ You can accomplish the following goals related to policies:
 
 . Review these policy details. 
 +
-* *Workload*: Examples include Microsoft SQL Server, Volumes, VMware, KVM, Hyper-V, Oracle Database, or Kubernetes. 
+* *Workload*: Examples include Microsoft SQL Server, ONTAP Volumes, VMware, KVM, Hyper-V, Oracle Database, or Kubernetes. 
 * *Backup type*: Examples include full backup and log backup.
 * *Architecture*: Examples include local snapshot, fan-out, cascading, disk to disk, and disk to object store. 
 * *Resources protected*: Shows how many resources out of the total resources on that workload are protected.
@@ -74,6 +74,7 @@ TIP: For a list of characters to avoid, see the hover tip.
 NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary and replicates from primary disk storage to secondary disk storage as well as replicates from primary to cloud object storage.
+
 ** *3-2-1 cascade*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store -- StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. 
 +
 NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
