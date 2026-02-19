@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, b
 summary: In NetApp Backup and Recovery, create reports to view the status of your backups, including the number of backups, the number of successful backups, and the number of failed backups. You can also view the details of each backup, including the backup type, the storage system used for the backup, and the time of the backup. 
 ---
 
-= Create reports for Microsoft SQL Server workloads in NetApp Backup and Recovery
+= Create protection reports for Microsoft SQL Server workloads in NetApp Backup and Recovery
 :hardbreaks:
 :icons: font
 :imagesdir: ./media/
@@ -13,7 +13,7 @@ summary: In NetApp Backup and Recovery, create reports to view the status of you
 [.lead]
 In NetApp Backup and Recovery, create reports for Microsoft SQL Server workloads to view backup status and details, including counts of successful and failed backups, backup types, storage systems, and timestamps.
 
-== Create a report
+== Create a protection report
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
