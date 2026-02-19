@@ -20,7 +20,8 @@ You can perform the following tasks related to protection groups:
 * Create a protection group.
 * View protection details. 
 * Back up a protection group now. See link:br-use-kvm-backup.html[Back up KVM workloads now].
-//* Suspend and resume a protection group's backup schedule.  
+//* Suspend and resume a protection group's backup schedule. 
+* Edit a protection group. 
 * Delete a protection group.
 
 == Create a protection group 

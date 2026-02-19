@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: br-use-kubernetes-reports.html
+keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
+summary: Create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more. 
+---
+
+= Manage protection reports for Kubernetes workloads in NetApp Backup and Recovery
+:hardbreaks:
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+In NetApp Backup and Recovery, create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more.
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+
+== Create a protection report
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. Select *Create report*.
+. Enter report scope details:
++
+* *Report name*: Enter a unique name for the report.
+* *Report type*: Choose whether you want a report by account or by workload (select Kubernetes from the list). 
+* *Select cluster*: If you selected by workload, select the cluster for which you want to generate the report. Select *Select all* to generate a report for all clusters.
+. Enter reporting range: Choose whether you want the report to include data from the last day, last 7 days, last 30 days, last quarter, or last year.
+. Enter report configuration details: Choose whether to run the report only once or to schedule a recurring report generation. For scheduled reports, choose the frequency of recurrence and select a start date.
+.. Enter email delivery details: (For scheduled reports only) If you want the report to be delivered by email, enter one or more email addresses that should receive the scheduled report.
+
++
+Configure email notifications in the Settings page. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
+
+== Download a protection report
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. On the *Reports* page, select the *Reports* menu to see the list of generated protection reports.
+. For the report that you want to download, select the Actions icon image:../media/icon-action.png[Actions option] > *Download*.
++
+* Select *Download JSON* to download the report in JSON format.
+* Select *Download PDF* to download the report as a PDF document.
+
+== View a protection report
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. On the *Reports* page, select the *Reports* menu to see the list of generated protection reports.
+. For the report that you want to view, select the Actions icon image:../media/icon-action.png[Actions option] > *View report*.
++
+The report details appear. 
+
+== Delete a protection report
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. On the *Reports* page, select the *Reports* menu to see the list of generated protection reports.
+. For the report that you want to delete, select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
+. Confirm the action by selecting *Delete*.

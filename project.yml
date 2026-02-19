@@ -248,7 +248,9 @@ sidebar:
             - title: Manage Kubernetes applications
               url: /br-use-manage-kubernetes-applications.html
             - title: Manage execution hook templates for Kubernetes workloads
-              url: /br-use-manage-execution-hook-templates.html                 
+              url: /br-use-manage-execution-hook-templates.html  
+            - title: Manage protection reports
+              url: /br-use-kubernetes-reports.html               
         - title: Monitor jobs
           url: /br-use-monitor-tasks.html
         - title: Restart NetApp Backup and Recovery
