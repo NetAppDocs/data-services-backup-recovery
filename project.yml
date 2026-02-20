@@ -249,7 +249,7 @@ sidebar:
               url: /br-use-manage-kubernetes-applications.html
             - title: Manage execution hook templates for Kubernetes workloads
               url: /br-use-manage-execution-hook-templates.html  
-            - title: Manage protection reports
+            - title: Create and manage protection reports
               url: /br-use-kubernetes-reports.html               
         - title: Monitor jobs
           url: /br-use-monitor-tasks.html
