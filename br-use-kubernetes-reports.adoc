@@ -17,7 +17,7 @@ In NetApp Backup and Recovery, create protection reports for Kubernetes workload
 Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
 
 == Create a protection report
-
+Create a protection report to view protection status of your clusters.
 
 .Steps
 
