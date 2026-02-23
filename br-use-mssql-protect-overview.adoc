@@ -99,8 +99,6 @@ ONTAP S3
 | StorageGRID | Cloud Volumes ONTAP 
 On-premises ONTAP system  | On-premises ONTAP system
 ONTAP S3
-
-| Amazon FSx for NetApp ONTAP | Amazon FSx for NetApp ONTAP |NA
 |===
 
 NOTE: References to "on-premises ONTAP systems" include FAS and AFF systems.
