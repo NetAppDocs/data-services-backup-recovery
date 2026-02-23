@@ -20,7 +20,8 @@ You can perform the following tasks related to protection groups:
 * Create a protection group.
 * View protection details. 
 * Back up a protection group now. See link:br-use-kvm-backup.html[Back up KVM workloads now].
-//* Suspend and resume a protection group's backup schedule.  
+//* Suspend and resume a protection group's backup schedule. 
+* Edit a protection group. 
 * Delete a protection group.
 
 == Create a protection group 
@@ -32,18 +33,17 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-//+
-//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
-
 . Provide a name for the protection group.
-. Select the VMs or storage pools that you want to include in the protection group.
+. Select a host to list the available VMs on that host. To include VMs from all discovered hosts, select *All* in the hosts list.
+. Select individual VMs that you want to include in the protection group, or select *All* to include all VMs in the list.
++
+VMs that you select appear in the *Added virtual machines* area. You can remove individual VMs from the list or empty the list entirely. You can add VMs from multiple KVM hosts to the list.
 . Select *Next*. 
-
-. Select the *Backup policy* that you want to apply to the protection group. 
+. Select the protection policy that you want to apply to the protection group, or create a new policy by selecting *Create new policy*. 
 +
 For more information about creating a backup policy, refer to link:br-use-policies-create.html[Create and manage policies].
 . Select *Next*. 
@@ -94,6 +94,23 @@ The protection status changes from "Under maintenance" when you suspend a protec
 The system validates the schedules and changes the protection status to "Protected" if the schedules are valid. If the schedules are not valid, the system displays an error message and does not resume the protection group.
 
 ////
+
+== Edit a protection group
+
+Edit a protection group if you need to change details of the protection group without deleting and recreating it.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the protection group that you want to edit.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit*.
+. Make any needed changes to the general details and VMs in the protection group.
+. Select *Next*.
+. If needed, change the policy associated with the protection group.
+. Select *Next*.
+. Review the configuration and select *Submit*.
 
 == Delete a protection group
 
