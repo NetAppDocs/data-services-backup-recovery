@@ -25,8 +25,6 @@ The following actions are not supported in the private preview release:
 * Restore VMs to an alternate location
 * Protect VMs stored on SAN
 * Protect applications
-* Edit protection groups
-* Create protection groups using VMs from multiple KVM hosts
 * Create user-defined backups (only backups initiated from the NetApp Console are supported)
 
 == Unsupported configurations
@@ -40,8 +38,6 @@ The following configurations are not supported:
 * Storage pool types other than NetFS (only NetFS is supported)
 
 == Troubleshooting notes
-Make note of the following when using the private preview of KVM workloads with NetApp Backup and Recovery:
+Make note of the following when using the private preview of KVM workloads with NetApp Backup and Recovery.
 
-* To ensure that KVM workload restores complete successfully, make sure that the *Enable VM-consistent snapshot* setting is active in the protection policy you use for KVM backups.
-* You cannot back up a storage pool with KVM hosts managed by Apache CloudStack unless you add all managed hosts to NetApp Backup and Recovery. As a workaround, add every CloudStack-managed KVM host to NetApp Backup and Recovery.
-* You cannot back up a stopped VM that belongs to a protection group. As a workaround, remove the stopped VM from the protection group before starting the backup.
+* Backups can fail if the QEMU Guest Agent is not running in a protected VM. As a workaround, ensure the `qemu-guest-agent` daemon is running on the VM before starting the backup.
