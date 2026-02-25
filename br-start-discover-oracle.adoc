@@ -41,6 +41,7 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 .. *Host registration*: Add a new Oracle host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
 +
 If you choose credentials for a non-root user, The *Configure sudoers* link appears.
+
 ... (Optional) For instructions on how to add the non-root user you have selected to the sudoers file on the Oracle Database host, select *Configure sudoers*.
 ... Follow the instructions in the dialog, enable the checkbox when complete, and select *Done*.
 .. *Advanced settings*: Do the following:
@@ -52,7 +53,7 @@ If you choose credentials for a non-root user, The *Configure sudoers* link appe
 TIP: This process might take a few minutes.
 
 .Result
-The Oracle workload is displayed in the list of workloads on the Inventory page.
+The Oracle Database workload is displayed in the list of workloads on the Inventory page.
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
