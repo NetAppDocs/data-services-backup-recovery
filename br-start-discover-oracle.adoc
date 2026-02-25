@@ -18,7 +18,7 @@ Discovering Oracle databases enables NetApp Backup and Recovery to protect them 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Add an Oracle host and discover resources
+== Add an Oracle Database host and discover resources
 
 Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
 
@@ -33,12 +33,12 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 
 . Enter the following information: 
 .. *Workload type*: Select *Oracle*.
-.. If you haven't yet stored credentials for this Oracle host, select *Add credentials*.
+.. If you haven't yet stored credentials for this Oracle Database host, select *Add credentials*.
 ... Select the Console agent to use with this host.
 ... Enter a name for this credential.
 ... Enter the user name and password for the account.
 ... Select *Done*.
-.. *Host registration*: Add a new Oracle host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
+.. *Host registration*: Add a new Oracle Database host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
 +
 If you choose credentials for a non-root user, The *Configure sudoers* link appears.
 
