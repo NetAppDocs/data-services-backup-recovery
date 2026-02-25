@@ -29,7 +29,7 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 . Select *Clone*. 
 . Select *Create new clone*.
 . In the *Database source* section, choose the source host and database from the lists.
-. In the *Database target* section, choose the target host and database from the lists.
+. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source.
 . Select *Next*.
 . In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*.
 . Choose an existing snapshot (restore point) from the list to use as a base for the clone and select *Next*.
@@ -53,7 +53,7 @@ Schedule an instant clone creation and continuous refresh of the clone. This cre
 . Select *Clone*. 
 . Select *Create new clone*.
 . In the *Database source* section, choose the source host and database from the lists.
-. In the *Database target* section, choose the target host and database from the lists.
+. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source.
 . Select *Next*.
 . In the *Clone from* section on the *Select restore point* page, select *Instant snapshot and clone*.
 . Choose a location to store the snapshot when it is created.
