@@ -25,8 +25,6 @@ NetApp Backup and Recovery provides the following benefits for managing Kubernet
 * Native integration with NetApp SnapMirror, enabling storage offloading capabilities for all backup and recovery workflows. 
 * Incremental forever backups for Kubernetes applications, translating to lower Recovery Point Objectives (RPOs) and Recovery Time Objectives (RTOs).
 
-NOTE: This documentation is provided as a technology preview. During the preview, Kubernetes functionality is not recommended for production workloads. With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before General Availability.
-
 You can accomplish the following tasks related to managing Kubernetes workloads:
 
 * link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].

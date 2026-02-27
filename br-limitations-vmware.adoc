@@ -15,7 +15,7 @@ summary: Review these NetApp Backup and recovery limitations before using Backup
 [.lead]
 Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
-The following actions are not supported in the preview version of VMware workloads in NetApp Backup and Recovery: 
+The following actions are not supported in VMware workloads in NetApp Backup and Recovery: 
 
 * Mount
 * Unmount
