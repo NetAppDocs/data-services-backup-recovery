@@ -15,11 +15,11 @@ summary: This release of NetApp Backup and Recovery has the following known limi
 [.lead]
 Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
 
-The following actions and configurations are not supported in the private preview version of KVM workloads in NetApp Backup and Recovery: 
+The following actions and configurations are not supported in KVM workloads in NetApp Backup and Recovery: 
 
 == Unsupported actions
 
-The following actions are not supported in the private preview release:
+The following actions are not supported:
 
 * Clone, mount, or unmount VMs
 * Restore VMs to an alternate location
@@ -38,6 +38,6 @@ The following configurations are not supported:
 * Storage pool types other than NetFS (only NetFS is supported)
 
 == Troubleshooting notes
-Make note of the following when using the private preview of KVM workloads with NetApp Backup and Recovery.
+Make note of the following when using KVM workloads with NetApp Backup and Recovery.
 
 * Backups can fail if the QEMU Guest Agent is not running in a protected VM. As a workaround, ensure the `qemu-guest-agent` daemon is running on the VM before starting the backup.

@@ -181,7 +181,7 @@ sidebar:
        #       url: /prev-vmware-manage.html
        #     - title: Restore virtual machine data and datastores
        #       url: /prev-vmware-restore.html
-        - title: Protect KVM workloads (Preview)
+        - title: Protect KVM workloads
           entries:
             - title: Protect KVM workloads overview
               url: /br-use-kvm-protect-overview.html
@@ -219,7 +219,7 @@ sidebar:
               url: /br-use-oracle-restore.html
             - title: Mount and unmount recovery points
               url: /br-use-oracle-mount-unmount.html
-        - title: Protect Kubernetes workloads (Preview)
+        - title: Protect Kubernetes workloads
           entries:
             - title: Protect Kubernetes workloads overview
               url: /br-use-kubernetes-protect-overview.html
