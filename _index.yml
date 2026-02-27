@@ -52,7 +52,7 @@ indexpage:
           url: br-use-vmware-backup.html
         - title: Restore VMware workloads
           url: br-use-vmware-restore.html
-    - title: Protect KVM workloads (preview) 
+    - title: Protect KVM workloads 
       links:
         - title: Protect KVM workloads overview
           url: /br-use-kvm-protect-overview.html
@@ -88,7 +88,7 @@ indexpage:
           url: /br-use-oracle-backup.html
         - title: Restore Oracle Database workloads
           url: /br-use-oracle-restore.html
-    - title: Protect Kubernetes workloads (preview) 
+    - title: Protect Kubernetes workloads 
       links:
         - title: Protect Kubernetes workloads overview 
           url: br-use-kubernetes-protect-overview.html       
