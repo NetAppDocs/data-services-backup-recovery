@@ -17,8 +17,6 @@ NetApp Backup and Recovery is a data service that provides efficient, secure, an
 
 Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware, software licenses or media gateways. This makes backup operations simple and cost effective. The NetApp Console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
 
-NOTE: Documentation about protecting VMware, KVM, Hyper-V, and Kubernetes workloads is provided as a technology preview. With this preview offering, NetApp reserves the right to modify offering details, contents, and timeline before General Availability.   
-
 == What you can do with NetApp Backup and Recovery
 
 Use NetApp Backup and Recovery to accomplish the following goals:
@@ -39,31 +37,22 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Use NetApp Backup and Recovery without SnapCenter. 
 ** Refer to link:br-use-mssql-protect-overview.html[Protect Microsoft SQL Server workloads].
 
-
-* *VMware workloads (Preview with new UI without SnapCenter Plug-in for VMware vSphere)*: 
+* *VMware workloads (with new UI without SnapCenter Plug-in for VMware vSphere)*: 
 
 ** Protect your VMware VMs and datastores with NetApp Backup and Recovery. 
-** Back up VMware workloads to Amazon Web Services S3 or StorageGRID (for Preview). 
+** Back up VMware workloads to Amazon Web Services S3 or StorageGRID. 
 ** Restore VMware data from the cloud back to the on-premises vCenter. 
 ** You can restore the VM to the exact same location from where the backup was taken or to an alternate location. 
 ** Use NetApp Backup and Recovery without SnapCenter Plug-in for VMware vSphere. 
 ** Refer to link:br-use-vmware-protect-overview.html[Protect VMware workloads].
 
-* *VMware workloads (With SnapCenter Plug-in for VMware vSphere)*: 
-
-** Back up VMs and datastores to Amazon Web Services S3, Microsoft Azure Blob, Google Cloud Platform, and StorageGRID and restore VMs back to the on-premises SnapCenter Plug-in for VMware vSphere host. 
-
-** Restore VM data from the cloud back to the on-premises vCenter with NetApp Backup and Recovery. You can restore the VM to the exact same location from where the backup was taken or to an alternate location. 
-** Use NetApp Backup and Recovery along with SnapCenter Plug-in for VMware vSphere. 
-** Refer to link:prev-vmware-protect-overview.html[Protect VMware workloads].
-
-* *KVM workloads (Preview)*:
+* *KVM workloads*:
 ** Back up and restore virtual machines
 ** Back up KVM storage pools
 ** Use protection groups to manage backup tasks
 ** Refer to link:br-use-kvm-protect-overview.html[Protect KVM workloads].
 
-* *Hyper-V workloads (Preview)*:
+* *Hyper-V workloads*:
 ** Back up and restore virtual machines
 ** Use protection groups to manage backup tasks
 ** Refer to link:br-use-hyperv-protect-overview.html[Protect Hyper-V workloads].
@@ -76,7 +65,7 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Mount and unmount ARCHIVELOG backups
 ** Refer to link:br-use-oracle-protect-overview.html[Protect Oracle Database workloads].
 
-* *Kubernetes workloads (Preview)*: 
+* *Kubernetes workloads*: 
 ** Manage and protect your Kubernetes applications and resources all in one place.
 ** Use protection policies to structure your incremental backups.
 ** Restore applications and resources to the same or different clusters and namespaces.
@@ -186,10 +175,10 @@ NetApp Backup and Recovery protects the following types of workloads:
 * ONTAP volumes 
 * Microsoft SQL Server instances and databases stored on physical disk and VMware Virtual Machine Disk (VMDK) over VMFS or NFS
 * VMware VMs and datastores
-* KVM workloads (Preview)
-* Hyper-V workloads (Preview)
+* KVM workloads
+* Hyper-V workloads
 * Oracle Database workloads (Preview)
-* Kubernetes workloads (Preview)
+* Kubernetes workloads
 
 .Supported systems
 
@@ -203,9 +192,9 @@ NetApp Backup and Recovery protects the following types of workloads:
 
 * Amazon Web Services (AWS) S3
 * Google Cloud Storage
-* Microsoft Azure Blob (not available for VMware workloads in Preview)
+* Microsoft Azure Blob (not available for VMware workloads)
 * StorageGRID
-* ONTAP S3 (Not available for VMware workloads in Preview)
+* ONTAP S3 (Not available for VMware workloads)
 
 == How NetApp Backup and Recovery works
 

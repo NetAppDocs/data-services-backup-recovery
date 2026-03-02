@@ -40,7 +40,7 @@ indexpage:
           url: br-use-mssql-restore.html
         - title: Clone Microsoft SQL Server workloads
           url: br-use-mssql-clone.html
-    - title: Protect VMware workloads (preview)
+    - title: Protect VMware workloads
       links:
         - title: Protect VMware workloads overview
           url: br-use-vmware-protect-overview.html
@@ -52,7 +52,7 @@ indexpage:
           url: br-use-vmware-backup.html
         - title: Restore VMware workloads
           url: br-use-vmware-restore.html
-    - title: Protect KVM workloads (private preview) 
+    - title: Protect KVM workloads 
       links:
         - title: Protect KVM workloads overview
           url: /br-use-kvm-protect-overview.html
@@ -64,7 +64,7 @@ indexpage:
           url: /br-use-kvm-backup.html
         - title: Restore KVM workloads
           url: /br-use-kvm-restore.html
-    - title: Protect Hyper-V workloads (private preview)
+    - title: Protect Hyper-V workloads
       links:
         - title: Protect Hyper-V workloads overview
           url: /br-use-hyperv-protect-overview.html
@@ -76,7 +76,7 @@ indexpage:
           url: /br-use-hyperv-backup.html
         - title: Restore Hyper-V workloads
           url: /br-use-hyperv-restore.html
-    - title: Protect Oracle Database workloads (private preview) 
+    - title: Protect Oracle Database workloads (preview) 
       links:
         - title: Protect Oracle Database workloads overview
           url: /br-use-oracle-protect-overview.html
@@ -88,7 +88,7 @@ indexpage:
           url: /br-use-oracle-backup.html
         - title: Restore Oracle Database workloads
           url: /br-use-oracle-restore.html
-    - title: Protect Kubernetes workloads (preview) 
+    - title: Protect Kubernetes workloads 
       links:
         - title: Protect Kubernetes workloads overview 
           url: br-use-kubernetes-protect-overview.html       

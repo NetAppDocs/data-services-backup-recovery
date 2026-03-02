@@ -122,4 +122,5 @@ You use the NetApp Console to manage BYOL licenses. You can add new licenses, up
 
 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html[Learn about adding licenses^].
 
-
+== Exceeding license capacity
+Exceeding your licensed capacity triggers PAYGO rates; without a PAYGO subscription, you cannot create new backups, though existing backups remain restorable without a service guarantee. Be sure to renew your license before it expires; an expired license prevents new backups and disrupts service.

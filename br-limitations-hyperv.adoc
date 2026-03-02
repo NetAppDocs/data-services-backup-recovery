@@ -17,7 +17,7 @@ Platforms, devices, or features that do not work or do not work well with this v
 
 == Unsupported actions
 
-The following actions are not supported in the private preview version of Hyper-V workloads in NetApp Backup and Recovery: 
+The following actions are not supported in Hyper-V workloads in NetApp Backup and Recovery: 
 
 * Create resource groups using VMs from multiple Hyper-V hosts
 * Restore VMs to an alternate location

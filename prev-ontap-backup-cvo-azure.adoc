@@ -335,9 +335,6 @@ Either create your own resource group that manages the Blob container or select 
 +
 TIP: If you want to protect your backup files from being modified or deleted, ensure that the storage account was created with immutable storage enabled using a 30-day retention period. 
 
-+
-TIP: If you want to tier older backup files to Azure Archive Storage for further cost optimization, ensure that the storage account has the appropriate Lifecycle rule. 
-
 * *Encryption key*: If you created a new Azure storage account, enter encryption key information given to you from the provider. Choose whether you'll use the default Azure encryption keys, or choose your own customer-managed keys from your Azure account, to manage encryption of your data. 
 
 + 
