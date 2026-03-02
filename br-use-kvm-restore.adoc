@@ -166,7 +166,7 @@ A list of possible restore points appears.
 .Restore to alternate location
 
 --
-Not available for KVM workloads preview. 
+Not available for KVM workloads. 
 
 ////
 . If you chose to restore to an alternate location, enter the following:
