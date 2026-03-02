@@ -145,7 +145,7 @@ You can split a clone of your Microsoft SQL Server workloads. Splitting a clone 
 
 You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the SVM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes an independent database for protection. 
 
-The clone job is not be removed and it can be reused again for other clones.
+The clone job is not removed and it can be reused again for other clones.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Clone*.
