@@ -15,7 +15,7 @@ summary: Protect your Oracle Database workloads with NetApp Backup and Recovery.
 [.lead]
 You might want to mount an Oracle Database recovery point if you need to access the database in a controlled state to perform recovery operations.
 
-== Mount an Oracle Database restore point
+== Mount an Oracle Database recovery point
 
 If you configure the protection policy for a database to retain archive logs, you can mount recovery points to view the database change history.
 
@@ -39,7 +39,7 @@ The mount path that Backup and Recovery should use is displayed.
 +
 The recovery point is mounted on the Oracle host.
 
-== Unmount an Oracle database restore point
+== Unmount an Oracle database recovery point
 Unmount the recovery point when you no longer need to view changes made to that database.
 
 .Steps
