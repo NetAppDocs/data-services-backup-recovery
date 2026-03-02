@@ -1,0 +1,97 @@
+---
+sidebar: sidebar
+permalink: br-use-oracle-clone.html
+keywords: clone, clone application data, Amazon Web services, AWS, NetApp backup and recovery, Oracle database, Microsoft SQL Server database, SAP HANA database, protection group
+summary: Clone your Oracle Database workloads with NetApp Backup and Recovery. 
+---
+
+= Clone Oracle Database workloads using NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Use NetApp Backup and Recovery to create writeable clones of Oracle databases from on-premises ONTAP systems to primary or secondary storage. Manage the lifecycle of clones so that they are periodically refreshed according to a schedule.
+
+*Required Console role*
+Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Create a clone of an Oracle database
+
+Create a clone immediately from an existing snapshot. Use this method to create a one-time clone that is not continuously refreshed from a snapshot.
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Under *Workloads*, select the *Oracle* tile.
+. Select *Clone*. 
+. Select *Create new clone*.
+. In the *Database source* section, choose the source host and database from the lists.
+. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source.
+. Select *Next*.
+. In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*.
+. Choose an existing snapshot (restore point) from the list to use as a base for the clone and select *Next*.
++
+The *Select snapshot location* appears if the snapshot is stored in more than one location.
+. Choose the snapshot location to use and select *Next*.
+. On the *Advanced options* page, do the following:
+.. If you have previously saved a specification file, you can upload it to customize the cloned database settings. You can also download the default specification file for the database snapshot.
+.. In the *Recovery scope* section, choose how to limit what is restored to create the clone and enter the required information for the option you choose. Choosing *None* restores all data.
+.. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
+. Select *Clone*.
+
+== Schedule a clone of an Oracle database
+
+Schedule an instant clone creation and continuous refresh of the clone. This creates the most up-to-date possible clone of the database. Use this method if you want to continuously refresh the clone from the latest state of the database according to a schedule you choose.
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Under *Workloads*, select the *Oracle* tile.
+. Select *Clone*. 
+. Select *Create new clone*.
+. In the *Database source* section, choose the source host and database from the lists.
+. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source.
+. Select *Next*.
+. In the *Clone from* section on the *Select restore point* page, select *Instant snapshot and clone*.
+. Choose a location to store the snapshot when it is created.
+. Select *Next*.
+. On the *Advanced options* page, do the following:
+.. To customize the cloned database settings, enable the *Customize target database parameters* option. If you have previously saved a specification file, this option enables you to upload it to customize the cloned database settings. You can also download the default specification file for the database that reflects its current settings.
+.. In the *Clone refresh schedule* section, choose when and how often to refresh the clone. Refreshing the clone recreates the instant snapshot and overwrites the existing clone with a new clone. 
+.. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
+. Select *Clone*.
+
+
+== Split a clone
+
+You can split a clone of your Oracle Database workloads. Splitting a clone creates a new backup from the clone. You can use the new backup to restore databases.
+
+You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the SVM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes an independent database for protection. 
+
+The clone job is not removed and it can be reused again for other clones.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Clone*.
+. Select a clone.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Split clone*.
+. Review the split clone details and select *Split*.
+. When the split clone is created, you can view it in the *Inventory* page.
+
+== Delete a clone
+
+You can delete a clone of your Oracle Database workloads. When you delete a clone, it is removed from the object store, freeing up storage space.
+
+If a policy protects the clone, both the clone and its job are deleted.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Clone*.
+. Select a clone.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete clone*.
+. In the clone Delete confirmation dialog box, review the deletion details.
+.. To delete the cloned resources from SnapCenter even if the clones or their storage is not accessible, select *Force delete*. 
+.. Select *Delete*.
+. When the clone is deleted, it is removed from the *Inventory* page.
