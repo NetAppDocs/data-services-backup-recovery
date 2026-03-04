@@ -42,16 +42,9 @@ There is no limitation for FlexVol volumes - you can select all FlexVol volumes 
 
 * When creating replications from on-premises ONTAP systems, if the ONTAP version on the target Cloud Volumes ONTAP system is 9.8, 9.9, or 9.11, only mirror-vault policies are allowed.
 
-* NetApp Backup & Recovery does not support converting a FlexVol volume with an active cloud backup relationship to a FlexGroup volume while maintaining cloud backup functionality.
+* When you convert a FlexVol volume to a FlexGroup volume or vice versa, the converted volume is considered a new volume; you need to set up protection for the converted volume after conversion. You can restore backups created before the conversion to a different volume.
 
 == Backup-to-object limitations for ONTAP volumes
-
-* When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
-+ 
-For an explanation about these encryption types, refer to 
-https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html[Configure NetApp Volume Encryption overview^].
-
-* If long-term retention snapshots are enabled on a SnapMirror destination volume using the schedule in the SnapMirror policy, snapshots are created directly on the destination volume. In this case, you should not back up those volumes using NetApp Backup and Recovery because those snapshots will not be moved to object storage.
 
 * When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
 + 
@@ -86,7 +79,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 
 * ONTAP doesn't support fan-out of SnapMirror relationships from a single volume to multiple object stores; therefore, this configuration is not supported by NetApp Backup and Recovery.
 
-* WORM/Compliance mode on an object store is supported on Amazon S3, Azure, and StorageGRID at this time. This is known as the DataLock feature, and it must be managed by using NetApp Backup and Recovery settings, not by using the cloud provider interface.
+* WORM/Compliance mode on an object store is supported on Amazon S3, Google Cloud Platform (GCP), Azure, and StorageGRID at this time. This is known as the DataLock feature, and it must be managed by using NetApp Backup and Recovery settings, not by using the cloud provider interface.
 
 == Restore limitations for ONTAP volumes
 
@@ -105,11 +98,7 @@ When using a version of ONTAP before 9.11.1, folder restore is not supported.
 
 * Directory/folder restore is supported for data that resides in archival storage only when the cluster is running ONTAP 9.13.1 and greater. 
 
-* Directory/folder restore is supported for data that is protected using DataLock only when the cluster is running ONTAP 9.13.1 and greater. 
-
-* Directory/folder restore is not currently supported from replications and/or local snapshots.
-
-* Restoring from FlexGroup volumes to FlexVol volumes, or FlexVol volumes to FlexGroup volumes is not supported.
+* Directory/folder restore is supported for data that is protected using DataLock only when the cluster is running ONTAP 9.13.1 and greater.
 
 * The file being restored must be using the same language as the language on the destination volume. You will receive an error message if the languages are not the same.
 
