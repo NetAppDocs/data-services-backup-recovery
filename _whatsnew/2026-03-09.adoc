@@ -3,7 +3,7 @@ In this release, ONTAP Volumes workloads introduces the following enhanced capab
 
 * *Restore to source location*: You can now restore files and folders from local snapshots and replicated snapshots to the source location as well as an alternate location.
 * *Hourly volume discovery*: The Dashboard now discovers and refreshes new volumes more quickly.
-* *Support for dark sites* - You can now download Backup and Recovery for dark sites from the https://mysupport.netapp.com/site/products/all/details/netapp-console/downloads-tab/download/61906/4.4.0/downloads[NetApp Support Site]. At this time, the dark site release of NetApp Backup and Recovery supports only ONTAP Volumes workloads.
+* *Support for dark sites*: You can now download Backup and Recovery for dark sites from the https://mysupport.netapp.com/site/products/all/details/netapp-console/downloads-tab/download/61906/4.4.0/downloads[NetApp Support Site]. At this time, the dark site release of NetApp Backup and Recovery supports only ONTAP Volumes workloads.
 * *Unicode compatibility improvements*: Catalog indexing now has better handling of Unicode characters.
 * *Improved FlexGroup compatibility*: When you convert an ONTAP FlexVol volume to a FlexGroup volume, you can now restore backups made before the conversion.
 * *Multi-bucket support*: You can now protect the volumes within a system with up to 6 buckets per system across different cloud providers.
