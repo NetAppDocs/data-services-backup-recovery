@@ -10,12 +10,6 @@ In this release, ONTAP Volumes workloads introduces the following enhanced capab
 
 For details about protecting ONTAP Volume workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volume workloads overview].
 
-=== Oracle Database workloads enhancements
-In this release, Oracle Database workloads introduces the following enhanced capabilities:
-
-* *Clustered host support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are stored on VMFS file systems.
-
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
 
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhanced capabilities:
