@@ -1,7 +1,7 @@
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhanced capabilities:
 
-* *Restore to source location*: You can now restore files and folders from local snapshots and replicated snapshots to the source location as well as an alternate location.
+* *Restore to source location*: You can now restore files from local snapshots and replicated snapshots to the source location as well as an alternate location.
 * *Hourly volume discovery*: The Dashboard now discovers and refreshes new volumes more quickly.
 * *Support for dark sites*: You can now download Backup and Recovery for dark sites from the https://mysupport.netapp.com/site/products/all/details/netapp-console/downloads-tab/download/61906/4.4.0/downloads[NetApp Support Site]. At this time, NetApp Backup and Recovery for dark sites supports only ONTAP Volumes workloads.
 * *Unicode compatibility improvements*: Catalog indexing now has better handling of Unicode characters.
