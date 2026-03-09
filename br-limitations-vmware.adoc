@@ -19,8 +19,6 @@ The following actions are not supported in VMware workloads in NetApp Backup and
 
 * Mount
 * Unmount
-* Attach VMDK 
-* Detach VMDK
 * vVol support
 * NVMe support
 * Email integration
