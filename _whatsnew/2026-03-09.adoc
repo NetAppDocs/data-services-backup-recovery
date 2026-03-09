@@ -1,0 +1,21 @@
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following enhanced capabilities:
+
+* *Restore to source location*: You can now restore files from local snapshots and replicated snapshots to the source location as well as an alternate location.
+* *Hourly volume discovery*: The Dashboard now discovers and refreshes new volumes more quickly.
+* *Support for dark sites*: You can now download Backup and Recovery for dark sites from the https://mysupport.netapp.com/site/products/all/details/netapp-console/downloads-tab/download/61906/4.4.0/downloads[NetApp Support Site]. At this time, NetApp Backup and Recovery for dark sites supports only ONTAP Volumes workloads.
+* *Unicode compatibility improvements*: Catalog indexing now has better handling of Unicode characters.
+* *Improved FlexGroup compatibility*: When you convert an ONTAP FlexVol volume to a FlexGroup volume, you can now restore backups made before the conversion.
+* *Multi-bucket support*: You can now protect the volumes within a system with up to 6 buckets per system across different cloud providers.
+
+For details about protecting ONTAP Volume workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volume workloads overview].
+
+
+=== VMware workloads enhancements
+In this release, VMware workloads introduces the following enhanced capabilities:
+
+* *Restore guest data from object store*: You can now restore guest files and folders from object storage.
+* *Quick restore for VMFS/NFS*: You can now enable the quick restore option when restoring to an alternate location. When enabled, only VM metadata (files, LUNs, and namespaces) is retrieved from the object store, making volumes available faster than a full restore.
+* *Support for Amazon FSx for NetApp ONTAP*: VMware workloads now supports Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later.
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].

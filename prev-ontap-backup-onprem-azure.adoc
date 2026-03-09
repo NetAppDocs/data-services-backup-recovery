@@ -19,10 +19,6 @@ NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
-
-
-
-
 == Identify the connection method
 
 Choose which of the two connection methods you will use when configuring backups from on-premises ONTAP systems to Azure Blob.
@@ -338,6 +334,9 @@ TIP: If you want to protect your backup files from being modified or deleted, en
 
 +
 TIP: If you want to tier older backup files to Azure Archive Storage for further cost optimization, ensure that the storage account has the appropriate Lifecycle rule. 
+
++
+NOTE: If you select *Bring your own bucket*, ensure that the container you create as the backup destination has the same name as the Azure storage account.
 
 * *Encryption key*: If you created a new Azure storage account, enter encryption key information given to you from the provider. Choose whether you'll use the default Azure encryption keys, or choose your own customer-managed keys from your Azure account, to manage encryption of your data. 
 
