@@ -79,13 +79,14 @@ You need specific requirements to discover and protect your VMware workloads.
 
 *Software support*
 
-* NFS and VMFS datastores are supported.
-* NFS versions supported: NFS 3 and NFS 4.1
+* NFSv3, NFSv4.1, and VMFS datastores are supported.
 * VMware ESXi Server versions supported: 7.0U1 and above
 * VMware vCenter vSphere versions supported: 7.0U1 and above
 * IP addresses: IPv4 and IPv6 
 * VMware TLS: 1.2, 1.3
-* Connected storage supported: ONTAP 9.13 or later
+* Connected storage supported:
+** ONTAP 9.13.1 or later
+** Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 
 *Connection and port requirements for protecting VMware workloads*
 
@@ -97,10 +98,6 @@ You need specific requirements to discover and protect your VMware workloads.
 | Pre-configured port
 
 | VMware ESXi Server port | 443 (HTTPS), bidirectional. The Guest File Restore feature uses this port. 
-//| SnapCenter Plug-in for VMware vSphere port | 8144 (HTTPS), bidirectional. This port is used for communication from the VMware vSphere client and the SnapCenter Server. 
-
-//8080 bidirectional. This port is used to manage virtual appliances. 
-//A custom port for the addition of an SCV host to SnapCenter is supported. 
 
 | Storage cluster or storage VM port | 443 (HTTPS), bidirectional. 
 80 (HTTP), bidirectional. This port is used for communication between the virtual appliance and the storage VM or the cluster containing the storage VM. 
