@@ -72,24 +72,34 @@ For the latest information about supported versions, see the https://imt.netapp.
 == Requirements for protecting VMware workloads
 You need specific requirements to discover and protect your VMware workloads.
 
-//=== Host requirements 
-
-//For VMware workloads, refer to the following host requirements: 
-//https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#host-requirements[SnapCenter Plug-in for VMware vSphere deployment planning and requirements^]
-
 *Software support*
 
-* NFSv3, NFSv4.1, and VMFS datastores are supported.
-* VMware ESXi Server versions supported: 7.0U1 and above
-* VMware vCenter vSphere versions supported: 7.0U1 and above
-* IP addresses: IPv4 and IPv6 
-* VMware TLS: 1.2, 1.3
-* Connected storage supported:
-** ONTAP 9.13.1 or later
-** Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
+[options="header"]
+|===
+|Requirement |Supported
+
+|Datastores supported
+|NFSv3, NFSv4.1, and VMFS
+
+|VMware ESXi Server versions
+|7.0U1 and above
+
+|VMware vCenter vSphere versions supported
+|7.0U1 and above
+
+|IP addresses
+|IPv4, IPv6
+
+|VMware TLS
+|1.2, 1.3
+
+|Connected storage
+a|
+* ONTAP 9.13.1 or later
+* Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
+|===
 
 *Connection and port requirements for protecting VMware workloads*
-
 
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
@@ -101,8 +111,6 @@ You need specific requirements to discover and protect your VMware workloads.
 
 | Storage cluster or storage VM port | 443 (HTTPS), bidirectional. 
 80 (HTTP), bidirectional. This port is used for communication between the virtual appliance and the storage VM or the cluster containing the storage VM. 
-
-
 |===
 
 *Role-based access control (RBAC) requirements for protecting VMware workloads*
@@ -155,7 +163,7 @@ a|
 * Standalone (NFS, SAN, ASM SAN)
 * RAC over ASM (VMDK on VMFS)
 
-|Oracle versions
+|Oracle Database versions
 a|
 * Oracle Database 19c
 * Oracle Database 21c
