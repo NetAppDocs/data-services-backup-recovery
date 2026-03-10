@@ -144,7 +144,7 @@ chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 =====
 
 == Requirements for protecting Oracle Database workloads
-Ensure your environment meets specific requirements to discover and protect Oracle resources.
+Ensure your environment meets specific requirements to discover and protect Oracle Database resources.
 
 Oracle Database is supported in the following configurations:
 
@@ -163,12 +163,11 @@ Backup and Recovery has the following software and storage requirements:
 ** NetApp StorageGRID
 ** ONTAP S3
 
-
-* Deployment topology (one or more must match)
+* Oracle Database deployment topologies
 ** Standalone using NFS, SAN, or ASM SAN
 ** RAC over ASM using VMDK on VMFS
 
-* Supported Oracle versions
+* Supported Oracle Database versions
 ** Oracle Database 19c
 ** Oracle Database 21c
 
@@ -232,7 +231,11 @@ a|
 |RHEL 8, RHEL 9
 
 |Object storage (backup targets)
-|Azure Object Storage; Amazon AWS (S3); NetApp StorageGRID; ONTAP S3
+a|
+* Azure Object Storage
+* Amazon AWS
+* NetApp StorageGRID
+* ONTAP S3
 
 |===
 
