@@ -109,8 +109,10 @@ a|
 
 | VMware ESXi Server port | 443 (HTTPS), bidirectional. The Guest File Restore feature uses this port. 
 
-| Storage cluster or storage VM port | 443 (HTTPS), bidirectional. 
-80 (HTTP), bidirectional. This port is used for communication between the virtual appliance and the storage VM or the cluster containing the storage VM. 
+| Storage cluster or storage VM port 
+a| 
+* 443 (HTTPS), bidirectional. 
+* 80 (HTTP), bidirectional. This port is used for communication between the virtual appliance and the storage VM or the cluster containing the storage VM. 
 |===
 
 *Role-based access control (RBAC) requirements for protecting VMware workloads*
@@ -205,25 +207,47 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
 
-* Software requirements for the Hyper-V Windows Server host:
-** Microsoft Hyper-V 2019, 2022 & 2025 editions
-** ASP.NET Core Runtime 8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
-** PowerShell 7.4.13 or later
-** If users that are not part of an administrator domain will be protecting Hyper-V VMs, ensure that the user has the following permissions:
-*** Ensure the user is a member of the local administrators group.
-*** Ensure the user is part of the "Log on as service" local security policy.
-** Ensure that two-way HTTPS traffic is allowed for the following ports in the Windows Firewall settings:
-*** 8144 (NetApp Plugin for Hyper-V)
-*** 8145 (NetApp Plugin for Windows)
-* Hardware requirements for the Hyper-V host:
-** Standalone and FCI-clustered hosts are supported
-** 1GB RAM minimum for the NetApp Hyper-V plug-in on the Hyper-V host
-** 5GB minimum installation and log space for the plug-in on the Hyper-V Host
+[options="header"]
+|===
+|Requirement |Supported
+
+|Microsoft Hyper-V versions
+|2019, 2022 & 2025 editions
+
+|ASP.NET Core Runtime versions
+|8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
+
+|PowerShell
+|7.0U1 and above
+
+|Non-administrator user permissions
+a|
+* Ensure the user is a member of the local administrators group.
+* Ensure the user is part of the "Log on as service" local security policy.
+
+|Ensure that two-way HTTPS traffic is allowed for the following ports in the Windows Firewall settings
+a|
+* 8144 (NetApp Plugin for Hyper-V)
+* 8145 (NetApp Plugin for Windows)
+
+|Connected storage
+a|
+* ONTAP 9.13.1 or later
+* Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
+|===
+
+*Hardware requirements for the Hyper-V host*
+
+* Standalone and FCI-clustered hosts are supported
+* 1GB RAM minimum for the NetApp Hyper-V plug-in on the Hyper-V host
+* 5GB minimum installation and log space for the plug-in on the Hyper-V Host
 +
 NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the logs folder and regularly monitor its usage. The required space depends on how often backups and data protection operations occur. If there isn't enough space, logs will not be generated.
-* NetApp ONTAP configuration requirements:
-** A primary ONTAP system (ONTAP 9.14.1 or later)
-** For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
+
+*NetApp ONTAP configuration requirements*
+
+* A primary ONTAP system (ONTAP 9.14.1 or later)
+* For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
 
 == In NetApp Console
 Ensure NetApp Console meets the following requirements.
