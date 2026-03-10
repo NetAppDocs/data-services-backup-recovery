@@ -147,6 +147,7 @@ chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 Ensure your environment meets specific requirements to discover and protect Oracle resources.
 
 Oracle Database is supported in the following configurations:
+
 * Standalone deployment using NFS, SAN, or ASM SAN
 * RAC over ASM deployments using VMDK on VMFS
 
@@ -163,15 +164,15 @@ Backup and Recovery has the following software and storage requirements:
 ** ONTAP S3
 
 
-*Deployment topology (one or more must match)
+* Deployment topology (one or more must match)
 ** Standalone using NFS, SAN, or ASM SAN
 ** RAC over ASM using VMDK on VMFS
 
-*Supported Oracle versions
+* Supported Oracle versions
 ** Oracle Database 19c
 ** Oracle Database 21c
 
-*Storage
+* Storage
 ** Database files must reside on NetApp ONTAP (primary or secondary).
 ** Backup target / object storage supported:
 *** Azure Object Storage
@@ -179,90 +180,60 @@ Backup and Recovery has the following software and storage requirements:
 *** NetApp StorageGRID
 *** ONTAP S3
 
-*Host operating systems
+* Host operating systems
 ** Red Hat Enterprise Linux 8
 ** Red Hat Enterprise Linux 9
 
-Goal: Ensure discovery and backup/restore operations will run reliably. Read each item and follow the verification/action notes.
-
 === Supported deployment topologies
+
 * Standalone
 ** Types: NFS, SAN, or ASM SAN
-** Note: When using ASM SAN, ensure your SAN configuration and multipathing are validated for consistent I/O during backups.
 * RAC over ASM
-** Supported when VM storage is VMDK on VMFS
-** Note: For RAC, coordinate snapshot/backup across all nodes to ensure consistent recovery points.
+** Supported when deployed using VMDK on VMFS
 
 === Oracle Database versions
+
 * Supported releases:
 ** 19c
 ** 21c
-* Validation:
-** Run SQL to check version: select version from v$instance;
-** Ensure any Oracle patches required by your backup tool are applied.
 
 === Storage requirements
+
 * Primary requirement:
 ** Database storage must be deployed on NetApp ONTAP (either primary or secondary)
 * Backup targets (object storage):
 ** Azure Object Storage
-** Amazon AWS (S3)
+** Amazon AWS
 ** NetApp StorageGRID
 ** ONTAP S3
-* Notes:
-** If using object storage for backup targets, verify network egress, credentials, and S3/Azure compatibility settings.
-** For ONTAP-based backups, confirm volume and aggregate space and snapshot policies.
 
 === Host OS support
-* Supported OS:
+
+* Supported OSes:
 ** Red Hat Enterprise Linux 8
 ** Red Hat Enterprise Linux 9
-* Validation:
-** On a host: `cat /etc/redhat-release` (or use `hostnamectl`) to confirm OS and patch level.
-** Ensure kernel and filesystems meet vendor recommendations for Oracle.
-
-=== Operational recommendations
-* Pre-backup:
-** Validate Oracle services are healthy and apply recommended Oracle hot-backup or snapshot consistency procedures.
-* Restore testing:
-** Regularly perform test restores to validate end-to-end protection.
-* Permissions:
-** Ensure backup/restore tooling has required privileges on hosts, VMs, and storage APIs.
-
-=== Troubleshooting tips
-* If discovery fails:
-** Verify network connectivity to NetApp ONTAP management endpoints and object storage
-** Confirm credentials and roles for object storage and ONTAP
-* If backups fail:
-** Check storage free space, snapshot policies, and Oracle alert/log files for I/O errors
 
 [options="header"]
 |===
-|Requirement |Supported / Accepted values |Notes / Actions
+|Requirement |Supported
 
 |Deployment topology
-|Standalone (NFS, SAN, ASM SAN); RAC over ASM (VMDK on VMFS)
-|Confirm topology before protection. For RAC, ensure coordinated snapshots across nodes.
+a|
+* Standalone (NFS, SAN, ASM SAN)
+* RAC over ASM (VMDK on VMFS)
 
 |Oracle versions
 |19c, 21c
-|Run SQL: `select version from v$instance;` and ensure supported patch levels.
 
 |Database storage
 |NetApp ONTAP (primary or secondary)
-|Database files must be hosted on ONTAP. Validate ONTAP accessibility and permissions.
 
 |Host OS
 |RHEL 8, RHEL 9
-|Verify with `cat /etc/redhat-release` and ensure kernel/filesystem compatibility.
 
 |Object storage (backup targets)
 |Azure Object Storage; Amazon AWS (S3); NetApp StorageGRID; ONTAP S3
-|Confirm credentials, bucket/container configuration, network egress, and access policies.
 
-|Additional operational checks
-|Snapshot consistency; permissions; network connectivity
-|Run periodic restore tests and verify backup agent/service permissions on DB hosts and storage.
 |===
 
 == Requirements for protecting Kubernetes applications
