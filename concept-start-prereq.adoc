@@ -207,6 +207,8 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
 
+*Software requirements for the Hyper-V Windows Server host*
+
 [options="header"]
 |===
 |Requirement |Supported
