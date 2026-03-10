@@ -229,8 +229,8 @@ a|
 
 |Ensure that two-way HTTPS traffic is allowed for the following ports in the Windows Firewall settings
 a|
-* 8144 (NetApp Plugin for Hyper-V)
-* 8145 (NetApp Plugin for Windows)
+* TCP 8144 (NetApp Plugin for Hyper-V)
+* TCP 8145 (NetApp Plugin for Windows)
 
 |Connected storage
 a|
