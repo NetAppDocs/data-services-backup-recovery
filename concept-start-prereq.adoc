@@ -222,7 +222,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |PowerShell
 |7.0U1 and above
 
-|Non-administrator user permissions
+|If non-administrator users will be protecting Hyper-V VMs, ensure the users have the following permissions
 a|
 * Ensure the user is a member of the local administrators group.
 * Ensure the user is part of the "Log on as service" local security policy.
