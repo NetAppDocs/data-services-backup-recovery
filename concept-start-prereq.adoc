@@ -224,8 +224,8 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 
 |If non-administrator users will be protecting Hyper-V VMs, ensure the users have the following permissions
 a|
-* Ensure the user is a member of the local administrators group.
-* Ensure the user is part of the "Log on as service" local security policy.
+* Member of the local administrators group
+* Part of the "Log on as service" local security policy
 
 |Ensure that two-way HTTPS traffic is allowed for the following ports in the Windows Firewall settings
 a|
