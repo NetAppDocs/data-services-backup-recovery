@@ -190,11 +190,10 @@ Backup and Recovery has the following software and storage requirements:
 * RAC over ASM
 ** Supported when deployed using VMDK on VMFS
 
-=== Oracle Database versions
+=== Supported Oracle Database versions
 
-* Supported releases:
-** 19c
-** 21c
+* 19c
+* 21c
 
 === Storage requirements
 
@@ -208,9 +207,8 @@ Backup and Recovery has the following software and storage requirements:
 
 === Host OS support
 
-* Supported OSes:
-** Red Hat Enterprise Linux 8
-** Red Hat Enterprise Linux 9
+* Red Hat Enterprise Linux 8
+* Red Hat Enterprise Linux 9
 
 [options="header"]
 |===
