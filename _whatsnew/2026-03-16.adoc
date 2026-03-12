@@ -1,6 +1,6 @@
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:
 
-* *VM consistency support per schedule tier*: You can now enable VM-consistent and app-consistent backups for specific schedule tiers when configuring protection policies for VMware workloads. Yearly, monthly, and weekly tiers are supported.
+*VM consistency support per schedule tier*: You can now enable VM-consistent and app-consistent backups for specific schedule tiers when configuring protection policies for VMware workloads. Yearly, monthly, and weekly tiers are supported.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
