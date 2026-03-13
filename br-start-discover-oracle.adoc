@@ -38,14 +38,18 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 .. Enter the user name and password for the account.
 .. Select *Done*.
 . *Host registration*: Add a new Oracle Database host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
++
+NOTE: If the database host is clustered, enter the Single Client Access Name (SCAN) in the *Host FQDN or IP address* field.
+
 . (Optional) If you choose credentials for a non-root user, do the following:
 .. For instructions on how to add the non-root user you have selected to the sudoers file on the Oracle Database host, select *Configure sudoers*.
 .. Follow the instructions in the dialog, enable the checkbox when complete, and select *Done*.
 . *Advanced settings*: Do the following:
 .. Enter the port and installation path to use for the NetApp plug-in. The plug-in enables communication between the Oracle Database host and NetApp Backup and Recovery.
-.. Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically or skip installation (you will need to manually install the plug-in on the host).
+.. Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically or skip the automatic plug-in installation (if you enable *Use manual installation*, you will need to manually install the plug-in on the each host).
+.. (Optional) if the database host is clustered, enable the *Add all hosts in the cluster* option to discover all hosts in the cluster. 
 .. Choose whether to perform pre-installation checks or to skip them.
-. Select *Discover*. 
+. Select *Discover*.
 +
 TIP: This process might take a few minutes.
 
