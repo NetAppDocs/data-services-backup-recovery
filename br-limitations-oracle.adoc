@@ -18,5 +18,3 @@ Platforms, devices, or features that do not work or do not work well with this v
 The following action is not supported in the preview version of Oracle Database workloads in NetApp Backup and Recovery: 
 
 * Offline backup
-
-Oracle Database is supported only as a standalone deployment using NFS, SAN, or ASM SAN in the private preview version of Oracle Database workloads.
