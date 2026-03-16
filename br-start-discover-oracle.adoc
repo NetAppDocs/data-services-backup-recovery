@@ -46,7 +46,13 @@ NOTE: If the database host is clustered, enter the Single Client Access Name (SC
 .. Follow the instructions in the dialog, enable the checkbox when complete, and select *Done*.
 . *Advanced settings*: Do the following:
 .. Enter the port and installation path to use for the NetApp plug-in. The plug-in enables communication between the Oracle Database host and NetApp Backup and Recovery.
-.. Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically or skip the automatic plug-in installation (if you enable *Use manual installation*, you will need to manually install the plug-in on the each host).
+.. Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically on each host or skip the automatic plug-in installation.
++
+NOTE: Backup and Recovery uses SSH to connect to each host when installing the plug-in automatically. Enable *Use manual installation* when any of the following apply:
+* One or more hosts do not have SSH access.
+* Any host already has the NetApp plug-in (including if only some cluster members do).
+* You prefer to install the plug-in on each host manually.
+
 .. (Optional) if the database host is clustered, enable the *Add all hosts in the cluster* option to discover all hosts in the cluster. 
 .. Choose whether to perform pre-installation checks or to skip them.
 . Select *Discover*.
