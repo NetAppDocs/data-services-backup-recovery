@@ -52,7 +52,7 @@ Backup and Recovery connects to each host via SSH to install the plug-in automat
 * You prefer to install the plug-in on each host manually.
 ====
 
-.. (Optional) if the database host is clustered, enable the *Add all hosts in the cluster* option to discover all hosts in the cluster. 
+.. If the database host is clustered, enable the *Add all hosts in the cluster* option to discover all hosts in the cluster. 
 .. Choose whether to perform pre-installation checks or to skip them.
 . Select *Discover*.
 +
