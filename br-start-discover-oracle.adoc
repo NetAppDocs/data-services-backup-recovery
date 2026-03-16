@@ -41,7 +41,7 @@ Add Oracle host information and let NetApp Backup and Recovery discover workload
 .. Follow the instructions in the dialog, enable the checkbox when complete, and select *Done*.
 . *Advanced settings*: Do the following:
 .. Enter the port and installation path to use for the NetApp plug-in. The plug-in enables communication between the Oracle Database host and NetApp Backup and Recovery.
-.. Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically on each host or skip the automatic plug-in installation for all hosts.
+.. Choose whether to allow NetApp Backup and Recovery to install the plug-in automatically on each host or skip the automatic plug-in installation for all hosts. Select *Show me how* for manual installation instructions.
 +
 [NOTE]
 ====
@@ -56,17 +56,14 @@ Backup and Recovery connects to each host via SSH to install the plug-in automat
 .. Choose whether to perform pre-installation checks or to skip them.
 . Select *Discover*.
 +
-TIP: This process might take a few minutes.
+TIP: Adding resources can take several minutes. To see the progress, select *Track progress* in the status dialog at the bottom of the Inventory page or select *Monitoring* from the left-side menu.
 
 .Result
-The Oracle Database workload is displayed in the list of workloads on the Inventory page.
+The Oracle Database workload is displayed in the list of workloads on the Inventory page.  
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
 . Select a workload tile (for example, Microsoft SQL Server).
 . From the Backup and Recovery menu, select *Dashboard*.
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
-
-
- 
+. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
