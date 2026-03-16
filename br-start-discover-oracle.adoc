@@ -37,9 +37,7 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 .. Enter a name for this credential.
 .. Enter the user name and password for the account.
 .. Select *Done*.
-. *Host registration*: Add a new Oracle Database host. Enter the host's FQDN or IP address, credentials, Console agent, and port number.
-+
-NOTE: If the database host is clustered, enter the Single Client Access Name (SCAN) in the *Host FQDN or IP address* field.
+. *Host registration*: Add a new Oracle Database host. In the *Host FQDN or IP address* field, enter the host's FQDN or IP address - for clustered databases you can enter the FQDN or IP of any node in the cluster. Then provide credentials, the Console agent, and the port number.
 
 . (Optional) If you choose credentials for a non-root user, do the following:
 .. For instructions on how to add the non-root user you have selected to the sudoers file on the Oracle Database host, select *Configure sudoers*.
