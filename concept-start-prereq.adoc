@@ -88,7 +88,7 @@ You need specific requirements to discover and protect your VMware workloads.
 |7.0U1 and above
 
 |VMware Tools
-|The latest version of VMware Tools is required to support the file and folder restore feature and VM-consistent backups.
+|VMWare Tools is required when using the file and folder restore feature and VM-consistent backups. To make sure the VMware Tools version matches your version of ESXi Server, refer to the https://packages.vmware.com/tools/versions[VMware version mapping information].
 
 |IP address types
 |IPv4, IPv6
