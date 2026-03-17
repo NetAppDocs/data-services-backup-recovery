@@ -53,7 +53,7 @@ Backup and Recovery connects to each host via SSH to install the plug-in automat
 ====
 
 .. If the database host is clustered, enable the *Add all hosts in the cluster* option to discover all hosts in the cluster. 
-.. Choose whether to perform pre-installation checks or to skip them.
+.. Choose whether to run pre-installation checks on each host before automatically installing the plug-in. If checks fail, automatic plug-in installation stops. To bypass the checks and install anyway, enable *Skip optional preinstall checks* (enabled automatically if you choose manual installation).
 . Select *Discover*.
 +
 TIP: Adding resources can take several minutes. To see the progress, select *Track progress* in the status dialog at the bottom of the Inventory page or select *Monitoring* from the left-side menu.
