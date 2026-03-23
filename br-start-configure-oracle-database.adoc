@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Configure your Oracle database in NetApp Backup and Recovery.  
 ---
 
-= Configure an Oracle Database in NetApp Backup and Recovery
+= Configure an Oracle database in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,14 +13,14 @@ summary: Configure your Oracle database in NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-You can optionally configure the settings of a newly added Oracle database to change authentication options and node settings (if this database is part of a cluster). NetApp Backup and Recovery can protect databases without any changes to these settings. However, if your environment changes after you discover the workload, you might need to configure the database.
+You can change authentication and node settings for a new standalone or clustered Oracle database. NetApp Backup and Recovery protects databases without these changes. If your environment changes after discovery, you might need to update the database settings.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Configure an Oracle database
 
-Change the authentication or node settings (if part of a cluster) for an Oracle database. 
+Change the configuration for an Oracle database. 
 
 .Steps
 
@@ -28,11 +28,9 @@ Change the authentication or node settings (if part of a cluster) for an Oracle 
 . Under *Workloads*, select the *Oracle* tile.
 . In the Oracle inventory, select the *Databases* menu.
 . In the list of databases, select *Configure database* (standalone database) or *Configure RAC database* (clustered database) for the database you want to configure.
-+
-The Configure database page appears.
-. *Configure database settings*: Configure authentication settings for the database.
-. *Configure RMAN catalog*: Configure RMAN catalog settings for the database.
-. *Configure nodes* (clustered databases only): Include or exclude nodes from the list of protected nodes in the cluster, or change the protection priority of nodes by moving the node up or down in the list using the arrow buttons. Include a node to protect it, and exclude a node if you want Backup and Recovery to ignore it. Backup and Recovery protects nodes with a higher priority first, only moving to a lower priority node if the higher priority node is unreachable or unhealthy.
+. *Configure database settings*: Configure authentication settings for the database. Choose *OS authentication* to authenticate with the operating system only, or *Database authentication* to authenticate with the database directly.
+. *Configure RMAN catalog*: Set RMAN connection settings for the database. Select *Target control file* to use the RMAN target control file, or *Catalog database* to use the RMAN recovery catalog. If you choose *Catalog database*, select the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
+. *Configure nodes* (clustered databases only): Add or remove nodes from protection, or change node priority using the arrow buttons. Nodes with higher priority are protected first. Lower priority nodes are protected only if higher priority nodes are unreachable or unhealthy.
 
 . When you are finished, select *Done*.
 
