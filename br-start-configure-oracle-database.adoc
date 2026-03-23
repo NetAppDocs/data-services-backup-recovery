@@ -34,7 +34,7 @@ Change the configuration for an Oracle database.
 * Select *Database authentication* to authenticate with the database directly.
 . *Configure RMAN catalog*: Set RMAN connection settings for the database. 
 +
-* Select *Target control file* to use the RMAN target control file.
+* Select *Target control file* to use the RMAN target control metadata file.
 * Select *Catalog database* to use the RMAN recovery catalog. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
 . *Configure nodes* (clustered databases only): Add or remove nodes from protection, or change node priority using the arrow buttons.
 +
