@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: br-start-configure-oracle-database.html
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, workloads, protect, Oracle, configure
+summary: Configure your Oracle database in NetApp Backup and Recovery.  
+---
+
+= Configure an Oracle Database in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can optionally configure the settings of a newly added Oracle database to change authentication options and node settings (if this database is part of a cluster). NetApp Backup and Recovery can protect databases without any changes to these settings. However, if your environment changes after you discover the workload, you might need to configure the database.
+
+*Required Console role*
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Configure an Oracle database
+
+Change the authentication or node settings (if part of a cluster) for an Oracle database. 
+
+.Steps
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Under *Workloads*, select the *Oracle* tile.
+. In the Oracle inventory, select the *Databases* menu.
+. In the list of databases, select *Configure database* (standalone database) or *Configure RAC database* (clustered database) for the database you want to configure.
++
+The Configure database page appears.
+. *Configure database settings*: Configure authentication settings for the database.
+. *Configure RMAN catalog*: Configure RMAN catalog settings for the database.
+. *Configure nodes* (clustered databases only): Include or exclude nodes from the list of protected nodes in the cluster, or change the protection priority of nodes by moving the node up or down in the list using the arrow buttons. Include a node to protect it, and exclude a node if you want Backup and Recovery to ignore it. Backup and Recovery protects nodes with a higher priority first, only moving to a lower priority node if the higher priority node is unreachable or unhealthy.
+
+. When you are finished, select *Done*.
+
+.Result
+Backup and Recovery connects to the database using the new settings.
+

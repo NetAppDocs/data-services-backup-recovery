@@ -209,6 +209,8 @@ sidebar:
               url: /br-use-oracle-protect-overview.html
             - title: Discover Oracle Database workloads
               url: /br-start-discover-oracle.html
+            - title: Configure an Oracle Database
+              url: /br-start-configure-oracle-database.html
             - title: Create and manage protection groups for Oracle Database workloads
               url: /br-use-oracle-protection-groups.html
             - title: Back up Oracle Database workloads 
