@@ -30,9 +30,9 @@ Change the configuration for an Oracle database.
 . In the list of databases, select *Configure database* (standalone database) or *Configure RAC database* (clustered database) for the database you want to configure.
 . *Configure database settings*: Configure authentication settings for the database.
 +
-* Select *OS authentication* to authenticate with the operating system only.
-* Select *Database authentication* to authenticate with the database directly.
-. *Configure RMAN catalog*: Choose where Oracle Recovery Manager (RMAN) catalog metadata is stored when cataloging is enabled in the protection policy or when you perform a manual catalog operation for a recovery point:
+* Select *OS authentication* to authenticate with the host operating system only. Backup and Recovery uses the host credentials that you specified during discovery.
+* Select *Database authentication* when the database requires credentials. Then choose existing credentials or add new ones, and pick the port to use for the connection.
+. *Configure RMAN catalog*: Choose where Oracle Recovery Manager (RMAN) catalog metadata is stored when automatic cataloging is enabled in the protection policy or when you perform a manual catalog operation for a recovery point:
 +
 * Select *Target control file* to store metadata in the RMAN target control file.
 * Select *Catalog database* to store metadata in the RMAN recovery catalog. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
