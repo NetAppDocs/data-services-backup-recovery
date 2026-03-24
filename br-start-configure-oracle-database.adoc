@@ -32,10 +32,11 @@ Change the configuration for an Oracle database.
 +
 * Select *OS authentication* to authenticate with the operating system only.
 * Select *Database authentication* to authenticate with the database directly.
-. *Configure RMAN catalog*: Set RMAN connection settings for the database. 
+. *Configure RMAN catalog*: Choose where Oracle Recovery Manager (RMAN) catalog metadata is stored:
 +
-* Select *Target control file* to use the RMAN target control metadata file.
-* Select *Catalog database* to use the RMAN recovery catalog. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
+* Select *Target control file* to store metadata in the RMAN target control file.
+* Select *Catalog database* to use the RMAN recovery catalog. The RMAN recovery catalog is a separate database schema used by RMAN to store metadata about backups and recovery operations for registered databases. It provides redundancy and long-term retention in case the target control file is lost or when historical data is needed. Enable this option to register datafiles and archivelog copies in the RMAN repository so that RMAN can track and manage those copies for reporting and recovery. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
+
 . *Configure nodes* (clustered databases only): Add or remove nodes from protection, or change node priority using the arrow buttons.
 +
 Nodes with higher priority are protected first. Lower priority nodes are protected only if higher priority nodes are unreachable or unhealthy.
