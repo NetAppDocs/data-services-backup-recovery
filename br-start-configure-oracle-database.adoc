@@ -32,7 +32,7 @@ Change the configuration for an Oracle database.
 +
 * Select *OS authentication* to authenticate with the host operating system only. Backup and Recovery uses the host credentials that you specified during discovery.
 * Select *Database authentication* when the database requires credentials. Then choose existing credentials or add new ones, and pick the port to use for the connection.
-. *Configure RMAN catalog*: Choose where backup and recovery operation metadata is stored when automatic cataloging is enabled in the protection policy or when you manually catalog a recovery point:
+. *Configure RMAN catalog*: Choose where metadata for backups and recovery operations is stored when automatic cataloging is enabled in the protection policy or when you manually catalog a recovery point:
 +
 * Select *Target control file* to store metadata in the database target control file.
 * Select *Catalog database* to store metadata in the RMAN recovery catalog. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
