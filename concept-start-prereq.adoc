@@ -217,7 +217,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
 
 |PowerShell
-|7.4.13 or greater
+|7.4.13 or later
 
 |If non-administrator users will be protecting Hyper-V VMs, ensure the users have the following permissions
 a|
