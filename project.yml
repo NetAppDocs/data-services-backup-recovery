@@ -219,7 +219,7 @@ sidebar:
               url: /br-use-oracle-clone.html
             - title: Restore Oracle Database workloads
               url: /br-use-oracle-restore.html
-            - title: Mount and unmount recovery points
+            - title: Mount, unmount, and catalog recovery points
               url: /br-use-oracle-mount-unmount.html
         - title: Protect Kubernetes workloads
           entries:

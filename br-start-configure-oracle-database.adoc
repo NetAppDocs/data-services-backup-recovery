@@ -32,7 +32,7 @@ Change the configuration for an Oracle database.
 +
 * Select *OS authentication* to authenticate with the operating system only.
 * Select *Database authentication* to authenticate with the database directly.
-. *Configure RMAN catalog*: Choose where Oracle Recovery Manager (RMAN) catalog metadata is stored:
+. *Configure RMAN catalog*: Choose where Oracle Recovery Manager (RMAN) catalog metadata is stored when cataloging is enabled in the protection policy or when you perform a manual catalog operation for a recovery point:
 +
 * Select *Target control file* to store metadata in the RMAN target control file.
 * Select *Catalog database* to store metadata in the RMAN recovery catalog. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.

@@ -216,10 +216,7 @@ Optionally, you can configure advanced settings in the policy. These settings ar
 . Enable any of the settings you want to view or change, and then select *Accept*.
 . Provide the following information:
 +
-* *RMAN catalog settings*: (Applies to Oracle Database workloads only) Catalog metadata in the Oracle Recovery Manager (RMAN) recovery catalog. The RMAN recovery catalog is a separate database schema used by RMAN to store metadata about backups and recovery operations for registered databases. It provides redundancy and long-term retention in case the target control file is lost or when historical data is needed. Enable the *Catalog backup with Oracle Recovery Manager (RMAN)* option to register datafiles and archivelog copies in the RMAN repository so that RMAN can track and manage those copies for reporting and recovery.
-+
-NOTE: If you enable this option and have selected *Target control file* for the *Configure RMAN catalog settings* section in the *Configure database* area, Backup and Recovery writes RMAN metadata to the target control file.
-
+* *RMAN catalog settings*: (Applies to Oracle Database workloads only) Enable the *Catalog backup with Oracle Recovery Manager (RMAN)* option to automatically catalog metadata for backup and recovery operations. The metadata is stored according to the *Configure RMAN catalog* settings you choose for the database (in the target control file by default).
 * *SnapMirror volume and snapshot format*: Choose from the following options:
 ** *Use custom name format for snapshot copy*: Choose a naming scheme for snapshots. If left blank, a timestamp is added to the end of each snapshot name.
 ** *Provide SnapMirror volume format*: Specify a prefix, a suffix, or both to modify the default SnapMirror volume name. By default, a SnapMirror volume inherits the source volume's name.
