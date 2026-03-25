@@ -20,7 +20,7 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 == Configure an Oracle database
 
-Change the configuration for an Oracle database. 
+Change the configuration for a standalone or clustered Oracle database.
 
 .Steps
 
@@ -28,7 +28,7 @@ Change the configuration for an Oracle database.
 . Under *Workloads*, select the *Oracle* tile.
 . In the Oracle inventory, select the *Databases* menu.
 . In the list of databases, select *Configure database* (standalone database) or *Configure RAC database* (clustered database) for the database you want to configure.
-. *Configure database settings*: Configure authentication settings for the database or cluster.
+. *Configure database settings*: Configure authentication settings for the standalone or clustered database.
 +
 * Select *OS authentication* to authenticate with the host operating system only. Backup and Recovery uses the host credentials that you specified during discovery.
 * Select *Database authentication* when the database requires credentials. Then choose existing credentials or add new ones, and pick the port to use for the connection.
