@@ -4,7 +4,6 @@ permalink: concept-start-prereq.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery
 summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 ---
-
 = NetApp Backup and Recovery prerequisites
 :hardbreaks:
 :nofooter:
@@ -87,6 +86,9 @@ You need specific requirements to discover and protect your VMware workloads.
 |VMware vCenter vSphere versions
 |7.0U1 and above
 
+|VMware Tools
+|VMWare Tools is required when using the file and folder restore feature and VM-consistent backups. To make sure the VMware Tools version matches your version of ESXi Server, refer to the https://packages.vmware.com/tools/versions[VMware version mapping information].
+
 |IP address types
 |IPv4, IPv6
 
@@ -107,7 +109,7 @@ a|
 | Type of port
 | Pre-configured port
 
-| VMware ESXi Server port | 443 (HTTPS), bidirectional. The Guest File Restore feature uses this port. 
+| VMware ESXi Server port | 443 (HTTPS), bidirectional. The file and folder restore feature uses this port. 
 
 | Storage cluster or storage VM port 
 a| 
@@ -117,9 +119,14 @@ a|
 
 *Role-based access control (RBAC) requirements for protecting VMware workloads*
 
-The vCenter administrator account must have the required vCenter privileges. 
+Your Console user account needs to have the Backup and Recovery super admin role to work with VMware workloads.
 
-For a list of vCenter privileges needed, see https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#rbac-privileges-required[SnapCenter Plug-in for VMware vSphere vCenter privileges needed^].
+For more information about Backup and Recovery roles, refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[Backup and Recovery roles in NetApp Console].
+
+
+// The vCenter administrator account must have the required vCenter privileges. 
+
+// For a list of vCenter privileges needed, see https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#rbac-privileges-required[SnapCenter Plug-in for VMware vSphere vCenter privileges needed^].
 
 == Requirements for protecting KVM workloads
 You need specific requirements to discover and protect KVM virtual machines.
@@ -161,7 +168,9 @@ Ensure your environment meets specific requirements to discover and protect Orac
 |Requirement |Supported
 
 |Deployment topology
-|Standalone (NFS, SAN, ASM SAN)
+a|
+* Standalone (NFS, SAN, ASM SAN)
+* RAC over ASM (VMDK on VMFS)
 
 |Oracle Database versions
 a|
@@ -218,7 +227,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
 
 |PowerShell
-|7.0U1 and above
+|7.4.13 or later
 
 |If non-administrator users will be protecting Hyper-V VMs, ensure the users have the following permissions
 a|
@@ -235,6 +244,8 @@ a|
 * ONTAP 9.13.1 or later
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 |===
+
+// snapcenter GH issue #230, 2026-MAR-24
 
 *Hardware requirements for the Hyper-V host*
 

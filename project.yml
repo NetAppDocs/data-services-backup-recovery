@@ -209,6 +209,8 @@ sidebar:
               url: /br-use-oracle-protect-overview.html
             - title: Discover Oracle Database workloads
               url: /br-start-discover-oracle.html
+            - title: Configure an Oracle database
+              url: /br-start-configure-oracle-database.html
             - title: Create and manage protection groups for Oracle Database workloads
               url: /br-use-oracle-protection-groups.html
             - title: Back up Oracle Database workloads 
@@ -217,7 +219,7 @@ sidebar:
               url: /br-use-oracle-clone.html
             - title: Restore Oracle Database workloads
               url: /br-use-oracle-restore.html
-            - title: Mount and unmount recovery points
+            - title: Mount, unmount, and catalog recovery points
               url: /br-use-oracle-mount-unmount.html
         - title: Protect Kubernetes workloads
           entries:
