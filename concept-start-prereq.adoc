@@ -169,7 +169,9 @@ Ensure your environment meets specific requirements to discover and protect Orac
 |Requirement |Supported
 
 |Deployment topology
-|Standalone (NFS, SAN, ASM SAN)
+a|
+* Standalone (NFS, SAN, ASM SAN)
+* RAC over ASM (VMDK on VMFS)
 
 |Oracle Database versions
 a|
