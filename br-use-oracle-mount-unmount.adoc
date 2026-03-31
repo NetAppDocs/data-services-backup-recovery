@@ -5,7 +5,7 @@ keywords: restore, vm, oracle, databases, snapshots, object storage, cloud stora
 summary: Protect your Oracle Database workloads with NetApp Backup and Recovery. 
 ---
 
-= Mount and unmount Oracle database recovery points with NetApp Backup and Recovery
+= Mount, unmount, and catalog Oracle Database recovery points with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Protect your Oracle Database workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-You might want to mount an Oracle Database recovery point if you need to access the database in a controlled state to perform recovery operations.
+You might want to mount an Oracle Database recovery point if you need to access the database in a controlled state to perform recovery operations. Manually catalog the recovery point when you need to store the backup and recovery operation metadata in the RMAN recovery catalog, and the option to automatically catalog the metadata is not enabled.
 
 == Mount an Oracle Database recovery point
 
@@ -54,3 +54,19 @@ Unmount the recovery point when you no longer need to view changes made to that 
 A list of recovery points for that database appears.
 . Choose a recovery point from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *Unmount*.
 . Confirm the action by selecting *Unmount*.
+
+== Catalog an Oracle database recovery point
+Manually catalog a recovery point when you need to preserve its backup and recovery operation metadata. The metadata is stored according to the *Configure RMAN catalog* settings you choose for the database (in the target control file by default). You only need to manually catalog if automatic cataloging is disabled in the associated protection policy.
+
+.Steps
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Select the Oracle tile.
+. In the Backup and Recovery menu, select *Inventory*.
+. For the Oracle workload in the list, select *View*.
+. Select the *Databases* menu.
+. Choose a database from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *View protection details*.
++
+A list of recovery points for that database appears.
+. Choose a recovery point from the list and select the Actions icon image:../media/icon-action.png[Actions option] > *Catalog*.
+. Confirm the action by selecting *Catalog*.
