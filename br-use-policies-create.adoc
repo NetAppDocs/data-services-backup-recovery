@@ -216,6 +216,10 @@ Optionally, you can configure advanced settings in the policy. These settings ar
 . Enable any of the settings you want to view or change, and then select *Accept*.
 . Provide the following information:
 +
+* *RMAN catalog settings*: (Applies to Oracle Database workloads only) Enable the *Catalog backup with Oracle Recovery Manager (RMAN)* option to automatically catalog metadata for Oracle database backup and recovery operations. The metadata is stored according to the *Configure RMAN catalog* settings you choose for the database (in the target control file by default). Refer to link:br-start-configure-oracle-database.html[Configure an Oracle database] to change these settings for a database.
+* *SnapMirror volume and snapshot format*: Choose from the following options:
+** *Use custom name format for snapshot copy*: Choose a naming scheme for snapshots. If left blank, a timestamp is added to the end of each snapshot name.
+** *Provide SnapMirror volume format*: Specify a prefix, a suffix, or both to modify the default SnapMirror volume name. By default, a SnapMirror volume inherits the source volume's name.
 * *Copy only backup*: (Applies to Microsoft SQL Server workloads only) Choose copy-only backup (a type of Microsoft SQL Server backup) if you need to back up your resources by using another backup application.  
 * *Availability group settings*: (Applies to Microsoft SQL Server workloads only) Select preferred backup replicas or specify a particular replica. This setting is useful if you have a SQL Server availability group and want to control which replica is used for backups.
 * *Maximum transfer rate*: To not set a limit on bandwidth usage, select *Unlimited*. If you want to limit the transfer rate, select *Limited* and select the network bandwidth between 1 and 1,000 Mbps allocated to upload backups to object storage. By default, ONTAP can use an unlimited amount of bandwidth to transfer the backup data from volumes in the system to object storage. If you notice backup traffic is affecting normal user workloads, consider decreasing the amount of network bandwidth that is used during the transfer. 
