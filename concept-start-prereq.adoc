@@ -4,7 +4,6 @@ permalink: concept-start-prereq.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery
 summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 ---
-
 = NetApp Backup and Recovery prerequisites
 :hardbreaks:
 :nofooter:
@@ -228,7 +227,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
 
 |PowerShell
-|7.0U1 and above
+|7.4.13 or later
 
 |If non-administrator users will be protecting Hyper-V VMs, ensure the users have the following permissions
 a|
@@ -245,6 +244,8 @@ a|
 * ONTAP 9.13.1 or later
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 |===
+
+// snapcenter GH issue #230, 2026-MAR-24
 
 *Hardware requirements for the Hyper-V host*
 
