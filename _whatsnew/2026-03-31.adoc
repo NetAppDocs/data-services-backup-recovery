@@ -3,10 +3,8 @@ In this release, Oracle Database workloads introduces the following enhancement:
 
 * *Clustered host support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems.
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+For details about discovering Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
 
-* *RMAN catalog support*: You can now configure Backup and Recovery to store metadata for protection operations in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost or when historical data is needed.
+* *RMAN catalog support*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost.
 
 For details about configuring Oracle Database workloads and enabling RMAN catalog support, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
-
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
