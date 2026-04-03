@@ -1,38 +1,40 @@
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhancement:
 
-* *NetApp MetroCluster active/active configurations supported*: - NetApp Backup and Recovery for Volumes workloads now supports MetroCluster in the Active/Active configuration. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+*NetApp MetroCluster active/active configurations supported*: - NetApp Backup and Recovery for Volumes workloads now supports MetroCluster in the Active/Active configuration. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
 
 For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect ONTAP Volumes workloads overview].
 
 === Kubernetes workloads enhancements
-In this release, Kubernetes workloads introduces the following enhancement:
+In this release, Kubernetes workloads introduces the following enhancements:
 
-* *Clustered host support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
-* *RMAN catalog support*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
+* *Disk-to-disk support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+* *Edit policies*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
+* *Google Cloud Platform storage buckets*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Kubernetes workloads overview].
 
 === Hyper-V workloads enhancements
-In this release, Hyper-V workloads introduces the following enhancement:
+In this release, Hyper-V workloads introduces the following enhancements:
 
-* *Clustered host support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
-* *RMAN catalog support*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
+* *Job throttling support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+* *SAN support*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Hyper-V workloads overview].
 
 === KVM workloads enhancements
-In this release, KVM workloads introduces the following enhancement:
+In this release, KVM workloads introduces the following enhancements:
 
-* *Clustered host support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
-* *RMAN catalog support*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
+* *Job throttling support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+* *Restore to alternate location*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect KVM workloads overview].
 
 === VMware workloads enhancements
-In this release, VMware workloads introduces the following enhancement:
+In this release, VMware workloads introduces the following enhancements:
 
-* *Clustered host support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
-* *RMAN catalog support*: You can now configure Backup and Recovery to store protection metadata in the RMAN recovery catalog, which provides redundancy and long-term retention in case the target control file is lost. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
+* *Job throttling support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+* *Tag-based protection*: Backup and Recovery now supports tag-based protection for VMs stored on NFS and VMFS volumes, enabling you to build protection groups from vCenter tags instead of from individual VMs or datastores. This provides scalable, dynamic protection; when you tag VMs and datastores in vCenter, Backup and Recovery automatically discovers and includes them in future backups without any manual group maintenance. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
+* *Mount/unmount support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect VMware workloads overview].
