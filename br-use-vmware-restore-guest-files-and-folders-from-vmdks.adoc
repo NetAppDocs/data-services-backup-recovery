@@ -14,7 +14,7 @@ summary: 'You can restore one or more files or folders from a VMDK on a Windows 
 
 
 [.lead]
-You can restore one or more files or folders from a VMDK on a Windows guest OS.
+You can restore one or more files or folders from a VMDK on a Windows or Linux guest OS.
 
 .Before you begin
 
@@ -22,13 +22,15 @@ You need to create credentials for the guest VM in NetApp Backup and Recovery be
 
 .About this task
 
-Guest file or folder restore performance depends upon two factors: the size of the files or folders being restored; and the number of files or folders being restored. Restoring a large number of small-sized files might take a longer time than anticipated compared to restoring a small number of large-sized files, if the data set to be restored is of same size.
+File or folder restore performance depends upon two factors: the size of the files or folders being restored; and the number of files or folders being restored. Restoring a large number of small-sized files might take a longer time than anticipated compared to restoring a small number of large-sized files, if the data set to be restored is of same size.
+
+You can restore to a remote VM (known as a cross-VM restore), but the backup source and restore destination operating systems must be the same.
 
 [IMPORTANT]
 Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
 
 [IMPORTANT]
-With the guest restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
+With the file and folder restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
 
 .Steps
 
@@ -43,10 +45,11 @@ With the guest restore feature, you can view and restore system and hidden files
 . Choose virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Select virtual machine credential_ page, if you haven't yet stored a credential for the guest VM, select *Add credentials* and do the following:
 .. *Credentials name*: Enter a name for the credentials.
-.. *Authentication mode*: Select *Windows*.
+.. *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
 .. *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
-.. *Domain and user name*: Enter the NetBIOS or domain FQDN and user name for the credentials.
-.. *Password*: Enter a password for the credential.
+.. *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
+.. *User name* (Linux only): Enter the user name for the credentials.
+.. *Password*: Enter a password for the credentials.
 .. Select *Add*.
 . Choose a virtual machine credential to use to authenticate with the guest VM.
 +
@@ -54,11 +57,15 @@ NetApp Backup and Recovery attaches the virtual disk to the VM and displays all 
 +
 Files and folders you have selected are listed in the right pane of the screen.
 . Select *Next*.
-. Enter the UNC share path to the guest where the selected files will be restored.
+. Enter the share path to the guest where the selected files will be restored:
 +
-* IPv4 address example: `\\10.60.136.65\c$`
-* IPv6 address example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
-
+* For Windows guests, enter the UNC share path:
+** IPv4 address example: `\\10.60.136.65\c$`
+** IPv6 address example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+* For Linux guests, enter the local filesystem path or remote guest address and path:
+** Local path example: /home/user/documents/file.txt
+** IPv4 remote path: 10.60.136.65:/home/user/restore/
+** IPv6 remote path: fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
 . Select *Restore*.

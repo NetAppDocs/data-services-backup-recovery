@@ -53,8 +53,6 @@ sidebar:
           url: /task-setup-ca-certificates.html        
         - title: Set up backup destinations before you use NetApp Backup and Recovery
           url: /br-start-setup.html
-        - title: Log in to NetApp Backup and Recovery
-          url: /br-start-login.html
         - title: Discover backup targets
           url: /br-start-discover-backup-targets.html
         - title: Switch to different NetApp Backup and Recovery workloads
@@ -65,6 +63,8 @@ sidebar:
           url: /br-rbac-setup.html
     - title: Use NetApp Backup and Recovery
       entries:
+        - title: Log in to NetApp Backup and Recovery
+          url: /br-start-login.html
         - title: View protection health in the Dashboard 
           url: /br-use-dashboard.html  
         - title: Create policies to govern backups and restores
