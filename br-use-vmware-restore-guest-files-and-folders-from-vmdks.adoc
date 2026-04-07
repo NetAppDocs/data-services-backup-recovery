@@ -53,7 +53,7 @@ With the file and folder restore feature, you can view and restore system and hi
 .. Select *Add*.
 . Choose a virtual machine credential to use to authenticate with the guest VM.
 +
-NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. It assigns a drive letter to every partition, including system reserved partitions.
+NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
 +
 Files and folders you have selected are listed in the right pane of the screen.
 . Select *Next*.
