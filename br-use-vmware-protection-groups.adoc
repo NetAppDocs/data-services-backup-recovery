@@ -17,9 +17,9 @@ Create protection groups to manage the backup and restore operations for a set o
 
 You can perform the following tasks related to protection groups:
 
-* Create a protection group.
+* Create a protection group by manually adding VMs to the group or by using VMware tags.
 * View protection details. 
-* Back up a protection group now. See link:br-use-vmware-backup.html[Back up VMware workloads now].
+* Back up a protection group now. Refer to link:br-use-vmware-backup.html[Back up VMware workloads now].
 * Suspend and resume a protection group's backup schedule.  
 * Delete a protection group.
 
@@ -53,12 +53,14 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 
 Use tag-based protection to simplify administration of protection groups in Backup and Recovery. 
 
-Here's how tag-based protection works:
+Here are the benefits of using tag-based protection:
 
-* When you add a tag to a VM or datastore in vCenter, that object is automatically included in the next backup for any protection group that references that tag.
+* When you add a tag to a VM or datastore in vCenter, that object is automatically included in the next backup for any Backup and Recovery protection group that references that tag.
 * When you remove a tag from a VM or datastore, that object is automatically excluded from subsequent backups for that tag-based protection group.
-* If a tag is deleted in vCenter, future backups skip that tag and typically report a warning.
+* If a tag is deleted in vCenter, future backups skip that tag and report a warning.
 * If a VM is migrated to a different datastore, it remains protected as long as it still has the tag that is part of a tag-based protection group.
+
+IMPORTANT: Mixing resource types (for example, combining tags with individual VMs or datastores in the same protection group) is not supported.
 
 .Before you begin
 
@@ -92,18 +94,8 @@ NOTE: Tag membership is resolved from vCenter at backup time. Any changes you ma
 .. Select an existing backup policy (for example, *Daily-Backup*).
 .. Configure the backup schedule, retention, and backup tier (local and/or cloud) as required.
 
-. In the *Review* step:
-.. Confirm that the resource type for the protection group is *Tags*.
-.. Verify the set of tags that will be protected.
-.. If you are editing an existing tag-based protection group, review:
-+
-* *Existing Tags*: Unchanged tags
-* *Added Tags*: Newly added tags
-* *Removed Tags*: Tags that will be removed from the group
-+
-IMPORTANT: Mixing resource types (for example, combining tags with individual VMs or datastores in the same protection group) is not supported.
-
-. Click *Create* or *Save* to finish.
+. Review the tag settings in the *Review* step.
+. Select *Create* to create the protection group.
 +
 The new tag-based protection group appears in the Protection Groups list, indicated by a tag icon.
 
