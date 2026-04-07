@@ -1,14 +1,14 @@
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhancement:
 
-*NetApp MetroCluster active/active configurations supported*: - NetApp Backup and Recovery for Volumes workloads now supports MetroCluster in the Active/Active configuration. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+*NetApp MetroCluster active/active configurations supported*: NetApp Backup and Recovery for Volumes workloads now supports MetroCluster in the active-active configuration. 
 
 For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].
 
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following protection policy enhancements:
 
-* *Edit policies*: You can now edit Kubernetes workload protection policies. 
+* *Edit protection policies*: You can now edit Kubernetes workload protection policies. 
 * *Disk-to-disk support*: You can now configure Kubernetes protection policies with a disk-to-disk backup architecture. 
 * *Google Cloud Platform storage buckets*: You can now configure Kubernetes protection policies to back up to Google Cloud Platform storage buckets. 
 
@@ -36,11 +36,10 @@ For details about protecting KVM workloads, refer to https://docs.netapp.com/us-
 In this release, VMware workloads introduces the following enhancements:
 
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
-* *Tag-based protection*: Backup and Recovery now supports tag-based protection for VMs stored on NFS and VMFS volumes, enabling you to build protection groups from vCenter tags instead of from individual VMs or datastores. This provides scalable, dynamic protection; when you tag VMs and datastores in vCenter, Backup and Recovery automatically discovers and includes them in future backups without any manual group maintenance. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-configure-oracle-database.html[Configure an Oracle database].
-* *Mount/unmount support*: You can now discover and protect Oracle Real Application Clusters (RAC) databases that use Oracle Automatic Storage Management (ASM) and are deployed using VMDK on VMFS file systems. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-discover-oracle.html[Discover Oracle Database workloads].
+* *Tag-based protection*: Backup and Recovery now supports tag-based protection for VMs stored on NFS and VMFS volumes, enabling you to build protection groups from vCenter tags instead of from individual VMs or datastores. This provides scalable, dynamic protection; when you tag VMs and datastores in vCenter, Backup and Recovery automatically discovers and includes them in future backups without any manual group maintenance. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protection-groups.html[Create and manage protection groups].
 * *Expanded ONTAP hardware platform support*: You can now protect VMs stored on ONTAP ASA r2 SAN arrays.
 * *Restore to alternate location*: You can now restore VMware VMs to an alternate destination. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore.html[Restore VMware workloads].
-* *Restore files to Linux VMs*: You can now restore VM files and folders to Linux VMs. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore-guest-files-and-folders-overview.html[Requirements and limitations when restoring files and folders]
+* *Restore files to Linux VMs*: You can now restore VM files and folders to Linux VMs. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore-guest-files-and-folders-from-vmdks.html[Restore files and folders].
 * *Proxy VM* - 
 * *Recursive search* - 
 
