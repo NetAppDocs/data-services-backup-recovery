@@ -60,12 +60,12 @@ Files and folders you have selected are listed in the right pane of the screen.
 . Enter the share path to the guest where the selected files will be restored:
 +
 * For Windows guests, enter the UNC share path:
-** IPv4 address example: `\\10.60.136.65\c$`
-** IPv6 address example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+** IPv4 path example: `\\10.60.136.65\c$`
+** IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
 * For Linux guests, enter the local filesystem path or remote guest address and path:
 ** Local path example: `/home/user/documents/file.txt`
-** IPv4 remote path: `10.60.136.65:/home/user/restore/`
-** IPv6 remote path: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
+** IPv4 path example: `10.60.136.65:/home/user/restore/`
+** IPv6 path example: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
 
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
