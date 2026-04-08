@@ -38,23 +38,20 @@ Restore the selected files or folders to a specified location.
 
 == Prerequisites for restoring guest files and folders
 
-Review all requirements before restoring files or folders from a VMDK on a Windows guest OS.
+Review all requirements before restoring files or folders from a VMDK.
 
 * VMware tools must be installed and running.
 +
 NetApp Backup and Recovery uses information from VMware tools to establish a connection to the VMware guest OS.
 
 * You must know the backup snapshot and VMDK to restore from.
-+
-NetApp Backup and Recovery does not support searching of files or folders to restore. Before you begin you must know where the files or folders are in the snapshot and the corresponding VMDK.
-
 * Virtual disk to be attached must be in a NetApp Backup and Recovery backup.
 +
 The virtual disk that contains the file or folder you want to restore must be in a VM backup that was performed using NetApp Backup and Recovery.
 
-//* To use a proxy VM, the proxy VM must be configured.
-//+
-//If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
+* To use a proxy VM, the proxy VM must be configured.
++
+If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
 
 * For files with non-English-alphabet names, you must restore them in a directory, not as a single file.
 +

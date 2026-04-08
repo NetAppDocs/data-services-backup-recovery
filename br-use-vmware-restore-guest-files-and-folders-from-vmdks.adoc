@@ -32,6 +32,9 @@ Only one attach or restore operation can run at the same time on a VM. You canno
 [IMPORTANT]
 With the file and folder restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
 
+== Restore guest files and folders from a VMDK to the original VM
+Restore guest files and folders from a virtual disk to the original (source) virtual machine.
+
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -42,22 +45,44 @@ With the file and folder restore feature, you can view and restore system and hi
 . Select a snapshot from which to restore and then select *Next*.
 . Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
 . Select *Next*.
-. Choose virtual disk from the list to attach to the VM and then select *Next*.
-. On the _Select virtual machine credential_ page, if you haven't yet stored a credential for the guest VM, select *Add credentials* and do the following:
-.. *Credentials name*: Enter a name for the credentials.
-.. *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
-.. *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
-.. *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
-.. *User name* (Linux only): Enter the user name for the credentials.
-.. *Password*: Enter a password for the credentials.
-.. Select *Add*.
-. Choose a virtual machine credential to use to authenticate with the guest VM.
+. Choose a virtual disk from the list to attach to the VM and then select *Next*.
+. On the _Guest virtual machine details_ page, do the following:
+[role="tabbed-block"]
+====
+.Restore to the original VM
+
+--
+.. In the "Guest virtual machine details" section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
+--
+
+.Restore to a different VM
+
+--
+.. In the "Guest virtual machine details" section:
+... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
+... Choose the source vCenter, datacenter, and datastore from the lists.
+... Select a VM to restore to. The selected VM appears in the right pane.
+--
+====
+
+.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials* and enter the credential information:
+... *Credentials name*: Enter a name for the credentials.
+... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
+... *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
+... *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
+... *User name* (Linux only): Enter the user name for the credentials.
+... *Password*: Enter a password for the credentials.
+... Select *Add*.
+.. Choose a virtual machine credential to use to authenticate with the guest VM.
 +
 NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
 +
-Files and folders you have selected are listed in the right pane of the screen.
+You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
++
+Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
-. Enter the share path to the guest where the selected files will be restored:
+
+. In the "Restore to path" section, enter the path to the guest where the selected files will be restored:
 +
 * For Windows guests, enter the UNC share path:
 ** IPv4 path example: `\\10.60.136.65\c$`
@@ -69,6 +94,58 @@ Files and folders you have selected are listed in the right pane of the screen.
 
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
+. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the VMDK and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
+. Select *Restore*.
++
+You can view the restore progress on the Job Monitoring page.
+
+== Restore guest files and folders from a VMDK to a different VM
+Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders from a virtual disk to another virtual machine.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select the *Virtual machines* menu.
+. Choose a virtual machine from the list that contains files that you want to restore.
+. Select the Actions icon image:../media/icon-action.png[Actions option] for that VM.
+. Select *Restore files and folders*.
+. Select a snapshot from which to restore and then select *Next*.
+. Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
+. Select *Next*.
+. Choose a virtual disk from the list to attach to the VM and then select *Next*.
+. On the _Guest virtual machine details_ page, do the following:
+ 
+.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials* and enter the credential information:
+... *Credentials name*: Enter a name for the credentials.
+... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
+... *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
+... *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
+... *User name* (Linux only): Enter the user name for the credentials.
+... *Password*: Enter a password for the credentials.
+... Select *Add*.
+.. Choose a virtual machine credential to use to authenticate with the guest VM.
+.. Select *Next*.
++
+NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
++
+You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
++
+Files and folders you have selected to restore are listed in the right pane of the screen.
+. Select *Next*.
+
+. In the "Restore to path" section, enter the path to the guest where the selected files will be restored:
++
+* For Windows guests, enter the UNC share path:
+** IPv4 path example: `\\10.60.136.65\c$`
+** IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+* For Linux guests, enter the local filesystem path or remote guest address and path:
+** Local path example: `/home/user/documents/file.txt`
+** IPv4 path example: `10.60.136.65:/home/user/restore/`
+** IPv6 path example: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
+
++
+If there are existing files with the same name, you can choose to overwrite or skip them.
+. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the VMDK and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
 . Select *Restore*.
 +
 You can view the restore progress on the Job Monitoring page.
