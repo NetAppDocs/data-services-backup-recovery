@@ -47,6 +47,7 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 . Select *Next*.
 . Choose a virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
++
 [role="tabbed-block"]
 ====
 .Restore to the original VM
