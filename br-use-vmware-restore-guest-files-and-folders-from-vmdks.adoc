@@ -32,8 +32,6 @@ Only one attach or restore operation can run at the same time on a VM. You canno
 [IMPORTANT]
 With the file and folder restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
 
-.Steps
-
 [role="tabbed-block"]
 ====
 
@@ -42,6 +40,7 @@ With the file and folder restore feature, you can view and restore system and hi
 --
 
 Restore guest files and folders from a virtual disk to the original (source) virtual machine.
+
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -96,6 +95,7 @@ You can view the restore progress on the Job Monitoring page.
 --
 
 Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders from a virtual disk to another virtual machine.
+
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
