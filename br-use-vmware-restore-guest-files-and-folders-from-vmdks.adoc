@@ -45,8 +45,7 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select the *Virtual machines* menu.
-. Choose a virtual machine from the list that contains files that you want to restore.
-. Select the Actions icon image:../media/icon-action.png[Actions option] for that VM.
+. In the list of virtual machines, select the Actions icon image:../media/icon-action.png[Actions option] for a VM that contains files that you want to restore.
 . Select *Restore files and folders*.
 . Select a snapshot from which to restore and then select *Next*.
 . Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
@@ -54,14 +53,7 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 . Choose a virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
 .. In the "Guest virtual machine details" section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
-.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials* and enter the credential information:
-... *Credentials name*: Enter a name for the credentials.
-... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
-... *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
-... *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
-... *User name* (Linux only): Enter the user name for the credentials.
-... *Password*: Enter a password for the credentials.
-... Select *Add*.
+.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
 .. Choose a virtual machine credential to use to authenticate with the guest VM.
 .. Select *Next*.
 +
@@ -73,7 +65,6 @@ You can use the magnifying glass (search) icon near the file browser pane to sea
 +
 Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
-
 . In the "Restore to path" section, enter the path to the guest where the selected files will be restored:
 +
 * For Windows guests, enter the UNC share path:
@@ -103,8 +94,7 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select the *Virtual machines* menu.
-. Choose a virtual machine from the list that contains files that you want to restore.
-. Select the Actions icon image:../media/icon-action.png[Actions option] for that VM.
+. In the list of virtual machines, select the Actions icon image:../media/icon-action.png[Actions option] for a VM that contains files that you want to restore.
 . Select *Restore files and folders*.
 . Select a snapshot from which to restore and then select *Next*.
 . Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
@@ -115,14 +105,7 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 ... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
 ... Choose the source vCenter, datacenter, and datastore from the lists.
 ... Select a VM to restore to. The selected VM appears in the right pane. 
-.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials* and enter the credential information:
-... *Credentials name*: Enter a name for the credentials.
-... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
-... *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
-... *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
-... *User name* (Linux only): Enter the user name for the credentials.
-... *Password*: Enter a password for the credentials.
-... Select *Add*.
+.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
 .. Choose a virtual machine credential to use to authenticate with the guest VM.
 .. Select *Next*.
 +
@@ -134,7 +117,6 @@ You can use the magnifying glass (search) icon near the file browser pane to sea
 +
 Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
-
 . In the "Restore to path" section, enter the path to the guest where the selected files will be restored:
 +
 * For Windows guests, enter the UNC share path:
@@ -156,5 +138,14 @@ You can view the restore progress on the Job Monitoring page.
 
 ====
 
+////
+... *Credentials name*: Enter a name for the credentials.
+... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
+... *Agents*: Select a Console agent from the list that will handle communication between NetApp Backup and Recovery and this host.
+... *Domain and user name* (Windows only): Enter the NetBIOS or domain FQDN and user name for the credentials.
+... *User name* (Linux only): Enter the user name for the credentials.
+... *Password*: Enter a password for the credentials.
+... Select *Add*.
+////
 
 
