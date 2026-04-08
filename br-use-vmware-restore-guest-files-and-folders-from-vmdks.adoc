@@ -52,8 +52,8 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 . Select *Next*.
 . Choose a virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
-.. In the "Guest virtual machine details" section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
-.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
+.. In the *Guest virtual machine details* section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
+.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
 .. Choose a virtual machine credential to use to authenticate with the guest VM.
 .. Select *Next*.
 +
@@ -101,11 +101,11 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 . Select *Next*.
 . Choose a virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
-.. In the "Guest virtual machine details" section:
+.. In the *Guest virtual machine details* section:
 ... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
 ... Choose the source vCenter, datacenter, and datastore from the lists.
 ... Select a VM to restore to. The selected VM appears in the right pane. 
-.. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
+.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
 .. Choose a virtual machine credential to use to authenticate with the guest VM.
 .. Select *Next*.
 +
