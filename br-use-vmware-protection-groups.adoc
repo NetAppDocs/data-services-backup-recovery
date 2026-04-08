@@ -19,7 +19,7 @@ You can perform the following tasks related to protection groups:
 
 * Create a protection group.
 * View protection details. 
-* Back up a protection group now. See link:br-use-vmware-backup.html[Back up VMware workloads now].
+* Back up a protection group now. Refer to link:br-use-vmware-backup.html[Back up VMware workloads now].
 * Suspend and resume a protection group's backup schedule.  
 * Delete a protection group.
 
