@@ -69,6 +69,8 @@ NetApp Backup and Recovery attaches the virtual disk to the VM and displays all 
 +
 You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
 +
+. Select files or folders to restore.
++
 Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
 
@@ -127,6 +129,8 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
 +
 You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
++
+. Select files or folders to restore.
 +
 Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
