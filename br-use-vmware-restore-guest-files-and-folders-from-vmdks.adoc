@@ -63,6 +63,7 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 ... *Password*: Enter a password for the credentials.
 ... Select *Add*.
 .. Choose a virtual machine credential to use to authenticate with the guest VM.
+.. Select *Next*.
 +
 NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
 +
