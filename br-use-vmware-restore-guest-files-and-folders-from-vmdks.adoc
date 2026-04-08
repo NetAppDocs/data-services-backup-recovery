@@ -14,7 +14,7 @@ summary: 'You can restore one or more files or folders from a VMDK on a Windows 
 
 
 [.lead]
-You can restore one or more files or folders from a VMDK on a Windows or Linux guest OS.
+You can restore one or more files or folders from a VMDK to the original guest or to a different guest on the same VMware vCenter server. Windows and Linux guests are supported. 
 
 .Before you begin
 
@@ -32,9 +32,16 @@ Only one attach or restore operation can run at the same time on a VM. You canno
 [IMPORTANT]
 With the file and folder restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
 
-== Restore guest files and folders from a VMDK to the original VM
-Restore guest files and folders from a virtual disk to the original (source) virtual machine.
+.Steps
 
+[role="tabbed-block"]
+====
+
+.Restore files and folders to the original VM
+
+--
+
+Restore guest files and folders from a virtual disk to the original (source) virtual machine.
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -47,25 +54,7 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 . Select *Next*.
 . Choose a virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
-+
-[role="tabbed-block"]
-====
-.Restore to the original VM
-
---
 .. In the "Guest virtual machine details" section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
---
-
-.Restore to a different VM
-
---
-.. In the "Guest virtual machine details" section:
-... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
-... Choose the source vCenter, datacenter, and datastore from the lists.
-... Select a VM to restore to. The selected VM appears in the right pane.
---
-====
-
 .. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials* and enter the credential information:
 ... *Credentials name*: Enter a name for the credentials.
 ... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
@@ -100,9 +89,13 @@ If there are existing files with the same name, you can choose to overwrite or s
 +
 You can view the restore progress on the Job Monitoring page.
 
-== Restore guest files and folders from a VMDK to a different VM
-Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders from a virtual disk to another virtual machine.
+--
 
+.Restore files and folders to a different VM
+
+--
+
+Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders from a virtual disk to another virtual machine.
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -115,7 +108,10 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 . Select *Next*.
 . Choose a virtual disk from the list to attach to the VM and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
- 
+.. In the "Guest virtual machine details" section:
+... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
+... Choose the source vCenter, datacenter, and datastore from the lists.
+... Select a VM to restore to. The selected VM appears in the right pane. 
 .. In the "Guest virtual machine credentials" section, if you haven't yet stored a credential for the guest VM, select *Add credentials* and enter the credential information:
 ... *Credentials name*: Enter a name for the credentials.
 ... *Authentication mode*: Select *Windows* for Windows guest credentials, or *Linux* for Linux guest credentials.
@@ -150,3 +146,10 @@ If there are existing files with the same name, you can choose to overwrite or s
 . Select *Restore*.
 +
 You can view the restore progress on the Job Monitoring page.
+
+--
+
+====
+
+
+
