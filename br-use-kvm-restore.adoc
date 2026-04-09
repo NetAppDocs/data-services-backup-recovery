@@ -99,8 +99,6 @@ A list of possible restore points appears.
 
 .. In the *Post-restore options* section, enable the *Restart virtual machine* option to restart the VM after the restore operation completes.
 
-.. Select *Restore*.
-
 --
 
 .Restore to alternate location
