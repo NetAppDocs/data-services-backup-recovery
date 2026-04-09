@@ -84,11 +84,10 @@ A list of possible restore points appears.
 . Select a snapshot source location.
 . Select *Next* to continue.
 . Choose the restore destination and settings:
-
-
++
 [discrete]
 ===== Destination selection
-
++
 [role="tabbed-block"]
 ====
 
