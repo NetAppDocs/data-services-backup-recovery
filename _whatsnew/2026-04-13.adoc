@@ -20,8 +20,7 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 In this release, Hyper-V workloads introduces the following enhancements:
 
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
-* *SAN backup support (preview)*: Backup and Recovery now supports protecting Hyper-V VMs stored on SAN storage.
-//* *In-place restore for primary and secondary storage (preview)*: You can now perform in-place restores.
+* *SAN support (preview)*: Backup and Recovery now supports protecting Hyper-V VMs stored on SAN storage.
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
 

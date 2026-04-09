@@ -84,39 +84,19 @@ Backup and Recovery super admin or Backup and Recovery restore admin role. https
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . From the NetApp Backup and Recovery menu, select *Restore*.
-//+
-//image:screen-vm-restore-dropdown.png[A screenshot showing the Restore page.]
+
 . From the drop-down list to the right of the name search field, select *KVM*. 
 
 . Enter the name of the VM you want to restore or filter for VM host or storage pool where the resource that you want to restore is located. 
 +
 A list of snapshots appears that match your search criteria.
-//+
-//image:screen-vm-restore-snapshot.png[A screenshot showing the list of snapshots to restore.]    
 
 . Select the *Restore* button for the snapshot that you want to restore. 
 +
 A list of possible restore points appears.
-//+
-//image:screen-vm-restore-location.png[A screenshot showing the Restore options page.]
 
 . Select the restore point that you want to use.
 . Select a snapshot source location.
-
-
-
-//* Secondary storage: Restores the snapshot to a secondary storage location. 
-//+
-//If you choose secondary storage, enter the source and destination location information and also the source and secondary location for the logs. 
-//* Object storage: Restores the snapshot to an object storage location.  
-//+
-//If you choose object storage, check whether you want to scan the snapshot again before restoring. 
-//+
-//image:screen-vm-restore-location-objectstore.png[A screenshot showing the Restore options page for object storage.]
-//+
-//If you chose object storage, you can choose an option to balance cost and speed of restoration: 
-//+
-//image:screen-vm-restore-location-objectstore-cost.png[A screenshot showing the Restore options for object storage.]
 
 . Select *Next* to continue.
 . Choose the restore destination and settings:
@@ -134,31 +114,12 @@ A list of possible restore points appears.
 
 --
 
-//In the Restore Destination details page, enter the following information:
 [start=2]
-. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
+.. Select the *Original location* pane.
 
+.. In the *Post-restore options* section, enable the *Restart virtual machine* option to restart the VM after the restore operation completes.
 
-. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation.(Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails.(Applies only to object storage to an alternate location.)
-
-. *Post-restore options*:  
-** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied.(Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//+
-//image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
-
-. *Notification* section: 
-** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-. Select *Restore*.
+.. Select *Restore*.
 
 
 --
@@ -166,7 +127,25 @@ A list of possible restore points appears.
 .Restore to alternate location
 
 --
-Not available for KVM workloads. 
+.. Select the *Alternate location* pane.
+.. In the *Cloudstack settings*: section, enter the following information:
++
+* *Zone*: Choose a destination CloudStack zone from the list. 
+* *Pod*: Choose a destination pod within the selected zone from the list.
+* *Cluster*: Choose a destination cluster within the selected pod from the list.
+* *Host*: Choose a destination host in the cluster from the list.
+* *Storage pool*: Choose a destination storage pool from the list (the destination volume should be located here).
+* *Network*: Select the network to which the restored VM will be connected.
+* *VM name*: Enter a name for the VM to be restored.
+* *Display Name*: Enter the name that should be displayed for this VM in Backup and Recovery.
+* *Storage Pool Path*: Enter the storage pool path where the VM volumes will be stored.
+
+.. Choose a service offering that defines a level of resource allocation from the *Select service offering* list.
+.. Enable the *Forced* option to import the restored VM even if one or more of the VM's NIC MAC addresses are already present. If a MAC address already exists, a new MAC address is generated for that NIC.
+.. In the *Post restore options* section, consider the following options:
++
+* *Restart virtual machine*: Enable this option to boot the new virtual machine after it is restored.
+.. Select *Restore*.
 
 ////
 . If you chose to restore to an alternate location, enter the following:
