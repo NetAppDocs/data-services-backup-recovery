@@ -14,7 +14,7 @@ In this release, Kubernetes workloads introduces the following protection policy
 
 For more information about protection policies, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-policies-create.html[Create and manage protection policies in NetApp Backup and Recovery].
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
 
 === Hyper-V workloads enhancements
 In this release, Hyper-V workloads introduces the following enhancements:
@@ -22,7 +22,7 @@ In this release, Hyper-V workloads introduces the following enhancements:
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
 * *SAN support (preview)*: Backup and Recovery now supports protecting Hyper-V VMs stored on SAN storage.
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
 
 === KVM workloads enhancements
 In this release, KVM workloads introduces the following enhancements:
