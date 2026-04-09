@@ -34,7 +34,7 @@ You can restore virtual machines from different starting locations:
 You can restore data to these points: 
 
 * Restore to the original location
-//* Restore to an alternate location
+* Restore to an alternate location
 
 .Restore from object storage considerations
 
@@ -50,32 +50,17 @@ When you restore virtual machines, the following occurs:
 * When you restore a workload from a local backup file, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
 
 * When you restore from a replicated VM, you can restore it to the original system or to an on-premises ONTAP system.
-//+
-//image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow to restore a resource"]
 
 * When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
 
-
-//== When to use Quick Restore 
-
-//When you restore a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a resource as soon as possible. A quick restore restores the metadata from the backup file instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
-
-//NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
-
-
-//== Restore methods
-
-//You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
-
-From the Restore page (also known as Search & Restore), you can restore a VM, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
+From the Restore page, you can restore a VM, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
 
 //* *From the Inventory page (also known as Browse & Restore)*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
 
-//Inventory is browse and restore. Restore page is Search and restore. 
 
-== Restore VMs from the Restore option (Search & Restore)
+== Restore KVM virtual machines
 
-Restore KVM virtual machines using the Restore option. You can search for the snapshot by its name or by using filters. 
+Restore KVM virtual machines using the Restore menu. You can search for the snapshot by its name or by using filters. 
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -97,7 +82,6 @@ A list of possible restore points appears.
 
 . Select the restore point that you want to use.
 . Select a snapshot source location.
-
 . Select *Next* to continue.
 . Choose the restore destination and settings:
 
@@ -114,13 +98,11 @@ A list of possible restore points appears.
 
 --
 
-[start=2]
 .. Select the *Original location* pane.
 
 .. In the *Post-restore options* section, enable the *Restart virtual machine* option to restart the VM after the restore operation completes.
 
 .. Select *Restore*.
-
 
 --
 
@@ -140,7 +122,7 @@ A list of possible restore points appears.
 * *Display Name*: Enter the name that should be displayed for this VM in Backup and Recovery.
 * *Storage Pool Path*: Enter the storage pool path where the VM volumes will be stored.
 
-.. Choose a service offering that defines a level of resource allocation from the *Select service offering* list.
+.. Choose a service offering that defines your preferred level of resource allocation from the *Select service offering* list.
 .. Enable the *Forced* option to import the restored VM even if one or more of the VM's NIC MAC addresses are already present. If a MAC address already exists, a new MAC address is generated for that NIC.
 .. In the *Post restore options* section, consider the following options:
 +

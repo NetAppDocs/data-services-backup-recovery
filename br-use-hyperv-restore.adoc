@@ -44,17 +44,6 @@ When you restore workloads, the following occurs:
 * When you restore a workload from a local backup file, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
 
 * When you restore from a replicated workload, you can restore the workload to the original system or to an on-premises ONTAP system.
-//+
-//image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow to restore a resource"]
-
-//* When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
-
-
-//== When to use Quick Restore 
-
-//When you restore a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a resource as soon as possible. A quick restore restores the metadata from the backup file instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
-
-//NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
 
 
 //== Restore methods
@@ -103,6 +92,8 @@ A list of possible restore points appears.
 .Restore to original location
 
 --
+
+.. Select the *Original location* pane.
 When you restore to the original location, you can view the destination settings by expanding the *Destination settings* section, but you cannot change them.
 
 .. In the *Post-restore options* section, consider the following option:
@@ -117,6 +108,7 @@ When you restore to the original location, you can view the destination settings
 
 --
 
+.. Select the *Alternate location* pane.
 .. In the *Destination settings*: section, enter the following information:
 +
 * *Hyper-V FQDN or IP address*: Enter the fully qualified domain name or IP address of the destination Hyper-V host.
