@@ -81,11 +81,11 @@ NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage and a cascade from primary disk storage to secondary disk storage and then to cloud object storage. 
 
-** *Disk to disk*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method ensures that your data is continuously updated and available across multiple locations, providing robust protection against data loss. 
+** *Disk to disk*: Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method ensures that your data is continuously updated and available across multiple locations, providing robust protection against data loss. 
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMwares on the primary storage system and then replicates the data from the primary disk storage system to the secondary disk storage system.
 
-** *Disk-to-object store*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system, such as AWS S3, Azure Blob Storage or StorageGRID. This is typically achieved using SnapMirror Cloud, which provides incremental forever backups by transferring only changed data blocks after the initial baseline transfer. This can be a cloud hyperscaler object store or a private object store -- StorageGRID. This method is ideal for long-term data retention and archiving, offering a cost-effective and scalable solution for data protection.
+** *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system, such as AWS S3, Azure Blob Storage or StorageGRID. This is typically achieved using SnapMirror Cloud, which provides incremental forever backups by transferring only changed data blocks after the initial baseline transfer. This can be a cloud hyperscaler object store or a private object store -- StorageGRID. This method is ideal for long-term data retention and archiving, offering a cost-effective and scalable solution for data protection.
 +
 For VMWare workloads, this configures the local snapshot on the datastores or VMs on the primary and replication from primary disk storage to cloud object storage.
 
@@ -138,7 +138,44 @@ Provide information for the replication to secondary storage. Schedule informati
 * *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads. 
 //** *Schedule*: Data is transferred to the secondary storage system at a later time as defined by the schedule. 
 
+==== Create a policy for AWS object storage
 
+Enter information in these fields: 
+
+* *Provider*: Select *AWS*. 
+* *AWS account*: Select the AWS account. 
+* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment. 
+
+==== Create a policy for Microsoft Azure object storage 
+
+Enter information in these fields: 
+
+* *Provider*: Select *Azure*. 
+* *Azure subscription*: Select the Azure subscription from those discovered.
+* *Azure resource group*: Select the Azure resource group from those discovered.
+* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment.
+
+==== Create a policy for GCP object storage
+Enter information in these fields: 
+
+* *Provider*: Select *GCP*. 
+* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
+* *GCP project*: Select the GCP project to use.
+* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
+
+==== Create a policy for StorageGRID object storage
+Enter information in these fields: 
+
+* *Provider*: Select *StorageGRID*. 
+* *StorageGRID credentials*: Select the StorageGRID credentials from those discovered. These credentials are used to access the StorageGRID object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment.  
+
+==== Create a policy for ONTAP S3 object storage
+Enter information in these fields: 
+
+* *Provider*: Select *ONTAP S3*. 
+* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment.  
 
 === Create a policy for object storage settings
 
@@ -157,12 +194,8 @@ Enter information in these fields:
 * *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
 * *Retention copies*: Enter the number of snapshots to keep.
 * *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
-
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
-
 * *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-
-//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
 
 ==== Create a policy for Microsoft Azure object storage 
 
@@ -177,12 +210,7 @@ Enter information in these fields:
 * *Retention copies*: Enter the number of snapshots to keep.
 * *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage, select the tier option and the number of days to archive. 
-
-
 * *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-
-//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate kjhkjhthe number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
-
 
 ==== Create a policy for StorageGRID object storage
 Enter information in these fields: 
@@ -193,17 +221,36 @@ Enter information in these fields:
 * *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups. 
 * *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
 * *Retention copies*: Enter the number of snapshots to keep for each frequency.
-
 * *Transfer schedule for object storage*: (Not available for Kubernetes workloads) Choose the ONTAP transfer schedule to back up data to object storage. 
-
 * *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-//+
-//TIP: Enabling scans will incur extra charges, depending on the cloud provider. 
-//To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
-
-
 * *Tier your backups from object store to archival storage*: (Not available for Kubernetes workloads) If you choose to tier backups to archive storage, select the tier option and the number of days to archive. 
 
+==== Create a policy for GCP object storage
+Enter information in these fields: 
+
+* *Provider*: Select *GCP*. 
+* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
+* *GCP project*: Select the GCP project to use.
+* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
+* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
+* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
+* *Retention copies*: Enter the number of snapshots to keep.
+* *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
+* *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
+* *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
+
+==== Create a policy for ONTAP S3 object storage
+Enter information in these fields: 
+
+* *Provider*: Select *ONTAP S3*. 
+* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment.
+* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
+* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
+* *Retention copies*: Enter the number of snapshots to keep.
+* *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
+* *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
+* *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures that the backups are valid and can be restored successfully. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 
 === Configure advanced settings in the policy 
 
@@ -257,7 +304,7 @@ Additionally, configure the following options:
 
 == Edit a policy
 
-You can edit backup architecture, backup frequency, retention policy, and other settings for a policy.
+You can edit backup architecture, backup frequency, retention policy, and other settings for a policy. For Kubernetes policies, you can edit schedule and retention settings only.
 
 You can add another protection level when you edit a policy, but you cannot remove a protection level. For example, if the policy is only protecting local snapshots, you can add replication to secondary storage or backups to object storage. If you have local snapshots and replication, you can add object storage. However, if you have local snapshots, replication, and object storage, you cannot remove one of these levels. 
 
