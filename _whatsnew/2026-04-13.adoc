@@ -10,7 +10,7 @@ In this release, Kubernetes workloads introduces the following protection policy
 
 * *Edit protection policies*: You can now edit Kubernetes workload protection policies. 
 * *Disk-to-disk support*: You can now configure Kubernetes protection policies with a disk-to-disk backup architecture. 
-* *Google Cloud Platform storage buckets*: You can now configure Kubernetes protection policies to back up to Google Cloud Platform storage buckets. 
+* *Google Cloud Platform storage bucket support*: You can now configure Kubernetes protection policies to back up to Google Cloud Platform storage buckets. 
 
 For more information about protection policies, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-policies-create.html[Create and manage protection policies in NetApp Backup and Recovery].
 
@@ -20,7 +20,8 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 In this release, Hyper-V workloads introduces the following enhancements:
 
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
-* *SAN support*: Backup and Recovery now supports protecting Hyper-V VMs stored on SAN storage.
+* *SAN backup support (preview)*: Backup and Recovery now supports protecting Hyper-V VMs stored on SAN storage.
+//* *In-place restore for primary and secondary storage (preview)*: You can now perform in-place restores.
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
 
@@ -28,19 +29,18 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 In this release, KVM workloads introduces the following enhancements:
 
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
-* *Restore to alternate location*: You can now restore KVM VMs to an alternate destination. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-restore.html[Restore KVM virtual machines with NetApp Backup and Recovery].
+* *Restore to alternate location (preview)*: You can now restore KVM VMs to an alternate destination. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-restore.html[Restore KVM virtual machines with NetApp Backup and Recovery].
 
 For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
 
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:
 
-* *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
-* *Tag-based protection*: Backup and Recovery now supports tag-based protection for VMs stored on NFS and VMFS volumes, enabling you to build protection groups from vCenter tags instead of from individual VMs or datastores. This provides scalable, dynamic protection; when you tag VMs and datastores in vCenter, Backup and Recovery automatically discovers and includes them in future backups without any manual group maintenance. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protection-groups.html[Create and manage protection groups].
-* *Expanded ONTAP hardware platform support*: You can now protect VMs stored on ONTAP ASA r2 SAN arrays.
+* *Tag-based protection*: Backup and Recovery for VMware workloads now supports tag-based protection for VMs stored on NFS and VMFS volumes, enabling you to build protection groups from vCenter tags instead of from individual VMs or datastores. When you tag VMs and datastores in vCenter, Backup and Recovery automatically discovers and includes them in future backups without any manual group maintenance. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protection-groups.html[Create and manage protection groups].
 * *Restore to alternate storage system*: You can now restore virtual machines to an alternate storage system even when the original (primary) storage system is completely unavailable. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore.html[Restore VMware workloads].
 * *Restore files to Linux VMs*: You can now restore VM files and folders to Linux VMs. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore-guest-files-and-folders-from-vmdks.html[Restore files and folders].
 * *Proxy VM support when restoring files and folders* - You can now restore files and folders to other VMs hosted on the source vCenter. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore.html[Restore VMware workloads].
 * *Recursive file and folder search* - You can now search an entire VMDK for a specific file or folder. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-restore.html[Restore VMware workloads].
+* *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
