@@ -252,8 +252,9 @@ Enter information in these fields:
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
 * *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 
-=== Configure advanced settings in the policy 
-
+=== Configure advanced settings in the policy
+[%collapsible]
+====
 You can also set advanced options in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads. You cannot set advanced options for Kubernetes workloads.
 
 .Steps
@@ -301,6 +302,7 @@ Additionally, configure the following options:
 //* *Integrity scan*: To protect your backups from being modified or deleted, select the *Integrity scan* option. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 //+
 //TIP: Enabling scans will incur extra charges, depending on the cloud provider. 
+====
 
 == Edit a policy
 
