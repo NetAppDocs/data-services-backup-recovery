@@ -77,7 +77,7 @@ For VMware workloads, this configures the local snapshot on the datastores or VM
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMwares on the primary storage system and then replicates the data from the primary disk storage system to the secondary disk storage system.
 
-* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system, such as AWS S3, Azure Blob Storage or StorageGRID. This is typically achieved using SnapMirror Cloud, which provides incremental forever backups by transferring only changed data blocks after the initial baseline transfer. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving, offering a cost-effective and scalable solution for data protection.
+* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving, offering a cost-effective and scalable solution for data protection.
 +
 For VMWare workloads, this configures the local snapshot on the datastores or VMs on the primary and replication from primary disk storage to cloud object storage.
 
@@ -85,7 +85,7 @@ For VMWare workloads, this configures the local snapshot on the datastores or VM
 + 
 For VMware workloads, this configures the primary disk storage to secondary disk storage and replicates primary disk storage to secondary disk storage.
 
-* *Local snapshots*: Local snapshot on the selected volume. This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
+* *Local snapshots*: Local snapshot on the selected volume. This creates read-only, point-in-time copies of production volumes where your workloads are running. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage system.
 
