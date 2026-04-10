@@ -89,7 +89,7 @@ For VMware workloads, this configures the primary disk storage to secondary disk
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage system.
 
-. Provide information for the *Local snapshot settings*:
+. Provide information for the *Local snapshot settings* section:
 +
 * Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
 * *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
