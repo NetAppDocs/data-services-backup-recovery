@@ -63,21 +63,13 @@ For information about snapshot locking in general, refer to https://docs.netapp.
 * *Details* section: 
 ** Workload type: Select the workload that will use the policy. 
 ** Enter a policy name.
-+
-TIP: For a list of characters to avoid, see the hover tip.
-
 ** Select a Console agent from the *Agent* list.
- 
 * *Backup architecture* section: Select the down arrow and choose the data flow for the backup, such as 3-2-1 fan-out, 3-2-1 cascade, or disk to disk.
-** *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. These configurations help in achieving optimal data protection and disaster recovery.
-+
-NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
+** *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary and replicates from primary disk storage to secondary disk storage as well as replicates from primary to cloud object storage.
 
-** *3-2-1 cascade*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. 
-+
-NOTE: This option is not available for Amazon FSx for NetApp ONTAP.
+** *3-2-1 cascade*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage and a cascade from primary disk storage to secondary disk storage and then to cloud object storage. 
 
@@ -89,118 +81,37 @@ For VMware workloads, this configures the local snapshot on the datastores or VM
 +
 For VMWare workloads, this configures the local snapshot on the datastores or VMs on the primary and replication from primary disk storage to cloud object storage.
 
-** *Disk-to-disk fanout*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk)  and primary storage (disk) to secondary storage (disk). 
-+
-NOTE: You can configure multiple secondary settings for the disk-to-disk fanout option. 
+** *Disk-to-disk fanout*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to secondary storage (disk). You can configure multiple secondary settings for the disk-to-disk fanout option. 
 + 
 For VMware workloads, this configures the primary disk storage to secondary disk storage and replicates primary disk storage to secondary disk storage.
 
-** *Local snapshots*: Local snapshot on the selected volume (Microsoft SQL Server). Local snapshots are a key component of data protection strategies, capturing the state of your data at specific points in time. This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
+** *Local snapshots*: Local snapshot on the selected volume (Microsoft SQL Server). This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage system.
 
 === Create a local snapshot policy 
-Provide information for the local snapshot.
+Provide information for the local snapshot:
 
 * Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
 * *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
 * *Snapshot retention*: Enter the number of snapshots to keep.
 * *Enable log backup*: (Applies to Microsoft SQL Server workloads and Oracle Database workloads only.) Enable this option to back up logs and set the frequency and retention of the log backups. To do this, you must have already configured a log backup. See link:br-start-configure.html[Configure log directories].
 ** *Prune archive logs after backup*: (Oracle Database workloads only) If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
-* *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources.
-
-==== Create a policy for AWS object storage
-
-Enter information in these fields: 
-
-* *Provider*: Select *AWS*. 
-* *AWS account*: Select the AWS account. 
-* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment. 
-
-==== Create a policy for Microsoft Azure object storage 
-
-Enter information in these fields: 
-
-* *Provider*: Select *Azure*. 
-* *Azure subscription*: Select the Azure subscription from those discovered.
-* *Azure resource group*: Select the Azure resource group from those discovered.
-* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment.
-
-==== Create a policy for GCP object storage
-Enter information in these fields: 
-
-* *Provider*: Select *GCP*. 
-* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
-* *GCP project*: Select the GCP project to use.
-* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
-
-==== Create a policy for StorageGRID object storage
-Enter information in these fields: 
-
-* *Provider*: Select *StorageGRID*. 
-* *StorageGRID credentials*: Select the StorageGRID credentials from those discovered. These credentials are used to access the StorageGRID object storage system and were entered in the Settings option. 
-* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment.  
-
-==== Create a policy for ONTAP S3 object storage
-Enter information in these fields: 
-
-* *Provider*: Select *ONTAP S3*. 
-* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
-* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment. 
+* *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
 
 === Create a policy for secondary settings (replication to secondary storage)
-
 Provide information for the replication to secondary storage. Schedule information from the local snapshot settings appears for you in the secondary settings.
 
 * *Backup*: Select the frequency of hourly, daily, weekly, monthly, or yearly. 
 * *Backup target*: Select the target system on secondary storage for the backup.
 * *Retention*: Enter the number of snapshots to keep.
-
 * *Enable snapshot locking*: Select whether you want to enable tamper-proof snapshots. 
 * *Snapshot locking period*: Enter the number of days, months, or years that you want to lock the snapshot.
 * *Transfer to secondary*: 
 ** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
 ** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
-* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.  
-
-==== Create a policy for AWS object storage
-
-Enter information in these fields: 
-
-* *Provider*: Select *AWS*. 
-* *AWS account*: Select the AWS account. 
-* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment. 
-
-==== Create a policy for Microsoft Azure object storage 
-
-Enter information in these fields: 
-
-* *Provider*: Select *Azure*. 
-* *Azure subscription*: Select the Azure subscription from those discovered.
-* *Azure resource group*: Select the Azure resource group from those discovered.
-* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment.
-
-==== Create a policy for GCP object storage
-Enter information in these fields: 
-
-* *Provider*: Select *GCP*. 
-* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
-* *GCP project*: Select the GCP project to use.
-* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
-
-==== Create a policy for StorageGRID object storage
-Enter information in these fields: 
-
-* *Provider*: Select *StorageGRID*. 
-* *StorageGRID credentials*: Select the StorageGRID credentials from those discovered. These credentials are used to access the StorageGRID object storage system and were entered in the Settings option. 
-* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment.  
-
-==== Create a policy for ONTAP S3 object storage
-Enter information in these fields: 
-
-* *Provider*: Select *ONTAP S3*. 
-* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
-* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment.  
+* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
+* *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
 
 === Create a policy for object storage settings
 
@@ -351,3 +262,51 @@ TIP: You cannot delete a policy that is associated with a workload.
 . Select the policy that you want to delete.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Delete*.
 . Confirm the action, and select *Delete*.
+
+
+
+
+////
+
+==== Create a policy for AWS object storage
+
+Enter information in these fields: 
+
+* *Provider*: Select *AWS*. 
+* *AWS account*: Select the AWS account. 
+* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment. 
+
+==== Create a policy for Microsoft Azure object storage 
+
+Enter information in these fields: 
+
+* *Provider*: Select *Azure*. 
+* *Azure subscription*: Select the Azure subscription from those discovered.
+* *Azure resource group*: Select the Azure resource group from those discovered.
+* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment.
+
+==== Create a policy for GCP object storage
+Enter information in these fields: 
+
+* *Provider*: Select *GCP*. 
+* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
+* *GCP project*: Select the GCP project to use.
+* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
+
+==== Create a policy for StorageGRID object storage
+Enter information in these fields: 
+
+* *Provider*: Select *StorageGRID*. 
+* *StorageGRID credentials*: Select the StorageGRID credentials from those discovered. These credentials are used to access the StorageGRID object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment.  
+
+==== Create a policy for ONTAP S3 object storage
+Enter information in these fields: 
+
+* *Provider*: Select *ONTAP S3*. 
+* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment. 
+
+
+
+ ////
