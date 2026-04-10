@@ -109,18 +109,44 @@ Provide information for the local snapshot.
 ** *Prune archive logs after backup*: (Oracle Database workloads only) If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
 * *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources.
 
-////
+==== Create a policy for AWS object storage
 
-** *SnapMirror label*: The label serves as a marker for transferring a specified snapshot according to the retention rules of the relationship. Adding a label to a snapshot marks it as a target for SnapMirror replication.
-** *Offset from an hour*: Enter the number of minutes to offset the snapshot from the start of the hour. For example, if you enter *15*, the snapshot will be taken at 15 minutes past the hour. Available only for hourly schedules. 
+Enter information in these fields: 
 
-** *Enable silent hours*: Select whether you want to enable silent hours. Silent hours are a period during which no snapshots are taken, allowing for maintenance or other operations without interference from backup processes. This is useful for reducing the load on the system during peak usage times or maintenance windows. Available only for hourly schedules. 
+* *Provider*: Select *AWS*. 
+* *AWS account*: Select the AWS account. 
+* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment. 
 
-** *Enable snapshot locking*: Select whether you want to enable tamper-proof snapshots. Enabling this option ensures that the snapshots cannot be deleted or altered until the specified retention period has expired. This feature, which uses SnapLock technology, is crucial for protecting your data against ransomware attacks and ensuring data integrity.         
+==== Create a policy for Microsoft Azure object storage 
 
-** *Snapshot locking period*: Enter the number of days, months, or years that you want to lock the snapshot.
+Enter information in these fields: 
 
-////
+* *Provider*: Select *Azure*. 
+* *Azure subscription*: Select the Azure subscription from those discovered.
+* *Azure resource group*: Select the Azure resource group from those discovered.
+* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment.
+
+==== Create a policy for GCP object storage
+Enter information in these fields: 
+
+* *Provider*: Select *GCP*. 
+* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
+* *GCP project*: Select the GCP project to use.
+* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
+
+==== Create a policy for StorageGRID object storage
+Enter information in these fields: 
+
+* *Provider*: Select *StorageGRID*. 
+* *StorageGRID credentials*: Select the StorageGRID credentials from those discovered. These credentials are used to access the StorageGRID object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment.  
+
+==== Create a policy for ONTAP S3 object storage
+Enter information in these fields: 
+
+* *Provider*: Select *ONTAP S3*. 
+* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
+* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment. 
 
 === Create a policy for secondary settings (replication to secondary storage)
 

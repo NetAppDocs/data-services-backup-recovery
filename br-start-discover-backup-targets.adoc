@@ -33,7 +33,8 @@ You need to discover at least one workload before you can add an offsite backup 
 . Select the *Managed offsite backup targets* tab.
 . Select *Discover backup target*. 
 . Select one of the available backup target types: *AWS*, *Azure*, *StorageGRID*, *ONTAP S3*, or *GCP*.
-. In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
+. Select *Next*.
+. (For AWS and Azure backup targets only) In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
 . Select *Next*.
 . Enter the credentials information. The information differs depending on the type of backup target you selected and the credentials location that you chose.
 
@@ -64,7 +65,7 @@ You need to discover at least one workload before you can add an offsite backup 
 
 * For GCP: 
 ** *Credentials name*: Enter the Google Cloud credential name.
-** *GCP project*: Enter the name of your Google Cloud project.
+//** *GCP project*: Enter the name of your Google Cloud project.
 ** *Access key*: Enter the Google Cloud access key. 
 ** *Secret key*: Enter the Google Cloud secret key. 
 
@@ -119,6 +120,7 @@ Rather than have NetApp Backup and Recovery discover buckets automatically, you 
 ** *Bucket name*: Enter the name of the Google Cloud bucket.
 ** *GCP project*: Select the name of the Google Cloud project.
 ** *Bucket region*: Select a region for the Google Cloud bucket.
+** *Object locking*: Select this option to enable retention periods for objects in this bucket. While a retention period is in effect, objects cannot be modified or deleted and are immutable until the period expires. If you enable this option for a bucket, it cannot be turned off. 
 
 . Select *Add*.
 
