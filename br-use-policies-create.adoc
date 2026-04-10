@@ -161,8 +161,7 @@ Provide information for the replication to secondary storage. Schedule informati
 * *Transfer to secondary*: 
 ** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
 ** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
-* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads. 
-//** *Schedule*: Data is transferred to the secondary storage system at a later time as defined by the schedule. 
+* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.  
 
 ==== Create a policy for AWS object storage
 
@@ -318,16 +317,6 @@ Additionally, configure the following options:
 * *Independent disks*: (Applies to VMware workloads only) Check this to include in the backup any datastores with independent disks that contain temporary data. An independent disk is a VM disk that not included in VMware snapshots. 
 * *SnapMirror volume and snapshot format*: Optionally, enter your own snapshot name in a policy that governs the backups for Microsoft SQL Server workloads. Enter the format and custom text. If you chose to backup to secondary storage, you can also add a SnapMirror volume prefix and suffix.
 
-
-//* *Export existing snapshots*: Indicate whether you want to export historical snapshot copies to object storage as backup files and include them in your initial baseline backup files for future volumes. This helps you initialize your backups in the cloud by moving older snapshots into the baseline backup copy.
-
-//* *Export existing snapshot copies*: Indicate whether you want to export historical snapshot copies to object storage as backup files and include them in your initial baseline backup files for future volumes. This helps you initialize your backups in the cloud by moving older snapshots into the baseline backup copy. 
-
-//* *Yearly snapshot deletion*: Select whether you want yearly snapshots removed from the source system. Yearly backups are very large. By default, yearly snapshots are deleted automatically from the source system after being transferred to object storage. 
-
-//* *Integrity scan*: To protect your backups from being modified or deleted, select the *Integrity scan* option. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-//+
-//TIP: Enabling scans will incur extra charges, depending on the cloud provider. 
 ====
 
 == Edit a policy
