@@ -114,73 +114,12 @@ Provide information for the replication to secondary storage. Schedule informati
 * *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
 
 === Create a policy for object storage settings
-
 Provide information for the backup to object storage. These settings are called "Backup settings" for Kubernetes workloads.
 
 NOTE: The fields that appear differ depending on the provider and architecture selected. 
 
-==== Create a policy for AWS object storage
-
-Enter information in these fields: 
-
-* *Provider*: Select *AWS*. 
-* *AWS account*: Select the AWS account. 
-* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment. 
-* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
-* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
-* *Retention copies*: Enter the number of snapshots to keep.
-* *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
-* *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
-* *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-
-==== Create a policy for Microsoft Azure object storage 
-
-Enter information in these fields: 
-
-* *Provider*: Select *Azure*. 
-* *Azure subscription*: Select the Azure subscription from those discovered.
-* *Azure resource group*: Select the Azure resource group from those discovered.
-* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment.  
-* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
-* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
-* *Retention copies*: Enter the number of snapshots to keep.
-* *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
-* *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage, select the tier option and the number of days to archive. 
-* *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-
-==== Create a policy for StorageGRID object storage
-Enter information in these fields: 
-
-* *Provider*: Select *StorageGRID*. 
-* *StorageGRID credentials*: Select the StorageGRID credentials from those discovered. These credentials are used to access the StorageGRID object storage system and were entered in the Settings option. 
-* *Backup target*: Select a registered S3 object storage target. Ensure that the target is accessible within your backup environment.  
-* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups. 
-* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
-* *Retention copies*: Enter the number of snapshots to keep for each frequency.
-* *Transfer schedule for object storage*: (Not available for Kubernetes workloads) Choose the ONTAP transfer schedule to back up data to object storage. 
-* *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-* *Tier your backups from object store to archival storage*: (Not available for Kubernetes workloads) If you choose to tier backups to archive storage, select the tier option and the number of days to archive. 
-
-==== Create a policy for GCP object storage
-Enter information in these fields: 
-
-* *Provider*: Select *GCP*. 
-* *GCP credential ID*: Select the GCP credentials from those discovered. These credentials are used to access the GCP object storage system and were entered in the Settings option. 
-* *GCP project*: Select the GCP project to use.
-* *Backup target*: Select a registered GCP storage target. Ensure that the target is accessible within your backup environment.
-* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
-* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
-* *Retention copies*: Enter the number of snapshots to keep.
-* *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
-* *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
-* *Enable integrity scan*: (Not available for Kubernetes workloads) Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
-
-==== Create a policy for ONTAP S3 object storage
-Enter information in these fields: 
-
-* *Provider*: Select *ONTAP S3*. 
-* *ONTAP S3 credentials*: Select the ONTAP S3 credentials from those discovered. These credentials are used to access the ONTAP S3 object storage system and were entered in the Settings option. 
-* *Backup target*: Select a registered ONTAP S3 object storage target. Ensure that the target is accessible within your backup environment.
+* *Provider*: Select the provider for your object store and enter the credentials in the appropriate fields (the credentials fields differ depending on the provider).
+* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment. 
 * *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
 * *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
 * *Retention copies*: Enter the number of snapshots to keep.
