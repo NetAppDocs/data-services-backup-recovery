@@ -30,7 +30,7 @@ You can accomplish the following goals related to policies:
 
 . From the NetApp Backup and Recovery menu, select *Policies*.
 
-. Review these policy details. 
+. Review the policy details. For example: 
 +
 * *Workload*: Examples include Microsoft SQL Server, ONTAP Volumes, VMware, KVM, Hyper-V, Oracle Database, or Kubernetes. 
 * *Backup type*: Examples include full backup and log backup.
@@ -41,7 +41,6 @@ You can accomplish the following goals related to policies:
 == Create a policy
 
 You can create policies that govern your local snapshots, replications to secondary storage, and backups to object storage. Part of your 3-2-1 strategy involves creating a snapshot of the instances, databases, applications, or VMs on the *primary* storage system. 
-
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
@@ -54,44 +53,44 @@ For instructions on how to do this, refer to https://docs.netapp.com/us-en/ontap
 
 For information about snapshot locking in general, refer to https://docs.netapp.com/us-en/ontap/snaplock/snapshot-lock-concept.html[Snapshot locking in ONTAP^].
 
-
 .Steps
 . From the NetApp Backup and Recovery menu, select *Policies*.
 . From the Policies page, select *Create new policy*.
-. In the Policies page, provide the following information.   
 +
-* *Details* section: 
-** Workload type: Select the workload that will use the policy. 
-** Enter a policy name.
-** Select a Console agent from the *Agent* list.
-* *Backup architecture* section: Select the down arrow and choose the data flow for the backup, such as 3-2-1 fan-out, 3-2-1 cascade, or disk to disk.
-** *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
+The Policies page appears.
+. Enter information in the *Details* section:
++ 
+* Workload type: Select the workload that will use the policy. 
+* Enter a policy name.
+* Select a Console agent from the *Agent* list.
+. Enter information in the *Backup architecture* section. Choose the data flow for the backup from the list:
++
+* *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary and replicates from primary disk storage to secondary disk storage as well as replicates from primary to cloud object storage.
 
-** *3-2-1 cascade*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. This option is not available for Amazon FSx for NetApp ONTAP.
+* *3-2-1 cascade*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. This option is not available for Amazon FSx for NetApp ONTAP.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage and a cascade from primary disk storage to secondary disk storage and then to cloud object storage. 
 
-** *Disk to disk*: Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method keeps your data updated and available across locations for strong data protection. 
+* *Disk to disk*: Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method keeps your data updated and available across locations for strong data protection. 
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMwares on the primary storage system and then replicates the data from the primary disk storage system to the secondary disk storage system.
 
-** *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system, such as AWS S3, Azure Blob Storage or StorageGRID. This is typically achieved using SnapMirror Cloud, which provides incremental forever backups by transferring only changed data blocks after the initial baseline transfer. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving, offering a cost-effective and scalable solution for data protection.
+* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system, such as AWS S3, Azure Blob Storage or StorageGRID. This is typically achieved using SnapMirror Cloud, which provides incremental forever backups by transferring only changed data blocks after the initial baseline transfer. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving, offering a cost-effective and scalable solution for data protection.
 +
 For VMWare workloads, this configures the local snapshot on the datastores or VMs on the primary and replication from primary disk storage to cloud object storage.
 
-** *Disk-to-disk fanout*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to secondary storage (disk). You can configure multiple secondary settings for the disk-to-disk fanout option. 
+* *Disk-to-disk fanout*: (Not available for Kubernetes workloads) Primary storage (disk) to secondary storage (disk) and primary storage (disk) to secondary storage (disk). You can configure multiple secondary settings for the disk-to-disk fanout option. 
 + 
 For VMware workloads, this configures the primary disk storage to secondary disk storage and replicates primary disk storage to secondary disk storage.
 
-** *Local snapshots*: Local snapshot on the selected volume (Microsoft SQL Server). This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
+* *Local snapshots*: Local snapshot on the selected volume (Microsoft SQL Server). This creates read-only, point-in-time copies of production volumes where your workloads are running. The snapshot consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
 +
 For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary storage system.
 
-=== Create a local snapshot policy 
-Provide information for the local snapshot:
-
+. Provide information for the *Local snapshot settings*:
++
 * Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
 * *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
 * *Snapshot retention*: Enter the number of snapshots to keep.
@@ -99,9 +98,8 @@ Provide information for the local snapshot:
 ** *Prune archive logs after backup*: (Oracle Database workloads only) If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
 * *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
 
-=== Create a policy for secondary settings (replication to secondary storage)
-Provide information for the replication to secondary storage. Schedule information from the local snapshot settings appears for you in the secondary settings.
-
+. Provide information for the *Secondary settings* section (replication to secondary storage):
++
 * *Backup*: Select the frequency of hourly, daily, weekly, monthly, or yearly. 
 * *Backup target*: Select the target system on secondary storage for the backup.
 * *Retention*: Enter the number of snapshots to keep.
@@ -113,11 +111,10 @@ Provide information for the replication to secondary storage. Schedule informati
 * *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
 * *Provider*: (Kubernetes workloads only) Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
 
-=== Create a policy for object storage settings
-Provide information for the backup to object storage. These settings are called "Backup settings" for Kubernetes workloads.
-
-NOTE: The fields that appear differ depending on the provider and architecture selected. 
-
+. Provide information for the *Object store settings* section (backup to object storage): 
++
+NOTE: The fields that appear differ depending on the provider and architecture selected. These settings are called "Backup settings" for Kubernetes workloads.
++
 * *Provider*: Select the provider for your object store and enter the credentials in the appropriate fields (the credentials fields differ depending on the provider).
 * *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment. 
 * *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
