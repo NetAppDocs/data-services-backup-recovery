@@ -113,7 +113,7 @@ For VMware workloads, this configures the local snapshot on the datastores or VM
 
 . Provide information for the *Object store settings* section (backup to object storage): 
 +
-NOTE: The fields that appear differ depending on the provider and architecture selected. These settings are called "Backup settings" for Kubernetes workloads.
+NOTE: The fields that appear differ depending on the provider and architecture selected.
 +
 * *Provider*: Select the provider for your object store and enter the credentials in the appropriate fields (the credentials fields differ depending on the provider).
 * *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment. 
