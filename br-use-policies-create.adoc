@@ -255,7 +255,7 @@ Enter information in these fields:
 === Configure advanced settings in the policy
 [%collapsible]
 ====
-You can also set advanced options in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads. You cannot set advanced options for Kubernetes workloads.
+You can optionally configure advanced settings in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads. You cannot set advanced options for Kubernetes workloads.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Policies*.
