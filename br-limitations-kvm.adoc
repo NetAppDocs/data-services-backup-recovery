@@ -22,7 +22,7 @@ The following actions and configurations are not supported in KVM workloads in N
 The following actions are not supported:
 
 * Clone, mount, or unmount VMs
-* Restore VMs to an alternate location
+//* Restore VMs to an alternate location
 * Protect VMs stored on SAN
 * Protect applications
 * Create user-defined backups (only backups initiated from the NetApp Console are supported)
