@@ -9,7 +9,7 @@ summary: You can customize CR restore operations using annotations, namespace se
 :nofooter:
 :icons: font
 :linkattrs:
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 [.lead]
 You can customize restore operations using advanced settings such as annotations, namespace settings, and storage options to meet your specific requirements. 

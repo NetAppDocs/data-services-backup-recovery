@@ -30,10 +30,11 @@ You need to discover at least one workload before you can add an offsite backup 
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-. Select the *Offsite backup targets* tab.
+. Select the *Managed offsite backup targets* tab.
 . Select *Discover backup target*. 
-. Select one of the backup target types: *Amazon Web Services (AWS) S3*, *Microsoft Azure Blob Storage*, *StorageGRID* or *ONTAP S3*.
-. In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
+. Select one of the available backup target types: *AWS*, *Azure*, *StorageGRID*, *ONTAP S3*, or *GCP*.
+. Select *Next*.
+. (For AWS and Azure backup targets only) In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
 . Select *Next*.
 . Enter the credentials information. The information differs depending on the type of backup target you selected and the credentials location that you chose.
 
@@ -55,7 +56,6 @@ You need to discover at least one workload before you can add an offsite backup 
 ** *Access key*: Enter the StorageGRID S3 access key. 
 ** *Secret key*: Enter the StorageGRID S3 secret key.
  
-
 * For ONTAP S3: 
 ** *Credential name*: Enter the ONTAP S3 credential name.
 ** *Gateway Node FQDN*: Enter a FQDN name for ONTAP S3.
@@ -63,18 +63,21 @@ You need to discover at least one workload before you can add an offsite backup 
 ** *Access key*: Enter the ONTAP S3 access key. 
 ** *Secret key*: Enter the ONTAP S3 secret key. 
 
+* For GCP: 
+** *Credentials name*: Enter the Google Cloud credential name.
+//** *GCP project*: Enter the name of your Google Cloud project.
+** *Access key*: Enter the Google Cloud access key. 
+** *Secret key*: Enter the Google Cloud secret key. 
+
 . Select *Discover*.
 
 == Add a bucket for a backup target 
 
 Rather than have NetApp Backup and Recovery discover buckets automatically, you can manually add a bucket to an offsite backup target.
 
-
-
-
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-. Select *Offsite backup targets*. 
+. Select *Managed offsite backup targets*. 
 . Select the target and on the right, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Add bucket*.
 . Enter the bucket information. The information differs depending on the type of backup target you selected.
 
@@ -89,7 +92,6 @@ Rather than have NetApp Backup and Recovery discover buckets automatically, you 
 ** *Tags*: Select tags for the S3 bucket. Tags are key-value pairs that can be used to organize and manage your S3 resources.
 ** *Encryption*: Select the type of encryption for the S3 bucket. The options are either AWS S3-managed keys or AWS Key Management Service key. If you select AWS Key Management Service keys, you must provide the key ID.
 
-
 * For Azure: 
 ** *Subscription*: Select the name of the Azure Blob Storage container.
 ** *Resource group*: Select the name of the Azure resource group.
@@ -98,8 +100,6 @@ Rather than have NetApp Backup and Recovery discover buckets automatically, you 
 *** *Azure region*: Enter the Azure region for the container.
 *** *Performance type*: Select the performance type of either standard or premium for the Azure Blob Storage container indicating the level of performance required. 
 *** *Encryption*: Select the type of encryption for the Azure Blob Storage container. The options are either Microsoft-managed keys or customer-managed keys. If you select customer-managed keys, you must provide the key vault name and key name.
-
-
 
 * For StorageGRID: 
 ** *Backup target name*: Select the name of the StorageGRID bucket.
@@ -115,6 +115,12 @@ Rather than have NetApp Backup and Recovery discover buckets automatically, you 
 ** *Capacity*: Enter the capacity for the ONTAP S3 bucket. This is the maximum amount of data that can be stored in the bucket.
 ** *Enable versioning*: Select this option to enable versioning for the ONTAP S3 bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
 ** *Object locking*: Select this option to enable object locking for the ONTAP S3 bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.
+
+* For GCP: 
+** *Bucket name*: Enter the name of the Google Cloud bucket.
+** *GCP project*: Select the name of the Google Cloud project.
+** *Bucket region*: Select a region for the Google Cloud bucket.
+** *Object locking*: Select this option to enable retention periods for objects in this bucket. While a retention period is in effect, objects cannot be modified or deleted and are immutable until the period expires. If you enable this option for a bucket, it cannot be turned off. 
 
 . Select *Add*.
 

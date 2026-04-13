@@ -17,9 +17,9 @@ Create protection groups to manage the backup and restore operations for a set o
 
 You can perform the following tasks related to protection groups:
 
-* Create a protection group.
+* Create a protection group by manually adding VMs to the group or by using VMware vSphere tags.
 * View protection details. 
-* Back up a protection group now. See link:br-use-vmware-backup.html[Back up VMware workloads now].
+* Back up a protection group now. Refer to link:br-use-vmware-backup.html[Back up VMware workloads now].
 * Suspend and resume a protection group's backup schedule.  
 * Delete a protection group.
 
@@ -41,7 +41,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the VMs or databases that you want to include in the protection group.
 . Select *Next*. 
 
-. Select the *Backup policy* that you want to apply to the protection group.
+. Select the protection policy that you want to apply to the protection group.
 +
 If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
 
@@ -49,6 +49,50 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 . Review the configuration.
 . Select *Create* to create the protection group.
 
+== Create a protection group using vSphere tags
+
+Use tag-based protection to simplify administration of protection groups in Backup and Recovery. 
+
+Here are the benefits of using tag-based protection:
+
+* When you add a vSphere tag to a VM or datastore in vCenter, that object is automatically included in the next backup for any Backup and Recovery protection group that references that tag.
+* When you remove a vSphere tag from a VM or datastore, that object is automatically excluded from subsequent backups for that tag-based protection group.
+* If a vSphere tag is deleted in vCenter, future backups skip that tag and report a warning.
+* If a VM is migrated to a different datastore, it remains protected as long as it still has the tag that is part of a tag-based protection group.
+
+IMPORTANT: Mixing resource types (for example, combining tags with individual VMs or datastores in the same protection group) is not supported.
+
+.Before you begin
+
+* Ensure your environment is using supported versions of VMware vSphere.
+* In vCenter, ensure the virtual machines and datastores you want to protect are already associated with one or more vSphere tags.
+
+NOTE: Tag membership is resolved from vCenter at backup time. Any changes you make to tags in vCenter (adding/removing tags, deleting tags, adding/removing VMs) are automatically reflected in the next backup.
+
+.Steps
+
+. Sign in to NetApp Backup and Recovery.
+. Navigate to the *Protection Groups* view.
+. Select *Create Protection Group*.
+. Under *General details > Protection group name*, enter a name for the protection group.
+. In the *General details > Protection group resources* section, select *Tags*.
+. If multiple vCenters are configured, select the appropriate vCenter from the list to show tags available for that vCenter.
+. In the *Select tags* section:
+.. On the left side:
+... Select a vCenter from the list.
+... Select the check boxes for one or more tags within that vCenter.
+.. On the right side:
+... Review the list of selected tags, grouped by vCenter.
+... Remove any tag you do not want in the protection group.
+. Select *Next*.
+. Select the protection policy that you want to apply to the protection group.
++
+If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
+. Select *Next*.
+. Review the tag settings in the *Review* step.
+. Select *Create* to create the protection group.
++
+The new tag-based protection group appears in the list, indicated by a tag icon.
 
 == Suspend a protection group's backup schedule
 
