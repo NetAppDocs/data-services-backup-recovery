@@ -5,7 +5,7 @@ keywords:
 summary: 'You can restore one or more files or folders from a VMDK on a Windows guest OS.'
 ---
 
-= Restore files and folders from VMDKs
+= Restore files and folders from virtual disks
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,12 +14,13 @@ summary: 'You can restore one or more files or folders from a VMDK on a Windows 
 
 
 [.lead]
-You can restore one or more files or folders from a VMDK to the original VM or to a different VM on the same VMware vCenter server. Windows and Linux guests are supported. 
+Restore files or folders from a virtual disk to the original VM or to another VM. If you prefer not to attach the virtual disk to a production VM, you can attach it to a proxy VM instead.
 
 .Before you begin
 
 * Review the prerequisites and limitations in link:br-use-vmware-restore-guest-files-and-folders-overview.html[Requirements and limitations when restoring guest files and folders].
-* You need to create credentials for the guest VM in NetApp Backup and Recovery before you can restore files and folders from it. NetApp Backup and Recovery uses these credentials to authenticate with the guest VM when attaching the virtual disk.
+* To restore files and folders using a proxy VM, make sure the proxy VM is already configured before beginning the file and folder restore process.
+* You need to create credentials for the source virtual disk and destination VM in NetApp Backup and Recovery before you can restore files and folders. NetApp Backup and Recovery uses these credentials to authenticate with the virtual disk and destination VM when restoring files and folders.
 
 .About this task
 
@@ -36,7 +37,7 @@ With the file and folder restore feature, you can view and restore system and hi
 [role="tabbed-block"]
 ====
 
-.Restore files and folders to the original VM
+.Attach the VMDK to the original VM to restore files and folders
 
 --
 
@@ -51,14 +52,17 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 . Select a snapshot from which to restore and then select *Next*.
 . Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
 . Select *Next*.
-. Choose a virtual disk from the list to attach to the VM and then select *Next*.
+. From the list, choose a virtual disk that has the files and folders you need to restore and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
 .. In the *Guest virtual machine details* section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
-.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
-.. Choose a virtual machine credential to use to authenticate with the guest VM.
+.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows or Linux credential information, and select *Add*.
++
+NOTE: The source and destination VMs must run the same OS family; the OS versions can be different.
+
+.. From the list, choose a virtual machine credential to use.
 .. Select *Next*.
 +
-NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
+NetApp Backup and Recovery attaches the virtual disk to the original VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
 +
 You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
 +
@@ -66,7 +70,7 @@ You can use the magnifying glass (search) icon near the file browser pane to sea
 +
 Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
-. In the "Restore to path" section, enter the path to the guest where the selected files will be restored:
+. In the "Restore to path" section, enter the path to the destination VM and filesystem location where the selected files will be restored:
 +
 * For Windows guests, enter the UNC share path:
 ** IPv4 path example: `\\10.60.136.65\c$`
@@ -78,18 +82,18 @@ Files and folders you have selected to restore are listed in the right pane of t
 
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
-. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the VMDK and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
+. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the virtual disk and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
 . Select *Restore*.
 +
 You can view the restore progress on the Job Monitoring page.
 
 --
 
-.Restore files and folders to a different VM
+.Attach the VMDK to a proxy VM to restore files and folders
 
 --
 
-Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders from a virtual disk to another virtual machine.
+Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders when you don't want to attach the virtual disk to the original VM.
 
 .Steps
 
@@ -100,17 +104,20 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 . Select a snapshot from which to restore and then select *Next*.
 . Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
 . Select *Next*.
-. Choose a virtual disk from the list to attach to the VM and then select *Next*.
+. From the list, choose a virtual disk that has the files and folders you need to restore and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
 .. In the *Guest virtual machine details* section:
 ... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
-... Choose the source vCenter, datacenter, and datastore from the lists.
-... Select a VM to restore to. The selected VM appears in the right pane. 
-.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the guest VM, select *Add credentials*, enter the credential information for the Windows or Linux host, and select *Add*.
-.. Choose a virtual machine credential to use to authenticate with the guest VM.
+... Choose a vCenter, datacenter, and datastore where the proxy VM is located from the lists.
+... Select a VM from the list to use as a proxy VM. The virtual disk will be attached to this VM. The selected proxy VM appears in the right pane. 
+.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows or Linux credential information, and select *Add*.
++
+NOTE: The source and destination VMs must run the same OS family; the OS versions can be different.
+
+.. From the list, choose a virtual machine credential to use.
 .. Select *Next*.
 +
-NetApp Backup and Recovery attaches the virtual disk to the VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
+NetApp Backup and Recovery attaches the virtual disk to the proxy VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
 +
 You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
 +
@@ -118,7 +125,7 @@ You can use the magnifying glass (search) icon near the file browser pane to sea
 +
 Files and folders you have selected to restore are listed in the right pane of the screen.
 . Select *Next*.
-. In the "Restore to path" section, enter the path to the guest where the selected files will be restored:
+. In the "Restore to path" section, enter the path to the destination VM and filesystem location where the selected files will be restored:
 +
 * For Windows guests, enter the UNC share path:
 ** IPv4 path example: `\\10.60.136.65\c$`
@@ -130,7 +137,7 @@ Files and folders you have selected to restore are listed in the right pane of t
 
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
-. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the VMDK and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
+. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the virtual disk and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
 . Select *Restore*.
 +
 You can view the restore progress on the Job Monitoring page.
