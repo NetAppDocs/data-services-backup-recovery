@@ -14,7 +14,7 @@ summary: 'You can restore one or more files or folders from a VMDK on a Windows 
 
 
 [.lead]
-Restore files or folders from a virtual disk to the original VM or to another VM. If you prefer not to attach the virtual disk to a production VM, you can attach it to a proxy VM instead.
+Restore files or folders from a virtual disk to the original VM or to another VM. If you prefer not to attach the virtual disk to the original VM, you can attach it to a proxy VM instead.
 
 .Before you begin
 
@@ -45,8 +45,8 @@ Restore guest files and folders from a virtual disk to the original (source) vir
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select *Inventory*.
-. Select the *Virtual machines* menu.
+. From the NetApp Backup and Recovery menu, select *Restore*.
+. Select *VMware* from the workloads list at the top right of the page.
 . In the list of virtual machines, select the Actions icon image:../media/icon-action.png[Actions option] for a VM that contains files that you want to restore.
 . Select *Restore files and folders*.
 . Select a snapshot from which to restore and then select *Next*.
@@ -97,8 +97,8 @@ Use a proxy VM (a different VM on the same vCenter as the original) to restore g
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select *Inventory*.
-. Select the *Virtual machines* menu.
+. From the NetApp Backup and Recovery menu, select *Restore*.
+. Select *VMware* from the workloads list at the top right of the page.
 . In the list of virtual machines, select the Actions icon image:../media/icon-action.png[Actions option] for a VM that contains files that you want to restore.
 . Select *Restore files and folders*.
 . Select a snapshot from which to restore and then select *Next*.
