@@ -351,7 +351,7 @@ CAUTION: Use this option only for extreme cleanup. Once enabled, NetApp Backup a
 
 Delete an individual backup when it's no longer needed. You can't delete replicated volumes (data protection volumes).
 
-NOTE: You can't delete individual volume backup files once the backup relationship has been deleted. You can, however, <<Delete all backup files for a volume>>.
+NOTE: You can't delete individual volume backup files once the backup relationship has been deleted. You can, however, <<Delete all backup files for a volume,delete all backup files for the volume>>.
 
 .Steps
 
@@ -375,7 +375,7 @@ This feature is available only if your system is running ONTAP 9.12.1 or greater
 
 You can't delete the source volume from the NetApp Backup and Recovery user interface. However, you can open the Volume Details page on the Console *Systems* page, and https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-volumes.html#manage-volumes[delete the volume from there].
 
-NOTE: You can't delete individual volume backup files once the backup relationship has been deleted. You can, however, <<Delete all backup files for a volume>>. If you need to delete a backup relationship for a volume, make sure to delete the backups for the volume first, then delete the backup relationship.
+NOTE: You can't delete individual volume backup files once the backup relationship has been deleted. You can, however, <<Delete all backup files for a volume,delete all backup files for the volume>>. If you need to delete a backup relationship for a volume, make sure to delete the backups for the volume first, then delete the backup relationship.
 
 .Steps
 
