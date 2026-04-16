@@ -381,25 +381,16 @@ NOTE: You can't delete individual volume backup files once the backup relationsh
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *Backup* > *Delete relationship*.
 
-//When you view the list of backups for the volume, you'll see the "Relationship Status" listed as *Relationship Deleted*.
-//
-//image:screenshot_backup_view_no_relationship.png[A screenshot showing the Relationship Deleted status after you delete a volume backup relationship.]
-
 == Deactivate NetApp Backup and Recovery for a system
 
-Deactivating NetApp Backup and Recovery for a system disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this system - it basically allows you to pause all backup and restore activity for a period of time.
+Deactivating NetApp Backup and Recovery for a system pauses backups and restores for all its volumes without deleting existing backups. This enables you to pause all backup and restore activity for a period of time without unregistering the backup service from this system.
 
 Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
-//
-//TIP: The backup retention period is ignored when NetApp Backup and Recovery is deactivated. Therefore, older backup files are not aged-out and removed from object storage while the system is deactivated.
 
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-
 . From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to disable backups and select *Deactivate Backup*.
-
-
 . In the confirmation dialog box, select *Deactivate*.
 
 NOTE: An *Activate Backup* button appears for that system while backup is disabled. You can select this button when you want to re-enable backup functionality for that system.
