@@ -22,7 +22,7 @@ Guest OS restore operations include the following steps:
 
 . Attach
 +
-Attach a virtual disk to a guest VM and start a guest file restore session.
+Attach a virtual disk to a guest VM or proxy VM and start a guest file restore session.
 
 . Wait
 +
@@ -30,7 +30,7 @@ Wait for the attach operation to complete before you can browse and restore. Whe
 
 . Select files or folders
 +
-Browse the VMDK files and select one or more files or folders to restore.
+Browse or search the virtual disk files and select one or more files or folders to restore.
 
 . Restore
 +
@@ -49,9 +49,9 @@ NetApp Backup and Recovery uses information from VMware tools to establish a con
 +
 The virtual disk that contains the file or folder you want to restore must be in a VM backup that was performed using NetApp Backup and Recovery.
 
-//* To use a proxy VM, the proxy VM must be configured.
-//+
-//If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
+* To use a proxy VM, the proxy VM must be configured.
++
+If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
 
 * For files with non-English-alphabet names, you must restore them in a directory, not as a single file.
 +
