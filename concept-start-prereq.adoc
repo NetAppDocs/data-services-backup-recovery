@@ -99,6 +99,7 @@ You need specific requirements to discover and protect your VMware workloads.
 a|
 * ONTAP 9.13.1 or later
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
+* ASA r2 SAN-only systems (ONTAP 9.17.1 or later required)
 |===
 
 *Connection and port requirements for protecting VMware workloads*
