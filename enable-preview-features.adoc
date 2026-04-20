@@ -19,7 +19,7 @@ Enable preview and hidden features for NetApp Backup and Recovery.
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Enable preview features in Backup and Recovery
-Enable preview feature flag options to use functionality that is not yet generally available. Use preview features with caution in production.
+Enable preview feature flag options to use functionality that is not yet generally available. Use preview features with caution in production environments.
 
 [caption=]
 .Available preview feature flags
@@ -28,7 +28,7 @@ Enable preview feature flag options to use functionality that is not yet general
 |===
 |Feature flag |Feature description
 |`folder-restore-from-local` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
-|`prioritize-restore` |Enable this feature flag to make the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option in the restore workflow, restore jobs are prioritized over other queued jobs so they run even when the queue is busy.
+|`prioritize-restore` |Enable this feature flag to make the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option during the restore workflow, restore operations are prioritized over other queued jobs so they run even when the queue is busy.
 |===
 
 .Steps
