@@ -1,0 +1,98 @@
+---
+sidebar: sidebar
+permalink: enable-preview-features.html
+keywords: advanced settings, settings, Backup and Recovery, configuration, NetApp Backup and Recovery
+summary: Change advanced settings for NetApp Backup and Recovery.
+---
+
+= Enable preview features for NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Enable preview features and change advanced settings for NetApp Backup and Recovery. These system-level options affect backup behavior, retention, object-store integration, and preview features. Some settings require administrator roles.
+
+*Required NetApp Console role*
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Before you begin
+
+* Review your change with your team or administrator; some advanced settings affect all workloads.
+* Check release notes and known limitations for the current product version.
+
+
+== Enable preview features in Backup and Recovery
+Enable preview feature flag options to use functionality that is not yet generally available. Use preview features with caution in production.
+
+.Available preview feature flags
+
+[%header,cols="30,70"]
+|===
+|Feature flag |Feature description
+|folder-restore-from-local | Enable selecting and restoring folders from ONTAP volumes. ONTAP does not natively support restoring folders from local snapshots (but you can restore folders from object storage backups). When you enable this flag, you can restore entire directories from local and replicated snapshots.
+|prioritize-restore |Enable this feature flag to make the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option in the restore workflow, restore jobs are prioritized over other queued jobs so they run even when the queue is busy.
+|===
+
+.Steps
+
+. Use SSH to log into the Console agent.
+. Change to the root user:
++
+[source,console]
+----
+sudo su
+----
+. Find the Backup and Recovery volume in Docker:
++
++
+[source,console]
+----
+docker volume ls | grep cbs
+----
++ 
+The output should be similar to the following:
++
+----
+local service-manager-2_cloudmanager_cbs_volume
+----
+. Find the mount point for the volume:
++
+[source,console]
+----
+docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
+----
++
+The mount point differs between cloud and private deployments. This output example shows a cloud deployment:
++
+----
+/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
+----
+. Change to the docker volume config directory, which is inside the mountpoint directory. For example:
++
+[source,console]
+----
+cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
+----
+. Create a config file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Each feature flag key should have a corresponding value of `true`. For example:
++
+[source,json]
+----
+{
+  "feature-flags": {
+    "folder-restore-from-local": true
+  }
+}
+----
+. Restart the Backup and Recovery container:
++
+[source,console]
+----
+docker restart cloudmanager_cbs
+----
+. Reload the Backup and Recovery UI in your web browser and try a restore.
+
+
+
