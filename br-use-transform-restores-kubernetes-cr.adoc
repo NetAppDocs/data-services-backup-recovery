@@ -13,7 +13,7 @@ summary: Transform resources during restore operations in NetApp Backup and Reco
 :imagesdir: ./media/
 
 [.lead]
-This task describes how to use transform restores with Kubernetes custom resources (CRs) in NetApp Backup and Recovery. Paste the Markdown content you want converted into this conversation and I will convert it to AsciiDoc and populate this topic.
+Resource transformations let you modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network.
 
 *Required NetApp Console role*
 Backup and Recovery super admin, Backup and Recovery restore admin.
