@@ -42,7 +42,6 @@ sudo su
 ----
 . Find the Backup and Recovery volume in Docker:
 +
-+
 [source,console]
 ----
 docker volume ls | grep cbs
@@ -71,7 +70,7 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
 ----
-. Create a config file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Each feature flag key should have a corresponding value of `true`. For example:
+. Create a file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Each feature flag key should have a corresponding value of `true`. For example:
 +
 [source,json]
 ----
@@ -87,4 +86,4 @@ cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_c
 ----
 docker restart cloudmanager_cbs
 ----
-. Reload the Backup and Recovery UI in your web browser and try a restore.
+. Reload the Backup and Recovery UI in your web browser.
