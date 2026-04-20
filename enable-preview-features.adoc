@@ -21,10 +21,11 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 == Enable preview features in Backup and Recovery
 Enable preview feature flag options to use functionality that is not yet generally available. Use preview features with caution in production environments.
 
+[[anchor-flags]]
 [caption=]
 .Available preview feature flags
 
-[%header,cols="30,70"]
+[%header,cols="50,50"]
 |===
 |Feature flag |Feature description
 |`"folder-restore-from-local": true` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
@@ -71,7 +72,7 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
 ----
-. Create a file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Refer to <<Available preview feature flags>> for flag information. For example:
+. Create a file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Refer to <<anchor-flags,available flags>> for flag information. For example:
 +
 [source,json]
 ----
