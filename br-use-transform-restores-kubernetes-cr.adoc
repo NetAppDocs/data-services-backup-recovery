@@ -1,0 +1,218 @@
+---
+sidebar: sidebar
+permalink: br-use-transform-restores-kubernetes-cr.html
+keywords: transform restore, Kubernetes, custom resource, restore, Backup and Recovery, NetApp
+summary: Transform resources during restore operations in NetApp Backup and Recovery.
+---
+
+= Transform resources during restore operations
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+This task describes how to use transform restores with Kubernetes custom resources (CRs) in NetApp Backup and Recovery. Paste the Markdown content you want converted into this conversation and I will convert it to AsciiDoc and populate this topic.
+
+*Required NetApp Console role*
+Backup and Recovery super admin, Backup and Recovery restore admin.
+
+.Before you begin
+
+* Ensure you have the required roles and access to the NetApp Console and Kubernetes cluster.
+* Confirm which deployment (cloud, darksite/private) and the target namespace for restores.
+
+== How it works
+
+The `transformations` field in `SnapshotRestore`, `BackupRestore`, `AppMirrorRelationship`, and other restore resources allows you to modify Kubernetes resources during the restore process. This is useful for adapting applications to different environments, such as changing hostnames, registry URLs, resource limits, or environment variables when restoring to a new cluster.
+
+Transformations use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to precisely target and modify specific fields within Kubernetes resources.
+
+=== Basic structure
+
+[source,yaml]
+----
+apiVersion: protect.trident.netapp.io/v1
+kind: SnapshotRestore
+metadata:
+	name: my-restore
+	namespace: target-namespace
+spec:
+	appVaultRef: my-vault
+	appArchivePath: /path/to/snapshot
+	namespaceMapping:
+		- source: source-ns
+			destination: target-ns
+	transformations:
+		- resource:
+				kind: ConfigMap           # Required: resource kind
+				group: ""                 # Optional: API group (empty for core resources)
+				version: ""               # Optional: API version
+				name: ""                  # Optional: specific resource name
+			operations:
+				- op: replace             # Operation type
+					path: /data/key         # JSON Pointer path
+					value: "new-value"      # New value (for add/replace/test)
+----
+
+=== Resource matching
+
+Transformations only apply to resources that match the specified criteria:
+
+- `kind` (required): The Kubernetes resource kind (for example, `ConfigMap`, `Deployment`, `Pod`)
+- `group` (optional): The API group (for example, `apps`, `route.openshift.io`) — omit for core resources
+- `version` (optional): The API version (for example, `v1`, `v1beta1`)
+- `name` (optional): Apply only to a specific resource by name
+
+Note: Transformations of PersistentVolumeClaims and Namespaces are currently not supported.
+
+== Transform resources during restore operations
+
+=== Replace information
+
+Replaces an existing value at the specified path. The path must already exist.
+
+Example: Change OpenShift Route hostname
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: Route
+			group: route.openshift.io
+		operations:
+			- op: replace
+				path: /spec/host
+				value: "prod.example.com"
+----
+
+[source,bash]
+----
+# CLI equivalent
+--transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
+----
+
+=== Add information
+
+Adds a new field or value at the specified path. Can add to objects or arrays.
+
+Example: Add node selector to Deployment
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: Deployment
+		operations:
+			- op: add
+				path: /spec/template/spec/nodeSelector
+				value:
+					topology.kubernetes.io/zone: "us-east-1a"
+					disktype: "ssd"
+----
+
+[source,bash]
+----
+# CLI equivalent
+--transformation 'apps,v1,Deployment:add{"path":"/spec/template/spec/nodeSelector","value":{"topology.kubernetes.io/zone":"us-east-1a","disktype":"ssd"}}'
+----
+
+=== Remove information
+
+Removes a field or value at the specified path.
+
+Example: Remove kubectl annotation from ConfigMap
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: ConfigMap
+		operations:
+			- op: remove
+				path: /metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration
+----
+
+Note: `~1` is the JSON Pointer escape sequence for `/`.
+
+[source,bash]
+----
+# CLI equivalent
+--transformation ',v1,ConfigMap:remove{"path":"/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"}'
+----
+
+=== Move information
+
+Moves a value from one path to another. The source is removed and the value is placed at the destination.
+
+Example: Rename ConfigMap data key
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: ConfigMap
+		operations:
+			- op: move
+				from: /data/OLD_KEY
+				path: /data/NEW_KEY
+----
+
+[source,bash]
+----
+# CLI equivalent
+--transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
+----
+
+=== Copy information
+
+Copies a value from one path to another. Unlike move, the source remains unchanged.
+
+Example: Duplicate ConfigMap data key
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: ConfigMap
+		operations:
+			- op: copy
+				from: /data/source-key
+				path: /data/backup-key
+----
+
+[source,bash]
+----
+# CLI equivalent
+--transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
+----
+
+=== Test the transformation
+
+Tests that a value at a path matches the expected value. If the test fails, the entire transformation is skipped (all operations in that transformation are rolled back).
+
+Example: Conditional replacement (test value then replace)
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: ConfigMap
+		operations:
+			- op: test
+				path: /data/environment
+				value: "staging"
+			- op: replace
+				path: /data/database-host
+				value: "prod-db.example.com"
+----
+
+Only updates `database-host` if `environment` is `staging`.
+
+[source,bash]
+----
+# CLI equivalent (multiple operations: test then replace)
+--transformation ',v1,ConfigMap:test{"path":"/data/environment","value":"staging"},replace{"path":"/data/database-host","value":"prod-db.example.com"}'
+----
+
