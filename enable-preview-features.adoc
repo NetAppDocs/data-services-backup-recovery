@@ -27,8 +27,9 @@ Enable preview feature flag options to use functionality that is not yet general
 [%header,cols="30,70"]
 |===
 |Feature flag |Feature description
-|`folder-restore-from-local` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
-|`prioritize-restore` |Enable this feature flag to make the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option during the restore workflow, restore operations are prioritized over other queued jobs so they run even when the queue is busy.
+|`"folder-restore-from-local": true` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
+|`"prioritize-restore": true` |Makes the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option during the restore workflow, restore operations are prioritized over other queued jobs so they run even when the queue is busy.
+|`"svm-not-to-index": <storage_vm_name>` |Use this flag with the name of an ONTAP storage VM to disable indexing for all volumes that belong to that storage VM.
 |===
 
 .Steps
@@ -70,7 +71,7 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
 ----
-. Create a file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Each feature flag key should have a corresponding value of `true`. For example:
+. Create a file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Refer to <<Available preview feature flags>> for flag information. For example:
 +
 [source,json]
 ----
