@@ -13,14 +13,14 @@ summary: NetApp Backup and Recovery enables you to manage your workload host inf
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to easily discover your Kubernetes clusters, without generating and uploading kubeconfig files. You can connect Kubernetes clusters and install the required software using simple commands copied from the NetApp Console user interface.
+NetApp Backup and Recovery enables you to add Kubernetes applications through the web UI or by applying custom resource files. Applications can be namespace-based, composed of standard Kubernetes resources, or VM-based, composed of one or more virtual machines.
 
 .Required NetApp Console role
 
 Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Add and protect a new Kubernetes application
-The first step in protecting Kubernetes applications is to create an application within NetApp Backup and Recovery. When you create an application, you make the Console aware of the running application on the Kubernetes cluster.
+The first step in protecting Kubernetes applications is to create an application within NetApp Backup and Recovery. When you create an application, you make Backup and Recovery aware of the running application on the Kubernetes cluster.
 
 .Before you begin
 Before you can add and protect a Kubernetes application, you need to link:br-start-discover.html[discover Kubernetes workloads].
@@ -39,6 +39,11 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 . Select the *Applications* tab.
 . Select *Create application*.
 . Enter a name for the application.
+. From the *Cluster* list, select the cluster that hosts the application.
+. Under *Filters*, choose to filter applications by namespace or by virtual machine.
++
+NOTE: If you choose *Virtual machine*, you can build an application that consists of one or more virtual machines, enabling you to protect the virtual machine as you would any other application.
+
 . Optionally, choose any of the following fields to search for the resources you want to protect:
 +
 * Associated cluster
