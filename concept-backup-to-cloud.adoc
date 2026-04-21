@@ -15,6 +15,8 @@ summary: NetApp Backup and Recovery is a data service that provides efficient, s
 [.lead]
 NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
 
+A workload is a logical grouping of resources within a system that is managed as a single unit for protection, governance, detection, and recovery. In Backup and Recovery, a workload is the unit you protect. Its meaning depends on the data source: for Kubernetes a workload is an application, for VM environments it's a virtual machine, and for database environments it's a database.
+
 Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware, software licenses or media gateways. This makes backup operations simple and cost effective. The NetApp Console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
 
 == What you can do with NetApp Backup and Recovery
@@ -120,7 +122,7 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 +
 //endif::azure[]
 //ifdef::gcp[]
-** In Google, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
+** In Google Cloud, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 //endif::gcp[]
 
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
@@ -140,7 +142,7 @@ There are three ways to pay for Backup and Recovery:
 
 * The first option is to subscribe from your cloud provider, which enables you to pay per month. 
 * The second option is to purchase an annual contract. 
-* The third option is to purchase licenses directly from NetApp. Refer to the <<Licensing,Licensing>> section for details.
+* The third option is to purchase licenses directly from NetApp. Refer to the <<Licensing>> section for details.
 
 == Licensing
 
@@ -194,7 +196,7 @@ NetApp Backup and Recovery protects the following types of workloads:
 * Google Cloud Storage
 * Microsoft Azure Blob (not available for VMware workloads)
 * StorageGRID
-* ONTAP S3 (Not available for VMware workloads)
+* ONTAP S3 (not available for VMware workloads)
 
 == How NetApp Backup and Recovery works
 
