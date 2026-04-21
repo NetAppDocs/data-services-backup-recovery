@@ -1,9 +1,9 @@
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following enhancements:
 
-* *Native support for protecting VMs*: You can now define an application that consists of virtual machines, so you can protect VMs like you would any other application.
-* *Resource transformations*: You now can use JSON patch functionality to modify resources during restore operations.
+* *Native support for protecting VMs*: You can now create VM-based applications, enabling you to protect virtual machines the same way you protect any other application.
+* *Resource modifiers*: You can now use resource modifiers and resource modifier templates to add, remove, and modify resource attributes during the restore process.
 * *Upgrade Trident Protect from the Console*: You can now upgrade Trident Protect from within the NetApp Console.
-* *View protected resources*: Today, users don't see what was included in each recovery point. Now, with this feature they can not just view the resources, but also download a JSON file with all the details to pass audits.
+* *View protected resources*: You can now view the resources included in each recovery point and download a detailed JSON report. This gives you full visibility into your recovery points and simplifies audit compliance.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
