@@ -30,7 +30,6 @@ Enable preview feature flag options to use functionality that is not yet general
 |Feature flag |Feature description
 |`"folder-restore-from-local": true` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
 |`"prioritize-restore": true` |Makes the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option during the restore workflow, restore operations are prioritized over other queued jobs so they run even when the queue is busy.
-|`"svm-not-to-index": <storage_vm_name>` |Use this flag with the name of an ONTAP storage VM to disable indexing for all volumes that belong to that storage VM.
 |===
 
 .Steps
@@ -132,15 +131,13 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_catalog_config
 ----
-. Create a file named `svm-no-indexing.json` that contains the following content:
+. Create a file named `svm-no-indexing.json` with the following content. Replace the storage VM names in the example with the names of the storage VMs in your environment:
 +
 [source,json]
 ----
 {
   "indexing": {
-    "index-scaleout-config": {
-      "max-workers": 2
-    }
+    "svms-not-to-index": "storage_vm_1,storage_vm_2,storage_vm_3"
   }
 }
 ----
