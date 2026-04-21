@@ -257,7 +257,7 @@ sidebar:
           url: /br-use-monitor-tasks.html
         - title: Restart NetApp Backup and Recovery
           url: /reference-restart-backup.html
-        - title: Enable preview features for NetApp Backup and Recovery
+        - title: Enable preview and hidden features
           url: /enable-preview-features.html
     - title: Automate with the REST API
       url: /br-api-backup-restore.html          
