@@ -74,7 +74,12 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
 ----
-. Create a file named `preview-feature-flags.json` that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Refer to <<anchor-flags,available flags>> for flag information. For example:
+. Create a file that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Name the file based on your deployment type:
++
+* Cloud deployment: `production-customer.json`
+* Private / dark site deployment: `darksite-customer.json`
++
+Refer to <<anchor-flags,available flags>> for feature flag information. As an example:
 +
 [source,json]
 ----
@@ -134,7 +139,7 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_catalog_config
 ----
-. Create a file named `svm-no-indexing.json` with the following content. Replace the storage VM names in the example with the names of the storage VMs in your environment:
+. Create a file named `production-customer.json` with the following content. Replace the storage VM names in the example with the names of the storage VMs in your environment:
 +
 [source,json]
 ----
