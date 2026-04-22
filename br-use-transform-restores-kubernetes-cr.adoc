@@ -61,15 +61,22 @@ You can use resource modifiers with resources that match the following criteria:
 * `version` (optional): The API version (for example, `v1`, `v1beta1`)
 * `name` (optional): Apply only to a specific resource by name
 
-Note: Transformations of PersistentVolumeClaims and Namespaces are currently not supported.
+NOTE: Using resource modifiers within PersistentVolumeClaims and Namespaces objects are currently not supported.
 
-== Transform resources during restore operations
+=== Supported operations
 
-=== Replace information
+You can use the following operations to modify resources:
 
-Replaces an existing value at the specified path. The path must already exist.
+* `test`: Test an operation before performing it.
+* `replace`: Replace a value within a resource.
+* `add`: Add a value to a resource.
+* `remove`: Remove a value from a resource.
+* `move`: Move a value within a resource.
+* `copy`: Copy a value from one path to another
 
-Example: Change OpenShift Route hostname
+=== Replace a value within a resource
+
+Replace an existing value within a resource at the specified path. The JSON path must already exist. The following example changes a hostname for a Route object:
 
 [source,yaml]
 ----
@@ -89,11 +96,9 @@ transformations:
 --transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
 ----
 
-=== Add information
+=== Add a value to a resource
 
-Adds a new field or value at the specified path. Can add to objects or arrays.
-
-Example: Add node selector to Deployment
+Use the `add` operation to add a new field or value at the specified path. You can add data to objects or arrays. The following example adds a node selector to a Deployment resource:
 
 [source,yaml]
 ----
@@ -114,11 +119,9 @@ transformations:
 --transformation 'apps,v1,Deployment:add{"path":"/spec/template/spec/nodeSelector","value":{"topology.kubernetes.io/zone":"us-east-1a","disktype":"ssd"}}'
 ----
 
-=== Remove information
+=== Remove a value from a resource
 
-Removes a field or value at the specified path.
-
-Example: Remove kubectl annotation from ConfigMap
+Removes a field or value at the specified path. The following example removes an annotation from a ConfigMap resource:
 
 [source,yaml]
 ----
@@ -130,7 +133,7 @@ transformations:
 				path: /metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration
 ----
 
-Note: `~1` is the JSON Pointer escape sequence for `/`.
+NOTE: `~1` is the JSON Pointer escape sequence for `/`.
 
 [source,bash]
 ----
@@ -138,11 +141,9 @@ Note: `~1` is the JSON Pointer escape sequence for `/`.
 --transformation ',v1,ConfigMap:remove{"path":"/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"}'
 ----
 
-=== Move information
+=== Move a value within a resource
 
-Moves a value from one path to another. The source is removed and the value is placed at the destination.
-
-Example: Rename ConfigMap data key
+Use the `move` operation to move a value from one path to another within the same resource. The source is removed and the value is placed at the destination. The following example renames a data key for a ConfigMap object:
 
 [source,yaml]
 ----
@@ -161,11 +162,9 @@ transformations:
 --transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
 ----
 
-=== Copy information
+=== Copy a value within a resource
 
-Copies a value from one path to another. Unlike move, the source remains unchanged.
-
-Example: Duplicate ConfigMap data key
+Use the copy operation to copy a value from one path to another within the same resource. The source is not changed. The following example duplicates a data key for a ConfigMap object:
 
 [source,yaml]
 ----
@@ -184,11 +183,9 @@ transformations:
 --transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
 ----
 
-=== Test the transformation
+=== Test the resource modification
 
-Tests that a value at a path matches the expected value. If the test fails, the entire transformation is skipped (all operations in that transformation are rolled back).
-
-Example: Conditional replacement (test value then replace)
+Use the test operation to test whether the value at a path matches the expected value. If the test fails, the entire modification is rolled back. For example:
 
 [source,yaml]
 ----
