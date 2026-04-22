@@ -97,6 +97,8 @@ Refer to <<anchor-flags,available flags>> for feature flag information. As an ex
 docker restart cloudmanager_cbs
 ----
 . Reload the Backup and Recovery UI in your web browser.
++
+NOTE: To disable a preview feature, follow the same steps but set the feature flag value to `false`.
 
 == Disable indexing for all volumes that belong to a storage VM
 Follow these steps to disable indexing for all volumes that belong to a specific storage VM, instead of disabling indexing for each individual volume.
