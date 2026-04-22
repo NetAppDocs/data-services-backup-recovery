@@ -69,7 +69,7 @@ You can use the following operations to modify resources:
 
 
 * `add`: Add a value to a resource.
-* `copy`: Copy a value from one path to another
+* `copy`: Copy a value from one path to another.
 * `move`: Move a value within a resource.
 * `remove`: Remove a value from a resource.
 * `replace`: Replace a value within a resource.
