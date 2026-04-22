@@ -21,9 +21,9 @@ Backup and Recovery super admin, Backup and Recovery restore admin.
 
 == How resource modification works
 
-The `transformations` field in `SnapshotRestore`, `BackupRestore`, `AppMirrorRelationship`, and other restore resources allows you to modify Kubernetes resources during the restore process. This is useful for adapting applications to different environments, such as changing hostnames, registry URLs, resource limits, or environment variables when restoring to a new cluster.
+The `transformations` field in `SnapshotRestore`, `BackupRestore`, `AppMirrorRelationship`, and other restore resources enables you to modify Kubernetes resources during the restore process. This is useful for adapting applications or virtual machines to a new cluster by changing hostnames, registry URLs, resource limits, or environment variables.
 
-Resource modifiers use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to precisely target and modify specific fields within Kubernetes resources.
+Resource modifiers use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to target and modify specific fields within Kubernetes resources.
 
 Here is the basic structure of a restore object that contains resource modifiers:
 
@@ -67,37 +67,15 @@ NOTE: Using resource modifiers within PersistentVolumeClaims and Namespaces obje
 
 You can use the following operations to modify resources:
 
-* `test`: Test an operation before performing it.
-* `replace`: Replace a value within a resource.
+
 * `add`: Add a value to a resource.
-* `remove`: Remove a value from a resource.
-* `move`: Move a value within a resource.
 * `copy`: Copy a value from one path to another
+* `move`: Move a value within a resource.
+* `remove`: Remove a value from a resource.
+* `replace`: Replace a value within a resource.
+* `test`: Test an operation before performing it.
 
-=== Replace a value within a resource
-
-Replace an existing value within a resource at the specified path. The JSON path must already exist. The following example changes a hostname for a Route object:
-
-[source,yaml]
-----
-transformations:
-	- resource:
-			kind: Route
-			group: route.openshift.io
-		operations:
-			- op: replace
-				path: /spec/host
-				value: "prod.example.com"
-----
-
-Use the following command to run this transformation using the command line:
-[source,bash]
-----
-# CLI equivalent
-tridentctl-protect --transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
-----
-
-=== Add a value to a resource
+== Add a value to a resource
 
 Use the `add` operation to add a new field or value at the specified path. You can add data to objects or arrays. The following example adds a node selector to a Deployment resource:
 
@@ -121,7 +99,51 @@ Use the following command to run this transformation using the command line:
 tridentctl-protect --transformation 'apps,v1,Deployment:add{"path":"/spec/template/spec/nodeSelector","value":{"topology.kubernetes.io/zone":"us-east-1a","disktype":"ssd"}}'
 ----
 
-=== Remove a value from a resource
+== Copy a value within a resource
+
+Use the copy operation to copy a value from one path to another within the same resource. The source is not changed. The following example duplicates a data key for a ConfigMap object:
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: ConfigMap
+		operations:
+			- op: copy
+				from: /data/source-key
+				path: /data/backup-key
+----
+
+Use the following command to run this transformation using the command line:
+[source,bash]
+----
+# CLI equivalent
+tridentctl-protect --transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
+----
+
+== Move a value within a resource
+
+Use the `move` operation to move a value from one path to another within the same resource. The source is removed and the value is placed at the destination. The following example renames a data key for a ConfigMap object:
+
+[source,yaml]
+----
+transformations:
+	- resource:
+			kind: ConfigMap
+		operations:
+			- op: move
+				from: /data/OLD_KEY
+				path: /data/NEW_KEY
+----
+
+Use the following command to run this transformation using the command line:
+[source,bash]
+----
+# CLI equivalent
+tridentctl-protect --transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
+----
+
+== Remove a value from a resource
 
 Removes a field or value at the specified path. The following example removes an annotation from a ConfigMap resource:
 
@@ -144,50 +166,30 @@ Use the following command to run this transformation using the command line:
 tridentctl-protect --transformation ',v1,ConfigMap:remove{"path":"/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"}'
 ----
 
-=== Move a value within a resource
+== Replace a value within a resource
 
-Use the `move` operation to move a value from one path to another within the same resource. The source is removed and the value is placed at the destination. The following example renames a data key for a ConfigMap object:
+Replace an existing value within a resource at the specified path. The JSON path must already exist. The following example changes a hostname for a Route object:
 
 [source,yaml]
 ----
 transformations:
 	- resource:
-			kind: ConfigMap
+			kind: Route
+			group: route.openshift.io
 		operations:
-			- op: move
-				from: /data/OLD_KEY
-				path: /data/NEW_KEY
+			- op: replace
+				path: /spec/host
+				value: "prod.example.com"
 ----
 
 Use the following command to run this transformation using the command line:
 [source,bash]
 ----
 # CLI equivalent
-tridentctl-protect --transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
+tridentctl-protect --transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
 ----
 
-=== Copy a value within a resource
-
-Use the copy operation to copy a value from one path to another within the same resource. The source is not changed. The following example duplicates a data key for a ConfigMap object:
-
-[source,yaml]
-----
-transformations:
-	- resource:
-			kind: ConfigMap
-		operations:
-			- op: copy
-				from: /data/source-key
-				path: /data/backup-key
-----
-
-[source,bash]
-----
-# CLI equivalent
-tridentctl-protect --transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
-----
-
-=== Test the resource modification
+== Test the resource modification
 
 Use the test operation to test whether the value at a path matches the expected value. If the test fails, the entire modification is rolled back. The following example only updates `database-host` if `environment` is `staging`:
 
