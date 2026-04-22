@@ -32,24 +32,24 @@ Here is the basic structure of a restore object that contains resource modifiers
 apiVersion: protect.trident.netapp.io/v1
 kind: SnapshotRestore
 metadata:
-	name: my-restore
-	namespace: target-namespace
+  name: my-restore
+  namespace: target-namespace
 spec:
-	appVaultRef: my-vault
-	appArchivePath: /path/to/snapshot
-	namespaceMapping:
-		- source: source-ns
-			destination: target-ns
-	transformations:
-		- resource:
-				kind: ConfigMap           # Required: resource kind
-				group: ""                 # Optional: API group (empty for core resources)
-				version: ""               # Optional: API version
-				name: ""                  # Optional: specific resource name
-			operations:
-				- op: replace             # Operation type
-					path: /data/key         # JSON Pointer path
-					value: "new-value"      # New value (for add/replace/test)
+  appVaultRef: my-vault
+  appArchivePath: /path/to/snapshot
+  namespaceMapping:
+    - source: source-ns
+      destination: target-ns
+  transformations:
+    - resource:
+        kind: ConfigMap       # Required: resource kind
+        group: ""             # Optional: API group (empty for core resources)
+        version: ""           # Optional: API version
+        name: ""              # Optional: specific resource name
+      operations:
+        - op: replace         # Operation type
+          path: "/data/key"   # JSON Pointer path
+          value: "new-value"  # New value (for add/replace/test)
 ----
 
 === Supported resources
@@ -82,20 +82,19 @@ Use the `add` operation to add a new field or value at the specified path. You c
 [source,yaml]
 ----
 transformations:
-	- resource:
-			kind: Deployment
-		operations:
-			- op: add
-				path: /spec/template/spec/nodeSelector
-				value:
-					topology.kubernetes.io/zone: "us-east-1a"
-					disktype: "ssd"
+  - resource:
+      kind: Deployment
+    operations:
+      - op: add
+        path: "/spec/template/spec/nodeSelector"
+        value:
+          "topology.kubernetes.io/zone": "us-east-1a"
+          disktype: "ssd"
 ----
 
 Use the following command to run this transformation using the command line:
 [source,console]
 ----
-# CLI equivalent
 tridentctl-protect --transformation 'apps,v1,Deployment:add{"path":"/spec/template/spec/nodeSelector","value":{"topology.kubernetes.io/zone":"us-east-1a","disktype":"ssd"}}'
 ----
 
@@ -106,18 +105,17 @@ Use the copy operation to copy a value from one path to another within the same 
 [source,yaml]
 ----
 transformations:
-	- resource:
-			kind: ConfigMap
-		operations:
-			- op: copy
-				from: /data/source-key
-				path: /data/backup-key
+  - resource:
+      kind: ConfigMap
+    operations:
+      - op: copy
+        from: "/data/source-key"
+        path: "/data/backup-key"
 ----
 
 Use the following command to run this transformation using the command line:
 [source,console]
 ----
-# CLI equivalent
 tridentctl-protect --transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
 ----
 
@@ -128,18 +126,17 @@ Use the `move` operation to move a value from one path to another within the sam
 [source,yaml]
 ----
 transformations:
-	- resource:
-			kind: ConfigMap
-		operations:
-			- op: move
-				from: /data/OLD_KEY
-				path: /data/NEW_KEY
+  - resource:
+      kind: ConfigMap
+    operations:
+      - op: move
+        from: "/data/OLD_KEY"
+        path: "/data/NEW_KEY"
 ----
 
 Use the following command to run this transformation using the command line:
 [source,console]
 ----
-# CLI equivalent
 tridentctl-protect --transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
 ----
 
@@ -150,11 +147,11 @@ Removes a field or value at the specified path. The following example removes an
 [source,yaml]
 ----
 transformations:
-	- resource:
-			kind: ConfigMap
-		operations:
-			- op: remove
-				path: /metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration
+  - resource:
+      kind: ConfigMap
+    operations:
+      - op: remove
+        path: "/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"
 ----
 
 NOTE: In the path for the above example, `~1` is the JSON Pointer escape sequence for `/`.
@@ -162,7 +159,6 @@ NOTE: In the path for the above example, `~1` is the JSON Pointer escape sequenc
 Use the following command to run this transformation using the command line:
 [source,console]
 ----
-# CLI equivalent
 tridentctl-protect --transformation ',v1,ConfigMap:remove{"path":"/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"}'
 ----
 
@@ -173,19 +169,18 @@ Replace an existing value within a resource at the specified path. The JSON path
 [source,yaml]
 ----
 transformations:
-	- resource:
-			kind: Route
-			group: route.openshift.io
-		operations:
-			- op: replace
-				path: /spec/host
-				value: "prod.example.com"
+  - resource:
+      kind: Route
+      group: route.openshift.io
+    operations:
+      - op: replace
+        path: "/spec/host"
+        value: "prod.example.com"
 ----
 
 Use the following command to run this transformation using the command line:
 [source,console]
 ----
-# CLI equivalent
 tridentctl-protect --transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
 ----
 
@@ -196,21 +191,20 @@ Use the test operation to test whether the value at a path matches the expected 
 [source,yaml]
 ----
 transformations:
-	- resource:
-			kind: ConfigMap
-		operations:
-			- op: test
-				path: /data/environment
-				value: "staging"
-			- op: replace
-				path: /data/database-host
-				value: "prod-db.example.com"
+  - resource:
+      kind: ConfigMap
+    operations:
+      - op: test
+        path: "/data/environment"
+        value: "staging"
+      - op: replace
+        path: "/data/database-host"
+        value: "prod-db.example.com"
 ----
 
 Use the following command to run this transformation using the command line:
 [source,console]
 ----
-# CLI equivalent (multiple operations: test then replace)
 tridentctl-protect --transformation ',v1,ConfigMap:test{"path":"/data/environment","value":"staging"},replace{"path":"/data/database-host","value":"prod-db.example.com"}'
 ----
 
