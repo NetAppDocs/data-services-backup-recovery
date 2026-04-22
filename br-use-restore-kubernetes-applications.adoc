@@ -84,4 +84,14 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-custom-resources.html[Use Trident Protect AppVault objects to manage buckets].
 
 . Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
-. Select *Restore*.
+. Optionally, expand the *Resource modifiers* section to add, remove, or modify resource attributes during the restore process. Then, do the following:
+.. Enable the *Resource modifier* option to change the options.
+.. Optionally select a template from the *Template* list. This list contains templates that you have created and are useful to quickly apply modifier settings that you commonly use.
++
+NOTE: Create resource modifier templates in the global Settings area.
+.. Specify what target resource you want to modify by entering the resource group, version, kind, and name.
+.. Specify the operation you want to perform on the resource by selecting an operation from the *Operation* list.
+.. Enter a JSON path for the specific key you want to change.
+.. If applicable, enter a new value to use. The *Value* field only appears for certain operations (such as *Replace*).
+.. Optionally, add more resource modifiers as needed.
+. When finished, select *Restore*.

@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: br-use-transform-restores-kubernetes-cr.html
-keywords: transform restore, Kubernetes, custom resource, restore, Backup and Recovery, NetApp
-summary: Transform resources during restore operations in NetApp Backup and Recovery.
+keywords: Resource modify, transform, restore, Kubernetes, custom resource, Backup and Recovery, NetApp
+summary: Modify resources during restore operations in NetApp Backup and Recovery.
 ---
 
-= Transform resources during restore operations
+= Modify resources as you restore them
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,23 +13,19 @@ summary: Transform resources during restore operations in NetApp Backup and Reco
 :imagesdir: ./media/
 
 [.lead]
-Resource transformations let you modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network.
+Resource modifiers enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network.
 
 *Required NetApp Console role*
 Backup and Recovery super admin, Backup and Recovery restore admin.
 
-.Before you begin
 
-* Ensure you have the required roles and access to the NetApp Console and Kubernetes cluster.
-* Confirm which deployment (cloud, darksite/private) and the target namespace for restores.
-
-== How it works
+== How resource modification works
 
 The `transformations` field in `SnapshotRestore`, `BackupRestore`, `AppMirrorRelationship`, and other restore resources allows you to modify Kubernetes resources during the restore process. This is useful for adapting applications to different environments, such as changing hostnames, registry URLs, resource limits, or environment variables when restoring to a new cluster.
 
-Transformations use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to precisely target and modify specific fields within Kubernetes resources.
+Resource modifiers use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to precisely target and modify specific fields within Kubernetes resources.
 
-=== Basic structure
+Here is the basic structure of a restore object that contains resource modifiers:
 
 [source,yaml]
 ----
@@ -56,14 +52,14 @@ spec:
 					value: "new-value"      # New value (for add/replace/test)
 ----
 
-=== Resource matching
+=== Supported resources
 
-Transformations only apply to resources that match the specified criteria:
+You can use resource modifiers with resources that match the following criteria:
 
-- `kind` (required): The Kubernetes resource kind (for example, `ConfigMap`, `Deployment`, `Pod`)
-- `group` (optional): The API group (for example, `apps`, `route.openshift.io`) — omit for core resources
-- `version` (optional): The API version (for example, `v1`, `v1beta1`)
-- `name` (optional): Apply only to a specific resource by name
+* `kind` (required): The Kubernetes resource kind (for example, `ConfigMap`, `Deployment`, `Pod`)
+* `group` (optional): The API group (for example, `apps`, `route.openshift.io`) — omit for core resources
+* `version` (optional): The API version (for example, `v1`, `v1beta1`)
+* `name` (optional): Apply only to a specific resource by name
 
 Note: Transformations of PersistentVolumeClaims and Namespaces are currently not supported.
 
