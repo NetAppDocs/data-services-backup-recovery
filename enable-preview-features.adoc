@@ -85,7 +85,8 @@ Refer to <<anchor-flags,available flags>> for feature flag information. As an ex
 ----
 {
   "feature-flags": {
-    "folder-restore-from-local": true
+    "folder-restore-from-local": true,
+    "prioritize-restore": true
   }
 }
 ----
