@@ -90,10 +90,11 @@ transformations:
 				value: "prod.example.com"
 ----
 
+Use the following command to run this transformation using the command line:
 [source,bash]
 ----
 # CLI equivalent
---transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
+tridentctl-protect --transformation 'route.openshift.io,v1,Route:replace{"path":"/spec/host","value":"prod.example.com"}'
 ----
 
 === Add a value to a resource
@@ -113,10 +114,11 @@ transformations:
 					disktype: "ssd"
 ----
 
+Use the following command to run this transformation using the command line:
 [source,bash]
 ----
 # CLI equivalent
---transformation 'apps,v1,Deployment:add{"path":"/spec/template/spec/nodeSelector","value":{"topology.kubernetes.io/zone":"us-east-1a","disktype":"ssd"}}'
+tridentctl-protect --transformation 'apps,v1,Deployment:add{"path":"/spec/template/spec/nodeSelector","value":{"topology.kubernetes.io/zone":"us-east-1a","disktype":"ssd"}}'
 ----
 
 === Remove a value from a resource
@@ -133,12 +135,13 @@ transformations:
 				path: /metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration
 ----
 
-NOTE: `~1` is the JSON Pointer escape sequence for `/`.
+NOTE: In the path for the above example, `~1` is the JSON Pointer escape sequence for `/`.
 
+Use the following command to run this transformation using the command line:
 [source,bash]
 ----
 # CLI equivalent
---transformation ',v1,ConfigMap:remove{"path":"/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"}'
+tridentctl-protect --transformation ',v1,ConfigMap:remove{"path":"/metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration"}'
 ----
 
 === Move a value within a resource
@@ -156,10 +159,11 @@ transformations:
 				path: /data/NEW_KEY
 ----
 
+Use the following command to run this transformation using the command line:
 [source,bash]
 ----
 # CLI equivalent
---transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
+tridentctl-protect --transformation ',v1,ConfigMap:move{"from":"/data/OLD_KEY","path":"/data/NEW_KEY"}'
 ----
 
 === Copy a value within a resource
@@ -180,12 +184,12 @@ transformations:
 [source,bash]
 ----
 # CLI equivalent
---transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
+tridentctl-protect --transformation ',v1,ConfigMap:copy{"from":"/data/source-key","path":"/data/backup-key"}'
 ----
 
 === Test the resource modification
 
-Use the test operation to test whether the value at a path matches the expected value. If the test fails, the entire modification is rolled back. For example:
+Use the test operation to test whether the value at a path matches the expected value. If the test fails, the entire modification is rolled back. The following example only updates `database-host` if `environment` is `staging`:
 
 [source,yaml]
 ----
@@ -201,11 +205,10 @@ transformations:
 				value: "prod-db.example.com"
 ----
 
-Only updates `database-host` if `environment` is `staging`.
-
+Use the following command to run this transformation using the command line:
 [source,bash]
 ----
 # CLI equivalent (multiple operations: test then replace)
---transformation ',v1,ConfigMap:test{"path":"/data/environment","value":"staging"},replace{"path":"/data/database-host","value":"prod-db.example.com"}'
+tridentctl-protect --transformation ',v1,ConfigMap:test{"path":"/data/environment","value":"staging"},replace{"path":"/data/database-host","value":"prod-db.example.com"}'
 ----
 
