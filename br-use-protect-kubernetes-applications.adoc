@@ -28,7 +28,7 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 [role="tabbed-block"]
 ====
 
-.Add an application using the web UI
+.Add a namespace-based application using the web UI
 
 --
 
@@ -40,22 +40,47 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 . Select *Create application*.
 . Enter a name for the application.
 . From the *Cluster* list, select the cluster that hosts the application.
-. Under *Filters*, choose to filter applications by namespace or by virtual machine.
-+
-NOTE: If you choose *Virtual machine*, you can build an application that consists of one or more virtual machines, enabling you to protect the virtual machine as you would any other application.
+. Under *Filters*, choose *Namespace* to filter applications by namespace.
 
 . Optionally, choose any of the following fields to search for the resources you want to protect:
 +
-* Associated cluster
 * Associated namespaces 
 * Resource types
 * Label selectors
-. Optionally, select *Cluster Scoped Resources* to choose any resources that are scoped at the cluster level. If you include them, they are added to the application when you create it.
-. Optionally, select *Search* to find the resources based on your search criteria.
+.. Select *Add cluster-scoped resources* to add resources that are scoped at the cluster level. If you include them, they are added to the application when you create it.
+.. Optionally, select *Search* to find the resources based on your search criteria.
 +
-NOTE: The Console does not store the search parameters or results; the parameters are used to search the selected Kubernetes cluster for resources that can be included in the application. 
-. The Console displays a list of resources that match your search criteria.
+NOTE: Backup and Recovery does not store the search parameters or results; the parameters are used to search the selected Kubernetes cluster for resources that can be included in the application. 
+. Backup and Recovery displays a list of resources that match your search criteria.
 . If the list contains the resources you want to protect, select *Next*.
+. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-create.html#create-a-policy[add a protection policy] later.
+. In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. To enable prescripts or postscripts, you must have already created at least one link:br-use-manage-execution-hook-templates.html[execution hook template].
+. Select *Create*.
+
+.Result 
+The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. Backup and Recovery enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area.
+
+--
+
+.Add a VM-based application using the web UI
+
+--
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory*.
+. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select the *Applications* tab.
+. Select *Create application*.
+. Enter a name for the application.
+. From the *Cluster* list, select the cluster that hosts the application.
+. Under *Filters*, choose *Virtual machines* to create a VM-based application.
+. Find virtual machines to add to the application by choosing a namespace and optionally including label selectors.
++
+NOTE: If you enter label selectors, you cannot modify the list of virtual machines that are included in the application (the list is no longer interactive).
++
+The selected virtual machines appear in the list on the right.
+. If the list contains the VMs you want to protect, select *Next*.
 . Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-create.html#create-a-policy[add a protection policy] later.
 . In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. To enable prescripts or postscripts, you must have already created at least one link:br-use-manage-execution-hook-templates.html[execution hook template].
 . Select *Create*.
@@ -65,7 +90,7 @@ The application is created and appears in the list of applications in the *Appli
 
 --
 
-.Add an application using a CR
+.Add a namespace-based application using a CR
 
 --
 
