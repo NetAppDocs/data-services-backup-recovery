@@ -77,7 +77,7 @@ The application is created and appears in the list of applications in the *Appli
 . Under *Filters*, choose *Virtual machines* to create a VM-based application.
 . Find virtual machines to add to the application by choosing a namespace and optionally including label selectors.
 +
-NOTE: If you enter label selectors, you cannot modify the list of virtual machines that are included in the application (the list is no longer interactive).
+NOTE: If you specify label selectors, they determine which VMs are included in the application, and you cannot manually modify the selection list.
 +
 The selected virtual machines appear in the list on the right.
 . If the list contains the VMs you want to protect, select *Next*.
