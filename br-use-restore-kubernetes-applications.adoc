@@ -68,10 +68,12 @@ NOTE: Restoring a local snapshot created by Trident Protect to a different clust
 
 --
 .. Select *Restore all resources*.
++
+When restoring a VM-based application, Backup and Recovery lists all virtual machines in the recovery point.
 .. Select *Next*.
 --
 
-.Restore specific resources
+.Restore specific resources for namespace-based applications
 
 --
 .. Select *Selective resources*.
@@ -83,7 +85,17 @@ Each rule can filter on criteria such as the resource namespace, labels, group, 
 .. When you have added all the rules you need, select *Search* to see the resources available in the backup archive that match your filter criteria.
 +
 NOTE: The resources shown are the resources that currently exist on the cluster.
-.. When satisfied with the results, select *Next*.
+.. When finished, select *Next*.
+
+--
+
+.Restore specific resources for VM-based applications
+
+--
+.. Select *Selective resources*.
++
+Backup and Recovery lists all virtual machines in the recovery point. You can select which VMs to include in the restore operation.
+.. When finished, select *Next*.
 
 --
 
