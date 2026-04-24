@@ -249,4 +249,17 @@ Create resource modifier templates to store common transformations you make to r
 
 . From the NetApp Backup and Recovery menu, select *Settings*.
 . Select the down arrow to expand the *Resource modifer template* section.
-// Incomplete
+. Select *Create template*.
+. Enter a name for the resource modifer template.
+. Optionally, enter a template description.
+. Describe the target resource:
+.. Enter the resource kind (such as Pod or Deployment). This field is required.
+.. Optionally, enter a resource group, version, name.
+. Build an operation:
+.. Choose an operation from the *Operation* list.
+.. Enter the JSON path that the operation applies to.
+.. If applicable, enter a value to add or update, or a JSON path to move from.
++
+These fields only appear for operations that require them.
+.. To add another operation to this template, select *Add operation*.
+. When finished, select *Add*.
