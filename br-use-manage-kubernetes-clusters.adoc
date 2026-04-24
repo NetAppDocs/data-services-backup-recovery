@@ -41,3 +41,13 @@ To stop protecting a Kubernetes cluster, disable protection and delete associate
 . In the list of clusters, choose a cluster you want to edit and select the associated Actions menu.
 . Select *Remove cluster*.
 . Review the information in the confirmation dialog box, and select *Remove*.
+
+== Upgrade Trident Protect
+For Kubernetes clusters running Trident Protect 26.04 or later, you can upgrade Trident Protect directly from NetApp Backup and Recovery.
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory*.
+. Select *Kubernetes* from the list at the top right of the page.
+. Choose a Kubernetes instance, and select the Actions icon image:../media/icon-action.png[Actions option] > *Upgrade cluster*.
+. From the list, select the version to upgrade to.
+. Select *Upgrade*.
