@@ -88,7 +88,7 @@ NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate re
 .. Enable the *Resource modifier* option to change the options.
 .. Optionally select a template from the *Template* list. This list contains templates that you have created and are useful to quickly apply modifier settings that you commonly use.
 +
-NOTE: Create resource modifier templates in the global Settings area.
+NOTE: Create resource modifier templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
 .. Specify which resource you want to modify by entering the resource group, version, kind, and name.
 .. Specify the operation you want to perform on the resource by selecting an operation from the *Operation* list.
 .. Enter a JSON path for the specific key you want to change.
