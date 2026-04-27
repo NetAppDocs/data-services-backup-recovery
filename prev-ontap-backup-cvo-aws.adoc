@@ -346,7 +346,7 @@ To create a policy, select *Create new policy* and do the following:
 +
 .. Enter the name of the policy. 
 .. Select up to five schedules, typically of different frequencies. 
-.. For backup-to-object policies, set the DataLock and Ransomware Resilience settings. For details on DataLock and Ransomware Resilience, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+.. For backup-to-object policies, set the Datalock and Ransomware protection settings. For details on Datalock and Ransomware protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
 .. Select *Create*.
 
 * *Export existing snapshot*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.

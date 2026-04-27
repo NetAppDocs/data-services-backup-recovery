@@ -48,7 +48,7 @@ Yearly backups are deleted automatically from the source system after being tran
 
 NetApp Backup and Recovery provides support for DataLock and Ransomware protection for your volume backups. These features enable you to lock your backup files and scan them to detect possible ransomware on the backup files. This is an optional setting that you can define in your backup policies when you want extra protection for your volume backups for a cluster.
 
-Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the DataLock and Ransomware Resilience option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
+Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the *Datalock and Ransomware protection* option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
 
 This feature does not provide protection for your source volumes; only for the backups of those source volumes. Use some of the https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html[anti-ransomware protections provided from ONTAP^] to protect your source volumes.
 
@@ -101,13 +101,13 @@ The DataLock retention setting overrides the policy retention setting from your 
 === Enable DataLock and Ransomware protection
 You can enable DataLock and Ransomware protection when you create a policy. You cannot enable, modify, or disable this after the policy is created. 
 
-. When you create a policy, expand the *DataLock and Ransomware Resilience* section.
+. When you create a policy, expand the *Datalock and Ransomware protection* section.
 
 . Choose one of the following: 
-* *None*: DataLock protection and Ransomware Resilience are disabled.
-* *Unlocked*: DataLock protection and Ransomware Resilience are enabled. Users with specific permissions can overwrite or delete protected backup files during the retention period. 
+* *None*: DataLock protection and ransomware protection are disabled.
+* *Unlocked*: DataLock protection and ransomware protection are enabled. Users with specific permissions can overwrite or delete protected backup files during the retention period. 
 
-* *Locked*: DataLock protection and Ransomware Resilience are enabled. No users can overwrite or delete protected backup files during the retention period. This satisfies full regulatory compliance.
+* *Locked*: DataLock protection and ransomware protection are enabled. No users can overwrite or delete protected backup files during the retention period. This satisfies full regulatory compliance.
 
 
 
