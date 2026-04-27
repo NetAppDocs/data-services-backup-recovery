@@ -158,7 +158,7 @@ When you select the "yearly" backup label for a backup policy for any of your vo
 == Enable or disable ransomware scans
 Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. 
 
-For details about DataLock and Ransomware Resilience options, refer to link:prev-ontap-policy-object-options.html[DataLock and Ransomware Resilience options].
+For details about Datalock and Ransomware protection options, refer to link:prev-ontap-policy-object-options.html[Datalock and Ransomware protection options].
 
 You can change that schedule to days or weeks or disable it, saving costs.  
 
