@@ -85,7 +85,6 @@ When restoring a VM-based application, Backup and Recovery lists all virtual mac
 
 | Filter resources based on rules
 a|
-* To filter resources based on rules, do the following:
 ... Select the *Rules* tab.
 ... Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
 ... Select *Add rules* to add rules that define filters for selecting resources. You need at least one rule to filter resources.
@@ -100,7 +99,7 @@ a|
 ... Choose whether you want a list of namespace-scoped resources or cluster-scoped resources, and select either *Namespace-Scoped* or *Cluster-Scoped*.
 +
 Backup and Recovery lists all resources in the recovery point.
-... Select which VMs to include in the restore operation.
+... Select which resources to include in the restore operation.
 |===
 +
 NOTE: The resources shown are the resources that currently exist on the cluster.
