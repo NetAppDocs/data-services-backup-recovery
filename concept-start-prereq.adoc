@@ -177,6 +177,7 @@ a|
 a|
 * Oracle Database 19c
 * Oracle Database 21c
+* Oracle AI Database 26ai
 
 |Database storage
 |Must be deployed on NetApp ONTAP (primary or secondary)
