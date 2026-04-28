@@ -28,7 +28,7 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 [role="tabbed-block"]
 ====
 
-.Add a namespace-based application using the web UI
+.Add a namespace-based app (web UI)
 
 --
 
@@ -62,7 +62,7 @@ The application is created and appears in the list of applications in the *Appli
 
 --
 
-.Add a VM-based application using the web UI
+.Add a VM-based app (web UI)
 
 --
 
@@ -90,7 +90,7 @@ The application is created and appears in the list of applications in the *Appli
 
 --
 
-.Add a namespace-based application using a CR
+.Add a namespace-based app (CR)
 
 --
 

@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: br-use-transform-restores-kubernetes-cr.html
+permalink: br-use-modify-resources-kubernetes-cr.html
 keywords: Resource modify, transform, restore, Kubernetes, custom resource, Backup and Recovery, NetApp
 summary: Modify resources during restore operations in NetApp Backup and Recovery.
 ---
@@ -61,7 +61,7 @@ You can use resource modifiers with resources that match the following criteria:
 * `version` (optional): The API version (for example, `v1`, `v1beta1`)
 * `name` (optional): Apply only to a specific resource by name
 
-NOTE: Using resource modifiers within PersistentVolumeClaims and Namespaces objects are currently not supported.
+NOTE: Modifying PersistentVolumeClaims and Namespaces is currently not supported.
 
 === Supported operations
 

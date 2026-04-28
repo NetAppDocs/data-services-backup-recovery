@@ -58,7 +58,7 @@ The _Resource selection_ page appears.
 [role="tabbed-block"]
 ====
 
-.Restore all resources
+.All resources
 
 --
 .. Select *Restore all resources*.
@@ -67,7 +67,7 @@ When restoring a VM-based application, Backup and Recovery lists all virtual mac
 .. Select *Next*.
 --
 
-.Restore specific resources for namespace-based applications
+.Specific namespace-based app resources
 
 --
 .. Select *Selective resources* and choose whether to filter resources you select based on rules, or based on the namespace.
@@ -101,7 +101,7 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 
 --
 
-.Restore specific resources for VM-based applications
+.Specific VM-based app resources
 
 --
 .. Select *Selective resources*.
@@ -123,10 +123,14 @@ NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate re
 
 . Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
 . Optionally, expand the *Resource modifiers* section to add, remove, or modify resource attributes during the restore process. Then, do the following:
++
+NOTE: Modifying PersistentVolumeClaims and Namespaces is currently not supported.
+
 .. Enable the *Resource modifier* option to make changes to the modifier.
 .. Select a template from the *Template* list to quickly apply modifier settings you commonly use. This list includes predefined templates for common scenarios as well as custom templates that you have created.
 +
 NOTE: Create resource modifier templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
+
 .. Specify which resource you want to modify by entering the resource group, version, kind, and name.
 .. Specify the operation you want to perform on the resource by selecting an operation from the *Operation* list.
 .. Enter a JSON path for the specific key you want to change.
