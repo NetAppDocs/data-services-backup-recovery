@@ -57,7 +57,7 @@ NOTE: Restoring a local snapshot created by Trident Protect to a different clust
 The _Resource selection_ page appears.
 
 . Choose whether you want to restore all resources associated with the application or use a filter to select specific resources to restore:
-
++
 [role="tabbed-block"]
 ====
 
