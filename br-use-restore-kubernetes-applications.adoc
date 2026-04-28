@@ -43,10 +43,8 @@ Organization admin or SnapCenter admin. link:reference-roles.html[Learn about Ne
 +
 The list of restore points appears. 
 . Select the *Restore* button for the restore point you want to use.
-
-[discrete]
-===== General settings
-
++
+The Restore data wizard begins, and the _General settings_ page appears.
 . Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
 +
@@ -55,9 +53,8 @@ NOTE: Restoring a local snapshot created by Trident Protect to a different clust
 . Choose to restore to the original namespaces or new namespaces.
 . If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
 . Select *Next*.
-
-[discrete]
-===== Resource selection
++
+The _Resource selection_ page appears.
 
 . Choose whether you want to restore all resources associated with the application or use a filter to select specific resources to restore:
 
@@ -118,8 +115,8 @@ Backup and Recovery lists all virtual machines in the recovery point. You can se
 --
 
 ====
-[discrete]
-===== Destination settings
++
+The _Destination settings_ page appears.
 
 . Expand the *Destination settings* section and choose to restore either to the default storage class, a different storage class, or if you are restoring to a different cluster, to map the storage classes to the destination cluster.
 . If you chose to restore to a different storage class, select a destination storage class to match each source storage class.
