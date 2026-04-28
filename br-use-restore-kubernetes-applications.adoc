@@ -76,13 +76,32 @@ When restoring a VM-based application, Backup and Recovery lists all virtual mac
 .Restore specific resources for namespace-based applications
 
 --
-.. Select *Selective resources*.
-.. Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
-.. Select *Add rules* to add rules that define filters for selecting resources. You need at least one rule to filter resources.
+.. Select *Selective resources* and choose whether to filter resources you select based on rules, or based on the namespace.
++
+[cols="1,1", options="header"]
+|===
+| Option
+| Steps
+
+| Filter resources based on rules
+a|
+* To filter resources based on rules, do the following:
+... Select the *Rules* tab.
+... Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
+... Select *Add rules* to add rules that define filters for selecting resources. You need at least one rule to filter resources.
 +
 Each rule can filter on criteria such as the resource namespace, labels, group, version, and kind.
-.. Select *Save* to save each rule.
-.. When you have added all the rules you need, select *Search* to see the resources available in the backup archive that match your filter criteria.
+... Select *Save* to save each rule.
+... When you have added all the rules you need, select *Show resources* to see the resources available in the backup archive that match your filter criteria.
+
+| Manually select resources from a list
+a|
+... Select the *Custom* tab.
+... Choose whether you want a list of namespace-scoped resources or cluster-scoped resources, and select either *Namespace-Scoped* or *Cluster-Scoped*.
++
+Backup and Recovery lists all resources in the recovery point.
+... Select which VMs to include in the restore operation.
+|===
 +
 NOTE: The resources shown are the resources that currently exist on the cluster.
 .. When finished, select *Next*.
@@ -111,8 +130,8 @@ NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate re
 
 . Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
 . Optionally, expand the *Resource modifiers* section to add, remove, or modify resource attributes during the restore process. Then, do the following:
-.. Enable the *Resource modifier* option to change the options.
-.. Optionally select a template from the *Template* list. This list contains templates that you have created and are useful to quickly apply modifier settings that you commonly use.
+.. Enable the *Resource modifier* option to make changes to the modifier.
+.. Select a template from the *Template* list to quickly apply modifier settings you commonly use. This list includes predefined templates for common scenarios as well as custom templates that you have created.
 +
 NOTE: Create resource modifier templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
 .. Specify which resource you want to modify by entering the resource group, version, kind, and name.
