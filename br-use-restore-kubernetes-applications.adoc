@@ -27,7 +27,7 @@ A list of resources and their details appears. You can view resources by namespa
 . When finished, select *Close*.
 
 == Restore Kubernetes applications
-Use restore points to restore applications.
+You can restore namespace-based or VM-based applications from a restore point, either by restoring all resources or by selecting a subset of resources to restore.
 
 .Before you begin
 If you are restoring an application that was backed up using Trident Protect, ensure that Trident Protect is installed on both the source and destination clusters.
@@ -77,10 +77,10 @@ When restoring a VM-based application, Backup and Recovery lists all virtual mac
 +
 [cols="1,1", options="header"]
 |===
-| Option
-| Steps
+|Resource selection method
+|Steps
 
-| Filter resources based on rules
+|Filter resources using rules
 a|
 ... Select the *Rules* tab.
 ... Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
@@ -90,7 +90,7 @@ Each rule can filter on criteria such as the resource namespace, labels, group, 
 ... Select *Save* to save each rule.
 ... When you have added all the rules you need, select *Show resources* to see the resources available in the backup archive that match your filter criteria.
 
-| Manually select resources from a list
+|Manually select resources from a list
 a|
 ... Select the *Custom* tab.
 ... Choose whether you want a list of namespace-scoped resources or cluster-scoped resources, and select either *Namespace-Scoped* or *Cluster-Scoped*.
