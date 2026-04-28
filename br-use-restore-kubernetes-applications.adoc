@@ -93,7 +93,7 @@ Each rule can filter on criteria such as the resource namespace, labels, group, 
 |Manually select resources from a list
 a|
 ... Select the *Custom* tab.
-... Choose whether you want a list of namespace-scoped resources or cluster-scoped resources, and select either *Namespace-Scoped* or *Cluster-Scoped*.
+... Select *Namespace-Scoped* or *Cluster-Scoped* to view the corresponding resources.
 +
 Backup and Recovery lists all resources in the recovery point.
 ... Select which resources to include in the restore operation.
