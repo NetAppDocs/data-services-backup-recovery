@@ -47,9 +47,6 @@ The list of restore points appears.
 The Restore data wizard begins, and the _General settings_ page appears.
 . Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
-+
-NOTE: Restoring a local snapshot created by Trident Protect to a different cluster is not supported at this time.
-
 . Choose to restore to the original namespaces or new namespaces.
 . If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
 . Select *Next*.
