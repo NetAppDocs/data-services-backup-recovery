@@ -18,6 +18,10 @@ NetApp Backup and Recovery enables you to restore applications that you have pro
 == View protected resources for an application restore point
 For each application that you protect with Backup and Recovery, you can view the resources that have been backed up for a specific restore point.
 
+.Required NetApp Console role
+
+Backup and Recovery viewer. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
 .Steps
 . In NetApp Backup and Recovery, select *Inventory* > *Applications*.
 . From the list of applications, choose an application and select the Actions icon image:../media/icon-action.png[Actions option] > *View and Restore*.
@@ -34,7 +38,7 @@ If you are restoring an application that was backed up using Trident Protect, en
 
 .Required NetApp Console role
 
-Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 
