@@ -13,7 +13,7 @@ summary: Modify resources during restore operations in NetApp Backup and Recover
 :imagesdir: ./media/
 
 [.lead]
-Resource transformations enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network.
+Resource transformations enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network. You can also link:br-use-restore-kubernetes-applications.html#restore-kubernetes-applications[modify resources as you restore them using the web UI^].
 
 *Required NetApp Console role*
 Backup and Recovery super admin, Backup and Recovery restore admin.
