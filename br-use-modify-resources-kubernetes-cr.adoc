@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: br-use-modify-resources-kubernetes-cr.html
-keywords: Resource modify, transform, restore, Kubernetes, custom resource, Backup and Recovery, NetApp
+keywords: Resource modify, transform, restore, Kubernetes, custom resource, Backup and Recovery, NetApp, transformation, transformations, resource, resource transformations, modify
 summary: Modify resources during restore operations in NetApp Backup and Recovery.
 ---
 
-= Modify resources as you restore them
+= Modify resources as you restore them using custom resources
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,19 +13,18 @@ summary: Modify resources during restore operations in NetApp Backup and Recover
 :imagesdir: ./media/
 
 [.lead]
-Resource modifiers enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network.
+Resource transformations enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network.
 
 *Required NetApp Console role*
 Backup and Recovery super admin, Backup and Recovery restore admin.
-
 
 == How resource modification works
 
 The `transformations` field in `SnapshotRestore`, `BackupRestore`, `AppMirrorRelationship`, and other restore resources enables you to modify Kubernetes resources during the restore process. This is useful for adapting applications or virtual machines to a new cluster by changing hostnames, registry URLs, resource limits, or environment variables.
 
-Resource modifiers use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to target and modify specific fields within Kubernetes resources.
+Resource transformations use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to target and modify specific fields within Kubernetes resources.
 
-Here is the basic structure of a restore object that contains resource modifiers:
+Here is the basic structure of a restore object that contains resource transformations:
 
 [source,yaml]
 ----
@@ -53,8 +52,7 @@ spec:
 ----
 
 === Supported resources
-
-You can use resource modifiers with resources that match the following criteria:
+You can use resource transformations with resources that match the following criteria:
 
 * `kind` (required): The Kubernetes resource kind (for example, `ConfigMap`, `Deployment`, `Pod`)
 * `group` (optional): The API group (for example, `apps`, `route.openshift.io`) - omit for core resources
@@ -64,9 +62,7 @@ You can use resource modifiers with resources that match the following criteria:
 NOTE: Modifying PersistentVolumeClaims and Namespaces is currently not supported.
 
 === Supported operations
-
 You can use the following operations to modify resources:
-
 
 * `add`: Add a value to a resource.
 * `copy`: Copy a value from one path to another.
@@ -100,7 +96,7 @@ tridentctl-protect --transformation 'apps,v1,Deployment:add{"path":"/spec/templa
 
 == Copy a value within a resource
 
-Use the copy operation to copy a value from one path to another within the same resource. The source is not changed. The following example duplicates a data key for a ConfigMap object:
+Use the `copy` operation to copy a value from one path to another within the same resource. The source is not changed. The following example duplicates a data key for a ConfigMap object:
 
 [source,yaml]
 ----

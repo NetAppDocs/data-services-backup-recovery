@@ -122,18 +122,18 @@ The _Destination settings_ page appears.
 NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-custom-resources.html[Use Trident Protect AppVault objects to manage buckets].
 
 . Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
-. Optionally, expand the *Resource modifiers* section to add, remove, or modify resource attributes during the restore process. Then, do the following:
+. Optionally, expand the *Resource transformations* section to add, remove, or modify resource attributes during the restore process. Then, do the following:
 +
 NOTE: Modifying PersistentVolumeClaims and Namespaces is currently not supported.
 
-.. Enable the *Resource modifier* option to make changes to the modifier.
+.. Enable the *Resource transformation* option to make changes to the modifier.
 .. Select a template from the *Template* list to quickly apply modifier settings you commonly use. This list includes predefined templates for common scenarios as well as custom templates that you have created.
 +
-NOTE: Create resource modifier templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
+NOTE: Create resource transformation templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
 
 .. Specify which resource you want to modify by entering the resource group, version, kind, and name.
 .. Specify the operation you want to perform on the resource by selecting an operation from the *Operation* list.
 .. Enter a JSON path for the specific key you want to change.
 .. If applicable, enter a new value to use. The *Value* field only appears for certain operations (such as *Add* or *Replace*).
-.. Optionally, add more resource modifiers as needed.
+.. Optionally, add more resource transformations as needed.
 . When finished, select *Restore*.

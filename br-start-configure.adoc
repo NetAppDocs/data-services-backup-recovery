@@ -21,7 +21,7 @@ After you set up NetApp Console, configure Backup and Recovery settings. Add cre
 * <<Add a KVM management platform>>. (KVM workloads only)
 * <<Configure log directories in snapshots for Windows hosts>>.
 * <<Create an execution hook template>> to run scripts before and after backup jobs. (Kubernetes workloads only)
-* <<Create a resource modifier template>> to modify resources as you restore them.
+* <<Create a resource transformation template>> to modify resources as you restore them.
 //* Enable DataLock and integrity scanning. 
 //* <<Enable the Certificate Authority certificates>>
 
@@ -242,15 +242,15 @@ Before you create policies for Windows hosts, you should configure log directori
 
 include::_include/create-exec-hook-template.adoc[]
 
-== Create a resource modifier template
-Create resource modifier templates to store common transformations you make to resources as you restore them. 
+== Create a resource transformation template
+Create resource transformation templates to store common transformations you make to resources as you restore them. 
 
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Settings*.
 . Select the down arrow to expand the *Resource modifer template* section.
 . Select *Create template*.
-. Enter a name for the resource modifier template.
+. Enter a name for the resource transformation template.
 . Optionally, enter a template description.
 . Describe the target resource:
 .. Enter the resource kind (such as Pod or Deployment). This field is required.
