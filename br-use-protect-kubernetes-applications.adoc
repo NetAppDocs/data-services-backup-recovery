@@ -70,7 +70,7 @@ The application is created and appears in the list of applications in the *Appli
 
 . In NetApp Backup and Recovery, select *Inventory*.
 . Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
-. Select the *Applications* tab.
+. Select the *Applications* tab. 
 . Select *Create application*.
 . Enter a name for the application.
 . From the *Cluster* list, select the cluster that hosts the application.
