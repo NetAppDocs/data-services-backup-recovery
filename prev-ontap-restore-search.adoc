@@ -110,8 +110,8 @@ Ensure your environment meets these requirements before enabling Search & Restor
 
 * Cluster requirements:
 ** The ONTAP version must be 9.8 or greater.
-** The storage VM (SVM) on which the volume resides must have a configured data LIF.
-** NFS must be enabled on the volume (both NFS and SMB/CIFS volumes are supported).
+//** The storage VM (SVM) on which the volume resides must have a configured data LIF.
+** You must configure an IPv4 NFS data LIF on the storage VM and an NFS export for the volume. Search & Restore supports both NFS and SMB/CIFS volumes.
 ** The SnapDiff RPC Server must be activated on the SVM. The Console does this automatically when you enable Indexing on the system. (SnapDiff is the technology that quickly identifies the file and directory differences between snapshots.)
 * NetApp recommends mounting a separate volume on the Console agent to increase resiliency of Search & Restore. For instructions, refer to <<mount-volume-steps,mount the volume to reindex the catalog>>.
 
