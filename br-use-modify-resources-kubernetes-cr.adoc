@@ -16,13 +16,13 @@ summary: Modify resources during restore operations in NetApp Backup and Recover
 Resource transformations enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network. You can also link:br-use-restore-kubernetes-applications.html#restore-kubernetes-applications[modify resources as you restore them using the web UI^].
 
 *Required NetApp Console role*
-Backup and Recovery super admin, Backup and Recovery restore admin.
+Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == How resource modification works
 
 The `transformations` field in `SnapshotRestore`, `BackupRestore`, `AppMirrorRelationship`, and other restore resources enables you to modify Kubernetes resources during the restore process. This is useful for adapting applications or virtual machines to a new cluster by changing hostnames, registry URLs, resource limits, or environment variables.
 
-Resource transformations use RFC 6902 JSON Patch operations and RFC 6901 JSON Pointer paths to target and modify specific fields within Kubernetes resources.
+Resource transformations use https://tools.ietf.org/html/rfc6902[RFC 6902] JSON Patch operations and https://tools.ietf.org/html/rfc6901[RFC 6901] JSON Pointer paths to target and modify specific fields within Kubernetes resources.
 
 Here is the basic structure of a restore object that contains resource transformations:
 
