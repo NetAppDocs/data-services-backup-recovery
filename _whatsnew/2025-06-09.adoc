@@ -25,7 +25,7 @@ If you disable this setting, you must manually create the private endpoint for N
 
 === Support for SnapMirror to Cloud Resync on ONTAP S3
 
-The previous release introduced support for SnapMirror to Cloud Resync (SM-C Resync). The feature streamlines data protection during volume migration in NetApp environments. This release add support for SM-C Resync on ONTAP S3 as well as other S3-compatible providers such as Wasabi and MinIO. 
+The previous release introduced support for SnapMirror to Cloud Resync (SM-C Resync). The feature streamlines data protection during volume migration in NetApp environments. This release adds support for SM-C Resync on ONTAP S3 as well as other S3-compatible providers such as Wasabi and MinIO. 
 
 
 === Bring your own bucket for StorageGRID 

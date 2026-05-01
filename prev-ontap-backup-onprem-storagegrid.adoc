@@ -105,7 +105,7 @@ ONTAP reads and writes data to and from object storage. The object storage never
 When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
 * The nodes' intercluster LIFs are able to access the object store (not required when the Console agent is installed in a "dark" site).
 * DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
-* If you use are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
+* If you are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
 * Update firewall rules, if necessary, to allow NetApp Backup and Recovery service connections from ONTAP to object storage through the port you specified (typically port 443) and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
 
 ===  Verify ONTAP networking requirements for replicating volumes
@@ -129,7 +129,7 @@ To use DataLock & Ransomware protection for your backups, your StorageGRID syste
 +
 To tier older backups to cloud archival storage, your StorageGRID systems must be running version 11.3 or greater. Additionally, your StorageGRID systems must be discovered to the Console *Systems* page.
 +
-To user archival storage, admin node IP access is needed. 
+To use archival storage, admin node IP access is needed. 
 +
 Gateway IP access is always needed. 
 
