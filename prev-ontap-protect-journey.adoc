@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-protect-journey.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
 = Plan your protection journey with NetApp Backup and Recovery
@@ -131,7 +131,7 @@ If you create custom policies for replication or backup, the policy labels (for 
 
 You can create snapshot, replication, and backup to object storage policies in the NetApp Backup and Recovery UI. See the section for link:prev-ontap-backup-manage.html[adding a new backup policy] for details. 
 
-In addition to using using NetApp Backup and Recovery to create custom policies, you can use System Manager or the ONTAP Command Line Interface (CLI):
+In addition to using NetApp Backup and Recovery to create custom policies, you can use System Manager or the ONTAP Command Line Interface (CLI):
 
 * https://docs.netapp.com/us-en/ontap/task_dp_configure_snapshot.html[Create a snapshot policy using System Manager or the ONTAP CLI^]
 

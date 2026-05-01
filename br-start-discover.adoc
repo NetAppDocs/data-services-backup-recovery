@@ -49,7 +49,7 @@ This is a two-part process:
 
 ==== Import SnapCenter Server application and host resources
 
-This first step imports host rsesources from SnapCenter and displays those resources in the NetApp Backup and Recovery Inventory page. At that point, the resources are not yet managed by NetApp Backup and Recovery.
+This first step imports host resources from SnapCenter and displays those resources in the NetApp Backup and Recovery Inventory page. At that point, the resources are not yet managed by NetApp Backup and Recovery.
 
 TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does not take over protection management automatically. To do so, you must explicitly select to manage the imported resources in NetApp Backup and Recovery. This ensures that you are ready to have those resources backed up by NetApp Backup and Recovery. 
 
@@ -72,7 +72,7 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 
 . Select *Import* to validate your entries and register the SnapCenter Server.
 +
-NOTE: If the SnapCenter Server is already registered, you can  update the existing registration details.
+NOTE: If the SnapCenter Server is already registered, you can update the existing registration details.
 
 .Result
 The Inventory page shows the imported SnapCenter resources that include MS SQL hosts, instances, and databases.

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-rbac-setup.html
 keywords: backup, back up, restore, recovery, aws, azure
-summary: For increased security, configure access for specific roles in NetApp Backup and Recovery.  
+summary: For increased security, configure access for specific roles in NetApp Backup and Recovery.
 ---
 
 = Set up role-based access control in NetApp Backup and Recovery
@@ -42,7 +42,7 @@ Organization admins or Folder or project admins discover the workloads that are 
 
 . Add users to projects.
 +
-Organization admins or Folder/project admins add Console users to projects with workloads. Assign users the Organization viewer role and a Backup and Recovery role based on their access needs. Users with the right Backup and Recovery role will automatically gain access to new workloads in these projects.  
+Organization admins or Folder/project admins add Console users to projects with workloads. Assign users the Organization viewer role and a Backup and Recovery role based on their access needs. Users with the appropriate Backup and Recovery role will automatically gain access to new workloads in these projects.
 
 == Related information
 

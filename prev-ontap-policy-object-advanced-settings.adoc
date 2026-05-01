@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-policy-object-advanced-settings.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
 = Manage backup-to-object storage options in NetApp Backup and Recovery Advanced Settings
@@ -69,7 +69,7 @@ Note that some options are unavailable based on the version of ONTAP on the sour
 //* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. 
 //* The LIF must be associated with the IPspace that ONTAP should use to connect to object storage. 
 //* The nodes' intercluster LIFs must be able to access the object store. 
-//* If you use are using a different IPspace than the _Default_, you might need to create a static route to get access to the object storage.
+//* If you are using a different IPspace than the _Default_, you might need to create a static route to get access to the object storage.
 //
 //image:screenshot_backup_edit_ipspace.png[A screenshot of the IPspace entry in the Advanced Settings page.]
 //

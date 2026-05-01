@@ -167,7 +167,7 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 
 . Select *Import* to validate your entries and register the SnapCenter Server.
 +
-NOTE: If the SnapCenter Server is already registered, you can  update the existing registration details.
+NOTE: If the SnapCenter Server is already registered, you can update the existing registration details.
 
 .Result
 The Inventory page shows the imported SnapCenter resources.
@@ -187,7 +187,7 @@ The Inventory page shows *Managed* under the host name to indicate that the sele
 
 === Edit imported SnapCenter resources
 
-You can later re-import SnapCenter resources our edit the imported SnapCenter resources to update the registration details.
+You can later re-import SnapCenter resources or edit the imported SnapCenter resources to update the registration details.
 
 You can change only the port and password details for the SnapCenter Server.
 

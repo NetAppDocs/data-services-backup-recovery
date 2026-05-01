@@ -33,5 +33,5 @@ While this feature is in preview, there are certain limitations:
 
 *Getting started* 
 
-To begin using this preview feature, you must enable a flag on the Console agent. You can then enter the connection details of you MinIO third-party object store in the protection workflow by choosing *Third party Compatible* object store in the backup section. 
+To begin using this preview feature, you must enable a flag on the Console agent. You can then enter the connection details of your MinIO third-party object store in the protection workflow by choosing *Third party Compatible* object store in the backup section. 
 

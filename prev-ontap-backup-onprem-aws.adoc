@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-onprem-aws.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
 = Back up on-premises ONTAP data to Amazon S3 with NetApp Backup and Recovery
@@ -109,7 +109,7 @@ The cluster initiates an outbound HTTPS connection over port 443 from the interc
 +
 When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that these LIFs are associated with. That might be the "Default" IPspace or a custom IPspace that you created.
 +
-If you use are using a different IPspace than "Default", then you might need to create a static route to get access to the object storage.
+If you are using a different IPspace than "Default", then you might need to create a static route to get access to the object storage.
 +
 All intercluster LIFs within the IPspace must have access to the object store. If you can't configure this for the current IPspace, then you'll need to create a dedicated IPspace where all intercluster LIFs have access to the object store.
 * DNS servers must have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
@@ -288,7 +288,7 @@ openssl s_client -connect bucket.vpce-0ff5c15df7e00fbab-yxs7lt8v.s3.us-west-2.vp
 [source,text]
 ----
 Certificate chain
-0 s:/CN=s3.us-west-2.amazonaws.com`
+0 s:/CN=s3.us-west-2.amazonaws.com
    i:/C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
 -----BEGIN CERTIFICATE-----
 MIIM6zCCC9OgAwIBAgIQA7MGJ4FaDBR8uL0KR3oltTANBgkqhkiG9w0BAQsFADBG

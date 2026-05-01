@@ -56,7 +56,7 @@ This file is located in the following location in the bucket `netapp-backup-<GUI
 
 === Install a new Console agent on a new on-premises Linux host
 
-WhWhen installing a new Console agent, download the same software version as the original agent. Changes to the NetApp Backup and Recovery database may cause newer software versions to not work with old database backups. You can https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
+When installing a new Console agent, download the same software version as the original agent. Changes to the NetApp Backup and Recovery database can cause newer software versions to not work with old database backups. You can https://docs.netapp.com/us-en/console-setup-admin/task-upgrade-connector.html[upgrade the Console agent software to the most current version after restoring the Backup database^].
 
 . https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-private-mode.html[Install the Console agent on a new on-premises Linux host^]
 

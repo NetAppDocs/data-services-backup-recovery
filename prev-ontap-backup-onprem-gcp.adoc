@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-onprem-gcp.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
 = Back up on-premises ONTAP data to Google Cloud Storage with NetApp Backup and Recovery
@@ -151,7 +151,7 @@ When you set up NetApp Backup and Recovery, you are prompted for the IPspace to 
 * DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
 +
 If you're using Private Google Access or Private Service Connect, make sure your DNS servers have been configured to point `storage.googleapis.com` to the correct internal (private) IP address. 
-* Note that if you use are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
+* Note that if you are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
 * Update firewall rules, if necessary, to allow NetApp Backup and Recovery connections from ONTAP to object storage through port 443, and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
 
 ===  Verify ONTAP networking requirements for replicating volumes
