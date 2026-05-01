@@ -45,7 +45,7 @@ NetApp Backup and Recovery adjusts the SnapCenter schedules as follows:
 * If the SnapCenter schedule is set to less than or equal to 7 days, NetApp Backup and Recovery sets the schedule to weekly. Some snapshots are skipped during the week. 
 +
 *Example*: If you have a SnapCenter daily policy with a repeating interval of every 3 days starting on Monday, NetApp Backup and Recovery sets the schedule to weekly on Monday, Thursday, and Sunday. Some days will be skipped because it is not exactly every 3 days.
-* If the SnapCenter schedule is set to  greater than 7 days, NetApp Backup and Recovery sets the schedule to monthly. Some snapshots will be skipped during the month. 
+* If the SnapCenter schedule is set to greater than 7 days, NetApp Backup and Recovery sets the schedule to monthly. Some snapshots will be skipped during the month. 
 +
 *Example*: If you have a SnapCenter daily policy with a repeating interval of every 10 days starting on the 2nd of the month, NetApp Backup and Recovery, after migration, sets the schedule to monthly on the 2nd, 12th, and 22nd day of the month. NetApp Backup and Recovery skips some days in the next month.
 
@@ -56,7 +56,7 @@ SnapCenter hourly policies with repeating intervals greater than one hour are co
 
 Any hourly policy with repeating intervals that are not a factor of 24 (for example 5, 7, etc) will skip some snapshots in a day.
 
-*Example*: If you have a SnapCenter hourly policy with a repeating interval every 5 hours starting at 1:00 AM, NetApp Backup and Recovery (after migration) will set the schedule to daily with 5-hour intervals at 1:00 AM, 6:00 AM, 11:00 AM, 4:00 PM, and 9:00 PM. Some hours will be skipped, after 9:00 PM it should be 2:00 AM to repeat after every 5 hours, but it will be always 1:00 AM.
+*Example*: If you have a SnapCenter hourly policy with a repeating interval every 5 hours starting at 1:00 AM, NetApp Backup and Recovery (after migration) will set the schedule to daily with 5-hour intervals at 1:00 AM, 6:00 AM, 11:00 AM, 4:00 PM, and 9:00 PM. Some hours will be skipped — after 9:00 PM it should be 2:00 AM to repeat every 5 hours, but it will always be 1:00 AM.
 
 
 == Log retention from SnapCenter policies

@@ -10,7 +10,7 @@ For details on what's changed, see the link:https://docs.netapp.com/us-en/consol
 
 === Hyper-V workload support as a private preview
 
-This release of of NetApp Backup and Recovery introduces support for discovering and managing Hyper-V workloads:
+This release of NetApp Backup and Recovery introduces support for discovering and managing Hyper-V workloads:
 
 * Backup and restore VMs on standalone instances as well as failover cluster instances (FCI)
 * Protect VMs stored on SMB3 shares
@@ -23,7 +23,7 @@ For details about protecting Hyper-V workloads, refer to https://docs.netapp.com
 
 === KVM workload support as a private preview
 
-This release of of NetApp Backup and Recovery introduces support for discovering and managing KVM workloads:
+This release of NetApp Backup and Recovery introduces support for discovering and managing KVM workloads:
 
 * Back up and restore qcow2 VM images stored on NFS shares
 * Back up storage pools

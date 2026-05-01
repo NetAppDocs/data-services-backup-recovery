@@ -1,6 +1,6 @@
 === Kubernetes workload support as a Preview
 
-This release of of NetApp Backup and Recovery introduces support for discovering and managing Kubernetes workloads:
+This release of NetApp Backup and Recovery introduces support for discovering and managing Kubernetes workloads:
 
 * Discover Red Hat OpenShift and open-source Kubernetes clusters, backed by NetApp ONTAP, without sharing kubeconfig files.
 * Discover, manage, and protect applications across multiple Kubernetes clusters using a unified control plane.
