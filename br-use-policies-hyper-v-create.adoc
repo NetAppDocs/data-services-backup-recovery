@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: br-use-policies-create.html
+permalink: br-use-policies-hyper-v-create.html
 keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
 summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
 ---
