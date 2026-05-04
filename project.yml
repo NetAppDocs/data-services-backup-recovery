@@ -67,8 +67,8 @@ sidebar:
           url: /br-start-login.html
         - title: View protection health in the Dashboard 
           url: /br-use-dashboard.html  
-        - title: Create policies to govern backups and restores
-          url: /br-use-policies-create.html
+        #- title: Create policies to govern backups and restores
+        #  url: /br-use-policies-create.html
         - title: Protect ONTAP volume workloads 
           entries: 
             - title: Protect ONTAP volume workloads overview
