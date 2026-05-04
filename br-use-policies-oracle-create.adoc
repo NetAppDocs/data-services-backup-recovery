@@ -121,6 +121,7 @@ You can optionally configure advanced settings in the policy. You can use these 
 * *Backup verification*: Select whether you want to enable backup verification and whether you want it immediately or later. This feature ensures that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
 +
 Additionally, configure the following options:
+
 ** Choose when to run backup verification:
 *** *Immediately*: Runs verification as the final step of each backup job. Use this to validate every backup as soon as it is created. Note that this adds time and resource usage to the backup window.
 *** *Later*: Runs verification on a separate schedule that you create, independent of the backup job. Use this to keep backup windows short by running verifications off-hours, or to verify only specific tiers (for example, weekly and monthly but not daily).
