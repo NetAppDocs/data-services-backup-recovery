@@ -263,6 +263,8 @@ kubectl apply -f trident-protect-snapshot-restore-cr.yaml
 == Restore a snapshot to the original namespace
 You can restore a snapshot to the original namespace at any time.
 
+NOTE: In-place restore (restoring to the original namespace and original cluster) of VM-based apps from local snapshots is not currently supported.
+
 include::../_include/restore-include-sessiontoken-note.adoc[]
 
 .Steps

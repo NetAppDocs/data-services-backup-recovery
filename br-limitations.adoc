@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-limitations.html
-keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
+keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Microsoft SQL Server database, SAP HANA database
 summary: NetApp Backup and Recovery needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
 ---
 

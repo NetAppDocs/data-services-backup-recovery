@@ -13,7 +13,7 @@ summary: You can protect Kubernetes applications and application data from on-pr
 :imagesdir: ./media/
 
 [.lead]
-Managing Kubernetes workloads in NetApp Backup and Recovery enables you to discover, manage, and protect your Kubernetes clusters and applications all in one place. You can manage resources and applications hosted on your Kubernetes clusters. You can also create and associate protection policies with your Kubernetes workloads, all using a single interface.
+Managing Kubernetes workloads in NetApp Backup and Recovery enables you to discover, manage, and protect your Kubernetes clusters and applications all in one place. You can manage resources and applications hosted on your Kubernetes clusters. You can also create and associate protection policies with your Kubernetes applications, all using a single interface.
 
 The following diagram shows the components and basic architecture of backup and recovery for Kubernetes workloads and how different copies of your data can be stored in different locations:
 
