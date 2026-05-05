@@ -202,16 +202,11 @@ For NetApp Console requirements, refer to <<In NetApp Console>>.
 
 NOTE: NetApp strongly recommends assigning a static IP address to the Console agent you use for Kubernetes workloads to avoid issues if the agent IP address changes.
 
-* A primary ONTAP system (ONTAP 9.16.1 or later)
-* A Kubernetes cluster - Supported Kubernetes distributions and versions include:
-** Anthos On-Prem (VMware) and Anthos on bare metal 1.16
-** Kubernetes 1.27 - 1.33
-** OpenShift 4.10 - 4.18
-** Rancher Kubernetes Engine 2 (RKE2) v1.26.7+rke2r1, v1.28.5+rke2r1
-** Suse Rancher
-* NetApp Trident 24.10 or later 
-* NetApp Trident Protect 25.07 or later (installed during Kubernetes workload discovery)
-* NetApp Trident Protect Connector 25.07 or later (installed during Kubernetes workload discovery)
+* A primary ONTAP system (ASA r2 systems are not supported)
+* NetApp Trident 25.02 or later
+* NetApp Trident Protect 26.05 or later (installed on the Kubernetes cluster during discovery)
+//* NetApp Trident Protect Connector 26.05 or later (installed during Kubernetes workload discovery)
+* A Kubernetes cluster - Supported Kubernetes distributions and versions include those supported by https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html[Trident Protect].
 ** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
 
 == Requirements for protecting Hyper-V workloads
