@@ -27,6 +27,6 @@ When you create a 3-2-1 protection policy where no object storage backups occur 
 
 *Workaround*: Remove and re-add the application and protect it with a different protection policy.
 
-== Restoring VM-based app snapshots to the original namespace
+== In-place restores of VM-based apps from local snapshots are not supported
 
-Restoring snapshots of VM-based apps to the original namespace is not supported at this time.
+In-place restore (restoring to the original namespace and original cluster) of VM-based apps from local snapshots is not currently supported.
