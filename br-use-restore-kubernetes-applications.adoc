@@ -53,7 +53,7 @@ The Restore data wizard begins, and the _General settings_ page appears.
 . Choose the destination cluster from the *Cluster* list.
 . Choose to restore to the original namespaces or new namespaces.
 +
-NOTE: Restoring VM-based apps to the original namespace is not supported at this time.
+NOTE: Restoring snapshots of VM-based apps to the original namespace is not supported at this time.
 
 . If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
 . Select *Next*.
