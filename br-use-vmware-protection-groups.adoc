@@ -40,7 +40,12 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Provide a name for the protection group.
 . Select the VMs or databases that you want to include in the protection group.
 . Select *Next*. 
-
+. Choose how the protection group handles VMs whose virtual disks span multiple datastores:
++
+* *Always exclude all spanning datastores*: The protection group will only include datastores that are added to it directly, along with the primary datastore of any VMs added directly to the protection group.
+* *Always include all spanning datastores*: The protection group will include all datastores spanned by the included VMs.
+* *Manually select the spanning datastores to be included*: Manually select which spanning datastores to include in the protection group. This selection is static; you must update the list of spanning datastores each time new VMs are added to the group.
+. Select *Next*.
 . Select the protection policy that you want to apply to the protection group.
 +
 If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
