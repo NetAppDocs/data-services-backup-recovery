@@ -42,9 +42,9 @@ NOTE: If you are using a service account, you should use the service access toke
 
 .Steps
 
-. Obtain a user token from the NetApp NetApp Console web site.
+. Obtain a user token from the NetApp Console web site.
 +
-Make sure you generate the refresh token from the following link: https://services.cloud.netapp.com/refresh-token/. The refresh token is an alpha-numeric string that you'll use to generate a user token.
+Make sure you generate the refresh token from the following link: https://services.cloud.netapp.com/refresh-token/. The refresh token is an alphanumeric string that you'll use to generate a user token.
 +
 [source,console]
 ----

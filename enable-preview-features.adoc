@@ -1,0 +1,160 @@
+---
+sidebar: sidebar
+permalink: enable-preview-features.html
+keywords: preview features, preview, Backup and Recovery, configuration, NetApp Backup and Recovery
+summary: Enable preview and hidden features for NetApp Backup and Recovery.
+---
+
+= Enable preview and hidden features for NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Enable preview and hidden features for NetApp Backup and Recovery.
+
+*Required NetApp Console role*
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+== Available preview features
+You can enable the following preview features for NetApp Backup and Recovery.
+
+[[anchor-flags]]
+[caption=]
+.Available preview feature flags
+
+[%header,cols="50,50"]
+|===
+|Feature flag |Feature description
+|`"folder-restore-from-local": true` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
+|`"prioritize-restore": true` |Makes the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option during the restore workflow, restore operations are prioritized over other queued jobs so they run even when the queue is busy.
+|===
+
+== Enable preview features
+Enable preview feature flag options to use functionality that is not yet generally available. Use preview features with caution in production environments.
+
+.Steps
+
+. Use SSH to log into the Console agent.
+. Change to the root user:
++
+[source,console]
+----
+sudo su
+----
+. Find the Backup and Recovery volume in Docker:
++
+[source,console]
+----
+docker volume ls | grep cbs
+----
++ 
+The output should be similar to the following:
++
+----
+local service-manager-2_cloudmanager_cbs_volume
+----
+. Find the mount point for the volume:
++
+[source,console]
+----
+docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
+----
++
+The mount point differs between cloud and private deployments. This output example shows a cloud deployment:
++
+----
+/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
+----
+. Change to the docker volume config directory, which is inside the mountpoint directory. For example:
++
+[source,console]
+----
+cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
+----
+. Create a file that contains the following JSON structure and a key/value pair for each feature flag you want to enable. Name the file based on your deployment type:
++
+* Cloud deployment: `production-customer.json`
+* Private / dark site deployment: `darksite-customer.json`
++
+Refer to <<anchor-flags,available flags>> for feature flag information. As an example:
++
+[source,json]
+----
+{
+  "feature-flags": {
+    "folder-restore-from-local": true,
+    "prioritize-restore": true
+  }
+}
+----
+. Restart the Backup and Recovery container:
++
+[source,console]
+----
+docker restart cloudmanager_cbs
+----
+. Reload the Backup and Recovery UI in your web browser.
++
+NOTE: To disable a preview feature, follow the same steps but set the feature flag value to `false`.
+
+== Disable indexing for all volumes that belong to a storage VM
+Follow these steps to disable indexing for all volumes that belong to a specific storage VM, instead of disabling indexing for each individual volume.
+
+.Steps
+
+. Use SSH to log into the Console agent.
+. Change to the root user:
++
+[source,console]
+----
+sudo su
+----
+. Find the Backup and Recovery volume in Docker:
++
+[source,console]
+----
+docker volume ls | grep cbs
+----
++ 
+The output should be similar to the following:
++
+----
+local service-manager-2_cloudmanager_cbs_volume
+----
+. Find the mount point for the volume:
++
+[source,console]
+----
+docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
+----
++
+The mount point differs between cloud and private deployments. This output example shows a cloud deployment:
++
+----
+/var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
+----
+. Change to the docker volume config directory, which is inside the mountpoint directory. For example:
++
+[source,console]
+----
+cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_catalog_config
+----
+. Create a file named `production-customer.json` with the following content. Replace the storage VM names in the example with the names of the storage VMs in your environment:
++
+[source,json]
+----
+{
+  "indexing": {
+    "svms-not-to-index": "storage_vm_1,storage_vm_2,storage_vm_3"
+  }
+}
+----
+. Restart the Backup and Recovery indexing catalog container:
++
+[source,console]
+----
+docker restart cloudmanager_cbs_catalog
+----
