@@ -15,12 +15,30 @@ summary: NetApp Backup and Recovery enables you to restore applications that you
 [.lead]
 NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. To restore an application, an application needs to have at least one restore point available. A restore point consists of either the local snapshot or the backup to the object store (or both). You can restore an application using the local, secondary, or object store archive.
 
+== View protected resources for an application restore point
+For each application that you protect with Backup and Recovery, you can view the resources that have been backed up for a specific restore point.
+
+.Required NetApp Console role
+
+Backup and Recovery viewer. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+. In NetApp Backup and Recovery, select *Inventory* > *Applications*.
+. From the list of applications, choose an application and select the Actions icon image:../media/icon-action.png[Actions option] > *View and Restore*.
+. From the list of restore points, choose a restore point and select the Actions icon image:../media/icon-action.png[Actions option] > *View resources*.
++
+A list of resources and their details appears. You can view resources by namespace or cluster scope, and download the list as a JSON file for future audits.
+. When finished, select *Close*.
+
+== Restore Kubernetes applications
+You can restore namespace-based or VM-based applications from a restore point, either by restoring all resources or by selecting a subset of resources to restore.
+
 .Before you begin
 If you are restoring an application that was backed up using Trident Protect, ensure that Trident Protect is installed on both the source and destination clusters.
 
 .Required NetApp Console role
 
-Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 
@@ -29,53 +47,80 @@ Organization admin or SnapCenter admin. link:reference-roles.html[Learn about Ne
 +
 The list of restore points appears. 
 . Select the *Restore* button for the restore point you want to use.
-
-[discrete]
-===== General settings
-
++
+The Restore data wizard begins, and the _General settings_ page appears.
 . Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
-+
-NOTE: Restoring a local snapshot created by Trident Protect to a different cluster is not supported at this time.
-
 . Choose to restore to the original namespaces or new namespaces.
++
+NOTE: In-place restore (restoring to the original namespace and original cluster) of VM-based apps from local snapshots is not currently supported.
+
 . If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
 . Select *Next*.
-
-[discrete]
-===== Resource selection
++
+The _Resource selection_ page appears.
 
 . Choose whether you want to restore all resources associated with the application or use a filter to select specific resources to restore:
-
++
 [role="tabbed-block"]
 ====
 
-.Restore all resources
+.All resources
 
 --
 .. Select *Restore all resources*.
++
+When restoring a VM-based application, Backup and Recovery lists all virtual machines in the recovery point.
 .. Select *Next*.
 --
 
-.Restore specific resources
+.Specific namespace-based app resources
+
+--
+.. Select *Selective resources* and choose whether to filter resources you select based on rules, or based on the namespace.
++
+[cols="1,1", options="header"]
+|===
+|Resource selection method
+|Steps
+
+|Filter resources using rules
+a|
+... Select the *Rules* tab.
+... Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
+... Select *Add rules* to add rules that define filters for selecting resources. You need at least one rule to filter resources.
++
+Each rule can filter on criteria such as the resource namespace, labels, group, version, and kind.
+... Select *Save* to save each rule.
+... When you have added all the rules you need, select *Show resources* to see the resources available in the backup archive that match your filter criteria.
+
+|Manually select resources from a list
+a|
+... Select the *Custom* tab.
+... Select *Namespace-Scoped* or *Cluster-Scoped* to view the corresponding resources.
++
+Backup and Recovery lists all resources in the recovery point.
+... Select which resources to include in the restore operation.
+|===
++
+NOTE: The resources shown are the resources that currently exist on the cluster.
+.. When finished, select *Next*.
+
+--
+
+.Specific VM-based app resources
 
 --
 .. Select *Selective resources*.
-.. Choose the behavior of the resource filter. If you choose *Include*, the resources you select are restored. If you choose *Exclude*, the resources you select are not restored.
-.. Select *Add rules* to add rules that define filters for selecting resources. You need at least one rule to filter resources.
 +
-Each rule can filter on criteria such as the resource namespace, labels, group, version, and kind.
-.. Select *Save* to save each rule.
-.. When you have added all the rules you need, select *Search* to see the resources available in the backup archive that match your filter criteria.
-+
-NOTE: The resources shown are the resources that currently exist on the cluster.
-.. When satisfied with the results, select *Next*.
+Backup and Recovery lists all virtual machines in the recovery point. You can select which VMs to include in the restore operation.
+.. When finished, select *Next*.
 
 --
 
 ====
-[discrete]
-===== Destination settings
++
+The _Destination settings_ page appears.
 
 . Expand the *Destination settings* section and choose to restore either to the default storage class, a different storage class, or if you are restoring to a different cluster, to map the storage classes to the destination cluster.
 . If you chose to restore to a different storage class, select a destination storage class to match each source storage class.
@@ -84,4 +129,18 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-custom-resources.html[Use Trident Protect AppVault objects to manage buckets].
 
 . Optionally, expand the *Restore scripts* section and enable the *Postscript* option to choose an execution hook template that will run after the restore operation is complete. If needed, enter any arguments that the script needs and add label selectors to filter resources based on resource labels.
-. Select *Restore*.
+. Optionally, expand the *Resource transformations* section to add, remove, or modify resource attributes during the restore process. Then, do the following:
++
+NOTE: Modifying PersistentVolumeClaims and Namespaces is currently not supported.
+
+.. Enable the *Resource transformation* option to make changes to the modifier.
+.. Select a template from the *Template* list to quickly apply modifier settings you commonly use. This list includes predefined templates for common scenarios as well as custom templates that you have created.
++
+NOTE: Create resource transformation templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
+
+.. Specify which resource you want to modify by entering the resource group, version, kind, and name.
+.. Specify the operation you want to perform on the resource by selecting an operation from the *Operation* list.
+.. Enter a JSON path for the specific key you want to change.
+.. If applicable, enter a new value to use. The *Value* field only appears for certain operations (such as *Add* or *Replace*).
+.. Optionally, add more resource transformations as needed.
+. When finished, select *Restore*.

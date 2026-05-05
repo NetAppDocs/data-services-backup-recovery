@@ -26,3 +26,7 @@ When you change the associated protection policy for an application to use a dif
 When you create a 3-2-1 protection policy where no object storage backups occur at the same time as replication to secondary storage, the protection policy hangs when protecting the application.
 
 *Workaround*: Remove and re-add the application and protect it with a different protection policy.
+
+== In-place restores of VM-based apps from local snapshots are not supported
+
+In-place restore (restoring to the original namespace and original cluster) of VM-based apps from local snapshots is not currently supported.

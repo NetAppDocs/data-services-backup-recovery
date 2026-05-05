@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: br-limitations-oracle.html
-keywords: NetApp Backup and Recovery, Oracle database
-summary: Review these NetApp Backup and Recovery limitations before using Backup and Recovery in your environment.
+keywords: NetApp Backup and Recovery, Oracle Database
+summary: Review these NetApp Backup and recovery limitations before using Backup and Recovery in your environment.
 ---
 
 = Known limitations with NetApp Backup and Recovery for Oracle Database workloads
