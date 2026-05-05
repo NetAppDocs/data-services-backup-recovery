@@ -36,10 +36,11 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
-
-. Provide a name for the protection group.
-. Select the VMs or databases that you want to include in the protection group.
-. Select *Next*. 
+. Provide a name for the protection group, and choose what resources you want to add to the protection group: Datastores, Virtual machines, or Tags.
+. From the list that appears, select the resources that you want to include in the protection group.
++
+You can filter the available resources in the list by selecting a specific vCenter or datacenter. Selected resources appear in the list to the right.
+. When finished, select *Next*. 
 . Choose how the protection group handles VMs whose virtual disks span multiple datastores:
 +
 * *Always exclude all spanning datastores*: The protection group will only include datastores that are added to it directly, along with the primary datastore of any VMs added directly to the protection group.
