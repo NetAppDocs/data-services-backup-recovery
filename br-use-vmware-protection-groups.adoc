@@ -44,7 +44,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 +
 * *Always exclude all spanning datastores*: The protection group will only include datastores that are added to it directly, along with the primary datastore of any VMs added directly to the protection group.
 * *Always include all spanning datastores*: The protection group will include all datastores spanned by the included VMs.
-* *Manually select the spanning datastores to be included*: Manually select which spanning datastores to include in the protection group. This selection is static; you must update the list of spanning datastores each time new VMs are added to the group.
+* *Manually select the spanning datastores to be included*: If you select this option, you need to manually select which spanning datastores to include in the protection group from the list that appears. This selection is static; you must update the list of spanning datastores each time new VMs are added to the group.
 . Select *Next*.
 . Select the protection policy that you want to apply to the protection group.
 +
