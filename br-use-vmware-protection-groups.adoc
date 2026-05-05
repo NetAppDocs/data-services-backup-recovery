@@ -35,9 +35,7 @@ Using tag-based protection has some advantages:
 * If a vSphere tag is deleted in vCenter, future backups skip that tag and report a warning.
 * If a VM is migrated to a different datastore, it remains protected as long as it still has the tag that is part of a tag-based protection group.
 
-IMPORTANT: Mixing resource types (for example, combining tags with individual VMs or datastores in the same protection group) is not supported.
-
-NOTE: Tag membership is resolved from vCenter at backup time. Any changes you make to tags in vCenter (adding/removing tags, deleting tags, adding/removing VMs) are automatically reflected in the next backup.
+Tag membership is resolved from vCenter at backup time. Any changes you make to tags in vCenter (adding/removing tags, deleting tags, adding/removing VMs) are automatically reflected in the next backup.
 
 == Create a protection group 
 
@@ -58,6 +56,9 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
 . Provide a name for the protection group, and choose how you want to add resources to the protection group. You can add resources organized by *Datastores*, *Virtual machines*, or *Tags*.
++
+IMPORTANT: Mixing resource types (for example, combining tags with individual VMs or datastores in the same protection group) is not supported.
+
 . From the list that appears, select the resources that you want to include in the protection group.
 +
 You can filter the available resources in the list by selecting a specific vCenter or datacenter. Selected resources appear in the list to the right.
