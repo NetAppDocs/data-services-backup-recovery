@@ -23,6 +23,6 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancement:
 
-*Protection groups can span datastores*: VMware workloads now supports creating protection groups that span more than one datastore.
+*Spanning datastore support for protection groups*: You can now choose the behavior of protection groups when protecting virtual machines whose virtual disks span multiple datastores.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
