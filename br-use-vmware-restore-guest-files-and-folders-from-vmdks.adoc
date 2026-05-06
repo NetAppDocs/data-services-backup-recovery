@@ -14,6 +14,9 @@ summary: 'You can restore one or more files or folders from a VMDK on a Windows 
 
 
 [.lead]
+Restore individual files or folders from a virtual disk to the original VM or to another VM. This is useful when you don't need to restore an entire VM, but just need specific files or folders.
+
+== Restore files and folders from virtual disks
 Restore files or folders from a virtual disk to the original VM or to another VM. If you prefer not to attach the virtual disk to the original VM, you can attach it to a proxy VM instead.
 
 .Before you begin
@@ -145,3 +148,14 @@ You can view the restore progress on the Job Monitoring page.
 --
 
 ====
+
+== View active VMDK mount sessions
+View active guest sessions when you are restoring files or folders. This shows you the VMDKs that are currently attached with open sessions.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Clone*.
+. Select *VMware* from the workloads list at the top right of the page.
+. Select the *Live disk mount sessions* menu.
++
+A list of open VMDK mount sessions is displayed. You can see the associated backup, source VM, mount path, and other information.

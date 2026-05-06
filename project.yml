@@ -139,6 +139,8 @@ sidebar:
               url: /br-use-vmware-protection-groups.html
             - title: Back up VMware workloads
               url: /br-use-vmware-backup.html
+            - title: Clone VMware workloads
+              url: /br-use-vmware-clone.html
             - title: Restore VMware workloads
               entries:
                 - title: Restore VMware virtual machines
