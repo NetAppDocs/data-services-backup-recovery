@@ -18,7 +18,10 @@ Use NetApp Backup and Recovery to create writeable clones of VMware virtual mach
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Create a clone of an Oracle database
+.Before you begin
+Ensure that VMs whose snapshots you want to clone are part of a protection group and have been backed up.
+
+== Create a clone of a VMware VM
 
 Create a clone immediately from an existing snapshot. Use this method to create a one-time clone that is not continuously refreshed from a snapshot.
 
@@ -28,28 +31,27 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 . Under *Workloads*, select the *Oracle* tile.
 . Select *Clone*. 
 . Select *Create new clone*.
-. In the *Database source* section, choose the source host and database from the lists.
-. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source.
-. Select *Next*.
-. In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*.
+. In the *Select virtual machines* section, choose a protection group. VMs in the protection group appear in the selection list.
+. Select one or more VMs from the list to clone. VMs you have selected appear in the list of selected VMs on the right.
+. When finished, select *Next*.
+. In the *Snapshots* section on the *Clone from snapshots* page, select a time frame to filter the snapshots by creation date.
 . Choose an existing snapshot (restore point) from the list to use as a base for the clone and select *Next*.
 +
 The *Select snapshot location* appears if the snapshot is stored in more than one location.
 . Choose the snapshot location to use and select *Next*.
-. On the *Advanced options* page, do the following:
-.. If you have previously saved a specification file, you can upload it to customize the cloned database settings. You can also download the default specification file for the database snapshot.
+. On the *Destination settings* page, do the following:
 .. In the *Recovery scope* section, choose how to limit what is restored to create the clone and enter the required information for the option you choose. Choosing *None* restores all data.
 .. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
 . Select *Clone*.
 
-== Schedule a clone of an Oracle database
+== Schedule a clone of a VMware VM
 
-Schedule an instant clone creation and continuous refresh of the clone. This creates the most up-to-date possible clone of the database. Use this method if you want to continuously refresh the clone from the latest state of the database according to a schedule you choose.
+Schedule an instant clone creation and continuous refresh of the clone. This creates the most up-to-date possible clone of the VM. Use this method if you want to continuously refresh the clone from the latest state of the VM according to a schedule you choose.
 
 .Steps 
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. Under *Workloads*, select the *Oracle* tile.
+. Under *Workloads*, select the *VMware* tile.
 . Select *Clone*. 
 . Select *Create new clone*.
 . In the *Database source* section, choose the source host and database from the lists.
