@@ -40,10 +40,13 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 The *Select snapshot location* appears if the snapshot is stored in more than one location.
 . Choose the snapshot location to use and select *Next*.
 . On the *Destination settings* page, do the following:
-.. In the *Recovery scope* section, choose how to limit what is restored to create the clone and enter the required information for the option you choose. Choosing *None* restores all data.
-.. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
+.. Choose the FQDN or IP address of the destination vCenter server where the VM clone should be created.
+.. Choose the ESXi host that will host the clone.
+.. Choose the network environment for the clone.
+.. In the *Virtual machine name* field, enter a suffix or prefix for the newly cloned virtual machine.
 . Select *Clone*.
 
+////
 == Schedule a clone of a VMware VM
 
 Schedule an instant clone creation and continuous refresh of the clone. This creates the most up-to-date possible clone of the VM. Use this method if you want to continuously refresh the clone from the latest state of the VM according to a schedule you choose.
@@ -66,14 +69,14 @@ Schedule an instant clone creation and continuous refresh of the clone. This cre
 .. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
 . Select *Clone*.
 
-
+////
 == Split a clone
 
-You can split a clone of your Oracle Database workloads. Splitting a clone creates a new backup from the clone. You can use the new backup to restore databases.
+You can split a clone of your VMware workloads. Splitting a clone creates a new backup from the clone. You can use the new backup to restore the VM.
 
-You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the SVM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes an independent database for protection. 
+You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the SVM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes a new, independent VM. 
 
-The clone job is not removed and it can be reused again for other clones.
+The cloned VM is not removed and it can be reused again for other clones.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Clone*.
@@ -94,6 +97,6 @@ If a policy protects the clone, both the clone and its job are deleted.
 . Select a clone.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete clone*.
 . In the clone Delete confirmation dialog box, review the deletion details.
-.. To delete the cloned resources from SnapCenter even if the clones or their storage is not accessible, select *Force delete*. 
+.. To delete the cloned resources even if the clones or their storage is not accessible, select *Force delete*. 
 .. Select *Delete*.
 . When the clone is deleted, it is removed from the *Inventory* page.
