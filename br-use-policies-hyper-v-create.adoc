@@ -133,10 +133,6 @@ You can optionally configure advanced settings in the policy. You can use these 
 +
 TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes. 
 * *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to object storage. Note that this option might incur additional charges, depending on the cloud provider.
-
-//* *Networking*: Select the network interface to use for the backup operations. This is useful if you have multiple network interfaces and want to control which one is used for backups.
-//** *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
-//** *Private endpoint configuration*: If you are using a private endpoint for your object storage, select the private endpoint configuration to use for the backup operations. This is useful if you want to ensure that the backups are transferred securely over a private network connection.
 * *Notification*: Choose whether to enable email notifications for backup operations. You can select which events trigger a notification — for example, when a backup succeeds, fails, or completes with warnings. 
 
 

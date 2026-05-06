@@ -88,13 +88,10 @@ The Policies page appears.
 +
 * *Backup*: Select the frequency of hourly, daily, weekly, monthly, or yearly. 
 * *Backup target*: Select the target system on secondary storage for the backup.
-//* *Retention*: Enter the number of snapshots to keep.
-//* *Enable snapshot locking*:  
 * *Snapshot locking period*: Select whether you want to enable tamper-proof snapshots. If enabled, enter the number of days, months, or years that you want to lock the snapshot.
 * *Transfer to secondary*: Choose when to transfer snapshots to secondary storage.
 ** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
 ** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
-//* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
 
 . Provide information for the *Object store settings* section (backup to object storage): 
 +
@@ -142,11 +139,6 @@ Additionally, configure the following options:
 TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes.
 * *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to AWS and Microsoft Azure object storage. Note that this option might incur additional charges, depending on the cloud provider.
 * *Notification*: Choose whether to enable email notifications for backup operations. You can select which events trigger a notification — for example, when a backup succeeds, fails, or completes with warnings.
-
-//* *Networking*: Select the network interface to use for the backup operations. This is useful if you have multiple network interfaces and want to control which one is used for backups.
-//** *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
-//** *Private endpoint configuration*: If you are using a private endpoint for your object storage, select the private endpoint configuration to use for the backup operations. This is useful if you want to ensure that the backups are transferred securely over a private network connection. 
-
 
 ====
 

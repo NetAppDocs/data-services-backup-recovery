@@ -142,7 +142,6 @@ You can optionally configure advanced settings in the policy. You can use these 
 TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes. 
 * *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to AWS and Microsoft Azure object storage. Note that this option might incur additional charges, depending on the cloud provider.
 * *Notification*: Choose whether to enable email notifications for backup operations. You can select which events trigger a notification — for example, when a backup succeeds, fails, or completes with warnings. 
-//* *Independent disks*: Check this to include in the backup any datastores with independent disks that contain temporary data. An independent disk is a VM disk that not included in VMware snapshots. 
 
 ====
 
