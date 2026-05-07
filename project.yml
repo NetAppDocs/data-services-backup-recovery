@@ -202,7 +202,11 @@ sidebar:
             - title: Back up Hyper-V workloads 
               url: /br-use-hyperv-backup.html
             - title: Restore Hyper-V workloads
-              url: /br-use-hyperv-restore.html
+              entries:
+              - title: Restore Hyper-V workloads
+                url: /br-use-hyperv-restore.html
+              - title: Restore files and folders
+                url: /br-use-hyper-v-restore-guest-files-and-folders.html
         - title: Protect Oracle Database workloads (Preview)
           entries:
             - title: Protect Oracle Database workloads overview
