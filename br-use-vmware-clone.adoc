@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-clone.html
 keywords: clone, clone application data, NetApp backup and recovery, VMware
-summary: Clone your Oracle Database workloads with NetApp Backup and Recovery. 
+summary: Clone your VMware virtual machine workloads with NetApp Backup and Recovery. 
 ---
 
 = Clone VMware workloads using NetApp Backup and Recovery
@@ -28,7 +28,7 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 .Steps 
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. Under *Workloads*, select the *Oracle* tile.
+. Under *Workloads*, select the *VMware* tile.
 . Select *Clone*. 
 . Select *Create new clone*.
 . In the *Select virtual machines* section, choose a protection group. VMs in the protection group appear in the selection list.
@@ -87,7 +87,7 @@ The cloned VM is not removed and it can be reused again for other clones.
 
 == Delete a clone
 
-You can delete a clone of your Oracle Database workloads. When you delete a clone, it is removed from the object store, freeing up storage space.
+You can delete a VMware VM clone. When you delete a clone, it is removed from the object store, freeing up storage space.
 
 If a policy protects the clone, both the clone and its job are deleted.
 
@@ -96,7 +96,7 @@ If a policy protects the clone, both the clone and its job are deleted.
 . From the NetApp Backup and Recovery menu, select *Clone*.
 . Select a clone.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete clone*.
-. In the clone Delete confirmation dialog box, review the deletion details.
+. In the Delete confirmation dialog box, review the deletion details.
 .. To delete the cloned resources even if the clones or their storage is not accessible, select *Force delete*. 
 .. Select *Delete*.
 . When the clone is deleted, it is removed from the *Inventory* page.
