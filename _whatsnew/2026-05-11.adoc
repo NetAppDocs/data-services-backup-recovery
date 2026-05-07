@@ -20,7 +20,7 @@ For details about protecting KVM workloads, refer to https://docs.netapp.com/us-
 In this release, Oracle Database workloads introduces the following enhancements:
 
 * *Oracle AI Database 26ai support*: Backup and Recovery now supports Oracle AI Database 26ai.
-* *Backup verification support*: You can now verify the integrity of your Oracle database backups.
+* *Backup verification support*: You can now configure backup policies to automatically verify the integrity of your Oracle database backups.
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
 
@@ -28,6 +28,6 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 In this release, VMware workloads introduces the following enhancements:
 
 * *Spanning datastore support for protection groups*: You can now choose the behavior of protection groups when protecting virtual machines whose virtual disks span multiple datastores.
-* *Clone support*: You can now create clones of primary and secondary snapshots.
+* *Clone support*: You can now create clones of virtual machine snapshots from primary and secondary storage.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
