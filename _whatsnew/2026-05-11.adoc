@@ -10,7 +10,11 @@ For details about protecting Hyper-V workloads, refer to https://docs.netapp.com
 === KVM workloads enhancements
 In this release, KVM workloads introduces the following enhancement:
 
-* *Restore to alternate location*: You can now restore KVM VMs to an alternate destination (this feature is now generally available). For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-restore.html[Restore KVM virtual machines with NetApp Backup and Recovery].
+* *Restore to alternate location*: You can now restore KVM VMs to an alternate destination (this feature is now generally available). 
+
+//For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-restore.html[Restore KVM virtual machines with NetApp Backup and Recovery].
+
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
 
 === Oracle Database workloads enhancements
 In this release, Oracle Database workloads introduces the following enhancements:
