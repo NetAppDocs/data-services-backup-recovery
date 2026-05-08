@@ -241,7 +241,7 @@ a|
 a|
 * ONTAP 9.13.1 or later
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
-* SAN storage (preview) (supported for backups and restoring to original location from primary and secondary storage)
+* SAN storage (supported for backups and for restoring to the original location from either primary or secondary storage)
 |===
 
 // snapcenter GH issue #230, 2026-MAR-24

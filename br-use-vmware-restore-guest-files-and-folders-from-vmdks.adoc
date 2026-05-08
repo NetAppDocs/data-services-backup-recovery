@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
-keywords:
-summary: 'You can restore one or more files or folders from a VMDK on a Windows guest OS.'
+keywords: restore, guest, files, folders, files and folders, guest VM, windows, linux, VMDK, attach
+summary: You can restore one or more files or folders from a VMDK to a guest VM.
 ---
 
 = Restore files and folders from virtual disks

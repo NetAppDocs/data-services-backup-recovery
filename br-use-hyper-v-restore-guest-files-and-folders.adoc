@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: br-use-hyper-v-restore-guest-files-and-folders.html
 keywords:
-summary: 'You can restore one or more files or folders from a VMDK on a Windows guest OS.'
+summary: You can restore one or more files or folders from a Hyper-V VM snapshot to a Windows guest VM.
 ---
 
-= Restore files and folders from virtual disks
+= Restore files and folders from Hyper-V VM backups
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,71 +14,72 @@ summary: 'You can restore one or more files or folders from a VMDK on a Windows 
 
 
 [.lead]
-Restore files or folders from a virtual disk to the original VM or to another VM. If you prefer not to attach the virtual disk to the original VM, you can attach it to a proxy VM instead.
+Restore files and folders from from Hyper-V VM backups on primary storage to a Windows guest VM. 
+
+== Restore files and folders
+Mount a virtual disk from a snapshot and restore files and folders from it to a guest Windows VM.
 
 .Before you begin
 
-* Review the prerequisites and limitations in link:br-use-vmware-restore-guest-files-and-folders-overview.html[Requirements and limitations when restoring guest files and folders].
-* To restore files and folders using a proxy VM, make sure the proxy VM is already configured before beginning the file and folder restore process.
-* You need to create credentials for the source virtual disk and destination VM in NetApp Backup and Recovery before you can restore files and folders. NetApp Backup and Recovery uses these credentials to authenticate with the virtual disk and destination VM when restoring files and folders.
+Before you can restore files and folders, you must create credentials for both the source and destination VMs in NetApp Backup and Recovery. These credentials are used to authenticate with the VMs during the restore process.
 
 .About this task
 
-File or folder restore performance depends upon two factors: the size of the files or folders being restored; and the number of files or folders being restored. Restoring a large number of small-sized files might take a longer time than anticipated compared to restoring a small number of large-sized files, if the data set to be restored is of same size.
+When you open a file and folder restore session by mounting a virtual disk, the session remains active for 48 hours.
+
+Restore performance depends on both the size and the number of files or folders being restored. For a given data set size, restoring a large number of small files typically takes longer than restoring a small number of large files.
 
 You can restore to a remote VM (known as a cross-VM restore), but the source and destination operating systems must be the same.
 
-[IMPORTANT]
-Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
+Note: This capability (Guest File Restore) is not available for secondary, object store backups, and also it is not available for VMs residing on SAN storage. This is also not supported for Linux VMs.
 
-[IMPORTANT]
-With the file and folder restore feature, you can view and restore system and hidden files and view encrypted files. Do not overwrite an existing system file or restore encrypted files to an encrypted folder. During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file. Viewing or browsing reserved partitions might cause an error.
+[NOTE]
+=====
+Note the following when restoring files and folders:
 
-[role="tabbed-block"]
-====
-
-.Attach the VMDK to the original VM to restore files and folders
-
---
-
-Restore guest files and folders from a virtual disk to the original (source) virtual machine.
+* You cannot restore files and folders to Linux guest VMs at this time.
+* Restoring files and folders is not supported from backups stored on secondary storage or object storage.
+* You cannot restore files or folders to VMs that reside on SAN storage.
+* Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
+* Viewing or browsing reserved partitions might cause an error.
+* During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file.
+* You can view and restore system and hidden files and view encrypted files. 
+* Do not overwrite an existing system file or restore encrypted files to an encrypted folder.
+=====
 
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Restore*.
-. Select *VMware* from the workloads list at the top right of the page.
-. In the list of virtual machines, select the Actions icon image:../media/icon-action.png[Actions option] for a VM that contains files that you want to restore.
-. Select *Restore files and folders*.
-. Select a snapshot from which to restore and then select *Next*.
-. Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
-. Select *Next*.
+. Select *Hyper-V* from the workloads list at the top right of the page.
+. In the list of virtual machines, select the *Restore* action for a VM that contains files or folders that you want to restore.
+. Select *Files and folders*.
+. On the *Restore from snapshots* page, do the following:
+.. Optionally, select a time frame to filter the list of snapshots by creation time.
+.. Select a snapshot on primary storage from which to restore and then select *Next*.
 . From the list, choose a virtual disk that has the files and folders you need to restore and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
 .. In the *Guest virtual machine details* section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
-.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows or Linux credential information, and select *Add*.
+.. Optionally, in the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows credential information, and select *Add*.
 +
 NOTE: The source and destination VMs must run the same OS family; the OS versions can be different.
 
 .. From the list, choose a virtual machine credential to use.
 .. Select *Next*.
 +
-NetApp Backup and Recovery attaches the virtual disk to the original VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
+NetApp Backup and Recovery attaches the virtual disk to the original VM and displays all files and folders, including hidden ones. It assigns a drive letter to every partition, including system reserved partitions.
 +
 You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
 +
-. Select files or folders to restore.
+. On the _Choose files or folders to restore_ page, do the following:
+.. Select files or folders to restore.
 +
-Files and folders you have selected to restore are listed in the right pane of the screen.
-. Select *Next*.
-. In the "Restore to path" section, enter the path to the destination VM and filesystem location where the selected files will be restored:
+Files and folders you have selected to restore are listed in the *Selected files and folders* area.
+.. Select *Next*.
+. On the _Guest file restore - destination_ page, do the following:
+.. In the "Restore to path" section, enter the UNC path to the destination VM and filesystem location where the selected files will be restored:
 +
-* For Windows guests, enter the UNC share path:
-** IPv4 path example: `\\10.60.136.65\c$`
-** IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
-* For Linux guests, enter the local filesystem path or remote guest address and path:
-** Local path example: `/home/user/documents/file.txt`
-** IPv4 path example: `10.60.136.65:/home/user/restore/`
-** IPv6 path example: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
+* IPv4 path example: `\\10.60.136.65\c$`
+* IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
 
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
@@ -87,61 +88,26 @@ If there are existing files with the same name, you can choose to overwrite or s
 +
 You can view the restore progress on the Job Monitoring page.
 
---
+////
++
+* For Windows guests, enter the UNC share path:
+** IPv4 path example: `\\10.60.136.65\c$`
+** IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+* For Linux guests, enter the local filesystem path or remote guest address and path:
+** Local path example: `/home/user/documents/file.txt`
+** IPv4 path example: `10.60.136.65:/home/user/restore/`
+** IPv6 path example: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
+////
 
-.Attach the VMDK to a proxy VM to restore files and folders
-
---
-
-Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders when you don't want to attach the virtual disk to the original VM.
+== Manage active live disk mount sessions
+View, use, and delete the active Hyper-V file and folder restore sessions from within Backup and Recovery.
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select *Restore*.
-. Select *VMware* from the workloads list at the top right of the page.
-. In the list of virtual machines, select the Actions icon image:../media/icon-action.png[Actions option] for a VM that contains files that you want to restore.
-. Select *Restore files and folders*.
-. Select a snapshot from which to restore and then select *Next*.
-. Choose the snapshot location to restore from. If you choose a secondary location, select the secondary snapshot from the list.
-. Select *Next*.
-. From the list, choose a virtual disk that has the files and folders you need to restore and then select *Next*.
-. On the _Guest virtual machine details_ page, do the following:
-.. In the *Guest virtual machine details* section:
-... Attach the virtual disk to a proxy VM by selecting *Proxy virtual machine*.
-... Choose a vCenter, datacenter, and datastore where the proxy VM is located from the lists.
-... Select a VM from the list to use as a proxy VM. The virtual disk will be attached to this VM. The selected proxy VM appears in the right pane. 
-.. In the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows or Linux credential information, and select *Add*.
+. From the NetApp Backup and Recovery menu, select *Clone*.
+. Select *Hyper-V* from the workloads list at the top right of the page.
+. Select the *Live disk mount sessions* menu.
 +
-NOTE: The source and destination VMs must run the same OS family; the OS versions can be different.
-
-.. From the list, choose a virtual machine credential to use.
-.. Select *Next*.
-+
-NetApp Backup and Recovery attaches the virtual disk to the proxy VM and displays all files and folders, including hidden ones. For Windows guests, it assigns a drive letter to every partition, including system reserved partitions.
-+
-You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
-+
-. Select files or folders to restore.
-+
-Files and folders you have selected to restore are listed in the right pane of the screen.
-. Select *Next*.
-. In the "Restore to path" section, enter the path to the destination VM and filesystem location where the selected files will be restored:
-+
-* For Windows guests, enter the UNC share path:
-** IPv4 path example: `\\10.60.136.65\c$`
-** IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
-* For Linux guests, enter the local filesystem path or remote guest address and path:
-** Local path example: `/home/user/documents/file.txt`
-** IPv4 path example: `10.60.136.65:/home/user/restore/`
-** IPv6 path example: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
-
-+
-If there are existing files with the same name, you can choose to overwrite or skip them.
-. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the virtual disk and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
-. Select *Restore*.
-+
-You can view the restore progress on the Job Monitoring page.
-
---
-
-====
+The list of open virtual disk mount sessions appears.
+. Optionally, to use a session to restore files and folders to a guest VM, open the Actions menu image:../media/icon-action.png[Actions option] for a session and select *Restore files and folders*.
+. Optionally, to delete a session, open the Actions menu image:../media/icon-action.png[Actions option] for a session and select *Delete*.

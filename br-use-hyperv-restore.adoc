@@ -21,14 +21,16 @@ You can restore workloads from different starting locations:
 
 * Restore from a primary location (local snapshot)
 * Restore from a replicated resource on secondary storage
-* Restore from an object storage backup
+* Restore from an object storage backup (to original location only)
+
+NOTE: Restore from object store backup is not supported for VMs that reside on SAN storage.
 
 .Restore to these points   
 
 You can restore data to these points: 
 
-* Restore to the original location
-* Restore to an alternate location
+* Restore to the original location (from primary, secondary, and object storage)
+* Restore to an alternate location (from primary and secondary storage)
 
 .Restore from object storage considerations
 
@@ -49,7 +51,7 @@ From the Restore page, you can restore a resource, even if you don't remember th
 
 == Restore Hyper-V workloads
 
-Restore Hyper-V workloads using the Restore menu. You can search for the snapshot by its name or by using filters. 
+Restore Hyper-V workloads using the Restore menu. You can search for the snapshot by its name or by using filters.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
