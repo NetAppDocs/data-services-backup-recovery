@@ -14,7 +14,7 @@ summary: You can restore one or more files or folders from a Hyper-V VM snapshot
 
 
 [.lead]
-Restore files and folders from from Hyper-V VM backups on primary storage to a Windows guest VM. 
+Restore files and folders from Hyper-V VM backups on primary storage to a Windows guest VM. 
 
 == Restore files and folders
 Mount a virtual disk from a snapshot and restore files and folders from it to a guest Windows VM.
@@ -30,8 +30,6 @@ When you open a file and folder restore session by mounting a virtual disk, the 
 Restore performance depends on both the size and the number of files or folders being restored. For a given data set size, restoring a large number of small files typically takes longer than restoring a small number of large files.
 
 You can restore to a remote VM (known as a cross-VM restore), but the source and destination operating systems must be the same.
-
-Note: This capability (Guest File Restore) is not available for secondary, object store backups, and also it is not available for VMs residing on SAN storage. This is also not supported for Linux VMs.
 
 [NOTE]
 =====
