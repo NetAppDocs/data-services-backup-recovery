@@ -31,10 +31,10 @@ Restore performance depends on both the size and the number of files or folders 
 
 You can restore to a remote VM (known as a cross-VM restore), but the source and destination operating systems must be the same.
 
-[NOTE]
-=====
 Note the following when restoring files and folders:
 
+[NOTE]
+=====
 * You cannot restore files and folders to Linux guest VMs at this time.
 * Restoring files and folders is not supported from backups stored on secondary storage or object storage.
 * You cannot restore files or folders to VMs that reside on SAN storage.
