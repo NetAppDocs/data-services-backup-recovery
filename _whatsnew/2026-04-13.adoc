@@ -8,7 +8,7 @@ For details about protecting ONTAP Volumes workloads, refer to https://docs.neta
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following protection policy enhancements:
 
-* *Edit protection policies*: You can now edit Kubernetes workload protection policies if you need to change 
+* *Edit protection policies*: You can now edit Kubernetes workload protection policies if you need to change them.
 * *Disk-to-disk support*: You can now configure Kubernetes protection policies with a disk-to-disk backup architecture. 
 * *Google Cloud Platform storage bucket support*: You can now configure Kubernetes protection policies to back up to Google Cloud Platform storage buckets. 
 

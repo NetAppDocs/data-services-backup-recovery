@@ -15,14 +15,15 @@ summary: Complete a few steps to configure NetApp Backup and Recovery.
 [.lead]
 After you set up NetApp Console, configure Backup and Recovery settings. Add credentials for host resources, import SnapCenter resources, configure log directories, and set VMware vCenter settings. Complete these steps before backing up or recovering data.
 
-* <<Add credentials for host resources>> for any Windows, Microsoft SQL Server, Oracle Database, or Linux hosts that NetApp Backup and Recovery needs to authenticate with. This includes Windows guest OS credentials used when restoring guest files or folders.
+* <<Add credentials for host resources>> for any Windows, Microsoft SQL Server, Oracle Database, or Linux hosts that NetApp Backup and Recovery needs to authenticate with. This includes guest OS credentials used when restoring files or folders.
 * <<Maintain VMware vCenter settings>>.
 * <<Import and manage SnapCenter host resources>>. (Microsoft SQL Server workloads only)
 * <<Add a KVM management platform>>. (KVM workloads only)
 * <<Configure log directories in snapshots for Windows hosts>>.
 * <<Create an execution hook template>> to run scripts before and after backup jobs. (Kubernetes workloads only)
+* <<Create a resource transformation template>> to modify resources as you restore them.
 //* Enable DataLock and integrity scanning. 
-//* <<Enable the Certificate Authority certificates>>.
+//* <<Enable the Certificate Authority certificates>>
 
 
 *Required NetApp Console role*
@@ -167,7 +168,7 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 
 . Select *Import* to validate your entries and register the SnapCenter Server.
 +
-NOTE: If the SnapCenter Server is already registered, you can  update the existing registration details.
+NOTE: If the SnapCenter Server is already registered, you can update the existing registration details.
 
 .Result
 The Inventory page shows the imported SnapCenter resources.
@@ -187,7 +188,7 @@ The Inventory page shows *Managed* under the host name to indicate that the sele
 
 === Edit imported SnapCenter resources
 
-You can later re-import SnapCenter resources our edit the imported SnapCenter resources to update the registration details.
+You can later re-import SnapCenter resources or edit the imported SnapCenter resources to update the registration details.
 
 You can change only the port and password details for the SnapCenter Server.
 
@@ -240,3 +241,25 @@ Before you create policies for Windows hosts, you should configure log directori
 . Select *Save*.
 
 include::_include/create-exec-hook-template.adoc[]
+
+== Create a resource transformation template
+Create resource transformation templates to store common transformations you make to resources as you restore them. 
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Settings*.
+. Select the down arrow to expand the *Resource modifer template* section.
+. Select *Create template*.
+. Enter a name for the resource transformation template.
+. Optionally, enter a template description.
+. Describe the target resource:
+.. Enter the resource kind (such as Pod or Deployment). This field is required.
+.. Optionally, enter a resource group, version, name.
+. Build an operation:
+.. Choose an operation from the *Operation* list.
+.. Enter the JSON path that the operation applies to.
+.. If applicable, enter a value to add or update, or a JSON path to move from.
++
+These fields only appear for operations that require them.
+.. To add another operation to this template, select *Add operation*.
+. When finished, select *Add*.

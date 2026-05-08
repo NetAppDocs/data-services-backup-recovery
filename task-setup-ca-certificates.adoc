@@ -17,7 +17,7 @@ Create a security certificate to enable communication between NetApp Backup and 
 
 == Create a security certificate for StorageGRID
 
-If the communication between NetApp Backup and Recovery containers and StorageGRID should verify the StorageGRID certificate, then complete following steps. 
+If the communication between NetApp Backup and Recovery containers and StorageGRID should verify the StorageGRID certificate, then complete the following steps. 
 
 The generated certificate should have CN and Subject Alternative Name as the name provided in NetApp Backup and Recovery when you were activating the backup. 
 
@@ -66,7 +66,7 @@ Output example:
 +
 NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
-. Change to the MountPoint directory. Run: 
+. Change to the mount point directory. Run: 
 +
 [source,console]
 ----
@@ -243,7 +243,7 @@ Use the System Manager documentation to create a new CA certificate for ONTAP.
 
 .Steps 
 
-. Login to the Console agent as root. Run: 
+. Log in to the Console agent as root. Run: 
 +
 [source,console]
 ----

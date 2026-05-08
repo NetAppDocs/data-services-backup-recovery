@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-policy-object-options.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
 = Backup-to-object policy options in NetApp Backup and Recovery
@@ -177,7 +177,7 @@ NetApp StorageGRID
 
 //ifdef::aws[]
 * For AWS:
-** Your clusters must running ONTAP 9.11.1 or greater 
+** Your clusters must be running ONTAP 9.11.1 or greater 
 ** The Console agent can be deployed in the cloud or on your premises
 ** The following S3 permissions must be part of the IAM role that provides the Console agent with permissions. They reside in the "backupS3Policy" section for the resource "arn:aws:s3:::netapp-backup-*":
 // Start snippet: collapsible block (open on page load)
@@ -220,7 +220,7 @@ https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html
 //endif::aws[]
 //ifdef::azure[]
 * For Azure:
-** Your clusters must running ONTAP 9.12.1 or greater
+** Your clusters must be running ONTAP 9.12.1 or greater
 ** The Console agent can be deployed in the cloud or on your premises
 //endif::azure[]
 //ifdef::gcp[]
@@ -229,7 +229,7 @@ https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html
 ** The Console agent can be deployed in the cloud or on your premises
 //endif::gcp[]
 * For StorageGRID:
-** Your clusters must running ONTAP 9.11.1 or greater 
+** Your clusters must be running ONTAP 9.11.1 or greater 
 ** Your StorageGRID systems must be running 11.6.0.3 or greater
 ** The Console agent must be deployed on your premises (it can be installed in a site with or without internet access)
 ** The following S3 permissions must be part of the IAM role that provides the Console agent with permissions:

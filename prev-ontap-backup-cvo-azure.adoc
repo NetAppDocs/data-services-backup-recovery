@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-cvo-azure.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp NetApp Backup and Recovery. 
+summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
 = Back up Cloud Volumes ONTAP data to Azure Blob storage with NetApp Backup and Recovery
