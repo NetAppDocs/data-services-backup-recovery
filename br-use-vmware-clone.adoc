@@ -25,6 +25,8 @@ Ensure that any VMs whose snapshots you want to clone have been added to a prote
 
 Create a clone immediately from an existing snapshot.
 
+NOTE: After creating a VM clone, you must update the IP address of the cloned virtual machine to prevent IP address conflicts with the original VM.
+
 .Steps 
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
@@ -45,6 +47,7 @@ The *Select snapshot location* appears if the snapshot is stored in more than on
 .. Choose the network environment for the clone.
 .. In the *Virtual machine name* field, enter a suffix for the newly cloned virtual machine.
 . Select *Clone*.
+
 
 ////
 == Schedule a clone of a VMware VM
