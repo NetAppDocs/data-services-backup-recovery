@@ -149,13 +149,13 @@ sidebar:
               entries:
                 - title: Restore VMware virtual machines
                   url: /br-use-vmware-restore.html
-                - title: Restore specific virtual disks
+                - title: Restore VMware virtual disks
                   url: /br-use-vmware-restore-vmdks-from-backups.html
-                - title: Restore files and folders
+                - title: Restore VMware files and folders
                   entries:
                     - title: Workflow, prerequisites, and limitations
                       url: /br-use-vmware-restore-guest-files-and-folders-overview.html
-                    - title: Restore files and folders from VMDKs
+                    - title: Restore VMware files and folders from VMDKs
                       url: /br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
                 #    - title: Set up proxy VMs for restore operations
                 #      url: /vmware-set-up-proxy-vms-for-restore-operations.html
@@ -215,7 +215,7 @@ sidebar:
               entries:
               - title: Restore Hyper-V workloads
                 url: /br-use-hyperv-restore.html
-              - title: Restore files and folders
+              - title: Restore Hyper-V files and folders
                 url: /br-use-hyper-v-restore-guest-files-and-folders.html
         - title: Protect Oracle Database workloads (Preview)
           entries:
