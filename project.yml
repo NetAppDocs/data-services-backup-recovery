@@ -67,8 +67,8 @@ sidebar:
           url: /br-start-login.html
         - title: View protection health in the Dashboard 
           url: /br-use-dashboard.html  
-        - title: Create policies to govern backups and restores
-          url: /br-use-policies-create.html
+        #- title: Create policies to govern backups and restores
+        #  url: /br-use-policies-create.html
         - title: Protect ONTAP volume workloads 
           entries: 
             - title: Protect ONTAP volume workloads overview
@@ -116,7 +116,9 @@ sidebar:
             - title: Configure additional items if importing from SnapCenter
               url: /concept-start-prereq-snapcenter-import.html
             - title: Discover Microsoft SQL Server workloads
-              url: /br-start-discover.html            
+              url: /br-start-discover.html     
+            - title: Create and manage Microsoft SQL server workload backup policies
+              url: /br-use-policies-mssql-create.html        
             - title: Back up Microsoft SQL Server workloads
               url: /br-use-mssql-backup.html
             - title: Restore Microsoft SQL Server workloads
@@ -137,6 +139,8 @@ sidebar:
               url: /br-use-vmware-discovery.html
             - title: Create and manage protection groups for VMware workloads
               url: /br-use-vmware-protection-groups.html
+            - title: Create and manage VMware workload backup policies
+              url: /br-use-policies-vmware-create.html 
             - title: Back up VMware workloads
               url: /br-use-vmware-backup.html
             - title: Restore VMware workloads
@@ -187,6 +191,8 @@ sidebar:
               url: /br-start-discover-kvm.html
             - title: Create and manage protection groups for KVM workloads
               url: /br-use-kvm-protection-groups.html
+            - title: Create and manage KVM workload backup policies
+              url: /br-use-policies-kvm-create.html 
             - title: Back up KVM workloads 
               url: /br-use-kvm-backup.html
             - title: Restore KVM workloads
@@ -199,6 +205,8 @@ sidebar:
               url: /br-start-discover-hyperv.html
             - title: Create and manage protection groups for Hyper-V workloads
               url: /br-use-hyperv-protection-groups.html
+            - title: Create and manage Hyper-V workload backup policies
+              url: /br-use-policies-hyper-v-create.html 
             - title: Back up Hyper-V workloads 
               url: /br-use-hyperv-backup.html
             - title: Restore Hyper-V workloads
@@ -217,6 +225,8 @@ sidebar:
               url: /br-start-configure-oracle-database.html
             - title: Create and manage protection groups for Oracle Database workloads
               url: /br-use-oracle-protection-groups.html
+            - title: Create and manage Oracle Database workload backup policies
+              url: /br-use-policies-oracle-create.html 
             - title: Back up Oracle Database workloads 
               url: /br-use-oracle-backup.html
             - title: Clone Oracle Database workloads
@@ -235,6 +245,8 @@ sidebar:
               entries:
                 - title: Add and protect Kubernetes applications
                   url: /br-use-protect-kubernetes-applications.html
+                - title: Create and manage Kubernetes workload backup policies
+                  url: /br-use-policies-kubernetes-create.html  
                 - title: Back up a Kubernetes application now using the web UI
                   url: /br-use-back-up-now-kubernetes-applications-web-ui.html
                 - title: Back up a Kubernetes application now using custom resources
