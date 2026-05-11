@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-use-hyper-v-restore-guest-files-and-folders.html
-keywords:
+keywords: restore, guest, files, folders, files and folders, Windows, VM, virtual machine, browse, mount, virtual disk, session, snapshot, backup
 summary: You can restore one or more files or folders from a Hyper-V VM snapshot to a Windows guest VM.
 ---
 
@@ -17,19 +17,17 @@ summary: You can restore one or more files or folders from a Hyper-V VM snapshot
 Restore files and folders from Hyper-V VM backups on primary storage to a Windows guest VM. 
 
 == Restore files and folders
-Mount a virtual disk from a snapshot and restore files and folders from it to a guest Windows VM.
+Mount a virtual disk from a snapshot and restore files and folders from it to the original (source) Windows VM.
 
 .Before you begin
 
-Before you can restore files and folders, you must create credentials for both the source and destination VMs in NetApp Backup and Recovery. These credentials are used to authenticate with the VMs during the restore process.
+Before you can restore files and folders, you must create a credential for source VM in NetApp Backup and Recovery. This credential is used used to authenticate with the VM during the restore process.
 
 .About this task
 
 When you open a file and folder restore session by mounting a virtual disk, the session remains active for 48 hours.
 
 Restore performance depends on both the size and the number of files or folders being restored. For a given data set size, restoring a large number of small files typically takes longer than restoring a small number of large files.
-
-You can restore to a remote VM (known as a cross-VM restore), but the source and destination operating systems must be the same.
 
 Note the following when restoring files and folders:
 
@@ -58,9 +56,6 @@ Note the following when restoring files and folders:
 . On the _Guest virtual machine details_ page, do the following:
 .. In the *Guest virtual machine details* section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
 .. Optionally, in the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows credential information, and select *Add*.
-+
-NOTE: The source and destination VMs must run the same OS family; the OS versions can be different.
-
 .. From the list, choose a virtual machine credential to use.
 .. Select *Next*.
 +
