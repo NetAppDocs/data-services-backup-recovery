@@ -225,7 +225,7 @@ You can create the bucket from the Console, or from your cloud provider.
 
 If you plan to use a different bucket prefix than "netapp-backup-xxxxxx", then you'll need to modify the S3 permissions for the Console agent IAM Role.
 
-NOTE: When creating your own object store container in Azure, the container name must match the Azure storage account name. If the names don't match, the activation of NetApp Backup and Recovery fails.
+NOTE: When creating a container to use as the backup destination in Azure, ensure that the container you create has the same name as the Azure storage account.
 
 //For details, refer to how to create backups to AWS S3.
 
