@@ -120,6 +120,3 @@ When using a version of ONTAP before 9.11.1, folder restore is not supported.
 When enabling indexing on a storage VM cluster in a disaster recovery (DR) configuration, an error appears stating the operation is not permitted on a Vserver that is configured as the destination for Vserver DR. Despite the error, the backend process sets the `snapdiff-rpc-server` status to "on" for the source storage VMs. After the storage VM DR policy schedule runs, this status propagates to the destination storage VMs.
 
 *Workaround*: Wait for the storage VM DR policy schedule to run after the initial error, then try enabling indexing again.
-
-
-
