@@ -223,7 +223,9 @@ You can create the bucket from the Console, or from your cloud provider.
 
 //*Note:* At this time you cannot use your own S3 buckets when creating backups in StorageGRID systems or to ONTAP S3.
 
-If you plan to use a different bucket prefix than "netapp-backup-xxxxxx", then you'll need to modify the S3 permissions for the Console agent IAM Role. 
+If you plan to use a different bucket prefix than "netapp-backup-xxxxxx", then you'll need to modify the S3 permissions for the Console agent IAM Role.
+
+NOTE: When creating a container to use as the backup destination in Azure, ensure that the container you create has the same name as the Azure storage account.
 
 //For details, refer to how to create backups to AWS S3.
 
