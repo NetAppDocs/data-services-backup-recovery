@@ -100,8 +100,11 @@ docker restart cloudmanager_cbs
 +
 NOTE: To disable a preview feature, follow the same steps but set the feature flag value to `false`.
 
-== Disable indexing for all volumes that belong to a storage VM
-Follow these steps to disable indexing for all volumes that belong to a specific storage VM, instead of disabling indexing for each individual volume.
+== Disable indexing for volumes
+Disable indexing for specific volumes or for all volumes belonging to one or more storage VMs by using the following option flags:
+
+* `svms-not-to-index`: A comma-separated list of storage VMs whose volumes should not be indexed
+* `volumes-not-to-index`: A comma-separated list of individual volumes that should not be indexed
 
 .Steps
 
@@ -142,13 +145,14 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_catalog_config
 ----
-. Create a file named `production-customer.json` with the following content. Replace the storage VM names in the example with the names of the storage VMs in your environment:
+. Create a file named `production-customer.json` and customize the storage VM and volume names to match your environment:
 +
 [source,json]
 ----
 {
   "indexing": {
-    "svms-not-to-index": "storage_vm_1,storage_vm_2,storage_vm_3"
+    "svms-not-to-index": "storage_vm_1,storage_vm_2,storage_vm_3",
+    "volumes-not-to-index": "volume_1,volume_2,volume_3"
   }
 }
 ----
