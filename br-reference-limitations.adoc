@@ -51,7 +51,7 @@ There is no limitation for FlexVol volumes - you can select all FlexVol volumes 
 For an explanation about these encryption types, refer to 
 https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html[Configure NetApp Volume Encryption overview^].
 
-* If long-term retention snapshots are enabled on a SnapMirror destination volume using the schedule in the SnapMirror policy, snapshots are created directly on the destination volume. In this case, you should not back up those volumes using NetApp Backup and Recovery because those snapshots will not be moved to object storage.
+* Do not back up SnapMirror destination volumes that have long-term retention snapshots enabled. These snapshots are created directly on the destination and will not be moved to object storage. This restriction applies even if the SnapMirror policy is later changed to disable long-term retention.
 
 * When you create or edit a backup policy when no volumes are assigned to the policy, the number of retained backups can be a maximum of 1018. After you assign volumes to the policy, you can edit the policy to create up to 4000 backups.
 
@@ -113,5 +113,10 @@ When using a version of ONTAP before 9.11.1, folder restore is not supported.
 ** FlexGroup volumes are supported only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. 
 ** SnapLock volumes are supported only if the source system from which the cloud backup was created was running ONTAP 9.11.0 or greater.
 
-
 // 28 Jan 2026, IDR-578
+
+== Enabling indexing in a disaster recovery configuration
+
+When enabling indexing on a storage VM cluster in a disaster recovery (DR) configuration, an error appears stating the operation is not permitted on a Vserver that is configured as the destination for Vserver DR. Despite the error, the backend process sets the `snapdiff-rpc-server` status to "on" for the source storage VMs. After the storage VM DR policy schedule runs, this status propagates to the destination storage VMs.
+
+*Workaround*: Wait for the storage VM DR policy schedule to run after the initial error, then try enabling indexing again.

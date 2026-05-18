@@ -1,0 +1,106 @@
+---
+sidebar: sidebar
+permalink: br-use-hyper-v-restore-guest-files-and-folders.html
+keywords: restore, guest, files, folders, files and folders, Windows, VM, virtual machine, browse, mount, virtual disk, session, snapshot, backup
+summary: You can restore one or more files or folders from a Hyper-V VM snapshot to a Windows guest VM.
+---
+
+= Restore files and folders from Hyper-V VM backups
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+Restore files and folders from Hyper-V VM backups on primary storage to a Windows guest VM. 
+
+== Restore files and folders
+Mount a virtual disk from a snapshot and restore files and folders from it to the original (source) Windows VM.
+
+.Before you begin
+
+Before you can restore files and folders, you must create a credential for source VM in NetApp Backup and Recovery. This credential is used used to authenticate with the VM during the restore process.
+
+.About this task
+
+When you open a file and folder restore session by mounting a virtual disk, the session remains active for 48 hours.
+
+Restore performance depends on both the size and the number of files or folders being restored. For a given data set size, restoring a large number of small files typically takes longer than restoring a small number of large files.
+
+Note the following when restoring files and folders:
+
+[NOTE]
+=====
+* You cannot restore files and folders to Linux guest VMs at this time.
+* Restoring files and folders is not supported from backups stored on secondary storage or object storage.
+* You cannot restore files or folders to VMs that reside on SAN storage.
+* Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
+* Viewing or browsing reserved partitions might cause an error.
+* During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file.
+* You can view and restore system and hidden files and view encrypted files. 
+* Do not overwrite an existing system file or restore encrypted files to an encrypted folder.
+=====
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Restore*.
+. Select *Hyper-V* from the workloads list at the top right of the page.
+. In the list of virtual machines, select the *Restore* action for a VM that contains files or folders that you want to restore.
+. Select *Files and folders*.
+. On the *Restore from snapshots* page, do the following:
+.. Optionally, select a time frame to filter the list of snapshots by creation time.
+.. Select a snapshot on primary storage from which to restore and then select *Next*.
+. From the list, choose a virtual disk that has the files and folders you need to restore and then select *Next*.
+. On the _Guest virtual machine details_ page, do the following:
+.. In the *Guest virtual machine details* section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
+.. Optionally, in the *Guest virtual machine credentials* section, if you haven't yet stored a credential for the source virtual disk and destination VM, select *Add credentials*, enter the Windows credential information, and select *Add*.
+.. From the list, choose a virtual machine credential to use.
+.. Select *Next*.
++
+NetApp Backup and Recovery attaches the virtual disk to the original VM and displays all files and folders, including hidden ones. It assigns a drive letter to every partition, including system reserved partitions.
++
+You can use the magnifying glass (search) icon near the file browser pane to search for files and folders. Pattern matching is not supported, but you can search for files or folders based on a subset of the name or extension.
++
+. On the _Choose files or folders to restore_ page, do the following:
+.. Select files or folders to restore.
++
+Files and folders you have selected to restore are listed in the *Selected files and folders* area.
+.. Select *Next*.
+. On the _Guest file restore - destination_ page, do the following:
+.. In the "Restore to path" section, enter the UNC path to the destination VM and filesystem location where the selected files will be restored:
++
+* IPv4 path example: `\\10.60.136.65\c$`
+* IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+
++
+If there are existing files with the same name, you can choose to overwrite or skip them.
+. In the "Post-restore-options" section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the virtual disk and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
+. Select *Restore*.
++
+You can view the restore progress on the Job Monitoring page.
+
+////
++
+* For Windows guests, enter the UNC share path:
+** IPv4 path example: `\\10.60.136.65\c$`
+** IPv6 path example: `\\fd20-8b1e-b255-832e--61.ipv6-literal.net\C\restore`
+* For Linux guests, enter the local filesystem path or remote guest address and path:
+** Local path example: `/home/user/documents/file.txt`
+** IPv4 path example: `10.60.136.65:/home/user/restore/`
+** IPv6 path example: `fd20-8b1e-b255-832e--61.ipv6-literal.net:/home/user/restore/`
+////
+
+== Manage active live disk mount sessions
+View, use, and delete the active Hyper-V file and folder restore sessions from within Backup and Recovery.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Clone*.
+. Select *Hyper-V* from the workloads list at the top right of the page.
+. Select the *Live disk mount sessions* menu.
++
+The list of open virtual disk mount sessions appears.
+. Optionally, to use a session to restore files and folders to a guest VM, open the Actions menu image:../media/icon-action.png[Actions option] for a session and select *Restore files and folders*.
+. Optionally, to delete a session, open the Actions menu image:../media/icon-action.png[Actions option] for a session and select *Delete*.
