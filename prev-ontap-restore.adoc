@@ -19,7 +19,7 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 * You can restore a *volume* (as a new volume) to the original system, to a different system that's using the same cloud account, or to an on-premises ONTAP system.
 
-* You can restore a *folder* to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
+* You can restore a *folder* from replicated or object storage snapshots to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system. Restoring folders from local snapshots is not supported.
 
 * You can restore *files* to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
 
