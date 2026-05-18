@@ -1,0 +1,172 @@
+---
+sidebar: sidebar
+permalink: br-use-policies-hyper-v-create.html
+keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
+summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+---
+
+= Create and manage Hyper-V backup policies in NetApp Backup and Recovery
+:hardbreaks:
+:icons: font
+:imagesdir: ./media/
+
+[.lead]
+In NetApp Backup and Recovery, create your own Hyper-V backup policies that govern backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+
+If you import resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
+
+You can accomplish the following goals related to policies: 
+
+* Create a local snapshot policy
+* Create a policy for replication to secondary storage
+* Create a policy for object storage settings
+* Configure advanced policy settings 
+* Edit policies
+* Delete policies 
+
+== View policies 
+
+. From the NetApp Backup and Recovery menu, select *Policies*.
+
+. Review the policy details. For example: 
++
+* *Workload*: Examples include Microsoft SQL Server, ONTAP Volumes, VMware, KVM, Hyper-V, Oracle Database, or Kubernetes. 
+* *Backup type*: Examples include full backup and log backup.
+* *Architecture*: Examples include local snapshot, fan-out, cascading, disk to disk, and disk to object store. 
+* *Resources protected*: Shows how many resources out of the total resources on that workload are protected.
+* *Ransomware protection*: Shows if the policy includes snapshot locking on the local snapshot, snapshot locking on secondary storage, or DataLock locking on object storage. 
+
+== Create a policy
+
+You can create policies that govern your local snapshots, replications to secondary storage, and backups to object storage. Part of your 3-2-1 strategy involves creating a snapshot of the instances, databases, applications, or VMs on the *primary* storage system. 
+
+*Required NetApp Console role*
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+
+.Before you begin
+
+If you plan on replicating to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
+
+For instructions on how to do this, refer to https://docs.netapp.com/us-en/ontap/snaplock/initialize-complianceclock-task.html[Initialize the compliance clock in ONTAP^].
+
+For information about snapshot locking in general, refer to https://docs.netapp.com/us-en/ontap/snaplock/snapshot-lock-concept.html[Snapshot locking in ONTAP^].
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Policies*.
+. From the Policies page, select *Create new policy*.
++
+The Policies page appears.
+. Enter information in the *Details* section:
++ 
+* Workload type: Select *Hyper-V*. 
+* Enter a policy name.
+* Select a Console agent from the *Agent* list.
+. Enter information in the *Backup architecture* section. Choose the data flow for the backup from the list:
++
+* *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
++
+For VMware workloads, this configures the local snapshot on the datastores or VMs on the primary and replicates from primary disk storage to secondary disk storage as well as replicates from primary to cloud object storage.
+
+* *3-2-1 cascade*: Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. This option is not available for Amazon FSx for NetApp ONTAP.
+
+* *Disk to disk*: Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method keeps your data updated and available across locations for strong data protection. 
+
+* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving. This option is not available for Amazon FSx for NetApp ONTAP.
+
+* *Disk-to-disk fanout*: Primary storage (disk) to secondary storage (disk) and primary storage (disk) to secondary storage (disk). You can configure multiple secondary settings for the disk-to-disk fanout option. 
+
+* *Local snapshots*: Local snapshot on the selected volume. This creates read-only, point-in-time copies of production volumes where your workloads are running. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
+
+
+. Provide information for the *Local snapshot settings* section:
++
+* Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
+* *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
+* *Snapshot retention*: Enter the number of snapshots to keep.
+** *Prune archive logs after backup*: If log backups are enabled, you can optionally enable this feature to limit how long Backup and Recovery keeps Oracle archive logs. You can choose the retention period as well as where Backup and Recovery should delete the archive logs.
+* *Provider*: Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
+
+. Provide information for the *Secondary settings* section (replication to secondary storage):
++
+* *Backup*: Select the frequency of hourly, daily, weekly, monthly, or yearly. 
+* *Backup target*: Select the target system on secondary storage for the backup.
+* *Retention*: Enter the number of snapshots to keep.
+* *Enable snapshot locking*: Select whether you want to enable tamper-proof snapshots. 
+* *Snapshot locking period*: Enter the number of days, months, or years that you want to lock the snapshot.
+* *Transfer to secondary*: 
+** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
+** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
+* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
+
+. Provide information for the *Object store settings* section (backup to object storage): 
++
+NOTE: The fields that appear differ depending on the provider and architecture selected.
++
+* *Provider*: Select the provider for your object store and enter the credentials in the appropriate fields (the credentials fields differ depending on the provider).
+* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment. 
+* *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
+* *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
+* *Retention copies*: Enter the number of snapshots to keep.
+* *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
+* *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
+* *Enable integrity scan*: Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
+
+=== Configure advanced settings in the policy
+[%collapsible]
+====
+You can optionally configure advanced settings in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads. 
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Policies*.
+. From the Policies page, select *Create new policy*.
+. In the *Policy > Advanced* settings section, select the *Select advance action* menu to choose from a list of advanced settings.
+. Enable any of the settings you want to view or change, and then select *Accept*.
+. Provide the following information:
++
+* *VM Settings*:
+** *Enable application-consistent snapshot*: Enable this option to create application-consistent snapshots. This requires both Hyper-V Integration Services and VSS to be running on the VM. If either service is not running, a crash-consistent backup is taken instead. Note that enabling application consistency may increase both backup time and storage usage. Additionally, the VM's guest memory (RAM) is not included in application-consistent snapshots.
+* *SnapMirror volume and snapshot format*: Choose from the following options:
+** *Use custom name format for snapshot copy*: Choose a naming scheme for snapshots. If left blank, a timestamp is added to the end of each snapshot name.
+** *Provide SnapMirror volume format*: Specify a prefix, a suffix, or both to modify the default SnapMirror volume name. By default, a SnapMirror volume inherits the source volume's name.
+* *Maximum transfer rate*: To not set a limit on bandwidth usage, select *Unlimited*. If you want to limit the transfer rate, select *Limited* and select the network bandwidth between 1 and 1,000 Mbps allocated to upload backups to object storage. By default, ONTAP can use an unlimited amount of bandwidth to transfer the backup data from volumes in the system to object storage. If backup traffic affects workloads, reduce the network bandwidth for transfers.
+* *Backup retries*: To retry the job in case of a failure or interruption, select *Enable job retries during failure*. Enter the maximum number of snapshot and backup job retries and the retry time interval. The recount must be less than 10.
++
+TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes. 
+* *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to object storage. Note that this option might incur additional charges, depending on the cloud provider.
+* *Notification*: Choose whether to enable email notifications for backup operations. You can select which events trigger a notification — for example, when a backup succeeds, fails, or completes with warnings. 
+
+
+====
+
+== Edit a policy
+
+You can edit backup architecture, backup frequency, retention policy, and other settings for a policy. 
+
+You can add another protection level when you edit a policy, but you cannot remove a protection level. For example, if the policy is only protecting local snapshots, you can add replication to secondary storage or backups to object storage. If you have local snapshots and replication, you can add object storage. However, if you have local snapshots, replication, and object storage, you cannot remove one of these levels. 
+
+If you are editing a policy that backs up to object storage, you can enable archival.   
+
+If you imported resources from SnapCenter, you might encounter some differences policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
+
+.Required NetApp Console role
+
+Backup and Recovery super admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+. In the NetApp Console, got to *Protection* > *Backup and Recovery*.
+. Select the *Policies* option.
+. Select the policy that you want to edit.
+. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit*.
+
+== Delete a policy
+
+You can delete a policy if you no longer need it.
+
+TIP: You cannot delete a policy that is associated with a workload.
+
+.Steps
+. In the Console, go to *Protection* > *Backup and Recovery*.
+. Select the *Policies* option.
+. Select the policy that you want to delete.
+. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Delete*.
+. Confirm the action, and select *Delete*.

@@ -60,7 +60,7 @@ NOTE: If you already have SnapCenter, first check to be sure you've met the prer
 Allocate sufficient disk space and monitor the storage consumption by the logs folder. The log space required varies depending on the number of backups performed and the frequency of data protection operations. If there is not sufficient space, the logs will not be created for the operations. 
 
 |Required software packages
-| * ASP.NET Core Runtime 8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
+| * ASP.NET Core Runtime 8.0.24 Hosting Bundle (and all subsequent 8.0.x patches)
 * PowerShell 7.4.13
 
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
@@ -177,6 +177,7 @@ a|
 a|
 * Oracle Database 19c
 * Oracle Database 21c
+* Oracle AI Database 26ai
 
 |Database storage
 |Must be deployed on NetApp ONTAP (primary or secondary)
@@ -222,7 +223,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |2019, 2022 & 2025 editions
 
 |ASP.NET Core Runtime
-|8.0.23 Hosting Bundle (and all subsequent 8.0.x patches)
+|8.0.24 Hosting Bundle (and all subsequent 8.0.x patches)
 
 |PowerShell
 |7.4.13 or later
@@ -241,7 +242,7 @@ a|
 a|
 * ONTAP 9.13.1 or later
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
-* SAN storage (preview) (supported for backups and restoring to original location from primary and secondary storage)
+* SAN storage (supported for backups and for restoring to the original location from either primary or secondary storage)
 |===
 
 // snapcenter GH issue #230, 2026-MAR-24
