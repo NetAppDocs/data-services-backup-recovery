@@ -86,6 +86,8 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 
 These limitations apply to both the Search & Restore and the Browse & Restore methods of restoring files and folders; unless called out specifically.
 
+* Restoring folders from local snapshots is not supported.
+
 * Browse & Restore can restore up to 100 individual files at a time.
 
 * Search & Restore can restore 1 file at a time.
