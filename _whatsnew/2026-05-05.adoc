@@ -1,6 +1,7 @@
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following enhancements:
 
+* *Trident Protect 26.0.5*: This release includes Trident Protect 26.0.5.
 * *Native support for protecting VMs*: You can now create VM-based applications, enabling you to protect virtual machines the same way you protect any other application.
 * *Resource transformations*: You can now use resource transformations and resource transformation templates to add, remove, and modify resource attributes during the restore process.
 * *Upgrade Trident Protect from Backup and Recovery*: You can now upgrade Trident Protect for a Kubernetes cluster directly from Backup and Recovery.

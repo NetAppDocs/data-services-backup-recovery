@@ -29,3 +29,11 @@ In this release, VMware workloads introduces the following enhancements:
 * *Clone support*: You can now create clones of virtual machine snapshots from primary and secondary storage.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
+
+=== Kubernetes workloads enhancements
+In this release, Kubernetes workloads introduces the following enhancements:
+
+* *Trident Protect 26.0.5.1*: This release includes Trident Protect 26.0.5.1.
+* *In-place restore for VM-based apps*: You can now restore VM-based applications to the original namespace and original cluster.
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
