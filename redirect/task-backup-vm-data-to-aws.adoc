@@ -1,4 +1,0 @@
----
-permalink: task-backup-vm-data-to-aws.html
-redirect: data-services-backup-recovery/prev-vmware-backup-aws.html
----
