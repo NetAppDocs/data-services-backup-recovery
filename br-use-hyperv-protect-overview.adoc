@@ -27,8 +27,6 @@ Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where y
 
 When you add Hyper-V hosts and discover resources, NetApp Backup and Recovery installs the NetApp Hyper-V plug-in and the NetApp SnapCenter Windows FileSystem plug-in on the Hyper-V host to help with managing and protecting virtual machines.
 
-NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
-
 You can use NetApp Backup and Recovery to perform the following tasks related to Hyper-V workloads:
 
 * link:br-start-discover-hyperv.html[Discover Hyper-V workloads]
