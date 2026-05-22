@@ -15,11 +15,6 @@ summary: NetApp Backup and Recovery supports two S3 archival storage classes and
 [.lead]
 NetApp Backup and Recovery supports two S3 archival storage classes and most regions.
 
-
-====
-NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
-====
-
 == Supported S3 archival storage classes for NetApp Backup and Recovery
 
 When backup files are initially created they're stored in S3 _Standard_ storage. This tier is optimized for storing data that's infrequently accessed; but that also allows you to access it immediately. After 30 days the backups transition to the S3 _Standard-Infrequent Access_ storage class to save on costs.

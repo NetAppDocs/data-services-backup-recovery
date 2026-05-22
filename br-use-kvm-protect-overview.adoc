@@ -27,8 +27,6 @@ Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where y
 * Using different types of media helps you recover if one type fails.
 * You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
-NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
-
 You can use NetApp Backup and Recovery to perform the following tasks related to KVM workloads:
 
 * link:br-start-discover-kvm.html[Discover KVM workloads]
