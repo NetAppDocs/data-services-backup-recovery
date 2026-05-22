@@ -15,13 +15,6 @@ summary: NetApp Backup and Recovery supports one Google archival storage class a
 [.lead]
 NetApp Backup and Recovery supports one Google archival storage class and most regions.
 
-
-====
-NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
-====
-
-
-
 == Supported Google archival storage classes for NetApp Backup and Recovery
 
 When backup files are initially created they're stored in _Standard_ storage. This tier is optimized for storing data that's infrequently accessed; but that also allows you to access it immediately.

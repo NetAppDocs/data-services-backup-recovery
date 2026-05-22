@@ -15,10 +15,6 @@ summary: NetApp Backup and Recovery supports one Azure archival access tier and 
 [.lead]
 NetApp Backup and Recovery supports one Azure archival access tier and most regions.
 
-====
-NOTE: To switch to and from NetApp Backup and Recovery UI versions, refer to link:br-start-switch-ui.html[Switch to the previous NetApp Backup and Recovery UI].
-====
-
 == Supported Azure Blob access tiers for NetApp Backup and Recovery
 
 When backup files are initially created they're stored in the _Cool_ access tier. This tier is optimized for storing data that's infrequently accessed; but when needed, can be accessed immediately.
