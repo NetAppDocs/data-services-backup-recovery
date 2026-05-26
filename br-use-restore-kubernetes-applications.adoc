@@ -133,7 +133,7 @@ NOTE: Modifying PersistentVolumeClaims and Namespaces is currently not supported
 .. Enable the *Resource transformation* option to make changes to the modifier.
 .. Select a template from the *Template* list to quickly apply modifier settings you commonly use. This list includes predefined templates for common scenarios as well as custom templates that you have created.
 +
-NOTE: Create resource transformation templates in the global link:br-start-configure.html#create-a-resource-modifier-template[Settings^] area.
+NOTE: Create resource transformation templates in the global link:br-start-configure.html#create-a-resource-transformation-template[Settings^] area.
 
 .. Specify which resource you want to modify by entering the resource group, version, kind, and name.
 .. Specify the operation you want to perform on the resource by selecting an operation from the *Operation* list.
