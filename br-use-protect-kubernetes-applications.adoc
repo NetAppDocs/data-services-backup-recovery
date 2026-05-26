@@ -53,7 +53,7 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 NOTE: Backup and Recovery does not store the search parameters or results; the parameters are used to search the selected Kubernetes cluster for resources that can be included in the application. 
 . Backup and Recovery displays a list of resources that match your search criteria.
 . If the list contains the resources you want to protect, select *Next*.
-. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-create.html#create-a-policy[add a protection policy] later.
+. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-kubernetes-create.html#create-a-policy[add a protection policy] later.
 . In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. To enable prescripts or postscripts, you must have already created at least one link:br-use-manage-execution-hook-templates.html[execution hook template].
 . Select *Create*.
 
@@ -81,7 +81,7 @@ NOTE: If you select VMs from the list, the application definition is static — 
 +
 The selected virtual machines appear in the list on the right.
 . If the list contains the VMs you want to protect, select *Next*.
-. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-create.html#create-a-policy[add a protection policy] later.
+. Optionally, in the *Policy* area, choose an existing protection policy to protect the application or create a new policy. If you don't select a policy, the application is created without a protection policy. You can link:br-use-policies-kubernetes-create.html#create-a-policy[add a protection policy] later.
 . In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. To enable prescripts or postscripts, you must have already created at least one link:br-use-manage-execution-hook-templates.html[execution hook template].
 . Select *Create*.
 
@@ -200,22 +200,3 @@ kubectl apply -f my-app-name.yaml
 --
 
 ====
-
-// end tabbed area
-////
-== Protect an existing Kubernetes application
-Enable a protection policy on a Kubernetes application that you have already added. 
-
-.Steps
-. In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
-. Select the *Applications* tab.
-. In the list of applications, choose an application you want to protect and select the associated Actions menu.
-. Select *Protect*.
-. In the *Policy* area, choose an existing protection policy to protect the application or create a new policy. Refer to link:br-use-policies-create.html#create-a-policy[Create a policy] for more information about creating protection policies.
-. In the *Prescripts and postscripts* area, enable and configure any prescript or postscript execution hooks that you want to run before or after backup operations. You can configure the type of execution hook, the template it uses, arguments, and label selectors.
-. Select *Done*.
-
-.Result
-The Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery. As soon as you enable protection for an application, the Console creates a full backup of the application. Any future incremental backups are created based on the schedule that you define in the protection policy associated with the application.
-////
