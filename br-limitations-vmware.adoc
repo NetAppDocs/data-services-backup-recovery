@@ -17,11 +17,6 @@ Platforms, devices, or features that do not work or do not work well with this v
 
 The following actions are not supported in VMware workloads in NetApp Backup and Recovery: 
 
-* Mount
-* Unmount
 * vVol support
-* NVMe support
 * Email integration
-* Edit policy
-* Edit protection group
 * Role-based access control (RBAC) support
