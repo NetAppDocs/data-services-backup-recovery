@@ -45,6 +45,7 @@ link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring fr
 * If the backup file in object storage resides in archival storage, then folder-level restore is supported only if the ONTAP version is 9.13.1 or greater. If you are using an earlier version of ONTAP, you can restore the folder from a newer backup file that has not been archived, or you can restore the entire volume from the archived backup and then access the folder and files you need.
 * The "High" restore priority is not supported when restoring data from Azure archival storage to StorageGRID systems.
 * Restoring folders is not currently supported from volumes in ONTAP S3 object storage.
+* When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
 ====
 
 Before you start, you should have some idea of the name or location of the volume or file you want to restore.
