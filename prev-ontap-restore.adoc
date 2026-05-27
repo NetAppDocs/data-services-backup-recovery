@@ -15,7 +15,7 @@ summary: You can use Search and Restore to recover volumes, folders, or files fr
 [.lead]
 Backups of your ONTAP volume data are stored as snapshots, on replicated volumes, or in object storage. You can restore data from any of these locations at a specific point in time. With NetApp Backup and Recovery, you can restore an entire volume, a folder, or individual files as needed.
 
-NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
+NOTE: When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
 
 * You can restore a *volume* (as a new volume) to the original system, to a different system that's using the same cloud account, or to an on-premises ONTAP system.
 

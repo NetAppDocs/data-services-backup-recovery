@@ -99,6 +99,8 @@ NOTE: If the ONTAP version on your system is less than 9.13.1, then you can't re
 
 When you restore a volume from a backup file, NetApp Backup and Recovery creates a _new_ volume using the data from the backup. When using a backup from object storage, you can restore the data to a volume in the original system, to a different system that's located in the same cloud account as the source system, or to an on-premises ONTAP system.
 
+NOTE: When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
+
 When restoring a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a volume as soon as possible. A quick restore restores the metadata from the backup file to a volume instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
 
 NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
