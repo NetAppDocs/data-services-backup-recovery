@@ -107,7 +107,7 @@ Before migration, the NetApp Tech Refresh team checks these prerequisites to pre
 
 After the migration, a NetApp Tech Refresh team ensures the following steps are completed to establish protection and prepare for the resync. 
 
-NOTE: A SnapMirror policy of type "Vault" must not be used to clone a volume from an old ONTAP cluster to a new ONTAP cluster, nor should it be used in a cascading architecture setup. The reason is that Vault policies change the version UUID of the snapshot during the transfer. The version UUID of the snapshot is used to determine whether a common snapshot exists between the source and destination.
+NOTE: Do not use a SnapMirror policy of type "Vault" to clone a volume from an old ONTAP cluster to a new ONTAP cluster or in a cascading architecture setup. Vault policies change the version UUID of the snapshot during the transfer. The version UUID of the snapshot is used to determine whether a common snapshot exists between the source and destination.
 
 . Record new volume instance UUIDs of all migrated volumes in the destination ONTAP cluster. 
 
