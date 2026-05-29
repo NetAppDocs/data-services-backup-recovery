@@ -83,6 +83,8 @@ sidebar:
               url: /prev-ontap-policy-object-advanced-settings.html
             - title: Back up Cloud Volumes ONTAP to Amazon S3
               url: /prev-ontap-backup-cvo-aws.html
+            - title: Back up Cloud Volumes ONTAP to S3-compatible storage
+              url: /prev-ontap-backup-cvo-s3-compatible.html
             - title: Back up Cloud Volumes ONTAP to Azure Blob 
               url: /prev-ontap-backup-cvo-azure.html
             - title: Back up Cloud Volumes ONTAP to Google Cloud
