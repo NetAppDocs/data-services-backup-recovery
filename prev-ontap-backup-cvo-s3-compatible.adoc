@@ -36,7 +36,7 @@ Required information for using customer-managed keys for data encryption::
 
 You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
 
-=== Supported Actions
+=== Supported actions
 The following are supported actions when backing up to S3-compatible storage:
 
 * Backup of crash-consistent and app-consistent snapshots from on-premises ONTAP to third-party S3-compatible object stores
@@ -44,7 +44,7 @@ The following are supported actions when backing up to S3-compatible storage:
 * Validated against S3-compatible providers including Wasabi, MinIO, IBM Object Store, and Apple Object Store
 * NetApp Support accepts and triages all support requests involving third-party S3-compatible object stores
 
-=== Unsupported features configurations
+=== Unsupported features and configurations
 The following features and configurations are not supported when backing up to S3-compatible storage:
 
 * Bring Your Own Bucket (BYOB) is not supported
@@ -54,7 +54,7 @@ The following features and configurations are not supported when backing up to S
 * MetroCluster configurations are not supported
 * Cloud-based ONTAP environments are not supported — only on-premises ONTAP is supported
 
-=== Caveats and Disclaimers
+=== Caveats
 Keep in mind the following points when backing up to S3-compatible storage:
 
 * *Performance is not guaranteed*: NetApp products are sensitive to S3 API latency and IOPS. Third-party object stores must provide AWS S3-equivalent latency and IOPS to achieve comparable performance. NetApp does not troubleshoot object store performance.
