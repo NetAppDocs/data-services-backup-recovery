@@ -10,7 +10,7 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
-:table-caption:
+:table-caption!:
 
 [.lead]
 Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, NetApp Console agent, and NetApp Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
