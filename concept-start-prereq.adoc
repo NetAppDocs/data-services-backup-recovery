@@ -37,6 +37,7 @@ To use object storage as backup targets, you need an account with AWS S3, Micros
 
 To use NetApp Backup and Recovery for Microsoft SQL Server workloads, you need the following host system, space, and sizing prerequisites.
 
+[caption=]
 .Software and hardware requirements
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
@@ -69,6 +70,7 @@ For the latest information about supported versions, see the https://imt.netapp.
 
 |===
 
+[caption=]
 .Supported storage types
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
@@ -98,8 +100,8 @@ NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that a
 == Requirements for protecting VMware workloads
 You need specific requirements to discover and protect your VMware workloads.
 
+[caption=]
 .Software support
-
 [options="header"]
 |===
 |Requirement |Supported
@@ -129,6 +131,7 @@ a|
 * ASA r2 SAN-only systems (ONTAP 9.17.1 or later required)
 |===
 
+[caption=]
 .Connection and port requirements for protecting VMware workloads
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
@@ -239,6 +242,7 @@ NOTE: NetApp strongly recommends assigning a static IP address to the Console ag
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
 
+[caption=]
 .Software requirements for the Hyper-V Windows Server host
 [options="header"]
 |===
