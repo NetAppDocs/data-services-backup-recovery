@@ -78,11 +78,20 @@ For the latest information about supported versions, see the https://imt.netapp.
 | Supported storage
 
 | Physical server
-| FC-connected LUNs, iSCSI-connected LUNs
+a|
 
-| VMware VM | iSCSI LUNs connected directly to the guest system by the iSCSI initiator, Virtual Machine File Systems (VMFS) or NFS datastores
+* LUNs presented over Fibre Channel
+* LUNs presented over iSCSI
 
-| Hyper-V VM | iSCSI LUNs connected directly to the guest system by the iSCSI initiator. (Hyper-V pass through disks and backing up databases on VHD(x) that are provisioned on NetApp storage are not supported.)
+| VMware VM
+a| iSCSI LUNs connected directly to the guest system by the iSCSI initiator
+
+* Virtual Machine File Systems (VMFS)
+* NFS datastores
+
+| Hyper-V VM
+a|iSCSI LUNs connected directly to the guest system by the iSCSI initiator
+NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that are provisioned on NetApp storage is not supported.
 
 |===
 
