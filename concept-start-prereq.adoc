@@ -38,7 +38,6 @@ To use object storage as backup targets, you need an account with AWS S3, Micros
 To use NetApp Backup and Recovery for Microsoft SQL Server workloads, you need the following host system, space, and sizing prerequisites.
 
 .Software and hardware requirements
-
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
 
@@ -71,7 +70,6 @@ For the latest information about supported versions, see the https://imt.netapp.
 |===
 
 .Supported storage types
-
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
 
@@ -132,7 +130,6 @@ a|
 |===
 
 .Connection and port requirements for protecting VMware workloads
-
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
 
@@ -243,7 +240,6 @@ NOTE: NetApp strongly recommends assigning a static IP address to the Console ag
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.
 
 .Software requirements for the Hyper-V Windows Server host
-
 [options="header"]
 |===
 |Requirement |Supported
@@ -335,6 +331,3 @@ To complete a restore operation, the Console agent can be installed in the follo
 * For ONTAP S3, the Console agent can be deployed in your premises (with or without internet access) or in a cloud provider environment
 
 NOTE: References to "on-premises ONTAP systems" includes FAS and AFF systems.
-
-
-
