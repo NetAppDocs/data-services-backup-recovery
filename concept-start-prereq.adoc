@@ -85,13 +85,14 @@ a|
 * LUNs presented over iSCSI
 
 | VMware VM
-a| iSCSI LUNs connected directly to the guest system by the iSCSI initiator
-
+a|
+* iSCSI LUNs connected directly to the guest system by the iSCSI initiator
 * Virtual Machine File Systems (VMFS)
 * NFS datastores
 
 | Hyper-V VM
 a|iSCSI LUNs connected directly to the guest system by the iSCSI initiator
+
 NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that are provisioned on NetApp storage is not supported.
 
 |===
