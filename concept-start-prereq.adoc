@@ -36,6 +36,8 @@ To use object storage as backup targets, you need an account with AWS S3, Micros
 
 To use NetApp Backup and Recovery for Microsoft SQL Server workloads, you need the following host system, space, and sizing prerequisites.
 
+*Software and hardware requirements*
+
 [cols=2*,options="header",cols="33,66a",width="90%"]
 |===
 
@@ -67,6 +69,22 @@ For the latest information about supported versions, see the https://imt.netapp.
 
 |===
 
+*Supported storage types*
+
+[cols=2*,options="header",cols="33,66a",width="90%"]
+|===
+
+| Database host
+| Supported storage
+
+| Physical server
+| FC-connected LUNs, iSCSI-connected LUNs
+
+| VMware VM | iSCSI LUNs connected directly to the guest system by the iSCSI initiator, Virtual Machine File Systems (VMFS) or NFS datastores
+
+| Hyper-V VM | iSCSI LUNs connected directly to the guest system by the iSCSI initiator. (Hyper-V pass through disks and backing up databases on VHD(x) that are provisioned on NetApp storage are not supported.)
+
+|===
 
 == Requirements for protecting VMware workloads
 You need specific requirements to discover and protect your VMware workloads.
