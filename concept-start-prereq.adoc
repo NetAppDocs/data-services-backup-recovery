@@ -14,8 +14,10 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 [.lead]
 Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, NetApp Console agent, and NetApp Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 
-== Requirements for NetApp Console
-Configuring Console for Backup and Recovery includes adding a Console agent, adding at least one storage system, and assigning Console users the required organizations and roles to use Backup and Recovery.
+== Prepare NetApp Console
+You access NetApp Backup and Recovery through NetApp Console. Configuring the Console so that you can use Backup and Recovery includes adding a Console agent, adding at least one storage system, and configuring a Console organization and user roles.
+
+To learn more about NetApp Console, refer to https://docs.netapp.com/us-en/console-setup-admin/concept-overview.html[NetApp Console for unified storage management^].
 
 === Deploy a Console agent
 A Console agent is a lightweight software component that you install in your network to connect your storage infrastructure to the NetApp Console. It enables advanced storage orchestration, data services, and secure cloud integration.
