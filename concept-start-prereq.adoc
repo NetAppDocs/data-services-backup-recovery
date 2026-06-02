@@ -15,7 +15,7 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, NetApp Console agent, and NetApp Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 
 == Prepare NetApp Console
-You access NetApp Backup and Recovery through NetApp Console. Configuring the Console so that you can use Backup and Recovery includes adding a Console agent, adding at least one storage system, and configuring a Console organization and user roles.
+You access NetApp Backup and Recovery through NetApp Console. Configuring the Console so that you can use Backup and Recovery includes adding a Console agent, adding at least one storage system, and configuring a Console organization and user roles. You need to have the Organization admin or Super admin role in NetApp Console to prepare it for Backup and Recovery. 
 
 To learn more about NetApp Console, refer to https://docs.netapp.com/us-en/console-setup-admin/concept-overview.html[NetApp Console for unified storage management^].
 
@@ -30,10 +30,10 @@ Before you can protect workloads in Backup and Recovery, you need to add an ONTA
 
 https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html[Discover on-premises ONTAP clusters in NetApp Console^]
 
-=== Configure organizations and user roles
-You need to have the Organization admin or Super admin role in NetApp Console to configure it for Backup and Recovery. Learn about organizations and user roles, and configure users with appropriate permissions to perform their tasks.
+=== Configure an organization and user roles
+Learn about organizations, projects, and user roles, and configure users with appropriate permissions to perform their tasks.
 
-Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-members-permissions.html[Add users to a NetApp Console organization] for information about using organizations for resource access.
+Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-members-permissions.html[Add users to a NetApp Console organization] for information about using an organization for resource access.
 
 Refer to link:reference-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions required to perform operations in NetApp Backup and Recovery.
 
