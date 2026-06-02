@@ -4,7 +4,7 @@ permalink: concept-start-prereq.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery
 summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 ---
-= NetApp Backup and Recovery prerequisites
+= NetApp Backup and Recovery requirements
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,18 +14,33 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 [.lead]
 Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, NetApp Console agent, and NetApp Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 
+== Requirements for NetApp Console
+Configuring Console for Backup and Recovery includes adding a Console agent, adding at least one storage system, and assigning Console users the required organizations and roles to use Backup and Recovery.
 
-== Prerequisite for ONTAP 9.8 and later
+=== Deploy a Console agent
+A Console agent is a lightweight software component that you install in your network to connect your storage infrastructure to the NetApp Console. It enables advanced storage orchestration, data services, and secure cloud integration.
+
+https://docs.netapp.com/us-en/console-setup-admin/concept-agents.html[Learn about Console agents^]
+https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html[Deploy a Console agent^]
+ 
+=== Add a storage system
+Before you can protect workloads in Backup and Recovery, you need to add an ONTAP storage system to the Console. 
+
+https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html[Discover on-premises ONTAP clusters in NetApp Console^]
+
+=== Configure organizations and user roles
+You need to have the Organization admin or Super admin role in NetApp Console to configure it for Backup and Recovery. Learn about organizations and user roles, and configure users with appropriate permissions to perform their tasks.
+
+Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-members-permissions.html[Add users to a NetApp Console organization] for information about using organizations for resource access.
+
+Refer to link:reference-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions required to perform operations in NetApp Backup and Recovery.
+
+
+== Requirement for ONTAP 9.8 and later
 
 An ONTAP One license must be enabled on the on-premises ONTAP instance.
 
-
-//* To apply advanced protection configurations (such as enabling DataLock and others), NetApp Backup and Recovery needs admin permissions on the ONTAP cluster. The ONTAP cluster should have been onboarded using ONTAP cluster admin user credentials only. 
-
-//* If the ONTAP cluster is already onboarded in the NetApp Console using non-admin user credentials, then the non-admin user permissions must be updated with necessary permissions by logging into the ONTAP cluster, described on this page. 
-
-
-== Prerequisites for backups to object storage
+== Requirements for backups to object storage
 
 To use object storage as backup targets, you need an account with AWS S3, Microsoft Azure Blob, StorageGRID, or ONTAP and the appropriate access permissions configured.
 
@@ -259,53 +274,3 @@ NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the log
 
 * A primary ONTAP system (ONTAP 9.14.1 or later)
 * For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
-
-== In NetApp Console
-Ensure NetApp Console meets the following requirements.
-
-* A Console user should have the required role and privileges to perform operations on Microsoft SQL Server and Kubernetes workloads. To discover the resources, you must have the NetApp Backup and Recovery role of Super admin. See link:reference-roles.html[NetApp Backup and Recovery role-based access to features] for details about the roles and permissions required to perform operations in NetApp Backup and Recovery.
-
-* A Console organization with at least one active Console agent that connects to on-premises ONTAP clusters or Cloud Volumes ONTAP. 
-
-* At least one Console system with a NetApp on-premises ONTAP or Cloud Volumes ONTAP cluster.
-
-* A Console agent
-+
-Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn how to configure a Console agent] and https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[standard NetApp Console requirements^].
-
-** The preview version requires the Ubuntu 22.04 LTS operating system for the Console agent. 
-
-=== Set up NetApp Console
-The next step is to set up the Console and NetApp Backup and Recovery. 
-
-Review https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[standard NetApp Console requirements^].
-
-
-=== Create a Console agent
-
-You should reach out to your NetApp Product Team to try out Backup and Recovery. Then, when you use the Console agent, it will include the appropriate capabilities for the service. 
-
-To create a Console agent in the NetApp Console before using the service, refer to the Console documentation that describes https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[how to create a Console agent^]. 
-
-
-.Where to install the Console agent
-
-To complete a restore operation, the Console agent can be installed in the following locations:
-
-//ifdef::azure[]
-* For Amazon S3, the Console agent can be deployed on your premises. 
-//endif::aws[]
-//ifdef::azure[]
-* For Azure Blob, the Console agent can be deployed on your premises. 
-//endif::azure[]
-//ifdef::gcp[]
-//* For Google Cloud Storage, the Connector must be deployed in your Google Cloud Platform VPC.
-//endif::gcp[]
-
-* For StorageGRID, the Console agent must be deployed in your premises; with or without internet access.
-* For ONTAP S3, the Console agent can be deployed in your premises (with or without internet access) or in a cloud provider environment
-
-NOTE: References to "on-premises ONTAP systems" includes FAS and AFF systems.
-
-
-
