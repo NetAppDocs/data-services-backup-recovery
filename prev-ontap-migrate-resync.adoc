@@ -107,6 +107,8 @@ Before migration, the NetApp Tech Refresh team checks these prerequisites to pre
 
 After the migration, a NetApp Tech Refresh team ensures the following steps are completed to establish protection and prepare for the resync. 
 
+NOTE: Do not use a SnapMirror policy of type "Vault" to clone a volume from an old ONTAP cluster to a new ONTAP cluster or in a cascading architecture setup. Vault policies change the version UUID of the snapshot during the transfer. The version UUID of the snapshot is used to determine whether a common snapshot exists between the source and destination.
+
 . Record new volume instance UUIDs of all migrated volumes in the destination ONTAP cluster. 
 
 . Confirm that all required SnapMirror policies that were available in the old ONTAP cluster are correctly configured in the new ONTAP cluster. 
@@ -147,11 +149,11 @@ NOTE: The volume instance UUID should be used, not the volume ID. The volume ins
 . Select *Submit* to start the validation process. 
 
 +
-NetApp Backup and Recovery validates that each volume selected for resync is the latest snapshot and has at least one common snapshot. This ensures that the volumes are ready for the SnapMirror to Cloud Resync operation.
+NetApp Backup and Recovery validates that each volume selected for resync shares a common snapshot with the object store. Specifically, the latest snapshot stored in the object store must also exist in the local snapshot of the new cloned volume. This check ensures the volumes are ready for the SnapMirror to Cloud Resync operation.
 
 . Review validation results including the new source volume names and the resync status for each volume. 
 
-. Check volume eligibility. The system checks if the volumes are eligible for resync. If a volume is not eligible, it means that it isn't the latest snapshot or no common snapshot was found. 
+. Check volume eligibility. The system checks if the volumes are eligible for resync. If a volume is not eligible, it means that the common snapshot criteria was not established. 
 
 +
 IMPORTANT: To ensure that volumes remain eligible for the SnapMirror to Cloud Resync operation, take a final snapshot of each volume before deleting any SnapMirror relationships during the pre-migration phase. This preserves the latest state of the data. 
