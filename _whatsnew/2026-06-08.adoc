@@ -15,7 +15,8 @@ For details about protecting Hyper-V workloads, refer to https://docs.netapp.com
 //=== Kubernetes workloads enhancements
 //In this release, Kubernetes workloads introduces the following enhancements:
 
-//* *Trident Protect 26.06*: This release includes Trident Protect 26.06.
+//* *Skip app during restore*:
+//* Persistent Volume restore*:
 //* *Job monitor improvements*: Job monitoring now provides enhanced visibility into Kubernetes protection tasks. You can view detailed status information about jobs and child tasks, and see the target storage used by each.
 
 //For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
