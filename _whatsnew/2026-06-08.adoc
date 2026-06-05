@@ -1,0 +1,13 @@
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following enhancement:
+
+*Support for S3-compatible cloud storage*: NetApp Backup and Recovery for Volumes workloads now supports backing up to S3-compatible cloud storage. 
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].
+
+=== Hyper-V workloads enhancements
+In this release, Hyper-V workloads introduces the following enhancements:
+
+* *Restore files and folders to a guest VM improvements*: You can now restore files and folders from a snapshot on primary or secondary storage to a guest Windows VM. This capability is now supported for CIFS and SAN VMs.
+
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
