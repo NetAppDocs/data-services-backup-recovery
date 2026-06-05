@@ -1,0 +1,60 @@
+---
+sidebar: sidebar
+permalink: br-reference-audit-actions.html
+keywords: audit, audit actions, NetApp Console, Backup and Recovery, audit log
+summary: Reference of Backup and Recovery actions supported by NetApp Console auditing.
+---
+
+= Backup and Recovery audit actions supported by NetApp Console
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The NetApp Console Audit page records the following actions from Backup and Recovery in its Audit feature. For details on how to view and filter audit events, refer to https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html#audit-user-activity-from-the-audit-page[Audit user activity from the Audit page^] in the Console documentation.
+
+For each audited action, the Console records the service name, agent, resource, user, and action status.
+
+.Audited Backup and Recovery actions
+
+* Restore volume or files from backup
+* Revert volume to snapshot
+* Start file explore
+* Restore files from snapshot
+* Register cloud credentials
+* Update cloud credentials
+* Delete cloud credentials
+* Create object storage bucket
+* Modify object storage bucket
+* Validate backup migration
+* Migrate backups between ONTAP systems
+* Initialize source protection
+* Peer clusters for protection
+* Initialize target protection
+* Start volume replication
+* Create Cyber Vault system
+* Delete Cyber Vault system
+* Enable Cyber Vault access
+* Disable Cyber Vault access
+* Create ad hoc snapshot
+* Discover volumes and relationships
+* Update application configuration
+* Enable panoramic protection for volumes
+* Modify panoramic protection for volumes
+* Modify object storage for system
+* Create ad hoc cloud backup
+* Initialize protection for system
+* Enable panoramic protection for volumes
+* Modify panoramic protection for volumes
+* Refresh volume backup metadata (scheduled)
+* Enable backup in a volume
+* Modify panoramic protection for volumes
+* Delete ANF snapshot policy
+* Activate panoramic protection in a system
+* Modify panoramic protection in a system
+
+== More information
+
+* https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html#audit-user-activity-from-the-audit-page[Audit user activity from the Audit page^]
