@@ -285,7 +285,7 @@ sidebar:
       url: /br-api-backup-restore.html          
     - title: Reference 
       entries:
-        - title: Backup and Recovery audit actions supported by NetApp Console
+        - title: Audited Backup and Recovery actions
           url: /reference-audit-actions.html      
         - title: Policies in SnapCenter compared to NetApp Backup and Recovery
           url: /reference-policy-differences-snapcenter.html
