@@ -14,7 +14,7 @@ summary: You can restore one or more files or folders from a Hyper-V VM snapshot
 
 
 [.lead]
-Restore files and folders from Hyper-V VM backups on primary storage to a Windows guest VM. 
+Restore files and folders from Hyper-V VM backups on primary or secondary storage to a Windows guest VM. 
 
 == Restore files and folders
 Mount a virtual disk from a snapshot and restore files and folders from it to the original (source) Windows VM.
@@ -34,8 +34,7 @@ Note the following when restoring files and folders:
 [NOTE]
 =====
 * You cannot restore files and folders to Linux guest VMs at this time.
-* Restoring files and folders is not supported from backups stored on secondary storage or object storage.
-* You cannot restore files or folders to VMs that reside on SAN storage.
+* Restoring files and folders from backups stored on object storage is not supported.
 * Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
 * Viewing or browsing reserved partitions might cause an error.
 * During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file.
@@ -51,7 +50,7 @@ Note the following when restoring files and folders:
 . Select *Files and folders*.
 . On the *Restore from snapshots* page, do the following:
 .. Optionally, select a time frame to filter the list of snapshots by creation time.
-.. Select a snapshot on primary storage from which to restore and then select *Next*.
+.. Select a snapshot on primary or secondary storage from which to restore and then select *Next*.
 . From the list, choose a virtual disk that has the files and folders you need to restore and then select *Next*.
 . On the _Guest virtual machine details_ page, do the following:
 .. In the *Guest virtual machine details* section, attach the virtual disk to the original VM by selecting *Original virtual machine*.
