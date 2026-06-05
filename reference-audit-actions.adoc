@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: br-reference-audit-actions.html
+permalink: reference-audit-actions.html
 keywords: audit, audit actions, NetApp Console, Backup and Recovery, audit log
 summary: Reference of Backup and Recovery actions supported by NetApp Console auditing.
 ---
