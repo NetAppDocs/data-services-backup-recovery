@@ -152,31 +152,41 @@ NOTE: Wasabi is the only qualified S3-compatible object storage provider at this
 
 | *Object Store (Backup)* | *Secondary System (Replication)* |
 
-| Amazon S3 | Cloud Volumes ONTAP in AWS
-On-premises ONTAP system
+| Amazon S3
+a|
+* Cloud Volumes ONTAP in AWS
+* On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 
-| Azure Blob | Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
+| Azure Blob 
+a|
+* Cloud Volumes ONTAP in Azure
+* On-premises ONTAP system
 | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 
-| Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system
+| Google Cloud Storage 
+a|
+* Cloud Volumes ONTAP in Google
+* On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 
-| NetApp StorageGRID | On-premises ONTAP system
-Cloud Volumes ONTAP
+| NetApp StorageGRID 
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
 | On-premises ONTAP system
-| ONTAP S3 | On-premises ONTAP system
-Cloud Volumes ONTAP
+
+| ONTAP S3 
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
 | On-premises ONTAP system
 
 | S3-compatible object storage
 a|
-
 * Cloud Volumes ONTAP in S3-compatible object storage
 * On-premises ONTAP system
 a|
