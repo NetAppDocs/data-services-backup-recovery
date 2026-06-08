@@ -83,10 +83,11 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 
 == Restore limitations for ONTAP volumes
 
-
 These limitations apply to both the Search & Restore and the Browse & Restore methods of restoring files and folders; unless called out specifically.
 
 * Restoring folders from local snapshots is not supported.
+
+* Restoring files and folders in a disaster recovery (DR) configuration: After a failover, volumes on a storage VM configured for DR retain pre-existing SnapMirror relationships in a broken-off state. Attempts to restore files or folders that create temporary SnapMirror RST relationships are blocked by ONTAP because the destination volume already has a relationship.
 
 * Browse & Restore can restore up to 100 individual files at a time.
 

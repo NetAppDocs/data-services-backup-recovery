@@ -23,8 +23,6 @@ You can restore workloads from different starting locations:
 * Restore from a replicated resource on secondary storage
 * Restore from an object storage backup (to original location only)
 
-NOTE: Restore from object store backup is not supported for VMs that reside on SAN storage.
-
 .Restore to these points   
 
 You can restore data to these points: 
@@ -37,7 +35,6 @@ You can restore data to these points:
 If you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled Datalock and Ransomware protection in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
 
 TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
-
 
 == How restoring workloads works
 

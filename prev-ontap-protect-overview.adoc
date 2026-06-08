@@ -90,6 +90,8 @@ https://bluexp.netapp.com/cloud-volumes-global-regions[Learn more using the Glob
 
 NetApp Backup and Recovery enables you to back up ONTAP volumes from the following source systems to the following secondary systems and object storage in public and private cloud providers. snapshots reside on the source system.
 
+NOTE: Wasabi is the only qualified S3-compatible object storage provider at this time. Other S3-compatible providers have not been validated.
+
 [cols=3*,options="header",cols="33,33,33",width="90%"]
 |===
 
@@ -97,45 +99,49 @@ NetApp Backup and Recovery enables you to back up ONTAP volumes from the followi
 | Secondary system (Replication)
 | Destination Object Store (Backup)
 
-//ifdef::aws[]
 | Cloud Volumes ONTAP in AWS
-| Cloud Volumes ONTAP in AWS
-On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in AWS
+* On-premises ONTAP system
 | Amazon S3
-//endif::aws[]
-//ifdef::azure[]
+
 | Cloud Volumes ONTAP in Azure
-| Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in Azure
+* On-premises ONTAP system
 | Azure Blob
-//endif::azure[]
-//ifdef::gcp[]
+
 | Cloud Volumes ONTAP in Google
-| Cloud Volumes ONTAP in Google
-On-premises ONTAP system
+a| 
+* Cloud Volumes ONTAP in Google
+* On-premises ONTAP system
 | Google Cloud Storage
-//endif::gcp[]
+
 | On-premises ONTAP system
-| Cloud Volumes ONTAP
-On-premises ONTAP system
-|
-//ifdef::aws[]
-Amazon S3
-//endif::aws[]
-//ifdef::azure[]
-Azure Blob
-//endif::azure[]
-//ifdef::gcp[]
-Google Cloud Storage
-//endif::gcp[]
-NetApp StorageGRID
-ONTAP S3
+a|
+* Cloud Volumes ONTAP
+* On-premises ONTAP system
+a|
+* Amazon S3
+* S3-compatible storage
+* Azure Blob
+* Google Cloud Storage
+* NetApp StorageGRID
+* ONTAP S3
+
+| Cloud Volumes ONTAP in S3-compatible object storage
+a|
+* Cloud Volumes ONTAP in S3-compatible object storage
+* On-premises ONTAP system
+| S3-compatible object storage
 
 |===
 
 === Supported restore destinations
 
 You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. snapshots reside on the source system and can be restored only to that same system.
+
+NOTE: Wasabi is the only qualified S3-compatible object storage provider at this time. Other S3-compatible providers have not been validated.
 
 [cols=3*,options="header",cols="33,33,33",width="90%"]
 |===
@@ -144,31 +150,50 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 | Destination system
 
 | *Object Store (Backup)* | *Secondary System (Replication)* |
-//ifdef::aws[]
-| Amazon S3 | Cloud Volumes ONTAP in AWS
-On-premises ONTAP system
-| Cloud Volumes ONTAP in AWS
-On-premises ONTAP system
-//endif::aws[]
-//ifdef::azure[]
-| Azure Blob | Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
-| Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
-//endif::azure[]
-//ifdef::gcp[]
-| Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system
-| Cloud Volumes ONTAP in Google
-On-premises ONTAP system
-//endif::gcp[]
-| NetApp StorageGRID | On-premises ONTAP system
-Cloud Volumes ONTAP
+
+| Amazon S3
+a|
+* Cloud Volumes ONTAP in AWS
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in AWS
+* On-premises ONTAP system
+
+| Azure Blob 
+a|
+* Cloud Volumes ONTAP in Azure
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in Azure
+* On-premises ONTAP system
+
+| Google Cloud Storage 
+a|
+* Cloud Volumes ONTAP in Google
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in Google
+* On-premises ONTAP system
+
+| NetApp StorageGRID 
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
 | On-premises ONTAP system
-| ONTAP S3 | On-premises ONTAP system
-Cloud Volumes ONTAP
+
+| ONTAP S3 
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
 | On-premises ONTAP system
-//Cloud Volumes ONTAP
+
+| S3-compatible object storage
+a|
+* Cloud Volumes ONTAP in S3-compatible object storage
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in S3-compatible object storage
+* On-premises ONTAP system
 
 |===
 
