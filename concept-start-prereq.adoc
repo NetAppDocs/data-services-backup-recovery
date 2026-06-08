@@ -49,16 +49,18 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-membe
 
 Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions needed to perform operations in NetApp Backup and Recovery.
 
-
-== Requirement for ONTAP 9.8 and later
-
-An ONTAP One License must be enabled on the on-premises ONTAP instance.
-
 == Requirements for backups to object storage
 
-To use object storage as backup targets, you need an account with AWS S3, Microsoft Azure Blob, StorageGRID, or ONTAP and the appropriate access permissions configured.
+To use object storage as backup targets, you need an account with AWS S3, Google Cloud Storage, Microsoft Azure Blob, StorageGRID, or ONTAP and the appropriate access permissions configured.
 
-* link:prev-ontap-protect-overview.html[Protect your ONTAP volume data]
+
+== Requirements for protecting ONTAP volume workloads
+To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following host system, space, and sizing prerequisites.
+
+* ONTAP 9.8 or later
+* An ONTAP One License must be enabled on the on-premises ONTAP instance.
+
+For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
 
 
 == Requirements for protecting Microsoft SQL Server workloads 
