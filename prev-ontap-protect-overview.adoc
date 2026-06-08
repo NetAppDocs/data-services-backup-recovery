@@ -122,8 +122,8 @@ a|
 * Cloud Volumes ONTAP
 * On-premises ONTAP system
 a|
-
 * Amazon S3
+* S3-compatible storage
 * Azure Blob
 * Google Cloud Storage
 * NetApp StorageGRID

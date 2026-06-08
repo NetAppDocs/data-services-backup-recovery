@@ -57,7 +57,7 @@ To use object storage as backup targets, you need an account with AWS S3, Google
 == Requirements for protecting ONTAP volume workloads
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following host system, space, and sizing prerequisites.
 
-* ONTAP 9.8 or later
+* ONTAP 9.8 or later is required.
 * An ONTAP One License must be enabled on the on-premises ONTAP instance.
 * Backing up or restoring to S3-compatible object storage requires ONTAP 9.17.1 or later.
 
