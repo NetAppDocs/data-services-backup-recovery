@@ -30,7 +30,7 @@ image:diagram_cloud_backup_cvo_aws.png[A diagram showing how NetApp Backup and R
 The VPC gateway endpoint must exist in your VPC already. https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html[Learn more about gateway endpoints^].
 
 Supported ONTAP versions::
-Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended.
+A minimum ONTAP version of 9.17.1 is required.
 
 Required information for using customer-managed keys for data encryption::
 
