@@ -187,7 +187,7 @@ a|
 
 |===
 
-Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
+NOTE: References to "on-premises ONTAP system" includes FAS, AFF, and ONTAP Select systems.
 
 == Supported volumes
 
