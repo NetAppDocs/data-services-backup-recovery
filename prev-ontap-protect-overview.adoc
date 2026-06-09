@@ -129,12 +129,6 @@ a|
 * NetApp StorageGRID
 * ONTAP S3
 
-| Cloud Volumes ONTAP in S3-compatible object storage
-a|
-* Cloud Volumes ONTAP in S3-compatible object storage
-* On-premises ONTAP system
-| S3-compatible object storage
-
 |===
 
 === Supported restore destinations
@@ -187,13 +181,9 @@ a|
 * Cloud Volumes ONTAP
 | On-premises ONTAP system
 
-| S3-compatible object storage
-a|
-* Cloud Volumes ONTAP in S3-compatible object storage
-* On-premises ONTAP system
-a|
-* Cloud Volumes ONTAP in S3-compatible object storage
-* On-premises ONTAP system
+|S3-compatible object storage
+|On-premises ONTAP system
+|On-premises ONTAP system
 
 |===
 
