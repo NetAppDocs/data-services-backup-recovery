@@ -1,6 +1,7 @@
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following enhancements:
 
+* *Trident Protect 26.06*: This release includes Trident Protect 26.06.
 * *Disable CR creation during restore*: You can now prevent automatic application custom resource object creation during restore operations. This reduces unnecessary entries in the application inventory.
 * *Restore VM persistent volume claims*: When restoring VM-based applications, you can now restore individual persistent volume claims without restoring the entire virtual machine, making recovery faster when specific disks or volumes are affected by corruption or data loss.
 * *Job monitor improvements*: Job monitoring now provides enhanced visibility into Kubernetes protection tasks. You can view detailed status information about jobs and child tasks, and see the target storage used by each.
