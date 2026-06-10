@@ -52,7 +52,10 @@ The Restore data wizard begins, and the _General settings_ page appears.
 . Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
 . Choose to restore to the original namespaces or new namespaces.
-. If you chose to restore to new namespaces, enter the destination namespace or namespaces to use.
+. If you chose to restore to new namespaces, do the following:
+.. Enter the destination namespace or namespaces to use.
+.. Enter the destination application name.
+.. Optionally, select the *Do not create an application for restored resources* option if you want to restore resources without creating a corresponding application custom resource object.
 . Select *Next*.
 +
 The _Resource selection_ page appears.
