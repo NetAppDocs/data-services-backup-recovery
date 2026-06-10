@@ -55,7 +55,7 @@ The Restore data wizard begins, and the _General settings_ page appears.
 . If you chose to restore to new namespaces, do the following:
 .. Enter the destination namespace or namespaces to use.
 .. Enter the destination application name.
-.. Optionally, select the *Do not create an application for restored resources* option if you want to restore resources without creating a corresponding application custom resource object.
+.. Optionally, select the *Do not create an application for restored resources* option to restore resources without creating an application custom resource object. This reduces unnecessary entries in the application inventory.
 . Select *Next*.
 +
 The _Resource selection_ page appears.
