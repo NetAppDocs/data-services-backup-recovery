@@ -30,6 +30,10 @@ Group workloads that you want to protect together into a protection group. Creat
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
+.Before you begin
+* Be aware that for Hyper-V workloads, the scheduled backup time is interpreted in the
+time zone of the management host. Refer to link:br-use-policies-hyper-v-create.html[Create and manage Hyper-V backup policies in NetApp Backup and Recovery] for more information.
+
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select a workload to view the protection details.
