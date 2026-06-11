@@ -48,6 +48,8 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 
 * Ensure your environment is using supported versions of VMware vSphere.
 * When creating a tag-based protection group, ensure the virtual machines and datastores you want to protect are already associated with one or more vSphere tags in vCenter.
+* Be aware that for VMware workloads, the scheduled backup time is interpreted in the
+time zone of the management host. Refer to link:br-use-policies-vmware-create.html[Create and manage VMware backup policies in NetApp Backup and Recovery] for more information.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
