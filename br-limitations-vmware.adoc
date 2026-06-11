@@ -20,3 +20,6 @@ The following actions are not supported in VMware workloads in NetApp Backup and
 * vVol support
 * Email integration
 * Role-based access control (RBAC) support
+
+== Protection groups now use host time zone scheduling
+Protection groups created before host-time-zone scheduling was introduced continue to run on their previously configured time zone (typically UTC). To use the vCenter time zone, you must re-create the schedules. Refresh the vCenter Server connection and then edit the protection group (for example, by renaming it) to re-create the schedules with the new time zone.
