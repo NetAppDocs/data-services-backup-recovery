@@ -112,8 +112,13 @@ NOTE: The resources shown are the resources that currently exist on the cluster.
 
 --
 .. Select *Selective resources*.
+.. Do one of the following:
+* To restore entire virtual machines, select the *Virtual machines* tab.
 +
 Backup and Recovery lists all virtual machines in the recovery point. You can select which VMs to include in the restore operation.
+* To restore individual persistent volume claims, select the *Persistent volume claims* tab.
++
+Backup and Recovery lists all persistent volume claims in the recovery point. You can select which persistent volume claims to include in the restore operation.
 .. When finished, select *Next*.
 
 --
