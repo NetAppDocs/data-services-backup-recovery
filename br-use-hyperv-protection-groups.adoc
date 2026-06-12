@@ -131,4 +131,3 @@ Deleting a protection group removes it and all associated backup schedules. You 
 . Select the protection group that you want to delete.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
 . Review the confirmation message about deleting the associated backups and confirm the deletion.
-

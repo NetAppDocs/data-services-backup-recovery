@@ -121,7 +121,6 @@ The protection status changes to "Under maintenance" when you suspend a protecti
 
 . Review the confirmation message and select *Suspend*. 
 
-
 == Resume a protection group's backup schedule
 
 Resuming a suspended protection group restarts the scheduled backups for the protection group.  
