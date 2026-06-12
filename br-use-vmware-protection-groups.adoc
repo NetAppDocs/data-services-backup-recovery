@@ -140,6 +140,33 @@ The protection status changes from "Under maintenance" when you suspend a protec
 .Result
 The system validates the schedules and changes the protection status to "Protected" if the schedules are valid. If the schedules are not valid, the system displays an error message and does not resume the protection group.  
 
+== Edit a protection group
+
+Edit a protection group to change its name or settings. You might want to edit a protection group if the resources in the group have changed.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select a workload to view the protection details.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
+. Select the *Protection groups* tab.
+. Select the protection group that you want to edit.
+. Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit*.
++
+The Edit protection group wizard guides you through the settings in the protection group.
+. Make any necessary changes on each screen of the wizard.
+. When finished, select *Submit*.
+
+=== Apply an updated vCenter time zone to an existing protection group
+
+Scheduled backups use the vCenter Server time zone that is recorded when the protection group's schedule is created. If you change the vCenter Server time zone, existing protection groups continue to run on their original time zone (typically UTC) until you update their schedules.
+
+NOTE: Schedules are only re-created when you modify the protection group name, add or remove a VM, change the assigned policy, or update pre/post scripts. Saving without any changes will not update the schedules. This schedule update is a one-time action per protection group and does not start an immediate backup.
+
+.Steps
+
+. Refresh the vCenter server so its current time zone is retrieved.
+. Edit the protection group and change its name to a different value, then save.
+
 == Delete a protection group
 
 When you delete a protection group, you remove it and all backup schedules for the group. Delete a protection group if you do not need it anymore.
