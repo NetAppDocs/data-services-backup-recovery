@@ -41,7 +41,7 @@ The following are supported actions when backing up to S3-compatible storage:
 
 * Backup of crash-consistent and app-consistent snapshots from on-premises ONTAP to third-party S3-compatible object stores
 * Core data protection workflows: backup, restore, and backup deletion
-* Tested and validated with Wasabi object storage; customers have also reported successful deployments with MinIO, IBM Cloud Object Storage, and Apple Object Store
+* Tested and validated with Wasabi object storage; customers have also reported successful deployments with MinIO and IBM Cloud Object Storage
 * NetApp Support accepts and triages all support requests involving third-party S3-compatible object stores
 
 === Unsupported features and configurations
