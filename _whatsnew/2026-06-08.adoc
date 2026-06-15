@@ -9,5 +9,13 @@ For details about protecting ONTAP Volumes workloads, refer to https://docs.neta
 In this release, Hyper-V workloads introduces the following enhancements:
 
 * *Restore files and folders to a guest VM improvements*: You can now restore files and folders from a snapshot on primary or secondary storage to a guest Windows VM. This capability is now supported for CIFS and SAN VMs.
+* *Protection groups now use host time zone scheduling*: Protection groups now use the time zone of the Hyper-V host. Protection groups created before host-time-zone scheduling was introduced continue to use their previously configured time (typically UTC). To update these protection groups to use the Hyper-V host time zone, you must re-create the schedules. Refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protection-groups.html[Create and manage protection groups for Hyper-V workloads] for more information.
 
 For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
+
+=== VMware workloads enhancements
+In this release, VMware workloads introduces the following enhancement:
+
+* *Protection groups now use host time zone scheduling*: Protection groups now use the time zone of the hosting VMware vCenter Server. Protection groups created before host-time-zone scheduling was introduced continue to run on their previously configured time zone (typically UTC). To use the vCenter time zone, you must re-create the schedules. Refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protection-groups.html[Create and manage protection groups for VMware workloads] for more information.
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].

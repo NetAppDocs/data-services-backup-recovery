@@ -30,6 +30,10 @@ Group workloads that you want to protect together into a protection group. Creat
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
+.Before you begin
+* Be aware that for Hyper-V workloads, the scheduled backup time is interpreted in the
+time zone of the management host. Refer to link:br-use-policies-hyper-v-create.html[Create and manage Hyper-V backup policies in NetApp Backup and Recovery] for more information.
+
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 . Select a workload to view the protection details.
@@ -99,10 +103,21 @@ Edit a protection group to change its name or settings. You might want to edit a
 . Select the *Protection groups* tab.
 . Select the protection group that you want to edit.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Edit*.
-. Change any settings for the protection group such as the name or what virtual machines are in the group.
-. Select *Next*.
-. Change the protection policy if needed. When finished, select *Next*.
-. Review the configuration and select *Submit*.
++
+The Edit protection group wizard guides you through the settings in the protection group.
+. Make any necessary changes on each screen of the wizard.
+. When finished, select *Submit*.
+
+=== Apply an updated host time zone to an existing protection group
+
+Scheduled backups use the Hyper-V host's time zone that is recorded when the protection group's schedule is created. If you change the host's time zone, existing protection groups continue to run on their original time zone (typically UTC) until you update their schedules.
+
+NOTE: Schedules are only re-created when you modify the protection group name, add or remove a VM, change the assigned policy, or update pre/post scripts. Saving without any changes will not update the schedules. This schedule update is a one-time action per protection group and does not start an immediate backup.
+
+.Steps
+
+. Refresh the Hyper-V host so its current time zone is retrieved.
+. Edit the protection group and change its name to a different value, then save.
 
 == Delete a protection group
 
@@ -116,4 +131,3 @@ Deleting a protection group removes it and all associated backup schedules. You 
 . Select the protection group that you want to delete.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
 . Review the confirmation message about deleting the associated backups and confirm the deletion.
-

@@ -22,7 +22,9 @@ You can accomplish the following goals related to policies:
 * Create a policy for object storage settings
 * Configure advanced policy settings 
 * Edit policies
-* Delete policies 
+* Delete policies
+
+NOTE: For Hyper-V workloads, backup schedules use the time zone of the Hyper-V host, not UTC or your browser's local time. This time zone is set when you create the schedule. If the host time zone changes, you must refresh the host and re-create the schedule for the new time zone to take effect. Refer to link:br-use-hyperv-protection-groups.html[Create and manage protection groups for Hyper-V workloads] for more information.
 
 == View policies 
 
