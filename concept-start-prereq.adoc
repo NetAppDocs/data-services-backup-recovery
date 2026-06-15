@@ -259,7 +259,7 @@ a|
 == Requirements for protecting Kubernetes applications
 You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
 
-For NetApp Console requirements, refer to <<In NetApp Console>>.
+For NetApp Console requirements, refer to <<Prepare NetApp Console>>.
 
 NOTE: NetApp strongly recommends assigning a static IP address to the Console agent you use for Kubernetes workloads to avoid issues if the agent IP address changes.
 
