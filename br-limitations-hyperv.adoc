@@ -22,6 +22,3 @@ The following actions are not supported in Hyper-V workloads in NetApp Backup an
 * Create resource groups using VMs from multiple Hyper-V hosts
 * Spanning disks (across multiple CIFS shares)
 * You cannot restore VMs or VM data between systems with different CPU vendors (Intel to AMD or vice versa), regardless of the "Processor compatibility" setting in Hyper-V. This setting only supports compatibility between different generations of the same vendor (e.g., Intel to Intel or AMD to AMD).
-
-== Protection groups now use host time zone scheduling
-Protection groups created before host-time-zone scheduling was introduced continue to use their previously configured time (typically UTC). To update these protection groups to use the Hyper-V host time zone, refresh the Hyper-V host and then edit the protection group (for example, by renaming it) to re-create its schedules with the new time zone.
