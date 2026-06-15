@@ -7,18 +7,3 @@ In this release, Kubernetes workloads introduces the following enhancements:
 * *Job monitor improvements*: Job monitoring now provides enhanced visibility into Kubernetes protection jobs. You can view detailed status information about jobs and subjobs, and see the target storage used by each.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
-
-=== Hyper-V workloads enhancements
-In this release, Hyper-V workloads introduces the following enhancements:
-
-* *Restore files and folders to a guest VM improvements*: You can now restore files and folders from a snapshot on primary or secondary storage to a guest Windows VM. This capability is now supported for CIFS and SAN VMs.
-
-For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
-
-=== VMware workloads enhancements
-In this release, VMware workloads introduces the following enhancements:
-
-* *Spanning datastore support for protection groups*: You can now choose the behavior of protection groups when protecting virtual machines whose virtual disks span multiple datastores.
-* *Clone support*: You can now create clones of virtual machine snapshots from primary and secondary storage.
-
-For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
