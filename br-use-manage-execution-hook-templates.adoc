@@ -77,4 +77,6 @@ NOTE: If you add a namespace filter to an execution hook that runs after a resto
 == Execution hook examples
 Visit the https://github.com/NetApp/Verda[NetApp Verda GitHub project] to download real execution hooks for popular apps such as Apache Cassandra and Elasticsearch. You can also see examples and get ideas for structuring your own custom execution hooks.
 
+NOTE: NetApp provides these execution hook scripts as-is without official support. Only the execution hooks framework within Trident Protect and Backup and Recovery is officially supported by NetApp.
+
 include::_include/create-exec-hook-template.adoc[]
