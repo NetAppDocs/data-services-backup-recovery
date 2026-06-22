@@ -59,8 +59,8 @@ To use NetApp Backup and Recovery for ONTAP volume workloads, you need the follo
 
 * ONTAP 9.8 or later is required.
 * ONTAP 9.12.1 or later is required for FlexGroup volume protection. Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information.
+* ONTAP 9.17.1 or later is required for backing up or restoring to S3-compatible object storage.
 * An ONTAP One License must be enabled on the on-premises ONTAP instance.
-* Backing up or restoring to S3-compatible object storage requires ONTAP 9.17.1 or later.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
 
