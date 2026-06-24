@@ -35,7 +35,8 @@ Before you can add and protect a Kubernetes application, you need to link:br-sta
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. At the top right of the page, ensure that *Kubernetes* is selected in the list of workloads.
+. Select *View* for the workload line item to view the Kubernetes resources.
 . Select the *Applications* tab.
 . Select *Create application*.
 . Enter a name for the application.
@@ -69,7 +70,8 @@ The application is created and appears in the list of applications in the *Appli
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. At the top right of the page, ensure that *Kubernetes* is selected in the list of workloads.
+. Select *View* for the workload line item to view the Kubernetes resources.
 . Select the *Applications* tab. 
 . Select *Create application*.
 . Enter a name for the application.
