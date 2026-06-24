@@ -193,10 +193,11 @@ NetApp Backup and Recovery protects the following types of workloads:
 .Supported backup targets
 
 * Amazon Web Services (AWS) S3
+* S3 compatible storage (ONTAP Volumes workloads only)
 * Google Cloud Storage
 * Microsoft Azure Blob (not available for VMware workloads)
 * StorageGRID
-* ONTAP S3 (not available for VMware workloads)
+* ONTAP S3
 
 == How NetApp Backup and Recovery works
 
