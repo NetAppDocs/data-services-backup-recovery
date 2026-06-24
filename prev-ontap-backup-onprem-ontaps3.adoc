@@ -206,7 +206,7 @@ You can choose to protect FlexVol or FlexGroup volumes; however, you cannot sele
 [NOTE] 
 ====
 * You can activate a backup only on a single FlexGroup volume at a time. 
-* The volumes you select must have the same SnapLock setting. All volumes must have SnapLock Enterprise enabled or have SnapLock disabled. 
+* When selecting source volumes that you want to protect, you can only select volumes that have matching SnapLock settings. The volumes you select must either all have the SnapLock feature enabled or all have the SnapLock feature disabled. 
 //(Volumes with SnapLock Compliance mode require ONTAP 9.14 or later.)
 ====
 
