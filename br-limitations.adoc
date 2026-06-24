@@ -69,23 +69,15 @@ NetApp Backup and Recovery does not import on demand backup policies from SnapCe
 
 NetApp Backup and Recovery does not import log-only backup policies from SnapCenter. If a SnapCenter policy includes log-only backups, NetApp Backup and Recovery will not import the resource.
 
-
 *Workaround*: Use a policy in SnapCenter that uses more than just log-only backups. 
-
 
 === Host mapping 
 SnapCenter does not have map storage clusters or SVMs for the resources to hosts, but NetApp Backup and Recovery does. The on-premises ONTAP cluster or SVM will not be mapped to a host in NetApp Backup and Recovery preview versions. Additionally, NetApp Console does not support SVMs. 
 
-
 *Workaround*: Before importing resources from SnapCenter, create a system in NetApp Backup and Recovery for all the on-premises ONTAP storage systems that are registered in on-premises SnapCenter. Then, import the resources for that cluster from SnapCenter into NetApp Backup and Recovery.
-
 
 === Schedules not in 15-minute intervals 
 
 If you have a SnapCenter policy schedule that starts at a certain time and repeats in intervals other than 15-minute intervals, NetApp Backup and Recovery will not import the schedule.
 
-
 *Workaround*: Use SnapCenter to adjust the policy so that it repeats in 15-minute intervals.
-
-== Limited support for virtualization management software
-When you protect KVM workloads, NetApp Backup and Recovery does not support discovery of KVM workloads when virtualization management software such as Apache CloudStack or Red Hat OpenShift Virtualization is in use.
