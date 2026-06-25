@@ -39,10 +39,10 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Use NetApp Backup and Recovery without SnapCenter. 
 ** Refer to link:br-use-mssql-protect-overview.html[Protect Microsoft SQL Server workloads].
 
-* *VMware workloads (with new UI without SnapCenter Plug-in for VMware vSphere)*: 
+* *VMware workloads*: 
 
 ** Protect your VMware VMs and datastores with NetApp Backup and Recovery. 
-** Back up VMware workloads to Amazon Web Services S3 or StorageGRID. 
+** Back up VMware workloads to supported storage providers. 
 ** Restore VMware data from the cloud back to the on-premises vCenter. 
 ** You can restore the VM to the exact same location from where the backup was taken or to an alternate location. 
 ** Use NetApp Backup and Recovery without SnapCenter Plug-in for VMware vSphere. 
@@ -192,12 +192,12 @@ NetApp Backup and Recovery protects the following types of workloads:
 
 .Supported backup targets
 
+* Microsoft Azure Blob storage 
 * Amazon Web Services (AWS) S3
-* S3 compatible storage (ONTAP Volumes workloads only)
-* Google Cloud Storage
-* Microsoft Azure Blob storage
+* Google Cloud Storage (ONTAP Volumes and Kubernetes workloads only)
 * StorageGRID
 * ONTAP S3
+* S3 compatible storage (ONTAP Volumes workloads only)
 
 == How NetApp Backup and Recovery works
 
