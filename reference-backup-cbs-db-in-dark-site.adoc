@@ -15,7 +15,7 @@ summary: In private mode (no internet access), NetApp Backup and Recovery stores
 [.lead]
 In _private mode_ (no internet access), NetApp Backup and Recovery stores its configuration data in the same StorageGRID or ONTAP S3 bucket used for your backups. If the Console agent host system fails, you can deploy a new Console agent and restore this data.
 
-You can also follow these steps to replace the Console agent and restore configuration data that was stored on it when using Backup and Recovery in _standard mode_ on-premises when no cloud accounts are involved (for example, when using NetApp StorageGrid as the backup destination).
+You can also follow these steps to replace the Console agent and restore configuration data that was stored on it when using Backup and Recovery in _standard mode_ on-premises when no cloud accounts are involved (for example, when using NetApp StorageGRID as the backup destination).
 
 NOTE: This procedure applies only to ONTAP volume data.
 
