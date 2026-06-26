@@ -256,9 +256,6 @@ If instead you want to use your own customer-managed keys for data encryption ra
 
 https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[Refer to how to use your own Amazon encryption keys with Cloud Volumes ONTAP^].
 
-https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-aws-bluexp.html#configure-encryption-settings[Refer to how to use your own Amazon encryption keys with NetApp Backup and Recovery^].
-
-
 === Configure your system for a private connection using a VPC endpoint interface
 
 If you want to use a standard public internet connection, then all the permissions are set by the Console agent and there is nothing else you need to do. 
