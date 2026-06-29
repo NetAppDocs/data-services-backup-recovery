@@ -256,7 +256,7 @@ If instead you want to use your own customer-managed keys for data encryption ra
 
 NOTE: Customer-managed key encryption is supported only for Amazon FSx for NetApp ONTAP. It is not supported for Cloud Volumes ONTAP for AWS.
 
-Refer to https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[Set up Cloud Volumes ONTAP to use a customer-managed key in AWS^].
+Refer to https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[Set up Amazon FSx for NetApp ONTAP to use a customer-managed key in AWS^].
 
 === Configure your system for a private connection using a VPC endpoint interface
 
