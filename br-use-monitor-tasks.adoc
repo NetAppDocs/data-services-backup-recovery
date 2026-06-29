@@ -129,15 +129,15 @@ The Notification Center displays numerous snapshot, replication, backup to cloud
 | Email sent
 
 | Activation |Backup and Recovery activation failed for system | Yes | Yes
+| Activation |Backup and Recovery activation successful for system | Yes | Yes
 | Activation |Backup and Recovery edit failed for system | Yes | Yes
 | Activation |Volume now associated with snapshot policy | Yes | Yes
 | Activation |Volume backup or state modified | Yes | Yes
-| Activation |Backup and Recovery activation successful for system | Yes | Yes
 | Activation |Ad-hoc volume backup failed | Yes | Yes
 | Activation |Ad-hoc volume backup successful | Yes | No
 | Activation |Multi-volume backup failed | Yes | Yes
-| Cron operations |Checking for missing snapshot labels | Yes | Yes
-| Cron operations |Failed to send security token to ONTAP for this system | Yes | Yes
+| Cron operations |Snapshot policy / backup policy label mismatch | Yes | Yes
+| Cron operations |Failed to update object store credentials in ONTAP for this system | Yes | Yes
 | Pub/Sub events |Connection failure | Yes | No
 | Pub/Sub events |Failed to delete a scheduled snapshot | Yes | No
 | Pub/Sub events |Scheduled backup of volume failed | Yes | No
@@ -148,15 +148,16 @@ The Notification Center displays numerous snapshot, replication, backup to cloud
 | Local snapshot | NetApp Backup and Recovery ad-hoc snapshot creation job failure | Yes | Yes
 | Replication | Modification of replication relationship of volume failure | Yes | Yes
 | Replication | NetApp Backup and Recovery ad-hoc replication job failure | Yes | Yes
-| Replication | NetApp Backup and Recovery replication pause job failure | Yes | No
-| Replication | NetApp Backup and Recovery replication break job failure | Yes | No
-| Replication | NetApp Backup and Recovery replication resync job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication relationship pause job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication relationship break job failure | Yes | No
+| Replication | NetApp Backup and Recovery replication relationship resync job failure | Yes | No
 | Replication | NetApp Backup and Recovery replication stop job failure | Yes | No
-| Replication | NetApp Backup and Recovery replication reverse resync job failure | Yes | Yes
-| Replication | NetApp Backup and Recovery replication delete job failure | Yes | Yes
+| Replication | NetApp Backup and Recovery replication relationship reverse resync job failure | Yes | Yes
+| Replication | NetApp Backup and Recovery replication relationship delete job failure | Yes | Yes
 | Target operations | Restore to local or cloud destination failure | Yes | Yes
 | Target operations | On-demand restore failure | Yes | Yes
 | System operations | Ad-hoc volume snapshot creation failure | Yes | Yes
+| System operations | Indexing of the volume backup failed | Yes | Yes
 
 |===
 
