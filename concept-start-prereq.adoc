@@ -302,8 +302,8 @@ a|
 |Connected storage
 a|
 * ONTAP 9.13.1 or later
-* Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
-* SAN storage (supported for backups and for restoring to the original location from either primary or secondary storage)
+* SMB shares
+* SAN storage connected via iSCSI or Fibre Channel
 |===
 
 // snapcenter GH issue #230, 2026-MAR-24
@@ -319,4 +319,4 @@ NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the log
 .NetApp ONTAP configuration requirements
 
 * A primary ONTAP system (ONTAP 9.14.1 or later)
-* For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
+* For Hyper-V deployments using SMB shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
