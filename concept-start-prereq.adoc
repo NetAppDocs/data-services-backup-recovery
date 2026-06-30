@@ -303,7 +303,7 @@ a|
 a|
 * ONTAP 9.13.1 or later
 * SMB shares
-* SAN storage connected via iSCSI or Fibre Channel (supported for backups and for restoring to the original location from either primary or secondary storage)
+* SAN storage connected via iSCSI or Fibre Channel
 |===
 
 // snapcenter GH issue #230, 2026-MAR-24
