@@ -77,7 +77,7 @@ Use these links to subscribe to NetApp Backup and Recovery from your cloud provi
 
 Pay for NetApp Backup and Recovery annually by purchasing an annual contract. They're available in 1-, 2-, or 3-year terms.
 
-If you have an annual contract from a marketplace, all NetApp Backup and Recovery consumption is charged against that contract. You can't mix and match an annual marketplace contract with a BYOL.
+If you have an annual contract from a marketplace, all NetApp Backup and Recovery consumption is charged against that contract.
 
 When you use AWS, there are two annual contracts available from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
 
