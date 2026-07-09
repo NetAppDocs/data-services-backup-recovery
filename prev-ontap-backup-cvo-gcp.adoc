@@ -36,7 +36,8 @@ NetApp Backup and Recovery is supported in all GCP regions.
 GCP Service Account::
 You need to have a service account in your Google Cloud Project that has the custom role. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
 
-NOTE: The Storage Admin role is no longer required for the service account that enables NetApp Backup and Recovery to access Google Cloud Storage buckets. 
+// Removing below note 7/9/2026 - Pradip M from CVO engineering team has confirmed that CVO still needs that role in the GCP service account, regardless of whether B&R needs it.
+//NOTE: The Storage Admin role is no longer required for the service account that enables NetApp Backup and Recovery to access Google Cloud Storage buckets. 
 
 == Verify license requirements
 
