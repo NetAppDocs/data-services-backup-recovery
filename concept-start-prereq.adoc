@@ -58,8 +58,9 @@ To use object storage as backup targets, you need an account with AWS S3, Google
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following host system, space, and sizing prerequisites.
 
 * ONTAP 9.8 or later is required.
+* ONTAP 9.12.1 or later is required for FlexGroup volume protection. Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information.
+* ONTAP 9.17.1 or later is required for backing up or restoring to S3-compatible object storage.
 * An ONTAP One License must be enabled on the on-premises ONTAP instance.
-* Backing up or restoring to S3-compatible object storage requires ONTAP 9.17.1 or later.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
 
@@ -259,7 +260,7 @@ a|
 == Requirements for protecting Kubernetes applications
 You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
 
-For NetApp Console requirements, refer to <<In NetApp Console>>.
+For NetApp Console requirements, refer to <<Prepare NetApp Console>>.
 
 NOTE: NetApp strongly recommends assigning a static IP address to the Console agent you use for Kubernetes workloads to avoid issues if the agent IP address changes.
 
@@ -301,8 +302,8 @@ a|
 |Connected storage
 a|
 * ONTAP 9.13.1 or later
-* Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
-* SAN storage (supported for backups and for restoring to the original location from either primary or secondary storage)
+* SMB shares
+* SAN storage connected via iSCSI or Fibre Channel
 |===
 
 // snapcenter GH issue #230, 2026-MAR-24
@@ -318,4 +319,4 @@ NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the log
 .NetApp ONTAP configuration requirements
 
 * A primary ONTAP system (ONTAP 9.14.1 or later)
-* For Hyper-V deployments using CIFS shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
+* For Hyper-V deployments using SMB shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.

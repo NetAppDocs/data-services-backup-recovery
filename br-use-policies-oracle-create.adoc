@@ -90,7 +90,7 @@ The Policies page appears.
 * *Transfer to secondary*: 
 ** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
 ** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
-* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
+* *Use existing SnapMirror and SyncMirror secondary relationship*: Enable this option to use the existing SnapMirror or SyncMirror relationship to transfer snapshots to the designated destination cluster.
 
 . Provide information for the *Object store settings* section (backup to object storage): 
 +
@@ -134,7 +134,7 @@ NOTE: This option is automatically disabled if this policy uses *Local snapshots
 ** *Verification server*: Optionally, select one or more registered Oracle hosts from the list to use as off-host verification servers. If no server is selected, verification runs directly on the source database host. Otherwise, Backup and Recovery mounts the snapshot clone on one of the selected hosts and verifies the backup there, isolating verification I/O from the production database server. A verification server must:
 *** Have the NetApp plug-in installed
 *** Have the Oracle Database binaries installed
-*** Have the same Oracle Database version as the the source database
+*** Have the same Oracle Database version as the source database
 *** Have network access to the storage holding the snapshot (primary or secondary)
 *** Be able to mount the cloned volume and run the Oracle Database DBVERIFY utility.
 * *SnapMirror volume and snapshot format*: Choose from the following options:

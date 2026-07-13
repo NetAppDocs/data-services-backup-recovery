@@ -21,7 +21,7 @@ Mount a virtual disk from a snapshot and restore files and folders from it to th
 
 .Before you begin
 
-Before you can restore files and folders, you must create a credential for source VM in NetApp Backup and Recovery. This credential is used used to authenticate with the VM during the restore process.
+Before you can restore files and folders, you must create a credential for source VM in NetApp Backup and Recovery. This credential is used to authenticate with the VM during the restore process.
 
 .About this task
 

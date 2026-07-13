@@ -34,7 +34,7 @@ When you discover a cluster that is currently protected with Trident Protect, an
 * If you have already discovered Kubernetes workloads, in NetApp Backup and Recovery, select *Inventory* > *Workloads* and then select *Discover resources*.
 
 . Select the *Kubernetes* workload type.
-. Enter a cluster name and choose a connector to use with the cluster.
+. Enter a cluster name and choose a Console agent to use with the cluster.
 . Follow the command line instructions that appear:
 +
 * Create a Trident Protect namespace

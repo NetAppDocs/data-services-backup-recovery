@@ -41,7 +41,7 @@ The following are supported actions when backing up to S3-compatible storage:
 
 * Backup of crash-consistent and app-consistent snapshots from on-premises ONTAP to third-party S3-compatible object stores
 * Core data protection workflows: backup, restore, and backup deletion
-* Validated against S3-compatible providers including Wasabi, MinIO, IBM Object Store, and Apple Object Store
+* Tested and validated with Wasabi object storage; customers have also reported successful deployments with MinIO and IBM Cloud Object Storage
 * NetApp Support accepts and triages all support requests involving third-party S3-compatible object stores
 
 === Unsupported features and configurations
@@ -274,7 +274,7 @@ You can choose to protect FlexVol or FlexGroup volumes; however, you cannot sele
 [NOTE] 
 ====
 * You can activate a backup only on a single FlexGroup volume at a time. 
-* The volumes you select must have the same SnapLock setting. All volumes must have SnapLock Enterprise enabled or have SnapLock disabled. 
+* When selecting source volumes that you want to protect, you can only select volumes that have matching SnapLock settings. The volumes you select must either all have the SnapLock feature enabled or all have the SnapLock feature disabled. 
 //(Volumes with SnapLock Compliance mode require ONTAP 9.14 or later.)
 ====
 

@@ -82,12 +82,6 @@ The Policies page appears.
 * *Backup*: Select the frequency of hourly, daily, weekly, monthly, or yearly. 
 * *Backup target*: Select the target system on secondary storage for the backup.
 * *Retention*: Enter the number of snapshots to keep.
-* *Enable snapshot locking*: Select whether you want to enable tamper-proof snapshots. 
-* *Snapshot locking period*: Enter the number of days, months, or years that you want to lock the snapshot.
-* *Transfer to secondary*: 
-** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
-** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
-* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
 * *Provider*: Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
 
 . Provide information for the *Object store settings* section (backup to object storage): 

@@ -23,7 +23,9 @@ You can accomplish the following goals related to policies:
 * Create a policy for replication to secondary storage
 * Create a policy for object storage settings
 * Configure advanced policy settings 
-* Delete policies 
+* Delete policies
+
+NOTE: For VMware workloads, backup schedules use the time zone of the VMware vCenter Server, not UTC or your browser's local time. This time zone is set when you create the schedule. If the host time zone changes, you must refresh the host and re-create the schedule for the new time zone to take effect. Refer to link:br-use-vmware-protection-groups.html[Create and manage protection groups for VMware workloads] for more information.
 
 == View policies 
 
@@ -104,7 +106,7 @@ For VMware workloads, this configures the local snapshot on the datastores or VM
 * *Transfer to secondary*: 
 ** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
 ** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
-* *SnapMirror and SnapVault SMAS secondary relationship*: Use SnapMirror and SnapVault SMAS secondary relationships for SQL Server workloads.
+* *Use existing SnapMirror and SyncMirror secondary relationship*: Enable this option to use the existing SnapMirror or SyncMirror relationship to transfer snapshots to the designated destination cluster.
 
 . Provide information for the *Object store settings* section (backup to object storage): 
 +

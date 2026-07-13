@@ -91,7 +91,7 @@ The Policies page appears.
 * *Snapshot locking period*: Select whether you want to enable tamper-proof snapshots. If enabled, enter the number of days, months, or years that you want to lock the snapshot.
 * *Transfer to secondary*: Choose when to transfer snapshots to secondary storage.
 ** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
-** Other options: If you choose a deferred transfer, the transfers are not immediate and you can set a schedule.  
+* *Use existing SnapMirror and SyncMirror secondary relationship*: Enable this option to use the existing SnapMirror or SyncMirror relationship to transfer snapshots to the designated destination cluster.
 
 . Provide information for the *Object store settings* section (backup to object storage): 
 +

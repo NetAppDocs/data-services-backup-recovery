@@ -11,7 +11,7 @@ summary: Before you use NetApp Backup and Recovery, perform a few steps to set u
 :imagesdir: ./media/
 
 [.lead]
-Before you use NetApp Backup and Recovery, perform a few steps to set  up backup destinations.  
+Before you use NetApp Backup and Recovery, perform a few steps to set up backup destinations.  
 
 
 Before you begin, review link:concept-start-prereq.html[prerequisites] to ensure that your environment is ready.
