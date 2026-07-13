@@ -41,6 +41,7 @@ Backup and Recovery provides instructions that change depending on the installat
 . Choose an installation type to view the instructions for installing Trident Protect and the Trident Protect Connector on your Kubernetes cluster:
 * Select "Normal" to discover clusters that have external network connectivity.
 * Select "Air-gapped" to discover clusters that have no external network connectivity.
+. Enter the URL of your private Docker container registry. This registry is used to download the Trident Protect and Trident Protect Connector images during the installation.
 . Follow the command line instructions that appear. These steps ensure that NetApp Backup and Recovery can interact with the cluster.
 . After you complete the steps, select *Discover*.
 +
