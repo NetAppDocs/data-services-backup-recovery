@@ -33,34 +33,32 @@ Ensure you have the following before you start:
 * A validated backup of the data in the source PVC (take a snapshot or copy it elsewhere before migrating).
 * Knowledge of the workload type using the PVC (Deployment, StatefulSet, DaemonSet). Steps vary slightly by workload.
 
-If you need to list existing storage classes and PVCs, use the following commands:
-[source,console]
-----
-kubectl get storageclass
-kubectl get pvc -A
-----
 
 .Steps
 
-.1 Prepare and verify
+[discrete]
+===== Prepare and verify
 
 . Verify the source PVC name, namespace, capacity, and access mode:
 +
+[source,console]
 ----
 kubectl get pvc -n <namespace> <old-pvc> -o wide
 ----
 
 . Check the StorageClass you will use for ONTAP NFS (replace ontap-nfs with your class name):
 +
+[source,console]
 ----
 kubectl describe storageclass ontap-nfs
 ----
 
-.2 Create the ONTAP NFS PVC
+[discrete]
+===== Create the ONTAP NFS PVC
 
 . Create a simple PVC manifest for the ONTAP StorageClass. Adjust storage and accessModes to match your requirements.
-
-----
++
+[source,console]
 ----
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -75,41 +73,47 @@ spec:
       storage: 100Gi
   storageClassName: ontap-nfs
 ----
-----
 
 . Apply the PVC and confirm it binds:
-
++
+[source,console]
 ----
 kubectl apply -f new-ontap-pvc.yaml
 kubectl get pvc -n <namespace> new-ontap-pvc
 ----
 
-.3 Quiesce the application
+[discrete]
+===== Quiesce the application
 
 . Scale down or stop the workloads that are writing to the source PVC. Examples:
-
++
 For a Deployment:
-
++
+[source,console]
 ----
 kubectl scale deploy <deployment-name> -n <namespace> --replicas=0
 ----
-
++
 For a StatefulSet (scale to zero before migrating):
-
++
+[source,console]
 ----
 kubectl scale sts <statefulset-name> -n <namespace> --replicas=0
 ----
 
-Wait until all pods using the PVC are terminated:
-
+. Wait until all pods using the PVC are terminated before proceeding:
++
+[source,console]
 ----
 kubectl get pods -n <namespace> -l <label-selector> --field-selector=status.phase!=Running
 ----
 
-.4 Create a migration Pod that mounts both PVCs
+[discrete]
+===== Create a migration Pod that mounts both PVCs
 
-. Create a one-off Pod manifest that mounts the old PVC at /mnt/from and the new ONTAP PVC at /mnt/to. Use an image with tar (or rsync) available; alpine or ubuntu are common choices. Example:
-
+. Create a one-off Pod manifest that mounts the old PVC at /mnt/from and the new ONTAP PVC at /mnt/to. Use an image with tar (or rsync) available; Ubuntu is a common choice. For example:
++
+[source,console]
 ----
 apiVersion: v1
 kind: Pod
@@ -135,35 +139,39 @@ spec:
     persistentVolumeClaim:
       claimName: new-ontap-pvc
 ----
-----
 
-Apply the Pod and wait until it is Running:
-
+. Apply the Pod and wait until it is running:
++
+[source,console]
 ----
 kubectl apply -f pvc-migrate.yaml
 kubectl wait --for=condition=ready pod/pvc-migrate -n <namespace> --timeout=120s
 ----
 
-.5 Copy data (preserve attributes)
+[discrete]
+===== Copy data (preserve attributes)
 
-Exec into the migration Pod and copy data while preserving modes, ownership, ACLs and xattrs. If rsync is available use it; otherwise use tar to stream files from source to destination.
-
+. Exec into the migration pod and copy the data using `rsync` or `tar`, preserving file permissions, ownership, ACLs, and extended attributes (xattrs).
++
 Using rsync (preferred when available):
-
++
+[source,console]
 ----
 kubectl exec -n <namespace> -it pvc-migrate -- sh -c "apk add --no-cache rsync && rsync -aHAX --numeric-ids --info=progress2 /mnt/from/ /mnt/to/"
 ----
-
++
 Using tar (no additional packages required):
-
++
+[source,console]
 ----
 kubectl exec -n <namespace> -it pvc-migrate -- sh
 # inside the pod shell
 cd /mnt/from && tar cf - . | tar -C /mnt/to -xpf -
 ----
 
-Verify sizes and counts from both mounts (inside the pod):
-
+. Verify sizes and counts from both mounts (inside the pod):
++
+[source,console]
 ----
 # show byte sizes
 du -sh /mnt/from /mnt/to
@@ -171,20 +179,23 @@ du -sh /mnt/from /mnt/to
 find /mnt/from | wc -l; find /mnt/to | wc -l
 ----
 
-.6 Update the workload to use the new PVC
+[discrete]
+===== Update the workload to use the new PVC
 
-Edit the workload manifest so it references new-ontap-pvc as the claimName for the volume. For Deployments you can patch or kubectl edit.
-
+. Edit the workload manifest so it references new-ontap-pvc as the claimName for the volume. For Deployments you can patch or kubectl edit.
++
 Patch example (Deployment):
-
++
+[source,console]
 ----
 kubectl patch deployment <deployment-name> -n <namespace> --type=json -p='[{"op":"replace","path":"/spec/template/spec/volumes/0/persistentVolumeClaim/claimName","value":"new-ontap-pvc"}]'
 ----
 
-If the volume is not the first element in the volumes array, adjust the JSON path accordingly. Alternatively, run kubectl edit deploy/<deployment-name> -n <namespace> and change claimName manually.
+. If the volume is not the first element in the volumes array, adjust the JSON path accordingly. Alternatively, run kubectl edit deploy/<deployment-name> -n <namespace> and change claimName manually.
 
-For StatefulSets: update the StatefulSet volumeClaimTemplates (or the consuming Pods) and perform a rolling restart. One safe method:
-
+For StatefulSets, update the StatefulSet volumeClaimTemplates (or the consuming Pods) and perform a rolling restart. For example:
++
+[source,console]
 ----
 kubectl scale sts <statefulset-name> -n <namespace> --replicas=0
 # edit the StatefulSet manifest locally to reference the new PVC(s)
@@ -192,26 +203,32 @@ kubectl apply -f statefulset-updated.yaml
 kubectl scale sts <statefulset-name> -n <namespace> --replicas=<original-replicas>
 ----
 
-Start the workload and confirm pods mount the new PVC:
-
+. Start the workload and confirm pods mount the new PVC:
++
+[source,console]
 ----
 kubectl scale deploy/<deployment-name> -n <namespace> --replicas=<desired>
 kubectl get pods -n <namespace>
 kubectl describe pod <pod-name> -n <namespace> | sed -n '/Mounts:/,/Events:/p'
 ----
 
-.7 Post-migration verification and cleanup
+[discrete]
+===== Post-migration verification and cleanup
 
-- Confirm the application is healthy and reads/writes to the new PVC correctly.
-- Check file integrity, ownership, and permissions on the new volume.
-- When satisfied, delete the migration Pod:
-
+. Confirm the application is healthy and reads/writes to the new PVC correctly.
+. Check file integrity, ownership, and permissions on the new volume.
+. When satisfied, delete the migration Pod:
++
+[source,console]
 ----
 kubectl delete pod pvc-migrate -n <namespace>
 ----
++
+Keep the old PVC (and a snapshot) until you are confident the migration succeeded. 
 
-- Keep the old PVC (and a snapshot) until you are confident the migration succeeded. When you are ready to remove it:
-
+. If you are ready to remove the old PVC, use the following command:
++
+[source,console]
 ----
 kubectl delete pvc <old-pvc> -n <namespace>
 ----
