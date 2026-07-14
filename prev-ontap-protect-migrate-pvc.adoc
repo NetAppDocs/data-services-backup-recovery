@@ -15,16 +15,6 @@ summary:  Migrating the shared PVC from default storage to an ONTAP NFS PVC for 
 [.lead]
 Migrate a shared PersistentVolumeClaim (PVC) from the cluster's default storage to an ONTAP-backed NFS PVC to improve performance for local NetApp Console deployments. This migration isn't required (the catalog works with the default storage class out of the box) but migrating will improve performance of NFS-backed shared storage for the catalog index data.
 
-Here is the general workflow:
-
-1. Prepare and verify ONTAP storage class and capacity.
-2. Provision a new ONTAP NFS PVC (RWX if required).
-3. Stop or scale down consumers to quiesce writes.
-4. Mount both old and new PVCs into a temporary migration Pod.
-5. Copy data (preserving ownership, permissions, ACLs, and xattrs).
-6. Update workload to use the new PVC and start it.
-7. Verify and clean up the old PVC.
-
 .Before you begin
 Ensure you have the following before you start:
 
@@ -37,13 +27,22 @@ Ensure you have the following before you start:
 .Steps
 
 [discrete]
-===== Prepare and verify
+===== Scale down the workers
 
-. Verify the source PVC name, namespace, capacity, and access mode:
+. List the worker deployments and scale each to 0:
 +
 [source,console]
 ----
-kubectl get pvc -n <namespace> <old-pvc> -o wide
+# List all catalog worker deployments
+kubectl get deploy -n cbs -o name | grep '/cloudmanager-cbs-catalog-worker-'
+
+# Scale every worker deployment down to 0 replicas
+for d in $(kubectl get deploy -n cbs -o name | grep '/cloudmanager-cbs-catalog-worker-'); do
+  kubectl scale "$d" --replicas=0 -n cbs
+done
+
+# Confirm no worker pods remain
+kubectl get pods -n cbs | grep cloudmanager-cbs-catalog-worker- || echo "no worker pods running"
 ----
 
 . Check the StorageClass you will use for ONTAP NFS (replace ontap-nfs with your class name):
@@ -54,130 +53,160 @@ kubectl describe storageclass ontap-nfs
 ----
 
 [discrete]
-===== Create the ONTAP NFS PVC
+===== Mount the ONTAP volume on NetApp Console (local deployment) and copy from the pod
 
-. Create a simple PVC manifest for the ONTAP StorageClass. Adjust storage and accessModes to match your requirements.
+. Mount the ONTAP NFS export at a local mount point on the NCL machine, then copy the data straight from the running coordinator pod into the ONTAP mount — no intermediate directory. The coordinator must still be running (workers are already down from Step 0); kubectl exec/kubectl cp require a live pod..
 +
 [source,console]
 ----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: new-ontap-pvc
-  namespace: <namespace>
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: ontap-nfs
-----
+# 1. Mount the ONTAP NFS export at a local mount point on the NCL machine.
+#    Use the same server/path you will put in pv.yaml (Step 4).
+sudo mkdir -p /mnt/ontap_nfs_vol
+sudo mount -t nfs 10.x.x.x:/my_nfs_vol /mnt/ontap_nfs_vol   # ONTAP SVM data LIF IP : junction path
 
-. Apply the PVC and confirm it binds:
-+
-[source,console]
-----
-kubectl apply -f new-ontap-pvc.yaml
-kubectl get pvc -n <namespace> new-ontap-pvc
+# 2. Stream the pod's shared-volume CONTENTS straight into the ONTAP mount root.
+POD=$(kubectl get pod -n cbs -l app=cloudmanager-cbs-catalog -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -n cbs "$POD" -- tar cf - -C /opt/netapp/cbs/catalog/shared . \
+  | sudo tar xf - -C /mnt/ontap_nfs_vol
+
+# 3. Set ownership to match the pod identity.
+sudo chown -R 10001:10001 /mnt/ontap_nfs_vol
+
+# 4. Verify the data landed at the volume root (you should see the "cbs" dataset
+#    folder directly under the mount, NOT a nested "shared/").
+ls -la /mnt/ontap_nfs_vol
+
+# 5. Unmount once the copy is verified (the pod will mount it via the PVC later).
+sudo umount /mnt/ontap_nfs_vol
 ----
 
 [discrete]
-===== Quiesce the application
+===== Scale the coordinator down to 0 replicas
 
-. Scale down or stop the workloads that are writing to the source PVC. Examples:
-+
-For a Deployment:
+. Scale down the coordinator. For example:
 +
 [source,console]
 ----
-kubectl scale deploy <deployment-name> -n <namespace> --replicas=0
-----
-+
-For a StatefulSet (scale to zero before migrating):
-+
-[source,console]
-----
-kubectl scale sts <statefulset-name> -n <namespace> --replicas=0
-----
-
-. Wait until all pods using the PVC are terminated before proceeding:
-+
-[source,console]
-----
-kubectl get pods -n <namespace> -l <label-selector> --field-selector=status.phase!=Running
+kubectl scale deployment cloudmanager-cbs-catalog --replicas=0 -n cbs
+kubectl rollout status deployment/cloudmanager-cbs-catalog -n cbs
 ----
 
 [discrete]
-===== Create a migration Pod that mounts both PVCs
+===== Delete the old PVC and PV
 
 . Create a one-off Pod manifest that mounts the old PVC at /mnt/from and the new ONTAP PVC at /mnt/to. Use an image with tar (or rsync) available; Ubuntu is a common choice. For example:
 +
 [source,console]
 ----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pvc-migrate
-  namespace: <namespace>
-spec:
-  restartPolicy: Never
-  containers:
-  - name: migrate
-    image: alpine:3.18
-    command: ["/bin/sh","-c","sleep 1d"]
-    volumeMounts:
-    - mountPath: /mnt/from
-      name: oldpvc
-    - mountPath: /mnt/to
-      name: newpvc
-  volumes:
-  - name: oldpvc
-    persistentVolumeClaim:
-      claimName: <old-pvc>
-  - name: newpvc
-    persistentVolumeClaim:
-      claimName: new-ontap-pvc
-----
+kubectl get pvc cloudmanager-cbs-catalog-shared-pvc -n cbs
 
-. Apply the Pod and wait until it is running:
-+
-[source,console]
-----
-kubectl apply -f pvc-migrate.yaml
-kubectl wait --for=condition=ready pod/pvc-migrate -n <namespace> --timeout=120s
+# Capture the bound PV before deleting the PVC
+PV=$(kubectl get pvc cloudmanager-cbs-catalog-shared-pvc -n cbs -o jsonpath='{.spec.volumeName}')
+
+kubectl delete pvc cloudmanager-cbs-catalog-shared-pvc -n cbs
+kubectl delete pv "$PV"
 ----
 
 [discrete]
-===== Copy data (preserve attributes)
+===== Create the static ONTAP PV and PVC
 
-. Exec into the migration pod and copy the data using `rsync` or `tar`, preserving file permissions, ownership, ACLs, and extended attributes (xattrs).
-+
-Using rsync (preferred when available):
+. Apply the PV first, then the PVC (the PV must exist for the PVC's label selector to bind to):
 +
 [source,console]
 ----
-kubectl exec -n <namespace> -it pvc-migrate -- sh -c "apk add --no-cache rsync && rsync -aHAX --numeric-ids --info=progress2 /mnt/from/ /mnt/to/"
-----
-+
-Using tar (no additional packages required):
-+
-[source,console]
-----
-kubectl exec -n <namespace> -it pvc-migrate -- sh
-# inside the pod shell
-cd /mnt/from && tar cf - . | tar -C /mnt/to -xpf -
+**`pv.yaml`**
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ontap-manual-pv
+  labels:
+    volume: ontap-nfs-share # Used by the PVC selector to find this exact volume
+spec:
+  capacity:
+    storage: 50Gi # Match or remain under the actual ONTAP volume size
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany # Allows multiple Pods to share the NFS mount
+  persistentVolumeReclaimPolicy: Retain # Retains ONTAP data if the PVC is deleted
+  storageClassName: "" # Leave blank for manual/static provisioning
+  nfs:
+    server: 10.x.x.x # Replace with your ONTAP SVM data LIF IP
+    path: /my_nfs_vol # Replace with your ONTAP junction path
+```
+
+**`pvc.yaml`**
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cloudmanager-cbs-catalog-shared-pvc
+  annotations:
+    "helm.sh/resource-policy": keep
+spec:
+  accessModes:
+    - ReadWriteMany # Must match the PV's access mode
+  resources:
+    requests:
+      storage: 50Gi # Must be <= the PV capacity (50Gi)
+  storageClassName: "" # Explicitly matches the empty StorageClass on the PV
+  selector:
+    matchLabels:
+      volume: ontap-nfs-share # Forces binding to the specific PV above
+```
+
+Apply and verify the claim binds:
+
+```bash
+kubectl apply -f pv.yaml
+kubectl apply -f pvc.yaml -n cbs
+kubectl get pvc cloudmanager-cbs-catalog-shared-pvc -n cbs   # expect STATUS: Bound
+```
+
+## Step 5 — Scale the coordinator back up to 1 replica
+
+```bash
+kubectl scale deployment cloudmanager-cbs-catalog --replicas=1 -n cbs
+kubectl rollout status deployment/cloudmanager-cbs-catalog -n cbs
+```
+
+## Step 6 — Bring workers back
+
+Workers are provisioned on demand by the coordinator via Service Management, so
+they are normally re-created automatically when indexing work is scheduled. If
+you manually scaled them in Step 0 and SM did not tear them down, scale them
+back up:
+
+```bash
+for d in $(kubectl get deploy -n cbs -o name | grep '/cloudmanager-cbs-catalog-worker-'); do
+  kubectl scale "$d" --replicas=1 -n cbs
+done
+```
+
+## Step 7 — Verify
+
+```bash
+POD=$(kubectl get pod -n cbs -l app=cloudmanager-cbs-catalog -o jsonpath='{.items[0].metadata.name}')
+
+# Mount is backed by the ONTAP NFS export
+kubectl exec -n cbs "$POD" -- mount | grep /opt/netapp/cbs/catalog/shared
+
+# Data is present and owned by 10001:10001
+kubectl exec -n cbs "$POD" -- ls -la /opt/netapp/cbs/catalog/shared
+```
+
+## Notes & caveats
+
+- **Reclaim policy `Retain`:** deleting the PVC will not erase the ONTAP data;
+  the released PV must be cleaned up manually if you ever re-provision.
+- **Keep Helm in sync:** because the PVC is normally rendered by the chart, a
+  future `helm upgrade` may try to recreate/modify it. To keep this manual
+  ONTAP PVC, point the chart at the same values (`storageClass: ""`,
+  matching size/access mode) or exclude the shared PVC from the release.
 ----
 
-. Verify sizes and counts from both mounts (inside the pod):
-+
-[source,console]
-----
-# show byte sizes
-du -sh /mnt/from /mnt/to
-# compare file count
-find /mnt/from | wc -l; find /mnt/to | wc -l
-----
 
 [discrete]
 ===== Update the workload to use the new PVC
@@ -193,7 +222,7 @@ kubectl patch deployment <deployment-name> -n <namespace> --type=json -p='[{"op"
 
 . If the volume is not the first element in the volumes array, adjust the JSON path accordingly. Alternatively, run kubectl edit deploy/<deployment-name> -n <namespace> and change claimName manually.
 
-For StatefulSets, update the StatefulSet volumeClaimTemplates (or the consuming Pods) and perform a rolling restart. For example:
+. For StatefulSets, update the StatefulSet volumeClaimTemplates (or the consuming Pods) and perform a rolling restart. For example:
 +
 [source,console]
 ----
@@ -224,7 +253,7 @@ kubectl describe pod <pod-name> -n <namespace> | sed -n '/Mounts:/,/Events:/p'
 kubectl delete pod pvc-migrate -n <namespace>
 ----
 +
-Keep the old PVC (and a snapshot) until you are confident the migration succeeded. 
+NOTE: Keep the old PVC (and a snapshot) until you are confident the migration succeeded. 
 
 . If you are ready to remove the old PVC, use the following command:
 +
