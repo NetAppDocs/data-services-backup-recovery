@@ -40,8 +40,8 @@ When you discover a cluster that is currently protected with Trident Protect, an
 Backup and Recovery provides instructions that change depending on the installation type you select. If you use NetApp Console (local deployment), you can choose instructions that enable you to discover air-gapped resources that have no external network connectivity.
 . Choose an installation type to view the instructions for installing Trident Protect on your Kubernetes cluster:
 +
-* Select "Connected" to discover clusters that have external network connectivity.
-* Select "Air-gapped" to discover clusters that have no external network connectivity.
+* Select *Connected* to discover clusters that have external network connectivity.
+* Select *Air-gapped* to discover clusters that have no external network connectivity.
 +
 [role="tabbed-block"]
 ====
@@ -66,7 +66,7 @@ Backup and Recovery provides instructions that change depending on the installat
 --set trident-protect.imagePullSecrets[0].name=<pull-secret-name>
 --set connector.imagePullSecrets[0].name=<pull-secret-name>
 ----
-. Follow the command line instructions that appear in Backup and Recovery, adding the image pull secret information during the Helm step if required. These steps ensure that Backup and Recovery can interact with the cluster.
+. Follow the command line instructions that appear in Backup and Recovery, adding the image pull secret information during the Helm step (if required). These steps ensure that Backup and Recovery can interact with the cluster.
 --
 
 ====
@@ -81,7 +81,7 @@ The cluster is added to the inventory.
 Follow these steps to view the NetApp Backup and Recovery Dashboard. 
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
-. Select a workload tile (for example, Microsoft SQL Server).
+. Select the Kubernetes workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
 
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
