@@ -1,0 +1,225 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-protect-migrate-pvc.html
+keywords: migrate, pvc, nfs, storage, performance, persistence
+summary:  Migrating the shared PVC from default storage to an ONTAP NFS PVC for increased performance in NetApp Console (local deployment) environments. 
+---
+
+= Migrate to an ONTAP NFS PVC for increased performance with NetApp Console (local deployment)
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Migrate a shared PersistentVolumeClaim (PVC) from the cluster's default storage to an ONTAP-backed NFS PVC to improve performance for local NetApp Console deployments. This migration isn't required (the catalog works with the default storage class out of the box) but migrating will improve performance of NFS-backed shared storage for the catalog index data.
+
+Here is the general workflow:
+
+1. Prepare and verify ONTAP storage class and capacity.
+2. Provision a new ONTAP NFS PVC (RWX if required).
+3. Stop or scale down consumers to quiesce writes.
+4. Mount both old and new PVCs into a temporary migration Pod.
+5. Copy data (preserving ownership, permissions, ACLs, and xattrs).
+6. Update workload to use the new PVC and start it.
+7. Verify and clean up the old PVC.
+
+.Before you begin
+Ensure you have the following before you start:
+
+* A configured ONTAP NFS StorageClass in the cluster and sufficient capacity on the ONTAP system.
+* Cluster admin credentials with permissions to get, create, apply, exec, patch, scale, and delete resources.
+* A validated backup of the data in the source PVC (take a snapshot or copy it elsewhere before migrating).
+* Knowledge of the workload type using the PVC (Deployment, StatefulSet, DaemonSet). Steps vary slightly by workload.
+
+If you need to list existing storage classes and PVCs, use the following commands:
+[source,console]
+----
+kubectl get storageclass
+kubectl get pvc -A
+----
+
+.Steps
+
+.1 Prepare and verify
+
+. Verify the source PVC name, namespace, capacity, and access mode:
++
+----
+kubectl get pvc -n <namespace> <old-pvc> -o wide
+----
+
+. Check the StorageClass you will use for ONTAP NFS (replace ontap-nfs with your class name):
++
+----
+kubectl describe storageclass ontap-nfs
+----
+
+.2 Create the ONTAP NFS PVC
+
+. Create a simple PVC manifest for the ONTAP StorageClass. Adjust storage and accessModes to match your requirements.
+
+----
+----
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: new-ontap-pvc
+  namespace: <namespace>
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: ontap-nfs
+----
+----
+
+. Apply the PVC and confirm it binds:
+
+----
+kubectl apply -f new-ontap-pvc.yaml
+kubectl get pvc -n <namespace> new-ontap-pvc
+----
+
+.3 Quiesce the application
+
+. Scale down or stop the workloads that are writing to the source PVC. Examples:
+
+For a Deployment:
+
+----
+kubectl scale deploy <deployment-name> -n <namespace> --replicas=0
+----
+
+For a StatefulSet (scale to zero before migrating):
+
+----
+kubectl scale sts <statefulset-name> -n <namespace> --replicas=0
+----
+
+Wait until all pods using the PVC are terminated:
+
+----
+kubectl get pods -n <namespace> -l <label-selector> --field-selector=status.phase!=Running
+----
+
+.4 Create a migration Pod that mounts both PVCs
+
+. Create a one-off Pod manifest that mounts the old PVC at /mnt/from and the new ONTAP PVC at /mnt/to. Use an image with tar (or rsync) available; alpine or ubuntu are common choices. Example:
+
+----
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-migrate
+  namespace: <namespace>
+spec:
+  restartPolicy: Never
+  containers:
+  - name: migrate
+    image: alpine:3.18
+    command: ["/bin/sh","-c","sleep 1d"]
+    volumeMounts:
+    - mountPath: /mnt/from
+      name: oldpvc
+    - mountPath: /mnt/to
+      name: newpvc
+  volumes:
+  - name: oldpvc
+    persistentVolumeClaim:
+      claimName: <old-pvc>
+  - name: newpvc
+    persistentVolumeClaim:
+      claimName: new-ontap-pvc
+----
+----
+
+Apply the Pod and wait until it is Running:
+
+----
+kubectl apply -f pvc-migrate.yaml
+kubectl wait --for=condition=ready pod/pvc-migrate -n <namespace> --timeout=120s
+----
+
+.5 Copy data (preserve attributes)
+
+Exec into the migration Pod and copy data while preserving modes, ownership, ACLs and xattrs. If rsync is available use it; otherwise use tar to stream files from source to destination.
+
+Using rsync (preferred when available):
+
+----
+kubectl exec -n <namespace> -it pvc-migrate -- sh -c "apk add --no-cache rsync && rsync -aHAX --numeric-ids --info=progress2 /mnt/from/ /mnt/to/"
+----
+
+Using tar (no additional packages required):
+
+----
+kubectl exec -n <namespace> -it pvc-migrate -- sh
+# inside the pod shell
+cd /mnt/from && tar cf - . | tar -C /mnt/to -xpf -
+----
+
+Verify sizes and counts from both mounts (inside the pod):
+
+----
+# show byte sizes
+du -sh /mnt/from /mnt/to
+# compare file count
+find /mnt/from | wc -l; find /mnt/to | wc -l
+----
+
+.6 Update the workload to use the new PVC
+
+Edit the workload manifest so it references new-ontap-pvc as the claimName for the volume. For Deployments you can patch or kubectl edit.
+
+Patch example (Deployment):
+
+----
+kubectl patch deployment <deployment-name> -n <namespace> --type=json -p='[{"op":"replace","path":"/spec/template/spec/volumes/0/persistentVolumeClaim/claimName","value":"new-ontap-pvc"}]'
+----
+
+If the volume is not the first element in the volumes array, adjust the JSON path accordingly. Alternatively, run kubectl edit deploy/<deployment-name> -n <namespace> and change claimName manually.
+
+For StatefulSets: update the StatefulSet volumeClaimTemplates (or the consuming Pods) and perform a rolling restart. One safe method:
+
+----
+kubectl scale sts <statefulset-name> -n <namespace> --replicas=0
+# edit the StatefulSet manifest locally to reference the new PVC(s)
+kubectl apply -f statefulset-updated.yaml
+kubectl scale sts <statefulset-name> -n <namespace> --replicas=<original-replicas>
+----
+
+Start the workload and confirm pods mount the new PVC:
+
+----
+kubectl scale deploy/<deployment-name> -n <namespace> --replicas=<desired>
+kubectl get pods -n <namespace>
+kubectl describe pod <pod-name> -n <namespace> | sed -n '/Mounts:/,/Events:/p'
+----
+
+.7 Post-migration verification and cleanup
+
+- Confirm the application is healthy and reads/writes to the new PVC correctly.
+- Check file integrity, ownership, and permissions on the new volume.
+- When satisfied, delete the migration Pod:
+
+----
+kubectl delete pod pvc-migrate -n <namespace>
+----
+
+- Keep the old PVC (and a snapshot) until you are confident the migration succeeded. When you are ready to remove it:
+
+----
+kubectl delete pvc <old-pvc> -n <namespace>
+----
+
+== Troubleshooting notes
+
+* If you cannot mount both PVCs in a single Pod due to access mode limitations, perform the copy via a temporary NodeMount or use an intermediary object store (S3) to transfer data.
+* If permissions change on ONTAP, ensure the NFS export and Security Styles map to expected POSIX UID/GID. Use chown -R and chmod in the migration Pod if required.
+* For very large datasets, consider using tools that preserve extended attributes and ACLs (rsync with -A -X) and run tests on a small subset first.
+
+
