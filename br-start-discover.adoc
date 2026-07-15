@@ -16,7 +16,7 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 NetApp Backup and Recovery needs to first discover Microsoft SQL Server workloads in order for you to use the service. You can optionally import backup data and policies from SnapCenter if you already have SnapCenter installed. 
 
 *Required NetApp Console role*
-Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Discover Microsoft SQL Server workloads and optionally import SnapCenter resources
 

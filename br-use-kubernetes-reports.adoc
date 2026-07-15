@@ -14,7 +14,7 @@ summary: Create protection reports for Kubernetes workloads to view protection s
 In NetApp Backup and Recovery, create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more.
 
 *Required NetApp Console role*
-Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
 
 == Create a protection report
 Create a protection report to view protection status of your clusters.

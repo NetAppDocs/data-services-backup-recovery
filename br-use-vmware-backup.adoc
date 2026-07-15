@@ -25,7 +25,7 @@ Back up VMware VMs and datastores from on-premises ONTAP systems to Amazon Web S
 Create an on-demand backup immediately. You might want to run an on-demand backup if you're about to make changes to your system and want to ensure that you have a backup before you start.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 
