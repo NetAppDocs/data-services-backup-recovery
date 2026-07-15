@@ -1,0 +1,17 @@
+=== Support for NetApp Console (local deployment)
+This release of NetApp Backup and Recovery supports NetApp Console (local deployment).
+
+=== Kubernetes workloads enhancements
+In this release, Kubernetes workloads introduces the following enhancements:
+
+* *Trident Protect 26.07*: This release includes Trident Protect 26.06.
+* *Support for discovery of air-gapped resources*: If running NetApp Backup and Recovery in NetApp Console (local deployment), you can discover air-gapped Kubernetes resources.
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
+
+=== Oracle Database workloads enhancements
+
+=== Microsoft SQL Server workloads enhancements
+
+
+

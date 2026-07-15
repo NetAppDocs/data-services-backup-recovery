@@ -73,7 +73,7 @@ sidebar:
           entries: 
             - title: Protect ONTAP volume workloads overview
               url: /prev-ontap-protect-overview.html
-            - title: Increase performance of ONTAP PVCs for NetApp Console (local deployment)
+            - title: Increase performance of catalog index for NetApp Console (local deployment)
               url: /prev-ontap-protect-migrate-pvc.html  
             - title: Plan your protection journey for ONTAP volumes
               url: /prev-ontap-protect-journey.html

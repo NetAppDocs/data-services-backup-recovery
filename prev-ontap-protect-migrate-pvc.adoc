@@ -5,7 +5,7 @@ keywords: migrate, pvc, nfs, storage, performance, persistence
 summary:  Migrating the shared PVC from default storage to an ONTAP NFS PVC for increased performance in NetApp Console (local deployment) environments. 
 ---
 
-= Migrate to an ONTAP NFS PVC for increased performance with NetApp Console (local deployment)
+= Increase performance of catalog index when using NetApp Console (local deployment)
 :hardbreaks:
 :nofooter:
 :icons: font

@@ -43,9 +43,9 @@ Before you can protect workloads in Backup and Recovery, you need to add an ONTA
 https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html[Discover on-premises ONTAP clusters in NetApp Console^]
 
 === Configure an organization and user roles
-Learn about organizations, projects, and user roles, then configure users with the appropriate permissions needed to perform their tasks.
+Learn about organizations, projects, fleets, and user roles, then configure users with the appropriate permissions needed to perform their tasks.
 
-Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-members-permissions.html[Add users to a NetApp Console organization] for information about using an organization and projects for controlling resource access.
+Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-members-permissions.html[Add users to a NetApp Console organization] for information about controlling resource access.
 
 Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions needed to perform operations in NetApp Backup and Recovery.
 
