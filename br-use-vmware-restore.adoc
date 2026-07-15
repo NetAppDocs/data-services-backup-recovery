@@ -69,7 +69,7 @@ From the Restore page (Search & Restore), you can restore a resource by searchin
 Restore VMware workloads using the Restore option. You can search for the snapshot by its name or by using filters. 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery restore admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 

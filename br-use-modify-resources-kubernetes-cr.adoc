@@ -16,7 +16,7 @@ summary: Modify resources during restore operations in NetApp Backup and Recover
 Resource transformations enable you to modify a resource as it is being restored. This is useful when the restored version needs to differ from the original — for example, changing a virtual machine's IP address when restoring it to a different network. You can also link:br-use-restore-kubernetes-applications.html#restore-kubernetes-applications[modify resources as you restore them using the web UI^].
 
 *Required NetApp Console role*
-Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == How resource modification works
 
