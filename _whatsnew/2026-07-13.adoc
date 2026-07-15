@@ -1,0 +1,6 @@
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following enhancement:
+
+*Enhanced multi-bucket support*: Beginning with ONTAP 9.19.1 and newer, you can now protect the volumes within a system with up to 100 buckets per system across different cloud providers.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].

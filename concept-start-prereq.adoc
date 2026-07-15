@@ -53,7 +53,6 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-
 
 To use object storage as backup targets, you need an account with AWS S3, Google Cloud Storage, Microsoft Azure Blob, StorageGRID, or ONTAP and the appropriate access permissions configured.
 
-
 == Requirements for protecting ONTAP volume workloads
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following host system, space, and sizing prerequisites.
 
@@ -63,7 +62,6 @@ To use NetApp Backup and Recovery for ONTAP volume workloads, you need the follo
 * An ONTAP One License must be enabled on the on-premises ONTAP instance.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
-
 
 == Requirements for protecting Microsoft SQL Server workloads 
 
