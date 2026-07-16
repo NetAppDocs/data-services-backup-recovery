@@ -127,10 +127,12 @@ When you set up NetApp Backup and Recovery, you are prompted for the IPspace to 
 
 ===  Verify ONTAP networking requirements for replicating volumes
 
-//This section uses an Include for all providers. It includes "Cloud Volumes ONTAP networking requirements", and "On-premises ONTAP networking requirements"   
+If you plan to create replicated volumes on a secondary ONTAP system using NetApp Backup and Recovery, make sure that the source and destination systems meet the following networking requirements.
 
-include::../_include/backup-onprem-prepare-source-destination-systems-for-repl.adoc[]
+.On-premises ONTAP networking requirements
 
+* If the cluster is on-premises, you should have a connection from your corporate network to your virtual network in the cloud provider. This is typically a VPN connection.
+* ONTAP clusters must meet additional subnet, port, firewall, and cluster requirements.
 
 == Activate backups on your ONTAP volumes
 
