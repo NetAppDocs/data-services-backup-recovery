@@ -39,7 +39,7 @@ NOTE: If you have upgraded your ONTAP systems to 9.13.x and do not see ongoing s
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
-. To show additional columns (System, SVM, User Name, Workload, Policy Name, Snapshot Label), select the plus sign.
+. To show additional columns (System, storage VM, User Name, Workload, Policy Name, Snapshot Label), select the plus sign.
 
 === Search and filter the list of jobs
 
@@ -66,7 +66,7 @@ Most of the filters are self-explanatory. The filter for "Workload" enables you 
 +
 [TIP]
 ====
-* You can search for data within a specific "SVM" only if you have first selected a System.
+* You can search for data within a specific storage VM only if you have first selected a System.
 * You can search using the "Protection type" filter only when you have selected the "Type" of "Protection".
 ====
 
@@ -78,7 +78,7 @@ You can view details corresponding to a specific completed job. You can export d
 
 You can view details such as job type (scheduled or on-demand), SnapMirror backup type (initial or periodic) start and end times, duration, amount of transferred data from system to object storage, average transfer rate, policy name, retention lock enabled, ransomware scan performed, protection source details, and protection target details. 
 
-Restore jobs show details such as backup target provider (Amazon Web Services, Microsoft Azure, Google Cloud, on-premises), S3 bucket name, SVM name, source volume name, destination volume, snapshot label, recovered objects count, file names, file sizes, last modification date, and full file path. 
+Restore jobs show details such as backup target provider (Amazon Web Services, Microsoft Azure, Google Cloud, on-premises), S3 bucket name, storage VM name, source volume name, destination volume, snapshot label, recovered objects count, file names, file sizes, last modification date, and full file path. 
 
 .Steps 
 
