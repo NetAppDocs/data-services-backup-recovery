@@ -13,7 +13,7 @@ summary:  Migrating the shared PVC from default storage to an ONTAP NFS PVC for 
 :imagesdir: ./media/
 
 [.lead]
-Migrate a shared PersistentVolumeClaim (PVC) from the cluster's default storage to an ONTAP-backed NFS PVC to improve performance for local NetApp Console deployments. This migration isn't required (the catalog works with the default storage class out of the box) but migrating will improve performance of NFS-backed shared storage for the catalog index data.
+Migrate a shared PersistentVolumeClaim (PVC) from the cluster's default storage to an ONTAP-backed NFS PVC to improve performance for NetApp Console (local deployment). This migration isn't required (the catalog works with the default storage class out of the box) but migrating will improve performance of NFS-backed shared storage for the catalog index data.
 
 .Before you begin
 Ensure you have the following before you start:
@@ -28,7 +28,6 @@ Ensure you have the following before you start:
 ===== Scale down the workers
 List the worker deployments and scale each to zero replicas.
 
-.Steps
 . List all catalog worker deployments:
 +
 [source,console]
@@ -67,7 +66,7 @@ sudo mkdir -p /mnt/ontap_nfs_vol
 sudo mount -t nfs 10.x.x.x:/my_nfs_vol /mnt/ontap_nfs_vol   # ONTAP SVM data LIF IP : junction path
 ----
 
-. Stream the pod's shared-volume CONTENTS straight into the ONTAP mount root:
+. Stream the pod's shared-volume contents straight into the ONTAP mount root:
 +
 [source,console]
 ----
@@ -83,7 +82,7 @@ kubectl exec -n cbs "$POD" -- tar cf - -C /opt/netapp/cbs/catalog/shared . \
 sudo chown -R 10001:10001 /mnt/ontap_nfs_vol
 ----
 
-. Verify the data landed at the volume root (you should see the "cbs" dataset folder directly under the mount, NOT a nested "shared/"):
+. Verify the data landed at the volume root (you should see the "cbs" dataset folder directly under the mount, not a nested "shared/"):
 +
 [source,console]
 ----
@@ -108,14 +107,7 @@ kubectl rollout status deployment/cloudmanager-cbs-catalog -n cbs
 [discrete]
 ===== Delete the old PVC and PV
 
-. Create a one-off Pod manifest that mounts the old PVC at /mnt/from and the new ONTAP PVC at /mnt/to. Use an image with tar (or rsync) available; Ubuntu is a common choice. For example:
-+
-[source,console]
-----
-kubectl get pvc cloudmanager-cbs-catalog-shared-pvc -n cbs
-----
-
-. Capture the bound PV before deleting the PVC:
+. Capture information about the bound PV and then delete the old PVC and PV:
 +
 [source,console]
 ----
@@ -127,7 +119,7 @@ kubectl delete pv "$PV"
 [discrete]
 ===== Create the static ONTAP PV and PVC
 
-. Crate the following yaml objects. For example:
+. Create the following PV and PVC yaml objects:
 +
 **`pv.yaml`**
 +
@@ -148,7 +140,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain # Retains ONTAP data if the PVC is deleted
   storageClassName: "" # Leave blank for manual/static provisioning
   nfs:
-    server: 10.x.x.x # Replace with your ONTAP SVM data LIF IP
+    server: 10.x.x.x # Replace with your ONTAP SVM data LIF IP address
     path: /my_nfs_vol # Replace with your ONTAP junction path
 ----
 +
@@ -174,7 +166,7 @@ spec:
       volume: ontap-nfs-share # Forces binding to the specific PV above
 ----
 
-. Apply the yaml objects, applying the PV first, then the PVC (the PV must exist for the PVC's label selector to bind to). Then verify the claim binds:
+. Apply the yaml objects, applying the PV first, then the PVC (the PV must exist for the PVC's label selector to bind to). Then verify the PVC claim is bound:
 +
 [source,console]
 ----
@@ -212,7 +204,7 @@ kubectl exec -n cbs "$POD" -- ls -la /opt/netapp/cbs/catalog/shared
 
 [NOTE]
 =====
-* *Reclaim policy `Retain`:* deleting the PVC will not erase the ONTAP data; the released PV must be cleaned up manually if you ever re-provision.
-* *Keep Helm in sync:* because the PVC is normally rendered by the chart, a future `helm upgrade` may try to recreate/modify it. To keep this manual ONTAP PVC, point the chart at the same values (`storageClass: ""`, matching size/access mode) or exclude the shared PVC from the release.
-* If you manually run `helm uninstall` and then try to reinstall, the PV will be installed with same name and cause a naming conflict.
+* *Reclaim policy `Retain`:* deleting the PVC will not erase the ONTAP data; the released PV must be cleaned up manually if you ever reprovision.
+* *Keep Helm in sync:* because the PVC is normally rendered by the chart, a future `helm upgrade` might try to recreate or modify it. To keep this manual ONTAP PVC, point the chart at the same values (`storageClass: ""`, matching size/access mode) or exclude the shared PVC from the release.
+* If you manually run `helm uninstall` and then try to reinstall, the PV will be installed with the same name and cause a naming conflict.
 =====
