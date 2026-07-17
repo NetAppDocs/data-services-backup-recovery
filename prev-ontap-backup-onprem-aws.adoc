@@ -278,7 +278,7 @@ If you're using port 443 (HTTPS) for communication to the private endpoint, you 
 
 . Obtain the certificate from the VPC S3 endpoint. You do this by https://docs.netapp.com/us-en/console-setup-admin/task-maintain-connectors.html#connect-to-the-linux-vm[logging into the VM that hosts the Console agent^] and running the following command. When entering the DNS name of the endpoint, add "bucket" to the beginning, replacing the "*":
 +
-[source,console]
+[source,shell]
 ----
 openssl s_client -connect bucket.vpce-0ff5c15df7e00fbab-yxs7lt8v.s3.us-west-2.vpce.amazonaws.com:443 -showcerts
 ----
@@ -299,9 +299,9 @@ GqvbOz/oO2NWLLFCqI+xmkLcMiPrZy+/6Af+HH2mLCM4EsI2b+IpBmPkriWnnxo=
 
 .	Log into the ONTAP cluster CLI and apply the certificate you copied using the following command (substitute your own storage VM name):
 +
-[source,console]
+[source,shell]
 ----
-cluster1::> security certificate install -vserver cluster1 -type server-ca
+security certificate install -vserver cluster1 -type server-ca
 Please enter Certificate: Press <Enter> when done
 ----
 
