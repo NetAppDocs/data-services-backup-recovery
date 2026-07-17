@@ -69,7 +69,7 @@ Schedule an instant clone creation and continuous refresh of the clone. This cre
 
 You can split a clone of your Oracle Database workloads. Splitting a clone creates a new backup from the clone. You can use the new backup to restore databases.
 
-You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the SVM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes an independent database for protection. 
+You can choose to split a clone as independent or long-term clones. A wizard shows the list of aggregates that are part of the storage VM, their sizes, and where the cloned volume resides. NetApp Backup and Recovery also indicates whether there is enough space to split the clone. After the clone is split, the clone becomes an independent database for protection. 
 
 The clone job is not removed and it can be reused again for other clones.
 
