@@ -21,6 +21,7 @@ You access NetApp Backup and Recovery through NetApp Console. Perform these task
 === Prepare NetApp Console (service)
 To prepare NetApp Console (service) for Backup and Recovery, you must:
 
+* Complete initial setup
 * Add a Console agent
 * Add at least one storage system
 * Configure a Console organization and user roles
@@ -55,12 +56,13 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-
 === Prepare NetApp Console (local deployment)
 To prepare NetApp Console (local deployment) for Backup and Recovery, you must:
 
+* Complete initial setup
 * Add at least one storage system
-* Configure a Console organization and user roles
+* Configure access to resources for users
 
 You need the Organization admin or Super admin role in NetApp Console (local deployment) to complete this preparation. 
 
-To learn more about NetApp Console (local deployment), refer to https://docs.netapp.com/us-en/console-setup-admin/concept-overview.html[NetApp Console for unified storage management^].
+To learn more about NetApp Console (local deployment), refer to https://docs.netapp.com/us-en/console-local/concept-netapp-console-local.html[Learn about NetApp Console (local deployment)^].
 
 ==== Complete initial NetApp Console (local deployment) setup
 Complete the initial setup for NetApp Console (local deployment) if you haven't already.
@@ -72,8 +74,8 @@ Before you can protect workloads in Backup and Recovery, you need to add an ONTA
 
 https://docs.netapp.com/us-en/console-local/task-discover-storage.html[Add storage in NetApp Console (local deployment)^]
 
-==== Configure an organization and user roles
-Learn about organizations and user roles, then configure users with the appropriate permissions needed to perform their tasks.
+==== Configure access to resources for users
+Learn about identity and access management, then configure users with the appropriate permissions needed to perform their tasks.
 
 Refer to https://docs.netapp.com/us-en/console-local/task-iam-fleet-mgmt-get-started.html[Get started with identity and access in NetApp Console (local deployment)] for information about identity and access.
 
