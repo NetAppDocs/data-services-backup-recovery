@@ -16,7 +16,7 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 Before you begin using NetApp Backup and Recovery, ensure your NetApp Console and operational environment meet the following requirements.
 
 == Prepare NetApp Console
-You access NetApp Backup and Recovery through NetApp Console. There are things you need to do to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console (service) or NetApp Console (local deployment).
+You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console (service) or NetApp Console (local deployment).
 
 === Prepare NetApp Console (service)
 To prepare NetApp Console (service) for Backup and Recovery, you must:
