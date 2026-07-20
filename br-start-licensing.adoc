@@ -76,7 +76,7 @@ Use these links to subscribe to NetApp Backup and Recovery from your cloud provi
 
 * Google Cloud: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
 
-=== Use an annual contract
+=== Use an annual contract with marketplace or BYOL licenses
 
 Pay for NetApp Backup and Recovery annually by purchasing an annual contract. They're available in 1-, 2-, or 3-year terms.
 
