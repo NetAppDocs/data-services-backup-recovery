@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-protect-migrate-pvc.html
 keywords: migrate, pvc, nfs, storage, performance, persistence
-summary:  Migrating the shared PVC from default storage to an ONTAP NFS PVC for increased performance in NetApp Console (local deployment) environments. 
+summary:  Increase catalog index performance in NetApp Console (local deployment) environments. 
 ---
 
 = Increase performance of catalog index when using NetApp Console (local deployment)
@@ -13,7 +13,7 @@ summary:  Migrating the shared PVC from default storage to an ONTAP NFS PVC for 
 :imagesdir: ./media/
 
 [.lead]
-Migrate a shared PersistentVolumeClaim (PVC) from the cluster's default storage to an ONTAP-backed NFS PVC to improve performance for NetApp Console (local deployment). This migration isn't required (the catalog works with the default storage class out of the box) but migrating will improve performance of NFS-backed shared storage for the catalog index data.
+Migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share to significantly improve catalog performance for NetApp Console (local deployment). While the catalog functions with the default storage, using ONTAP-backed NFS provides measurable performance improvements.
 
 .Before you begin
 Ensure you have the following before you start:
@@ -34,7 +34,7 @@ List the worker deployments and scale each to zero replicas.
 ----
 kubectl get deploy -n cbs -o name | grep '/cloudmanager-cbs-catalog-worker-'
 ----
-. Scale every worker deployment down to 0 replicas:
+. Scale every worker deployment down to zero replicas:
 +
 [source,shell]
 ----
@@ -58,7 +58,7 @@ kubectl get pods -n cbs | grep cloudmanager-cbs-catalog-worker- || echo "no work
 +
 NOTE: Copy the contents into the volume root — not into a sub-directory. The ONTAP volume is the new `/opt/netapp/cbs/catalog/shared` directory. The data must sit at the volume root so the app finds it at the same paths (e.g. /opt/netapp/cbs/catalog/shared/cbs/<DATASET_NAME>/...). The tar command format in the following commands streams the directory contents (including dotfiles) into the mount root, avoiding a nested `shared` folder.
 
-. Mount the ONTAP NFS export at a local mount point on the NCL machine. Use the same server/path you will put in pv.yaml (Step 4):
+. Mount the ONTAP NFS export at a local mount point on NetApp Console (local deployment). Use the same server/path you will later use in pv.yaml:
 +
 [source,shell]
 ----
@@ -66,7 +66,7 @@ sudo mkdir -p /mnt/ontap_nfs_vol
 sudo mount -t nfs 10.x.x.x:/my_nfs_vol /mnt/ontap_nfs_vol   # ONTAP SVM data LIF IP : junction path
 ----
 
-. Stream the pod's shared-volume contents straight into the ONTAP mount root:
+. Copy the pod's shared volume to the ONTAP mount location:
 +
 [source,shell]
 ----
@@ -82,14 +82,14 @@ kubectl exec -n cbs "$POD" -- tar cf - -C /opt/netapp/cbs/catalog/shared . \
 sudo chown -R 10001:10001 /mnt/ontap_nfs_vol
 ----
 
-. Verify the data landed at the volume root (you should see the "cbs" dataset folder directly under the mount, not a nested "shared/"):
+. Verify the data was copied to the volume root (you should see the "cbs" folder directly under the mount, not a nested "shared/"):
 +
 [source,shell]
 ----
 ls -la /mnt/ontap_nfs_vol
 ----
 
-. Unmount once the copy is verified (the pod will mount it via the PVC later).
+. Verify the copy and then unmount (the pod will mount it via the PVC later):
 +
 [source,shell]
 ----
@@ -193,7 +193,7 @@ for d in $(kubectl get deploy -n cbs -o name | grep '/cloudmanager-cbs-catalog-w
 done
 ----
 
-. Verify mount and data status. Ensure that the data is present and owned by 10001:10001:
+. Verify mount and data status. Ensure that the data is present and owned by the user and group 10001:10001:
 +
 [source,shell]
 ----
