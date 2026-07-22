@@ -13,7 +13,7 @@ summary:  Increase catalog index performance in NetApp Console (local deployment
 :imagesdir: ./media/
 
 [.lead]
-Migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share to significantly improve catalog performance for NetApp Console (local deployment). While the catalog functions with the default storage, using ONTAP-backed NFS provides measurable performance improvements.
+Migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share to significantly improve catalog performance for NetApp Console (local deployment). The index catalog is used for Search & Restore functionality. While the catalog functions with the default storage, using ONTAP-backed NFS provides measurable performance improvements for Search & Restore.
 
 .Before you begin
 Ensure you have the following before you start:
