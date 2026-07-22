@@ -5,7 +5,7 @@ keywords: migrate, pvc, nfs, storage, performance, persistence
 summary:  Increase catalog index performance in NetApp Console (local deployment) environments. 
 ---
 
-= Increase performance of catalog index when using NetApp Console (local deployment)
+= Increase performance of volume Search & Restore when using NetApp Console (local deployment)
 :hardbreaks:
 :nofooter:
 :icons: font
