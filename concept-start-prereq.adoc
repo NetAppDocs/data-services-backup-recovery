@@ -159,7 +159,7 @@ You need specific requirements to discover and protect your VMware workloads.
 
 |Connected storage
 a|
-* ONTAP 9.13.1 or later (ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum))
+* ONTAP 9.13.1 or later (ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 * ASA r2 SAN-only systems (ONTAP 9.17.1 or later required)
 |===
@@ -319,5 +319,5 @@ NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the log
 
 .NetApp ONTAP configuration requirements
 
-* A primary ONTAP system (ONTAP 9.14.1 or later - ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum))
+* A primary ONTAP system (ONTAP 9.14.1 or later - ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
 * For Hyper-V deployments using SMB shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
