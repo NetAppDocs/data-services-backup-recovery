@@ -186,11 +186,6 @@ Your Console user account needs to have the Backup and Recovery super admin role
 
 For more information about Backup and Recovery roles, refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[Backup and Recovery roles in NetApp Console].
 
-
-// The vCenter administrator account must have the required vCenter privileges. 
-
-// For a list of vCenter privileges needed, see https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#rbac-privileges-required[SnapCenter Plug-in for VMware vSphere vCenter privileges needed^].
-
 == Requirements for protecting KVM workloads
 You need specific requirements to discover and protect KVM virtual machines.
 
@@ -274,7 +269,6 @@ NOTE: NetApp strongly recommends assigning a static IP address to the Console ag
 * A primary ONTAP system (ASA r2 systems are not supported)
 * NetApp Trident 25.02 or later
 * NetApp Trident Protect 26.05 or later (installed on the Kubernetes cluster during discovery)
-//* NetApp Trident Protect Connector 26.05 or later (installed during Kubernetes workload discovery)
 * A Kubernetes cluster - Supported Kubernetes distributions and versions include those supported by https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html[Trident Protect].
 ** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
 
