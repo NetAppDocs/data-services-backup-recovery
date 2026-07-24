@@ -308,7 +308,7 @@ To create a policy, select *Create new policy* and do the following:
 
 . *Replication*: Set the following options: 
 +
-* *Replication target*: Select the destination system and SVM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
+* *Replication target*: Select the destination system and storage VM. Optionally, select the destination aggregate or aggregates and prefix or suffix that will be added to the replicated volume name. 
 * *Replication policy*: Choose an existing replication policy or create a new one. 
 +
 TIP: To create a custom policy before activating the replication, refer to link:br-use-policies-create.html[Create a policy].

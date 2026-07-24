@@ -23,7 +23,7 @@ Back up Microsoft SQL Server application data from on-premises ONTAP systems to 
 Before you start a backup, view the protection status of your workloads.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
 
 .Steps 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
@@ -36,7 +36,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 Set the activity log path for discovered hosts to track operation status before backing up workloads.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 . From the NetApp Backup and Recovery menu, select *Inventory*. 
@@ -54,7 +54,7 @@ NOTE: The fields that appear differ depending on the selected deployment model, 
 Create a protection group to manage backup and restore operations for multiple workloads. A protection group is a logical grouping of workloads.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -77,7 +77,7 @@ If you want to create a policy, select *Create new policy* and follow the prompt
 Run an on-demand backup before making changes to your system to ensure your data is protected.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 
@@ -97,7 +97,7 @@ Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup a
 Suspend the schedule to temporarily stop backups during maintenance or troubleshooting.
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Storage viewer, Backup and Recovery super admin, or Backup and Recovery backup admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
 

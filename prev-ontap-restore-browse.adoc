@@ -13,7 +13,7 @@ summary: With NetApp Backup and Recovery, restore ONTAP data using Browse and Re
 :imagesdir: ./media/
 
 [.lead]
-With NetApp Backup and Recovery, restore ONTAP data using Browse & Restore. Before restoring, note the source volume name, source system and SVM, and backup file date. You can restore ONTAP data from a snapshot, a replicated volume, or from backups stored in object storage.
+With NetApp Backup and Recovery, restore ONTAP data using Browse & Restore. Before restoring, note the source volume name, source system and storage VM, and backup file date. You can restore ONTAP data from a snapshot, a replicated volume, or from backups stored in object storage.
 
 Restore capabilities depend on your ONTAP version:
 

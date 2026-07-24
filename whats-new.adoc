@@ -20,6 +20,12 @@ This NetApp Backup and Recovery release includes the following updates.
 
 include::_whatsnew/2026-08-10.adoc[]
 
+== 13 July 2026
+
+This NetApp Backup and Recovery release includes the following updates.
+
+include::_whatsnew/2026-07-13.adoc[]
+
 == 15 June 2026
 
 This NetApp Backup and Recovery release includes the following updates.
