@@ -50,7 +50,7 @@ https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-o
 ==== Enable Backup and Recovery in NetApp Console (service)
 You can enable Backup and Recovery on a system when you add it, or at a later time.
 
-link:br-start-enable.html[Enable Backup and Recovery for a system^].
+link:br-start-enable.html#enable-backup-and-recovery-in-netapp-console-service[Enable Backup and Recovery for a system^].
 
 ==== Configure an organization and user roles
 Learn about organizations, projects, fleets, and user roles, then configure users with the appropriate permissions needed to perform their tasks.
@@ -84,7 +84,7 @@ https://docs.netapp.com/us-en/console-local/task-discover-storage.html[Add stora
 ==== Enable Backup and Recovery in NetApp Console (local deployment)
 You can enable Backup and Recovery on a system when you add it, or at a later time.
 
-link:br-start-enable.html[Enable Backup and Recovery for a system^].
+link:br-start-enable.html#enable-backup-and-recovery-in-netapp-console-local-deployment[Enable Backup and Recovery for a system^].
 
 ==== Grant access to resources for users
 Learn about identity and access management, then configure users with the appropriate permissions needed to perform their tasks.
