@@ -24,6 +24,7 @@ To prepare NetApp Console (service) for Backup and Recovery, you must:
 * Complete initial setup
 * Add a Console agent
 * Add at least one storage system
+* Enable Backup and Recovery
 * Configure a Console organization and user roles
 
 You need the Organization admin or Super admin role in NetApp Console to complete this preparation. 
@@ -46,6 +47,11 @@ Before you can protect workloads in Backup and Recovery, you need to add an ONTA
 
 https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html[Discover on-premises ONTAP clusters in NetApp Console^]
 
+==== Enable Backup and Recovery in NetApp Console (service)
+You can enable Backup and Recovery on a system when you add it, or at a later time.
+
+link:br-start-enable.html[Enable Backup and Recovery for a system^].
+
 ==== Configure an organization and user roles
 Learn about organizations, projects, fleets, and user roles, then configure users with the appropriate permissions needed to perform their tasks.
 
@@ -58,6 +64,7 @@ To prepare NetApp Console (local deployment) for Backup and Recovery, you must:
 
 * Complete initial setup
 * Add at least one storage system
+* Enable Backup and Recovery
 * Grant access to resources for users
 
 You need the Organization admin or Super admin role in NetApp Console (local deployment) to complete this preparation. 
@@ -65,7 +72,7 @@ You need the Organization admin or Super admin role in NetApp Console (local dep
 To learn more about NetApp Console (local deployment), refer to https://docs.netapp.com/us-en/console-local/concept-netapp-console-local.html[Learn about NetApp Console (local deployment)^].
 
 ==== Complete initial NetApp Console (local deployment) setup
-Complete the initial setup for NetApp Console (local deployment) if you haven't already.
+Complete the initial setup for NetApp Console (local deployment) if you haven't already. Completing initial setup includes adding licenses for data services (including Backup and Recovery).
 
 https://docs.netapp.com/us-en/console-local/task-quick-start-console-setup.html[Getting started with NetApp Console (local deployment)^]
  
@@ -73,6 +80,11 @@ https://docs.netapp.com/us-en/console-local/task-quick-start-console-setup.html[
 Before you can protect workloads in Backup and Recovery, you need to add an ONTAP storage system to the Console. 
 
 https://docs.netapp.com/us-en/console-local/task-discover-storage.html[Add storage in NetApp Console (local deployment)^]
+
+==== Enable Backup and Recovery in NetApp Console (local deployment)
+You can enable Backup and Recovery on a system when you add it, or at a later time.
+
+link:br-start-enable.html[Enable Backup and Recovery for a system^].
 
 ==== Grant access to resources for users
 Learn about identity and access management, then configure users with the appropriate permissions needed to perform their tasks.

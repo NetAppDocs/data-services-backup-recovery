@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: br-start-enable.html
+keywords: backup, Backup and Recovery, enable backup, Console, service, local deployment
+summary: Enable Backup and Recovery on a system in NetApp Console (service) or NetApp Console (local deployment).
+---
+
+= Enable Backup and Recovery for a system
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Enable NetApp Backup and Recovery for a storage system in NetApp Console (service) or NetApp Console (local deployment). You can enable Backup and Recovery on a system when you add it, or at a later time.
+
+== Enable Backup and Recovery in NetApp Console (service)
+Enable the Backup and Recovery service in NetApp Console (service).
+
+.Steps
+
+. Select the *Volumes* menu.
+. From the Volumes protection overview page, select *Backup Settings*.
+. Identify the system on which you want to activate backups and select the *Activate backup* button.
+. Select *Next*.
+. Select the source volumes to protect and select *Next*.
+. In the Define backup strategy page, select the backup architecture, and then define the policies and other details for local snapshots, replicated volumes, and backup files. See the details for backup options from the initial volumes you activated in this system. Then select *Next*.
+. Optionally, choose to have Backup and Recovery automatically fix mismatched backup, snapshot, and replication labels.
+. Review the backup settings for this volume, and then select *Activate Backup*.
+. The volumes you protected appear in the Volumes overview page.
+
+== Enable Backup and Recovery in NetApp Console (local deployment)
+
+Enable the Backup and Recovery service in NetApp Console (local deployment).
+
+.Steps
+
+. From the NetApp Console menu, select *Storage > Fleets*.
+. Select the *Systems* menu.
+. Choose a system and select a cluster. In the information panel on the right side of the page, select the *Enable* button for the Backup and Recovery service.
+. Select *Backup Volumes*.
+. Select *Next*.
+. Select the source volumes to protect and select *Next*.
+. In the Define backup strategy page, select the backup architecture, and then define the policies and other details for local snapshots, replicated volumes, and backup files. See the details for backup options from the initial volumes you activated in this system. Then select *Next*.
+. Optionally, choose to have Backup and Recovery automatically fix mismatched backup, snapshot, and replication labels.
+. Review the backup settings for this volume, and then select *Activate Backup*.
+. The volumes you protected appear in the Volumes overview page.

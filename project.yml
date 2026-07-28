@@ -46,7 +46,9 @@ sidebar:
         - title: Learn about NetApp Backup and Recovery
           url: /concept-backup-to-cloud.html
         - title: Prerequisites for NetApp Backup and Recovery
-          url: /concept-start-prereq.html  
+          url: /concept-start-prereq.html
+        - title: Enable Backup and Recovery for a system
+          url: /br-start-enable.html
         - title: Set up licensing for NetApp Backup and Recovery
           url: /br-start-licensing.html
         - title: Set up security certificates for ONTAP and StorageGRID
