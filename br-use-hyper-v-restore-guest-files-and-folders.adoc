@@ -34,7 +34,6 @@ Note the following when restoring files and folders:
 [NOTE]
 =====
 * You cannot restore files and folders to Linux guest VMs at this time.
-* Restoring files and folders from backups stored on object storage is not supported.
 * Only one attach or restore operation can run at the same time on a VM. You cannot run parallel attach or restore operations on the same VM.
 * Viewing or browsing reserved partitions might cause an error.
 * During the restore operation, the hidden, system, and encrypted attributes of guest files are not kept in the restored file.
