@@ -28,7 +28,7 @@ You can restore workloads from different starting locations:
 You can restore data to these points: 
 
 * Restore to the original location (from primary, secondary, and object storage)
-* Restore to an alternate location (from primary and secondary storage)
+* Restore to an alternate location (from primary, secondary, and object storage)
 
 .Restore from object storage considerations
 
