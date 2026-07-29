@@ -19,7 +19,7 @@ Platforms, devices, or features that do not work or do not work well with this v
 
 The following actions are not supported in Hyper-V workloads in NetApp Backup and Recovery: 
 
-* Generation 2 VMs that are stored on SAN storage are not supported on Microsoft Windows Server 2025.
+* Protecting generation 2 VMs that are stored on SAN storage is not supported when using Microsoft Windows Server 2025.
 * Create resource groups using VMs from multiple Hyper-V hosts
 * Spanning disks (across multiple CIFS shares)
 * You cannot restore VMs or VM data between systems with different CPU vendors (Intel to AMD or vice versa), regardless of the "Processor compatibility" setting in Hyper-V. This setting only supports compatibility between different generations of the same vendor (e.g., Intel to Intel or AMD to AMD).
