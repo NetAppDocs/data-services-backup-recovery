@@ -5,7 +5,7 @@ keywords: backup, Backup and Recovery, enable backup, Console, service, local de
 summary: Enable Backup and Recovery on a system in NetApp Console (service) or NetApp Console (local deployment).
 ---
 
-= Enable Backup and Recovery for a system
+= Enable Backup and Recovery to protect volumes
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Enable Backup and Recovery on a system in NetApp Console (service) or N
 :imagesdir: ./media/
 
 [.lead]
-Enable NetApp Backup and Recovery for a storage system in NetApp Console (service) or NetApp Console (local deployment). You can enable Backup and Recovery on a system when you add it, or at a later time.
+You need to enable NetApp Backup and Recovery for a storage system in NetApp Console (service) or NetApp Console (local deployment) before you can protect ONTAP Volumes workloads. You can enable Backup and Recovery on a system when you add it, or at a later time.
 
 == Enable Backup and Recovery in NetApp Console (service)
 Enable the Backup and Recovery service in NetApp Console (service).

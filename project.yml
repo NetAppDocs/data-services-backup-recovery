@@ -47,8 +47,6 @@ sidebar:
           url: /concept-backup-to-cloud.html
         - title: Prerequisites for NetApp Backup and Recovery
           url: /concept-start-prereq.html
-        - title: Enable Backup and Recovery for a system
-          url: /br-start-enable.html
         - title: Set up licensing for NetApp Backup and Recovery
           url: /br-start-licensing.html
         - title: Set up security certificates for ONTAP and StorageGRID
@@ -75,6 +73,8 @@ sidebar:
           entries: 
             - title: Protect ONTAP volume workloads overview
               url: /prev-ontap-protect-overview.html
+            - title: Enable Backup and Recovery to protect volumes
+              url: /br-start-enable.html
             - title: Increase performance of volume Search & Restore for NetApp Console (local deployment)
               url: /prev-ontap-protect-migrate-pvc.html  
             - title: Plan your protection journey for ONTAP volumes
