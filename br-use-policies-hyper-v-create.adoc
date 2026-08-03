@@ -140,6 +140,13 @@ TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with th
 
 ====
 
+[start=8]
+. When finished, select *Done*.
+. In the confirmation dialog, type the policy name to confirm the changes.
++
+Saving the changes affects all applications that are protected by this policy.
+. Select *Done* to confirm.
+
 == Edit a policy
 
 You can edit backup architecture, backup frequency, retention policy, and other settings for a policy. 

@@ -96,6 +96,12 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 * *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
 
+. When finished, select *Done*.
+. In the confirmation dialog, type the policy name to confirm the changes.
++
+Saving the changes affects all applications that are protected by this policy.
+. Select *Done* to confirm.
+
 
 == Edit a policy
 

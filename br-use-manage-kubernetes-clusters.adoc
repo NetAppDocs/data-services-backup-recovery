@@ -70,7 +70,7 @@ If your Console agent is deleted or becomes unavailable, migrate any clusters th
 
 .Before you begin
 * https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html[Deploy a new Console agent.^]
-* Choose a protection policy to use with the new Console agent, https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-policies-kubernetes-create.html#edit-a-policy[edit the policy^], and associate the protection policy with the new Console agent.
+* Choose a protection policy to use with the new Console agent, link:br-use-policies-kubernetes-create.html#edit-a-policy[edit the policy^], and associate the protection policy with the new Console agent.
 
 .Steps
 
