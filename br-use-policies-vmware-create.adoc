@@ -125,15 +125,6 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 +
 [%collapsible]
 ====
-You can optionally configure advanced settings in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads.
-
-.Steps
-. From the NetApp Backup and Recovery menu, select *Policies*.
-. From the Policies page, select *Create new policy*.
-. In the *Policy > Advanced* settings section, select the *Select advance action* menu to choose from a list of advanced settings.
-. Enable any of the settings you want to view or change, and then select *Accept*.
-. Provide the following information:
-+
 * *VM Settings*:
 ** *Enable VM-consistent and application-consistent snapshot*: Enable this option to create VM-consistent and application-consistent snapshots. This requires VMware Tools to be running on the VM. If VMware Tools is not running, snapshots will be crash-consistent instead. Note that enabling this option can increase backup time and use more storage. Additionally, the VM's active RAM is not included in consistent snapshots.
 * *SnapMirror volume and snapshot format*: Choose from the following options:
@@ -148,11 +139,7 @@ TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with th
 
 ====
 
-. When finished, select *Done*.
-. In the confirmation dialog, type the policy name to confirm the changes.
-+
-Saving the changes affects all applications that are protected by this policy.
-. Select *Done* to confirm.
+. When finished, select *Create*.
 
 == Delete a policy
 

@@ -108,11 +108,6 @@ TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with th
 ====
 
 . When finished, select *Done*.
-. In the confirmation dialog, type the policy name to confirm the changes.
-+
-Saving the changes affects all applications that are protected by this policy.
-. Select *Done* to confirm.
-
 
 == Edit a policy
 
@@ -133,6 +128,11 @@ Backup and Recovery super admin. If you are protecting data stored on a Cloud Vo
 . Select the *Policies* option.
 . Select the policy that you want to edit.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit*.
+. When finished editing, select *Done*.
+. In the confirmation dialog, type the policy name to confirm the changes.
++
+Saving the changes affects all applications that are protected by this policy.
+. Select *Done* to confirm.
 
 == Delete a policy
 
