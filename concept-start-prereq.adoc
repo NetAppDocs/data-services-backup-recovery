@@ -59,7 +59,7 @@ To use NetApp Backup and Recovery for ONTAP volume workloads, you need the follo
 * ONTAP 9.8 or later is required.
 * ONTAP 9.12.1 or later is required for FlexGroup volume protection. Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information.
 * ONTAP 9.17.1 or later is required for backing up or restoring to S3-compatible object storage.
-* ONTAP 9.19.1 or later is required for using more than 6 buckets per system across different cloud providers (up to 100 buckets is supported).
+* ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
 * An ONTAP One License must be enabled on the on-premises ONTAP instance.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
@@ -67,6 +67,8 @@ For information about supported features, volume types, backup and restore desti
 == Requirements for protecting Microsoft SQL Server workloads 
 
 To use NetApp Backup and Recovery for Microsoft SQL Server workloads, you need the following host system, space, and sizing prerequisites.
+
+NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
 
 [caption=]
 .Software and hardware requirements
@@ -157,7 +159,7 @@ You need specific requirements to discover and protect your VMware workloads.
 
 |Connected storage
 a|
-* ONTAP 9.13.1 or later
+* ONTAP 9.13.1 or later (ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 * ASA r2 SAN-only systems (ONTAP 9.17.1 or later required)
 |===
@@ -184,13 +186,10 @@ Your Console user account needs to have the Backup and Recovery super admin role
 
 For more information about Backup and Recovery roles, refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[Backup and Recovery roles in NetApp Console].
 
-
-// The vCenter administrator account must have the required vCenter privileges. 
-
-// For a list of vCenter privileges needed, see https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_deployment_planning_and_requirements.html#rbac-privileges-required[SnapCenter Plug-in for VMware vSphere vCenter privileges needed^].
-
 == Requirements for protecting KVM workloads
 You need specific requirements to discover and protect KVM virtual machines.
+
+NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
 
 * A modern Linux distribution running kernel version 5.14.0-503.22.1.el9_5.x86_64 (longterm) or later
 * Your KVM hosts and VMs must be managed by a management platform. NetApp Backup and Recovery supports the following management platforms:
@@ -223,6 +222,8 @@ chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 
 == Requirements for protecting Oracle Database workloads
 Ensure your environment meets specific requirements to discover and protect Oracle Database resources.
+
+NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
 
 [options="header"]
 |===
@@ -261,12 +262,13 @@ You need specific requirements to discover Kubernetes resources and protect your
 
 For NetApp Console requirements, refer to <<Prepare NetApp Console>>.
 
+NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
+
 NOTE: NetApp strongly recommends assigning a static IP address to the Console agent you use for Kubernetes workloads to avoid issues if the agent IP address changes.
 
 * A primary ONTAP system (ASA r2 systems are not supported)
 * NetApp Trident 25.02 or later
 * NetApp Trident Protect 26.05 or later (installed on the Kubernetes cluster during discovery)
-//* NetApp Trident Protect Connector 26.05 or later (installed during Kubernetes workload discovery)
 * A Kubernetes cluster - Supported Kubernetes distributions and versions include those supported by https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html[Trident Protect].
 ** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
 
@@ -317,5 +319,5 @@ NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the log
 
 .NetApp ONTAP configuration requirements
 
-* A primary ONTAP system (ONTAP 9.14.1 or later)
+* A primary ONTAP system (ONTAP 9.14.1 or later - ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
 * For Hyper-V deployments using SMB shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.
