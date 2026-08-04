@@ -21,10 +21,10 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 In this release, Kubernetes workloads introduces the following enhancements:
 
 * *Trident Protect 26.08*: This release includes Trident Protect 26.08.
-* *Support for discovery of air-gapped resources*: If running NetApp Backup and Recovery in NetApp Console (local deployment), you can discover air-gapped Kubernetes resources.
-* *Backup retries*: Backup and Recovery for NetApp Console service now enables you to configure protection policies to retry backups that fail to backup resources.
-* *Partial backup success*: Backup and Recovery for NetApp Console service now supports partial backup success. You can configure protection policies to allow backups that have one or more failed resources to complete successfully.
-* *Crash-consistent and VM-consistent backups during app protection*: Backup and Recovery for NetApp Console service now supports configuring protection policies that create crash-consistent or VM-consistent backups or snapshots.
+* *Preview support for air-gapped resources*: If running NetApp Backup and Recovery in NetApp Console (local deployment), you can discover, protect, and restore air-gapped Kubernetes resources. This feature is in preview for this release.
+* *Backup retries*: You can now enable backup retries and configure the number of retry attempts and intervals between retries as advanced settings in Kubernetes protection policies.
+* *Partial backup success*: You can now configure advanced settings in Kubernetes protection policies to continue backing up when individual resources fail, allowing backup jobs to complete as partially successful. This enables you to restore backed-up resources even if some resources fail during the backup operation.
+* *Crash-consistent and VM-consistent backups*: Backup and Recovery for NetApp Console service now supports configuring protection policies that create crash-consistent or VM-consistent backups or snapshots. You can also customize how VM freezes are performed during the protection operation.
 * *Reconnect Kubernetes cluster upon Console agent IP change*: Backup and Recovery for NetApp Console service now enables you to reconnect a cluster to its Console agent if the IP address of the agent changes.
 * *Migrate cluster to new Console agent*: Backup and Recovery for NetApp Console service now enables you to migrate a cluster to a new Console agent if the original agent fails or is deleted, ensuring uninterrupted app protection.
 
