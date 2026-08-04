@@ -1,6 +1,17 @@
 === Support for NetApp Console (local deployment)
 This release of NetApp Backup and Recovery supports NetApp Console (local deployment).
 
+=== VMware workloads enhancements
+In this release, VMware workloads introduces the following enhancements:
+
+* *Credential feature*: You can now use credentials.
+ 
+* *Restore to alternate location support for SAN VMs*: You can now restore SAN-based VM backups to an alternate location.
+ 
+* *Multiple backup delete support*: You can now delete multiple backups at one time.
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
+
 === Oracle Database workloads enhancements
 In this release, Oracle Database workloads introduces the following enhancements:
 
@@ -13,23 +24,21 @@ In this release, Kubernetes workloads introduces the following enhancements:
 
 * *Trident Protect 26.07*: This release includes Trident Protect 26.07.
 * *Support for discovery of air-gapped resources*: If running NetApp Backup and Recovery in NetApp Console (local deployment), you can discover air-gapped Kubernetes resources.
-* *Cluster and Namespace level RBAC*: Backup and Recovery for NetApp Console service now supports Role-Based Access Control (RBAC) at the cluster and namespace levels.
-* *Backup retries*: Backup and Recovery for NetApp Console service now enables you to retry backups that fail to backup resources.
-* *Partial backup success*: Backup and Recovery for NetApp Console service now supports partial backup success. You can choose to allow backups that have one or more failed resources to complete successfully.
-* *Skip VM consistent backups during app protection*: Backup and Recovery for NetApp Console service now supports creating VM backups without VM consistency.
-* *Reconnecting K8s cluster upon Agent IP changes*: Backup and Recovery for NetApp Console service now enables you to update the Console agent configuration for a cluster if the IP address of the agent changes.
+* *Backup retries*: Backup and Recovery for NetApp Console service now enables you to configure protection policies to retry backups that fail to backup resources.
+* *Partial backup success*: Backup and Recovery for NetApp Console service now supports partial backup success. You can configure protection policies to allow backups that have one or more failed resources to complete successfully.
+* *Crash-consistent and VM-consistent backups during app protection*: Backup and Recovery for NetApp Console service now supports configuring protection policies that create crash-consistent or VM-consistent backups or snapshots.
+* *Reconnect Kubernetes cluster upon Console agent IP change*: Backup and Recovery for NetApp Console service now enables you to reconnect a cluster to its Console agent if the IP address of the agent changes.
 * *Migrate cluster to new Console agent*: Backup and Recovery for NetApp Console service now enables you to migrate a cluster to a new Console agent if the original agent fails or is deleted, ensuring uninterrupted app protection.
 
-
-
-        - Backup retries and partial success (NCO only)
-            - Simple policy advanced settings area changes? Check with Sachin Rai in Slack
-        - Skip VM consistent backups during app protection (NCO only)
-            - Simple policy advanced settings area changes? Check with Sachin Rai in Slack
-
-        - Reconnecting K8s cluster upon Agent IP changes (NCO only)
-            - This is Sachin Rai's Reconnect Agent cluster-level actions menu (to change the IP)
-        - Migrate cluster to new Console agent (NCO only)
-            - Ashwin R's feature where you choose a new agent that you have just created after losing the original agent. create a new agent after sudden agent loss. All prereqs to setting up a new Console agent apply - and you have to associate a backup policy with the new agent before you change over the cluster to that new agent.  
-
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
+
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following enhancements:
+
+* *Prioritize restore jobs over backups*: You can now prioritize restore jobs over backup jobs.
+
+* *90 days of job retention*: Backup and Recovery now retains log data of protection activity for 90 days.
+
+* *Discover ONTAP systems without Backup and Recovery activation*: You can now discover systems without activating Backup and Recovery.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].
