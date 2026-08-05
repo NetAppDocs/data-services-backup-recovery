@@ -19,18 +19,21 @@ NetApp Backup and Recovery is a NetApp Console data protection service for *ONTA
 - Data protection patterns are built around *3-2-1* flows: source snapshots, optional secondary copies (replication), and offsite object backups.
 - For Kubernetes workflows, protection and restore operations are represented through `protect.trident.netapp.io/v1` custom resources and *AppVault* references.
 - Backup and restore automation is available through REST API endpoint groups such as `backup`, `restore`, `catalog`, `system`, and `job`.
+- This repository includes basic Backup and Recovery API configuration content; the full Backup and Recovery API reference is documented in a separate repository at https://docs.netapp.com/us-en/console-automation/cbs/overview.html.
 
 **Key concepts:**
 - A *workload* is the protection unit and maps by platform (for example application in Kubernetes, VM in virtualization platforms, database in database platforms).
-- *Protection groups* and *policies* define scope, scheduling, retention behavior, and backup target behavior for managed resources.
+- *Policies* define scope, scheduling, retention behavior, and backup target behavior for managed resources.
+- A *protection group* is a logical grouping of like resources that you want to protect together to simplify backup and restore operations.
 - *Offsite backup targets* are discovered or added destinations such as *AWS S3*, *Azure Blob*, *Google Cloud Storage*, *StorageGRID*, and *ONTAP S3*.
 - *Inventory* and *Settings* are core operational areas for discovering resources, adding credentials, integrating external managers, and controlling protection behavior.
 - *SnapCenter import* is supported for Microsoft SQL Server resource onboarding, then management can be transferred to NetApp Backup and Recovery.
 
 **Naming conventions and terminology:**
 - Common UI and docs terms include *Inventory*, *Managed offsite backup targets*, *protection group*, *policy*, *backup target*, *AppVault*, and *resource transformation template*.
+- Kubernetes workflows also use the term *execution hook* for pre/post operation scripting behavior.
 - Kubernetes custom resource kinds used in docs include *Snapshot*, *Backup*, *BackupRestore*, *BackupInplaceRestore*, *SnapshotRestore*, and *SnapshotInplaceRestore*.
-- KVM management integration terminology uses *management platform* and references *Apache CloudStack* for host/VM discovery.
+- KVM management integration terminology uses *management platform* and *storage pool*, and references *Apache CloudStack* for host/VM discovery.
 - File naming conventions indicate content role and workload scope (for example `br-use-vmware-*`, `br-use-kubernetes-*`, `br-use-mssql-*`, `prev-ontap-*`).
 
 ### Typical user workflows
