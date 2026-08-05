@@ -30,7 +30,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 .Steps 
 
 . From the Backup and Recovery menu, select *Inventory*. 
-. Select a workload to view the protection details. 
+. Select the VMware workload. 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.   
 . Select the *Protection Groups*, *Datastores*, *Virtual machines*, or *Tags* menu heading. 
 . Select the protection group, datastores, virtual machines, or tagged resources that you want to back up.
@@ -40,3 +40,35 @@ NOTE: The policy that is applied to the backup is the same policy that is assign
 
 . Select the schedule tier.
 . Select *Back up now*.
+
+== Delete backups
+
+You can delete local backups that are no longer needed to free up storage space or meet data retention requirements.
+
+.Steps
+
+. Log in to NetApp Backup and Recovery, and from the home screen, select the VMware workload tile.
++
+The VMware Inventory page appears.
+. Select the *Virtual machines* heading.
+. In the list of virtual machines, choose a virtual machine and select the Actions icon image:../media/icon-action.png[Actions option] > *View protection details*.
+. Select a time frame to display relevant snapshots.
+[role="tabbed-block"]
+====
+
+.Delete a single snapshot
+
+--
+.. Choose a snapshot from the list that you want to delete, and select the Actions icon image:../media/icon-action.png[Actions option] > *Delete local snapshot*.
+
+--
+
+.Delete multiple snapshots
+
+--
+.. Select the check box to the left of each snapshot that you want to delete.
+.. Select *Delete selected*.
+
+--
+
+====
