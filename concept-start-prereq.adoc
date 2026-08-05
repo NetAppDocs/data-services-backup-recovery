@@ -16,10 +16,10 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 Before you begin using NetApp Backup and Recovery, ensure your NetApp Console and operational environment meet the following requirements.
 
 == Prepare NetApp Console
-You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console (service) or NetApp Console local deployment.
+You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console or NetApp Console local deployment.
 
-=== Prepare NetApp Console (service)
-To prepare NetApp Console (service) for Backup and Recovery, you must:
+=== Prepare NetApp Console 
+To prepare NetApp Console for Backup and Recovery, you must:
 
 * Complete initial setup
 * Add a Console agent
@@ -29,12 +29,12 @@ To prepare NetApp Console (service) for Backup and Recovery, you must:
 
 You need the Organization admin or Super admin role in NetApp Console to complete this preparation. 
 
-To learn more about NetApp Console (service), refer to https://docs.netapp.com/us-en/console-setup-admin/concept-overview.html[NetApp Console for unified storage management^].
+To learn more about NetApp Console, refer to https://docs.netapp.com/us-en/console-setup-admin/concept-overview.html[NetApp Console for unified storage management^].
 
-==== Complete initial NetApp Console (service) setup
-Complete the initial setup for NetApp Console (service) if you haven't already.
+==== Complete initial NetApp Console setup
+Complete the initial setup for NetApp Console if you haven't already.
 
-https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started workflow for NetApp Console (service)^]
+https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started workflow for NetApp Console^]
 
 ==== Deploy a Console agent
 A Console agent is a lightweight software component that you install in your network to connect your storage infrastructure to NetApp Console. It enables advanced storage orchestration, data services, and secure cloud integration.
@@ -47,7 +47,7 @@ Before you can protect workloads in Backup and Recovery, you need to add an ONTA
 
 https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html[Discover on-premises ONTAP clusters in NetApp Console^]
 
-==== Enable Backup and Recovery in NetApp Console (service)
+==== Enable Backup and Recovery in NetApp Console 
 You can enable Backup and Recovery on a system when you add it, or at a later time.
 
 link:br-start-enable.html#enable-backup-and-recovery-in-netapp-console-service[Enable Backup and Recovery for a system^].

@@ -13,11 +13,11 @@ summary: You can license NetApp Backup and Recovery by purchasing a pay-as-you-g
 :imagesdir: ./media/
 
 [.lead]
-Depending on if you are using NetApp Console (service) or NetApp Console (local deployement), you can license NetApp Backup and Recovery by purchasing a pay-as-you-go (PAYGO) or annual marketplace subscription to *NetApp Intelligent Services* from your cloud provider, or by purchasing a bring-your-own-license (BYOL) from NetApp. A valid license is required to activate NetApp Backup and Recovery on a system, to create backups of your production data, and to restore backup data to a production system.
+Depending on if you are using NetApp Console or NetApp Console (local deployement), you can license NetApp Backup and Recovery by purchasing a pay-as-you-go (PAYGO) or annual marketplace subscription to *NetApp Intelligent Services* from your cloud provider, or by purchasing a bring-your-own-license (BYOL) from NetApp. A valid license is required to activate NetApp Backup and Recovery on a system, to create backups of your production data, and to restore backup data to a production system.
 
 A few notes before you read any further:
 
-* If you are using Backup and Recovery with NetApp Console (service), you can subscribe to the pay-as-you-go (PAYGO) license or purchase a bring-your-own-license (BYOL) license.
+* If you are using Backup and Recovery with NetApp Console, you can subscribe to the pay-as-you-go (PAYGO) license or purchase a bring-your-own-license (BYOL) license.
 * If you are using Backup and Recovery with NetApp Console local deployment, you can only purchase a bring-your-own-license (BYOL) license.
 * The NetApp Backup and Recovery bring-your-own-license (BYOL) is a floating license that you can use across all systems associated with your NetApp Console organization or account. So if you have sufficient backup capacity available from an existing BYOL license, you won't need to purchase another BYOL license.
 * If you are using a BYOL license, it is recommended that you subscribe to a PAYGO subscription as well. If you back up more data than allowed by your BYOL license, or if the term of your license expires, then backup continues through your pay-as-you-go subscription - there is no disruption of service.
@@ -25,8 +25,8 @@ A few notes before you read any further:
 
 link:concept-backup-to-cloud.html[Learn more about the costs related to using NetApp Backup and Recovery.]
 
-== Set up licensing for NetApp Backup and Recovery (service)
-Set up licensing for NetApp Backup and Recovery (service).
+== Set up licensing for NetApp Backup and Recovery 
+Set up licensing for NetApp Backup and Recovery .
 
 === 30-day free trial
 
