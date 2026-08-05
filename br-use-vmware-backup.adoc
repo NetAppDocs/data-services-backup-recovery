@@ -53,6 +53,8 @@ The VMware Inventory page appears.
 . Select the *Virtual machines* heading.
 . In the list of virtual machines, choose a virtual machine and select the Actions icon image:../media/icon-action.png[Actions option] > *View protection details*.
 . Select a time frame to display relevant snapshots.
+. Delete one or more snapshots:
++
 [role="tabbed-block"]
 ====
 
