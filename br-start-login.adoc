@@ -30,7 +30,7 @@ To add a Console agent, you must have the Backup and Recovery super admin role.
 
 . Do one of the following:
 * If you are using NetApp Console (service), open a web browser and go to the https://console.netapp.com/[NetApp Console^].
-* If you are using NetApp Console (local deployment), open a web browser and go to the IP address of the web UI for your local Console deployment.
+* If you are using NetApp Console local deployment, open a web browser and go to the IP address of the web UI for your local Console deployment.
 + 
 The NetApp Console login page appears.
 . Log in to the Console. 

@@ -18,7 +18,7 @@ Depending on if you are using NetApp Console (service) or NetApp Console (local 
 A few notes before you read any further:
 
 * If you are using Backup and Recovery with NetApp Console (service), you can subscribe to the pay-as-you-go (PAYGO) license or purchase a bring-your-own-license (BYOL) license.
-* If you are using Backup and Recovery with NetApp Console (local deployment), you can only purchase a bring-your-own-license (BYOL) license.
+* If you are using Backup and Recovery with NetApp Console local deployment, you can only purchase a bring-your-own-license (BYOL) license.
 * The NetApp Backup and Recovery bring-your-own-license (BYOL) is a floating license that you can use across all systems associated with your NetApp Console organization or account. So if you have sufficient backup capacity available from an existing BYOL license, you won't need to purchase another BYOL license.
 * If you are using a BYOL license, it is recommended that you subscribe to a PAYGO subscription as well. If you back up more data than allowed by your BYOL license, or if the term of your license expires, then backup continues through your pay-as-you-go subscription - there is no disruption of service.
 * When backing up on-prem ONTAP data to StorageGRID, you need a BYOL license, but there's no cost for cloud provider storage space.
@@ -123,7 +123,7 @@ You use the NetApp Console to manage BYOL licenses. You can add new licenses, up
 
 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html[Learn about adding licenses^].
 
-== Set up licensing for for NetApp Backup and Recovery (local deployment)
+== Set up licensing for for NetApp Backup and Recovery local deployment
 Set up licensing for the on-premises vesion of NetApp Console.
 
 === Use a NetApp Backup and Recovery BYOL license
@@ -136,7 +136,7 @@ If you don't have a NetApp Backup and Recovery BYOL license, click the chat icon
 
 Optionally, if you have an unassigned node-based license for Cloud Volumes ONTAP that you won't be using, you can convert it to a NetApp Backup and Recovery license with the same dollar-equivalence and the same expiration date. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses[Go here for details^].
 
-You use the NetApp Console (local deployment) to manage BYOL licenses. You can add new licenses, update existing licenses, and view license status from the Console.
+You use the NetApp Console local deployment to manage BYOL licenses. You can add new licenses, update existing licenses, and view license status from the Console.
 
 https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html[Learn about adding licenses^].
 

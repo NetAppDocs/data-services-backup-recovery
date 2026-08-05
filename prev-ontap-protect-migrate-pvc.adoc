@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: prev-ontap-protect-migrate-pvc.html
 keywords: migrate, pvc, nfs, storage, performance, persistence
-summary:  Increase catalog index performance in NetApp Console (local deployment) environments. 
+summary:  Increase catalog index performance in NetApp Console local deployment environments. 
 ---
 
-= Increase performance of volume Search & Restore when using NetApp Console (local deployment)
+= Increase performance of volume Search & Restore when using NetApp Console local deployment
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary:  Increase catalog index performance in NetApp Console (local deployment
 :imagesdir: ./media/
 
 [.lead]
-Migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share to significantly improve catalog performance for NetApp Console (local deployment). The index catalog is used for Search & Restore functionality. While the catalog functions with the default storage, using ONTAP-backed NFS provides measurable performance improvements for Search & Restore.
+Migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share to significantly improve catalog performance for NetApp Console local deployment. The index catalog is used for Search & Restore functionality. While the catalog functions with the default storage, using ONTAP-backed NFS provides measurable performance improvements for Search & Restore.
 
 .Before you begin
 Ensure you have the following before you start:
@@ -51,14 +51,14 @@ kubectl get pods -n cbs | grep cloudmanager-cbs-catalog-worker- || echo "no work
 ----
 
 [discrete]
-===== Mount the ONTAP volume on NetApp Console (local deployment) and copy from the pod
+===== Mount the ONTAP volume on NetApp Console local deployment and copy from the pod
 
-. Mount the ONTAP NFS export on a local mount point in the VM created when the NetApp Console (local deployment) OVA was deployed.
+. Mount the ONTAP NFS export on a local mount point in the VM created when the NetApp Console local deployment OVA was deployed.
 . Copy the data from the running coordinator pod into the ONTAP mount, with no intermediate directory. The coordinator must still be running.
 +
 NOTE: Copy the contents into the volume root — not into a sub-directory. The ONTAP volume is the new `/opt/netapp/cbs/catalog/shared` directory. The data must sit at the volume root so the app finds it at the same paths (e.g. /opt/netapp/cbs/catalog/shared/cbs/<DATASET_NAME>/...). The tar command format in the following commands streams the directory contents (including dotfiles) into the mount root, avoiding a nested `shared` folder.
 
-. Mount the ONTAP NFS export at a local mount point on NetApp Console (local deployment). Use the same server/path you will later use in pv.yaml:
+. Mount the ONTAP NFS export at a local mount point on NetApp Console local deployment. Use the same server/path you will later use in pv.yaml:
 +
 [source,shell]
 ----

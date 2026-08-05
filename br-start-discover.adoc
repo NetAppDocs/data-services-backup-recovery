@@ -21,7 +21,7 @@ Backup and Recovery super admin. If you are protecting data stored on a Cloud Vo
 //INCLUDE for configuring RKE2 DNS for discovering air-gapped DB hosts, for NCL only:
 
 
-== Configure DNS for air-gapped host discovery in NetApp Console (local deployment)
+== Configure DNS for air-gapped host discovery in NetApp Console local deployment
 include::_include/dns-fix-air-gapped-db-discovery.adoc[]
 
 == Discover Microsoft SQL Server workloads and optionally import SnapCenter resources

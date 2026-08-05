@@ -16,7 +16,7 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 Before you begin using NetApp Backup and Recovery, ensure your NetApp Console and operational environment meet the following requirements.
 
 == Prepare NetApp Console
-You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console (service) or NetApp Console (local deployment).
+You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console (service) or NetApp Console local deployment.
 
 === Prepare NetApp Console (service)
 To prepare NetApp Console (service) for Backup and Recovery, you must:
@@ -59,29 +59,29 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-membe
 
 Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions needed to perform operations in NetApp Backup and Recovery.
 
-=== Prepare NetApp Console (local deployment)
-To prepare NetApp Console (local deployment) for Backup and Recovery, you must:
+=== Prepare NetApp Console local deployment
+To prepare NetApp Console local deployment for Backup and Recovery, you must:
 
 * Complete initial setup
 * Add at least one storage system
 * Enable Backup and Recovery
 * Grant access to resources for users
 
-You need the Organization admin or Super admin role in NetApp Console (local deployment) to complete this preparation. 
+You need the Organization admin or Super admin role in NetApp Console local deployment to complete this preparation. 
 
-To learn more about NetApp Console (local deployment), refer to https://docs.netapp.com/us-en/console-local/concept-netapp-console-local.html[Learn about NetApp Console (local deployment)^].
+To learn more about NetApp Console local deployment, refer to https://docs.netapp.com/us-en/console-local/concept-netapp-console-local.html[Learn about NetApp Console local deployment^].
 
-==== Complete initial NetApp Console (local deployment) setup
-Complete the initial setup for NetApp Console (local deployment) if you haven't already. Completing initial setup includes adding licenses for data services (including Backup and Recovery).
+==== Complete initial NetApp Console local deployment setup
+Complete the initial setup for NetApp Console local deployment if you haven't already. Completing initial setup includes adding licenses for data services (including Backup and Recovery).
 
-https://docs.netapp.com/us-en/console-local/task-quick-start-console-setup.html[Getting started with NetApp Console (local deployment)^]
+https://docs.netapp.com/us-en/console-local/task-quick-start-console-setup.html[Getting started with NetApp Console local deployment^]
  
 ==== Add a storage system
 Before you can protect workloads in Backup and Recovery, you need to add an ONTAP storage system to the Console. 
 
-https://docs.netapp.com/us-en/console-local/task-discover-storage.html[Add storage in NetApp Console (local deployment)^]
+https://docs.netapp.com/us-en/console-local/task-discover-storage.html[Add storage in NetApp Console local deployment^]
 
-==== Enable Backup and Recovery in NetApp Console (local deployment)
+==== Enable Backup and Recovery in NetApp Console local deployment
 You can enable Backup and Recovery on a system when you add it, or at a later time.
 
 link:br-start-enable.html#enable-backup-and-recovery-in-netapp-console-local-deployment[Enable Backup and Recovery for a system^].
@@ -89,7 +89,7 @@ link:br-start-enable.html#enable-backup-and-recovery-in-netapp-console-local-dep
 ==== Grant access to resources for users
 Learn about identity and access management, then configure users with the appropriate permissions needed to perform their tasks.
 
-Refer to https://docs.netapp.com/us-en/console-local/task-iam-fleet-mgmt-get-started.html[Get started with identity and access in NetApp Console (local deployment)] for information about identity and access.
+Refer to https://docs.netapp.com/us-en/console-local/task-iam-fleet-mgmt-get-started.html[Get started with identity and access in NetApp Console local deployment] for information about identity and access.
 
 Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions needed to perform operations in NetApp Backup and Recovery.
 

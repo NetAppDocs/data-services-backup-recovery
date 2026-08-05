@@ -18,7 +18,7 @@ Discovering Oracle databases enables NetApp Backup and Recovery to protect them 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Configure DNS for air-gapped host discovery in NetApp Console (local deployment)
+== Configure DNS for air-gapped host discovery in NetApp Console local deployment
 include::_include/dns-fix-air-gapped-db-discovery.adoc[]
 
 == Add an Oracle Database host and discover resources

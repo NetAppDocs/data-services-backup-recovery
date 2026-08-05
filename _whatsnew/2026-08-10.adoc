@@ -1,12 +1,12 @@
-=== Support for NetApp Console (local deployment)
-This release of NetApp Backup and Recovery supports NetApp Console (local deployment).
+=== Support for NetApp Console local deployment
+This release of NetApp Backup and Recovery supports NetApp Console local deployment in preview status.
 
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:
 
-* *Credential feature*: You can now use credentials.
+//* *Credential feature*: You can now use credentials. Feature not shipping August 10.
 * *Restore to alternate location support for SAN VMs*: You can now restore SAN-based VM backups to an alternate location.
-* *Multiple backup delete support*: You can now delete multiple backups at one time.
+* *Multiple backup delete support*: You can now delete multiple backups at a time.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
 
@@ -20,13 +20,7 @@ For details about protecting Oracle Database workloads, refer to https://docs.ne
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following enhancements:
 
-* *Trident Protect 26.08*: This release includes Trident Protect 26.08.
-* *Preview support for air-gapped resources*: If running NetApp Backup and Recovery in NetApp Console (local deployment), you can discover, protect, and restore air-gapped Kubernetes resources. This feature is in preview for this release.
-* *Backup retries*: You can now enable backup retries and configure the number of retry attempts and intervals between retries as advanced settings in Kubernetes protection policies.
-* *Partial backup success*: You can now configure advanced settings in Kubernetes protection policies to continue backing up when individual resources fail, allowing backup jobs to complete as partially successful. This enables you to restore backed-up resources even if some resources fail during the backup operation.
-* *Crash-consistent and VM-consistent backups*: Backup and Recovery for NetApp Console service now supports configuring protection policies that create crash-consistent or VM-consistent backups or snapshots. You can also customize how VM freezes are performed during the protection operation.
-* *Reconnect Kubernetes cluster upon Console agent IP change*: Backup and Recovery for NetApp Console service now enables you to reconnect a cluster to its Console agent if the IP address of the agent changes.
-* *Migrate cluster to new Console agent*: Backup and Recovery for NetApp Console service now enables you to migrate a cluster to a new Console agent if the original agent fails or is deleted, ensuring uninterrupted app protection.
+* *Preview support for air-gapped resources*: If running NetApp Backup and Recovery in NetApp Console local deployment, you can discover, protect, and restore air-gapped Kubernetes resources. This feature is in preview for this release.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
 

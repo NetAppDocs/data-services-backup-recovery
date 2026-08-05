@@ -13,7 +13,7 @@ summary: For increased security, configure access for specific roles in NetApp B
 [.lead]
 To increase security and control resource access, configure role-based access for NetApp Backup and Recovery. The NetApp Console supports role-based access control (RBAC) for some Backup and Recovery workloads. You can assign administrative or viewer roles specific to these workloads. Other workloads that do not yet support role-based access control remain accessible to all users with Backup and Recovery roles until project-level or fleet-level association is supported.
 
-NOTE: NetApp Console (service) uses projects to organize resources within folders, while NetApp Console (local deployment) refers to projects as fleets.
+NOTE: NetApp Console (service) uses projects to organize resources within folders, while NetApp Console local deployment refers to projects as fleets.
 
 Follow these steps to control access to resources in your organization. Make changes in the *Administration > Identity and access* page in the NetApp Console menu.
 

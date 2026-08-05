@@ -75,7 +75,7 @@ sidebar:
               url: /prev-ontap-protect-overview.html
             - title: Enable Backup and Recovery to protect volumes
               url: /br-start-enable.html
-            - title: Increase performance of volume Search & Restore for NetApp Console (local deployment)
+            - title: Increase performance of volume Search & Restore for NetApp Console local deployment
               url: /prev-ontap-protect-migrate-pvc.html  
             - title: Plan your protection journey for ONTAP volumes
               url: /prev-ontap-protect-journey.html

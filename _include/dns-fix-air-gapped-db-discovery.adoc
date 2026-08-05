@@ -1,4 +1,4 @@
-If you are using NetApp Console (local deployment) in an air-gapped environment where database hosts are not reachable through standard DNS, you must temporarily modify the internal RKE2 CoreDNS configuration. This allows pods to resolve specific hostnames to IP addresses within the cluster, similar to adding entries to `/etc/hosts` on a node.
+If you are using NetApp Console local deployment in an air-gapped environment where database hosts are not reachable through standard DNS, you must temporarily modify the internal RKE2 CoreDNS configuration. This allows pods to resolve specific hostnames to IP addresses within the cluster, similar to adding entries to `/etc/hosts` on a node.
 
 IMPORTANT: Before making changes, check the existing CoreDNS configuration to avoid overriding any existing customizations. Use RKE2 manifests to apply this change, ensuring it is managed consistently by the RKE2 operator and runtime.
 
