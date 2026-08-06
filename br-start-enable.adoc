@@ -34,10 +34,17 @@ Enable the Backup and Recovery service in NetApp Console.
 
 Enable the Backup and Recovery service in NetApp Console local deployment.
 
+.Before you begin
+Ensure that you have obtained a license for NetApp Backup and Recovery. Refer to https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html#obtain-a-license-file[Obtain a license^] for more information.
+
 .Steps
 
 . From the NetApp Console menu, select *Storage > Fleets*.
-. Select the *Systems* menu.
+. If needed, add a details of your fleet by selecting *Add fleet*.
+. Select *Administration > Licenses*.
+. Select *Add license* to add a license for Backup and Recovery. For more information on adding a license, refer to https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html#add-a-license[Add a license^].
+. Select *Storage* > *Fleets* and then open the *Systems* menu.
+. Select *Add* to add a system, enter the system details, and save the new system by selecting *Add*.
 . Choose a system and select a cluster. In the information panel on the right side of the page, select the *Enable* button for the Backup and Recovery service.
 . Select *Backup Volumes*.
 . Select *Next*.
