@@ -6,7 +6,6 @@ Product: NetApp Backup and Recovery
 NetApp Backup and Recovery is a NetApp Console data protection service for *ONTAP* workloads, including volume, database, virtual machine, and Kubernetes application data. The service uses policy-driven protection workflows across local snapshots, secondary replication, and object storage backup targets.
 
 ### Repository structure
-- `./` – Primary AsciiDoc content is stored at repository root, including overview, prerequisites, setup, workload protection, restore, API, and reference pages; filename prefixes map to content type (`concept-`, `br-start-`, `br-use-`, `prev-`, `reference-`, `task-`).
 - `_include/` – Reusable include fragments for shared Kubernetes and backup/restore instructions (for example session token notes and execution hook template content).
 - `_whatsnew/` – Dated release note entry files consumed by the main what’s new page.
 - `redirect/` – Redirect stubs that preserve legacy URLs by mapping old permalinks to current pages.
@@ -34,7 +33,6 @@ NetApp Backup and Recovery is a NetApp Console data protection service for *ONTA
 - Kubernetes workflows also use the term *execution hook* for pre/post operation scripting behavior.
 - Kubernetes custom resource kinds used in docs include *Snapshot*, *Backup*, *BackupRestore*, *BackupInplaceRestore*, *SnapshotRestore*, and *SnapshotInplaceRestore*.
 - KVM management integration terminology uses *management platform* and *storage pool*, and references *Apache CloudStack* for host/VM discovery.
-- File naming conventions indicate content role and workload scope (for example `br-use-vmware-*`, `br-use-kubernetes-*`, `br-use-mssql-*`, `prev-ontap-*`).
 
 ### Typical user workflows
 **Initial service setup:** Prepare *NetApp Console* and *Console agent* → discover ONTAP/storage resources → configure credentials and settings → discover offsite backup targets → set workload-specific policies
