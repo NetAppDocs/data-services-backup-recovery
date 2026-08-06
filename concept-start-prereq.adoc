@@ -140,8 +140,8 @@ NOTE: If you already have SnapCenter, first check to be sure you've met the prer
 Allocate sufficient disk space and monitor the storage consumption by the logs folder. The log space required varies depending on the number of backups performed and the frequency of data protection operations. If there is not sufficient space, the logs will not be created for the operations. 
 
 |Required software packages
-| * ASP.NET Core Runtime 8.0.24 Hosting Bundle (and all subsequent 8.0.x patches)
-* PowerShell 7.4.13
+| * ASP.NET Core Runtime 10.0.10 Hosting Bundle
+* PowerShell 7.6.4
 
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
 
