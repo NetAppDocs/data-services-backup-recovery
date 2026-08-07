@@ -13,7 +13,7 @@ summary: Discover systems and volumes without activating NetApp Backup and Recov
 :imagesdir: ./media/
 
 [.lead]
-You can discover systems and volumes either when you activate Backup and Recovery for the volumes, or before you activate NetApp Backup and Recovery. If you discover volumes without activation, you will not be able to protect the volumes until you activate Backup and Recovery for them.
+You can discover systems and volumes either when you activate Backup and Recovery for the volumes, or before you activate NetApp Backup and Recovery. If you discover volumes without activation, you can't protect the volumes until you activate Backup and Recovery for them.
 
 .Steps
 
