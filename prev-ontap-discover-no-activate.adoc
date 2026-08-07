@@ -1,0 +1,29 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-discover-no-activate.html
+keywords: activate, backup and recovery, volumes, back up, discover
+summary: Discover systems and volumes without activating NetApp Backup and Recovery.
+---
+
+= Discover ONTAP systems and volumes without activation
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can discover systems and volumes either when you activate Backup and Recovery for the volumes, or before you activate NetApp Backup and Recovery. If you discover volumes without activation, you will not be able to protect the volumes until you activate Backup and Recovery for them.
+
+.Steps
+
+. Go to *Protection > Backup and Recovery*.
+. Select the *Volumes* tile.
++
+The Volumes dashboard appears.
+. Select *Discover systems*.
+. In the list, select all systems whose volumes you want to discover.
+. Select *Discover*.
+. In NetApp Backup and Recovery, select *Inventory*.
++
+The discovery process begins. You can see the status and result of discovery in the Job Monitor.
