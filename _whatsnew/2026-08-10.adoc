@@ -29,6 +29,6 @@ In this release, ONTAP Volumes workloads introduces the following enhancements:
 
 * *Prioritize restore jobs over backups*: You can now prioritize restore jobs over backup jobs when you restore VMs or files.
 * *90 days of job retention*: Backup and Recovery now retains job information in the job monitor for 90 days.
-* *Discover ONTAP systems without Backup and Recovery activation*: You can now discover systems without activating Backup and Recovery.
+* *Discover ONTAP systems and volumes without Backup and Recovery activation*: You can now discover systems and volumes without activating Backup and Recovery.
 
 For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].
