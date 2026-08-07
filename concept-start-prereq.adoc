@@ -15,10 +15,10 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 [.lead]
 Before you begin using NetApp Backup and Recovery, ensure your NetApp Console and operational environment meet the following requirements.
 
-== Prepare NetApp Console
+== Prepare to use NetApp Backup and Recovery
 You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console or NetApp Console local deployment.
 
-=== Prepare NetApp Console 
+=== Prepare to use Backup and Recovery on NetApp Console 
 To prepare NetApp Console for Backup and Recovery, you must:
 
 * Complete initial setup
@@ -59,10 +59,11 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/task-iam-manage-membe
 
 Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console] for details about the roles and permissions needed to perform operations in NetApp Backup and Recovery.
 
-=== Prepare NetApp Console local deployment
-To prepare NetApp Console local deployment for Backup and Recovery, you must:
+=== Prepare to use Backup and Recovery on NetApp Console local deployment
+To prepare to use NetApp Backup and Recovery on NetApp Console local deployment, you must:
 
-* Complete initial setup
+* Complete initial NetApp Console local deployment setup
+* Sign up for preview enrollment
 * Add at least one storage system
 * Enable Backup and Recovery
 * Grant access to resources for users
@@ -75,7 +76,12 @@ To learn more about NetApp Console local deployment, refer to https://docs.netap
 Complete the initial setup for NetApp Console local deployment if you haven't already. Completing initial setup includes adding licenses for data services (including Backup and Recovery).
 
 https://docs.netapp.com/us-en/console-local/task-quick-start-console-setup.html[Getting started with NetApp Console local deployment^]
- 
+
+==== Sign up for NetApp Backup and Recovery preview enrollment
+Sign up for NetApp Backup and Recovery preview on NetApp Console local deployment:
+
+https://forms.cloud.microsoft/pages/responsepage.aspx?id=oBEJS5uSFUeUS8A3RRZbOmNJwiQYiM5EhCH6-tDLH1hUMzBMVUY4Vk5DNDlRRzlKV1dORUlKQkUwNS4u&route=shorturl[Fill out the preview enrollment form^]
+
 ==== Add a storage system
 Before you can protect workloads in Backup and Recovery, you need to add an ONTAP storage system to the Console. 
 
