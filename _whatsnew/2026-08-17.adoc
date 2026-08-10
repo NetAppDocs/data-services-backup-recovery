@@ -9,3 +9,10 @@ In this release, Kubernetes workloads introduces the following enhancements:
 * *Migrate cluster to new Console agent*: Backup and Recovery for NetApp Console service now enables you to migrate a cluster to a new Console agent if the original agent fails or is deleted, ensuring uninterrupted app protection.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads overview].
+
+=== Oracle Database workloads enhancements
+In this release, Oracle Database workloads introduces the following enhancements:
+
+* *Pluggable Database (PDB) restore and clone*: Backup and Recovery for NetApp Console service now supports restoring and cloning pluggable databases.
+
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
