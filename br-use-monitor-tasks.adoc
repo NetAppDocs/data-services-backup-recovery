@@ -169,6 +169,8 @@ To receive the NetApp Backup and Recovery email alerts, you'll need to select th
 
 https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn how to send alert emails for backup and restore jobs^].
 
+https://docs.netapp.com/us-en/console-local/task-alert-rules-manage.html[Configure notification rules for alerts in NetApp Console local deployment^].
+
 .Steps 
 
 . From the Console menu, select the (image:icon_bell.png[notification bell]).
