@@ -21,8 +21,8 @@ The following actions and configurations are not supported in KVM workloads in N
 
 The following actions are not supported:
 
+* In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 * Clone, mount, or unmount VMs
-//* Restore VMs to an alternate location
 * Protect VMs stored on SAN
 * Protect applications
 * Create user-defined backups (only backups initiated from the NetApp Console are supported)
