@@ -75,7 +75,7 @@ To use the NetApp Backup and Recovery Search & Restore functionality, you need t
 
 .Before you start
 
-You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
+You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
 
 .Steps
 
