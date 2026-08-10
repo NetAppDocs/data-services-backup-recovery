@@ -79,6 +79,8 @@ sidebar:
               url: /prev-ontap-protect-migrate-pvc.html  
             - title: Plan your protection journey for ONTAP volumes
               url: /prev-ontap-protect-journey.html
+            - title: Discover ONTAP systems and volumes without activation
+              url: /prev-ontap-discover-no-activate.html            
             - title: Manage policies for ONTAP volumes 
               url: /prev-ontap-policy-manage.html
             - title: Backup-to-object policy options for ONTAP volumes
