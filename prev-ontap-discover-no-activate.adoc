@@ -5,7 +5,7 @@ keywords: activate, backup and recovery, volumes, back up, discover
 summary: Discover systems and volumes without activating NetApp Backup and Recovery.
 ---
 
-= Discover ONTAP systems and volumes without activation
+= Discover ONTAP systems and volumes without activation in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

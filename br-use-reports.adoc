@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, b
 summary: In NetApp Backup and Recovery, create reports to view the status of your backups, including the number of backups, the number of successful backups, and the number of failed backups. You can also view the details of each backup, including the backup type, the storage system used for the backup, and the time of the backup. 
 ---
 
-= Create protection reports for Microsoft SQL Server workloads in NetApp Backup and Recovery
+= Create Microsoft SQL Server protection reports in NetApp Backup and Recovery
 :hardbreaks:
 :icons: font
 :imagesdir: ./media/

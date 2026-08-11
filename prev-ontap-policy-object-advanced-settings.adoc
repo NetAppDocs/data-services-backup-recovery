@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
-= Manage backup-to-object storage options in NetApp Backup and Recovery Advanced Settings
+= Manage backup-to-object storage options in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: You can protect Kubernetes applications and application data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID, ensuring that your data is protected. 
 ---
 
-= Manage Kubernetes workloads overview 
+= Learn about managing Kubernetes workloads with NetApp Backup and Recovery 
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -28,9 +28,9 @@ NetApp Backup and Recovery provides the following benefits for managing Kubernet
 You can accomplish the following tasks related to managing Kubernetes workloads:
 
 * link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
-* link:br-use-manage-kubernetes-clusters.html[Manage Kubernetes clusters].
-* link:br-use-protect-kubernetes-applications.html[Add and protect Kubernetes applications].
-* link:br-use-manage-kubernetes-applications.html[Manage Kubernetes applications].
+* link:br-use-manage-kubernetes-clusters.html[Manage Kubernetes clusters in NetApp Backup and Recovery].
+* link:br-use-protect-kubernetes-applications.html[Add and protect Kubernetes applications in NetApp Backup and Recovery].
+* link:br-use-manage-kubernetes-applications.html[Manage Kubernetes applications in NetApp Backup and Recovery].
 * link:br-use-restore-kubernetes-applications.html[Restore Kubernetes applications].
 
  
