@@ -184,19 +184,21 @@ These differences are shown in the table.
 
 [cols=4*,options="header",cols="25,25,25,25",width="100%"]
 |===
-| Architecture
-| Snapshot policy
-| Replication policy
-| Backup policy
 
-| *Fan-out* | 
-Primary |
-Secondary |
-Primary 
-| *Cascade* | 
-Primary |
-Secondary |
-Secondary |
+|Architecture
+|Snapshot policy
+|Replication policy
+|Backup policy
+
+|*Fan-out* 
+|Primary
+|Secondary 
+|Primary 
+
+|*Cascade*
+|Primary 
+|Secondary 
+|Secondary
 
 |===
 
