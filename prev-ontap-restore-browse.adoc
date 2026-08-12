@@ -57,7 +57,7 @@ a|
 * On-premises ONTAP system
 a|
 * On-premises ONTAP system
-* Cloud Volumes ONTAP
+* Cloud Volumes ONTAP in AWS
 
 |Azure Blob 
 a|
@@ -68,7 +68,7 @@ a|
 * On-premises ONTAP system
 a|
 * On-premises ONTAP system
-* Cloud Volumes ONTAP
+* Cloud Volumes ONTAP in Azure
 
 |Google Cloud Storage 
 a|
@@ -79,7 +79,7 @@ a|
 * On-premises ONTAP system
 a|
 * On-premises ONTAP system
-* Cloud Volumes ONTAP
+* Cloud Volumes ONTAP in Google
 
 |NetApp StorageGRID 
 |On-premises ONTAP system 
