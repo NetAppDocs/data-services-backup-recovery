@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: Protect your Microsoft SQL Server applications data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, or StorageGRID using NetApp Backup and Recovery.
 ---
 
-= Protect Microsoft SQL workloads using NetApp Backup and Recovery overview
+= Microsoft SQL Server protection workflow in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

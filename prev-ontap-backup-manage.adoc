@@ -43,7 +43,7 @@ Each icon is illuminated when that backup type is activated, and it's grey when 
 
 If you activated backup only on some of the volumes in a system when you first enabled NetApp Backup and Recovery, you can activate backups on additional volumes later. 
 
-Refer to link:br-start-enable.html[Enable Backup and Recovery to protect volumes^] for instructions.
+Refer to link:br-start-enable.html[Enable NetApp Backup and Recovery to protect volumes^] for instructions.
 
 == Change the backup settings assigned to existing volumes
 

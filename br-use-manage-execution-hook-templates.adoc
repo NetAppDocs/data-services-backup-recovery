@@ -5,7 +5,7 @@ keywords: hooks, execution hooks, exec hooks, hook, execution, script, postscrip
 summary: NetApp Backup and Recovery enables you to manage execution hooks to take action before or after application protection operations.  
 ---
 
-= Manage NetApp Backup and Recovery execution hook templates for Kubernetes workloads
+= Manage Kubernetes execution hook templates in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

@@ -22,7 +22,7 @@ In this release, Hyper-V workloads introduces the following enhancements:
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
 * *SAN support (preview)*: Backup and Recovery now supports protecting Hyper-V VMs stored on SAN storage.
 
-For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Hyper-V protection workflow with NetApp Backup and Recovery].
 
 === KVM workloads enhancements
 In this release, KVM workloads introduces the following enhancements:
@@ -30,7 +30,7 @@ In this release, KVM workloads introduces the following enhancements:
 * *Improved job handling*: Backup and Recovery now handles multiple simultaneous jobs more efficiently.
 * *Restore to alternate location (preview)*: You can now restore KVM VMs to an alternate destination. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-restore.html[Restore KVM virtual machines with NetApp Backup and Recovery].
 
-For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Learn about protecting KVM workloads with NetApp Backup and Recovery].
 
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:
