@@ -5,7 +5,7 @@ keywords: NetApp Backup and Recovery, Oracle Database
 summary: Review these NetApp Backup and recovery limitations before using Backup and Recovery in your environment.
 ---
 
-= Known limitations with NetApp Backup and Recovery for Oracle Database
+= Known limitations with NetApp Backup and Recovery for Oracle Database workloads
 :hardbreaks:
 :nofooter:
 :icons: font
