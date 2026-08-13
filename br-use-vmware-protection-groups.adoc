@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Create and manage protection groups for VMware workloads in NetApp Backup and Recovery. 
 ---
 
-= Create and manage protection groups for VMware workloads with NetApp Backup and Recovery
+= Manage VMware protection groups in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

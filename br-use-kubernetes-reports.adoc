@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, b
 summary: Create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more. 
 ---
 
-= Create and manage protection reports for Kubernetes workloads in NetApp Backup and Recovery
+= Manage Kubernetes protection reports in NetApp Backup and Recovery
 :hardbreaks:
 :icons: font
 :imagesdir: ./media/

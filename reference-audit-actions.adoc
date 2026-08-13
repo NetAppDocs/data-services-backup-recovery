@@ -5,7 +5,7 @@ keywords: audit, audit actions, NetApp Console, Backup and Recovery, audit log
 summary: Reference of Backup and Recovery actions supported by NetApp Console auditing.
 ---
 
-= Audited Backup and Recovery actions
+= Audited NetApp Backup and Recovery actions
 :hardbreaks:
 :nofooter:
 :icons: font
