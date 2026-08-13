@@ -5,7 +5,7 @@ keywords: restore, guest, files, folders, files and folders, Windows, VM, virtua
 summary: You can restore one or more files or folders from a Hyper-V VM snapshot to a Windows guest VM.
 ---
 
-= Restore files and folders from Hyper-V VM backups
+= Restore files and folders from Hyper-V VM backups with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

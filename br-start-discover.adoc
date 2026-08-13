@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: NetApp Backup and Recovery needs to first discover workloads in order for you to use the service.  
 ---
 
-= Discover Microsoft SQL Server workloads and optionally import from SnapCenter in NetApp Backup and Recovery
+= Discover Microsoft SQL Server workloads in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

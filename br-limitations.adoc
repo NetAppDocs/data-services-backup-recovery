@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: NetApp Backup and Recovery needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
 ---
 
-= Known limitations with NetApp Backup and Recovery for Microsoft SQL Server workloads
+= Known limitations with NetApp Backup and Recovery for SQL Server workloads
 :hardbreaks:
 :nofooter:
 :icons: font
