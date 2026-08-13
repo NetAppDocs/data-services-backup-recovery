@@ -29,17 +29,17 @@ sidebar:
       entries:
         - title: What's new in NetApp Backup and Recovery
           url: /whats-new.html
-        - title: Known limitations with NetApp Backup and Recovery for ONTAP volumes workloads
+        - title: Known limitations for ONTAP volumes workloads
           url: /br-reference-limitations.html
-        - title: Known limitations with NetApp Backup and Recovery for SQL Server workloads
+        - title: Known limitations for SQL Server workloads
           url: /br-limitations.html
-        - title: Known limitations with NetApp Backup and Recovery for VMware workloads
+        - title: Known limitations for VMware workloads
           url: /br-limitations-vmware.html
-        - title: Known limitations with NetApp Backup and Recovery for Hyper-V workloads
+        - title: Known limitations for Hyper-V workloads
           url: /br-limitations-hyperv.html
-        - title: Known limitations with NetApp Backup and Recovery for KVM workloads
+        - title: Known limitations for KVM workloads
           url: /br-limitations-kvm.html
-        - title: Known limitations with NetApp Backup and Recovery for Oracle Database workloads
+        - title: Known limitations for Oracle Database workloads
           url: /br-limitations-oracle.html
     - title: Get started
       entries:
@@ -47,19 +47,19 @@ sidebar:
           url: /concept-backup-to-cloud.html
         - title: NetApp Backup and Recovery requirements
           url: /concept-start-prereq.html
-        - title: Set up licensing for NetApp Backup and Recovery
+        - title: Set up licensing
           url: /br-start-licensing.html
-        - title: Set up security certificates for NetApp Backup and Recovery
+        - title: Set up security certificates
           url: /task-setup-ca-certificates.html        
         - title: Set up backup destinations before you use NetApp Backup and Recovery
           url: /br-start-setup.html
-        - title: Discover offsite backup targets in NetApp Backup and Recovery
+        - title: Discover offsite backup targets
           url: /br-start-discover-backup-targets.html
         - title: Switch to different NetApp Backup and Recovery workloads
           url: /br-start-switch-ui.html
         - title: Configure NetApp Backup and Recovery settings
           url: /br-start-configure.html
-        - title: Set up role-based access control in NetApp Backup and Recovery
+        - title: Set up role-based access control
           url: /br-rbac-setup.html
     - title: Use NetApp Backup and Recovery
       entries:
@@ -79,43 +79,43 @@ sidebar:
               url: /prev-ontap-protect-migrate-pvc.html
             - title: Protection journey planning options in NetApp Backup and Recovery
               url: /prev-ontap-protect-journey.html
-            - title: Discover ONTAP systems and volumes without activation in NetApp Backup and Recovery
+            - title: Discover ONTAP systems and volumes without activation
               url: /prev-ontap-discover-no-activate.html
-            - title: Manage backup policies for ONTAP volumes with NetApp Backup and Recovery 
+            - title: Manage backup policies for ONTAP volumes 
               url: /prev-ontap-policy-manage.html
-            - title: ONTAP volumes backup-to-object policy options in NetApp Backup and Recovery
+            - title: ONTAP volumes backup-to-object policy options
               url: /prev-ontap-policy-object-options.html
-            - title: Manage backup-to-object storage options in NetApp Backup and Recovery
+            - title: Manage backup-to-object storage options
               url: /prev-ontap-policy-object-advanced-settings.html
-            - title: Back up Cloud Volumes ONTAP data to Amazon S3 with NetApp Backup and Recovery
+            - title: Back up Cloud Volumes ONTAP data to Amazon S3
               url: /prev-ontap-backup-cvo-aws.html
-            - title: Back up Cloud Volumes ONTAP data to Azure Blob storage with NetApp Backup and Recovery
+            - title: Back up Cloud Volumes ONTAP data to Azure Blob storage
               url: /prev-ontap-backup-cvo-azure.html
-            - title: Back up Cloud Volumes ONTAP data to Google Cloud Storage with NetApp Backup and Recovery
+            - title: Back up Cloud Volumes ONTAP data to Google Cloud Storage
               url: /prev-ontap-backup-cvo-gcp.html
-            - title: Back up on-premises ONTAP data to Amazon S3 with NetApp Backup and Recovery
+            - title: Back up on-premises ONTAP data to Amazon S3
               url: /prev-ontap-backup-onprem-aws.html
-            - title: Back up on-premises ONTAP data to Azure Blob storage with NetApp Backup and Recovery
+            - title: Back up on-premises ONTAP data to Azure Blob storage
               url: /prev-ontap-backup-onprem-azure.html
-            - title: Back up on-premises ONTAP data to Google Cloud Storage with NetApp Backup and Recovery
+            - title: Back up on-premises ONTAP data to Google Cloud Storage
               url: /prev-ontap-backup-onprem-gcp.html
-            - title: Back up on-premises ONTAP data to ONTAP S3 with NetApp Backup and Recovery
+            - title: Back up on-premises ONTAP data to ONTAP S3
               url: /prev-ontap-backup-onprem-ontaps3.html
-            - title: Back up on-premises ONTAP data to S3-compatible storage with NetApp Backup and Recovery
+            - title: Back up on-premises ONTAP data to S3-compatible storage
               url: /prev-ontap-backup-onprem-s3-compatible.html
-            - title: Back up on-premises ONTAP data to StorageGRID with NetApp Backup and Recovery
+            - title: Back up on-premises ONTAP data to StorageGRID
               url: /prev-ontap-backup-onprem-storagegrid.html
-            - title: Migrate volumes using SnapMirror to Cloud Resync in NetApp Backup and Recovery   
+            - title: Migrate ONTAP volumes using SnapMirror to Cloud Resync   
               url: /prev-ontap-migrate-resync.html
-            - title: Manage backups for your ONTAP systems with NetApp Backup and Recovery
+            - title: Manage backups for your ONTAP systems
               url: /prev-ontap-backup-manage.html
             - title: Restore from ONTAP backups
               entries:
-                - title: ONTAP data restore options in NetApp Backup and Recovery
+                - title: ONTAP data restore options
                   url: /prev-ontap-restore.html
-                - title: Restore ONTAP data using Search and Restore in NetApp Backup and Recovery
+                - title: Restore ONTAP data using Search and Restore
                   url: /prev-ontap-restore-search.html
-                - title: Restore ONTAP data using Browse and Restore in NetApp Backup and Recovery
+                - title: Restore ONTAP data using Browse and Restore
                   url: /prev-ontap-restore-browse.html
         - title: Protect Microsoft SQL Server workloads 
           entries:
@@ -123,15 +123,15 @@ sidebar:
               url: /br-use-mssql-protect-overview.html
             - title: SnapCenter import prerequisites for NetApp Backup and Recovery
               url: /concept-start-prereq-snapcenter-import.html
-            - title: Discover Microsoft SQL Server workloads in NetApp Backup and Recovery
+            - title: Discover Microsoft SQL Server workloads
               url: /br-start-discover.html     
-            - title: Create and manage Microsoft SQL Server backup policies in NetApp Backup and Recovery
+            - title: Create and manage Microsoft SQL Server backup policies
               url: /br-use-policies-mssql-create.html        
-            - title: Back up Microsoft SQL Server workloads with NetApp Backup and Recovery
+            - title: Back up Microsoft SQL Server workloads
               url: /br-use-mssql-backup.html
-            - title: Restore Microsoft SQL Server workloads with NetApp Backup and Recovery
+            - title: Restore Microsoft SQL Server workloads
               url: /br-use-mssql-restore.html              
-            - title: Clone Microsoft SQL Server workloads using NetApp Backup and Recovery
+            - title: Clone Microsoft SQL Server workloads
               url: /br-use-mssql-clone.html
             - title: Manage Microsoft SQL Server inventory 
               url: /br-use-manage-inventory.html 
@@ -141,29 +141,29 @@ sidebar:
               url: /br-use-reports.html
         - title: Protect VMware workloads
           entries:
-            - title: VMware protection workflow with NetApp Backup and Recovery
+            - title: VMware protection workflow
               url: /br-use-vmware-protect-overview.html
-            - title: Discover VMware workloads with NetApp Backup and Recovery
+            - title: Discover VMware workloads
               url: /br-use-vmware-discovery.html
-            - title: Manage VMware protection groups in NetApp Backup and Recovery
+            - title: Manage VMware protection groups
               url: /br-use-vmware-protection-groups.html
-            - title: Manage VMware backup policies in NetApp Backup and Recovery
+            - title: Manage VMware backup policies
               url: /br-use-policies-vmware-create.html 
-            - title: Back up VMware workloads with NetApp Backup and Recovery
+            - title: Back up VMware workloads
               url: /br-use-vmware-backup.html
-            - title: Clone VMware workloads using NetApp Backup and Recovery
+            - title: Clone VMware workloads
               url: /br-use-vmware-clone.html
             - title: Restore VMware workloads
               entries:
-                - title: Restore VMware workloads with NetApp Backup and Recovery
+                - title: Restore VMware workloads
                   url: /br-use-vmware-restore.html
-                - title: Restore VMware virtual disks from backups in NetApp Backup and Recovery
+                - title: Restore VMware virtual disks from backups
                   url: /br-use-vmware-restore-vmdks-from-backups.html
                 - title: Restore VMware files and folders
                   entries:
-                    - title: VMware guest file restore requirements in NetApp Backup and Recovery
+                    - title: VMware guest file restore requirements
                       url: /br-use-vmware-restore-guest-files-and-folders-overview.html
-                    - title: Restore VMware guest files and folders in NetApp Backup and Recovery
+                    - title: Restore VMware guest files and folders
                       url: /br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
                 #    - title: Set up proxy VMs for restore operations
                 #      url: /vmware-set-up-proxy-vms-for-restore-operations.html
