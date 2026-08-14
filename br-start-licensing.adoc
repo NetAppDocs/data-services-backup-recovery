@@ -38,11 +38,11 @@ A 30-day NetApp Backup and Recovery free trial is available for all unlicensed w
 
 ==== End the free trial
 
-You can end the free trial for a workload at any time from the landing page that appears when you log in to NetApp Backup and Recovery. If you want to continue using NetApp Backup and Recovery after the free trial ends, you must set up a paid subscription in the *Licenses and subscriptions* section of the NetApp Console interface. If you don't want to continue using NetApp Backup and Recovery, you can end the free trial without subscribing to a paid plan. You can link:prev-ontap-backup-manage.html[unregister NetApp Backup and Recovery from the system] before the trial ends and you won't be charged.
+You can end the free trial for a workload at any time from the home page that appears when you log in to NetApp Backup and Recovery. If you want to continue using NetApp Backup and Recovery after the free trial ends, you must set up a paid subscription in the *Licenses and subscriptions* section of the NetApp Console interface. If you don't want to continue using NetApp Backup and Recovery, you can end the free trial without subscribing to a paid plan. You can link:prev-ontap-backup-manage.html[unregister NetApp Backup and Recovery from the system] before the trial ends and you won't be charged.
 
 .Steps
 
-. From the NetApp Backup and Recovery landing page, choose the free trial you want to end under *Free trials*.
+. From the NetApp Backup and Recovery home page, choose the free trial you want to end under *Free trials*.
 . Select *End free trial*.
 . Type *end trial* in the box. 
 . Select *End trial* to confirm.
