@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to manually back up Kubernetes applications using custom resources (CRs).   
 ---
 
-= Back up Kubernetes applications now using custom resources in Backup and Recovery
+= Back up Kubernetes applications now using custom resources in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

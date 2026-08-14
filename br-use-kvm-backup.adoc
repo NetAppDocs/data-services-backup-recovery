@@ -17,7 +17,7 @@ Back up KVM protection groups from on-premises ONTAP systems to Amazon Web Servi
 
 NOTE: To back up protection groups on a schedule, create policies that govern the backup and restore operations. See link:br-use-policies-create.html[Create policies] for instructions.
 
-* Create protection groups to manage the backup and restore operations for a set of resources. See link:br-use-kvm-protection-groups.html[Create and manage protection groups for KVM workloads with NetApp Backup and Recovery] for more information.
+* Create protection groups to manage the backup and restore operations for a set of resources. See link:br-use-kvm-protection-groups.html[Manage KVM protection groups in NetApp Backup and Recovery] for more information.
 //* Back up workloads now (create an on-demand backup now).  
 
 == Back up protection groups now with an on-demand backup

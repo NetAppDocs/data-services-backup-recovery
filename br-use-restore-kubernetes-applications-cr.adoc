@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
 ---
 
-= Restore Kubernetes applications using a custom resource
+= Restore Kubernetes applications with NetApp Backup and Recovery using a custom resource
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -19,7 +19,7 @@ You can use custom resources to restore your applications from a snapshot or bac
 ====
 * When you restore an application, all execution hooks configured for the application are restored with the app. If a post-restore execution hook is present, it runs automatically as part of the restore operation.
 * Restoring from a backup to a different namespace or to the original namespace is supported for qtree volumes. However, restoring from a snapshot to a different namespace or to the original namespace is not supported for qtree volumes.
-* You can use advanced settings to customize restore operations. To learn more, refer to link:br-use-kubernetes-advanced-restore-settings.html[Use advanced custom resource restore settings].
+* You can use advanced settings to customize restore operations. To learn more, refer to link:br-use-kubernetes-advanced-restore-settings.html[Advanced restore settings for Kubernetes in NetApp Backup and Recovery].
 ====
 
 == Restore a backup to a different namespace

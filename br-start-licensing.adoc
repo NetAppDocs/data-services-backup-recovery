@@ -72,7 +72,7 @@ Use these links to subscribe to NetApp Backup and Recovery from your cloud provi
 
 * AWS: https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
 
-* Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the  Marketplace offering for NetApp Intelligent Services for pricing details^].
+* Azure: https://marketplace.microsoft.com/en-us/product/netapp.cloud-manager?tab=Overview[Go to the  Marketplace offering for NetApp Intelligent Services for pricing details^].
 
 * Google Cloud: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
 
@@ -94,7 +94,7 @@ See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/con
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the AWS Marketplace.
 
-When you use Azure, there are two annual contracts available from the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-bluexp[Azure Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
+When you use Azure, there are two annual contracts available from the https://marketplace.microsoft.com/en-us/product/netapp.netapp-bluexp[Azure Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 +

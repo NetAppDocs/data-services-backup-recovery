@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: You can use Search and Restore to recover volumes, folders, or files from ONTAP backup files.
 ---
 
-= Restore from ONTAP backups using Search and Restore
+= Restore ONTAP data using Search and Restore in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

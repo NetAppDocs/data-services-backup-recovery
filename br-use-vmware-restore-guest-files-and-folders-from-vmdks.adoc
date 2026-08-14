@@ -5,7 +5,7 @@ keywords: restore, guest, files, folders, files and folders, guest VM, windows, 
 summary: You can restore one or more files or folders from a VMDK to a guest VM.
 ---
 
-= Restore files and folders from virtual disks
+= Restore VMware guest files and folders in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -21,7 +21,7 @@ Restore files or folders from a virtual disk to the original VM or to another VM
 
 .Before you begin
 
-* Review the prerequisites and limitations in link:br-use-vmware-restore-guest-files-and-folders-overview.html[Requirements and limitations when restoring guest files and folders].
+* Review the prerequisites and limitations in link:br-use-vmware-restore-guest-files-and-folders-overview.html[VMware guest file restore requirements in NetApp Backup and Recovery].
 * To restore files and folders using a proxy VM, make sure the proxy VM is already configured before beginning the file and folder restore process.
 * You need to create credentials for the source virtual disk and destination VM in NetApp Backup and Recovery before you can restore files and folders. NetApp Backup and Recovery uses these credentials to authenticate with the virtual disk and destination VM when restoring files and folders.
 

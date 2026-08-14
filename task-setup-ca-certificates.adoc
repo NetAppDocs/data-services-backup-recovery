@@ -5,7 +5,7 @@ keywords: cloud backup, backup and recovery, backup, restore, certificates, prot
 summary: Create a security certificate to enable communication between NetApp Backup and Recovery and StorageGRID or ONTAP. 
 ---
 
-= Set up security certificates for StorageGRID and ONTAP in NetApp Backup and Recovery
+= Set up security certificates for NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
