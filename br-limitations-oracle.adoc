@@ -17,4 +17,5 @@ Platforms, devices, or features that do not work or do not work well with this v
 
 The following action is not supported in the preview version of Oracle Database workloads in NetApp Backup and Recovery: 
 
+* In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 * Offline backup

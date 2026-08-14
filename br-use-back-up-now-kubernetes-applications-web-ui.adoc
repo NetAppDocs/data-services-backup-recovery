@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
 ---
 
-= Back up Kubernetes applications now using the Backup and Recovery web UI
+= Back up Kubernetes applications now using the NetApp Backup and Recovery web UI
 :hardbreaks:
 :nofooter:
 :icons: font

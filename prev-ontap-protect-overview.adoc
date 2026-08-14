@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
-= Protect your ONTAP volume data using NetApp Backup and Recovery
+= Learn about NetApp Backup and Recovery for ONTAP volumes
 :hardbreaks:
 :nofooter:
 :icons: font

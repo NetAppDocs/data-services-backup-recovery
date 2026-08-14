@@ -13,14 +13,14 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to discover Kubernetes workloads before protecting them. 
+NetApp Backup and Recovery needs to discover Kubernetes workloads before protecting them.
 
 *Required NetApp Console role*
 Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 
 == Discover Kubernetes workloads
-In Backup and Recovery inventory, discover Kubernetes workloads in your environment. Adding a workload adds a Kubernetes cluster to NetApp Backup and Recovery. You can then add applications and protect cluster resources.
+In Backup and Recovery inventory, discover Kubernetes workloads in your environment. Adding a workload adds a Kubernetes cluster to NetApp Backup and Recovery. You can then add applications and protect cluster resources. You can optionally discover air-gapped local Kubernetes resources using NetApp Console local deployment.
 
 [NOTE]
 =====
@@ -35,15 +35,43 @@ When you discover a cluster that is currently protected with Trident Protect, an
 
 . Select the *Kubernetes* workload type.
 . Enter a cluster name and choose a Console agent to use with the cluster.
-. Follow the command line instructions that appear:
 +
-* Create a Trident Protect namespace
-* Create a Kubernetes secret
-* Add a Helm repository
-* Install or upgrade Trident Protect and the Trident Protect connector
+Backup and Recovery provides instructions that change depending on the installation type you select. If you use NetApp Console local deployment, you can choose instructions that enable you to discover air-gapped resources that have no external network connectivity.
+. Choose an installation type to view the instructions for installing Trident Protect on your Kubernetes cluster:
 +
-These steps ensure that NetApp Backup and Recovery can interact with the cluster.
-. After you complete the steps, select *Discover*.
+* Select *Connected* to discover clusters that have external network connectivity.
+* Select *Air-gapped* to discover clusters that have no external network connectivity.
++
+[role="tabbed-block"]
+====
+.Connected discovery
+--
+[loweralpha,start=1]
+. Follow the command line instructions that appear in Backup and Recovery. These steps ensure that Backup and Recovery can interact with the cluster.
+--
+
+.Air-gapped discovery
+
+--
+[loweralpha,start=1]
+. Enter the URL of your private Docker container registry. This registry is used to download the Trident Protect and Trident Protect Connector images during the installation.
+. If your private container registry requires authentication, use one of the following methods to configure registry credentials:
++
+* *Node-level authentication*: Configure registry credentials in the container runtime on each node. Once configured, all pods can pull images without requiring additional Helm settings.
+* *Kubernetes image pull secret*: Create a Kubernetes image pull secret in the `trident-protect` namespace, then reference it during the Helm upgrade step in the Trident Protect installation instructions:
++
+[source,console]
+----
+--set trident-protect.imagePullSecrets[0].name=<pull-secret-name>
+--set connector.imagePullSecrets[0].name=<pull-secret-name>
+----
+. Follow the command line instructions that appear in Backup and Recovery, adding the image pull secret information during the Helm step (if required). These steps ensure that Backup and Recovery can interact with the cluster.
+--
+
+====
+//end of tabbed area
+
+. After you complete the Trident Protect installation steps, select *Discover*.
 +
 The cluster is added to the inventory.
 . Select *View* in the associated Kubernetes workload to see the list of applications, clusters, and namespaces for that workload.
@@ -52,7 +80,7 @@ The cluster is added to the inventory.
 Follow these steps to view the NetApp Backup and Recovery Dashboard. 
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
-. Select a workload tile (for example, Microsoft SQL Server).
+. Select the Kubernetes workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
 
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  

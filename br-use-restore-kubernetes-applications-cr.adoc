@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
 ---
 
-= Restore Kubernetes applications using a custom resource
+= Restore Kubernetes applications with NetApp Backup and Recovery using a custom resource
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -19,7 +19,7 @@ You can use custom resources to restore your applications from a snapshot or bac
 ====
 * When you restore an application, all execution hooks configured for the application are restored with the app. If a post-restore execution hook is present, it runs automatically as part of the restore operation.
 * Restoring from a backup to a different namespace or to the original namespace is supported for qtree volumes. However, restoring from a snapshot to a different namespace or to the original namespace is not supported for qtree volumes.
-* You can use advanced settings to customize restore operations. To learn more, refer to link:br-use-kubernetes-advanced-restore-settings.html[Use advanced custom resource restore settings].
+* You can use advanced settings to customize restore operations. To learn more, refer to link:br-use-kubernetes-advanced-restore-settings.html[Advanced restore settings for Kubernetes in NetApp Backup and Recovery].
 ====
 
 == Restore a backup to a different namespace
@@ -44,7 +44,7 @@ NOTE: When you restore backups using Kopia as the data mover, you can optionally
 * *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
 * *spec.appArchivePath*: The path inside AppVault where the backup contents are stored. You can use the following command to find this path:
 +
-[source,console]
+[source,shell]
 -----
 kubectl get backups <BACKUP_NAME> -n my-app-namespace -o jsonpath='{.status.appArchivePath}'
 -----
@@ -68,7 +68,7 @@ include::../_include/restore-include-selective-restore.adoc[]
 + 
 . After you populate the `trident-protect-backup-restore-cr.yaml` file with the correct values, apply the CR:
 +
-[source,console]
+[source,shell]
 -----
 kubectl apply -f trident-protect-backup-restore-cr.yaml
 -----
@@ -87,7 +87,7 @@ NOTE: When you restore backups using Kopia as the data mover, you can optionally
 * *metadata.name*: (_Required_) The name of this custom resource; choose a unique and sensible name for your environment.
 * *spec.appArchivePath*: The path inside AppVault where the backup contents are stored. You can use the following command to find this path:
 +
-[source,console]
+[source,shell]
 -----
 kubectl get backups <BACKUP_NAME> -n my-app-namespace -o jsonpath='{.status.appArchivePath}'
 -----
@@ -111,7 +111,7 @@ include::../_include/restore-include-selective-restore.adoc[]
 +
 . After you populate the `trident-protect-backup-ipr-cr.yaml` file with the correct values, apply the CR:
 +
-[source,console]
+[source,shell]
 ------
 kubectl apply -f trident-protect-backup-ipr-cr.yaml
 ------
@@ -140,7 +140,7 @@ Ensure the following prerequisites are met:
 .Steps
 . Check the availability of the AppVault CR on the destination cluster using Trident Protect CLI plugin:
 +
-[source,console]
+[source,shell]
 ----
 tridentctl-protect get appvault --context <destination_cluster_name>
 ----
@@ -148,7 +148,7 @@ tridentctl-protect get appvault --context <destination_cluster_name>
 NOTE: Ensure that the namespace intended for the application restore exists on the destination cluster.
 . View the backup contents of the available AppVault from the destination cluster:
 +
-[source,console]
+[source,shell]
 ----
 tridentctl-protect get appvaultcontent <appvault_name> \
 --show-resources backup \
@@ -179,7 +179,7 @@ Running this command displays the available backups in the AppVault, including t
 * *spec.appVaultRef*: (_Required_) The name of the AppVault where the backup contents are stored.
 * *spec.appArchivePath*: The path inside AppVault where the backup contents are stored. You can use the following command to find this path:
 +
-[source,console]
+[source,shell]
 ----
 kubectl get backups <BACKUP_NAME> -n my-app-namespace -o jsonpath='{.status.appArchivePath}'
 ----
@@ -205,7 +205,7 @@ spec:
 ----
 . After you populate the `trident-protect-backup-restore-cr.yaml` file with the correct values, apply the CR:
 +
-[source,console]
+[source,shell]
 ----
 kubectl apply -f trident-protect-backup-restore-cr.yaml
 ----
@@ -230,7 +230,7 @@ include::../_include/restore-include-sessiontoken-note.adoc[]
 * *spec.appVaultRef*: (_Required_) The name of the AppVault where the snapshot contents are stored.
 * *spec.appArchivePath*: The path inside AppVault where the snapshot contents are stored. You can use the following command to find this path:
 +
-[source,console]
+[source,shell]
 -----
 kubectl get snapshots <SNAPHOT_NAME> -n my-app-namespace -o jsonpath='{.status.appArchivePath}'
 -----
@@ -254,7 +254,7 @@ include::../_include/restore-include-selective-restore.adoc[]
 +
 . After you populate the `trident-protect-snapshot-restore-cr.yaml` file with the correct values, apply the CR:
 +
-[source,console]
+[source,shell]
 -----
 kubectl apply -f trident-protect-snapshot-restore-cr.yaml
 -----
@@ -275,7 +275,7 @@ include::../_include/restore-include-sessiontoken-note.adoc[]
 * *spec.appVaultRef*: (_Required_) The name of the AppVault where the snapshot contents are stored.
 * *spec.appArchivePath*: The path inside AppVault where the snapshot contents are stored. You can use the following command to find this path:
 +
-[source,console]
+[source,shell]
 ------
 kubectl get snapshots <SNAPSHOT_NAME> -n my-app-namespace -o jsonpath='{.status.appArchivePath}'
 ------
@@ -296,7 +296,7 @@ include::../_include/restore-include-selective-restore.adoc[]
 +
 . After you populate the `trident-protect-snapshot-ipr-cr.yaml` file with the correct values, apply the CR:
 +
-[source,console]
+[source,shell]
 ------
 kubectl apply -f trident-protect-snapshot-ipr-cr.yaml
 ------

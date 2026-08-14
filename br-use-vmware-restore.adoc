@@ -53,17 +53,6 @@ image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow t
 * When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
 
 
-//== Restore methods
-
-//You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
-
-From the Restore page (Search & Restore), you can restore a resource by searching for the snapshot with filters, even if you do not remember its exact name, location, or last known date.
-
-//* *From the Inventory page (also known as Browse & Restore)*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
-
-//Inventory is browse and restore. Restore page is Search and restore. 
-
-
 == Restore workload data from the Restore option (Search & Restore)
 
 Restore VMware workloads using the Restore option. You can search for the snapshot by its name or by using filters. 

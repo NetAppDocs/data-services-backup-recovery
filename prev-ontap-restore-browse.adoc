@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: With NetApp Backup and Recovery, restore ONTAP data using Browse and Restore.
 ---
 
-= Restore ONTAP data using Browse & Restore
+= Restore ONTAP data using Browse & Restore in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -41,40 +41,66 @@ NOTE: The High priority isn't supported when restoring data from Azure archival 
 
 == Browse & Restore supported systems and object storage providers
 
-You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshots reside on the source system and can be restored only to that same system.
-
-*Note:* You can restore a volume from any type of backup file, but you can restore a folder or individual files only from a backup file in object storage at this time.
+You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. 
 
 [cols=4*,options="header",cols="25,25,25,25",width="100%"]
 |===
 
 |*From Object Store (Backup)* | *From Primary (Snapshot)* | *From Secondary System (Replication)* | To Destination system
-//ifdef::aws[]
-| Amazon S3 | Cloud Volumes ONTAP in AWS
-On-premises ONTAP system
-| Cloud Volumes ONTAP in AWS
-On-premises ONTAP system
-//endif::aws[]
 
-//ifdef::azure[]
-| Azure Blob | Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
-| Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
-//endif::azure[]
+|Amazon S3 
+a|
+* Cloud Volumes ONTAP in AWS
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in AWS
+* On-premises ONTAP system
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
 
-//ifdef::gcp[]
-| Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system
-| Cloud Volumes ONTAP in Google
-On-premises ONTAP system
-//endif::gcp[]
-| NetApp StorageGRID | On-premises ONTAP system |On-premises ONTAP system
-Cloud Volumes ONTAP
-|To on-premises ONTAP system
-|ONTAP S3 | On-premises ONTAP system | On-premises ONTAP system 
-Cloud Volumes ONTAP
-| To on-premises ONTAP system
+|Azure Blob 
+a|
+* Cloud Volumes ONTAP in Azure
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in Azure
+* On-premises ONTAP system
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
+
+|Google Cloud Storage 
+a|
+* Cloud Volumes ONTAP in Google
+* On-premises ONTAP system
+a|
+* Cloud Volumes ONTAP in Google
+* On-premises ONTAP system
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
+
+|NetApp StorageGRID 
+|On-premises ONTAP system 
+a|
+* On-premises ONTAP system
+* Cloud Volumes ONTAP
+|On-premises ONTAP system
+
+|ONTAP S3 
+|On-premises ONTAP system 
+a|
+* On-premises ONTAP system 
+* Cloud Volumes ONTAP
+|On-premises ONTAP system
+
+|S3-compatible object stores
+|On-premises ONTAP system 
+a|
+* On-premises ONTAP system 
+* Cloud Volumes ONTAP
+|On-premises ONTAP system
 |===
 
 For Browse & Restore, the Console agent can be installed in the following locations:
