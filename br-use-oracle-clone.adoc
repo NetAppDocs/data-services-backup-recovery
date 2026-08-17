@@ -37,9 +37,7 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 . Select *Next*.
 . In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*.
 . Choose an existing snapshot (restore point) from the list to use as a base for the clone and select *Next*.
-+
-The *Select snapshot location* appears if the snapshot is stored in more than one location.
-. Choose the snapshot location to use and select *Next*.
+. If the snapshot is stored in more than one location, the *Select snapshot location* page appears. Choose the snapshot location and select *Next*.
 . On the *Advanced options* page, do the following:
 .. Optionally, if you are cloning a complete database, in *Complete database clone settings*, select one or more PDBs to exclude from the clone (PDB$SEED is always excluded).
 .. If you have previously saved a specification file, you can upload it to customize the cloned database settings. You can also download the default specification file for the database snapshot.
@@ -71,6 +69,7 @@ NOTE: Creating an instant snapshot and clone with a refresh schedule applies to 
 .. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
 . Select *Clone*.
 
+////
 == Clone a pluggable database (PDB) 
 
 Clone a single PDB from a container database (CDB) backup into an existing target CDB. Use this method when you need only one pluggable database for development, testing, or analytics, instead of cloning the entire container database. 
@@ -103,6 +102,7 @@ Clone a single PDB from a container database (CDB) backup into an existing targe
 . In the *Recovery scope* section, select a scope to which the recovery should be limited, and enter the required information. Recovery scope is required for a PDB clone.
 . In the *Prescripts and postscripts* section, optionally enable the *Prescript* and *Postscript* options and enter the script path, any arguments needed, and a script timeout in seconds.
 . Select *Clone*.
+////
 
 == Split a clone
 
