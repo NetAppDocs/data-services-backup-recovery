@@ -53,17 +53,6 @@ image:diagram_browse_restore_volume-unified.png["A diagram that shows the flow t
 * When you restore a backup from object storage, you can restore the data to the original system or to an on-premises ONTAP system.
 
 
-//== Restore methods
-
-//You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
-
-From the Restore page (Search & Restore), you can restore a resource by searching for the snapshot with filters, even if you do not remember its exact name, location, or last known date.
-
-//* *From the Inventory page (also known as Browse & Restore)*: Use this when you need to restore a specific resource from the last week or month -- and you know the name and location of the resource, and the date when it was last in good shape. You browse through a list of resources to find the one you want to restore.
-
-//Inventory is browse and restore. Restore page is Search and restore. 
-
-
 == Restore workload data from the Restore option (Search & Restore)
 
 Restore VMware workloads using the Restore option. You can search for the snapshot by its name or by using filters. 
@@ -142,7 +131,7 @@ When restoring to an alternate location, you can change the destination vCenter,
 ** *Datastore*: From the drop-down list, select the name of the datastore where you want to restore the snapshot.
 ** *Virtual machine name*: Enter the name of the VM where you want to restore the snapshot. If the name matches a VM that already exists in the datastore, Backup and Recovery makes the name unique by appending a current timestamp.
 * *Destination storage* section (visible only when restoring from object store):
-** *Change default storage location*: Enable this option to restore an object store backup to a different storage VM in case the source storage location is unreachable or full. Choose a different cluster, storage VM, or aggregate to use.
+** *Change default storage location*: Enable this option to restore an object store backup to a different location in case the source storage location is unreachable or full. Choose a different cluster, storage VM, or aggregate to use.
 * *Pre-restore options* section:
 ** *Quick restore*: Enable this option to instruct Backup and Recovery to only restore VM metadata (files, LUNs, and namespaces) from the object store. This makes volumes available faster than a full restore.
 ** *Prescript*: Enable this option to automate additional tasks by running a custom script before the restore operation begins. Enter the full path for the script that should be run and any arguments that the script takes.

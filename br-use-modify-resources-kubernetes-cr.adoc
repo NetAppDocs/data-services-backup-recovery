@@ -5,7 +5,7 @@ keywords: Resource modify, transform, restore, Kubernetes, custom resource, Back
 summary: Modify resources during restore operations in NetApp Backup and Recovery.
 ---
 
-= Modify resources as you restore them using custom resources
+= Modify Kubernetes resources during restore in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

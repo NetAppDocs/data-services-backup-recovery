@@ -1,0 +1,26 @@
+=== Hyper-V workloads enhancements
+In this release, Hyper-V workloads introduces the following enhancement:
+
+*Restore object storage backup to alternate location*: You can now restore Hyper-V VMs, files, and folders from object storage to an alternate storage location.
+
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Learn about protecting Hyper-V workloads with NetApp Backup and Recovery].
+
+=== Kubernetes workloads enhancements
+In this release, Kubernetes workloads introduces the following enhancements:
+
+* *Trident Protect 26.08*: This release includes Trident Protect 26.08.
+* *Backup retries*: You can now enable backup retries and configure the number of retry attempts and intervals between retries as advanced settings in Kubernetes protection policies.
+* *Partial backup success*: You can now configure advanced settings in Kubernetes protection policies to continue backing up when individual resources fail, allowing backup jobs to complete as partially successful. This enables you to restore backed-up resources even if some resources fail during the backup operation.
+* *Crash-consistent and VM-consistent backups*: Backup and Recovery for NetApp Console service now supports configuring protection policies that create crash-consistent or VM-consistent backups or snapshots. You can also customize how VM freezes are performed during the protection operation.
+* *Reconnect Kubernetes cluster upon Console agent IP change*: Backup and Recovery for NetApp Console service now enables you to reconnect a cluster to its Console agent if the IP address of the agent changes.
+* *Migrate cluster to new Console agent*: Backup and Recovery for NetApp Console service now enables you to migrate a cluster to a new Console agent if the original agent fails or is deleted, ensuring uninterrupted app protection.
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
+
+=== Oracle Database workloads enhancement
+In this release, Oracle Database workloads introduces the following enhancements:
+
+* *Pluggable Database (PDB) restore*: You can now restore individual pluggable databases (PDBs) and PDB tablespaces, including point-in-time recovery.
+* *Pluggable Database (PDB) clone*: You can now clone a single PDB into an existing target container database (CDB), and optionally exclude PDBs when you clone a complete container database. 
+
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].

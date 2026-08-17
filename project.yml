@@ -1,7 +1,7 @@
 settings:
   name: NetApp Backup and Recovery
   release_notes_autogen:
-    release_notes_repo: console-relnotes
+    release_notes_repo: console-local-relnotes, console-relnotes
   internal:
     pdf_enabled: true
   prod:
@@ -27,11 +27,11 @@ sidebar:
       url: /index.html
     - title: Release notes
       entries:
-        - title: What's new
+        - title: What's new in NetApp Backup and Recovery
           url: /whats-new.html
         - title: Known limitations for ONTAP volumes workloads
           url: /br-reference-limitations.html
-        - title: Known limitations for Microsoft SQL Server workloads
+        - title: Known limitations for SQL Server workloads
           url: /br-limitations.html
         - title: Known limitations for VMware workloads
           url: /br-limitations-vmware.html
@@ -45,81 +45,87 @@ sidebar:
       entries:
         - title: Learn about NetApp Backup and Recovery
           url: /concept-backup-to-cloud.html
-        - title: Prerequisites for NetApp Backup and Recovery
-          url: /concept-start-prereq.html  
-        - title: Set up licensing for NetApp Backup and Recovery
+        - title: NetApp Backup and Recovery requirements
+          url: /concept-start-prereq.html
+        - title: Set up licensing
           url: /br-start-licensing.html
-        - title: Set up security certificates for ONTAP and StorageGRID
+        - title: Set up security certificates
           url: /task-setup-ca-certificates.html        
         - title: Set up backup destinations before you use NetApp Backup and Recovery
           url: /br-start-setup.html
-        - title: Discover backup targets
+        - title: Discover offsite backup targets
           url: /br-start-discover-backup-targets.html
         - title: Switch to different NetApp Backup and Recovery workloads
           url: /br-start-switch-ui.html
-        - title: Configure NetApp Backup and Recovery general settings
+        - title: Configure NetApp Backup and Recovery settings
           url: /br-start-configure.html
-        - title: Set up role-based access control in NetApp Backup and Recovery
+        - title: Set up role-based access control
           url: /br-rbac-setup.html
     - title: Use NetApp Backup and Recovery
       entries:
         - title: Log in to NetApp Backup and Recovery
           url: /br-start-login.html
-        - title: View protection health in the Dashboard 
-          url: /br-use-dashboard.html  
+        - title: View protection health on the NetApp Backup and Recovery Dashboard
+          url: /br-use-dashboard.html
         #- title: Create policies to govern backups and restores
         #  url: /br-use-policies-create.html
         - title: Protect ONTAP volume workloads 
           entries: 
-            - title: Protect ONTAP volume workloads overview
+            - title: Learn about NetApp Backup and Recovery for ONTAP volumes
               url: /prev-ontap-protect-overview.html
-            - title: Plan your protection journey for ONTAP volumes
+            - title: Enable NetApp Backup and Recovery to protect volumes
+              url: /br-start-enable.html
+            - title: Improve Search and Restore performance in NetApp Backup and Recovery local deployments
+              url: /prev-ontap-protect-migrate-pvc.html
+            - title: Protection journey planning options in NetApp Backup and Recovery
               url: /prev-ontap-protect-journey.html
-            - title: Manage policies for ONTAP volumes 
+            - title: Discover ONTAP systems and volumes without activation
+              url: /prev-ontap-discover-no-activate.html
+            - title: Manage backup policies for ONTAP volumes 
               url: /prev-ontap-policy-manage.html
-            - title: Backup-to-object policy options for ONTAP volumes
+            - title: ONTAP volumes backup-to-object policy options
               url: /prev-ontap-policy-object-options.html
-            - title: Manage backup-to-object policy Advanced Settings options
+            - title: Manage backup-to-object storage options
               url: /prev-ontap-policy-object-advanced-settings.html
-            - title: Back up Cloud Volumes ONTAP to Amazon S3
+            - title: Back up Cloud Volumes ONTAP data to Amazon S3
               url: /prev-ontap-backup-cvo-aws.html
-            - title: Back up Cloud Volumes ONTAP to Azure Blob 
+            - title: Back up Cloud Volumes ONTAP data to Azure Blob storage
               url: /prev-ontap-backup-cvo-azure.html
-            - title: Back up Cloud Volumes ONTAP to Google Cloud
+            - title: Back up Cloud Volumes ONTAP data to Google Cloud Storage
               url: /prev-ontap-backup-cvo-gcp.html
-            - title: Back up on-premises ONTAP to Amazon S3 
+            - title: Back up on-premises ONTAP data to Amazon S3
               url: /prev-ontap-backup-onprem-aws.html
-            - title: Back up on-premises ONTAP to Azure Blob
+            - title: Back up on-premises ONTAP data to Azure Blob storage
               url: /prev-ontap-backup-onprem-azure.html
-            - title: Back up on-premises ONTAP to Google Cloud 
+            - title: Back up on-premises ONTAP data to Google Cloud Storage
               url: /prev-ontap-backup-onprem-gcp.html
-            - title: Back up on-premises ONTAP to ONTAP S3
+            - title: Back up on-premises ONTAP data to ONTAP S3
               url: /prev-ontap-backup-onprem-ontaps3.html
-            - title: Back up on-premises ONTAP to S3-compatible storage
+            - title: Back up on-premises ONTAP data to S3-compatible storage
               url: /prev-ontap-backup-onprem-s3-compatible.html
-            - title: Back up on-premises ONTAP to StorageGRID
+            - title: Back up on-premises ONTAP data to StorageGRID
               url: /prev-ontap-backup-onprem-storagegrid.html
-            - title: Migrate volumes using SnapMirror to Cloud Resync   
+            - title: Migrate ONTAP volumes using SnapMirror to Cloud Resync   
               url: /prev-ontap-migrate-resync.html
-            - title: Manage ONTAP backups
+            - title: Manage backups for your ONTAP systems
               url: /prev-ontap-backup-manage.html
             - title: Restore from ONTAP backups
               entries:
-                - title: Restore overview
+                - title: ONTAP data restore options
                   url: /prev-ontap-restore.html
-                - title: Restore from ONTAP backups using Search & Restore
+                - title: Restore ONTAP data using Search and Restore
                   url: /prev-ontap-restore-search.html
-                - title: Restore from ONTAP backups using Browse & Restore
+                - title: Restore ONTAP data using Browse and Restore
                   url: /prev-ontap-restore-browse.html
         - title: Protect Microsoft SQL Server workloads 
           entries:
-            - title: Protect Microsoft SQL Server workloads overview
+            - title: Microsoft SQL Server protection workflow in NetApp Backup and Recovery
               url: /br-use-mssql-protect-overview.html
-            - title: Configure additional items if importing from SnapCenter
+            - title: SnapCenter import prerequisites for NetApp Backup and Recovery
               url: /concept-start-prereq-snapcenter-import.html
             - title: Discover Microsoft SQL Server workloads
               url: /br-start-discover.html     
-            - title: Create and manage Microsoft SQL server workload backup policies
+            - title: Create and manage Microsoft SQL Server backup policies
               url: /br-use-policies-mssql-create.html        
             - title: Back up Microsoft SQL Server workloads
               url: /br-use-mssql-backup.html
@@ -135,13 +141,13 @@ sidebar:
               url: /br-use-reports.html
         - title: Protect VMware workloads
           entries:
-            - title: Protect VMware workloads overview
+            - title: VMware protection workflow
               url: /br-use-vmware-protect-overview.html
             - title: Discover VMware workloads
               url: /br-use-vmware-discovery.html
-            - title: Create and manage protection groups for VMware workloads
+            - title: Manage VMware protection groups
               url: /br-use-vmware-protection-groups.html
-            - title: Create and manage VMware workload backup policies
+            - title: Manage VMware backup policies
               url: /br-use-policies-vmware-create.html 
             - title: Back up VMware workloads
               url: /br-use-vmware-backup.html
@@ -149,15 +155,15 @@ sidebar:
               url: /br-use-vmware-clone.html
             - title: Restore VMware workloads
               entries:
-                - title: Restore VMware virtual machines
+                - title: Restore VMware workloads
                   url: /br-use-vmware-restore.html
-                - title: Restore VMware virtual disks
+                - title: Restore VMware virtual disks from backups
                   url: /br-use-vmware-restore-vmdks-from-backups.html
                 - title: Restore VMware files and folders
                   entries:
-                    - title: Workflow, prerequisites, and limitations
+                    - title: VMware guest file restore requirements
                       url: /br-use-vmware-restore-guest-files-and-folders-overview.html
-                    - title: Restore VMware files and folders from VMDKs
+                    - title: Restore VMware guest files and folders
                       url: /br-use-vmware-restore-guest-files-and-folders-from-vmdks.html
                 #    - title: Set up proxy VMs for restore operations
                 #      url: /vmware-set-up-proxy-vms-for-restore-operations.html
@@ -281,23 +287,23 @@ sidebar:
           url: /reference-restart-backup.html
         - title: Enable preview and hidden features
           url: /enable-preview-features.html
-    - title: Automate with the REST API
-      url: /br-api-backup-restore.html          
+    - title: Automate with NetApp Backup and Recovery REST APIs
+      url: /br-api-backup-restore.html
     - title: Reference 
       entries:
-        - title: Audited Backup and Recovery actions
-          url: /reference-audit-actions.html      
-        - title: Policies in SnapCenter compared to NetApp Backup and Recovery
+        - title: Audited NetApp Backup and Recovery actions
+          url: /reference-audit-actions.html
+        - title: Policies in SnapCenter compared to those in NetApp Backup and Recovery
           url: /reference-policy-differences-snapcenter.html
-        - title: NetApp Backup and Recovery roles and privileges
+        - title: NetApp Backup and Recovery IAM roles
           url: /reference-roles.html
-        - title: Restore NetApp Backup and Recovery data in a dark site
+        - title: Restore NetApp Backup and Recovery configuration data in a dark site
           url: /reference-backup-cbs-db-in-dark-site.html
-        - title: Supported AWS archive storage tiers
+        - title: Supported AWS archive storage tiers with NetApp Backup and Recovery
           url: /prev-reference-aws-archive-storage-tiers.html
-        - title: Supported Azure archive storage tiers
+        - title: Supported Azure archive storage tiers with NetApp Backup and Recovery
           url: /prev-reference-azure-archive-storage-tiers.html
-        - title: Supported Google Cloud archive storage tiers
+        - title: Supported Google Cloud archive storage tiers with NetApp Backup and Recovery
           url: /prev-reference-gcp-archive-storage-tiers.html
     - title: Legal notices
       url: /legal-notices.html

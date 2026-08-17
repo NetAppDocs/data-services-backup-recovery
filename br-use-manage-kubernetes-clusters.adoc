@@ -5,7 +5,7 @@ keywords: discover, backup and recovery, snapcenter, kubernetes, k8s, clusters, 
 summary: NetApp Backup and Recovery enables you to discover and manage your Kubernetes clusters so that you can protect resources hosted by the clusters. 
 ---
 
-= Manage Kubernetes clusters 
+= Manage Kubernetes clusters in NetApp Backup and Recovery 
 :hardbreaks:
 :nofooter:
 :icons: font

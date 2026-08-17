@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery employs IAM roles to govern the access that each user has to specific features and actions.
 ---
 
-= NetApp Backup and Recovery Identity and Access Management (IAM) roles  
+= NetApp Backup and Recovery IAM roles  
 :hardbreaks:
 :nofooter:
 :icons: font

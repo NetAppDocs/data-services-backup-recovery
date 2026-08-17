@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: NetApp Backup and Recovery needs to first discover data in order for you to use the service. During discovery, NetApp Backup and Recovery analyzes all volumes and files in systems within your organization. 
 ---
 
-= Known limitations with NetApp Backup and Recovery for Microsoft SQL Server workloads
+= Known limitations with NetApp Backup and Recovery for SQL Server workloads
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,6 +14,10 @@ summary: NetApp Backup and Recovery needs to first discover data in order for yo
 
 [.lead]
 Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
+
+== Backup and Recovery preview for NetApp Console local deployment limitation
+ 
+In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 
 == Clone lifecycle support
 

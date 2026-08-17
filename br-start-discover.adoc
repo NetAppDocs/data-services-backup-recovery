@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: NetApp Backup and Recovery needs to first discover workloads in order for you to use the service.  
 ---
 
-= Discover Microsoft SQL Server workloads and optionally import from SnapCenter in NetApp Backup and Recovery
+= Discover Microsoft SQL Server workloads in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -17,6 +17,12 @@ NetApp Backup and Recovery needs to first discover Microsoft SQL Server workload
 
 *Required NetApp Console role*
 Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+//INCLUDE for configuring RKE2 DNS for discovering air-gapped DB hosts, for NCL only:
+
+
+== Configure DNS for air-gapped host discovery in NetApp Console local deployment
+include::_include/dns-fix-air-gapped-db-discovery.adoc[]
 
 == Discover Microsoft SQL Server workloads and optionally import SnapCenter resources
 

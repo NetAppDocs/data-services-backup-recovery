@@ -32,14 +32,15 @@ NetApp Backup and Recovery provides three types of backups of ONTAP data: Snapsh
 | Replication policy storage location
 | Backup to object policy storage location
 
-| *Fan-out* | 
-Primary |
-Secondary |
-Primary 
-| *Cascade* | 
-Primary |
-Secondary |
-Secondary |
+|*Fan-out* 
+|Primary
+|Secondary 
+|Primary 
+
+|*Cascade*
+|Primary 
+|Secondary 
+|Secondary
 
 |===
 
