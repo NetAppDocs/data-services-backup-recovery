@@ -28,4 +28,4 @@ https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-restor
 
 The KVM workloads preview now protects KVM hosts and virtual machines that are managed by Apache CloudStack.
 
-For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Learn about protecting KVM workloads with NetApp Backup and Recovery].

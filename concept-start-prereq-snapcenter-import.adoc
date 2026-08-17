@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
 ---
 
-= Prerequisites for importing from the Plug-in service into NetApp Backup and Recovery
+= SnapCenter import prerequisites for NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

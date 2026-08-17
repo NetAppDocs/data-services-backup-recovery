@@ -45,6 +45,8 @@ There is no limitation for FlexVol volumes - you can select all FlexVol volumes 
 * When you convert a FlexVol volume to a FlexGroup volume or vice versa, the converted volume is considered a new volume; you need to set up protection for the converted volume after conversion. You can restore backups created before the conversion to a different volume.
 
 == Backup-to-object limitations for ONTAP volumes
+ 
+* In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 
 * When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
 + 

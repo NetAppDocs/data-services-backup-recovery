@@ -40,13 +40,13 @@ Enable preview feature flag options to use functionality that is not yet general
 . Use SSH to log into the Console agent.
 . Change to the root user:
 +
-[source,console]
+[source,shell]
 ----
 sudo su
 ----
 . Find the Backup and Recovery volume in Docker:
 +
-[source,console]
+[source,shell]
 ----
 docker volume ls | grep cbs
 ----
@@ -58,7 +58,7 @@ local service-manager-2_cloudmanager_cbs_volume
 ----
 . Find the mount point for the volume:
 +
-[source,console]
+[source,shell]
 ----
 docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
 ----
@@ -70,7 +70,7 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 . Change to the docker volume config directory, which is inside the mountpoint directory. For example:
 +
-[source,console]
+[source,shell]
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_config
 ----
@@ -92,7 +92,7 @@ Refer to <<anchor-flags,available flags>> for feature flag information. As an ex
 ----
 . Restart the Backup and Recovery container:
 +
-[source,console]
+[source,shell]
 ----
 docker restart cloudmanager_cbs
 ----
@@ -111,13 +111,13 @@ Disable indexing for specific volumes or for all volumes belonging to one or mor
 . Use SSH to log into the Console agent.
 . Change to the root user:
 +
-[source,console]
+[source,shell]
 ----
 sudo su
 ----
 . Find the Backup and Recovery volume in Docker:
 +
-[source,console]
+[source,shell]
 ----
 docker volume ls | grep cbs
 ----
@@ -129,7 +129,7 @@ local service-manager-2_cloudmanager_cbs_volume
 ----
 . Find the mount point for the volume:
 +
-[source,console]
+[source,shell]
 ----
 docker volume inspect service-manager-2_cloudmanager_cbs_volume | grep Mountpoint
 ----
@@ -141,7 +141,7 @@ The mount point differs between cloud and private deployments. This output examp
 ----
 . Change to the docker volume config directory, which is inside the mountpoint directory. For example:
 +
-[source,console]
+[source,shell]
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_catalog_config
 ----
@@ -158,7 +158,7 @@ cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data/cbs_c
 ----
 . Restart the Backup and Recovery indexing catalog container:
 +
-[source,console]
+[source,shell]
 ----
 docker restart cloudmanager_cbs_catalog
 ----

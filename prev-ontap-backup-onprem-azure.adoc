@@ -75,7 +75,7 @@ To use the NetApp Backup and Recovery Search & Restore functionality, you need t
 
 .Before you start
 
-You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
+You must register the Azure Synapse Analytics Resource Provider (called "Microsoft.Synapse") with your Subscription. https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider[See how to register this resource provider for your subscription^]. You must be the Subscription *Owner* or *Contributor* to register the resource provider.
 
 .Steps
 
@@ -154,7 +154,7 @@ You'll need to verify license requirements for both Azure and the Console:
 
 * Before you can activate NetApp Backup and Recovery for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Console Marketplace offering from Azure, or purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
 
-** For NetApp Backup and Recovery PAYGO licensing, you'll need a subscription to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[NetApp Console offering from the Azure Marketplace^]. Billing for NetApp Backup and Recovery is done through this subscription.
+** For NetApp Backup and Recovery PAYGO licensing, you'll need a subscription to the https://marketplace.microsoft.com/en-us/product/netapp.cloud-manager?tab=Overview[NetApp Console offering from the Azure Marketplace^]. Billing for NetApp Backup and Recovery is done through this subscription.
 ** For NetApp Backup and Recovery BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses].
 
 * You need to have an Azure subscription for the object storage space where your backups will be located.

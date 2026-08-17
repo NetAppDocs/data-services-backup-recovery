@@ -5,14 +5,14 @@ In this release, Hyper-V workloads introduces the following enhancements:
 * *Restore to alternate location enhancements*: You can now restore to an alternate location from primary and secondary locations for VMs on SAN storage.
 * *Restore files and folders to a guest VM*: You can now restore files and folders from a snapshot on primary storage to a guest Windows VM. This capability is supported only for CIFS VMs.
 
-For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Protect Hyper-V workloads overview].
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Hyper-V protection workflow with NetApp Backup and Recovery].
 
 === KVM workloads enhancements
 In this release, KVM workloads introduces the following enhancement:
 
 *Restore to alternate location*: You can now restore KVM VMs to an alternate destination (this feature is now generally available).
 
-For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Protect KVM workloads overview].
+For details about protecting KVM workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kvm-protect-overview.html[Learn about protecting KVM workloads with NetApp Backup and Recovery].
 
 === Oracle Database workloads enhancements
 In this release, Oracle Database workloads introduces the following enhancements:
@@ -20,7 +20,7 @@ In this release, Oracle Database workloads introduces the following enhancements
 * *Oracle AI Database 26ai support*: Backup and Recovery now supports Oracle AI Database 26ai.
 * *Backup verification support*: You can now configure backup policies to automatically verify the integrity of your Oracle database backups.
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Protect Oracle Database workloads overview].
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
 
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:

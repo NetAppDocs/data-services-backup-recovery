@@ -17,6 +17,7 @@ Platforms, devices, or features that do not work or do not work well with this v
 
 The following actions are not supported in VMware workloads in NetApp Backup and Recovery: 
 
+* In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 * vVol support
 * Email integration
 * Role-based access control (RBAC) support
