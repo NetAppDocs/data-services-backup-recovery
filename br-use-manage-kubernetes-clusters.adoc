@@ -51,3 +51,34 @@ For Kubernetes clusters running Trident Protect 26.05 or later, you can upgrade 
 . In the upgrade dialog, do the following:
 .. From the list, select the version to upgrade to.
 .. Select *Upgrade*.
+
+== Reconnect a Kubernetes cluster to a Console agent
+If your Console agent's IP address changes (for example, after a restart), your Kubernetes cluster will lose its connection to the agent and you'll need to reconnect.
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
+. Choose a disconnected Kubernetes cluster, and select the Action icon image:../media/icon-action.png[Actions option] > *Modify cluster* > *Reconnect cluster*.
+. In the Reconnect cluster dialog, copy the command line instructions and run them on your cluster.
++
+After the command completes, your cluster should reconnect automatically.
+. Select *Close*.
+
+== Migrate a Kubernetes cluster to a new Console agent
+
+If your Console agent is deleted or becomes unavailable, migrate any clusters that use it to a new agent to avoid interrupting application protection.
+
+.Before you begin
+* https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html[Deploy a new Console agent.^]
+* Choose a protection policy to use with the new Console agent, link:br-use-policies-kubernetes-create.html#edit-a-policy[edit the policy^], and associate the protection policy with the new Console agent.
+
+.Steps
+
+. In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
+. Choose a disconnected Kubernetes cluster, and select the Action icon image:../media/icon-action.png[Actions option] > *Modify cluster* > *Manage agent*.
+. From the list, select a new Console agent. 
+. Review the agent information to ensure the new Console agent can access the systems, backup targets, and secondary targets used by the protected applications on this cluster.
+. Copy the command line instructions for each section and run the commands on the cluster.
++
+This recreates Kubernetes secrets, redirects Trident Protect to the new Console agent, and reloads settings. After you finish running the commands, the cluster is using the new Console agent.
+. Select *Close*.

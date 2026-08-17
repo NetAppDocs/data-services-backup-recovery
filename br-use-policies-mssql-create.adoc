@@ -106,18 +106,10 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
 //* *Enable integrity scan*: Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 
-=== Configure advanced settings in the policy
+. Optionally, configure advanced settings in the policy.
++
 [%collapsible]
 ====
-You can optionally configure advanced settings in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads.
-
-.Steps
-. From the NetApp Backup and Recovery menu, select *Policies*.
-. From the Policies page, select *Create new policy*.
-. In the *Policy > Advanced* settings section, select the *Select advance action* menu to choose from a list of advanced settings.
-. Enable any of the settings you want to view or change, and then select *Accept*.
-. Provide the following information:
-+
 * *SnapMirror volume and snapshot format*: Choose from the following options:
 ** *Use custom name format for snapshot copy*: Choose a naming scheme for snapshots. If left blank, a timestamp is added to the end of each snapshot name.
 ** *Provide SnapMirror volume format*: Specify a prefix, a suffix, or both to modify the default SnapMirror volume name. By default, a SnapMirror volume inherits the source volume's name.
@@ -142,6 +134,8 @@ TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with th
 
 ====
 
+. When finished, select *Create*.
+
 == Edit a policy
 
 You can edit backup architecture, backup frequency, retention policy, and other settings for a policy. For Kubernetes workload policies, you can edit schedule and retention settings only.
@@ -161,6 +155,11 @@ Backup and Recovery super admin. https://docs.netapp.com/us-en/console-setup-adm
 . Select the *Policies* option.
 . Select the policy that you want to edit.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit*.
+. When finished editing, select *Done*.
+. In the confirmation dialog, type the policy name to confirm the changes.
++
+Saving the changes affects all applications that are protected by this policy.
+. Select *Done* to confirm.
 
 == Delete a policy
 
