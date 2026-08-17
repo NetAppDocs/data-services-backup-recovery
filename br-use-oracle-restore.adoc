@@ -138,24 +138,35 @@ The matching snapshots are displayed.
 
 //In the Restore Destination details page, enter the following information:
 [start=2]
+
+[NOTE]
+=====
+If restoring PDBs or PDB tablespaces to a specific point in time or SCN:
+
+* Select only one PDB. Point-in-time recovery is not compatible with restoring multiple PDBs.
+* PDB$SEED cannot be selected for point-in-time recovery.
+* Control file restore cannot be combined with point-in-time recovery of PDBs or tablespaces.
+* Ensure the data backup and the required log backups are cataloged.
+=====
+
 . *Destination settings*: 
 +
-* Choose to restore the entire database or only the tablespaces for the database.
-* *Control files*: Optionally, enable this option to also restore the database control files.
-
-
-. *Pre-restore options*:
+. Select what you want to restore: 
 +
-* Optionally, enable this option and enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-* Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
+* Select *All datafiles* to restore the entire database or container database (CDB). 
+* Select *Pluggable databases (PDBs)* to restore one or more PDBs from a CDB without affecting the other PDBs in the container. Then select the PDBs from the list. 
+* Select *Pluggable database (PDB) tablespaces* (shown as *Tablespaces* for a non-CDB database) to restore specific PDB tablespaces. Then, select the PDB and the tablespaces. 
+. Optionally, enable the *Control files* option to also restore the database control files. This option is not available for point-in-time or SCN recovery of PDBs or PDB tablespaces.
+. Optionally, enable the *Change database state if needed for restore and recovery* option to allow Backup and Recovery to manage the database state depending on the type of recovery.
+. Optionally, enable the *Force in place restore* option to use a faster restore method for SAN/ASM databases, skipping the foreign files validation check. The database and the ASM disk group are restored to the backup creation point.
+. Specify the external archive log files location if restoring PDBs or PDB tablespaces to a specific point in time or SCN. Enter the location where RMAN creates the auxiliary instance to perform the recovery. Enter a file system path that starts with "/" or an ASM disk group that starts with "+". Use the "plus" and "minus" buttons next to the text entry field to add or remove locations.
+. Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* to open the databases in READ-WRITE mode after restoring them. This brings the restored tablespaces online.
 
-. *Post-restore options*:
-+ 
+. *Prescripts and postscripts*:
++
+* *Prescript*: Optionally, enable this option and enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
 * *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-* *Open the database or container database in READ-WRITE mode after recovery*: After the restore operation is complete, Backup and Recovery will enable READ-WRITE mode for the database.
-
-. *Notification* section: 
-** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
+. Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
 
 . Select *Restore*.
 --

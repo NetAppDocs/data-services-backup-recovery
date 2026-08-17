@@ -29,7 +29,11 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 . Select *Clone*. 
 . Select *Create new clone*.
 . In the *Database source* section, choose the source host and database from the lists.
-. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source.
+.. If the source database is a container database (CDB), in the *Clone type* section select one of the following:
++
+* *Complete database clone*: Clones the entire container database, including all PDBs.
+* *PDB clone*: Clones a specific PDB from the container database backup into an existing target container database.
+. In the *Database target* section, choose the target host and database from the lists. The destination host and database can be different from the source. 
 . Select *Next*.
 . In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*.
 . Choose an existing snapshot (restore point) from the list to use as a base for the clone and select *Next*.
@@ -37,6 +41,7 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 The *Select snapshot location* appears if the snapshot is stored in more than one location.
 . Choose the snapshot location to use and select *Next*.
 . On the *Advanced options* page, do the following:
+.. Optionally, if you are cloning a complete database, in *Complete database clone settings*, select one or more PDBs to exclude from the clone (PDB$SEED is always excluded).
 .. If you have previously saved a specification file, you can upload it to customize the cloned database settings. You can also download the default specification file for the database snapshot.
 .. In the *Recovery scope* section, choose how to limit what is restored to create the clone and enter the required information for the option you choose. Choosing *None* restores all data.
 .. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
@@ -45,6 +50,8 @@ The *Select snapshot location* appears if the snapshot is stored in more than on
 == Schedule a clone of an Oracle database
 
 Schedule an instant clone creation and continuous refresh of the clone. This creates the most up-to-date possible clone of the database. Use this method if you want to continuously refresh the clone from the latest state of the database according to a schedule you choose.
+
+NOTE: Creating an instant snapshot and clone with a refresh schedule applies to complete database clones only. It is not available for a PDB clone. 
 
 .Steps 
 
@@ -64,6 +71,38 @@ Schedule an instant clone creation and continuous refresh of the clone. This cre
 .. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
 . Select *Clone*.
 
+== Clone a pluggable database (PDB) 
+
+Clone a single PDB from a container database (CDB) backup into an existing target CDB. Use this method when you need only one pluggable database for development, testing, or analytics, instead of cloning the entire container database. 
+
+.Before you begin
+
+* The source database must be a container database (CDB). 
+* The target host must already have a running container database. 
+* Instant snapshot and clone (scheduled refresh) is not supported for a PDB clone. Use an existing snapshot. 
+* Recovery is required for a PDB clone; you cannot skip recovery. 
+
+.Steps 
+
+. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. Under Workloads, select the *Oracle* tile.
+. Select *Clone*.
+. Select *Create new clone*.
+. In the *Database source* section, choose the source host and the source container database from the lists.
+. In the *Database target* section, choose the target host. The target host must already have a running container database. A target database name is not required because the PDB is cloned into an existing container database.
+. In the *Clone type* section, select *PDB clone*.
+. Select *Next*.
+. In the *Clone from* section on the *Select restore point* page, select *Existing snapshots*. Instant snapshot and clone is not available for a PDB clone.
+. Choose an existing snapshot from the list and select *Next*.
+. If the snapshot is stored in more than one location, the *Select snapshot location* page appears. Choose the snapshot location and select *Next*.
+. On the *Advanced options* page, in the *PDB clone settings* section, do the following:
+.. In the *Pluggable database* list, select the PDB to clone.
+.. In the Target container database list, select the container database where the cloned PDB is created.
+.. In *PDB clone name*, enter a name, or select *Suffix* to append text to the source PDB name. The name can contain alphanumeric characters and underscores, must start with a letter, and can be up to 64 characters. When cloning into the same container database as the source, the clone name must differ from the source PDB name.
+.. Enable *Open PDB after clone* to open the cloned PDB in READ-WRITE mode when the clone completes. This option is enabled by default.
+. In the *Recovery scope* section, select a scope to which the recovery should be limited, and enter the required information. Recovery scope is required for a PDB clone.
+. In the *Prescripts and postscripts* section, optionally enable the *Prescript* and *Postscript* options and enter the script path, any arguments needed, and a script timeout in seconds.
+. Select *Clone*.
 
 == Split a clone
 
