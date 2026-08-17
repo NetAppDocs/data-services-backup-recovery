@@ -121,18 +121,10 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
 * *Enable integrity scan*: Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to 7 days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 
-=== Configure advanced settings in the policy
+. Optionally, configure advanced settings in the policy.
++
 [%collapsible]
 ====
-You can optionally configure advanced settings in the policy. You can use these options for all backup architectures and storage destinations. The available advanced options depend on the workload you select at the top of the page, so some options described here might not apply to all workloads.
-
-.Steps
-. From the NetApp Backup and Recovery menu, select *Policies*.
-. From the Policies page, select *Create new policy*.
-. In the *Policy > Advanced* settings section, select the *Select advance action* menu to choose from a list of advanced settings.
-. Enable any of the settings you want to view or change, and then select *Accept*.
-. Provide the following information:
-+
 * *VM Settings*:
 ** *Enable VM-consistent and application-consistent snapshot*: Enable this option to create VM-consistent and application-consistent snapshots. This requires VMware Tools to be running on the VM. If VMware Tools is not running, snapshots will be crash-consistent instead. Note that enabling this option can increase backup time and use more storage. Additionally, the VM's active RAM is not included in consistent snapshots.
 * *SnapMirror volume and snapshot format*: Choose from the following options:
@@ -146,6 +138,8 @@ TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with th
 * *Notification*: Choose whether to enable email notifications for backup operations. You can select which events trigger a notification — for example, when a backup succeeds, fails, or completes with warnings. 
 
 ====
+
+. When finished, select *Create*.
 
 == Delete a policy
 

@@ -315,8 +315,8 @@ NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per syste
 NOTE: NetApp strongly recommends assigning a static IP address to the Console agent you use for Kubernetes workloads to avoid issues if the agent IP address changes.
 
 * A primary ONTAP system (ASA r2 systems are not supported)
-* NetApp Trident 25.06 to 26.02.1
-* NetApp Trident Protect 26.06 (installed on the Kubernetes cluster during discovery)
+* NetApp Trident 25.06 to 26.06
+* NetApp Trident Protect 26.08 or later (installed on the Kubernetes cluster during discovery)
 * A Kubernetes cluster - Supported Kubernetes distributions and versions include those supported by https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html[Trident Protect].
 ** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
 
