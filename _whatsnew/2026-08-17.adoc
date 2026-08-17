@@ -20,6 +20,7 @@ For details about protecting Kubernetes workloads, refer to https://docs.netapp.
 === Oracle Database workloads enhancement
 In this release, Oracle Database workloads introduces the following enhancements:
 
-*Pluggable Database (PDB) restore and clone*: Backup and Recovery for NetApp Console service now supports restoring and cloning individual pluggable databases within a container database.
+* *Pluggable Database (PDB) restore*: You can now restore individual pluggable databases (PDBs) and PDB tablespaces, including point-in-time recovery.
+* *Pluggable Database (PDB) clone*: You can now clone a single PDB into an existing target container database (CDB), and optionally exclude PDBs when you clone a complete container database. 
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
