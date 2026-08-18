@@ -67,9 +67,9 @@ From the Restore page (also known as Search & Restore), you can restore a databa
 
 == Restore an Oracle database
 
-Depending on your needs, restore an Oracle database to a specific point in time, to a specific system change number (SCN), or to the last good state. You can also simply restore the database from snapshots and skip the automated recovery process. You might want to skip the automated recovery process if you want to perform recovery manually. You can search for the database using its name or with specific filters.
+Depending on your needs, restore an Oracle database to a specific point in time, to a specific system change number (SCN), or to the last good state. You can also restore the database from snapshots and skip the automated recovery process, for example, if you want to perform recovery manually. You can search for the database using its name or with specific filters.
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
@@ -147,12 +147,12 @@ The matching snapshots are displayed.
 . *Pre-restore options*:
 +
 * Optionally, enable this option and enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-* Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
+* Choose a timeout value for the script. If the script fails to execute within this time period, the restore proceeds anyway.
 
 . *Post-restore options*:
 + 
 * *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-* *Open the database or container database in READ-WRITE mode after recovery*: After the restore operation is complete, Backup and Recovery will enable READ-WRITE mode for the database.
+* *Open the database or container database in READ-WRITE mode after recovery*: After the restore operation is complete, Backup and Recovery enables READ-WRITE mode for the database.
 
 . *Notification* section: 
 ** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
@@ -163,7 +163,7 @@ The matching snapshots are displayed.
 .Restore to alternate location
 
 --
-Not available for Oracle Database workloads preview. 
+Not available for Oracle Database workloads in this preview release. 
 
 //. If you chose to restore to an alternate location, enter the following:
 
@@ -215,9 +215,7 @@ Not available for Oracle Database workloads preview.
 == Restore a database to a specific system change number (SCN)
 When you restore a database to a system change number, Backup and Recovery restores the database using the system change number of a specific transaction. After restoring, the database state will reflect that specific point in time.
 
-.Steps
-
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
@@ -343,9 +341,7 @@ Not available for Oracle Database workloads preview.
 == Restore a database to the last good state
 When you restore a database to the last good state, Backup and Recovery uses the latest full and log backups to recover the last good state of the database.
 
-.Steps
-
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
