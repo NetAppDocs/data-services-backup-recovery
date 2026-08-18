@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-use-policies-mssql-create.html
-keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
+keywords: backing up, back up, backup, backup on-premises ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
 summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
 ---
 
@@ -47,7 +47,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 .Before you begin
 
-If you plan on replicating to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
+If you plan to replicate to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
 
 For instructions on how to do this, refer to https://docs.netapp.com/us-en/ontap/snaplock/initialize-complianceclock-task.html[Initialize the compliance clock in ONTAP^].
 
@@ -65,13 +65,13 @@ The Policies page appears.
 * Select a Console agent from the *Agent* list.
 . Enter information in the *Backup architecture* section. Choose the data flow for the backup from the list:
 +
-* *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
+* *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). It creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud provider object store or a private object store. It is best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
 
-* *3-2-1 cascade*: Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. This option is not available for Amazon FSx for NetApp ONTAP.
+* *3-2-1 cascade*: Primary storage (disk) to secondary storage (disk) and primary storage (disk) to cloud storage (object store). This can be a cloud provider object store or a private object store such as StorageGRID. This creates a chain of data replication across multiple systems to ensure redundancy and reliability. This option is not available for Amazon FSx for NetApp ONTAP.
 
 * *Disk to disk*: Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method keeps your data updated and available across locations for strong data protection. 
 
-* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving. This option is not available for Amazon FSx for NetApp ONTAP.
+* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system. This can be a cloud provider object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving. This option is not available for Amazon FSx for NetApp ONTAP.
 
 * *Disk-to-disk fanout*: Primary storage (disk) to secondary storage (disk) and primary storage (disk) to secondary storage (disk). You can configure multiple secondary settings for the disk-to-disk fanout option. 
 
@@ -79,8 +79,8 @@ The Policies page appears.
 
 . Provide information for the *Local snapshot settings* section:
 +
-* Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
-* *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
+* Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of five schedules.  
+* *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly.
 * *Snapshot retention*: Enter the number of snapshots to keep.
 * *Enable log backup*: Enable this option to back up logs and set the frequency and retention of the log backups. To do this, you must have already configured a log backup. See link:br-start-configure.html[Configure log directories].
 
@@ -90,7 +90,7 @@ The Policies page appears.
 * *Backup target*: Select the target system on secondary storage for the backup.
 * *Snapshot locking period*: Select whether you want to enable tamper-proof snapshots. If enabled, enter the number of days, months, or years that you want to lock the snapshot.
 * *Transfer to secondary*: Choose when to transfer snapshots to secondary storage.
-** The *ONTAP transfer schedule - Inline* option is selected by default and that indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
+** The *ONTAP transfer schedule - Inline* option is selected by default, which indicates that snapshots are transferred to the secondary storage system immediately. You don't need to schedule the backup. 
 * *Use existing SnapMirror and SyncMirror secondary relationship*: Enable this option to use the existing SnapMirror or SyncMirror relationship to transfer snapshots to the designated destination cluster.
 
 . Provide information for the *Object store settings* section (backup to object storage): 
@@ -110,26 +110,24 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 +
 [%collapsible]
 ====
-* *SnapMirror volume and snapshot format*: Choose from the following options:
-** *Use custom name format for snapshot copy*: Choose a naming scheme for snapshots. If left blank, a timestamp is added to the end of each snapshot name.
-** *Provide SnapMirror volume format*: Specify a prefix, a suffix, or both to modify the default SnapMirror volume name. By default, a SnapMirror volume inherits the source volume's name.
-* *Copy only backup*: Choose copy-only backup (a type of Microsoft SQL Server backup) if you need to back up your resources by using another backup application.  
+* *Copy only backup*: Choose copy-only backup (a type of Microsoft SQL Server backup) if you need to back up your resources by using another backup application.
 * *Availability group settings*: Select preferred backup replicas or specify a particular replica. This setting is useful if you have a SQL Server availability group and want to control which replica is used for backups.
-* *Enable VM-consistent snapshot*: Select whether you want to enable VM-consistent snapshots. This ensures that the newly created snapshots are consistent with the state of the virtual machine at the time of the snapshot. This is useful for ensuring that the backups can be restored successfully and that the data is in a consistent state. This does not apply to existing snapshots. For VMware workloads, you can enable this option for specific policy frequencies except hourly. 
 * *Backup verification*: Select whether you want to enable backup verification and whether you want it immediately or later. This feature ensures that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
 +
 Additionally, configure the following options:
-
 ** *Daily*, *Weekly*, *Monthly*, or *Yearly* verification: If you chose *Later* as the backup verification, select the frequency of backup verification. This ensures that backups are regularly checked for integrity and can be restored successfully.
 ** *Backup labels*: Choose a backup tier in your policy whose backups you want to be verified. Depending on your *Verify on secondary* setting, the tier list comes from either your primary or secondary schedules. Hourly and Log backups don't appear as they aren't eligible for verification.
 ** *Database consistency check*: Optionally, select limits to place on database consistency checks before the backup. 
-** *Verify log backups*: Select whether you want to verify log backups to ensure they are valid and can be restored. Select one or more verification servers. If you chose disk-to-disk or 3-2-1, also select the verification storage location.
-* *SnapMirror volume and snapshot format*: Optionally, enter your own snapshot name in a policy that governs the backups for Microsoft SQL Server workloads. Enter the format and custom text. If you chose to backup to secondary storage, you can also add a SnapMirror volume prefix and suffix.
-* *Maximum transfer rate*: To not set a limit on bandwidth usage, select *Unlimited*. If you want to limit the transfer rate, select *Limited* and select the network bandwidth between 1 and 1,000 Mbps allocated to upload backups to object storage. By default, ONTAP can use an unlimited amount of bandwidth to transfer the backup data from volumes in the system to object storage. If backup traffic affects workloads, reduce the network bandwidth for transfers.
-* *Backup retries*: To retry the job in case of a failure or interruption, select *Enable job retries during failure*. Enter the maximum number of snapshot and backup job retries and the retry time interval. The recount must be less than 10.
+//** *Verify log backups*: Select whether you want to verify log backups to ensure they are valid and can be restored. Select one or more verification servers. If you chose disk-to-disk or 3-2-1, also select the verification storage location.
+* *SnapMirror volume and snapshot format*: Choose from the following options:
+** *Use custom name format for snapshot copy*: Choose a naming scheme for snapshots. If left blank, a timestamp is added to the end of each snapshot name.
+** *Provide SnapMirror volume format*: Specify a prefix, a suffix, or both to modify the default SnapMirror volume name. By default, a SnapMirror volume inherits the source volume's name.
+* *Maximum transfer rate*: To leave bandwidth usage unlimited, select *Unlimited*. If you want to limit the transfer rate, select *Limited* and select the network bandwidth between 1 and 1,000 Mbps allocated to upload backups to object storage. By default, ONTAP can use an unlimited amount of bandwidth to transfer the backup data from volumes in the system to object storage. If backup traffic affects workloads, reduce the network bandwidth for transfers.
+* *Backup retries*: To retry the job in case of a failure or interruption, select *Enable job retries during failure*. Enter the maximum number of snapshot and backup job retries and the retry time interval. The retry count must be less than 10.
 +
-TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes.
-* *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to AWS and Microsoft Azure object storage. Note that this option might incur additional charges, depending on the cloud provider.
+TIP: If the snapshot frequency is set to one hour, the maximum delay along with the retry count shouldn't exceed 45 minutes.
+
+* *Ransomware scan*: Select whether you want to enable ransomware scanning on each bucket. This requires DataLock locking on object storage. Enter the frequency of the scan in days. This option applies to AWS and Microsoft Azure object storage. This option might incur additional charges, depending on the cloud provider.
 * *Notification*: Choose whether to enable email notifications for backup operations. You can select which events trigger a notification — for example, when a backup succeeds, fails, or completes with warnings.
 
 ====
@@ -144,14 +142,14 @@ You can add another protection level when you edit a policy, but you cannot remo
 
 If you are editing a policy that backs up to object storage, you can enable archival.   
 
-If you imported resources from SnapCenter, you might encounter some differences policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
+If you imported resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
 
 .Required NetApp Console role
 
 Backup and Recovery super admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
-. In the NetApp Console, got to *Protection* > *Backup and Recovery*.
+. In the NetApp Console, go to *Protection* > *Backup and Recovery*.
 . Select the *Policies* option.
 . Select the policy that you want to edit.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit*.
