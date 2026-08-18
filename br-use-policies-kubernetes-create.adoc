@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: br-use-policies-kubernetes-create.html
-keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
+keywords: backing up, back up, backup, backup on-premises ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
 summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
 ---
 
@@ -47,7 +47,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 .Before you begin
 
-If you plan on replicating to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
+If you plan to replicate to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
 
 For instructions on how to do this, refer to https://docs.netapp.com/us-en/ontap/snaplock/initialize-complianceclock-task.html[Initialize the compliance clock in ONTAP^].
 
@@ -65,14 +65,14 @@ The Policies page appears.
 * Select a Console agent from the *Agent* list.
 . Enter information in the *Backup architecture* section. Choose the data flow for the backup from the list:
 +
-* *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud hyperscaler object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
+* *3-2-1 fanout*: Primary storage (disk) to secondary storage (disk) to cloud (object store). Creates multiple copies of data across different storage systems, such as ONTAP to ONTAP and ONTAP to object-store configurations. This can be a cloud provider object store or a private object store. Best for optimal data protection and disaster recovery. This option is not available for Amazon FSx for NetApp ONTAP.
 * *Disk to disk*: Primary storage (disk) to secondary storage (disk). The ONTAP to ONTAP data protection strategy replicates data between two ONTAP systems to ensure high availability and disaster recovery. This is typically achieved using SnapMirror, which supports both synchronous and asynchronous replication. This method keeps your data updated and available across locations for strong data protection. 
-* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system. This can be a cloud hyperscaler object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving. This option is not available for Amazon FSx for NetApp ONTAP.
+* *Disk-to-object storage*: Primary storage (disk) to cloud (object store). This replicates data from an ONTAP system to an object storage system. This can be a cloud provider object store or a private object store such as StorageGRID. This method is ideal for long-term data retention and archiving. This option is not available for Amazon FSx for NetApp ONTAP.
 * *Local snapshots*: Local snapshot on the selected volume. This creates read-only, point-in-time copies of production volumes where your workloads are running. You can use local snapshots to recover from data loss or corruption, as well as to create backups for disaster recovery purposes.
 
 . Provide information for the *Local snapshot settings* section:
 +
-* Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of 5 schedules.  
+* Select the *Add schedule* option to select the snapshot schedule or schedules. You can have a maximum of five schedules.  
 * *Snapshot frequency*: Select the frequency of hourly, daily, weekly, monthly, or yearly. The yearly frequency is not available for Kubernetes workloads. 
 * *Snapshot retention*: Enter the number of snapshots to keep.
 * *Provider*: Select the storage provider that hosts the Kubernetes application resources, and enter the credentials to authenticate with the provider.
@@ -89,7 +89,7 @@ The Policies page appears.
 NOTE: The fields that appear differ depending on the provider and architecture selected.
 +
 * *Provider*: Select the provider for your object store and enter the credentials in the appropriate fields (the credentials fields differ depending on the provider).
-* *Backup target*: Select a registered object storage target. Ensure that the target is accessible within your backup environment. 
+* *Backup target*: Select a registered object storage target. Verify that the target is accessible within your backup environment. 
 * *IPspace*: Select the IPspace to use for the backup operations. This is useful if you have multiple IPspaces and want to control which one is used for backups.
 * *Schedule settings*: Select the schedule that was set for the local snapshots. You can remove a schedule, but you cannot add one because the schedules are set according to the local snapshot schedules.  
 * *Retention copies*: Enter the number of snapshots to keep.
@@ -102,7 +102,7 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 ====
 * *Backup retries*: To retry the job a certain number of times in case of a failure or interruption, expand the *Backup retries* section and enter the maximum number of snapshot and backup job retries and the retry time interval.
 
-TIP: If the snapshot frequency is set to 1 hour, the maximum delay along with the retry count shouldn't exceed 45 minutes.
+TIP: If the snapshot frequency is set to one hour, the maximum delay along with the retry count shouldn't exceed 45 minutes.
 
 * *Partial success*: Enable this option to allow a backup operation to complete successfully even if Backup and Recovery fails to back up all resources.
 * *VM configuration*: Select the type of backup consistency you need:
@@ -120,14 +120,14 @@ You can add another protection level when you edit a policy, but you cannot remo
 
 If you are editing a policy that backs up to object storage, you can enable archival.   
 
-If you imported resources from SnapCenter, you might encounter some differences policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
+If you imported resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
 
 .Required NetApp Console role
 
 Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
-. In the NetApp Console, got to *Protection* > *Backup and Recovery*.
+. In the NetApp Console, go to *Protection* > *Backup and Recovery*.
 . Select the *Policies* option.
 . Select the policy that you want to edit.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit*.

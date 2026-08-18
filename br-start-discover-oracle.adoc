@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-start-discover-oracle.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, workloads, protect, Oracle
-summary: NetApp Backup and Recovery needs to first discover workloads in order for you to protect them.  
+summary: NetApp Backup and Recovery must first discover workloads before it can protect them.
 ---
 
 = Discover Oracle Database workloads in NetApp Backup and Recovery
@@ -15,7 +15,7 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 [.lead]
 Discovering Oracle databases enables NetApp Backup and Recovery to protect them by creating and restoring backups and snapshots.
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Configure DNS for air-gapped host discovery in NetApp Console local deployment
@@ -23,7 +23,7 @@ include::_include/dns-fix-air-gapped-db-discovery.adoc[]
 
 == Add an Oracle Database host and discover resources
 
-Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
+Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems to discover.
 
 .Steps
 
@@ -37,7 +37,7 @@ Add Oracle host information and let NetApp Backup and Recovery discover workload
 .. Enter a name for this credential.
 .. Enter the user name and password for the account.
 .. Select *Done*.
-. *Host registration*: Add a new Oracle Database host. In the *Host FQDN or IP address* field, enter the host's FQDN or IP address - for clustered databases you can enter the FQDN or IP of any node in the cluster. Then provide credentials, the Console agent, and the port number.
+. *Host registration*: Add a new Oracle Database host. In the *Host FQDN or IP address* field, enter the host's FQDN or IP address. For clustered databases, you can enter the FQDN or IP address of any node in the cluster. Then provide credentials, the Console agent, and the port number.
 
 . (Optional) If you choose credentials for a non-root user, do the following:
 .. For instructions on how to add the non-root user you have selected to the sudoers file on the Oracle Database host, select *Configure sudoers*.
@@ -48,7 +48,7 @@ Add Oracle host information and let NetApp Backup and Recovery discover workload
 +
 [NOTE]
 ====
-Backup and Recovery connects to each host via SSH to install the plug-in automatically. Enable *Use manual installation* when any of the following apply:
+NetApp Backup and Recovery connects to each host via SSH to install the plug-in automatically. Enable *Use manual installation* when any of the following apply:
 
 * One or more hosts are not running the SSH service.
 * Any host already has the NetApp plug-in (including if only some cluster members do).
@@ -66,7 +66,7 @@ The Oracle Database workload is displayed in the list of workloads on the Invent
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
-. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
 . Select a workload tile (for example, Microsoft SQL Server).
 . From the Backup and Recovery menu, select *Dashboard*.
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
