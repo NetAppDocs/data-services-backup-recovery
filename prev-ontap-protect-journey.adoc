@@ -44,7 +44,7 @@ Creates backups of your data to the cloud for protection and for long-term archi
 
 |===
 
-Snapshots are the basis of all the backup methods, and they are required to use the backup and recovery service. A snapshot is a read-only, point-in-time image of a volume. The image consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot was made. The snapshot that is created on your volume is used to keep the replicated volume and backup file synchronized with changes made to the source volume - as shown in the figure.
+Snapshots are the basis of all the backup methods, and they are required to use the Backup and Recovery service. A snapshot is a read-only, point-in-time image of a volume. The image consumes minimal storage space and incurs negligible performance overhead because it records only changes to files since the last snapshot was made. The snapshot that is created on your volume is used to keep the replicated volume and backup file synchronized with changes made to the source volume - as shown in the figure.
 
 image:diagram-321-overview.png["A diagram showing how backup files exist on the source system as snapshots, as replicated volumes on the secondary storage system, and as a backup files in object storage."]
 
@@ -121,7 +121,7 @@ This table provides a comparison of the fan-out and cascade architectures.
 
 == Will you use the default policies for snapshots, replications, and backups
 
-You can use the default policies provided by NetApp to create your backups, or you can create custom policies. When you use the activation wizard to enable the backup and recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want to use a policy different than those existing policies, you can create the policy before starting or while using the activation wizard.
+You can use the default policies provided by NetApp to create your backups, or you can create custom policies. When you use the activation wizard to enable the Backup and Recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want to use a policy different than those existing policies, you can create the policy before starting or while using the activation wizard.
 
 * The default snapshot policy creates hourly, daily, and weekly snapshots, retaining 6 hourly, 2 daily, and 2 weekly snapshots.
 * The default replication policy replicates daily and weekly snapshots, retaining 7 daily and 52 weekly snapshots.
@@ -208,7 +208,7 @@ If you're using the default policies that exist on all ONTAP systems, then you'r
 
 == Do you want to create your own object storage container
 
-When you create backup files in object storage for a system, by default, the backup and recovery service creates the container (bucket or storage account) for the backup files in the object storage account that you have configured. The AWS or GCP bucket is named "netapp-backup-<uuid>" by default. The Azure Blob storage account is named "netappbackup<uuid>".
+When you create backup files in object storage for a system, by default, the Backup and Recovery service creates the container (bucket or storage account) for the backup files in the object storage account that you have configured. The AWS or GCP bucket is named "netapp-backup-<uuid>" by default. The Azure Blob storage account is named "netappbackup<uuid>".
 
 You can create the container yourself in the object provider account if you want to use a certain prefix or assign special properties. If you want to create your own container, you must create it before starting the activation wizard. NetApp Backup and Recovery can use any bucket and share buckets. The backup activation wizard will automatically discover your provisioned containers for the selected Account and credentials so that you can select the one you want to use. 
 
@@ -247,7 +247,7 @@ If you plan to move older backup files to archival storage, or if you plan to en
 
 == Which Console agent deployment mode are you using
 
-If you're already using the Console to manage your storage, then a Console agent has already been installed. If you plan to use the same Console agent with NetApp Backup and Recovery, then you're all set. If you need to use a different Console agent, you'll need to install it before starting your backup and recovery implementation.
+If you're already using the Console to manage your storage, then a Console agent has already been installed. If you plan to use the same Console agent with NetApp Backup and Recovery, then you're all set. If you need to use a different Console agent, you'll need to install it before starting your Backup and Recovery implementation.
 
 NetApp Console offers multiple deployment modes that enable you to use the Console in a way that meets your business and security requirements. _Standard mode_ leverages the Console SaaS layer to provide full functionality, while _restricted mode_ and _private mode_ are available for organizations that have connectivity restrictions. 
 

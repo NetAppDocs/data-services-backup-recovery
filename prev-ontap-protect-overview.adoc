@@ -18,7 +18,7 @@ NetApp Backup and Recovery provides backup and restore capabilities for protecti
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
-After activation, backup and recovery creates block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud. In addition to your source volume, you'll have a:
+After activation, Backup and Recovery creates block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud. In addition to your source volume, you'll have a:
 
 * Snapshot of the volume on the source system
 * Replicated volume on a different storage system

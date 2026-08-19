@@ -67,7 +67,7 @@ Optionally, select *Suffix* from the target name drop-down list and add a suffix
 
 . If you choose to create *Instant snapshot and clone*, choose the clone storage location: 
 * *Local storage*: Select this option to create the clone in the local storage of the ONTAP system. The local storage is the storage that is directly attached to the ONTAP system.
-* *Secondary storage*: Select this option to create the clone in the secondary storage of the ONTAP system. The secondary storage is the storage that is used for backup and recovery workloads.
+* *Secondary storage*: Select this option to create the clone in the secondary storage of the ONTAP system. The secondary storage is the storage that is used for Backup and Recovery workloads.
 
 . Select the destination location for the data and logs. 
 . Select *Next*.

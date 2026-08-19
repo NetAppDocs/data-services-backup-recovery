@@ -228,7 +228,7 @@ You can also <<Show the API commands>> at the review step, so you can copy the c
 
 .Steps 
 
-. Access the Activate backup and recovery wizard using one of the following ways: 
+. Access the Activate Backup and Recovery wizard using one of the following ways: 
 * From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right-panel.
 +
 If the AWS destination for your backups exists as a system on the Console *Systems* page, you can drag the ONTAP cluster onto the AWS object storage.  
@@ -377,10 +377,10 @@ You can also monitor the status of backup and restore jobs using the link:br-use
 
 === Show the API commands 
 
-You might want to display and optionally copy the API commands used in the Activate backup and recovery wizard. You might want to do this to automate backup activation in future systems. 
+You might want to display and optionally copy the API commands used in the Activate Backup and Recovery wizard. You might want to do this to automate backup activation in future systems. 
 
 .Steps 
 
-. From the Activate backup and recovery wizard, select *View API request*. 
+. From the Activate Backup and Recovery wizard, select *View API request*. 
 . To copy the commands to the clipboard, select the *Copy* icon. 
 

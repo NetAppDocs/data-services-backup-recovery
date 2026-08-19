@@ -88,7 +88,7 @@ The selected virtual machines appear in the list on the right.
 . Select *Create*.
 
 .Result 
-The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. The NetApp Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery.
+The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. The NetApp Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of Backup and Recovery.
 
 --
 
