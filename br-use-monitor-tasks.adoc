@@ -180,4 +180,4 @@ https://docs.netapp.com/us-en/console-local/task-alert-rules-manage.html[Configu
 
 You can view details of backup and restore operations for further investigation in the Console Timeline. The Console Timeline provides details of each event, whether user-initiated or system-initiated, and shows actions initiated in the UI or via the API. 
 
-https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn about the differences between the Timeline and the Notification Center^].
+https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn about monitoring NetApp Console operations^].
