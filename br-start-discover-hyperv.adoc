@@ -16,7 +16,7 @@ summary: NetApp Backup and Recovery must discover Hyper-V virtual machines befor
 Discover Hyper-V virtual machines in NetApp Backup and Recovery so you can protect them with backup and recovery policies.
 
 *Required Console role*
-Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and Recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Add a Hyper-V host and discover resources
 
@@ -26,7 +26,7 @@ NOTE: When you add Hyper-V hosts and discover resources, NetApp Backup and Recov
 
 .Steps
 
-. From the NetApp Console menu, select *Protection* > *Backup and recovery*. 
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*. 
 +
 If this is your first time logging in to NetApp Backup and Recovery and you already have a system in the Console but haven't discovered resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears with an option to *Discover resources*. 
 
@@ -51,7 +51,7 @@ After NetApp Backup and Recovery discovers resources, the Inventory page display
 
 .Steps
 
-. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
 . Select the Hyper-V workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
