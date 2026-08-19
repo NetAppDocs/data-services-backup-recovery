@@ -14,7 +14,7 @@ summary: You can restore one or more files or folders from a VMDK to a guest VM.
 
 
 [.lead]
-Restore individual files or folders from a virtual disk to the original VM or to another VM. This is useful when you don't need to restore an entire VM, but just need specific files or folders.
+Restore individual files or folders from a VMDK to the original VM or to another VM. Use this option when you need specific files or folders instead of the entire VM.
 
 == Restore files and folders from virtual disks
 Restore files or folders from a virtual disk to the original VM or to another VM. If you prefer not to attach the virtual disk to the original VM, you can attach it to a proxy VM instead.
@@ -22,12 +22,12 @@ Restore files or folders from a virtual disk to the original VM or to another VM
 .Before you begin
 
 * Review the prerequisites and limitations in link:br-use-vmware-restore-guest-files-and-folders-overview.html[VMware guest file restore requirements in NetApp Backup and Recovery].
-* To restore files and folders using a proxy VM, make sure the proxy VM is already configured before beginning the file and folder restore process.
+* To restore files and folders using a proxy VM, make sure the proxy VM is already configured before you start the restore process.
 * You need to create credentials for the source virtual disk and destination VM in NetApp Backup and Recovery before you can restore files and folders. NetApp Backup and Recovery uses these credentials to authenticate with the virtual disk and destination VM when restoring files and folders.
 
 .About this task
 
-File or folder restore performance depends upon two factors: the size of the files or folders being restored; and the number of files or folders being restored. Restoring a large number of small-sized files might take a longer time than anticipated compared to restoring a small number of large-sized files, if the data set to be restored is of same size.
+File or folder restore performance depends on the size and number of items that you restore. Restoring many small files can take longer than restoring a few large files of the same total size.
 
 You can restore to a remote VM (known as a cross-VM restore), but the source and destination operating systems must be the same.
 
@@ -71,7 +71,7 @@ You can use the magnifying glass (search) icon near the file browser pane to sea
 +
 . Select files or folders to restore.
 +
-Files and folders you have selected to restore are listed in the right pane of the screen.
+The files and folders that you select to restore appear in the right pane.
 . Select *Next*.
 . In the "Restore to path" section, enter the path to the destination VM and filesystem location where the selected files will be restored:
 +
@@ -96,7 +96,7 @@ You can view the restore progress on the Job Monitoring page.
 
 --
 
-Use a proxy VM (a different VM on the same vCenter as the original) to restore guest files and folders when you don't want to attach the virtual disk to the original VM.
+Use a proxy VM, which is a different VM on the same vCenter as the original VM, to restore guest files and folders when you do not want to attach the virtual disk to the original VM.
 
 .Steps
 
@@ -126,7 +126,7 @@ You can use the magnifying glass (search) icon near the file browser pane to sea
 +
 . Select files or folders to restore.
 +
-Files and folders you have selected to restore are listed in the right pane of the screen.
+The files and folders that you select to restore appear in the right pane.
 . Select *Next*.
 . In the "Restore to path" section, enter the path to the destination VM and filesystem location where the selected files will be restored:
 +
@@ -150,7 +150,7 @@ You can view the restore progress on the Job Monitoring page.
 ====
 
 == View active VMDK mount sessions
-View active guest sessions when you are restoring files or folders. This shows you the VMDKs that are currently attached with open sessions.
+View active guest sessions when you restore files or folders. This view shows the VMDKs that are currently attached with open sessions.
 
 .Steps
 

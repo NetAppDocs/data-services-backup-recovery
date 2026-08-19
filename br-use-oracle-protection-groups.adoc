@@ -13,19 +13,19 @@ summary: Create and manage protection groups for Oracle Database workloads in Ne
 :imagesdir: ./media/
 
 [.lead]
-Create protection groups to manage the backup operations for a set of Oracle Database resources. A protection group is a logical grouping of resources such as databases that you want to protect together. You need to create a protection group to back up Oracle databases.
+Create protection groups to manage backup operations for Oracle Database resources. A protection group is a logical grouping of resources, such as databases, that you want to protect together.
 
 You can perform the following tasks related to protection groups:
 
 * Create a protection group.
 * View protection details. 
-* Back up a protection group now. See link:br-use-kvm-backup.html[Back up Oracle Database workloads now].
+* Back up a protection group now. See link:br-use-oracle-backup.html[Back up Oracle Database workloads now].
 //* Suspend and resume a protection group's backup schedule.  
 * Delete a protection group.
 
 == Create a protection group 
 
-Group VMs and storage pools that you want to protect together into a protection group. 
+Group Oracle Database resources that you want to protect together into a protection group.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -39,7 +39,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
 . Provide a name for the protection group.
-. Select the VMs or storage pools that you want to include in the protection group.
+. Select the databases that you want to include in the protection group.
 . Select *Next*. 
 . Select the *Backup policy* that you want to apply to the protection group.
 +

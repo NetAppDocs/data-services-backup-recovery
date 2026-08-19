@@ -13,13 +13,13 @@ summary: You can use Search and Restore to recover volumes, folders, or files fr
 :imagesdir: ./media/
 
 [.lead]
-Backups of your ONTAP volume data are stored as snapshots, on replicated volumes, or in object storage. You can restore data from any of these locations at a specific point in time. With NetApp Backup and Recovery, you can restore an entire volume, a folder, or individual files as needed.
+Use NetApp Backup and Recovery to restore your ONTAP volume data from snapshots, replicated volumes, or object storage at a specific point in time. You can restore an entire volume, a folder, or individual files as needed.
 
 NOTE: When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
 
 * You can restore a *volume* (as a new volume) to the original system, to a different system that's using the same cloud account, or to an on-premises ONTAP system.
 
-* You can restore a *folder* from replicated or object storage snapshots to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system. Restoring folders from local snapshots is not supported.
+* You can restore a *folder* from a replicated volume or an object storage backup to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system. Restoring folders from local snapshots is not supported.
 
 * You can restore *files* to a volume in the original system, to a volume in a different system that's using the same cloud account, or to a volume on an on-premises ONTAP system.
 
@@ -35,7 +35,7 @@ NOTE: If the restore operation does not complete, wait until the Job Monitor sho
 
 NOTE: For limitations related to restoring ONTAP data, see link:br-reference-limitations.html[Backup and restore limitations for ONTAP volumes].
 
-== The Restore Dashboard
+== The restore dashboard
 
 You use the Restore Dashboard to perform volume, folder, and file restore operations. To access the Restore Dashboard, select *Backup and recovery* from the Console menu, and then select the *Restore* tab. You can also select image:icon-options-vertical.gif[More button] > *View Restore Dashboard* from the Backup and recovery service from the Services panel.
 
@@ -43,9 +43,9 @@ NOTE: NetApp Backup and Recovery must already be activated for at least one syst
 
 The Restore Dashboard provides two different ways to restore data from backup files: *Browse & Restore* and *Search & Restore*.
 
-== Comparing Browse & Restore and Search & Restore
+== Compare Browse & Restore and Search & Restore
 
-In broad terms, _Browse & Restore_ is typically better when you need to restore a specific volume, folder, or file from the last week or month -- and you know the name and location of the file, and the date when it was last in good shape. _Search & Restore_ is typically better when you need to restore a volume, folder, or file, but you don't remember the exact name, or the volume in which it resides, or the date when it was last in good shape.
+In broad terms, _Browse & Restore_ is typically better when you need to restore a specific volume, folder, or file from the last week or month and you know the name and location of the file and the date when it was last in good shape. _Search & Restore_ is typically better when you need to restore a volume, folder, or file, but you don't remember the exact name, the volume in which it resides, or the date when it was last in good shape.
 
 This table provides a feature comparison of the two methods.
 
@@ -56,7 +56,7 @@ This table provides a feature comparison of the two methods.
 | Search & Restore
 
 | Browse through a folder-style structure to find the volume, folder, or file within a single backup file. | Search for a volume, folder, or file across *all backup files* by partial or full volume name, partial or full folder/file name, size range, and additional search filters.
-| Does not handle file recovery if the file has been deleted or renamed, and the user doesn't know the original file name | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
+| Does not handle file recovery if the file has been deleted or renamed and you don't know the original file name | Handles newly created, deleted, and renamed directories and files
 | Quick restore is supported. | Quick restore is not supported. 
 
 
@@ -71,8 +71,8 @@ This table provides a list of valid restore operations based on the location whe
 3+^| Search & Restore
 
 |  | *Restore volume* | *Restore files* | *Restore folder* | *Restore volume* | *Restore files* | *Restore folder* 
-| Snapshot | Yes | No | No | Yes | Yes | Yes 
-| Replicated volume | Yes | No | No | Yes | Yes | Yes 
+| Snapshot | Yes | No | No | Yes | Yes | Yes
+| Replicated volume | Yes | No | No | Yes | Yes | Yes
 | Backup file | Yes | Yes | Yes | Yes | Yes | Yes 
 
 |===
@@ -84,4 +84,3 @@ See the requirements and restore steps for the type of restore operation you wan
 * link:prev-ontap-restore-browse.html[Restore volumes using Browse & Restore]
 * link:prev-ontap-restore-browse.html[Restore folders and files using Browse & Restore]
 * link:prev-ontap-restore-search.html[Restore volumes, folders, and files using Search & Restore]
-

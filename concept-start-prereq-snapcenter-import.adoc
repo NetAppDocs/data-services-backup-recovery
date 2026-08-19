@@ -13,16 +13,16 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 :imagesdir: ./media/
 
 [.lead]
-If you are going to import resources from the SnapCenter Plug-in service for Microsoft SQL Server into NetApp Backup and Recovery, you'll need to configure a few more items.
+Before you import resources from the SnapCenter Plug-in for Microsoft SQL Server into NetApp Backup and Recovery, make sure your environment meets these additional requirements.
 
 == Create systems in NetApp Console first 
 
 If you are going to import resources from SnapCenter, you should add all on-premises SnapCenter cluster storage to the Console *Systems* page first before importing from SnapCenter. This ensures that host resources can be discovered and imported correctly.
 
 
-== Ensure host requirements to install the SnapCenter Plug-in
+== Ensure host requirements for the SnapCenter Plug-in
 
-To import resources from the SnapCenter Plug-in for Microsoft SQL Server, ensure host requirements to install the SnapCenter Plug-in for Microsoft SQL Server are met. 
+To import resources from the SnapCenter Plug-in for Microsoft SQL Server, make sure the host requirements for installing the SnapCenter Plug-in for Microsoft SQL Server are met.
 
 
 
@@ -84,10 +84,10 @@ This is one of the methods that you can use to disable User Account Control.
 . The following values are supported. For this scenario, set the value to `1`: 
 
 * `0` (Default): UAC remote restrictions are enabled. Local accounts have filtered tokens when accessing remotely. 
-* `1`: UAC remote restrictions are disabled. Local accounts bypass token filtering and have full adminsistrative privileges when accessing remotely. 
+* `1`: UAC remote restrictions are disabled. Local accounts bypass token filtering and have full administrative privileges when accessing remotely.
 
 
-. Click *OK*. 
+. Select *OK*.
 
 . Close the Registry Editor.
 . Restart the SnapCenter Windows host.
@@ -113,7 +113,7 @@ CAUTION: Running PowerShell commands with elevated privileges can affect system 
 .Steps
 
 . Open a PowerShell window with administrative privileges on the SnapCenter Windows host:
-.. Click on the *Start* menu. 
+.. Select the *Start* menu.
 .. Search for *PowerShell 7* or *Windows Powershell*.
 .. Right-click on that option and select *Run as administrator*.
 
@@ -127,7 +127,7 @@ TIP: PowerShell is included by default in Windows 7 and later versions.
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy" -Value 1 -Type DWord
 ----
 
-. Verify that the current value is set to "1" in `LocalAccountTokenFilterPolicy`` by running:
+. Verify that the current value is set to "1" in `LocalAccountTokenFilterPolicy` by running:
 +
 ----
 Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LocalAccountTokenFilterPolicy"
@@ -156,7 +156,6 @@ Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 LocalAccountTokenFilterPolicy : 1
 ----
-
 
 
 

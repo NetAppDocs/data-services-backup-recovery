@@ -5,7 +5,7 @@ keywords: clone, clone application data, Amazon Web Services, AWS, NetApp Backup
 summary: Clone your Oracle Database workloads with NetApp Backup and Recovery. 
 ---
 
-= Clone Oracle Database workloads using NetApp Backup and Recovery
+= Clone Oracle Database workloads with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Clone your Oracle Database workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Use NetApp Backup and Recovery to create writable clones of Oracle databases from on-premises ONTAP systems to primary or secondary storage. Schedule clones to refresh periodically according to your requirements.
+Use NetApp Backup and Recovery to create writable clones of Oracle Database workloads from on-premises ONTAP systems on primary or secondary storage. You can also schedule clone refreshes to meet your requirements.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
