@@ -11,7 +11,7 @@ summary: In NetApp Backup and Recovery, create your own policies that govern the
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, create your own Kubernetes backup policies that govern backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+Use NetApp Backup and Recovery to create Kubernetes backup policies that control backup frequency, schedule, and retention.
 
 NOTE: Some of these options and configuration sections are not available for all workloads.
 
@@ -104,10 +104,10 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 
 TIP: If the snapshot frequency is set to one hour, the maximum delay along with the retry count shouldn't exceed 45 minutes.
 
-* *Partial success*: Enable this option to allow a backup operation to complete successfully even if Backup and Recovery fails to back up all resources.
 * *VM configuration*: Select the type of backup consistency you need:
 ** *Crash-consistent backup*: Select this option to skip VM freezing before taking a snapshot or backup. The snapshot or backup will be crash-consistent, meaning that the system memory at the time of the snapshot or backup is not captured.
 ** *VM-consistent backup*: Select this option to freeze VMs before taking a snapshot or backup. This captures the full VM state (including memory) to provide VM-consistent protection. Optionally, in *Max VMs at once*, specify how many VMs Backup and Recovery can freeze and back up at the same time. If you enable the *Freeze all VMs* option, Backup and Recovery freezes all VMs simultaneously, starts the backups, and then thaws all VMs after all backup operations complete.
+* *Partial success*: Enable this option to allow a backup operation to complete successfully even if Backup and Recovery fails to back up all resources.
 ====
 
 . When finished, select *Done*.
@@ -144,7 +144,7 @@ You can delete a policy if you no longer need it.
 TIP: You cannot delete a policy that is associated with a workload.
 
 .Steps
-. In the Console, go to *Protection* > *Backup and Recovery*.
+. In the NetApp Console, go to *Protection* > *Backup and Recovery*.
 . Select the *Policies* option.
 . Select the policy that you want to delete.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Delete*.

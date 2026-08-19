@@ -14,11 +14,11 @@ summary: 'You can restore files or folders from a virtual machine disk (VMDK) on
 
 
 [.lead]
-You can restore files or folders from a virtual machine disk (VMDK) on a Windows or Linux guest OS.
+Use guest file restore to restore files or folders from a virtual machine disk (VMDK) on a Windows or Linux guest OS.
 
-== Guest restore workflow
+== Guest file restore workflow
 
-Guest OS restore operations include the following steps:
+Guest file restore includes the following steps:
 
 . Attach
 +
@@ -40,12 +40,12 @@ Restore the selected files or folders to a specified location.
 
 Review all requirements before restoring files or folders from a VMDK.
 
-* VMware tools must be installed and running.
+* VMware Tools must be installed and running.
 +
-NetApp Backup and Recovery uses information from VMware tools to establish a connection to the VMware guest OS.
+NetApp Backup and Recovery uses information from VMware Tools to establish a connection to the VMware guest OS.
 
 * You must know the backup snapshot and VMDK to restore from.
-* Virtual disk to be attached must be in a NetApp Backup and Recovery backup.
+* The virtual disk that you attach must be in a NetApp Backup and Recovery backup.
 +
 The virtual disk that contains the file or folder you want to restore must be in a VM backup that was performed using NetApp Backup and Recovery.
 
@@ -53,9 +53,9 @@ The virtual disk that contains the file or folder you want to restore must be in
 +
 If you want to attach a virtual disk to a proxy VM, the proxy VM must be configured before the attach and restore operation begins.
 
-* For files with non-English-alphabet names, you must restore them in a directory, not as a single file.
+* For files with non-English character names, you must restore them in a directory, not as a single file.
 +
-You can restore files with non-alphabetic names, such as Japanese Kanji, by restoring the directory in which the files are located.
+You can restore files with non-English characters, such as Japanese Kanji, by restoring the directory in which the files are located.
 
 For the latest information on guest OS support, refer to the https://imt.netapp.com/imt/imt.jsp?components=180121;&solution=1517&isHWU&src=IMT[NetApp Interoperability Matrix Tool (IMT)^].
 
@@ -81,7 +81,7 @@ If you must use an account that is not the built-in administrator account, but h
 
 == Guest file restore limitations
 
-Before you restore a file or folder from a guest OS, you should be aware of the feature limitations.
+Before you restore a file or folder from a guest OS, review these limitations.
 
 * You cannot restore dynamic disk types inside a guest OS.
 * If you restore an encrypted file or folder, the encryption attribute is not retained. 
@@ -89,7 +89,7 @@ Before you restore a file or folder from a guest OS, you should be aware of the 
 * Hidden files and folders are displayed in the file browse page, and you cannot filter them.
 * You cannot restore files or folders between guests with different operating systems (when restoring to a different VM, the destination OS type must be the same as the source OS type).
 
-* You cannot restore from a NTFS file system to a FAT file system.
+* You cannot restore from an NTFS file system to a FAT file system.
 +
 When you try to restore from NTFS-format to FAT-format, the NTFS security descriptor is not copied because the FAT file system does not support Windows security attributes.
 

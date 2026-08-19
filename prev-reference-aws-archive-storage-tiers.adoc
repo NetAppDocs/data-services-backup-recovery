@@ -13,11 +13,11 @@ summary: NetApp Backup and Recovery supports two S3 archival storage classes and
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery supports two S3 archival storage classes and most regions.
+Use this information to choose an AWS S3 archive tier for NetApp Backup and Recovery backups. You can also review restore costs and retrieval times for archived backups.
 
 == Supported S3 archival storage classes for NetApp Backup and Recovery
 
-When backup files are initially created they're stored in S3 _Standard_ storage. This tier is optimized for storing data that's infrequently accessed; but that also allows you to access it immediately. After 30 days the backups transition to the S3 _Standard-Infrequent Access_ storage class to save on costs.
+When backup files are initially created, they're stored in S3 _Standard_ storage. This tier is optimized for storing data that's infrequently accessed, but it still allows immediate access. After 30 days, the backups transition to the S3 _Standard-Infrequent Access_ storage class to save on costs.
 
 If your source clusters are running ONTAP 9.10.1 or greater, you can choose to tier backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage after a certain number of days (typically more than 30 days) for further cost optimization. You can set this to "0" or to 1-999 days. If you set it to "0" days, you cannot change it later to 1-999 days. 
 
