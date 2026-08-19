@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
-= Back up Cloud Volumes ONTAP to Azure Blob storage
+= Back up Cloud Volumes ONTAP to Azure Blob storage with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
