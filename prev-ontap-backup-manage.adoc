@@ -35,7 +35,7 @@ You can view a list of all the volumes that are currently being backed up in the
 +
 To show additional columns (aggregates, security style (Windows or UNIX), snapshot policy, replication policy, and backup policy), select the plus sign.
 
-. Review the status of the protection options in the "Existing protection" column. The three icons stand for "Local snapshots," "Replicated volumes," and "Backups in object storage."
+. Review the status of the protection options in the "Existing protection" column. The three icons stand for "Local snapshots", "Replicated volumes", and "Backups in object storage".
 +
 Each icon is illuminated when that backup type is activated, and it's grey when the backup type is inactive. You can hover your cursor over each icon to see the backup policy that is being used, and other pertinent information for each type of backup.
 
