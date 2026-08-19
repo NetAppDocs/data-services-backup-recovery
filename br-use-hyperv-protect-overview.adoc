@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: You can protect Hyper-V virtual machines from on-premises ONTAP systems to primary and secondary storage, ensuring that your data is protected. 
 ---
 
-= Hyper-V protection workflow with NetApp Backup and Recovery 
+= Protect Hyper-V workloads with NetApp Backup and Recovery 
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,19 +13,19 @@ summary: You can protect Hyper-V virtual machines from on-premises ONTAP systems
 :imagesdir: ./media/
 
 [.lead]
-Protect your Hyper-V VMs with NetApp Backup and Recovery. NetApp Backup and Recovery provides fast, space-efficient, crash-consistent, and VM-consistent backup and restore operations for both standalone and FCI cluster instances. You can also protect Hyper-V virtual machines provisioned by System Center Virtual Machine Manager (SCVMM) and hosted on a CIFS share.
+Use NetApp Backup and Recovery to back up and restore standalone Hyper-V VMs, failover cluster instances, and SCVMM-provisioned VMs hosted on a CIFS share.
 
-You can back up Hyper-V workloads to Amazon Web Services S3 or StorageGRID and restore Hyper-V workloads back to an on-premises Hyper-V host. 
+You can back up Hyper-V workloads to Amazon S3 or StorageGRID and restore them to an on-premises Hyper-V host. 
 
 //image:../media/diagram-backup-recovery-general.png[Architecture diagram of backup and recovery in general]
 
-Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
+Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, with 3 copies of your source data on 2 different storage systems and 1 copy in the cloud. The benefits of the 3-2-1 approach include:
 
 * Multiple data copies protect against internal and external cybersecurity threats.
 * Multiple media types ensure failover viability in the case of physical or logical failure of one media type.
-* The onsite copy helps you quickly restore data, and you can use the offsite copies if the onsite copy is compromised.
+* The on-site copy helps you restore data quickly, and you can use the off-site copies if the on-site copy is compromised.
 
-When you add Hyper-V hosts and discover resources, NetApp Backup and Recovery installs the NetApp Hyper-V plug-in and the NetApp SnapCenter Windows FileSystem plug-in on the Hyper-V host to help with managing and protecting virtual machines.
+When you add Hyper-V hosts and discover resources, NetApp Backup and Recovery installs the NetApp Hyper-V plug-in and the NetApp SnapCenter Windows FileSystem plug-in on each Hyper-V host to help manage and protect virtual machines.
 
 You can use NetApp Backup and Recovery to perform the following tasks related to Hyper-V workloads:
 

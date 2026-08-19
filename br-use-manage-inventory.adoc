@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: br-use-manage-inventory.html
-keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
-summary: NetApp Backup and Recovery helps you manage your Microsoft SQL Server hosts, databases, and instances.
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, on-premises, applications, virtual machines, backup and recovery, snapcenter
+summary: Manage your Microsoft SQL Server hosts, instances, and databases in NetApp Backup and Recovery.
 ---
 
 = Manage Microsoft SQL Server inventory with NetApp Backup and Recovery
@@ -13,15 +13,15 @@ summary: NetApp Backup and Recovery helps you manage your Microsoft SQL Server h
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery helps you manage your Microsoft SQL Server hosts, databases, and instances. You can view, change, or remove protection settings for your inventory.    
+View and manage Microsoft SQL Server hosts, instances, and databases, and change or remove their protection settings.
 
-You can accomplish the following tasks related to managing your inventory: 
+You can do the following to manage your inventory: 
 
 * Manage host information
 ** Suspend schedules
 ** Edit or delete hosts
 
-* Manage instances information 
+* Manage instance information 
 ** Associate credentials with a resource
 ** Back up now by starting an on-demand backup
 ** Edit protection settings
@@ -32,28 +32,28 @@ You can accomplish the following tasks related to managing your inventory:
 ** Edit protection settings
 ** Back up now by starting an on-demand backup  
 
-* Configure the log directory (from *Inventory* > *Hosts*). If you want to back up logs for your database hosts in the snapshot, first configure the logs in NetApp Backup and Recovery. For details, refer to link:br-start-setup.html[Configure NetApp Backup and Recovery settings].  
+* Configure the log directory from *Inventory* > *Hosts* before you back up database host logs in snapshots. For details, see link:br-start-setup.html[Configure NetApp Backup and Recovery settings].
 
 
 
 == Manage host information 
 
-You can manage host information to ensure that the right hosts are protected. You can view, edit, and delete host information. 
+Manage host information to ensure that the right hosts are protected. View, edit, and delete host information as needed.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, or Backup and Recovery clone admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 
-* Configure log directory. For details, refer to link:br-start-setup.html[Configure NetApp Backup and Recovery settings]. 
+* Configure log directory. For details, see link:br-start-setup.html[Configure NetApp Backup and Recovery settings]. 
 * Suspend schedules 
 * Edit a host
 * Delete a host 
 
 === Manage hosts 
 
-You can manage the hosts that are discovered in your system. You can manage them separately or as a group. 
+You can manage the hosts that are discovered in your system, individually or as a group. 
 
-TIP: You can manage hosts with an "Unmanaged" status in the Hosts column. NetApp Backup and Recovery already manages hosts with a "Managed" status.
+TIP: To manage a host, look for an "Unmanaged" status in the Hosts column. NetApp Backup and Recovery already manages hosts with a "Managed" status.
 
 After you manage the hosts in NetApp Backup and Recovery, SnapCenter no longer manages the resources on those hosts. 
 
@@ -65,7 +65,7 @@ Storage viewer, or Backup and Recovery super admin. If you are protecting data s
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Hosts* tab.
-. Select one or more hosts. If you select multiple hosts, a Bulk actions option appears where you can select *Manage (up to 5 hosts)*. 
+. Select one or more hosts. If you select multiple hosts, a *Bulk actions* option appears. Select *Manage (up to 5 hosts)*. 
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Manage*.
 
@@ -90,7 +90,7 @@ Suspend schedules to stop backup and restore operations during host maintenance.
 
 === Edit a host
 
-You can change the vCenter server information, host registration credentials, and advanced settings options. 
+You can change the vCenter server information, host registration credentials, and advanced settings. 
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -122,14 +122,14 @@ You can delete the host information to stop service charges.
 //. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Reinstall plug-in*.
 
 
-== Manage instances information 
+== Manage instance information 
 
-You can manage instances information to assign the appropriate credentials for resource protection and back up resources in the following ways:
+Manage instance information to protect resources, associate or remove credentials, edit protection settings, and run backups:
 
 * Protect instances
 * Associate credentials
 * Disassociate credentials
-* Edit protection 
+* Edit protection settings 
 * Back up now   
 
 *Required NetApp Console role*
@@ -137,7 +137,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 
 === Protect database instances  
 
-You can assign a policy to a database instance using policies that govern the schedules and retention of resource protection.
+Assign a policy to a database instance to govern the schedule and retention of resource protection.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -147,24 +147,24 @@ You can assign a policy to a database instance using policies that govern the sc
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Protect*.
 . Select a policy or create a new one. 
 +
-For details about creating a policy, refer to link:br-use-policies-create.html[Create a policy].
+For details about creating a policy, see link:br-use-policies-create.html[Create a policy].
 
-. Provide information on the scripts that you want to run before and after the backup.
+. Provide the scripts to run before and after the backup.
 
-* *Pre-script*: Enter your script filename and location to run it automatically before the protect action is triggered. This is helpful for performing additional tasks or configurations that need to be executed before the protection workflow.
-* *Post-script*: Enter your script filename and location to run it  automatically after the protection action is complete. This is helpful for performing additional tasks or configurations that need to be executed after the protection workflow.
+* *Pre-script*: Enter the script filename and location to run automatically before the protect action starts. Use this to perform additional tasks or configurations before the protection workflow.
+* *Post-script*: Enter the script filename and location to run automatically after the protection action completes. Use this to perform additional tasks or configurations after the protection workflow.
 
 
 
-. Provide information on how you want the snapshot to be verified: 
+. Provide verification information for the snapshot:
 
-* Storage location: Select the location where the verification snapshot will be stored.
-* Verification resource: Select whether the resource that you want to verify is on the local snapshot and on ONTAP secondary storage. 
-* Verification schedule: Select the frequency of hourly, daily, weekly, monthly, or yearly.
+* Storage location: Select where to store the verification snapshot.
+* Verification resource: Select whether to verify the resource on the local snapshot, on ONTAP secondary storage, or both.
+* Verification schedule: Select the frequency: hourly, daily, weekly, monthly, or yearly.
 
 === Associate credentials with a resource 
 
-You can associate credentials with a resource so that protection can occur. 
+You can associate credentials with a resource so protection can occur. 
 
 For details, see link:br-start-configure.html[Configure NetApp Backup and Recovery settings, including credentials].
 
@@ -189,7 +189,7 @@ You can change the policy, create a new policy, set a schedule, and set retentio
 . Select the instance. 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit protection*.
 +
-For details about creating a policy, refer to link:br-use-policies-create.html[Create a policy].
+For details about creating a policy, see link:br-use-policies-create.html[Create a policy].
 
 === Back up now 
 
@@ -203,7 +203,7 @@ Back up your data now to protect it immediately.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Back up now*.
 . Choose the backup type and set the schedule.
 +
-For details about creating an ad hoc backup, refer to link:br-use-mssql-backup.html[Create a policy].
+For details about creating an ad hoc backup, see link:br-use-mssql-backup.html[Back up Microsoft SQL Server workloads].
 
 == Manage database information 
 
@@ -230,20 +230,23 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . Select the database. 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Protect*.
 +
-For details about creating a policy, refer to link:br-use-policies-create.html[Create a policy].
+For details about creating a policy, see link:br-use-policies-create.html[Create a policy].
 
 === Restore databases
 
-Restore a database to protect your data.
+Restore a database when you need to recover data.
 
 *Required NetApp Console role*
 Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select the workload that you want to view and select *View*.
 . Select the *Databases* tab. 
 . Select the database. 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Restore*.
 +
-For information about restoring workloads, refer to link:br-use-mssql-restore.html[Restore workloads].
+For information about restoring workloads, see link:br-use-mssql-restore.html[Restore workloads].
 
 === Edit protection settings
 
@@ -260,7 +263,7 @@ Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admi
 . Select the database. 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Edit protection*.
 +
-For details about creating a policy, refer to link:br-use-policies-create.html[Create a policy].
+For details about creating a policy, see link:br-use-policies-create.html[Create a policy].
 
 === Back up now 
 

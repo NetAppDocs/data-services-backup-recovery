@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Review these NetApp Backup and Recovery limitations before using Backup and Recovery in your environment.
 ---
 
-= Known limitations with NetApp Backup and Recovery for VMware workloads
+= Known limitations for VMware workloads in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,9 +13,9 @@ summary: Review these NetApp Backup and Recovery limitations before using Backup
 :imagesdir: ./media/
 
 [.lead]
-Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
+Review these limitations before using NetApp Backup and Recovery for VMware workloads.
 
-The following actions are not supported in VMware workloads in NetApp Backup and Recovery: 
+NetApp Backup and Recovery does not support the following actions for VMware workloads:
 
 * In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 * vVol support

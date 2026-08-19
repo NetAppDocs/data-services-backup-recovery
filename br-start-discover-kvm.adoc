@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to discover KVM hosts and virtual machines before protecting them. Your KVM hosts and VMs must be managed by a management platform such as Apache CloudStack before you can add them to Backup and Recovery.
+Discover KVM hosts and virtual machines in NetApp Backup and Recovery so you can protect them with backup and recovery policies. Your KVM environment must be managed by a management platform such as Apache CloudStack before discovery.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -24,10 +24,10 @@ Add management platform and KVM host information and let NetApp Backup and Recov
 
 .Steps
 
-. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
 . Under *Workloads*, select the *KVM* tile.
 +
-If you are logging in to Backup and Recovery for the first time and have a system in the Console but no discovered resources, the _Welcome to the new NetApp Backup and Recovery_ page appears with an option to *Discover resources*.
+If this is your first time logging in to NetApp Backup and Recovery and you already have a system in the Console but no discovered resources, the "Welcome to the new NetApp Backup and Recovery" page appears with an option to *Discover resources*.
 
 . Select *Discover resources*.
 
@@ -36,7 +36,7 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 .. If you haven't yet integrated your management platform with Backup and Recovery, select *Add management platform*.
 ... Enter the following information:
 +
-* *Management platform IP address or FQDN*: Enter the IP address or fully qualified domain name of the management platform.
+* *Management platform IP address or FQDN*: Enter the IP address or an FQDN of the management platform.
 * *API key*: Enter the API key to use to authenticate API requests.
 * *Secret Key*: Enter the secret key to use to authenticate API requests.
 * *Port*: Enter the port to use for communication between Backup and Recovery and the management platform.
@@ -56,18 +56,11 @@ TIP: This process might take a few minutes.
 .Result
 The KVM workload is displayed in the list of workloads on the Inventory page.
 
-//.. If you haven't yet stored credentials for this KVM host, select *Add credentials*.
-//... Select the Console agent to use with this host.
-//... Enter a name for this credential.
-//... Choose whether to use root credentials or non-root credentials.
-//... Enter the user name and password for the account.
-//... Select *Done*.
-
 == Continue to the NetApp Backup and Recovery Dashboard
 
 .Steps
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
-. Select a workload tile (for example, Microsoft SQL Server).
+. Select the KVM workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
 . Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.

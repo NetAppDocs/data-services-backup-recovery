@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: br-use-manage-kubernetes-applications.html
-keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
-summary: NetApp Backup and Recovery enables you to unprotect and delete your Kubernetes applications and associated resources.  
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, on-premises, applications, virtual machines, backup and recovery, snapcenter
+summary: Manage Kubernetes applications and related protection data in NetApp Backup and Recovery.
 ---
 
 = Manage Kubernetes applications in NetApp Backup and Recovery 
@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to unprotect and delete your Kub
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to unprotect and delete your Kubernetes applications and associated resources.
+Unprotect or delete Kubernetes applications and remove restore points when needed.
 
 .Required NetApp Console role
 
@@ -35,40 +35,38 @@ You can modify the settings of an existing Kubernetes application if the resourc
 ////
 
 == Unprotect a Kubernetes application
-You can unprotect an application if you no longer want to protect it. When you unprotect an application, NetApp Backup and Recovery stops protecting the application but keeps all associated backups and snapshots.
+You can unprotect an application if you no longer need to protect it. When you unprotect an application, NetApp Backup and Recovery stops protecting the application but keeps all associated backups and snapshots.
 
-NOTE: You cannot unprotect an application while protection operations are still running for it. Either wait for the operation to finish, or as a workaround, <<Remove a restore point for a Kubernetes application, remove the restore point>> the running protection operation is using. You can then unprotect the application.
+NOTE: You cannot unprotect an application while protection operations are still running for it. Wait for the operation to finish, or remove the restore point that the running protection operation is using. You can then unprotect the application.
 
 .Steps
 . In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select a Kubernetes instance, and select *View* to open the resources associated with that instance.
 . Select the *Applications* tab.
-. In the list of applications, choose an application you want to unprotect and select the associated Actions menu.
+. In the list of applications, select the application that you want to unprotect and select the associated Actions menu.
 . Select *Unprotect*.
 . Read the notice, and when ready, select *Unprotect*.
 
 == Delete a Kubernetes application
-Delete an application you no longer need. NetApp Backup and Recovery stops protection and removes all backups and snapshots for deleted applications.
+Delete an application that you no longer need. NetApp Backup and Recovery stops protection and removes all backups and snapshots for deleted applications.
 
 .Steps
 . In NetApp Backup and Recovery, select *Inventory*.
-. Choose a Kubernetes instance, and select *View* to view the resources associated with that instance.
+. Select a Kubernetes instance, and select *View* to open the resources associated with that instance.
 . Select the *Applications* tab.
-. In the list of applications, choose an application you want to delete and select the associated Actions menu.
+. In the list of applications, select the application that you want to delete and select the associated Actions menu.
 . Select *Delete*.
-. Enable *Delete snapshots and backups* to remove all snapshots and backups of the application.
+. Enable *Delete snapshots and backups* to remove all snapshots and backups for the application.
 +
 CAUTION: You will no longer be able to restore the application using these snapshots and backups.
 
 . Confirm the action and select *Delete*.
 
 == Remove a restore point for a Kubernetes application
-You might need to remove a restore point for an application if you need to unprotect it and protection operations are currently running.
+Remove a restore point for an application if you need to unprotect it while protection operations are currently running.
 
 .Steps
 
 . In the NetApp Backup and Recovery menu, select *Restore*.
-. Choose a Kubernetes application from the list, and select *View and Restore* for that application.
-+
-The list of restore points appears.
-. Choose the recovery point you need to delete and select the Actions icon image:../media/icon-action.png[Actions option] > *Delete recovery point* to delete it.
+. Select a Kubernetes application from the list, and select *View and Restore* to open its restore points.
+. Select the recovery point that you want to delete and select the Actions icon image:../media/icon-action.png[Actions option] > *Delete recovery point* to delete it.

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-kubernetes-reports.html
 keywords: backing up, back up, backup, backup on-prem ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
-summary: Create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more. 
+summary: Create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more.
 ---
 
 = Manage Kubernetes protection reports in NetApp Backup and Recovery
@@ -11,29 +11,29 @@ summary: Create protection reports for Kubernetes workloads to view protection s
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, create protection reports for Kubernetes workloads to view protection status and details, including counts of successful and failed backups, backup types, cluster health information, and more.
+Create Kubernetes protection reports in NetApp Backup and Recovery to monitor backup status, backup types, and cluster health.
 
 *Required NetApp Console role*
-Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Create a protection report
-Create a protection report to view protection status of your clusters.
+Create a protection report to view your clusters' protection status.
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. From the NetApp Backup and Recovery menu, select *Reports*.
 . Select *Create report*.
 . Enter report scope details:
 +
 * *Report name*: Enter a unique name for the report.
-* *Report type*: Choose whether you want a report by account or by workload (select Kubernetes from the list). 
+* *Report type*: Choose whether you want a report by account or by workload (select Kubernetes from the list).
 * *Select cluster*: If you selected by workload, choose the cluster from the list for which you want to generate the report and select *Accept*. Choose *Select all* to generate a report for all clusters.
 . Enter reporting range: Choose whether you want the report to include data from the last day, last 7 days, last 30 days, last quarter, or last year.
-. Enter report configuration details: Choose whether to run the report only once or to schedule a recurring report generation. For scheduled reports, choose the frequency of recurrence and select a start date.
-.. Enter email delivery details: (For scheduled reports only) If you want the report to be delivered by email, enter one or more email addresses that should receive the scheduled report.
+. Enter report configuration details: Choose whether to run the report once or on a recurring schedule. For scheduled reports, choose the frequency of recurrence and select a start date.
+.. Enter email delivery details: For scheduled reports only, enter one or more email addresses to receive the report.
 
 +
-Configure email notifications in the Settings page. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
+Configure email notifications on the *Settings* page. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
 . Select *Create*.
 
 == Download a protection report
@@ -41,7 +41,7 @@ Download a generated protection report either as a JSON file or a PDF document s
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. From the NetApp Backup and Recovery menu, select *Reports*.
 . On the *Reports* page, select the *Reports* menu to see the list of generated protection reports.
 . For the report that you want to download, select the Actions icon image:../media/icon-action.png[Actions option] > *Download*.
 +
@@ -49,22 +49,22 @@ Download a generated protection report either as a JSON file or a PDF document s
 * Select *Download PDF* to download the report as a PDF document.
 
 == View a protection report
-Quickly view interactive details of a protection report within NetApp Backup and Recovery. You can see job summary information, data protection status, configuration details, and more.
+View interactive details of a protection report within NetApp Backup and Recovery. You can see job summary information, data protection status, configuration details, and more.
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. From the NetApp Backup and Recovery menu, select *Reports*.
 . On the *Reports* page, select the *Reports* menu to see the list of generated protection reports.
 . For the report that you want to view, select the Actions icon image:../media/icon-action.png[Actions option] > *View report*.
 +
-The report details appear. 
+The report details appear.
 
 == Delete a protection report
 Delete a protection report when you no longer need it.
 
 .Steps
 
-. From the NetApp Backup and Recovery menu, select the *Reports* option.
+. From the NetApp Backup and Recovery menu, select *Reports*.
 . On the *Reports* page, select the *Reports* menu to see the list of generated protection reports.
 . For the report that you want to delete, select the Actions icon image:../media/icon-action.png[Actions option] > *Delete*.
 . Confirm the action by selecting *Delete*.
