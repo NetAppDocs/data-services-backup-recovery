@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery must discover Hyper-V virtual machines befor
 :imagesdir: ./media/
 
 [.lead]
-Discover Hyper-V virtual machines in NetApp Backup and Recovery so you can protect them with backup and recovery policies.
+Discover Hyper-V virtual machines in NetApp Backup and Recovery so you can protect them with protection policies.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and Recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].

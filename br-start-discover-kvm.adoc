@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-Discover KVM hosts and virtual machines in NetApp Backup and Recovery so you can protect them with backup and recovery policies. Your KVM environment must be managed by a management platform such as Apache CloudStack before discovery.
+Discover KVM hosts and virtual machines in NetApp Backup and Recovery so you can protect them with protection policies. Your KVM environment must be managed by a management platform such as Apache CloudStack before discovery.
 
 *Required Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
