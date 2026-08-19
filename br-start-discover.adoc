@@ -13,10 +13,10 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to first discover Microsoft SQL Server workloads in order for you to use the service. You can optionally import backup data and policies from SnapCenter if you already have SnapCenter installed. 
+Discover Microsoft SQL Server workloads in NetApp Backup and Recovery so that you can protect and restore them. If you already use SnapCenter, you can also import existing backup data and policies. 
 
 *Required NetApp Console role*
-Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and Recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 //INCLUDE for configuring RKE2 DNS for discovering air-gapped DB hosts, for NCL only:
 
@@ -26,17 +26,17 @@ include::_include/dns-fix-air-gapped-db-discovery.adoc[]
 
 == Discover Microsoft SQL Server workloads and optionally import SnapCenter resources
 
-During discovery, NetApp Backup and Recovery analyzes Microsoft SQL Server instances and databases in systems within your organization. 
+During discovery, NetApp Backup and Recovery analyzes Microsoft SQL Server instances and databases across systems in your organization.
 
-NetApp Backup and Recovery assesses Microsoft SQL Server applications. The service assesses the existing protection level including the current backup protection policies, snapshots, and backup and recovery options.
+The service assesses existing protection levels, including current backup policies, snapshots, and backup and recovery options.
 
 Discovery occurs in the following ways: 
 
 * If you already have SnapCenter, import SnapCenter resources into NetApp Backup and Recovery by using the NetApp Backup and Recovery UI.
 +
-NOTE: If you already have SnapCenter, first check to be sure you've met the prerequisites before importing from SnapCenter. For example, you should add on-premises SnapCenter cluster storage systems to the NetApp Console first before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
+NOTE: If you already have SnapCenter, first check to be sure you've met the prerequisites before importing from SnapCenter. For example, you should add on-premises SnapCenter cluster storage systems to NetApp Console before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
 +
-* If you don't already have SnapCenter, you can still discover workloads by adding a vCenter manually and performing discovery.
+* If you don't already have SnapCenter, you can still discover workloads by adding a vCenter manually and perform discovery.
 
 === If SnapCenter is already installed, import SnapCenter resources into NetApp Backup and Recovery
 
@@ -81,17 +81,17 @@ TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does
 NOTE: If the SnapCenter Server is already registered, you can update the existing registration details.
 
 .Result
-The Inventory page shows the imported SnapCenter resources that include MS SQL hosts, instances, and databases.
+The Inventory page shows the imported SnapCenter resources that include Microsoft SQL Server hosts, instances, and databases.
 
 To see the details of the imported SnapCenter resources, select the *View details* option from the Actions menu.
 
 ==== Manage SnapCenter host resources
 
-After you import the SnapCenter resources, manage those host resources in NetApp Backup and Recovery. After you select to manage those resources, NetApp Backup and Recovery is able to back up and recover the resources that you imported from SnapCenter. You no longer manage those resources in SnapCenter Server. 
+After you import SnapCenter resources, manage the host resources in NetApp Backup and Recovery. After you choose to manage them, NetApp Backup and Recovery can back up and recover the imported resources. You no longer manage those resources in SnapCenter Server. 
 
 .Steps 
 . After you import the SnapCenter resources, from the Backup and Recovery menu, select *Inventory*. 
-. From the Inventory page, select the imported SnapCenter host that you want to have NetApp Backup and Recovery to manage from now on.
+. From the Inventory page, select the imported SnapCenter host that you want NetApp Backup and Recovery to manage.
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details* to display the workload details.  
 
@@ -122,9 +122,9 @@ If you have already discovered resources, you can import SnapCenter resources fr
 
 === If you don't have SnapCenter installed, add a vCenter and discover resources
 
-If you don't already have SnapCenter installed, you can add vCenter information and have NetApp backup and recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
+If you don't already have SnapCenter installed, you can add vCenter information and have NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems where you want to discover workloads.
 
-This is optional if you have a VMware environment. 
+This step is optional if you have a VMware environment. 
 
 .Steps
 
@@ -139,7 +139,7 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 .. *Workload type*: For this version, only Microsoft SQL Server is available.   
 .. *vCenter settings*: Select an existing vCenter or add a new one. To add a new vCenter, enter the vCenter FQDN or IP address, user name, password, port, and protocol.
 +
-TIP: If you are entering vCenter information, enter information for both vCenter settings and Host registration. If you added or entered vCenter information here, you also need to add plugin information in Advanced Settings next. 
+TIP: If you are entering vCenter information, enter information for both vCenter settings and Host registration. If you added or entered vCenter information here, you also need to add plug-in information in Advanced Settings next. 
 .. *Host registration*:  Select *Add credentials* and enter information about the hosts containing the workloads you want to discover.
 +
 TIP: If you are adding a standalone server and not a vCenter server, enter only the host information.  
@@ -152,32 +152,32 @@ TIP: This process might take a few minutes.
 . Continue with Advanced Settings. 
 
 
-==== Set Advanced settings options during discovery and install the plugin
+==== Set Advanced settings options during discovery and install the plug-in
 
-With Advanced Settings, you can manually install the plugin agent on all servers being registered. This enables you to import all SnapCenter workloads into NetApp Backup and Recovery so you can manage backups and restores there. NetApp Backup and Recovery shows the steps needed to install the plugin. 
+With Advanced Settings, you can manually install the plug-in agent on all servers being registered. This enables you to import all SnapCenter workloads into NetApp Backup and Recovery so you can manage backups and restores there. NetApp Backup and Recovery shows the steps needed to install the plug-in. 
 
 .Steps
 
-. From the Discover resources page, continue to Advanced Settings by clicking the down arrow on the right. 
+. From the Discover resources page, continue to Advanced Settings by selecting the down arrow on the right. 
 . In the Discover workload resources page, enter the following information. 
-* *Enter plug-in port number*: Enter the port number that the plugin uses.
-* *Installation path*: Enter the path where the plugin will be installed. 
+* *Enter plug-in port number*: Enter the port number that the plug-in uses.
+* *Installation path*: Enter the path where the plug-in will be installed. 
 
-. If you want to install the SnapCenter agent manually, check the boxes for the following options:
-* *Use manual installation*: Check this box to install the  plugin manually.   
-//* *Use Group Managed Service Account (gMSA)*: If you use a specific third-party gMSA account to manage host credentials, check this box. 
-* *Add all hosts in the cluster*: Check this box to add all hosts in the cluster to NetApp Backup and Recovery during discovery.
-* *Skip optional preinstall checks*: Check this box to skip optional preinstall checks. You might want to do this for example, if you know that memory or space considerations will be changed in the near future and you want to install the plugin now.
-//* *Skip automated installation*: Check this box to skip the automated installation of the plugin. You might want to do this if you are installing the plugin manually.
+. If you want to install the SnapCenter agent manually, select the following options:
+* *Use manual installation*: Select this option to install the plug-in manually.   
+//* *Use Group Managed Service Account (gMSA)*: If you use a specific third-party gMSA account to manage host credentials, select this option. 
+* *Add all hosts in the cluster*: Select this option to add all hosts in the cluster to NetApp Backup and Recovery during discovery.
+* *Skip optional preinstall checks*: Select this option to skip optional preinstall checks. You might want to do this, for example, if you know that memory or space considerations will be changed in the near future and you want to install the plug-in now.
+//* *Skip automated installation*: Select this option to skip the automated installation of the plug-in. You might want to do this if you are installing the plug-in manually.
 
 . Select *Discover*.
 
 ==== Continue to the NetApp Backup and Recovery Dashboard
 
-. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
 . Select a workload tile (for example, Microsoft SQL Server).
 . From the Backup and Recovery menu, select *Dashboard*.
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
+. Review the health of data protection. The number of at-risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].
 

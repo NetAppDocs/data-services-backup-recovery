@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
-= Manage backup-to-object storage options in NetApp Backup and Recovery
+= Manage backup-to-object advanced settings in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-You can change cluster-level, backup-to-object storage settings that you set when activating NetApp Backup and Recovery for each ONTAP system by using the Advanced Settings page. You can also modify some settings that are applied as "default" backup settings. This includes changing the transfer rate of backups to object storage, whether historical snapshots are exported as backup files, and enabling or disabling ransomware scans for a system. 
+Use the Advanced Settings page to change cluster-level backup-to-object storage settings for each ONTAP system after you activate NetApp Backup and Recovery. You can adjust bandwidth, historical snapshot export, yearly snapshot deletion, and ransomware scan settings.
 
 NOTE: These settings are available for backup-to-object storage only. None of these settings affect your Snapshot or replication settings. 
 
@@ -83,7 +83,7 @@ When you activate NetApp Backup and Recovery for a system, by default, ONTAP can
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Max Transfer Rate* section. 
 
@@ -132,7 +132,7 @@ Note that this option only applies to new backup files for new read/write volume
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Export existing snapshot copies* section. 
 . Select whether you want existing snapshots to be exported. 
@@ -147,7 +147,7 @@ When you select the "yearly" backup label for a backup policy for any of your vo
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the Advanced Settings page, expand the *Yearly Snapshot Deletion* section. 
 
@@ -156,11 +156,11 @@ When you select the "yearly" backup label for a backup policy for any of your vo
 . Select *Apply*.
 
 == Enable or disable ransomware scans
-Ransomware protection scans are enabled by default. The default setting for the scan frequency is for 7 days. The scan occurs only on the latest snapshot. 
+Ransomware protection scans are enabled by default. By default, scans run every 7 days. The scan occurs only on the latest snapshot.
 
-For details about Datalock and Ransomware protection options, refer to link:prev-ontap-policy-object-options.html[Datalock and Ransomware protection options].
+For details about DataLock and Ransomware protection options, refer to link:prev-ontap-policy-object-options.html[DataLock and Ransomware protection options].
 
-You can change that schedule to days or weeks or disable it, saving costs.  
+You can change that schedule to a number of days or weeks, or disable it to save costs.
 
 TIP: Enabling ransomware scans will incur extra charges depending on the cloud provider. 
 
@@ -175,7 +175,7 @@ You can enable or disable ransomware scans for a cluster.
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > System settings*.
 
 . In the resulting page, expand the *Ransomware scan* section. 
 . Enable or disable *Ransomware scan*. 
@@ -191,7 +191,7 @@ You can enable or disable ransomware scans at the provider level by using the pr
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, click image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > Provider settings*.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > Provider settings*.
 
 . At the top of the resulting page, select the bucket for which you need to change settings.
 . Expand the *Ransomware scan* section. 
@@ -200,5 +200,4 @@ You can enable or disable ransomware scans at the provider level by using the pr
 . Optionally, change the every week default scan to days or weeks. 
 . Set the how often in days or weeks that the scan should run. 
 . Select *Apply*. 
-
 

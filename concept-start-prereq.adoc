@@ -16,7 +16,7 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 Before you begin using NetApp Backup and Recovery, ensure your NetApp Console and operational environment meet the following requirements.
 
 == Prepare to use NetApp Backup and Recovery
-You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on if you are using NetApp Console or NetApp Console local deployment.
+You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on whether you are using NetApp Console or NetApp Console local deployment.
 
 === Prepare to use Backup and Recovery on NetApp Console 
 To prepare NetApp Console for Backup and Recovery, you must:
@@ -101,7 +101,7 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-
 
 == Requirements for backups to object storage
 
-To use object storage as backup targets, you need an account with AWS S3, Google Cloud Storage, Microsoft Azure Blob, StorageGRID, or ONTAP and the appropriate access permissions configured.
+To use object storage as backup targets, you need an account with AWS S3, Google Cloud Storage, Azure Blob storage, StorageGRID, or ONTAP and the appropriate access permissions configured.
 
 == Requirements for protecting ONTAP volume workloads
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following host system, space, and sizing prerequisites.
@@ -131,7 +131,7 @@ NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per syste
 | Operating systems
 | Microsoft Windows
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
-| Microsoft SQL Server versions | Version 2012 and later are supported for VMware Virtual Machine File System (VMFS) and VMware Virtual Machine Disk (VMDK) NFS.
+| Microsoft SQL Server versions | Versions 2012 and later are supported for VMware Virtual Machine File System (VMFS) and VMware Virtual Machine Disk (VMDK) on NFS.
 
 | SnapCenter Server version | SnapCenter Server version 5.0 or greater is required if you are going to import your existing data from SnapCenter into NetApp Backup and Recovery.
 
@@ -199,7 +199,7 @@ You need specific requirements to discover and protect your VMware workloads.
 |7.0U1 and above
 
 |VMware Tools
-|VMWare Tools is required when using the file and folder restore feature and VM-consistent backups. To make sure the VMware Tools version matches your version of ESXi Server, refer to the https://packages.vmware.com/tools/versions[VMware version mapping information].
+|VMware Tools is required when using the file and folder restore feature and VM-consistent backups. To make sure the VMware Tools version matches your version of ESXi Server, refer to the https://packages.vmware.com/tools/versions[VMware version mapping information].
 
 |IP address types
 |IPv4, IPv6
@@ -255,7 +255,7 @@ NOTE: To ensure that KVM workload restores complete successfully, make sure that
 To enable protection of KVM VMs administered by non-root users, use the following steps:
 
 . Mount the volume as type NFS3 to avoid the use of the `nobody` user and group.
-. Use the following command to add a non-root user to the `qemu` group wile preserving their existing groups:
+. Use the following command to add a non-root user to the `qemu` group while preserving their existing groups:
 +
 [source,shell]
 ----
@@ -300,8 +300,8 @@ a|
 
 |Object storage (backup targets)
 a|
-* Azure Object Storage
-* Amazon AWS
+* Azure Blob storage
+* AWS S3
 * NetApp StorageGRID
 * ONTAP S3
 

@@ -13,7 +13,7 @@ summary: You can use Search and Restore to recover volumes, folders, or files fr
 :imagesdir: ./media/
 
 [.lead]
-You can use Search and Restore to recover volumes, folders, or files from ONTAP backup files. Search and Restore enables you to search across all backups (including local snapshots, replicated volumes, and object storage) without needing exact system, volume, or file names.
+Use Search and Restore to recover volumes, folders, or files from ONTAP backups when you don't know the exact system, volume, or file name. You can search across local snapshots, replicated volumes, and object storage backups.
 
 Restoring from local snapshots or replicated volumes is typically faster and less expensive than restoring from object storage.
 
@@ -48,7 +48,7 @@ link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring fr
 * When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
 ====
 
-Before you start, you should have some idea of the name or location of the volume or file you want to restore.
+Before you begin, you should have some idea of the name or location of the volume or file you want to restore.
 
 == Search & Restore supported systems and object storage providers
 
@@ -81,7 +81,7 @@ On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 //endif::gcp[]
-| NetApp StorageGRID | On-premises ONTAP system
+| StorageGRID | On-premises ONTAP system
 Cloud Volumes ONTAP
 | On-premises ONTAP system
 | ONTAP S3 | On-premises ONTAP system
@@ -93,18 +93,18 @@ Cloud Volumes ONTAP
 For Search & Restore, the Console agent can be installed in the following locations:
 
 //ifdef::aws[]
-* For Amazon S3, the Console agent can be deployed in AWS or in your premises 
+* For Amazon S3, the Console agent can be deployed in AWS or on premises
 //endif::aws[]
 //ifdef::azure[]
-* For Azure Blob, the Console agent can be deployed in Azure or in your premises 
+* For Azure Blob, the Console agent can be deployed in Azure or on premises
 //endif::azure[]
 //ifdef::gcp[]
 * For Google Cloud Storage, the Console agent must be deployed in your Google Cloud Platform VPC
 //endif::gcp[]
-* For StorageGRID, the Console agent must be deployed in your premises; with or without internet access
-* For ONTAP S3, the Console agent can be deployed in your premises (with or without internet access) or in a cloud provider environment
+* For StorageGRID, the Console agent must be deployed on premises, with or without internet access
+* For ONTAP S3, the Console agent can be deployed on premises (with or without internet access) or in a cloud provider environment
 
-Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
+Note that references to "on-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
 == Search & Restore prerequisites
 Ensure your environment meets these requirements before enabling Search & Restore:
@@ -155,7 +155,7 @@ Even though you are using an on-premises Console agent, the cloud provider requi
  
 == Search & Restore process
 
-The process goes like this:
+The process works like this:
 
 . Before you can use Search & Restore, you need to enable "Indexing" on each source system from which you'll want to restore volume data. This allows the Indexed Catalog to track the backup files for every volume.
 +
@@ -228,11 +228,11 @@ If you are using the legacy Indexed Catalog, the following occurs with systems:
 
 //If Indexing has already been enabled for your system, go to the next section to restore your data.
 
-.Steps to enable Indexing for a system:
+.Steps to enable indexing for a system:
 
 If Indexing has already been enabled for your system, go to the next section to restore your data.
 
-You will first need to mount a separate volume to hold catalog files. This prevents data loss if the size of the files that hold the snapshots becomes too large. This is not required on every cluster; you can mount any one volume from any of the clusters in your environment. If you don't do this, indexing might not function correctly.
+First, mount a separate volume to hold catalog files. This helps prevent data loss if the snapshot catalog files become too large. This is not required on every cluster; you can mount any one volume from any of the clusters in your environment. If you don't do this, indexing might not function correctly.
 
 For the mounted volume, use the following sizing guidance:
 
@@ -243,7 +243,7 @@ For the mounted volume, use the following sizing guidance:
 * 20 GB for the catalog data with additional space for zip file creation and temporary files
 
 [#mount-volume-steps]
-.Step to mount the volume to reindex the catalog
+.Step to mount the volume for catalog reindexing
 
 . Mount the volume to `/opt/application/netapp/cbs` by entering the following command, where:
 +
@@ -284,19 +284,18 @@ After you have <<enable-the-indexed-catalog-for-each-system,enabled Indexing for
 .Steps
 
 . From the Console menu, select *Protection > Backup and recovery*.
-. Select the *Restore* tab and the Restore Dashboard is displayed.
-. From the _Search & Restore_ section, select *Search & Restore*.
+. Select the *Restore* tab to display the Restore Dashboard.
 . From the _Search & Restore_ section, select *Search & Restore*.
 . From the Search & Restore page:
 .. In the _Search bar_, enter a full or partial volume name, folder name, or file name.
 .. Select the type of resource: *Volumes*, *Files*, *Folders*, or *All*.
-.. In the _Filter by_ area, select the filter criteria. For example, you can select the system where the data resides and the file type, for example a .JPEG file. Or you can select the type of Backup Location if you want to search for results only within available snapshots or backup files in object storage.
+.. In the _Filter by_ area, select the filter criteria. For example, you can select the system where the data resides and the file type, such as a .JPEG file. You can also select the backup location type if you want to search only within available snapshots or backup files in object storage.
 
 . Select *Search* and the Search Results area displays all the resources that have a file, folder, or volume that matches your search.
 . Locate the resource that has the data you want to restore and select *View All Backups* to display all the backup files that contain the matching volume, folder, or file.
 . Locate the backup file that you want to use to restore the data and select *Restore*.
 +
-Note that the results identify local volume snapshots and remote Replicated volumes that contain the file in your search. You can choose to restore from the cloud backup file, from the snapshot, or from the Replicated volume.
+Note that the results identify local volume snapshots and remote replicated volumes that contain the file in your search. You can choose to restore from the cloud backup file, the snapshot, or the replicated volume.
 
 . Select the destination location where you want the volume, folder, or file(s) to be restored and select *Restore*.
 +

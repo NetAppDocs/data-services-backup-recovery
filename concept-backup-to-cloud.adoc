@@ -13,11 +13,11 @@ summary: NetApp Backup and Recovery is a data service that provides efficient, s
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
+Use this overview to learn how NetApp Backup and Recovery protects your ONTAP workloads, what workloads and backup targets it supports, and how licensing and costs work.
 
 A workload is a logical grouping of resources within a system that is managed as a single unit for protection, governance, detection, and recovery. In Backup and Recovery, a workload is the unit you protect. Its meaning depends on the data source: for Kubernetes a workload is an application, for VM environments it's a virtual machine, and for database environments it's a database.
 
-Support for Backup and Recovery is already built in to all ONTAP systems, so there is no need for additional hardware or media gateways. This makes backup operations simple and cost effective. The NetApp Console simplifies the implementation of any backup strategy, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
+Support for Backup and Recovery is already built into all ONTAP systems, so there is no need for additional hardware or media gateways. This makes backup operations simple and cost effective. NetApp Console simplifies any backup strategy implementation, including the full spectrum of 3-2-1 backup variants, without needing multiple resource managers or specialized personnel.
 
 == What you can do with NetApp Backup and Recovery
 
@@ -216,7 +216,7 @@ Backup copies are stored in an object store that the NetApp Console creates in y
 
 * In AWS, the NetApp Console enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
 
-* In Azure, the NetApp Console uses a new or existing resource group with a storage account for the Blob container. the Console https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
+* In Azure, NetApp Console uses a new or existing resource group with a storage account for the Blob container. The Console https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
 
 * In StorageGRID, the Console uses an existing storage account for the object store bucket.
 
@@ -229,7 +229,7 @@ Backup copies are associated with the NetApp Console organization in which the C
 
 If you have multiple Console agents in the same NetApp Console organization, each Console agent displays the same list of backups. 
 
-== Terms that might help you with NetApp Backup and Recovery 
+== Terms for NetApp Backup and Recovery
 
 You might benefit by understanding some terminology related to protection.
 
@@ -237,4 +237,3 @@ You might benefit by understanding some terminology related to protection.
 
 
 * *Workload*: A workload in NetApp Backup and Recovery can include ONTAP volumes, Microsoft SQL Server instances and databases; VMware VMs and datastores; or Kubernetes clusters and applications.
-

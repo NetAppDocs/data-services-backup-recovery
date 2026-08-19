@@ -5,7 +5,7 @@ keywords: migrate, pvc, nfs, storage, performance, persistence
 summary:  Increase catalog index performance in NetApp Console local deployment environments. 
 ---
 
-= Improve Search and Restore performance in NetApp Backup and Recovery local deployments
+= Migrate Search and Restore catalog storage to ONTAP NFS
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary:  Increase catalog index performance in NetApp Console local deployment 
 :imagesdir: ./media/
 
 [.lead]
-Migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share to significantly improve catalog performance for NetApp Console local deployment. The index catalog is used for Search & Restore functionality. While the catalog functions with the default storage, using ONTAP-backed NFS provides measurable performance improvements for Search & Restore.
+To improve Search and Restore performance in a NetApp Console local deployment, migrate the catalog index storage from the cluster's default storage class to an ONTAP-backed NFS share. The catalog index supports Search and Restore, and ONTAP-backed NFS can provide measurable performance improvements.
 
 .Before you begin
 Ensure you have the following before you start:
@@ -51,7 +51,7 @@ kubectl get pods -n cbs | grep cloudmanager-cbs-catalog-worker- || echo "no work
 ----
 
 [discrete]
-===== Mount the ONTAP volume on NetApp Console local deployment and copy from the pod
+===== Mount the ONTAP volume on NetApp Console local deployment and copy data from the pod
 
 . Mount the ONTAP NFS export on a local mount point in the VM created when the NetApp Console local deployment OVA was deployed.
 . Copy the data from the running coordinator pod into the ONTAP mount, with no intermediate directory. The coordinator must still be running.
@@ -119,7 +119,7 @@ kubectl delete pv "$PV"
 [discrete]
 ===== Create the static ONTAP PV and PVC
 
-. Create the following PV and PVC yaml objects:
+. Create the following PV and PVC YAML objects:
 +
 **`pv.yaml`**
 +
@@ -166,7 +166,7 @@ spec:
       volume: ontap-nfs-share # Forces binding to the specific PV above
 ----
 
-. Apply the yaml objects, applying the PV first, then the PVC (the PV must exist for the PVC's label selector to bind to). Then verify the PVC claim is bound:
+. Apply the YAML objects by applying the PV first and then the PVC (the PV must exist for the PVC's label selector to bind to). Then verify that the PVC claim is bound:
 +
 [source,shell]
 ----

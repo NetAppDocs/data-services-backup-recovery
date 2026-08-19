@@ -2,48 +2,48 @@
 sidebar: sidebar
 permalink: br-start-setup.html
 keywords: backup, back up, restore, recovery, aws, azure
-summary: Before you use NetApp Backup and Recovery, perform a few steps to set up backup destinations.  
+summary: Prepare an offsite location, such as StorageGRID, AWS, or Azure, and configure the required permissions so it can serve as a backup destination.
 ---
 
-= Set up backup destinations before you use NetApp Backup and Recovery
+= Set up backup destinations
 :hardbreaks:
 :icons: font
 :imagesdir: ./media/
 
 [.lead]
-Before you use NetApp Backup and Recovery, perform a few steps to set up backup destinations.  
+Prepare an offsite location, such as StorageGRID, AWS, or Azure, and configure the required permissions so it can serve as a backup destination.
 
 
 Before you begin, review link:concept-start-prereq.html[prerequisites] to ensure that your environment is ready.
 
-== Prepare the backup destination 
+== Prepare the backup destination
 
 Prepare one or more of the following backup destinations: 
 
 * NetApp StorageGRID. 
 +
-Refer to https://docs.netapp.com/us-en/storage-management-storagegrid/task-discover-storagegrid.html[Discover StorageGRID^].
+See https://docs.netapp.com/us-en/storage-management-storagegrid/task-discover-storagegrid.html[Discover StorageGRID^].
 +
-Refer to https://docs.netapp.com/us-en/storagegrid/index.html[StorageGRID documentation^] for details about StorageGRID. 
+See https://docs.netapp.com/us-en/storagegrid/index.html[StorageGRID documentation^] for details about StorageGRID. 
 
-* Amazon Web Services. Refer to https://docs.netapp.com/us-en/storage-management-s3-storage/index.html[Amazon S3 documentation^].
+* Amazon Web Services. See https://docs.netapp.com/us-en/storage-management-s3-storage/index.html[Amazon S3 documentation^].
 +
 Do the following to prepare AWS as a backup destination: 
 
 ** Set up an account in AWS.
 ** Configure S3 permissions in AWS, listed in the next section.
-** For details about managing your AWS storage in the Console, refer to https://docs.netapp.com/us-en/console-setup-admin/task-viewing-amazon-s3.html[Manage your Amazon S3 buckets^].
+** For details about managing your AWS storage in the Console, see https://docs.netapp.com/us-en/console-setup-admin/task-viewing-amazon-s3.html[Manage your Amazon S3 buckets^].
 
-* Microsoft Azure. 
-** Refer to https://docs.netapp.com/us-en/storage-management-azure-netapp-files/index.html[Azure NetApp Files documentation^].
+* Microsoft Azure.
+** See https://docs.netapp.com/us-en/storage-management-blob-storage/index.html[Azure Blob storage documentation^].
 ** Set up an account in Azure.
 ** Configure https://docs.netapp.com/us-en/console-setup-admin/reference-permissions.html[Azure permissions^] in Azure. 
  
 
-** For details about managing your Azure storage in the Console, refer to https://docs.netapp.com/us-en/storage-management-blob-storage/task-view-azure-blob-storage.html[Manage your Azure storage accounts^].
+** For details about managing your Azure storage in the Console, see https://docs.netapp.com/us-en/storage-management-blob-storage/task-view-azure-blob-storage.html[Manage your Azure storage accounts^].
 
 
-After you configure options in the backup destination itself, you will later configure it as a backup destination in NetApp Backup and Recovery. For details about how to configure the backup destination in NetApp Backup and Recovery, refer to link:br-start-discover-backup-targets.html[Discover backup targets].
+After you configure options in the backup destination itself, you will later configure it as a backup destination in NetApp Backup and Recovery. For details about how to configure the backup destination in NetApp Backup and Recovery, see link:br-start-discover-backup-targets.html[Discover backup targets].
 
 
 
@@ -62,7 +62,7 @@ NOTE: When creating backups in AWS China regions, you need to change the AWS Res
 
 . When you activate the service, the Backup wizard will prompt you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you'll need to create an IAM user with the following permissions. 
 + 
-Refer to the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^].
+See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^].
 
 +
 

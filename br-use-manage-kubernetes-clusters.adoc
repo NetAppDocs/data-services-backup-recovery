@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to discover and manage your Kube
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to discover and manage your Kubernetes clusters so that you can protect resources hosted by the clusters. 
+Discover and manage Kubernetes clusters to protect their hosted resources.
 
 .Required NetApp Console role
 
@@ -27,9 +27,9 @@ You can edit a cluster if you need to change its name.
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
-. In the list of clusters, choose a cluster you want to edit and select the associated Actions menu.
+. In the list of clusters, select a cluster you want to edit and select the associated Actions menu.
 . Select *Edit cluster*.
-. Make any required changes to the cluster name. The cluster name needs to match the name that you used with the Helm command during the discovery process.
+. Make any required changes to the cluster name. The cluster name must match the name that you used with the Helm command during the discovery process.
 . Select *Done*.
 
 == Remove a Kubernetes cluster
@@ -38,7 +38,7 @@ To stop protecting a Kubernetes cluster, disable protection and delete associate
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
-. In the list of clusters, choose a cluster you want to edit and select the associated Actions menu.
+. In the list of clusters, select the cluster you want to remove and select the associated Actions menu.
 . Select *Remove cluster*.
 . Review the information in the confirmation dialog box, and select *Remove*.
 
@@ -47,19 +47,19 @@ For Kubernetes clusters running Trident Protect 26.05 or later, you can upgrade 
 
 .Steps
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
-. Choose a Kubernetes cluster to upgrade, and select the Actions icon image:../media/icon-action.png[Actions option] > *Upgrade cluster*.
+. Select a Kubernetes cluster to upgrade, and select the Actions icon image:../media/icon-action.png[Actions option] > *Upgrade cluster*.
 . In the upgrade dialog, do the following:
 .. From the list, select the version to upgrade to.
 .. Select *Upgrade*.
 
 == Reconnect a Kubernetes cluster to a Console agent
-If your Console agent's IP address changes (for example, after a restart), your Kubernetes cluster will lose its connection to the agent and you'll need to reconnect.
+If your Console agent's IP address changes (for example, after a restart), your Kubernetes cluster loses its connection to the agent and you need to reconnect.
 
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
-. Choose a disconnected Kubernetes cluster, and select the Action icon image:../media/icon-action.png[Actions option] > *Modify cluster* > *Reconnect cluster*.
-. In the Reconnect cluster dialog, copy the command line instructions and run them on your cluster.
+. Select a disconnected Kubernetes cluster, and select the Action icon image:../media/icon-action.png[Actions option] > *Modify cluster* > *Reconnect cluster*.
+. In the Reconnect cluster dialog, copy the command-line instructions and run them on your cluster.
 +
 After the command completes, your cluster should reconnect automatically.
 . Select *Close*.
@@ -70,15 +70,15 @@ If your Console agent is deleted or becomes unavailable, migrate any clusters th
 
 .Before you begin
 * https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html[Deploy a new Console agent.^]
-* Choose a protection policy to use with the new Console agent, link:br-use-policies-kubernetes-create.html#edit-a-policy[edit the policy^], and associate the protection policy with the new Console agent.
+* Select a protection policy to use with the new Console agent, link:br-use-policies-kubernetes-create.html#edit-a-policy[edit the policy^], and associate the protection policy with the new Console agent.
 
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
-. Choose a disconnected Kubernetes cluster, and select the Action icon image:../media/icon-action.png[Actions option] > *Modify cluster* > *Manage agent*.
+. Select a disconnected Kubernetes cluster, and select the Action icon image:../media/icon-action.png[Actions option] > *Modify cluster* > *Manage agent*.
 . From the list, select a new Console agent. 
 . Review the agent information to ensure the new Console agent can access the systems, backup targets, and secondary targets used by the protected applications on this cluster.
-. Copy the command line instructions for each section and run the commands on the cluster.
+. Copy the command-line instructions for each section and run the commands on the cluster.
 +
 This recreates Kubernetes secrets, redirects Trident Protect to the new Console agent, and reloads settings. After you finish running the commands, the cluster is using the new Console agent.
 . Select *Close*.

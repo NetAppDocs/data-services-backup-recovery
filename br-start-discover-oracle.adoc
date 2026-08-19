@@ -13,21 +13,21 @@ summary: NetApp Backup and Recovery must first discover workloads before it can 
 :imagesdir: ./media/
 
 [.lead]
-Discovering Oracle databases enables NetApp Backup and Recovery to protect them by creating and restoring backups and snapshots.
+Discover Oracle Database workloads in NetApp Backup and Recovery so that you can protect them with backups and snapshots.
 
 *Required NetApp Console role*
-Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and Recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Configure DNS for air-gapped host discovery in NetApp Console local deployment
 include::_include/dns-fix-air-gapped-db-discovery.adoc[]
 
 == Add an Oracle Database host and discover resources
 
-Add Oracle host information and let NetApp Backup and Recovery discover workloads. Within each Console agent, select the systems to discover.
+Add Oracle Database host information and let NetApp Backup and Recovery discover workloads. For each Console agent, select the systems to discover.
 
 .Steps
 
-. From the NetApp Console menu, select *Protection > Backup and Recovery*.
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
 . Under *Workloads*, select the *Oracle* tile.
 . Select *Discover resources*.
 
@@ -40,7 +40,7 @@ Add Oracle host information and let NetApp Backup and Recovery discover workload
 . *Host registration*: Add a new Oracle Database host. In the *Host FQDN or IP address* field, enter the host's FQDN or IP address. For clustered databases, you can enter the FQDN or IP address of any node in the cluster. Then provide credentials, the Console agent, and the port number.
 
 . (Optional) If you choose credentials for a non-root user, do the following:
-.. For instructions on how to add the non-root user you have selected to the sudoers file on the Oracle Database host, select *Configure sudoers*.
+.. For instructions on adding the selected non-root user to the sudoers file on the Oracle Database host, select *Configure sudoers*.
 .. Follow the instructions in the dialog, enable the checkbox when complete, and select *Done*.
 . *Advanced settings*: Do the following:
 .. Enter the port and installation path to use for the NetApp plug-in. The plug-in enables communication between the Oracle Database host and NetApp Backup and Recovery.
@@ -59,14 +59,14 @@ NetApp Backup and Recovery connects to each host via SSH to install the plug-in 
 .. Choose whether to run pre-installation checks on each host before automatically installing the plug-in. If checks fail, automatic plug-in installation stops. To bypass the checks and install anyway, enable *Skip optional preinstall checks* (enabled automatically if you choose manual installation).
 . Select *Discover*.
 +
-TIP: Adding resources can take several minutes. To see the progress, select *Track progress* in the status dialog at the bottom of the Inventory page or select *Monitoring* from the left-side menu.
+TIP: Adding resources can take several minutes. To see the progress, select *Track progress* in the status dialog at the bottom of the Inventory page or select *Monitoring* from the left navigation.
 
 .Result
-The Oracle Database workload is displayed in the list of workloads on the Inventory page.  
+The Oracle Database workload appears in the workload list on the Inventory page.  
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
 . From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
-. Select a workload tile (for example, Microsoft SQL Server).
+. Select a workload tile (for example, Oracle Database).
 . From the Backup and Recovery menu, select *Dashboard*.
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
+. Review the health of data protection. The number of at-risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.

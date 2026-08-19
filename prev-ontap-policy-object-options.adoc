@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to create backup policies with a variety of settings for your on-premises ONTAP and Cloud Volumes ONTAP systems.
+Use backup-to-object policies in NetApp Backup and Recovery to define schedules, retention, DataLock, ransomware protection, and archival settings for your on-premises ONTAP and Cloud Volumes ONTAP systems.
 
 NOTE: These policy settings are relevant for backup-to-object storage only. None of these settings affect your snapshot or replication policies. 
 
@@ -48,7 +48,7 @@ Yearly backups are deleted automatically from the source system after being tran
 
 NetApp Backup and Recovery provides support for DataLock and Ransomware protection for your volume backups. These features enable you to lock your backup files and scan them to detect possible ransomware on the backup files. This is an optional setting that you can define in your backup policies when you want extra protection for your volume backups for a cluster.
 
-Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the *Datalock and Ransomware protection* option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
+Both of these features protect your backup files so that you'll always have a valid backup file to recover data from in case of a ransomware attack attempt on your backups. It's also helpful to meet certain regulatory requirements where backups need to be locked and retained for a certain period of time. When the *DataLock and Ransomware protection* option is enabled, the cloud bucket that is provisioned as a part of NetApp Backup and Recovery activation will have object locking and object versioning enabled.
 
 This feature does not provide protection for your source volumes; only for the backups of those source volumes. Use some of the https://docs.netapp.com/us-en/ontap/anti-ransomware/index.html[anti-ransomware protections provided from ONTAP^] to protect your source volumes.
 
@@ -101,7 +101,7 @@ The DataLock retention setting overrides the policy retention setting from your 
 === Enable DataLock and Ransomware protection
 You can enable DataLock and Ransomware protection when you create a policy. You cannot enable, modify, or disable this after the policy is created. 
 
-. When you create a policy, expand the *Datalock and Ransomware protection* section.
+. When you create a policy, expand the *DataLock and Ransomware protection* section.
 
 . Choose one of the following: 
 * *None*: DataLock protection and ransomware protection are disabled.
@@ -156,7 +156,7 @@ You can enable DataLock and Ransomware protection on ONTAP volumes from the foll
 //endif::azure[]
 //ifdef::gcp[]
 | Cloud Volumes ONTAP in Google Cloud
-| Google Cloud
+| Google Cloud Storage
 //endif::gcp[]
 | On-premises ONTAP system
 | 
@@ -301,7 +301,7 @@ Additionally, you can get estimates for the cost associated with DataLock by vis
 
 == Archival storage options
 
-When using AWS, Azure, or Google cloud storage, you can move older backup files to a less expensive archival storage class or access tier after a certain number of days. You can also choose to send your backup files to archival storage immediately without being written to standard cloud storage. Just enter *0* as the "Archive After Days" to send your backup file directly to archival storage. This can be especially helpful for users who rarely need to access data from cloud backups or users who are replacing a backup to tape solution.
+When using AWS, Azure, or Google Cloud Storage, you can move older backup files to a less expensive archival storage class or access tier after a certain number of days. You can also choose to send your backup files to archival storage immediately without being written to standard cloud storage. Just enter *0* as the "Archive After Days" to send your backup file directly to archival storage. This can be especially helpful for users who rarely need to access data from cloud backups or users who are replacing a backup to tape solution.
 
 Data in archival tiers can't be accessed immediately when needed, and will require a higher retrieval cost, so you'll need to consider how often you may need to restore data from backup files before deciding to archive your backup files. 
 

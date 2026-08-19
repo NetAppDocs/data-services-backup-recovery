@@ -12,7 +12,7 @@ summary: Learn what's new in NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Learn what's new in NetApp Backup and Recovery.
+Learn about new features, enhancements, and fixes in NetApp Backup and Recovery.
 
 == 17 August 2026
 
@@ -187,7 +187,6 @@ include::_whatsnew/2024-11-22.adoc[]
 This NetApp Backup and Recovery release includes the following updates.
 
 include::_whatsnew/2024-09-27.adoc[]
-
 
 
 

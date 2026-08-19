@@ -13,7 +13,7 @@ summary: You can restore existing VMDKs, or deleted or detached VMDKs, from eith
 :imagesdir: ./media/
 
 [.lead]
-You can restore existing virtual disks (VMDKs), or deleted or detached virtual disks, from either a primary or secondary backups of traditional VMs. This enables you to restore only specific VM data or applications, so that you don't need to restore the entire VM and all of its associated virtual disks in situations where only specific data is affected. After the virtual disk is restored, it is attached to its original VM and is ready to use.
+Restore existing, deleted, or detached virtual disks (VMDKs) from primary or secondary backups of traditional VMs. This lets you recover specific VM data or applications without restoring the entire VM. After the virtual disk is restored, it is attached to its original VM and is ready to use.
 
 You can restore one or more virtual machine disks (VMDKs) on a VM to the same datastore or to different datastores.
 
@@ -31,8 +31,8 @@ The VM that you want to restore must not be in a state of vMotion or Storage vMo
 
 * If the VMDK is deleted or detached from the VM, then the restore operation attaches the VMDK to the VM.
 * A restore operation might fail if the storage tier of the FabricPool where the VM is located is unavailable.
-* Attach and restore operations connect VMDKs using the default SCSi controller. 
-However, when VMDKs that are attached to a VM with a NVMe disk are backed up, the attach and restore operations use NVMe controller if available.
+* Attach and restore operations connect VMDKs using the default SCSI controller.
+However, if you back up VMDKs that are attached to a VM with an NVMe disk, attach and restore operations use an NVMe controller if one is available.
 
 .Steps
 
@@ -139,5 +139,4 @@ In the Datastore selection table, you can select or unselect any VMDKs.
 . Refresh the screen to display updated information.
 
 ////
-
 
