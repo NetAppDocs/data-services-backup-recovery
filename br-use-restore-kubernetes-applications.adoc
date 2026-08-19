@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to restore applications that you
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. To restore an application, an application needs to have at least one restore point available. A restore point consists of either the local snapshot or the backup to the object store (or both). You can restore an application using the local, secondary, or object store archive.
+Restore applications that are protected with a protection policy in NetApp Backup and Recovery. To restore an application, you need at least one restore point, which can include a local snapshot, an object store backup, or both. You can restore from the local, secondary, or object store copy.
 
 == View protected resources for an application restore point
 For each application that you protect with Backup and Recovery, you can view the resources that have been backed up for a specific restore point.
@@ -45,10 +45,10 @@ Backup and Recovery super admin or Backup and Recovery restore admin. link:refer
 . In the NetApp Backup and Recovery menu, select *Restore*.
 . Choose a Kubernetes application from the list, and select *View and Restore* for that application.
 +
-The list of restore points appears. 
+The list of restore points appears.
 . Select the *Restore* button for the restore point you want to use.
 +
-The Restore data wizard begins, and the _General settings_ page appears.
+The Restore data wizard opens, and the _General settings_ page appears.
 . Choose the source location to restore from.
 . Choose the destination cluster from the *Cluster* list.
 . Choose to restore to the original namespaces or new namespaces.
@@ -77,7 +77,7 @@ When restoring a VM-based application, Backup and Recovery lists all virtual mac
 .Specific namespace-based app resources
 
 --
-.. Select *Selective resources* and choose whether to filter resources you select based on rules, or based on the namespace.
+.. Select *Selective resources* and choose whether to filter resources by using rules or to select resources manually.
 +
 [cols="1,1", options="header"]
 |===
@@ -129,7 +129,7 @@ The _Destination settings_ page appears.
 
 . Expand the *Destination settings* section and choose to restore either to the default storage class, a different storage class, or if you are restoring to a different cluster, to map the storage classes to the destination cluster.
 . If you chose to restore to a different storage class, select a destination storage class to match each source storage class.
-. Optionally, if you are restoring a backup or snapshot that was made using Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. If there is a change in your environment or the AppVault status, select *Sync App Vault* to refresh the details.
+. Optionally, if you are restoring a backup or snapshot that was made using Trident Protect, view the details of the AppVault used as the storage bucket for the restore operation. If your environment changes or the AppVault status changes, select *Sync App Vault* to refresh the details.
 +
 NOTE: If you need to create an AppVault on a Kubernetes cluster to facilitate restoring a backup or snapshot created using Trident Protect, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-appvault-custom-resources.html[Use Trident Protect AppVault objects to manage buckets].
 

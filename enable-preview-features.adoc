@@ -13,7 +13,7 @@ summary: Enable preview and hidden features for NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Enable preview and hidden features for NetApp Backup and Recovery.
+Use these steps to enable preview and hidden features for NetApp Backup and Recovery. Use preview features with caution in production environments.
 
 *Required NetApp Console role*
 Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -37,7 +37,7 @@ Enable preview feature flag options to use functionality that is not yet general
 
 .Steps
 
-. Use SSH to log into the Console agent.
+. Use SSH to log in to the Console agent.
 . Change to the root user:
 +
 [source,shell]
@@ -108,7 +108,7 @@ Disable indexing for specific volumes or for all volumes belonging to one or mor
 
 .Steps
 
-. Use SSH to log into the Console agent.
+. Use SSH to log in to the Console agent.
 . Change to the root user:
 +
 [source,shell]

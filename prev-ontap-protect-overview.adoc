@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Protect your VMware workloads with NetApp Backup and Recovery. 
 ---
 
-= Learn about NetApp Backup and Recovery for ONTAP volumes
+= ONTAP volume protection with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery provides backup and restore capabilities for protection and long-term archive of your ONTAP volume data. You can implement a 3-2-1 strategy where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud.
+Use NetApp Backup and Recovery to protect and restore your ONTAP volume data and to archive backups for the long term. You can implement a 3-2-1 strategy with three copies of your source data on two different storage systems and one copy in the cloud.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
@@ -26,7 +26,7 @@ After activation, Backup and Recovery creates block-level, incremental forever b
 
 image:diagram-321-overview-unified.png[A diagram showing how backup files exist on the source system as snapshots, as replicated volumes on the secondary storage system, and as a backup files in object storage.]
 
-NetApp Backup and Recovery leverages NetApp's SnapMirror data replication technology to ensure that all the backups are fully synchronized by creating snapshots and transferring them to the backup locations.
+NetApp Backup and Recovery uses NetApp's SnapMirror data replication technology to keep your backups synchronized by creating snapshots and transferring them to the backup locations.
 
 The benefits of the 3-2-1 approach include:
 
@@ -42,10 +42,10 @@ When necessary, you can restore an entire _volume_, a _folder_, or one or more _
 
 * Replicate data between ONTAP storage systems to support backup and disaster recovery.
 * Ensure the reliability of your DR environment with high availability.
-* Native ONTAP in-flight encryption set up via Pre-Shared Key (PSK) between the two systems.
+* Set up native ONTAP in-flight encryption by using a pre-shared key (PSK) between the two systems.
 * Copied data is immutable until you make it writable and ready to use.
 * Replication is self-healing in the event of a transfer failure.
-* When compared to https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp  Replication^], the replication in NetApp Backup and Recovery includes the following features:
+* When compared to https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp Replication^], replication in NetApp Backup and Recovery includes the following features:
 ** Replicate multiple FlexVol volumes at a time to a secondary system.
 ** Restore a replicated volume to the source system or to a different system using the UI.
 
@@ -59,7 +59,7 @@ See link:br-reference-limitations.html[Replication limitations for ONTAP volumes
 * Apply a single backup policy to all volumes in a cluster, or assign different backup policies to volumes that have unique recovery point objectives.
 * Create a backup policy to be applied to all future volumes created in the cluster.
 * Make immutable backup files so they are locked and protected for the retention period.
-* Scan backup files for possible ransomware attack - and remove/replace infected backups automatically.
+* Scan backup files for possible ransomware attacks and automatically remove or replace infected backups.
 * Tier older backup files to archival storage to save costs.
 * Delete the backup relationship so you can archive unneeded source volumes while retaining volume backups.
 * Back up from cloud to cloud, and from on-premises systems to public or private cloud.
@@ -88,7 +88,7 @@ https://bluexp.netapp.com/cloud-volumes-global-regions[Learn more using the Glob
 
 === Supported backup destinations
 
-NetApp Backup and Recovery enables you to back up ONTAP volumes from the following source systems to the following secondary systems and object storage in public and private cloud providers. snapshots reside on the source system.
+NetApp Backup and Recovery enables you to back up ONTAP volumes from the following source systems to the following secondary systems and object storage in public and private cloud providers. Snapshots reside on the source system.
 
 NOTE: Wasabi is the only qualified S3-compatible object storage provider at this time. Other S3-compatible providers have not been validated.
 
@@ -126,14 +126,14 @@ a|
 * S3-compatible storage
 * Azure Blob
 * Google Cloud Storage
-* NetApp StorageGRID
+* StorageGRID
 * ONTAP S3
 
 |===
 
 === Supported restore destinations
 
-You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. snapshots reside on the source system and can be restored only to that same system.
+You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. Snapshots reside on the source system and can be restored only to that same system.
 
 NOTE: Wasabi is the only qualified S3-compatible object storage provider at this time. Other S3-compatible providers have not been validated.
 
@@ -169,7 +169,7 @@ a|
 * Cloud Volumes ONTAP in Google
 * On-premises ONTAP system
 
-| NetApp StorageGRID 
+| StorageGRID
 a|
 * On-premises ONTAP system
 * Cloud Volumes ONTAP
@@ -187,7 +187,7 @@ a|
 
 |===
 
-NOTE: References to "on-premises ONTAP system" includes FAS, AFF, and ONTAP Select systems.
+NOTE: References to "on-premises ONTAP system" include FAS, AFF, and ONTAP Select systems.
 
 == Supported volumes
 
@@ -235,7 +235,7 @@ Since NetApp Backup and Recovery preserves the storage efficiencies of the sourc
 
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
-* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you have enabled Datalock and Ransomware protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
+* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you have enabled DataLock and Ransomware protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
 
 *Service charges*
 
@@ -367,7 +367,7 @@ TIP: The retention period for backups of data protection volumes is the same as 
 
 === Backup file protection settings
 
-If your cluster is using ONTAP 9.11.1 or greater, you can protect your backups in object storage from deletion and ransomware attacks. Each backup policy provides a section for _Datalock and Ransomware protection_ that can be applied to your backup files for a specific period of time - the _retention period_. 
+If your cluster is using ONTAP 9.11.1 or greater, you can protect your backups in object storage from deletion and ransomware attacks. Each backup policy provides a section for _DataLock and Ransomware protection_ that can be applied to your backup files for a specific period of time - the _retention period_.
 
 * _DataLock_ protects your backup files from being modified or deleted. 
 * _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack when a backup file is created, and when data from a backup file is being restored.
@@ -376,7 +376,7 @@ Scheduled ransomware protection scans are enabled by default. The default settin
 
 The backup retention period is the same as the backup schedule retention period, plus a maximum 31-day buffer. For example, _weekly_ backups with _5_ copies retained will lock each backup file for 5 weeks. _Monthly_ backups with _6_ copies retained will lock each backup file for 6 months.
 
-Support is currently available when your backup destination is Amazon S3, Azure Blob, or NetApp StorageGRID. Other storage provider destinations will be added in future releases.
+Support is currently available when your backup destination is Amazon S3, Azure Blob, or StorageGRID. Other storage provider destinations will be added in future releases.
 
 For more details, refer to this information: 
 
@@ -410,9 +410,9 @@ If your cluster is using ONTAP 9.12.1 or greater, you can choose to tier older b
 
 * In StorageGRID, backups are associated with the _Standard_ storage class.
 +
-If your on-prem cluster is using ONTAP 9.12.1 or greater, and your StorageGRID system is using 11.4 or greater, you can archive older backup files to public cloud archival storage after a certain number of days. Current support is for AWS S3 Glacier/S3 Glacier Deep Archive or Azure Archive storage tiers. link:prev-ontap-backup-onprem-storagegrid.html[Learn more about archiving backup files from StorageGRID].
+If your on-premises cluster is using ONTAP 9.12.1 or greater, and your StorageGRID system is using 11.4 or greater, you can archive older backup files to public cloud archival storage after a certain number of days. Current support is for AWS S3 Glacier/S3 Glacier Deep Archive or Azure Archive storage tiers. link:prev-ontap-backup-onprem-storagegrid.html[Learn more about archiving backup files from StorageGRID].
 
-See link:prev-ontap-policy-object-options.html] for details about archiving older backup files.
+See link:prev-ontap-policy-object-options.html[how archiving older backup files works].
 
 == FabricPool tiering policy considerations
 

@@ -5,7 +5,7 @@ keywords: cloud backup, backup and recovery, backup, restore, certificates, prot
 summary: Create a security certificate to enable communication between NetApp Backup and Recovery and StorageGRID or ONTAP. 
 ---
 
-= Set up security certificates for NetApp Backup and Recovery
+= Set up CA certificates for NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,13 +13,13 @@ summary: Create a security certificate to enable communication between NetApp Ba
 :imagesdir: ./media/
 
 [.lead]
-Create a security certificate to enable communication between NetApp Backup and Recovery and StorageGRID or ONTAP. 
+Set up CA certificates so NetApp Backup and Recovery can validate secure connections to StorageGRID or ONTAP. Follow the steps that apply to your environment and the systems you want to protect.
 
-== Create a security certificate for StorageGRID
+== Create a CA certificate for StorageGRID
 
-If the communication between NetApp Backup and Recovery containers and StorageGRID should verify the StorageGRID certificate, then complete the following steps. 
+If communication between the NetApp Backup and Recovery containers and StorageGRID should verify the StorageGRID certificate, complete the following steps.
 
-The generated certificate should have CN and Subject Alternative Name as the name provided in NetApp Backup and Recovery when you were activating the backup. 
+The generated certificate should use the same common name (CN) and Subject Alternative Name that you provided in NetApp Backup and Recovery when you activated the backup.
 
 .Steps
 
@@ -28,14 +28,14 @@ The generated certificate should have CN and Subject Alternative Name as the nam
 https://docs.netapp.com/us-en/storagegrid-118/admin/configuring-load-balancer-endpoints.html#attach-certificate[StorageGRID information on configuring certificates]
 . Update StorageGRID with the certificate if you have not already done so.
 
-. Log in to the Console agent as a root user. Run: 
+. Log in to the Console agent as the root user. Run:
 +
 [source,shell]
 ----
 sudo su
 ----
 
-. Get the NetApp Backup and Recovery (Cloud Backup Service) Docker volume. Run: 
+. Find the NetApp Backup and Recovery (Cloud Backup Service) Docker volume. Run:
 +
 [source,shell]
 ----
@@ -51,7 +51,7 @@ local service-manager-2_cloudmanager_cbs_volume"
 +
 NOTE: The volume name differs among Standard, Private, and Restricted deployment modes. This example uses Standard mode. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
-. Find the mount point of the NetApp Backup and Recovery volume. Run: 
+. Find the mount point of the NetApp Backup and Recovery volume. Run:
 +
 [source,shell]
 ----
@@ -66,37 +66,37 @@ Output example:
 +
 NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
-. Change to the mount point directory. Run: 
+. Change to the mount point directory. Run:
 +
 [source,shell]
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 ----
 
-. If StorageGRID's certificate is signed by the root CA and an intermediate CA, then append the `pem` files of both into one file named `sgws.crt` in the current location. Do not add the leaf certificate to this file. 
+. If the StorageGRID certificate is signed by the root CA and an intermediate CA, append both `pem` files into one file named `sgws.crt` in the current location. Do not add the leaf certificate to this file.
 
-=== Steps for cloudmanager_cbs container 
+=== Steps for the cloudmanager_cbs container
 
-You'll need to enable the StorageGRID Server certificate verification in NetApp Backup and Recovery (Cloud Backup Service). 
+Enable StorageGRID server certificate verification in NetApp Backup and Recovery (Cloud Backup Service).
 
-. Change directories to the Docker volume obtained in earlier steps. 
+. Change to the Docker volume that you found in the earlier steps.
 +
 [source,shell]
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data 
 ----
 
-. Change directories to the config directory.  
+. Change to the config directory.
 +
 [source,shell]
 ----
 cd cbs_config
 ----
 
-. Create and save a configuration file as shown below with one of the following names based on your deployment environment: 
+. Create and save a configuration file as shown below with one of the following names, based on your deployment environment:
 +
-* `production-customer.json` Used for Standard mode and Restricted mode deployments. 
-* `darksite-customer.json` Used for Private mode deployments. 
+* `production-customer.json` for Standard mode and Restricted mode deployments
+* `darksite-customer.json` for Private mode deployments
 +
 Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 +
@@ -123,18 +123,18 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[Ne
 exit
 ----
 
-. Restart `cloudmanager_cbs`. Run: 
+. Restart `cloudmanager_cbs`. Run:
 +
 [source,shell]
 ----
 docker restart cloudmanager_cbs
 ---- 
 
-=== Steps for cloudmanager_cbs_catalog container 
+=== Steps for the cloudmanager_cbs_catalog container
 
-Next, you'll need to enable the StorageGRID Server certificate verification for the Cataloging Service. 
+Next, enable StorageGRID server certificate verification for the Cataloging Service.
 
-. Change directories to the Docker volume: 
+. Change to the Docker volume:
 +
 [source,shell]
 ----
@@ -148,10 +148,10 @@ cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 cd cbs_catalog_config
 ----
 
-. Create a config file as shown below with one of the following names based on your deployment environment: 
+. Create a configuration file as shown below with one of the following names, based on your deployment environment:
 +
-* `production-customer.json` Used for Standard mode and Restricted mode deployments. 
-* `darksite-customer.json` Used for Private mode deployments. 
+* `production-customer.json` for Standard mode and Restricted mode deployments
+* `darksite-customer.json` for Private mode deployments
 +
 Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 +
@@ -181,16 +181,16 @@ docker restart cloudmanager_cbs_catalog
 === Update the Console agent certificate with the StorageGRID certificate based on the agent operating system
 
 ==== Ubuntu
-. Copy the SGWS certificate to `/usr/local/share/ca-certificates`.  Here is an example: 
+. Copy the SGWS certificate to `/usr/local/share/ca-certificates`. Here is an example:
 +
 [source,shell]
 ----
 cp /config/sgws.crt /usr/local/share/ca-certificates/ 
 ----
 +
-where `sgws.crt` is the root CA certificate. 
+where `sgws.crt` is the root CA certificate.
 
-. Update the host certificates with the StorageGRID certificate. Run 
+. Update the host certificates with the StorageGRID certificate. Run:
 +
 [source,shell]
 ----
@@ -206,7 +206,7 @@ sudo update-ca-certificates
 cp /config/sgws.crt /etc/pki/ca-trust/source/anchors/
 ----
 +
-where `sgws.crt` is the root CA certificate. 
+where `sgws.crt` is the root CA certificate.
 
 . Update the host certificates with the StorageGRID certificate.
 +
@@ -223,34 +223,34 @@ cd /etc/pki/tls/certs/
 openssl x509 -in ca-bundle.crt -text -noout
 ----
 
-. To check whether the certificates are present, run the following command: 
+. To check whether the certificates are present, run the following command:
 +
 [source,shell]
 ----
 openssl crl2pkcs7 -nocrl -certfile /etc/pki/tls/certs/ca-bundle.crt | openssl pkcs7 -print_certs | grep subject | head
 ----
 
-== Create a security certificate for ONTAP 
+== Create a CA certificate for ONTAP
 
-If the communication between the NetApp Backup and Recovery containers and ONTAP should validate the ONTAP certificate, then complete the following steps. 
+If communication between the NetApp Backup and Recovery containers and ONTAP should validate the ONTAP certificate, complete the following steps.
 
-NetApp Backup and Recovery uses the Cluster Management IP to connect to ONTAP. Enter the IP address of the cluster in the Subject Alternative names of the Certificate. Specify this step when you generate the CSR using the System Manager UI. 
+NetApp Backup and Recovery uses the cluster management IP address to connect to ONTAP. Enter the cluster IP address in the Subject Alternative Name fields of the certificate. Specify this value when you generate the CSR in System Manager.
 
 Use the System Manager documentation to create a new CA certificate for ONTAP. 
 
 * https://docs.netapp.com/us-en/ontap/authentication/manage-certificates-sm-task.html[Manage certificates with System Manager]
 * https://kb.netapp.com/on-prem/ontap/DM/System_Manager/SM-KBs/How_to_manage_ONTAP_SSL_certificates_via_System_Manager[How to manage ONTAP SSL certificates with System Manager]
 
-.Steps 
+.Steps
 
-. Log in to the Console agent as root. Run: 
+. Log in to the Console agent as root. Run:
 +
 [source,shell]
 ----
 sudo su
 ----
 
-. Get the NetApp Backup and Recovery Docker volume. Run: 
+. Find the NetApp Backup and Recovery Docker volume. Run:
 +
 [source,shell]
 ----
@@ -266,7 +266,7 @@ local service-manager-2_cloudmanager_cbs_volume
 +
 NOTE: The volume name differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
-. Obtain the mount for the volume. Run: 
+. Find the mount point for the volume. Run:
 +
 [source,shell]
 ----
@@ -281,40 +281,40 @@ Output example:
 +
 NOTE: The mount point differs among Standard, Private, and Restricted deployment modes. This example shows a Standard cloud deployment. Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 
-. Change to the mountpoint directory. Run: 
+. Change to the mount point directory. Run:
 +
 [source,shell]
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 ---- 
 +
-. Complete one of the following steps: 
+. Complete one of the following steps:
 * If the ONTAP certificate is signed by the root CA and an intermediate CA, then append the `pem` files of both into one file named `ontap.crt` in the current location.
 
 * If the ONTAP certificate is signed by a single CA, then rename the `pem` file as `ontap.crt` and copy it in the current location. Do not add the leaf certificate to this file.
 
-=== Steps for cloudmanager_cbs container 
+=== Steps for the cloudmanager_cbs container
 
-Next, enable the ONTAP Server certificate verification in NetApp Backup and Recovery (Cloud Backup Service). 
+Next, enable ONTAP server certificate verification in NetApp Backup and Recovery (Cloud Backup Service).
  
-. Change directories to the Docker volume obtained in earlier steps. 
+. Change to the Docker volume that you found in the earlier steps.
 +
 [source,shell]
 ----
 cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 ---- 
 
-. Change to the config directory. Run: 
+. Change to the config directory. Run:
 +
 [source,shell]
 ----
 cd cbs_config
 ----
 
-. Create a configuration file as shown below with one of the following names based on your deployment environment: 
+. Create a configuration file as shown below with one of the following names, based on your deployment environment:
 +
-* `production-customer.json` Used for Standard mode and Restricted mode deployments. 
-* `darksite-customer.json` Used for Private mode deployments. 
+* `production-customer.json` for Standard mode and Restricted mode deployments
+* `darksite-customer.json` for Private mode deployments
 +
 Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 +
@@ -332,7 +332,7 @@ Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[Ne
 }
 ----
 +
-. Exit the container. Run: 
+. Exit the container. Run:
 +
 [source,shell]
 ----
@@ -346,11 +346,11 @@ exit
 docker restart cloudmanager_cbs
 ----
 
-=== Steps for cloudmanager_cbs_catalog container 
+=== Steps for the cloudmanager_cbs_catalog container
 
-Enable the ONTAP Server certificate verification for the Cataloging Service. 
+Enable ONTAP server certificate verification for the Cataloging Service.
 
-. Change directories to the Docker volume. Run: 
+. Change to the Docker volume. Run:
 +
 [source,shell]
 ----
@@ -364,10 +364,10 @@ cd /var/lib/docker/volumes/service-manager-2_cloudmanager_cbs_volume/_data
 cd cbs_catalog_config
 ----
 
-. Create a configuration file as shown below with one of the following names based on your deployment environment: 
+. Create a configuration file as shown below with one of the following names, based on your deployment environment:
 +
-* `production-customer.json` Used for Standard mode and Restricted mode deployments. 
-* `darksite-customer.json` Used for Private mode deployments. 
+* `production-customer.json` for Standard mode and Restricted mode deployments
+* `darksite-customer.json` for Private mode deployments
 +
 Refer to https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[NetApp Console deployment modes].
 +

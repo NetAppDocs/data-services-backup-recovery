@@ -13,7 +13,7 @@ summary: Create and manage protection groups for VMware workloads in NetApp Back
 :imagesdir: ./media/
 
 [.lead]
-Create protection groups to manage the backup and restore operations for a set of workloads.  A protection group is a logical grouping of resources such as VMs and datastores that you want to protect together.
+Create protection groups to manage backup and restore operations for a set of workloads. A protection group is a logical grouping of resources, such as VMs and datastores, that you want to protect together.
 
 You can perform the following tasks related to protection groups:
 
@@ -26,7 +26,7 @@ You can perform the following tasks related to protection groups:
 == Tag-based protection groups
 When you choose resources to add to a protection group, you can organize them by datastores, virtual machines, or by vSphere tags.
 
-Tag-based protection (using vSphere tags) simplifies administration of protection groups in Backup and Recovery. 
+Tag-based protection using vSphere tags simplifies protection group administration in NetApp Backup and Recovery.
 
 Using tag-based protection has some advantages:
 
@@ -37,7 +37,7 @@ Using tag-based protection has some advantages:
 
 Tag membership is resolved from vCenter at backup time. Any changes you make to tags in vCenter (adding/removing tags, deleting tags, adding/removing VMs) are automatically reflected in the next backup.
 
-== Create a protection group 
+== Create a protection group
 
 Create a protection group to organize the resources you want to back up and restore together.
 
@@ -48,8 +48,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 
 * Ensure your environment is using supported versions of VMware vSphere.
 * When creating a tag-based protection group, ensure the virtual machines and datastores you want to protect are already associated with one or more vSphere tags in vCenter.
-* Be aware that for VMware workloads, the scheduled backup time is interpreted in the
-time zone of the management host. Refer to link:br-use-policies-vmware-create.html[Create and manage VMware backup policies in NetApp Backup and Recovery] for more information.
+* For VMware workloads, the scheduled backup time uses the time zone of the management host. Refer to link:br-use-policies-vmware-create.html[Create and manage VMware backup policies in NetApp Backup and Recovery] for more information.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -168,7 +167,7 @@ NOTE: Schedules are only re-created when you modify the protection group name, a
 
 == Delete a protection group
 
-When you delete a protection group, you remove it and all backup schedules for the group. Delete a protection group if you do not need it anymore.
+When you delete a protection group, you remove it and all backup schedules for the group. Delete a protection group if you no longer need it.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
