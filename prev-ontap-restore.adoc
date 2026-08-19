@@ -71,8 +71,8 @@ This table provides a list of valid restore operations based on the location whe
 3+^| Search & Restore
 
 |  | *Restore volume* | *Restore files* | *Restore folder* | *Restore volume* | *Restore files* | *Restore folder* 
-| Snapshot | Yes | No | No | Yes | Yes | No
-| Replicated volume | Yes | No | No | Yes | Yes | No
+| Snapshot | Yes | No | No | Yes | Yes | Yes
+| Replicated volume | Yes | No | No | Yes | Yes | Yes
 | Backup file | Yes | Yes | Yes | Yes | Yes | Yes 
 
 |===
