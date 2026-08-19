@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to manage your workload host information, database information, and instances information. You can view, edit, and delete protection settings for your inventory.  
 ---
 
-= Add and protect Kubernetes applications in NetApp Backup and Recovery 
+= Add and protect Kubernetes applications in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,14 +13,14 @@ summary: NetApp Backup and Recovery enables you to manage your workload host inf
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery enables you to add Kubernetes applications through the web UI or by applying custom resource files. Applications can be namespace-based, composed of standard Kubernetes resources, or VM-based, composed of one or more virtual machines.
+Use the NetApp Backup and Recovery web UI or custom resource files to add Kubernetes applications for protection. You can add namespace-based applications that use standard Kubernetes resources or VM-based applications that use one or more virtual machines.
 
 .Required NetApp Console role
 
 Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Add and protect a new Kubernetes application
-The first step in protecting Kubernetes applications is to create an application within NetApp Backup and Recovery. When you create an application, you make Backup and Recovery aware of the running application on the Kubernetes cluster.
+To protect a Kubernetes application, first create the application in NetApp Backup and Recovery. When you create the application, NetApp Backup and Recovery becomes aware of the running application on the Kubernetes cluster.
 
 .Before you begin
 Before you can add and protect a Kubernetes application, you need to link:br-start-discover.html[discover Kubernetes workloads].
@@ -79,7 +79,7 @@ The application is created and appears in the list of applications in the *Appli
 . Under *Filters*, choose *Virtual machines* to create a VM-based application.
 . Find virtual machines to add to the application by choosing a namespace and optionally including label selectors.
 +
-NOTE: If you select VMs from the list, the application definition is static — new VMs are not added to the application later (you need to edit the app to add and protect them). If you use label selectors, you can't pick individual VMs or edit the generated list, but any VM that later matches the selector is included automatically and protected.
+NOTE: If you select VMs from the list, the application definition is static — new VMs are not added to the application later (you need to edit the application to add and protect them). If you use label selectors, you can't pick individual VMs or edit the generated list, but any VM that later matches the selector is included automatically and protected.
 +
 The selected virtual machines appear in the list on the right.
 . If the list contains the VMs you want to protect, select *Next*.
@@ -88,7 +88,7 @@ The selected virtual machines appear in the list on the right.
 . Select *Create*.
 
 .Result 
-The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. The NetApp Console enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area of backup and recovery.
+The application is created and appears in the list of applications in the *Applications* tab of the Kubernetes inventory. NetApp Backup and Recovery enables protection for the application based on your settings, and you can monitor the progress in the *Monitoring* area.
 
 --
 

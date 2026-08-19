@@ -13,13 +13,13 @@ summary: There may be situations where you'll need to restart NetApp Backup and 
 :imagesdir: ./media/
 
 [.lead]
-There may be situations where you'll need to restart NetApp Backup and Recovery. 
+You can restart NetApp Backup and Recovery from the Console agent host when you need to recover the service or apply a change. Use the command that matches your deployment type and container runtime.
 
 The Console agent includes NetApp Backup and Recovery functionality.
 
 .Steps
 
-. Connect to the Linux system that the Console agent is running on.
+. Connect to the Linux system where the Console agent is running.
 +
 [cols=2*,options="header",cols="25,50"]
 |===
@@ -46,5 +46,4 @@ The Console agent includes NetApp Backup and Recovery functionality.
 | Manual installation without internet access |  `docker restart ds_cloudmanager_cbs_1` |  `podman restart ds_cloudmanager_cbs_1`
 
 |===
-
 

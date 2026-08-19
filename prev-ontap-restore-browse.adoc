@@ -13,7 +13,7 @@ summary: With NetApp Backup and Recovery, restore ONTAP data using Browse and Re
 :imagesdir: ./media/
 
 [.lead]
-With NetApp Backup and Recovery, restore ONTAP data using Browse & Restore. Before restoring, note the source volume name, source system and storage VM, and backup file date. You can restore ONTAP data from a snapshot, a replicated volume, or from backups stored in object storage.
+Use Browse & Restore when you know the source volume name, source system, storage VM, and backup file date. You can restore ONTAP data from a snapshot, a replicated volume, or a backup stored in object storage.
 
 Restore capabilities depend on your ONTAP version:
 
@@ -37,7 +37,7 @@ link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring 
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage].
 //endif::gcp[]
 
-NOTE: The High priority isn't supported when restoring data from Azure archival storage to StorageGRID systems.
+NOTE: The High restore priority isn't supported when restoring data from Azure archival storage to StorageGRID systems.
 
 == Browse & Restore supported systems and object storage providers
 
@@ -81,7 +81,7 @@ a|
 * On-premises ONTAP system
 * Cloud Volumes ONTAP in Google
 
-|NetApp StorageGRID 
+|StorageGRID
 |On-premises ONTAP system 
 a|
 * On-premises ONTAP system
@@ -106,18 +106,18 @@ a|
 For Browse & Restore, the Console agent can be installed in the following locations:
 
 //ifdef::aws[]
-* For Amazon S3, the Console agent can be deployed in AWS or in your premises 
+* For Amazon S3, the Console agent can be deployed in AWS or on premises
 //endif::aws[]
 //ifdef::azure[]
-* For Azure Blob, the Console agent can be deployed in Azure or in your premises 
+* For Azure Blob, the Console agent can be deployed in Azure or on premises
 //endif::azure[]
 //ifdef::gcp[]
 * For Google Cloud Storage, the Console agent must be deployed in your Google Cloud Platform VPC
 //endif::gcp[]
-* For StorageGRID, the Console agent must be deployed in your premises; with or without internet access
-* For ONTAP S3, the Console agent can be deployed in your premises (with or without internet access) or in a cloud provider environment
+* For StorageGRID, the Console agent must be deployed on premises, with or without internet access
+* For ONTAP S3, the Console agent can be deployed on premises (with or without internet access) or in a cloud provider environment
 
-Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
+Note that references to "on-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
 NOTE: If the ONTAP version on your system is less than 9.13.1, then you can't restore folders or files if the backup file has been configured with DataLock & Ransomware. In this case, you can restore the entire volume from the backup file and then access the files you need.
 
@@ -129,7 +129,7 @@ NOTE: When you restore a SnapLock-enabled volume, the restored volume retains Sn
 
 When restoring a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a volume as soon as possible. A quick restore restores the metadata from the backup file to a volume instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
 
-NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
+NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. It is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
 
 When restoring from a replicated volume, you can restore the volume to the original system or to a Cloud Volumes ONTAP or on-premises ONTAP system.
 
@@ -140,14 +140,14 @@ You need the source system name, storage VM, volume name, and backup file date t
 .Steps
 
 . From the Console menu, select *Protection > Backup and recovery*.
-. Select the *Restore* tab and the Restore Dashboard is displayed.
+. Select the *Restore* tab to display the Restore Dashboard.
 . From the _Browse & Restore_ section, select *Restore Volume*.
 . In the _Select Source_ page, navigate to the backup file for the volume you want to restore. Select the *system*, the *Volume*, and the *Backup* file that has the date/time stamp from which you want to restore.
 +
 The *Location* column shows whether the backup file (Snapshot) is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
 . Select *Next*.
 +
-Note that if you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled Datalock and Ransomware protection in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
+Note that if you select a backup file in object storage and ransomware protection is active for that backup (if you enabled DataLock and Ransomware protection in the backup policy), you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
 . In the _Select Destination_ page, select the *system* where you want to restore the volume.
 . When restoring a backup file from object storage, if you select an on-premises ONTAP system and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
@@ -226,7 +226,7 @@ image:diagram_browse_restore_file.png["A diagram that shows the flow to perform 
 .Steps
 
 . From the Console menu, select *Protection > Backup and recovery*.
-. Select the *Restore* tab and the Restore Dashboard is displayed.
+. Select the *Restore* tab to display the Restore Dashboard.
 . From the _Browse & Restore_ section, select *Restore Files or Folder*.
 . In the _Select Source_ page, navigate to the backup file for the volume that contains the folder or files you want to restore. Select the *system*, the *Volume*, and the *Backup* that has the date/time stamp from which you want to restore files.
 . Select *Next* and the list of folders and files from the volume backup are displayed.
@@ -237,7 +237,7 @@ link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring fr
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage]. Backup files in the Google Archive storage tier are restored almost immediately, and require no Restore Priority.
 +
-And if ransomware protection is active for the backup file (if you enabled Datalock and Ransomware protection in the backup policy), then you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
+If ransomware protection is active for the backup file (if you enabled DataLock and Ransomware protection in the backup policy), you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
 . In the _Select Items_ page, select the folder or file(s) that you want to restore and select *Continue*. To assist you in finding the item:
 * You can select the folder or file name if you see it.
 * You can select the search icon and enter the name of the folder or file to navigate directly to the item.
@@ -262,14 +262,13 @@ If you select an on-premises cluster and you haven't already configured the clus
 
 . Then select the *Volume* and the *Folder* where you want to restore the folder or file(s).
 +
-You have a few options for the location when restoring folders and file(s).
+You have a few options for the location when restoring folders and files.
 +
 * When you have chosen *Select Target Folder*, as shown above:
 +
 ** You can select any folder.
-** You can hover over a folder and click at the end of the row to drill down into subfolders, and then select a folder.
+** You can hover over a folder and select the end of the row to drill down into subfolders, and then select a folder.
 +
-* If you have selected the same destination system and Volume as where the source folder/file was located, you can select *Maintain Source Folder Path* to restore the folder, or file(s), to the same folder where they existed in the source structure. All the same folders and sub-folders must already exist; folders are not created. When restoring files to their original location, you can choose to overwrite the source file(s) or to create new file(s).
+* If you selected the same destination system and volume as the source folder or file location, you can select *Maintain Source Folder Path* to restore the folder or files to the same folder where they existed in the source structure. All the same folders and subfolders must already exist; folders are not created. When restoring files to their original location, you can choose to overwrite the source files or create new files.
 
 . Select *Restore* to return to the Restore Dashboard and review the progress of the restore operation.
-

@@ -13,20 +13,20 @@ summary: Review these NetApp Backup and Recovery limitations before using Backup
 :imagesdir: ./media/
 
 [.lead]
-Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
+Review the current limitations and workarounds for Kubernetes workloads in NetApp Backup and Recovery.
 
-== Backup and Recovery preview for NetApp Console local deployment limitation
+== Limitation in the Backup and Recovery preview for NetApp Console local deployment
  
 In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 
 == Changing the protection policy for an application
 
-When you change the associated protection policy for an application to use a different bucket or secondary replication target, the protection policy can fail.
+If you change an application's protection policy to use a different bucket or secondary replication target, protection can fail.
 
-*Workaround*: Remove and re-add the application.
+*Workaround*: Remove the application and add it again.
 
 == 3-2-1 protection policy configuration limitation
 
-When you create a 3-2-1 protection policy where no object storage backups occur at the same time as replication to secondary storage, the protection policy hangs when protecting the application.
+If you create a 3-2-1 protection policy that schedules object storage backups separately from replication to secondary storage, protection can hang.
 
-*Workaround*: Remove and re-add the application and protect it with a different protection policy.
+*Workaround*: Remove the application and add it again, and then protect it with a different protection policy.

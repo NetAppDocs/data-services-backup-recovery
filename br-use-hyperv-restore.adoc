@@ -13,11 +13,11 @@ summary: Protect your Hyper-V workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore Hyper-V workloads from snapshots, from a workload backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery. 
+Restore Hyper-V workloads from local snapshots, replicated backups on secondary storage, or backups in object storage by using NetApp Backup and Recovery. 
 
 .Restore from these locations
 
-You can restore workloads from different starting locations: 
+You can restore workloads from these locations: 
 
 * Restore from a primary location (local snapshot)
 * Restore from a replicated resource on secondary storage
@@ -25,30 +25,30 @@ You can restore workloads from different starting locations:
 
 .Restore to these points   
 
-You can restore data to these points: 
+You can restore data to these destinations: 
 
 * Restore to the original location (from primary, secondary, and object storage)
 * Restore to an alternate location (from primary, secondary, and object storage)
 
 .Restore from object storage considerations
 
-If you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled Datalock and Ransomware protection in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
+If you select a backup file in object storage and ransomware protection is active for that backup because you enabled DataLock and ransomware protection in the backup policy, you are prompted to run an additional integrity check before you restore the data. We recommend that you run the scan. 
 
 TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
 
 == How restoring workloads works
 
-When you restore workloads, the following occurs: 
+When you restore a workload, the following occurs: 
 
 * When you restore a workload from a local backup file, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
 
 * When you restore from a replicated workload, you can restore the workload to the original system or to an on-premises ONTAP system.
 
-From the Restore page, you can restore a resource, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the snapshot using filters. 
+From the Restore page, you can restore a resource even if you do not remember its exact name, location, or the date of its last good backup. You can search for the snapshot by using filters. 
 
 == Restore Hyper-V workloads
 
-Restore Hyper-V workloads using the Restore menu. You can search for the snapshot by its name or by using filters.
+Restore Hyper-V workloads using the Restore menu. You can search for a snapshot by name or by using filters.
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -58,7 +58,7 @@ Backup and Recovery super admin or Backup and Recovery restore admin role. https
 . From the NetApp Backup and Recovery menu, select *Restore*.
 . From the drop-down list to the right of the name search field, select *Hyper-V*. 
 
-. Enter the name of the resource you want to restore or filter for the VM name, VM host, or storage pool where the resource that you want to restore is located. 
+. Enter the name of the resource you want to restore, or filter by VM name, VM host, or the storage pool where the resource is located. 
 +
 A list of snapshots appears that match your search criteria.
 . Select the *Restore* button for the snapshot that you want to restore. 
@@ -93,20 +93,20 @@ When you restore to the original location, you can view the destination settings
 --
 
 .. Select the *Alternate location* pane.
-.. In the *Destination settings*: section, enter the following information:
+.. In the *Destination settings* section, enter the following information:
 +
 * *Hyper-V FQDN or IP address*: Enter the fully qualified domain name or IP address of the destination Hyper-V host.
 * *Network*: Select the destination network where you want to restore the snapshot.
 * *Virtual machine name*: Enter the name of the VM that you want to restore.
 * *Destination location*: Enter the destination folder or CIFS share that should contain the restored data.
 
-.. In the *Destination storage* section (visible only when restoring from object store):
-** *Change default storage location*: Enable this option to restore an object store backup to a different location in case the source storage location is unreachable or full. Choose a different cluster, storage VM, or aggregate to use.
-.. In the *Pre restore options* section, consider the following options:
+.. In the *Destination storage* section (visible only when restoring from object storage):
+** *Change default storage location*: Enable this option to restore an object store backup to a different location if the source storage location is unreachable or full. Choose a different cluster, storage VM, or aggregate to use.
+.. In the *Pre-restore options* section, consider the following options:
 +
 * *Quick restore*: Enable this option to make the restored VM available immediately. Only the files needed to run the VM are restored from the object store, rather than the entire volume.
 
-.. In the *Post restore options* section, consider the following options:
+.. In the *Post-restore options* section, consider the following options:
 +
 * *Start the virtual machine*: Enable this option to boot the new virtual machine after it is restored.
 

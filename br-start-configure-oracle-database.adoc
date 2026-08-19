@@ -13,10 +13,10 @@ summary: Configure your Oracle database in NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-You can change authentication and node settings for a new standalone or clustered Oracle database. NetApp Backup and Recovery protects databases without these changes. If your environment changes after discovery, you might need to update the database settings.
+Change authentication and node settings for a standalone or clustered Oracle database. NetApp Backup and Recovery protects databases without these changes, but you might need to update settings if your environment changes after discovery.
 
-*Required Console role*
-Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+*Required NetApp Console role*
+Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and Recovery roles and privileges] and https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[NetApp Console access roles for all services^].
 
 == Configure an Oracle database
 
@@ -27,8 +27,8 @@ Change the configuration for a standalone or clustered Oracle database.
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
 . Under *Workloads*, select the *Oracle* tile.
 . In the Oracle inventory, select the *Databases* menu.
-. In the list of databases, select *Configure database* (standalone database) or *Configure RAC database* (clustered database) for the database you want to configure.
-. *Configure database settings*: Configure authentication settings for the standalone or clustered database.
+. In the list of databases, select *Configure database* (standalone) or *Configure RAC database* (clustered) for the database you want to configure.
+. *Configure database settings*: Set the authentication settings for the standalone or clustered database.
 +
 * Select *OS authentication* to authenticate with the host operating system only. Backup and Recovery uses the host credentials that you specified during discovery.
 * Select *Database authentication* when the database requires credentials. Then choose existing credentials or add new ones, and pick the port to use for the connection.
@@ -37,7 +37,7 @@ Change the configuration for a standalone or clustered Oracle database.
 * Select *Target control file* to store metadata in the database target control file.
 * Select *Catalog database* to store metadata in the RMAN recovery catalog. Choose the credentials and Transparent Network Substrate (TNS) name to connect to the recovery catalog.
 +
-The RMAN recovery catalog is a separate database schema used by the RMAN utility to store metadata about backups and recovery operations for registered databases. It provides redundancy and long-term retention in case the target control file is lost or when historical data is needed. Enable this option to register datafiles and archivelog copies in the RMAN repository so that RMAN can track and manage those copies for reporting and recovery. 
+The RMAN recovery catalog is a separate database schema that the RMAN utility uses to store Backup and Recovery metadata for registered databases. It provides redundancy and long-term retention if the target control file is lost, or when you need historical data. Enabling this option registers datafiles and archive log copies in the RMAN repository so RMAN can track and manage them for reporting and recovery.
 
 . *Configure nodes* (clustered databases only): Add or remove nodes from protection, or change node priority using the arrow buttons.
 +

@@ -13,11 +13,11 @@ summary: NetApp Backup and Recovery supports one Azure archival access tier and 
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery supports one Azure archival access tier and most regions.
+Use this information to understand the Azure archive tier that NetApp Backup and Recovery supports. You can also review restore costs and retrieval times for archived backups.
 
 == Supported Azure Blob access tiers for NetApp Backup and Recovery
 
-When backup files are initially created they're stored in the _Cool_ access tier. This tier is optimized for storing data that's infrequently accessed; but when needed, can be accessed immediately.
+When backup files are initially created, they're stored in the _Cool_ access tier. This tier is optimized for storing data that's infrequently accessed, but it can be accessed immediately when needed.
 
 
 If your source clusters are running ONTAP 9.10.1 or greater, you can choose to tier backups from _Cool_ to _Azure Archive_ storage after a certain number of days (typically more than 30 days) for further cost optimization. Data in this tier can't be accessed immediately when needed, and will require a higher retrieval cost, so you need to consider how often you may need to restore data from these archived backup files. See the section on this page about restoring data from archival storage.
@@ -40,7 +40,7 @@ There are two restore priorities you can choose when retrieving data from Azure 
 +
 Each method has a different per-GB retrieval fee and per-request fee. For detailed Azure Archive pricing by Azure Region, visit the https://azure.microsoft.com/en-us/pricing/details/storage/blobs/[Azure pricing page^].
 
-NOTE: The High priority is not supported when restoring data from Azure to StorageGRID systems.
+NOTE: High priority is not supported when restoring data from Azure to StorageGRID systems.
 
 How long will it take to restore my data archived in Azure Archive?::
 There are 2 parts that make up the restore time:

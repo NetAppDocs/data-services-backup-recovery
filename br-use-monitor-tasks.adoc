@@ -13,12 +13,12 @@ summary: With NetApp Backup and Recovery, monitor local snapshots, replications,
 :imagesdir: ./media/
 
 [.lead]
-With NetApp Backup and Recovery, monitor local snapshots, replications, and backup jobs you start. Track restore jobs you initiate. View jobs that are complete, in progress, or failed to help diagnose problems. Enable email notifications in the NetApp Console Notification Center to stay informed about system activity when not logged in. Use the Console Timeline to see details of all actions started from the UI or API.
+Monitor snapshot, replication, backup, and restore jobs. Configure email notifications and use Console Timeline to investigate activity.
 
-NetApp Backup and Recovery keeps job information for 15 days, then deletes the job information and removes it from the Job Monitor. 
+NetApp Backup and Recovery keeps job information for 15 days, then deletes it and removes it from the Job Monitor. 
 
 *Required NetApp Console role*
-Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
+Storage viewer, Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, Backup and Recovery clone admin, or Backup and Recovery viewer role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and Recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^]. 
 
 == View job status on the Job Monitor
 
@@ -39,11 +39,11 @@ NOTE: If you have upgraded your ONTAP systems to 9.13.x and do not see ongoing s
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
-. To show additional columns (System, storage VM, User Name, Workload, Policy Name, Snapshot Label), select the plus sign.
+. To show additional columns (System, Storage VM, User Name, Workload, Policy Name, Snapshot Label), select the plus sign.
 
 === Search and filter the list of jobs
 
-You can filter the operations on the Job Monitoring page using several filters, such as policy, snapshot label, type of operation (protection, restore, retention, or other) and protection type (local snapshot, replication, or backup to the cloud). 
+You can filter the operations on the Job Monitoring page using several filters, such as policy, snapshot label, type of operation (protection, restore, retention, or other), and protection type (local snapshot, replication, or backup to the cloud). 
 
 By default, the Job Monitoring page shows protection and recovery jobs from the last 24 hours. You can change the timeframe using the Timeframe filter.
 
@@ -54,7 +54,7 @@ By default, the Job Monitoring page shows protection and recovery jobs from the 
 
 . If you're looking for specific jobs, select the *Advanced Search & Filtering* area to open the Search panel. 
 +
-Use this panel to enter a free text search for any resource; for example "volume 1" or "application 3". You can also filter the jobs list according to the items in the drop-down menus.
+Use this panel to enter a free text search for any resource; for example, "volume 1" or "application 3". You can also filter the jobs list according to the items in the drop-down menus.
 +
 Most of the filters are self-explanatory. The filter for "Workload" enables you to view jobs in the following categories:
 
@@ -74,9 +74,9 @@ Most of the filters are self-explanatory. The filter for "Workload" enables you 
 
 === View job details
 
-You can view details corresponding to a specific completed job. You can export details for a particular job in a JSON format. 
+You can view details corresponding to a specific completed job. You can export details for a particular job in JSON format. 
 
-You can view details such as job type (scheduled or on-demand), SnapMirror backup type (initial or periodic) start and end times, duration, amount of transferred data from system to object storage, average transfer rate, policy name, retention lock enabled, ransomware scan performed, protection source details, and protection target details. 
+You can view details such as job type (scheduled or on-demand), SnapMirror backup type (initial or periodic), start and end times, duration, amount of transferred data from system to object storage, average transfer rate, policy name, retention lock enabled, ransomware scan performed, protection source details, and protection target details. 
 
 Restore jobs show details such as backup target provider (Amazon Web Services, Microsoft Azure, Google Cloud, on-premises), S3 bucket name, storage VM name, source volume name, destination volume, snapshot label, recovered objects count, file names, file sizes, last modification date, and full file path. 
 
@@ -84,12 +84,12 @@ Restore jobs show details such as backup target provider (Amazon Web Services, M
 
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
 . Select the name of the job. 
-. Select the Actions menu image:icon-action.png[Actions icon] and select *View Details*. 
+. Select the Actions menu image:icon-action.png[Actions icon], and select *View Details*. 
 . Expand each section to see details. 
 
 === Download Job Monitoring results as a report
 
-You can download the contents of the main Job Monitoring page as a report after you filter or sort the results. NetApp Backup and Recovery generates and downloads a .CSV file that you can review and send to other groups as needed. The .CSV file includes up to 10,000 rows of data.
+You can download the contents of the main Job Monitoring page as a report after you filter or sort the results. NetApp Backup and Recovery generates and downloads a CSV file that you can review and send to other groups as needed. The CSV file includes up to 10,000 rows of data.
 
 From the Job Monitoring Details information, you can download a JSON file containing details for a single job. 
 
@@ -101,7 +101,7 @@ From the Job Monitoring Details information, you can download a JSON file contai
 
 == Review retention (backup lifecycle) jobs
 
-Monitor retention (_backup lifecycle_) flows to check backups, keep them safe, and support audits. Identify when backup copies expire to track the lifecycle. 
+Monitor retention (_backup lifecycle_) jobs to track when backup copies expire and support audits.
 
 A backup lifecycle job tracks all snapshots that are deleted or in the queue to be deleted. Beginning with ONTAP 9.13, you can view all job types called "Retention" on the Job Monitoring page.
 
@@ -115,7 +115,7 @@ The "Retention" job type captures all snapshot deletion jobs initiated on a volu
 
 == Review backup and restore alerts in the NetApp Console Notification Center
 
-The NetApp Console Notification Center tracks the progress of backup and restore jobs that you've initiated so you can verify whether the operation was successful or not. 
+The NetApp Console Notification Center tracks the progress of backup and restore jobs that you've initiated so you can verify whether the operation was successful. 
 
 You can view alerts in the Notification Center and configure the Console to send email alerts for important system activity, even when you are not logged in. https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn more about the Notification Center and how to send alert emails for backup and restore jobs^].
 
@@ -178,6 +178,6 @@ https://docs.netapp.com/us-en/console-local/task-alert-rules-manage.html[Configu
 
 == Review operation activity in Console Timeline
 
-You can view details of backup and restore operations for further investigation in the Console Timeline. The Console Timeline provides details of each event, whether user-initiated or system-initiated and shows actions initiated in the UI or via the API. 
+You can view details of backup and restore operations for further investigation in the Console Timeline. The Console Timeline provides details of each event, whether user-initiated or system-initiated, and shows actions initiated in the UI or via the API. 
 
-https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html[Learn about the differences between the Timeline and the Notification Center^].
+https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn about monitoring NetApp Console operations^].

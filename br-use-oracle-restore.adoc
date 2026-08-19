@@ -5,7 +5,7 @@ keywords: restore, vm, oracle, databases, snapshots, object storage, cloud stora
 summary: Protect your Oracle Database workloads with NetApp Backup and Recovery. 
 ---
 
-= Restore Oracle databases with NetApp Backup and Recovery
+= Restore Oracle Database workloads with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Protect your Oracle Database workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Restore Oracle databases from snapshots, from a backup replicated to secondary storage, or from backups stored in object storage using NetApp Backup and Recovery.
+Restore Oracle Database workloads from snapshots, replicated backups on secondary storage, or backups stored in object storage by using NetApp Backup and Recovery.
 
 .Restore from these locations
 
@@ -37,9 +37,9 @@ You can restore data to the original location; restoring to an alternate locatio
 //TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
 
 
-== How restoring Oracle databases works
+== How Oracle Database restore works
 
-When you restore Oracle databases, the following occurs: 
+When you restore Oracle Database workloads, the following occurs:
 
 * When you restore a database from a local snapshot, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
 
