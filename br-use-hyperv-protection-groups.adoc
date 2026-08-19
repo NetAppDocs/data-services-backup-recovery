@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: Create and manage protection groups for Hyper-V workloads in NetApp Backup and Recovery. 
 ---
 
-= Create and manage Hyper-V protection groups
+= Create and manage Hyper-V protection groups in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
