@@ -13,18 +13,18 @@ summary: NetApp Backup and Recovery needs to first discover workloads in order f
 :imagesdir: ./media/
 
 [.lead]
-NetApp Backup and Recovery needs to discover Kubernetes workloads before protecting them.
+Discover Kubernetes clusters and their workloads in NetApp Backup and Recovery so you can protect them with backup and recovery policies.
 
 *Required NetApp Console role*
 Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 
 == Discover Kubernetes workloads
-In Backup and Recovery inventory, discover Kubernetes workloads in your environment. Adding a workload adds a Kubernetes cluster to NetApp Backup and Recovery. You can then add applications and protect cluster resources. You can optionally discover air-gapped local Kubernetes resources using NetApp Console local deployment.
+In Backup and Recovery inventory, discover Kubernetes clusters and workloads in your environment. Adding a cluster enables you to register it in NetApp Backup and Recovery and discover its applications and resources for protection. You can optionally discover air-gapped local Kubernetes resources using NetApp Console local deployment.
 
 [NOTE]
 =====
-When you discover a cluster that is currently protected with Trident Protect, any backup schedules that were used with Trident Protect are disabled during the discovery process (Trident Protect backup schedules are not compatible with Backup and Recovery). To protect the cluster's applications, link:br-use-policies-create.html[create a new protection policy] or associate the applications with an existing policy. You can then remove the Trident Protect backup schedules if needed.
+When you discover a cluster currently protected with Trident Protect, any backup schedules used with Trident Protect are disabled during the discovery process, as Trident Protect backup schedules are not compatible with Backup and Recovery. To protect the cluster's applications, link:br-use-policies-create.html[create a new protection policy] or associate the applications with an existing policy. You can then remove the Trident Protect backup schedules if needed.
 =====
 
 .Steps
@@ -36,7 +36,7 @@ When you discover a cluster that is currently protected with Trident Protect, an
 . Select the *Kubernetes* workload type.
 . Enter a cluster name and choose a Console agent to use with the cluster.
 +
-Backup and Recovery provides instructions that change depending on the installation type you select. If you use NetApp Console local deployment, you can choose instructions that enable you to discover air-gapped resources that have no external network connectivity.
+Backup and Recovery provides instructions that change based on the installation type you select. If you use NetApp Console local deployment, you can choose instructions to discover air-gapped resources that have no external network connectivity.
 . Choose an installation type to view the instructions for installing Trident Protect on your Kubernetes cluster:
 +
 * Select *Connected* to discover clusters that have external network connectivity.
@@ -77,12 +77,11 @@ The cluster is added to the inventory.
 . Select *View* in the associated Kubernetes workload to see the list of applications, clusters, and namespaces for that workload.
 
 == Continue to the NetApp Backup and Recovery Dashboard
-Follow these steps to view the NetApp Backup and Recovery Dashboard. 
+Follow these steps to view the NetApp Backup and Recovery Dashboard and verify discovered resources.
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
 . Select the Kubernetes workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
-
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.  
+. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
 +
 link:br-use-dashboard.html[Learn what the Dashboard shows you].

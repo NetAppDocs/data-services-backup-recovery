@@ -13,20 +13,20 @@ summary: Create and manage protection groups for KVM workloads in NetApp Backup 
 :imagesdir: ./media/
 
 [.lead]
-Create protection groups to manage the backup operations for a set of KVM resources. A protection group is a logical grouping of resources such as VMs and storage pools that you want to protect together. You need to create a protection group to back up KVM virtual machines or storage pools.
+Create and manage protection groups so you can back up related KVM virtual machines and storage pools together.
 
-You can perform the following tasks related to protection groups:
+You can do the following with protection groups:
 
-* Create a protection group.
-* View protection details. 
+* Create a protection group
+* View protection details
 * Back up a protection group now. See link:br-use-kvm-backup.html[Back up KVM workloads now].
 //* Suspend and resume a protection group's backup schedule. 
-* Edit a protection group. 
-* Delete a protection group.
+* Edit a protection group
+* Delete a protection group
 
 == Create a protection group 
 
-Group VMs and storage pools that you want to protect together into a protection group. 
+Group the VMs and storage pools that you want to protect together into a protection group. 
 
 *Required Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
@@ -41,11 +41,11 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select a host to list the available VMs on that host. To include VMs from all discovered hosts, select *All* in the hosts list.
 . Select individual VMs that you want to include in the protection group, or select *All* to include all VMs in the list.
 +
-VMs that you select appear in the *Added virtual machines* area. You can remove individual VMs from the list or empty the list entirely. You can add VMs from multiple KVM hosts to the list.
+The VMs that you select appear in the *Added virtual machines* area. You can remove individual VMs or clear the list. You can add VMs from multiple KVM hosts.
 . Select *Next*. 
 . Select the protection policy that you want to apply to the protection group, or create a new policy by selecting *Create new policy*. 
 +
-For more information about creating a backup policy, refer to link:br-use-policies-create.html[Create and manage policies].
+For more information, see link:br-use-policies-create.html[Create and manage policies].
 . Select *Next*. 
 . Review the configuration.
 . Select *Create* to create the protection group.

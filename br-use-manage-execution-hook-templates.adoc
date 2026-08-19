@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to manage execution hooks to tak
 :imagesdir: ./media/
 
 [.lead]
-An execution hook is a custom action that runs with a data protection operation in a managed Kubernetes application. For example, create application-consistent snapshots by using an execution hook to pause database transactions before a snapshot and resume them after. When you create an execution hook template, specify the hook type, the script to run, and filters for target containers. Use the template to link execution hooks to your applications.
+Create execution hook templates to run custom scripts before or after protection operations for managed Kubernetes applications.
 
 [NOTE]
 ======
@@ -28,7 +28,7 @@ NetApp Backup and Recovery freezes and unfreezes filesystems for applications li
 Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Types of execution hooks
-NetApp Backup and Recovery supports the following types of execution hooks, based on when they can be run:
+NetApp Backup and Recovery supports the following types of execution hooks based on when they run:
 
 * Pre-snapshot
 * Post-snapshot
@@ -38,39 +38,39 @@ NetApp Backup and Recovery supports the following types of execution hooks, base
 //* Post-failover
 
 === Order of execution
-When a data protection operation is run, execution hook events take place in the following order:
+When a data protection operation runs, execution hook events take place in the following order:
 
 . Any applicable custom pre-operation execution hooks are run on the appropriate containers. You can create multiple custom pre-operation hooks, but their execution order is not guaranteed or configurable.
 . Filesystem freezes occur, if applicable. 
 . The data protection operation is performed.
 . Frozen filesystems are unfrozen, if applicable.
-. NetApp Backup and Recovery runs any applicable custom pre-operation execution hooks on the appropriate containers. You can create multiple custom post-operation hooks, but their execution order is not guaranteed or configurable.
+. NetApp Backup and Recovery runs any applicable custom post-operation execution hooks on the appropriate containers. You can create multiple custom post-operation hooks, but their execution order is not guaranteed or configurable.
 
-If you create multiple hooks of the same type, their execution order is not guaranteed. Hooks of different types always run in the specified order. For example, the following is the order of execution of a configuration that has all of the different types of hooks:
+If you create multiple hooks of the same type, their execution order is not guaranteed. Hooks of different types always run in the specified order. For example, hooks run in this order when a configuration includes all supported hook types:
 
-. Pre-snapshot hooks executed
-. Post-snapshot hooks executed
-. Pre-backup hooks executed
-. Post-backup hooks executed
+. Pre-snapshot hooks run
+. Post-snapshot hooks run
+. Pre-backup hooks run
+. Post-backup hooks run
 
 NOTE: Test execution hook scripts before enabling them in production. Use 'kubectl exec' to test scripts, then verify snapshots and backups by cloning the app to a temporary namespace and restoring.
 
 NOTE: If a pre-snapshot execution hook adds, changes, or removes Kubernetes resources, those changes are included in the snapshot or backup and in any subsequent restore operation.
 
 == Important notes about custom execution hooks
-Consider the following when planning execution hooks for your apps.
+Consider the following when planning execution hooks for your applications.
 
 * An execution hook must use a script to perform actions. Many execution hooks can reference the same script.
-* Execution hooks need to be written in the format of executable shell scripts.
+* Execution hooks must be executable shell scripts.
 * Script size is limited to 96KB.
 * Execution hook settings and any matching criteria are used to determine which hooks are applicable to a snapshot, backup, or restore operation.
 
-NOTE: Execution hooks can reduce or disable application functionality. Make your custom hooks run as quickly as possible. If you start a backup or snapshot operation with associated execution hooks but then cancel it, the hooks are still allowed to run if the backup or snapshot operation has already begun. This means that the logic used in a post-backup execution hook cannot assume that the backup was completed.
+NOTE: Execution hooks can reduce or disable application functionality. Make your custom hooks run as quickly as possible. If you cancel a backup or snapshot operation that has associated execution hooks, those hooks still run if the operation has already begun. A post-backup execution hook's logic cannot assume that the backup completed.
 
 == Execution hook filters
-When you add or edit an execution hook for an application, you can add filters to the execution hook to manage which containers the hook will match. Filters are useful for applications that use the same container image on all containers, but might use each image for a different purpose (such as Elasticsearch). Filters allow you to create scenarios where execution hooks run on some but not necessarily all identical containers. If you create multiple filters for a single execution hook, they are combined with a logical AND operator. You can have up to 10 active filters per execution hook.
+When you add or edit an execution hook for an application, you can add filters to the execution hook to control which containers the hook matches. Filters are useful for applications that use the same container image on all containers, but might use each image for a different purpose (such as Elasticsearch). Filters allow you to create scenarios where execution hooks run on some but not necessarily all identical containers. If you create multiple filters for a single execution hook, they are combined with a logical AND operator. You can have up to 10 active filters per execution hook.
 
-Each filter you add to an execution hook uses a regular expression to match containers in your cluster. When a hook matches a container, the hook will run its associated script on that container. Regular expressions for filters use the Regular Expression 2 (RE2) syntax, which does not support creating a filter that excludes containers from the list of matches. For information on the syntax that NetApp Backup and Recovery supports for regular expressions in execution hook filters, see https://github.com/google/re2/wiki/Syntax[Regular Expression 2 (RE2) syntax support^].
+Each filter you add to an execution hook uses a regular expression to match containers in your cluster. When a hook matches a container, the hook runs its associated script on that container. Regular expressions for filters use the Regular Expression 2 (RE2) syntax, which does not support creating a filter that excludes containers from the list of matches. For information on the syntax that NetApp Backup and Recovery supports for regular expressions in execution hook filters, see https://github.com/google/re2/wiki/Syntax[Regular Expression 2 (RE2) syntax support^].
 
 NOTE: If you add a namespace filter to an execution hook that runs after a restore or clone operation and the restore or clone source and destination are in different namespaces, the namespace filter is only applied to the destination namespace.
 
