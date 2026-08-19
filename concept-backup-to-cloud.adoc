@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery is a data service that provides efficient, secure, and cost-effective data protection for all your ONTAP workloads, including volumes, databases, virtual machines, and Kubernetes workloads.
 ---
 
-= About NetApp Backup and Recovery
+= Learn about NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
