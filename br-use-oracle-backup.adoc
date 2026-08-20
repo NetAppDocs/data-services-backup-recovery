@@ -25,7 +25,7 @@ NOTE: To back up protection groups or single databases on a schedule, create pol
 
 Create an on-demand backup before making system changes to protect your data.
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 
@@ -48,7 +48,7 @@ NOTE: NetApp Backup and Recovery uses the same policy for both the backup and th
 
 Create an on-demand backup before making system changes to protect your data. 
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps 

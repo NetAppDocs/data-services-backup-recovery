@@ -15,7 +15,7 @@ summary: NetApp Backup and Recovery enables you to manage your workload host inf
 [.lead]
 Use the NetApp Backup and Recovery web UI or custom resource files to add Kubernetes applications for protection. You can add namespace-based applications that use standard Kubernetes resources or VM-based applications that use one or more virtual machines.
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin or Backup and Recovery backup admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 

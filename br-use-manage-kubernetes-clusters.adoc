@@ -20,7 +20,7 @@ NOTE: To discover Kubernetes clusters, refer to link:br-start-discover.html[Disc
 == Edit Kubernetes cluster information
 You can edit a cluster if you need to change its name. 
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin or Backup and Recovery backup admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
@@ -35,7 +35,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin. link:refere
 == Remove a Kubernetes cluster
 To stop protecting a Kubernetes cluster, disable protection and delete associated applications, then remove the cluster from NetApp Backup and Recovery. NetApp Backup and Recovery does not delete the cluster or its resources; it only removes the cluster from the NetApp Console inventory.
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
@@ -49,7 +49,7 @@ Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Ba
 == Upgrade Trident Protect
 For Kubernetes clusters running Trident Protect 26.05 or later, you can upgrade Trident Protect directly from NetApp Backup and Recovery. The upgrade option only appears if a newer version is available.
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
@@ -63,7 +63,7 @@ Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Ba
 == Reconnect a Kubernetes cluster to a Console agent
 If your Console agent's IP address changes (for example, after a restart), your Kubernetes cluster loses its connection to the agent and you need to reconnect.
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
@@ -80,7 +80,7 @@ After the command completes, your cluster should reconnect automatically.
 
 If your Console agent is deleted or becomes unavailable, migrate any clusters that use it to a new agent to avoid interrupting application protection.
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 

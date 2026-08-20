@@ -155,7 +155,7 @@ If you are editing a policy that backs up to object storage, you can enable arch
 
 If you imported resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin or Backup and Recovery backup admin. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 

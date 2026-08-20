@@ -23,7 +23,7 @@ NetApp Backup and Recovery freezes and unfreezes filesystems for applications li
 * To disable this behavior for a specific application, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-manage-applications.html#define-an-application[Define an application].
 ======
 
-.Required NetApp Console role
+*Required NetApp Console role*
 
 Backup and Recovery super admin, Backup and Recovery backup admin, or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 

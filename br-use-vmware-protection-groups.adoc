@@ -41,7 +41,7 @@ Tag membership is resolved from vCenter at backup time. Any changes you make to 
 
 Create a protection group to organize the resources you want to back up and restore together.
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Before you begin
