@@ -16,7 +16,7 @@ summary: Clone your VMware virtual machine workloads with NetApp Backup and Reco
 Use NetApp Backup and Recovery to create writable clones of VMware virtual machines from primary or secondary snapshots. You can create and manage cloned virtual machines for testing, integration, and training without affecting production data.
 
 *Required Console role*
-Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery clone admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Before you begin
 Ensure that any VMs whose snapshots you want to clone have been added to a protection group and backed up.

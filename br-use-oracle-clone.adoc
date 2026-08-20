@@ -16,7 +16,7 @@ summary: Clone your Oracle Database workloads with NetApp Backup and Recovery.
 Use NetApp Backup and Recovery to create writable clones of Oracle Database workloads from on-premises ONTAP systems on primary or secondary storage. You can also schedule clone refreshes to meet your requirements.
 
 *Required Console role*
-Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery clone admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Create a clone of an Oracle database
 
