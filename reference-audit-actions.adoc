@@ -13,9 +13,9 @@ summary: Reference of Backup and Recovery actions supported by NetApp Console au
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Console Audit page records the following actions that users perform in Backup and Recovery as part of its auditing feature. For details on how to view and filter audit events, refer to https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html#audit-user-activity-from-the-audit-page[Audit user activity from the Audit page^] in the Console documentation.
+Use this reference to see which NetApp Backup and Recovery actions NetApp Console records on the Audit page. For details about viewing and filtering audit events, see https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html#audit-user-activity-from-the-audit-page[Audit user activity from the Audit page^] in the NetApp Console documentation.
 
-For each audited action, the Console records the service name, agent, resource, user, and action status.
+For each audited action, NetApp Console records the service name, agent, resource, user, and action status.
 
 .Audited Backup and Recovery actions
 

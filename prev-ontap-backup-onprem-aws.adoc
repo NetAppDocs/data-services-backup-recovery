@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your on-premises ONTAP systems to a secondary storage system and to Amazon S3 cloud storage.
+In NetApp Backup and Recovery, you can back up volume data from your on-premises ONTAP systems to a secondary storage system and to Amazon S3. Use this page to prepare your environment and activate backups.
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
@@ -321,14 +321,14 @@ You can also <<Show the API commands>> at the review step, so you can copy the c
 
 .Steps 
 
-. Access the Activate backup and recovery wizard using one of the following ways: 
-* From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right-panel.
+. Access the Activate Backup and Recovery wizard using one of the following ways: 
+* From the Console *Systems* page, select the system and select *Enable > Backup Volumes* next to Backup and Recovery in the right panel.
 +
 If the Amazon S3 destination for your backups exists as a system on the Console *Systems* page, you can drag the ONTAP cluster onto the Amazon S3 object storage. 
 * Select *Volumes* in the Backup and recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled). 
 
 + 
-The Introduction page of the wizard shows the protection options including local Snapshots, replication, and backups. If you did the second option in this step, the Define Backup Strategy page appears with one volume selected. 
+The Introduction page of the wizard shows the protection options including local snapshots, replication, and backups. If you did the second option in this step, the Define Backup Strategy page appears with one volume selected.
 
 . Continue with the following options: 
 
@@ -382,7 +382,7 @@ NOTE: If the volumes you choose have different snapshot and replication policies
 * *Backup*: Backs up volumes to object storage.  
 
 . *Architecture*: If you chose replication and backup, choose one of the following flows of information: 
-* *Cascading*: Information flows from the primary to the secondary to object storage and from the secondary to object storage. 
+* *Cascading*: Information flows from the primary to the secondary, and then from the secondary to object storage.
 * *Fan out*: Information flows from the primary to the secondary _and_ from the primary to object storage. 
 + 
 For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey]. 
@@ -395,7 +395,7 @@ TIP: To create a custom policy before activating the snapshot, refer to link:br-
 +
 * Enter the name of the policy. 
 * Select up to five schedules, typically of different frequencies. 
-** For backup-to-object policies, set the Datalock and Ransomware protection settings. For details on Datalock and Ransomware protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
+** For backup-to-object policies, set the DataLock and Ransomware protection settings. For details on DataLock and Ransomware protection, refer to link:prev-ontap-policy-object-options.html[Backup-to-object policy settings].
 * Select *Create*.
 // In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
  
@@ -450,7 +450,7 @@ To create a policy, select *Create new policy* and do the following:
 //.. Enter the name for the default policy. You don't need to change the name.
 //.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings[See the list of existing policies you can choose^].
 
-//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _Datalock and Ransomware protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
+//.. Optionally, when using ONTAP 9.11.1 and greater, you can choose to protect your backups from deletion and ransomware attacks by configuring one of the _DataLock and Ransomware protection_ settings. _DataLock_ protects your backup files from being modified or deleted, and _Ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files. link:concept-cloud-backup-policies.html#datalock-and-ransomware-protection[Learn more about the available DataLock settings^].
 //+
 //NOTE: If you plan to use DataLock, you must enable it in your first policy when activating NetApp Backup and Recovery. You might want to protect your backups from deletion by using _DataLock_.
 
@@ -478,10 +478,9 @@ You can also monitor the status of backup and restore jobs using the link:br-use
 
 === Show the API commands 
 
-You might want to display and optionally copy the API commands used in the Activate backup and recovery wizard. You might want to do this to automate backup activation in future systems. 
+You might want to display and optionally copy the API commands used in the Activate Backup and Recovery wizard. You might want to do this to automate backup activation in future systems. 
 
 .Steps 
 
-. From the Activate backup and recovery wizard, select *View API request*. 
+. From the Activate Backup and Recovery wizard, select *View API request*. 
 . To copy the commands to the clipboard, select the *Copy* icon. 
-

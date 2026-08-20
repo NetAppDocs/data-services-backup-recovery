@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, 
 summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
 ---
 
-= Restore Kubernetes applications with NetApp Backup and Recovery using a custom resource
+= Restore Kubernetes applications with custom resources
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,13 +13,13 @@ summary: NetApp Backup and Recovery enables you to restore applications that you
 :imagesdir: ./media/
 
 [.lead]
-You can use custom resources to restore your applications from a snapshot or backup. Restoring from an existing snapshot will be faster when restoring the application to the same cluster.
+Use custom resources to restore your applications from a snapshot or backup. Restoring from an existing snapshot is typically faster when you restore the application to the same cluster.
 
 [NOTE]
 ====
 * When you restore an application, all execution hooks configured for the application are restored with the app. If a post-restore execution hook is present, it runs automatically as part of the restore operation.
 * Restoring from a backup to a different namespace or to the original namespace is supported for qtree volumes. However, restoring from a snapshot to a different namespace or to the original namespace is not supported for qtree volumes.
-* You can use advanced settings to customize restore operations. To learn more, refer to link:br-use-kubernetes-advanced-restore-settings.html[Advanced restore settings for Kubernetes in NetApp Backup and Recovery].
+* You can use advanced settings to customize restore operations. To learn more, see link:br-use-kubernetes-advanced-restore-settings.html[Advanced restore settings for Kubernetes in NetApp Backup and Recovery].
 ====
 
 == Restore a backup to a different namespace
@@ -29,7 +29,7 @@ When you restore a backup to a different namespace using a BackupRestore CR, Bac
 [NOTE] 
 ====
 * Restoring a backup to a different namespace with existing resources will not alter any resources that share names with those in the backup. To restore all resources in the backup, either delete and re-create the target namespace, or restore the backup to a new namespace.
-* When using a CR to restore to a new namespace, you must manually create the destination namespace before applying the CR. Backup and Recovery automatically creates namespaces only when using the CLI.
+* When you use a CR to restore to a new namespace, you must manually create the destination namespace before applying the CR. Backup and Recovery automatically creates namespaces only when you use the CLI.
 ====
 
 include::../_include/restore-include-sessiontoken-note.adoc[]
@@ -184,7 +184,7 @@ Running this command displays the available backups in the AppVault, including t
 kubectl get backups <BACKUP_NAME> -n my-app-namespace -o jsonpath='{.status.appArchivePath}'
 ----
 +
-NOTE: If BackupRestore CR is not available, you can use the command mentioned in step 2 to view the backup contents.
+NOTE: If the BackupRestore CR is not available, you can use the command in step 2 to view the backup contents.
 
 +
 * *spec.namespaceMapping*: The mapping of the source namespace of the restore operation to the destination namespace. Replace `my-source-namespace` and `my-destination-namespace` with information from your environment.

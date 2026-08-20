@@ -5,7 +5,7 @@ keywords:
 summary: 'When attempting to restore a guest file, you might encounter scenarios where guest file restore session is blank, guest file restore attach disk operation fails, or backups are not detached after guest file restore session is discontinued. '
 ---
 
-= Guest file restore troubleshooting in NetApp Backup and Recovery
+= Troubleshoot VMware guest file restore in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: 'When attempting to restore a guest file, you might encounter scenarios
 :imagesdir: ./media/
 
 [.lead]
-When attempting to restore a guest file, you might encounter any of the following scenarios.
+If you encounter problems while restoring a guest file, use these scenarios to identify and correct the issue.
 
 == Guest file restore session is blank
 
@@ -23,11 +23,11 @@ To correct the issue, manually put the VMDKs back online in the guest OS. When t
 
 == Guest file restore attach disk operation fails
 
-This issue occurs when you start a guest file restore operation, but the attach disk operation fails even though VMware tools is running and the Guest OS credentials are correct. If this occurs, the following error is returned:
+This issue occurs when you start a guest file restore operation, but the attach disk operation fails even though VMware Tools is running and the guest OS credentials are correct. If this occurs, the following error is returned:
 
 `Error while validating guest credentials, failed to access guest system using specified credentials: Verify VMware Tools is running properly on the system and that the account used is an Administrator account. Error is SystemError vix error codes = (3016, 0).`
 
-To correct the issue, restart the VMware Tools Windows service on the Guest OS, and then retry the guest file restore operation.
+To correct the issue, restart the VMware Tools Windows service on the guest OS, and then retry the guest file restore operation.
 
 == Backups are not detached after guest file restore session is discontinued
 

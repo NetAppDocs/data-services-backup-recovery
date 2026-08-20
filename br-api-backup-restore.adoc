@@ -5,7 +5,7 @@ keywords: api, apis, rest, restful, authorization, getting started, body, header
 summary: The NetApp Backup and Recovery capabilities that are available through the web UI are also available through RESTful APIs.
 ---
 
-= Automate with NetApp Backup and Recovery REST APIs
+= Automate NetApp Backup and Recovery with REST APIs
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,20 +13,20 @@ summary: The NetApp Backup and Recovery capabilities that are available through 
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Backup and Recovery capabilities that are available through the web UI are also available through the Backup and Recovery REST API.
+Use the NetApp Backup and Recovery REST API to automate the backup and restore tasks available in the web UI.
 
-There are ten categories of endpoints defined within NetApp Backup and Recovery:
+NetApp Backup and Recovery defines ten endpoint categories:
 
-*	`backup` - manages backup operations of cloud and on-premises resources, and retrieves details of the backup data
-*	`catalog` - manages the indexed catalog search for files based on a query (Search & Restore)
+*	`backup` - manages backup operations for cloud and on-premises resources and retrieves backup data details
+*	`catalog` - manages indexed catalog searches for files based on a query (Search & Restore)
 *	`cloud` - retrieves information about various cloud provider resources from the NetApp Console
-*	`job` - manages job detail entries on the NetApp Console database
-*	`license` - retrieves the license validity of the systems from NetApp Console
+*	`job` - manages job detail entries in the NetApp Console database
+*	`license` - retrieves system license status from NetApp Console
 * `ransomware scan` - initiates a ransomware scan on a specific backup file
 *	`restore` - enables you to perform volume, file, and folder-level restore operations
 *	`sfr` - retrieves files from a backup file for single file-level restore operations (Browse & Restore)
-* `storagegrid` - retrieves details about a StorageGRID server, and enables you to discover a StorageGRID server
-*	`system` - manages the backup policies, and configures the destination object store associated with a system
+* `storagegrid` - retrieves details about a StorageGRID server and enables you to discover a StorageGRID server
+*	`system` - manages backup policies and configures the destination object store associated with a system
 
 == API reference
 
@@ -34,17 +34,17 @@ Documentation for each NetApp Backup and Recovery API is available from https://
 
 == Getting started
 
-To get started with the NetApp Backup and Recovery APIs, you'll need to obtain a user token, your NetApp Console account ID, and the Console agent ID.
+To get started with the NetApp Backup and Recovery APIs, obtain a user token, your NetApp Console account ID, and the Console agent ID.
 
-When making API calls, you'll add the user token in the Authorization header, and the Console agent ID in the x-agent-id header. You should use the NetApp Console account ID in the APIs.
+When you make API calls, include the user token in the `Authorization` header and the Console agent ID in the `x-agent-id` header. Include the NetApp Console account ID in API requests.
 
-NOTE: If you are using a service account, you should use the service access token instead of a user token. The value for "client_id" ("Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC") is a fixed value and cannot be changed. In this case, follow the instructions here: https://docs.netapp.com/us-en/console-automation/platform/create_service_token.html[Create a service access token^].
+NOTE: If you use a service account, use the service access token instead of a user token. The value for `client_id` (`Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC`) is fixed and cannot be changed. In this case, follow the instructions here: https://docs.netapp.com/us-en/console-automation/platform/create_service_token.html[Create a service access token^].
 
 .Steps
 
-. Obtain a user token from the NetApp Console web site.
+. Obtain a user token from the NetApp Console website.
 +
-Make sure you generate the refresh token from the following link: https://services.cloud.netapp.com/refresh-token/. The refresh token is an alphanumeric string that you'll use to generate a user token.
+Generate the refresh token from the following link: https://services.cloud.netapp.com/refresh-token/. The refresh token is an alphanumeric string that you use to generate a user token.
 +
 [source,shell]
 ----
@@ -57,7 +57,7 @@ curl --location --request POST 'https://netapp-cloud-account.auth0.com/oauth/tok
 }'
 ----
 +
-NOTE: The user token from the NetApp Console web site has an expiration date. The API response includes an "expires_in" field that states when the token expires. To refresh the token, you'll need to call this API again. 
+NOTE: The user token from the NetApp Console website expires. The API response includes an `expires_in` field that indicates when the token expires. To refresh the token, call this API again. 
 
 . Obtain your NetApp Console account ID.
 +
@@ -71,7 +71,7 @@ Header:
 ----
 
 +
-This API will return a response like the following. You can retrieve the account ID by parsing the output from *[0].[ accountPublicId]*.
+This API returns a response like the following. Retrieve the account ID from *[0].[accountPublicId]*.
 +
 [source,json]
 ----
@@ -87,7 +87,7 @@ This API will return a response like the following. You can retrieve the account
 }
 ----
 
-. Obtain the x-agent-id which contains the Console agent ID.
+. Obtain the `x-agent-id` header value, which contains the Console agent ID.
 +
 [source,console]
 ----
@@ -99,11 +99,11 @@ Header:
   -H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5…………
 ----
 +
-You can retrieve the agent id from the response by parsing the output from *occm.[0].[agent].[agentId]*.
+Retrieve the agent ID from the response by parsing *occm.[0].[agent].[agentId]*.
 
 == Example using the APIs
 
-The following example shows an API call to activate NetApp Backup and Recovery on a system with a new policy that has daily, hourly, and weekly labels set, archive after days set to 180 days, in East-US-2 region in Azure cloud. Note that this only enables backup on the system, but no volumes are backed up. 
+The following example shows an API call that activates NetApp Backup and Recovery on a system with a new policy. The policy has daily, hourly, and weekly labels and archives after 180 days in the East US 2 Azure region. This request enables backup on the system, but it does not back up any volumes. 
 
 .API Request
 
@@ -144,7 +144,7 @@ curl --location --request POST 'https://api.bluexp.netapp.com/account/account-Dp
   }
 ----
 
-.Response is a job ID that you can then monitor:
+.Response includes a job ID that you can monitor:
 
 [source,json]
 ----
@@ -153,7 +153,7 @@ curl --location --request POST 'https://api.bluexp.netapp.com/account/account-Dp
 }
 ----
 
-.Monitor the response:
+.Monitor the job status:
 
 [source,shell]
 ----
@@ -181,7 +181,7 @@ curl --location --request GET 'https://api.bluexp.netapp.com/account/account-DpT
 }
 ----
 
-.Monitor until "status" is "COMPLETED":
+.Monitor until `status` is `COMPLETED`:
 
 [source,json]
 ----

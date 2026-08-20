@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-limitations-hyperv.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Hyper-V, SAP HANA database, virtual machine, vm
-summary: Review these NetApp Backup and recovery limitations before using Backup and Recovery in your environment.
+summary: Review these NetApp Backup and Recovery limitations before using Backup and Recovery in your environment.
 ---
 
 = Known limitations with NetApp Backup and Recovery for Hyper-V workloads
@@ -13,14 +13,14 @@ summary: Review these NetApp Backup and recovery limitations before using Backup
 :imagesdir: ./media/
 
 [.lead]
-Platforms, devices, or features that do not work or do not work well with this version are listed here. Read these limitations carefully.
+Review the current limitations and unsupported actions for Hyper-V workloads in NetApp Backup and Recovery.
 
 == Unsupported actions
 
-The following actions are not supported in Hyper-V workloads in NetApp Backup and Recovery: 
+The following actions are not supported for Hyper-V workloads in NetApp Backup and Recovery: 
 
 * In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 * Protecting generation 2 VMs that are stored on SAN storage is not supported when using Microsoft Windows Server 2025.
-* Create resource groups using VMs from multiple Hyper-V hosts
-* Spanning disks (across multiple CIFS shares)
+* Creating resource groups by using VMs from multiple Hyper-V hosts
+* Using spanning disks across multiple CIFS shares
 * You cannot restore VMs or VM data between systems with different CPU vendors (Intel to AMD or vice versa), regardless of the "Processor compatibility" setting in Hyper-V. This setting only supports compatibility between different generations of the same vendor (e.g., Intel to Intel or AMD to AMD).

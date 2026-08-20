@@ -13,9 +13,9 @@ summary: Complete a few steps to configure NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-After you set up NetApp Console, configure Backup and Recovery settings. Add credentials for host resources, import SnapCenter resources, configure log directories, and set VMware vCenter settings. Complete these steps before backing up or recovering data.
+Configure Backup and Recovery settings to add credentials for workloads, integrate with existing infrastructure, and prepare backup and restore operations.
 
-* <<Add credentials for host resources>> for any Windows, Microsoft SQL Server, Oracle Database, or Linux hosts that NetApp Backup and Recovery needs to authenticate with. This includes guest OS credentials used when restoring files or folders.
+* <<Add credentials for host resources>> for Windows, Microsoft SQL Server, Oracle Database, and Linux hosts that NetApp Backup and Recovery needs to authenticate with. This includes guest OS credentials used when restoring files or folders.
 * <<Maintain VMware vCenter settings>>.
 * <<Import and manage SnapCenter host resources>>. (Microsoft SQL Server workloads only)
 * <<Add a KVM management platform>>. (KVM workloads only)
@@ -47,11 +47,11 @@ You need to configure the following types of credentials:
 . From the NetApp Backup and Recovery menu, select *Settings*.
 . Select the down arrow for *Credentials*.
 . Select *Add new credentials*.
-. Enter information for the credentials. Different fields appear depending on the Authentication mode you select. Hover over the Information *i* icon for more information about the fields. 
+. Enter information for the credentials. Different fields appear depending on the authentication mode you select. Hover over the Information *i* icon for more information about the fields. 
 * *Credentials name*: Enter a name for the credentials.
 * *Authentication mode*: Select *Windows*, *Microsoft SQL*, *Oracle Database*, or *Linux*. 
 +
-TIP: For Microsoft SQL Server workloads, you need to enter credentials for both Windows and Microsoft SQL Server, so you'll need to add two sets of credentials.
+TIP: For Microsoft SQL Server workloads, you must enter credentials for both Windows and Microsoft SQL Server, requiring two sets of credentials.
 +
 [role="tabbed-block"]
 ====
@@ -118,7 +118,7 @@ You can later edit the password for any credentials that you have created.
 
 == Maintain VMware vCenter settings 
 
-Provide VMware vCenter credentials to discover workloads for backup. If you don't have credentials, create them with permissions to access and manage the VMware vCenter Server workloads.
+Provide VMware vCenter Server credentials to discover workloads for backup. If you don't have credentials, create them with permissions to access and manage VMware vCenter Server workloads.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
@@ -129,7 +129,7 @@ Provide VMware vCenter credentials to discover workloads for backup. If you don'
 . Select *Add vCenter*.
 
 . Enter the VMware vCenter Server information.
-* *vCenter FQDN or IP address*: Enter an FQDN name or the IP address for the VMware vCenter Server.
+* *vCenter FQDN or IP address*: Enter an FQDN or the IP address for the VMware vCenter Server.
 * *Username* and *Password*: Enter the username and password for the VMware vCenter Server.
 * *Port*: Enter the port number for the VMware vCenter Server.
 * *Protocol*: Select *HTTP* or *HTTPS*. 
@@ -205,7 +205,7 @@ The Import from SnapCenter page shows all previous imports.
 
 == Add a KVM management platform
 
-If you use the Apache CloudStack management platform to manage KVM resources, you need to integrate it with NetApp Backup and Recovery so that Backup and Recovery can discover and protect the managed KVM hosts and VMs.
+If you use the Apache CloudStack management platform to manage KVM resources, integrate it with NetApp Backup and Recovery so that Backup and Recovery can discover and protect the managed KVM hosts and VMs.
 
 .Steps
 
@@ -214,7 +214,7 @@ If you use the Apache CloudStack management platform to manage KVM resources, yo
 . Select *Add management platform credential*.
 . Enter the following information:
 +
-* *Management platform IP address or FQDN*: Enter the IP address or fully qualified domain name of the management platform.
+* *Management platform IP address or FQDN*: Enter the IP address or an FQDN of the management platform.
 * *API key*: Enter the API key to use to authenticate API requests.
 * *Secret Key*: Enter the secret key to use to authenticate API requests.
 * *Port*: Enter the port to use for communication between Backup and Recovery and the management platform.
@@ -225,7 +225,7 @@ If you use the Apache CloudStack management platform to manage KVM resources, yo
 
 == Configure log directories in snapshots for Windows hosts
 
-Before you create policies for Windows hosts, you should configure log directories in snapshots for Windows hosts. Log directories are used to store the logs that are generated during the backup process. 
+Before you create policies for Windows hosts, configure log directories in snapshots to store the logs generated during the backup process. 
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -243,18 +243,18 @@ Before you create policies for Windows hosts, you should configure log directori
 include::_include/create-exec-hook-template.adoc[]
 
 == Create a resource transformation template
-Create resource transformation templates to store common transformations you make to resources as you restore them. 
+Create resource transformation templates to store common transformations you apply to resources during restore operations. 
 
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Settings*.
-. Select the down arrow to expand the *Resource modifer template* section.
+. Select the down arrow to expand the *Resource transformation template* section.
 . Select *Create template*.
 . Enter a name for the resource transformation template.
 . Optionally, enter a template description.
 . Describe the target resource:
 .. Enter the resource kind (such as Pod or Deployment). This field is required.
-.. Optionally, enter a resource group, version, name.
+.. Optionally, enter a resource group, version, and name.
 . Build an operation:
 .. Choose an operation from the *Operation* list.
 .. Enter the JSON path that the operation applies to.

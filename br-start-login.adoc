@@ -13,16 +13,16 @@ summary: You use NetApp Console to log in to NetApp Backup and Recovery service.
 :imagesdir: ./media/
 
 [.lead]
-You use the NetApp Console to log in to NetApp Backup and Recovery. 
+Log in to NetApp Backup and Recovery from NetApp Console to discover workloads and manage protection operations. 
 
 NetApp Backup and Recovery uses identity and access management to control what each user can do. 
 
 For details about the actions that each role can perform, see link:reference-roles.html[NetApp Backup and Recovery user roles].
 
-To log in to the NetApp Console, you can use your NetApp Support Site credentials or you can sign up for a NetApp Console login using your email and a password. https://docs.netapp.com/us-en/console-setup-admin/task-logging-in.html[Learn more about logging in^].
+To log in to NetApp Console, you can use your NetApp Support Site credentials, or you can sign up for a NetApp Console account using your email address and a password. https://docs.netapp.com/us-en/console-setup-admin/task-logging-in.html[Learn more about logging in^].
 
 *Required NetApp Console role*
-Backup and Recovery super admin or Backup and Recovery restore admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+Backup and Recovery super admin or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 To add a Console agent, you must have the Backup and Recovery super admin role. 
 
@@ -36,18 +36,14 @@ The NetApp Console login page appears.
 . Log in to the Console. 
 . From the Console left navigation, select *Protection* > *Backup and Recovery*. 
 +
-* If this is your first time logging in to Backup and Recovery and you haven't yet added a system to the *Systems* page, the Backup and Recovery displays the "Welcome to the new NetApp Backup and Recovery" landing page with an option to add a system. For details about adding a system to the *Systems* page, refer to https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
+* If this is your first time logging in to Backup and Recovery and you haven't yet added a system to the *Systems* page, the Backup and Recovery service displays the "Welcome to the new NetApp Backup and Recovery" landing page with an option to add a system. For details about adding a system to the *Systems* page, see https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-standard-mode.html[Getting started with NetApp Console standard mode^].
 * If you are logging in to Backup and Recovery for the first time and have a system in the Console but no discovered resources, the _Welcome to the new NetApp Backup and Recovery_ page appears with an option to *Discover resources*.
 
-. If you haven't done so already, select the *Discover and manage* option. 
+. If you haven't already done so, select *Discover and manage*.
 +
-* For Microsoft SQL Server workloads, refer to link:br-start-discover.html[Discover Microsoft SQL Server workloads].
-* For VMware workloads, refer to link:br-use-vmware-discovery.html[Discover VMware workloads].
-* For KVM workloads, refer to link:br-start-discover-kvm.html[Discover KVM workloads].
-* For Oracle Database workloads, refer to link:br-start-discover-oracle.html[Discover Oracle Database workloads].
-* For Hyper-V workloads, refer to link:br-start-discover-hyperv.html[Discover Hyper-V workloads].
-* For Kubernetes workloads, refer to link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
- 
-
-
-
+* For Microsoft SQL Server workloads, see link:br-start-discover.html[Discover Microsoft SQL Server workloads].
+* For VMware workloads, see link:br-use-vmware-discovery.html[Discover VMware workloads].
+* For KVM workloads, see link:br-start-discover-kvm.html[Discover KVM workloads].
+* For Oracle Database workloads, see link:br-start-discover-oracle.html[Discover Oracle Database workloads].
+* For Hyper-V workloads, see link:br-start-discover-hyperv.html[Discover Hyper-V workloads].
+* For Kubernetes workloads, see link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
