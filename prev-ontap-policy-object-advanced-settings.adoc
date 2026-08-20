@@ -15,7 +15,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 [.lead]
 Use the Advanced Settings page to change cluster-level backup-to-object storage settings for each ONTAP system after you activate NetApp Backup and Recovery. You can adjust bandwidth, historical snapshot export, yearly snapshot deletion, and ransomware scan settings.
 
-NOTE: These settings are available for backup-to-object storage only. None of these settings affect your Snapshot or replication settings. 
+NOTE: These settings are available for backup-to-object storage only. None of these settings affect your snapshot or replication settings. 
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 

@@ -144,7 +144,7 @@ You need the source system name, storage VM, volume name, and backup file date t
 . From the _Browse & Restore_ section, select *Restore Volume*.
 . In the _Select Source_ page, navigate to the backup file for the volume you want to restore. Select the *system*, the *Volume*, and the *Backup* file that has the date/time stamp from which you want to restore.
 +
-The *Location* column shows whether the backup file (Snapshot) is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
+The *Location* column shows whether the backup file (snapshot) is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
 . Select *Next*.
 +
 Note that if you select a backup file in object storage and ransomware protection is active for that backup (if you enabled DataLock and Ransomware protection in the backup policy), you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)

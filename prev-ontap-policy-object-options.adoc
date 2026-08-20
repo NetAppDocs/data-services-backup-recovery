@@ -24,7 +24,7 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 NetApp Backup and Recovery enables you to create multiple backup policies with unique schedules for each system (cluster). You can assign different backup policies to volumes that have different recovery point objectives (RPO).
 
-Each backup policy provides a section for _Labels & Retention_ that you can apply to your backup files. Note that the Snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery or backup files will not be created. 
+Each backup policy provides a section for _Labels & Retention_ that you can apply to your backup files. Note that the snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery or backup files will not be created. 
 
 There are two parts of the schedule; the Label and the Retention value:
 
