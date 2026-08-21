@@ -140,8 +140,6 @@ Available snapshots are displayed.
 [discrete]
 ===== Destination selection
 
-//Start tabbed area 
-
 [role="tabbed-block"]
 ====
 .Restore to original location
