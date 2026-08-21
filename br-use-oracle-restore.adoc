@@ -157,6 +157,7 @@ If restoring PDBs or tablespaces to a specific point in time or SCN:
 * Verify that the data backup and required log backups are cataloged.
 =====
 
+[start=8]
 . *Destination settings*: 
 . For RAC databases, select the RAC node on which to run the restore. This option appears only for RAC databases.
 . Select what you want to restore: 
