@@ -124,12 +124,12 @@ The latest snapshot is displayed. The restore operation recovers the last good s
 --
 [loweralpha, start=1]
 . Select *Restore from snapshots with no recovery*.
++
+Selecting this option means that the database will be restored from snapshots, but recovery is skipped (log backups are not applied).
 . Select *Next*.
 +
-All available snapshots are displayed. 
+Available snapshots are displayed. 
 . Select a snapshot from the list and select *Next*.
-+
-Recovery is skipped and log backups are not applied.
 . If the snapshot is stored in more than one location, select a source location to use and add or review location details. 
 . Select *Next*.
 --
@@ -147,9 +147,6 @@ Recovery is skipped and log backups are not applied.
 .Restore to original location
 --
 
-//In the Restore Destination details page, enter the following information:
-[start=2]
-
 [NOTE]
 =====
 If restoring PDBs or tablespaces to a specific point in time or SCN:
@@ -160,7 +157,6 @@ If restoring PDBs or tablespaces to a specific point in time or SCN:
 * Ensure the data backup and the required log backups are cataloged.
 * The `SYSTEM`, `SYSAUX`, and `UNDO` tablespaces cannot be selected.
 * Verify that the data backup and required log backups are cataloged.
-
 =====
 
 . *Destination settings*: 
