@@ -26,9 +26,6 @@ Configure Backup and Recovery settings to add credentials for workloads, integra
 //* <<Enable the Certificate Authority certificates>>
 
 
-*Required NetApp Console role*
-Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
-
 == Add credentials for host resources
 
 Add credentials for host resources. NetApp Backup and Recovery uses these credentials to discover workloads and apply backup policies.
@@ -42,6 +39,9 @@ You need to configure the following types of credentials:
 * Windows guest OS credentials used when restoring guest files or folders
 * Oracle Database credentials
 * Linux host credentials
+
+*Required NetApp Console role*
+Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
@@ -107,6 +107,9 @@ TIP: For Microsoft SQL Server workloads, you must enter credentials for both Win
 
 You can later edit the password for any credentials that you have created.
 
+*Required NetApp Console role*
+Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
+
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
 . Select the down arrow to expand the *Credentials* section. 
@@ -119,6 +122,9 @@ You can later edit the password for any credentials that you have created.
 == Maintain VMware vCenter settings 
 
 Provide VMware vCenter Server credentials to discover workloads for backup. If you don't have credentials, create them with permissions to access and manage VMware vCenter Server workloads.
+
+*Required NetApp Console role*
+Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Settings*.
@@ -144,6 +150,9 @@ This is a two-part process:
 
 * Import SnapCenter Server application and host resources
 * Manage selected SnapCenter host resources
+
+*Required NetApp Console role*
+Backup and Recovery super admin or Backup and Recovery backup admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
 
 === Import SnapCenter Server application and host resources
 
@@ -207,6 +216,9 @@ The Import from SnapCenter page shows all previous imports.
 
 If you use the Apache CloudStack management platform to manage KVM resources, integrate it with NetApp Backup and Recovery so that Backup and Recovery can discover and protect the managed KVM hosts and VMs.
 
+*Required NetApp Console role*
+Backup and Recovery super admin or Backup and Recovery backup admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
+
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Settings*.
@@ -227,6 +239,9 @@ If you use the Apache CloudStack management platform to manage KVM resources, in
 
 Before you create policies for Windows hosts, configure log directories in snapshots to store the logs generated during the backup process. 
 
+*Required NetApp Console role*
+Backup and Recovery super admin, Backup and Recovery backup admin or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
+
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
 
@@ -244,6 +259,9 @@ include::_include/create-exec-hook-template.adoc[]
 
 == Create a resource transformation template
 Create resource transformation templates to store common transformations you apply to resources during restore operations. 
+
+*Required NetApp Console role*
+Backup and Recovery super admin, Backup and Recovery backup admin or Backup and Recovery restore admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].  
 
 .Steps
 

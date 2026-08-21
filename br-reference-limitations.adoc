@@ -59,7 +59,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 
 * When backing up data protection (DP) volumes:
 ** Relationships with the SnapMirror labels `app_consistent` and `all_source_snapshot` will not be backed up to the cloud.
-** If you create local copies of Snapshots on the SnapMirror destination volume (irrespective of the SnapMirror labels used), these Snapshots will not be moved to the cloud as backups. You must create a Snapshot policy with the desired labels on the source DP volume so that NetApp Backup and Recovery can back them up.
+** If you create local copies of snapshots on the SnapMirror destination volume (irrespective of the SnapMirror labels used), these snapshots will not be moved to the cloud as backups. You must create a snapshot policy with the desired labels on the source DP volume so that NetApp Backup and Recovery can back them up.
 
 * FlexGroup volume backups cannot be moved to archival storage.
 
@@ -67,7 +67,7 @@ https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-e
 
 * SVM-DR volume backup is supported with the following restrictions:
 ** Backups are supported from the ONTAP secondary only.
-** The Snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery, including daily, weekly, monthly, etc. The default "sm_created" policy (used for *Mirror All Snapshots*) is not recognized and the DP volume will not be shown in the list of volumes that can be backed up.
+** The snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery, including daily, weekly, monthly, etc. The default "sm_created" policy (used for *Mirror All Snapshots*) is not recognized and the DP volume will not be shown in the list of volumes that can be backed up.
 ** SVM-DR and volume backup and recovery work fully independently when the backup is taken from either the source or destination. The only restriction is that SVM-DR does not replicate the SnapMirror cloud relationship. In the DR scenario when the storage VM goes online in the secondary location, you must manually update the SnapMirror cloud relationship.
 
 * MetroCluster support:

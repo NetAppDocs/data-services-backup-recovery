@@ -15,14 +15,14 @@ summary: NetApp Backup and Recovery enables you to discover and manage your Kube
 [.lead]
 Discover and manage Kubernetes clusters to protect their hosted resources.
 
-.Required NetApp Console role
-
-Organization admin or SnapCenter admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
 NOTE: To discover Kubernetes clusters, refer to link:br-start-discover.html[Discover Kubernetes workloads].
 
 == Edit Kubernetes cluster information
 You can edit a cluster if you need to change its name. 
+
+*Required NetApp Console role*
+
+Backup and Recovery super admin or Backup and Recovery backup admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 
@@ -35,6 +35,10 @@ You can edit a cluster if you need to change its name.
 == Remove a Kubernetes cluster
 To stop protecting a Kubernetes cluster, disable protection and delete associated applications, then remove the cluster from NetApp Backup and Recovery. NetApp Backup and Recovery does not delete the cluster or its resources; it only removes the cluster from the NetApp Console inventory.
 
+*Required NetApp Console role*
+
+Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
 .Steps
 
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
@@ -45,6 +49,10 @@ To stop protecting a Kubernetes cluster, disable protection and delete associate
 == Upgrade Trident Protect
 For Kubernetes clusters running Trident Protect 26.05 or later, you can upgrade Trident Protect directly from NetApp Backup and Recovery. The upgrade option only appears if a newer version is available.
 
+*Required NetApp Console role*
+
+Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
 .Steps
 . In NetApp Backup and Recovery, select *Inventory* > *Clusters*.
 . Select a Kubernetes cluster to upgrade, and select the Actions icon image:../media/icon-action.png[Actions option] > *Upgrade cluster*.
@@ -54,6 +62,10 @@ For Kubernetes clusters running Trident Protect 26.05 or later, you can upgrade 
 
 == Reconnect a Kubernetes cluster to a Console agent
 If your Console agent's IP address changes (for example, after a restart), your Kubernetes cluster loses its connection to the agent and you need to reconnect.
+
+*Required NetApp Console role*
+
+Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
 
@@ -67,6 +79,10 @@ After the command completes, your cluster should reconnect automatically.
 == Migrate a Kubernetes cluster to a new Console agent
 
 If your Console agent is deleted or becomes unavailable, migrate any clusters that use it to a new agent to avoid interrupting application protection.
+
+*Required NetApp Console role*
+
+Backup and Recovery super admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Before you begin
 * https://docs.netapp.com/us-en/console-setup-admin/concept-agent-install-options.html[Deploy a new Console agent.^]

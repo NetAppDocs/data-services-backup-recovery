@@ -285,7 +285,7 @@ The Introduction page of the wizard shows the protection options including local
 
 === Select the volumes that you want to back up
 
-Choose the volumes you want to protect. A protected volume is one that has one or more of the following: Snapshot policy, replication policy, backup to object policy. 
+Choose the volumes you want to protect. A protected volume is one that has one or more of the following: snapshot policy, replication policy, backup to object policy. 
 
 You can choose to protect FlexVol or FlexGroup volumes; however, you cannot select a mix of these volumes when activating backup for a system. See how to link:prev-ontap-backup-manage.html[activate backup for additional volumes in the system] (FlexVol or FlexGroup) after you have configured backup for the initial volumes.
 
@@ -325,7 +325,7 @@ NOTE: If the volumes you choose have different snapshot and replication policies
 
 . In the Define backup strategy page, choose one or all of the following. All three are selected by default: 
 +
-* *Local Snapshots*: If you are performing replication or back up to object storage, local Snapshots must be created. 
+* *Local Snapshots*: If you are performing replication or back up to object storage, local snapshots must be created. 
 * *Replication*: Creates replicated volumes on another ONTAP storage system.  
 * *Backup*: Backs up volumes to object storage.  
 
@@ -394,7 +394,7 @@ To create a policy, select *Create new policy* and do the following:
 ** Select up to five schedules, typically of different frequencies. 
 ** Select *Create*. 
 
-* *Export existing snapshots to object storage as backup copies*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+* *Export existing snapshots to object storage as backup copies*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
 

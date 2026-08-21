@@ -212,7 +212,7 @@ You can choose to protect FlexVol or FlexGroup volumes; however, you cannot sele
 
 .Steps 
 
-Note that if the volumes you choose already have Snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
+Note that if the volumes you choose already have snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
 
 . In the Select Volumes page, select the volume or volumes you want to protect. 
 +
@@ -248,9 +248,9 @@ Defining the backup strategy involves configuring the following options:
 + 
 For details about these architectures, refer to link:prev-ontap-protect-journey.html[Plan your protection journey].  
 
-. *Local Snapshot*: Choose an existing snapshot policy or create a new one. 
+. *Local snapshot*: Choose an existing snapshot policy or create a new one. 
 +
-TIP: If you want to create a custom policy before activating the Snapshot, you can use System Manager or the ONTAP CLI `snapmirror policy create` command. Refer to https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html[ONTAP CLI for `snapmirror policy`^].
+TIP: If you want to create a custom policy before activating the snapshot, you can use System Manager or the ONTAP CLI `snapmirror policy create` command. Refer to https://docs.netapp.com/us-en/ontap-cli-9131/snapmirror-policy-create.html[ONTAP CLI for `snapmirror policy`^].
 +
 TIP: To create a custom policy using Backup and Recovery, refer to link:br-use-policies-create.html[Create a policy].
 +
@@ -307,7 +307,7 @@ To create a policy, select *Create new policy* and do the following:
 //+
 //Select or create a new ONTAP S3 cluster. For details about creating a ONTAP S3 cluster so BlueXP can discover it, refer to https://docs.netapp.com/us-en/storagegrid-117/[StorageGRID documentation^]. 
 
-* *Export existing snapshots to object storage as backup files*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic Snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
+* *Export existing snapshots to object storage as backup files*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
 
@@ -318,7 +318,7 @@ This is the chance to review your selections and make adjustments, if necessary.
 .Steps 
 
 . In the Review page, review your selections. 
-. Optionally check the box to *Automatically synchronize the Snapshot policy labels with the replication and backup policy labels*. This creates Snapshots with a label that matches the labels in the replication and backup policies. If the policies don't match, backups will not be created.
+. Optionally check the box to *Automatically synchronize the snapshot policy labels with the replication and backup policy labels*. This creates snapshots with a label that matches the labels in the replication and backup policies. If the policies don't match, backups will not be created.
 . Select *Activate Backup*. 
 
 .Result 
