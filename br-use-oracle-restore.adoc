@@ -68,6 +68,18 @@ Depending on your needs, restore an Oracle database to a specific point in time,
 *Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
+[NOTE]
+=====
+If restoring PDBs or tablespaces to a specific point in time or SCN:
+
+* Select only one PDB. Point-in-time recovery is not compatible with restoring multiple PDBs.
+* `PDB$SEED` cannot be selected for point-in-time recovery.
+* Control file restore cannot be combined with point-in-time recovery of PDBs or PDB tablespaces.
+* Ensure the data backup and the required log backups are cataloged.
+* The `SYSTEM`, `SYSAUX`, and `UNDO` tablespaces cannot be selected.
+* Verify that the data backup and required log backups are cataloged.
+=====
+
 .Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
@@ -141,18 +153,6 @@ Available snapshots are displayed.
 ====
 .Restore to original location
 --
-
-[NOTE]
-=====
-If restoring PDBs or tablespaces to a specific point in time or SCN:
-
-* Select only one PDB. Point-in-time recovery is not compatible with restoring multiple PDBs.
-* `PDB$SEED` cannot be selected for point-in-time recovery.
-* Control file restore cannot be combined with point-in-time recovery of PDBs or PDB tablespaces.
-* Ensure the data backup and the required log backups are cataloged.
-* The `SYSTEM`, `SYSAUX`, and `UNDO` tablespaces cannot be selected.
-* Verify that the data backup and required log backups are cataloged.
-=====
 
 [start=8]
 . In the *Destination settings* area, do the following: 
