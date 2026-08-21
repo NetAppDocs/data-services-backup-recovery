@@ -154,7 +154,7 @@ Available snapshots are displayed.
 .Restore to original location
 --
 
-.. In the *Destination settings* area, do the following: 
+.. In the *Destination settings* section, do the following: 
 ... For RAC databases, select the RAC node on which to run the restore. This option appears only for RAC databases.
 ... Select what you want to restore: 
 +
