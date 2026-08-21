@@ -148,33 +148,32 @@ Available snapshots are displayed.
 ====
 
 . Choose the restore destination and settings:
-
++
 [role="tabbed-block"]
 ====
 .Restore to original location
 --
 
-[loweralpha, start=1]
-. In the *Destination settings* area, do the following: 
-.. For RAC databases, select the RAC node on which to run the restore. This option appears only for RAC databases.
-.. Select what you want to restore: 
+.. In the *Destination settings* area, do the following: 
+... For RAC databases, select the RAC node on which to run the restore. This option appears only for RAC databases.
+... Select what you want to restore: 
 +
 * Select *All datafiles* to restore the entire database or container database (CDB). 
 * Select *Pluggable databases (PDBs)* to restore one or more PDBs from a CDB without affecting the other PDBs in the container. Then select the PDBs from the list. 
 * Select *Pluggable database (PDB) tablespaces* (shown as *Tablespaces* for a non-CDB database) to restore specific PDB tablespaces. Then, select the PDB and the tablespaces. 
-.. Optionally, enable the *Control files* option to also restore the database control files. This option cannot be selected for point-in-time or SCN recovery of PDBs or PDB tablespaces.
-.. Optionally, enable the *Change database state if needed for restore and recovery* option to allow Backup and Recovery to manage the database state depending on the type of recovery.
-.. Optionally, enable the *Force in place restore* option to to perform an in-place restore when new datafiles were added after the backup, or when LUNs were added, deleted, or re-created in an LVM disk group. This overrides the foreign-files check; database recovery proceeds using the restore option you selected.
-.. Specify external archive log file locations in the *External archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
-.. Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
+... Optionally, enable the *Control files* option to also restore the database control files. This option cannot be selected for point-in-time or SCN recovery of PDBs or PDB tablespaces.
+... Optionally, enable the *Change database state if needed for restore and recovery* option to allow Backup and Recovery to manage the database state depending on the type of recovery.
+... Optionally, enable the *Force in place restore* option to to perform an in-place restore when new datafiles were added after the backup, or when LUNs were added, deleted, or re-created in an LVM disk group. This overrides the foreign-files check; database recovery proceeds using the restore option you selected.
+... Specify external archive log file locations in the *External archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
+... Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
 +
 * *All datafiles*: Open the database or container database in READ-WRITE mode after recovery.
 * *PDBs or PDB tablespaces*: Open the pluggable databases in READ-WRITE mode after recovery.
 * *Non-CDB tablespaces*: Bring the tablespaces online after recovery.
-. In the *Prescripts and postscripts* section, do the following:
-.. *Prescript*: Optionally, enable this option and enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-.. *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-.. Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
+.. In the *Prescripts and postscripts* section, do the following:
+... *Prescript*: Optionally, enable this option and enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
+... *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
+... Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
 
 --
 
