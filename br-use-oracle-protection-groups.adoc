@@ -27,7 +27,7 @@ You can perform the following tasks related to protection groups:
 
 Group Oracle Database resources that you want to protect together into a protection group.
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps

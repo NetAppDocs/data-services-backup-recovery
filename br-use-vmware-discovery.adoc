@@ -16,7 +16,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 Before you can protect VMware datastores and VMs running on ONTAP systems, you need to discover them in NetApp Backup and Recovery. If you already have SnapCenter Plug-in for VMware vSphere installed, you can also import its backup data and policies.
 
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Discover VMware workloads and optionally import SnapCenter resources

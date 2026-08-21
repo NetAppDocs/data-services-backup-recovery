@@ -24,7 +24,7 @@ NOTE: To run scheduled backups, create policies that govern backup and restore o
 
 Run an on-demand backup immediately if you are about to make changes and want a current backup first.
 
-*Required Console role*
+*Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 .Steps
