@@ -41,9 +41,9 @@ Create a clone immediately from an existing snapshot. Use this method to create 
 The *Select snapshot location* page appears if the snapshot is stored in more than one location.
 . Choose the snapshot location to use and select *Next*.
 . On the *Advanced options* page, do the following:
-.. Optionally, if you are cloning a complete database, in *Complete database clone settings*, select one or more PDBs to exclude from the clone (PDB$SEED is always excluded).
-.. If you have previously saved a specification file, you can upload it to customize the cloned database settings. You can also download the default specification file for the database snapshot.
-.. In the *Recovery scope* section, choose how to limit what is restored to create the clone and enter the required information for the option you choose. Choosing *None* restores all data.
+.. Optionally, if you are cloning a complete multitenant database, in *Complete database clone settings*, select one or more PDBs to exclude from the clone (PDB$SEED is always excluded). This section doesn't appear when cloning a single tenant database.
+.. If you have previously saved a specification file, you can enable the *Customize target database parameters* option to upload it and customize the cloned database settings. You can also download the default specification file for the database snapshot.
+.. In the *Recovery scope* section, select an option to recover the clone using archive logs, and enter any required details. Choosing *None* skips recovery (the clone is created from the snapshot without applying changes from archive logs). *None* is not available for PDB clones.
 .. In the *Prescripts and postscripts* section, enable one or both of the *Prescript* and *Postscript* options to execute a script before the clone operation begins or after it completes. For each option, enter the full script path and any required arguments. 
 . Select *Clone*.
 
