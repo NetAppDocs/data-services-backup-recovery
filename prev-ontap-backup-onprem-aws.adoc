@@ -36,6 +36,8 @@ The following diagram shows the *private connection* method and the connections 
 
 image:diagram_cloud_backup_onprem_aws_private.png[A diagram showing how NetApp Backup and Recovery communicates over a private connection with the volumes on the cluster and the AWS S3 storage where the backup files are located.]
 
+NOTE: If you use a private endpoint (VPC endpoint) for backup or restore data transfers, it takes precedence over any configured proxy connection.
+
 == Prepare your Console agent
 
 The Console agent is the main software for NetApp Console functionality. A Console agent is required to back up and restore your ONTAP data.
