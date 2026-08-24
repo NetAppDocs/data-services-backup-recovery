@@ -127,7 +127,7 @@ When you restore a volume from a backup file, NetApp Backup and Recovery creates
 
 NOTE: When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
 
-When restoring a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a volume as soon as possible. A quick restore restores the metadata from the backup file to a volume instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
+When restoring a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. Quick restore is ideal for disaster recovery situations where you need to provide access to a volume as soon as possible. A quick restore restores the metadata from the backup file to a volume instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
 
 NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. It is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
 
@@ -182,9 +182,12 @@ link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring fr
 . Select *Next* to choose whether you want to do a Normal restore or a Quick Restore process: 
 +
 * *Normal restore*: Use normal restore on volumes that require high performance. Volumes will not be available until the restore process is complete. 
-* *Quick restore*: Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
+* *Quick restore*: Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual.
 
-. Select *Restore* and you return to the Restore Dashboard so you can review the progress of the restore operation.
+. Optionally, enable *Prioritize this restore over existing job queue* to give this restore operation higher priority. When enabled, other running jobs might be paused or delayed to allow this restore to proceed.
+. Select *Restore*.
++
+You return to the Restore Dashboard so you can review the progress of the restore operation.
 
 .Result
 
