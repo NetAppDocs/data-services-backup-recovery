@@ -25,6 +25,8 @@ During discovery, NetApp Backup and Recovery analyzes VMware workloads within yo
 
 You can import VMware NFS and VMFS datastores and VMs from their on-premises SnapCenter Plug-in for VMware vSphere into NetApp Backup and Recovery inventory. 
 
+NOTE: After adding a storage system to NetApp Console, wait a few minutes before discovering Hyper-V resources. Discovering resources immediately after adding a storage system can cause the discovery to fail.
+
 NOTE: This version of NetApp Backup and Recovery supports only VMware vCenter and does not discover vVols or VMs on vVols.  
 
 During the import process, NetApp Backup and Recovery performs the following tasks:
@@ -48,8 +50,6 @@ NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisite
 === If SnapCenter Plug-in is not already installed, add a vCenter and discover resources
 
 If you don't already have SnapCenter Plug-in for VMware installed, add vCenter information so NetApp Backup and Recovery can discover workloads. Within each Console agent, select the systems where you want to discover workloads. 
-
- 
 
 .Steps
 

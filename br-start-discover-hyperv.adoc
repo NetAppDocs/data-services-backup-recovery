@@ -20,7 +20,9 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 == Add a Hyper-V host and discover resources
 
-Add Hyper-V host information to enable NetApp Backup and Recovery to discover virtual machines. Within each Console agent, select the systems where you want to discover resources.  
+Add Hyper-V host information to enable NetApp Backup and Recovery to discover virtual machines. Within each Console agent, select the systems where you want to discover resources.
+
+NOTE: After adding a storage system to NetApp Console, wait a few minutes before discovering Hyper-V resources. Discovering resources immediately after adding a storage system can cause the discovery to fail.
 
 NOTE: When you add Hyper-V hosts and discover resources, NetApp Backup and Recovery installs the NetApp Hyper-V plug-in and the NetApp SnapCenter Windows FileSystem plug-in on the Hyper-V host to help with managing and protecting virtual machines.
 
