@@ -29,6 +29,8 @@ image:diagram_cloud_backup_cvo_aws.png[A diagram showing how NetApp Backup and R
 
 The VPC gateway endpoint must exist in your VPC already. https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html[Learn more about gateway endpoints^].
 
+NOTE: If you use a private VPC endpoint for backup or restore data transfers, it takes precedence over any configured proxy connection.
+
 Supported ONTAP versions::
 Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended.
 
