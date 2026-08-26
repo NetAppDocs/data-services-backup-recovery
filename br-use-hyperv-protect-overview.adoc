@@ -13,7 +13,7 @@ summary: You can protect Hyper-V virtual machines from on-premises ONTAP systems
 :imagesdir: ./media/
 
 [.lead]
-Use NetApp Backup and Recovery to back up and restore standalone Hyper-V VMs, FCI cluster instances, and SCVMM-provisioned VMs hosted on a CIFS share.
+Use NetApp Backup and Recovery to back up and restore standalone Hyper-V VMs, failover cluster instances, and SCVMM-provisioned VMs hosted on a CIFS share.
 
 You can back up Hyper-V workloads to Amazon S3 or StorageGRID and restore them to an on-premises Hyper-V host. 
 
