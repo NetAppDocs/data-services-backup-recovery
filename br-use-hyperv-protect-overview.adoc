@@ -31,5 +31,5 @@ You can use NetApp Backup and Recovery to perform the following tasks related to
 * link:br-use-hyperv-protection-groups.html[Create and manage protection groups for Hyper-V workloads]
 * link:br-use-hyperv-backup.html[Back up Hyper-V workloads]
 * link:br-use-hyperv-restore.html[Restore Hyper-V workloads]
-//* link:br-use-hyperv-clone.html[Clone Hyper-V workloads]
+//* link:br-use-hyperv-clone.html[Clone Hyper-V workloads] 
 
