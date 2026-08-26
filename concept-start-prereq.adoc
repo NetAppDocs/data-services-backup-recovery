@@ -359,7 +359,7 @@ a|
 
 .Hardware requirements for the Hyper-V host
 
-* Standalone and FCI-clustered hosts are supported
+* Standalone hosts and failover cluster configurations are supported
 * 1GB RAM minimum for the NetApp Hyper-V plug-in on the Hyper-V host
 * 5GB minimum installation and log space for the plug-in on the Hyper-V Host
 +
