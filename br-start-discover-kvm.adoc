@@ -22,7 +22,7 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 Add management platform and KVM host information and let NetApp Backup and Recovery discover workloads.
 
-NOTE: After adding a storage system to NetApp Console, wait a few minutes before discovering KVM resources. Discovering resources immediately after adding a storage system can cause the discovery to fail.
+NOTE: After adding a storage system to NetApp Console, wait a few minutes before discovering resources. Discovering resources immediately after adding a storage system can cause the discovery to fail.
 
 .Steps
 
