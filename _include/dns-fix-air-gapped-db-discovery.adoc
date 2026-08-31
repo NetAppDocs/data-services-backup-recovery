@@ -31,7 +31,7 @@ sudo cat /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 
 --
 
-.. Use the following script to append the `servers:` block to the existing HelmChartConfig file:
+.. Run the following script to append the `servers:` block to the existing HelmChartConfig file:
 +
 [source,shell]
 ----
@@ -95,7 +95,6 @@ sudo cat "$MANIFEST"
 --
 
 .. Edit the `configBlock` area of the following script and add your static DNS records. This creates a HelmChartConfig YAML file in the RKE2 manifests folder, which RKE2 automatically applies to override the CoreDNS configuration:
-.. Copy and run the script:
 +
 [source,shell]
 ----
@@ -153,6 +152,8 @@ YAML
 sudo chmod 600 /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 ----
 
+.. Copy and run the script.
+
 --
 
 ====
@@ -187,9 +188,9 @@ sudo cp -a /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml.bak.<
 /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 ----
 +
-Don't delete the file, because that removes the RKE2 resource tuning.
+Do not delete the file, because it contains the existing RKE2 resource tuning.
 
-.. Remove the host entries after replacing the file. This prevents possible host discovery issues and scheduled backup issues.
+.. After restoring the file, remove the host entries. Stale entries can cause host discovery and scheduled backup issues.
 
 .. Restart the CoreDNS deployment:
 +
@@ -210,7 +211,7 @@ kubectl -n kube-system rollout restart deploy/rke2-coredns-rke2-coredns
 sudo rm /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 ----
 
-.. Remove the host entries after deleting the file. This prevents possible host discovery issues and scheduled backup issues.
+.. After deleting the file, remove the host entries. Stale entries can cause host discovery and scheduled backup issues.
 
 .. Restart the CoreDNS deployment:
 +
