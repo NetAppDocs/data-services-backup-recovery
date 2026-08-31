@@ -1,6 +1,9 @@
-If you are using NetApp Console local deployment in an air-gapped environment where database hosts are not reachable through standard DNS, you must temporarily modify the internal RKE2 CoreDNS configuration. This allows pods to resolve specific hostnames to IP addresses within the cluster, similar to adding entries to `/etc/hosts` on a node.
+If you are using NetApp Console local deployment in an air-gapped environment where database hosts are not reachable through standard DNS, you need to temporarily modify the internal RKE2 CoreDNS configuration. This enables pods to resolve specific hostnames to IP addresses within the cluster, similar to adding entries to `/etc/hosts` on a node.
 
-IMPORTANT: Before making changes, check the existing CoreDNS configuration to avoid overriding any existing customizations. Use RKE2 manifests to apply this change, ensuring it is managed consistently by the RKE2 operator and runtime.
+IMPORTANT: Before making changes, check both the existing CoreDNS configuration and the existing `rke2-coredns-config.yaml` HelmChartConfig to avoid overriding any existing customizations. On most NetApp Console local deployment nodes, this file already exists and already contains resource requests. If the file already exists, do not recreate it; instead, append only the `servers:` block to the existing `valuesContent`. Apply this change using RKE2 manifests so that it continues to be managed consistently by the RKE2 operator and runtime.
+
+//=== Edit the CoreDNS configuration
+//Use CoreDNS to map a specific hostname to an IP address within the cluster.
 
 .Before you begin
 * Keep the HelmChartConfig file under change control where possible.
@@ -16,7 +19,73 @@ IMPORTANT: Before making changes, check the existing CoreDNS configuration to av
 kubectl -n kube-system get cm rke2-coredns-rke2-coredns -o jsonpath='{.data.Corefile}'
 ----
 
-. Copy the following command block and edit the `configBlock` area to add your static DNS records. This creates a HelmChartConfig YAML file in the RKE2 manifests folder, which RKE2 automatically applies to override the CoreDNS configuration:
+. Verify that the HelmChartConfig file exists:
++
+[source,shell]
+----
+sudo cat /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
+----
+
+. If the HelmChartConfig file exists, do the following:
+.. Use the following script to append the `servers:` block to the existing HelmChartConfig file:
++
+[source,shell]
+----
+MANIFEST=/var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
+
+# 1. Back up first
+sudo cp -a "$MANIFEST" "$MANIFEST.bak.$(date +%Y%m%d-%H%M%S)"
+
+# 2. Safety checks: valuesContent must be the last key, no servers: block yet
+grep -n 'servers:' "$MANIFEST"        # must return nothing
+tail -c 1 "$MANIFEST" | od -c | head  # file must end with a newline
+
+# 3. Append ONLY the servers block (nothing above it changes)
+sudo tee -a "$MANIFEST" >/dev/null <<'YAML'
+    servers:
+    - zones:
+      - zone: .
+      port: 53
+      plugins:
+      - name: errors
+      - name: health
+        configBlock: |-
+          lameduck 10s
+      - name: ready
+      - name: kubernetes
+        parameters: cluster.local in-addr.arpa ip6.arpa
+        configBlock: |-
+          pods insecure
+          fallthrough in-addr.arpa ip6.arpa
+          ttl 30
+      # ───────────────────────── EDIT BELOW ─────────────────────────
+      # Static DNS records for hosts the corporate DNS cannot resolve.
+      # Format:  <IP>  <FQDN>  [optional aliases...]
+      # `fallthrough` MUST stay as the last line -- it lets every other
+      # name go to the upstream resolver via the `forward` plugin below.
+      - name: hosts
+        configBlock: |-
+          1.2.3.4 example.domain.com exampleshortname
+          fallthrough
+      # ───────────────────────── EDIT ABOVE ─────────────────────────
+      - name: prometheus
+        parameters: 0.0.0.0:9153
+      - name: forward
+        parameters: . /etc/resolv.conf
+      - name: cache
+        parameters: 30
+      - name: loop
+      - name: reload
+      - name: loadbalance
+YAML
+
+# 4. Confirm the merged result
+sudo cat "$MANIFEST"
+----
+
+.. Verify that the resulting HelmChartConfig file keeps the original tuning and now includes the `servers:` block.
+. If the HelmChartConfig file does not exist, do the following:
+.. Copy the following command block and edit the `configBlock` area to add your static DNS records. This creates a HelmChartConfig YAML file in the RKE2 manifests folder, which RKE2 automatically applies to override the CoreDNS configuration:
 +
 [source,shell]
 ----
@@ -74,7 +143,7 @@ YAML
 sudo chmod 600 /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 ----
 
-. Verify that CoreDNS picked up the change:
+.. Verify that CoreDNS picked up the change:
 +
 [source,shell]
 ----
@@ -88,9 +157,9 @@ If the change is not visible after a few minutes, restart the CoreDNS deployment
 kubectl -n kube-system rollout restart deploy/rke2-coredns-rke2-coredns
 ----
 
-. If you need to remove the entries after you discover the database hosts, do the following:
-.. Delete the HelmChartConfig file from the manifests folder.
-.. Restart the CoreDNS deployment:
+.. If you need to remove the entries after you discover the database hosts, do the following:
+... Delete the HelmChartConfig file from the manifests folder.
+... Restart the CoreDNS deployment:
 +
 [source,shell]
 ----
