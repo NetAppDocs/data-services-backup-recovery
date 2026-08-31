@@ -23,7 +23,14 @@ kubectl -n kube-system get cm rke2-coredns-rke2-coredns -o jsonpath='{.data.Core
 sudo cat /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 ----
 
-. If the HelmChartConfig file exists, do the following:
++
+[role="tabbed-block"]
+====
+
+.If the file exists
+
+--
+
 .. Use the following script to append the `servers:` block to the existing HelmChartConfig file:
 +
 [source,shell]
@@ -81,8 +88,14 @@ sudo cat "$MANIFEST"
 ----
 
 .. Verify that the only change to the HelmChartConfig file is the addition of the `servers:` block.
-. If the HelmChartConfig file does not exist, do the following:
-.. Copy the following command block and edit the `configBlock` area to add your static DNS records. This creates a HelmChartConfig YAML file in the RKE2 manifests folder, which RKE2 automatically applies to override the CoreDNS configuration:
+--
+
+.If the file does not exist
+
+--
+
+.. Edit the `configBlock` area of the following script and add your static DNS records. This creates a HelmChartConfig YAML file in the RKE2 manifests folder, which RKE2 automatically applies to override the CoreDNS configuration:
+.. Copy and run the script:
 +
 [source,shell]
 ----
@@ -140,7 +153,11 @@ YAML
 sudo chmod 600 /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
 ----
 
-.. Verify that CoreDNS picked up the change:
+--
+
+====
+
+. Verify that CoreDNS picked up the change:
 +
 [source,shell]
 ----
@@ -154,11 +171,55 @@ If the change is not visible after a few minutes, restart the CoreDNS deployment
 kubectl -n kube-system rollout restart deploy/rke2-coredns-rke2-coredns
 ----
 
-.. If you need to remove the entries after you discover the database hosts, do the following:
-... Delete the HelmChartConfig file from the manifests folder.
-... Restart the CoreDNS deployment:
+. If you need to remove the entries after you discover the database hosts, do one of the following:
++
+[role="tabbed-block"]
+====
+
+.If you appended to an existing file
+
+--
+.. Restore the backed up file or delete only the `servers:` block from within the file:
++
+[source,shell]
+----
+sudo cp -a /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml.bak.<timestamp> \
+/var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
+----
++
+Don't delete the file, because that removes the RKE2 resource tuning.
+
+.. Remove the host entries after replacing the file. This prevents possible host discovery issues and scheduled backup issues.
+
+.. Restart the CoreDNS deployment:
 +
 [source,shell]
 ----
 kubectl -n kube-system rollout restart deploy/rke2-coredns-rke2-coredns
 ----
+
+--
+
+.If you created a new file
+
+--
+.. Delete the HelmChartConfig file from the manifests folder:
++
+[source,shell]
+----
+sudo rm /var/lib/rancher/rke2/server/manifests/rke2-coredns-config.yaml
+----
+
+.. Remove the host entries after deleting the file. This prevents possible host discovery issues and scheduled backup issues.
+
+.. Restart the CoreDNS deployment:
++
+[source,shell]
+----
+kubectl -n kube-system rollout restart deploy/rke2-coredns-rke2-coredns
+----
+
+--
+
+====
+//end of tabbed area
