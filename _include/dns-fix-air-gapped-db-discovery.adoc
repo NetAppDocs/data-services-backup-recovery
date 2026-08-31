@@ -2,9 +2,6 @@ If you are using NetApp Console local deployment in an air-gapped environment wh
 
 IMPORTANT: Before making changes, check both the existing CoreDNS configuration and the existing `rke2-coredns-config.yaml` HelmChartConfig to avoid overriding any existing customizations. On most NetApp Console local deployment nodes, this file already exists and already contains resource requests. If the file already exists, do not recreate it; instead, append only the `servers:` block to the existing `valuesContent`. Apply this change using RKE2 manifests so that it continues to be managed consistently by the RKE2 operator and runtime.
 
-//=== Edit the CoreDNS configuration
-//Use CoreDNS to map a specific hostname to an IP address within the cluster.
-
 .Before you begin
 * Keep the HelmChartConfig file under change control where possible.
 * Use a clear filename so the purpose of the CoreDNS override is obvious.
@@ -83,7 +80,7 @@ YAML
 sudo cat "$MANIFEST"
 ----
 
-.. Verify that the resulting HelmChartConfig file keeps the original tuning and now includes the `servers:` block.
+.. Verify that the only change to the HelmChartConfig file is the addition of the `servers:` block.
 . If the HelmChartConfig file does not exist, do the following:
 .. Copy the following command block and edit the `configBlock` area to add your static DNS records. This creates a HelmChartConfig YAML file in the RKE2 manifests folder, which RKE2 automatically applies to override the CoreDNS configuration:
 +
