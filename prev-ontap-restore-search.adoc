@@ -29,15 +29,10 @@ Restore capabilities depend on your ONTAP version:
 ** Google Archive and StorageGRID: ONTAP 9.12.1 or greater
 ** Folder restore: ONTAP 9.13.1 or greater
 
-//ifdef::aws[]
+
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
-//endif::aws[]
-//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
-//endif::azure[]
-//ifdef::gcp[]
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage].
-//endif::gcp[]
 
 [NOTE] 
 ====
@@ -47,6 +42,14 @@ link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring fr
 * Restoring folders is not currently supported from volumes in ONTAP S3 object storage.
 * When you restore a SnapLock-enabled volume, the restored volume retains SnapLock protection only if the destination storage is WORM-enabled. If you restore to a non-WORM destination, the SnapLock status is removed from the restored volume.
 ====
+
+[NOTE]
+=====
+When you restore a volume or file from a backup that is stored in archive storage, the restore might require additional time before the data is available. The restore job remains In progress in the Job Monitor while Backup and Recovery automatically retries the operation according to the selected restore priority.
+During this period, the *Volume/File restore* action in the *Audit* timeline might temporarily display the following message:
+`Objects are being restored from archive storage. Retry the operation after the time interval specific to the restore priority level.`
+This message indicates that the archive retrieval is still in progress. Monitor the restore status in the *Job Monitor*. The restore is complete when the job reaches a final status, such as *Completed* or *Failed* after all retry attempts are made. Avoid starting another restore unless the job ultimately fails.
+=====
 
 Before you begin, you should have some idea of the name or location of the volume or file you want to restore.
 
