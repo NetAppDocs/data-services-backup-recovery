@@ -172,7 +172,7 @@ If the change is not visible after a few minutes, restart the CoreDNS deployment
 kubectl -n kube-system rollout restart deploy/rke2-coredns-rke2-coredns
 ----
 
-. If you need to remove the entries after you discover the database hosts, do one of the following:
+. If you need to remove the entries after you discover the database hosts, do the following:
 +
 [role="tabbed-block"]
 ====
