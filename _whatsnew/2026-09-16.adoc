@@ -1,0 +1,20 @@
+=== VMware workloads enhancements
+In this release, VMware workloads introduces the following enhancements:
+
+* *Credential feature*: You can now use credentials.
+* *Spanning support*: NetApp Backup and Recovery now supports protecting VMs that have been spanned across disks. 
+* *MCC support*: NetApp Backup and Recovery now supports protecting VMs stored on NetApp MetroCluster.
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads with NetApp Backup and Recovery].
+
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following enhancements:
+
+* *Azure EntraID support for Cloud Volumes ONTAP*: NetApp Backup and Recovery now supports Entra ID authentication for Cloud Volumes ONTAP.
+* *Customized job reporting*: You can now customize job reports.
+* *Ability to cancel restore job*: You can now cancel ongoing volume restore operations from the Job Monitor.
+* *China region support for Microsoft Azure volumes*: NetApp Backup and Recovery now supports protecting volumes on Azure systems deployed in China.
+* *Catalog indexing status improvements*: Catalog indexing status indications have been improved.
+* *Support for NetApp AFX storage*: You can now protect volumes on 2- or 4-node NetApp AFX storage systems with NetApp Backup and Recovery.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
