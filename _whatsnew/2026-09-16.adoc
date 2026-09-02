@@ -1,11 +1,16 @@
 === VMware workloads enhancements
-In this release, VMware workloads introduces the following enhancements:
+In this release, VMware workloads introduces the following enhancement:
 
-* *Credential feature*: You can now use credentials.
-* *Spanning support*: NetApp Backup and Recovery now supports protecting VMs that have been spanned across disks. 
-* *MCC support*: NetApp Backup and Recovery now supports protecting VMs stored on NetApp MetroCluster.
+*Credential feature*: You can now use credentials. 
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads with NetApp Backup and Recovery].
+
+=== Hyper-V workloads enhancements
+In this release, Hyper-V workloads introduces the following enhancement:
+
+*Spanning support*: NetApp Backup and Recovery now supports protecting VMs that have been spanned across disks.
+
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Learn about protecting Hyper-V workloads with NetApp Backup and Recovery].
 
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhancements:
