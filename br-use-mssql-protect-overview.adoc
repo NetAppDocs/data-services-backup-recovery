@@ -96,5 +96,3 @@ ONTAP S3
 |===
 
 NOTE: References to "on-premises ONTAP systems" include FAS and AFF systems.
-
-
