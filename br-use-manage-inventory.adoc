@@ -34,15 +34,12 @@ You can do the following to manage your inventory:
 
 * Configure the log directory from *Inventory* > *Hosts* before you back up database host logs in snapshots. For details, see link:br-start-setup.html[Configure NetApp Backup and Recovery settings].
 
-
-
 == Manage host information 
 
 Manage host information to ensure that the right hosts are protected. View, edit, and delete host information as needed.
 
 *Required NetApp Console role*
 Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, or Backup and Recovery clone admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
 
 * Configure log directory. For details, see link:br-start-setup.html[Configure NetApp Backup and Recovery settings]. 
 * Suspend schedules 
@@ -87,7 +84,6 @@ Suspend schedules to stop backup and restore operations during host maintenance.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Suspend schedules*.
 . In the confirmation dialog box, select *Suspend*.
 
-
 === Edit a host
 
 You can change the vCenter server information, host registration credentials, and advanced settings. 
@@ -121,6 +117,35 @@ You can delete the host information to stop service charges.
 //. Select the host that you want to reinstall the plug-in for.
 //. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Reinstall plug-in*.
 
+== Manage availability group information 
+
+Manage availability group information to protect resources, edit protection settings, and run backups:
+
+* Protect instances
+* Edit protection settings 
+* Back up now   
+
+*Required NetApp Console role*
+Backup and Recovery super admin or Backup and Recovery backup admin role. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+=== Protect availability groups  
+
+Assign a policy to an availability group to govern the schedule and retention of resource protection.
+
+.Steps
+. From the NetApp Backup and Recovery menu, select *Inventory*.
+. Select the workload that you want to view and select *View*.
+. Select the *Availability groups* tab. 
+. Select the availability group. 
+. Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Protect*.
+. Select a policy or create a new one. 
++
+For details about creating a policy, see link:br-use-policies-create.html[Create a policy].
+
+. Provide the scripts to run before and after the backup.
+
+* *Pre-script*: Enter the script filename and location to run automatically before the protect action starts. Use this to perform additional tasks or configurations before the protection workflow.
+* *Post-script*: Enter the script filename and location to run automatically after the protection action completes. Use this to perform additional tasks or configurations after the protection workflow.
 
 == Manage instance information 
 
@@ -154,8 +179,6 @@ For details about creating a policy, see link:br-use-policies-create.html[Create
 * *Pre-script*: Enter the script filename and location to run automatically before the protect action starts. Use this to perform additional tasks or configurations before the protection workflow.
 * *Post-script*: Enter the script filename and location to run automatically after the protection action completes. Use this to perform additional tasks or configurations after the protection workflow.
 
-
-
 . Provide verification information for the snapshot:
 
 * Storage location: Select where to store the verification snapshot.
@@ -175,8 +198,6 @@ For details, see link:br-start-configure.html[Configure NetApp Backup and Recove
 . Select the instance. 
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Associate credentials*.
 . Use existing credentials or create new ones. 
-
-
 
 === Edit protection settings
 
@@ -209,7 +230,6 @@ For details about creating an ad hoc backup, see link:br-use-mssql-backup.html[B
 
 You can manage database information in the following ways:    
 
-
 * Protect databases
 * Restore databases
 * View protection details
@@ -231,6 +251,11 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. If you
 . Select the *Actions* image:icon-action.png["Actions icon"] icon, and select *Protect*.
 +
 For details about creating a policy, see link:br-use-policies-create.html[Create a policy].
+
+. Provide the scripts to run before and after the backup.
+
+* *Pre-script*: Enter the script filename and location to run automatically before the protect action starts. Use this to perform additional tasks or configurations before the protection workflow.
+* *Post-script*: Enter the script filename and location to run automatically after the protection action completes. Use this to perform additional tasks or configurations after the protection workflow.
 
 === Restore databases
 
@@ -271,7 +296,6 @@ You can back up your Microsoft SQL Server instances and databases now to protect
 
 *Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
