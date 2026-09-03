@@ -25,13 +25,6 @@ Restore capabilities depend on your ONTAP version:
 ** Google Archive and StorageGRID: ONTAP 9.12.1 or greater
 ** Folder restore: ONTAP 9.13.1 or greater
 
-[NOTE]
-=====
-Restoring a volume or file from archive storage can take additional time. The job remains *In progress* in the Job Monitor while Backup and Recovery retries the restore based on the selected priority.
-During this period, you might see the following message for the volume restore job in the *Audit* timeline:
-`Objects are being restored from archive storage. Retry the operation after the time interval specific to the restore priority level.`
-This means archive retrieval is in progress. Monitor the restore in the *Job Monitor*; it completes when the job reaches a final status, such as *Completed* or *Failed*, after all retry attempts. Don't start another restore unless the job ultimately fails.
-=====
 
 //ifdef::aws[]
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
