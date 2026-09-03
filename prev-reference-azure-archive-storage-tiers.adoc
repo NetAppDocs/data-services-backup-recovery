@@ -49,6 +49,8 @@ There are 2 parts that make up the restore time:
 ** *High*: < 1 hour
 ** *Standard*: < 15 hours
 * *Restore time*: The time to restore the data from the backup file in Cool storage. This time is no different than the typical restore operation directly from Cool storage - when not using an archival tier.
++
+For more information about Azure Archive retrieval options, refer to https://azure.microsoft.com/en-us/pricing/details/storage/blobs/#faq[this Azure FAQ^].
 
 [NOTE]
 =====
@@ -56,5 +58,4 @@ Restoring a volume or file from archive storage can take additional time. The jo
 Monitor the restore in the *Job Monitor*; it completes when the job reaches a final status, such as *Completed* or *Failed*, after all retry attempts. Don't start another restore unless the job ultimately fails.
 =====
 
-+
-For more information about Azure Archive retrieval options, refer to https://azure.microsoft.com/en-us/pricing/details/storage/blobs/#faq[this Azure FAQ^].
+
