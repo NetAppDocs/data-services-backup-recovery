@@ -29,15 +29,10 @@ Restore capabilities depend on your ONTAP version:
 ** Google Archive and StorageGRID: ONTAP 9.12.1 or greater
 ** Folder restore: ONTAP 9.13.1 or greater
 
-//ifdef::aws[]
+
 link:prev-reference-aws-archive-storage-tiers.html[Learn more about restoring from AWS archival storage].
-//endif::aws[]
-//ifdef::azure[]
 link:prev-reference-azure-archive-storage-tiers.html[Learn more about restoring from Azure archival storage].
-//endif::azure[]
-//ifdef::gcp[]
 link:prev-reference-gcp-archive-storage-tiers.html[Learn more about restoring from Google archival storage].
-//endif::gcp[]
 
 [NOTE] 
 ====
