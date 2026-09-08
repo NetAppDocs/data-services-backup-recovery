@@ -63,7 +63,7 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 
 . Enter the following information: 
 .. *Workload type*: Select *VMware*.
-.. *vCenter settings*: Add a new vCenter. To add a new vCenter, enter the vCenter FQDN or IP address, user name, password, port, and protocol.
+.. *vCenter settings*: Add a new vCenter. To add a new vCenter, enter the vCenter FQDN or IP address, select a Console agent, and select credentials to use to authenticate with vCenter.
 +
 TIP: If you are entering vCenter information, enter information for both vCenter settings and Host registration. If you added or entered vCenter information here, you also need to add plugin information in Advanced Settings next. 
 .. *Host registration*:  Not required for VMware. 
