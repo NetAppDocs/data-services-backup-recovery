@@ -1,7 +1,12 @@
+=== General NetApp Backup and Recovery enhancements
+In this release, KVM, Hyper-V, and VMware workloads introduce the following enhancement:
+
+*Credential selection during VM host discovery*: When you register a KVM, Hyper-V, or VMware host, you can now select credentials that you have already added to Backup and Recovery.
+
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancement:
 
-*Credential feature*: You can now use credentials. 
+
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads with NetApp Backup and Recovery].
 
