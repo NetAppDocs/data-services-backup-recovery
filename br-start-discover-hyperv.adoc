@@ -29,11 +29,7 @@ NOTE: When you add Hyper-V hosts and discover resources, NetApp Backup and Recov
 .Steps
 
 . From the NetApp Console menu, select *Protection* > *Backup and Recovery*. 
-+
-If this is your first time logging in to NetApp Backup and Recovery and you already have a system in the Console but haven't discovered resources, the "Welcome to the new NetApp Backup and Recovery" landing page appears with an option to *Discover resources*. 
-
 . Select *Discover resources*.
-
 . Enter the following information: 
 .. *Workload type*: Select *Hyper-V*.
 .. If you haven't yet stored credentials for this Hyper-V host, select *Add credentials*.
@@ -41,7 +37,8 @@ If this is your first time logging in to NetApp Backup and Recovery and you alre
 ... Enter a name for this credential.
 ... Enter the user name and password for the account.
 ... Select *Done*.
-.. *Host registration*: Add a new Hyper-V host by entering the host's FQDN or IP address, credentials, Console agent, and port number. If the FQDN is not resolvable by the Console agent, use the IP address instead. For failover clusters, enter the cluster management IP address.
+.. *Hyper-V settings*: Add a new Hyper-V host by entering the host's FQDN or IP address and selecting a Console agent and credentials. If the FQDN is not resolvable by the Console agent, use the IP address instead. For failover clusters, enter the cluster management IP address.
+.. *Advanced settings*: Optionally, enter a port to use for communication with the NetApp Hyper-V plugin for Hyper-V and an installation path for the plugin. 
 . Select *Discover*. 
 +
 TIP: This process might take a few minutes.
