@@ -68,9 +68,6 @@ If you don't have SnapCenter Plug-in for VMware installed, add vCenter informati
 +
 TIP: If you are entering vCenter information, enter information for both vCenter settings and Host registration. If you added or entered vCenter information here, you also need to add plugin information in Advanced Settings next. 
 
-+
-TIP: This process might take a few minutes.
-
 .. *Advanced settings*: Optionally, enter a port to use for communication with vCenter and enable the use of self-signed certificates. Self-signed certificates are not recommended for production environments.
 . Select *Discover*. 
 
