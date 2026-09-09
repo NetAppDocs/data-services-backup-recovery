@@ -20,7 +20,7 @@ Backup and Recovery super admin. Learn about link:reference-roles.html[Backup an
 
 == Discover VMware workloads and optionally import SnapCenter Plug-in resources
 
-During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshots, and backup and restore options. To import this data directly from a SnapCenter host, refer to link:br-start-configure.html#import-and-manage-snapcenter-host-resources[Import and manage SnapCenter host resources].
+During discovery, NetApp Backup and Recovery analyzes VMware workloads within your organization and assesses and imports existing protection policies, snapshots, and backup and restore options. 
 
 If you use the on-premises SnapCenter Plug-in for VMware vSphere, you can import VMware datastores and resources VMs into NetApp Backup and Recovery. 
 
@@ -42,7 +42,7 @@ Discovery occurs in the following ways:
 
 * If you already have SnapCenter or the SnapCenter Plug-in for VMware vSphere, import SnapCenter resources into NetApp Backup and Recovery by using the NetApp Backup and Recovery UI.
 +
-NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisites before importing from SnapCenter. For example, you should create systems in NetApp Console for all on-premises SnapCenter cluster storage first before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
+NOTE: If you already have SnapCenter Plug-in, ensure you've met the prerequisites before importing from SnapCenter. For example, you should create systems in NetApp Console for all on-premises SnapCenter cluster storage first before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter]. To import data directly from a SnapCenter host, refer to link:br-start-configure.html#import-and-manage-snapcenter-host-resources[Import and manage SnapCenter host resources].
 
 +
 * If you don't already have the SnapCenter Plug-in, you can still discover workloads within your systems by adding a vCenter manually and performing discovery.
