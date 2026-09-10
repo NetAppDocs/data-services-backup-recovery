@@ -50,10 +50,8 @@ NOTE: After adding a storage system to NetApp Console, wait a few minutes before
 ... Add a new KVM host by entering the following information:
 +
 * *KVM FQDN or IP address*: Enter the host's FQDN or IP address.
-* *Credentials*: Enter the username and password for the KVM host.
-* *Console agent*: Choose the Console agent to use for communication between Backup and Recovery and the KVM host.
-* *Port number*: Enter the port to use for communication between Backup and Recovery and the KVM host.
-* *Management platform*: If the KVM host is managed and you have added the management platform to Backup and Recovery, select the management platform from the list.
+* *Credentials*: Select a stored credential for the KVM host.
+* *Agents*: Choose the Console agent to use for communication between Backup and Recovery and the KVM host.
 .. *Advanced settings*: Optionally, enter a port to communicate with the KVM host and select the host's management platform from the list. 
 . Select *Discover*. 
 +
