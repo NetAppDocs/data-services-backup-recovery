@@ -43,8 +43,13 @@ time zone of the management host. See link:br-use-policies-hyper-v-create.html[C
 . Enter a name for the protection group.
 . Select the VMs that you want to include in the protection group.
 . Select *Next*. 
-. Select the *Backup policy* that you want to apply to the protection group.
-. Select *Next*. 
++
+Backup and Recovery automatically protects all disks included in the VMs that are added to the protection group.
+. Select *Next*.
+. Select the protection policy that you want to apply to the protection group.
++
+Optionally, you can select *Create new policy* to create a new protection policy. When you select a policy, policy details appear.
+. When finished, select *Next*. 
 . Review the configuration.
 . Select *Create* to create the protection group.
 
