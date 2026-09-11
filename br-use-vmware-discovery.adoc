@@ -137,7 +137,7 @@ After you select to manage the resources, NetApp Backup and Recovery imports the
 
 . From the Inventory > workload page, select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to open the Manage vCenter page.
 
-. Check the box "Do you want to continue with the migration?" and select *Migrate*. 
+. Check the box "Do you want to continue with the migration?" and select *Manage*. 
 
 .Result
 

@@ -40,7 +40,7 @@ NOTE: When you add Hyper-V hosts and discover resources, NetApp Backup and Recov
 * Enter the user name and password for the account.
 * Select *Done*. 
 ... Add a new Hyper-V host by entering the host's FQDN or IP address and selecting a Console agent and credentials. If the FQDN is not resolvable by the Console agent, use the IP address instead. For failover clusters, enter the cluster management IP address.
-.. *Advanced settings*: Optionally, enter a port to use for communication with the NetApp Hyper-V plugin for Hyper-V and an installation path for the plugin. 
+.. *Advanced settings*: Optionally, enter an installation path for the NetApp Hyper-V plug-in. 
 . Select *Discover*. 
 +
 TIP: This process might take a few minutes.

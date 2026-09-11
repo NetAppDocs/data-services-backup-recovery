@@ -41,7 +41,7 @@ NOTE: After adding a storage system to NetApp Console, wait a few minutes before
 * *Agents*: Select a Console agent to use to facilitate communication between Backup and Recovery and the management platform.
 ... When finished, select *Add*.
 .. *KVM settings*: Do the following:
-... If you haven't yet stored credentials for this Hyper-V host, select *Add credentials*.
+... If you haven't yet stored credentials for this KVM host, select *Add credentials*.
 +
 * Select the Console agent to use with this host.
 * Enter a name for this credential.
@@ -50,8 +50,8 @@ NOTE: After adding a storage system to NetApp Console, wait a few minutes before
 ... Add a new KVM host by entering the following information:
 +
 * *KVM FQDN or IP address*: Enter the host's FQDN or IP address.
-* *Credentials*: Select a stored credential for the KVM host.
 * *Agents*: Choose the Console agent to use for communication between Backup and Recovery and the KVM host.
+* *Credentials*: Select a stored credential for the KVM host.
 .. *Advanced settings*: Optionally, enter a port to communicate with the KVM host and select the host's management platform from the list. 
 . Select *Discover*. 
 +
