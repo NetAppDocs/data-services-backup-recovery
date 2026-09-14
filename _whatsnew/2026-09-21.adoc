@@ -2,7 +2,7 @@
 In this release, Kubernetes workloads introduces the following enhancements:
 
 * *Trident Protect 26.09*: This release includes Trident Protect 26.09.
-* *Improved Role-Based Access Control granularity*: During resource discovery, you can now better control access to resources by selecting a project or folder to associate with the new cluster. You can also register specific namespaces for access control. This enables resource access control at the cluster or namespace level.
+* *Improved Role-Based Access Control*: During Kubernetes cluster discovery, you can control access to resources by selecting a project or folder to associate with the new cluster. You can also register specific namespaces for access control. This enables access control at either the cluster or namespace level.
 * *Restore files and folders*: You can now restore or download specific files and folders from Kubernetes backups.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
