@@ -3,13 +3,6 @@ In this release, KVM, Hyper-V, and VMware workloads introduce the following enha
 
 *Credential selection during VM host discovery*: When you register a KVM, Hyper-V, or VMware host, you can now select credentials that you have already added to Backup and Recovery.
 
-=== VMware workloads enhancements
-In this release, VMware workloads introduces the following enhancement:
-
-
-
-For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads with NetApp Backup and Recovery].
-
 === Hyper-V workloads enhancements
 In this release, Hyper-V workloads introduces the following enhancement:
 
@@ -20,6 +13,7 @@ For details about protecting Hyper-V workloads, refer to https://docs.netapp.com
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhancements:
 
+* *New daily backup transfer report*: You can now view a daily report of volume backup transfers from the Backup and Recovery dashboard.
 * *Azure EntraID support for Cloud Volumes ONTAP*: NetApp Backup and Recovery now supports Entra ID authentication for Cloud Volumes ONTAP.
 * *Customized job reporting*: You can now customize job reports.
 * *Ability to cancel restore job*: You can now cancel ongoing volume restore operations from the Job Monitor.
