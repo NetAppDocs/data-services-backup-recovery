@@ -85,7 +85,7 @@ https://forms.cloud.microsoft/pages/responsepage.aspx?id=oBEJS5uSFUeUS8A3RRZbOmN
 ==== Add a storage system
 Before you can protect workloads in Backup and Recovery, you need to add an ONTAP storage system to the Console. 
 
-https://docs.netapp.com/us-en/console-local/task-discover-storage.html[Add storage in NetApp Console local deployment^]
+https://docs.netapp.com/us-en/console-local/task-add-systems.html[Add storage in NetApp Console local deployment^]
 
 ==== Enable Backup and Recovery in NetApp Console local deployment
 You can enable Backup and Recovery on a system when you add it, or at a later time.
