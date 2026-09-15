@@ -19,7 +19,7 @@ Restore or download files and folders that were backed up from a VM-based Kubern
 
 Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Restore Kubernetes VM files and folders
+== Restore VM files and folders from a VM-based application
 Restore VM-based files and folders from a restore point when you need to recover specific files or folders to a VM-based application without restoring the entire application.
 
 .Steps
@@ -55,7 +55,7 @@ If you haven't yet stored credentials for this guest VM, select *Add credentials
 . Select *Restore*.
 
 == Download Kubernetes VM files and folders
-Download files and folders from a restore point when you don't want to restore the files and folders to a VM-based application, but instead want to save them to your local computer. The downloaded files and folders are saved as a single .tar archive.
+Download files and folders from a restore point when you don't want to restore the files and folders to a VM-based application, but instead want to save them to your local computer. The downloaded files and folders are saved as a single .tar archive. Downloading files and folders doesn't require credentials for a guest VM.
 
 .Steps
 
@@ -73,7 +73,7 @@ The file browser appears.
 +
 Open a partition to browse its files and folders. When you select a file or folder to download by enabling its checkbox, it is added to the "selected" list to the right.
 . When finished, select *Next*.
-. Select the *Download* transfer mode.
+. Select the *Download file* transfer mode.
 . Select *Next*.
 . Review and confirm the file or folder download settings.
 . Select *Restore*.
