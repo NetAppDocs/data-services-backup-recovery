@@ -5,7 +5,7 @@ keywords: backing up, restoring, back up, backup, file, folder, files and folder
 summary: NetApp Backup and Recovery enables you to restore files and folders that were backed up from a VM. 
 ---
 
-= Restore or download Kubernetes VM files and folders using the NetApp Backup and Recovery web UI
+= Restore or download VM-based application files and folders using NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery enables you to restore files and folders tha
 :imagesdir: ./media/
 
 [.lead]
-Restore or download files and folders that were backed up from a VM on a Kubernetes cluster. To restore or download files and folders, you need at least one restore point. You can restore and download from the local, secondary, or object store copy.
+Restore or download files and folders that were backed up from a VM-based application on a Kubernetes cluster. To restore or download files and folders, you need at least one restore point, and the VM needs to have a partition with a supported filesystem. You can currently restore and download from the local snapshot only.
 
 *Required NetApp Console role*
 
@@ -29,7 +29,7 @@ You can restore namespace-based or VM-based applications from a restore point, e
 +
 The list of restore points appears.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon for a restore point, and open the *Restore files and folders* menu.
-. Select the source location to restore from (snapshot, secondary, or backup).
+. Select the source location to restore from (only snapshot is supported at this time).
 . Select a virtual machine from the recovery point to browse its files and folders.
 . Select *Next*.
 +
@@ -50,6 +50,7 @@ Open a partition to browse its files and folders. When you select a file or fold
 . In the *Guest virtual machine credentials* section, select the credentials for the guest VM.
 +
 If you haven't yet stored credentials for this guest VM, select *Add credentials* to link:br-start-configure.html#add-credentials-for-host-resources[add a new credential] for the guest VM.
+. Select *Next*.
 . Review and confirm the file or folder restore settings.
 . Select *Restore*.
 
@@ -63,12 +64,16 @@ Download files and folders from a Kubernetes VM restore point when you don't wan
 +
 The list of restore points appears.
 . Select the *Actions* image:icon-action.png["Actions icon"] icon for a restore point, and open the *Restore files and folders* menu.
-. Select the source location to restore from (snapshot, secondary, or backup).
+. Select the source location to download from (only snapshot is supported at this time).
 . Select a virtual machine from the recovery point to browse its files and folders.
 . Select *Next*.
 +
 The file browser appears.
-. Browse the list of files and folders, and select files and folders to restore.
+. Browse the list of files and folders, and select files and folders to download.
 +
-Open a partition to browse its files and folders. When you select a file or folder to restore by enabling its checkbox, it is added to the "selected" list to the right.
+Open a partition to browse its files and folders. When you select a file or folder to download by enabling its checkbox, it is added to the "selected" list to the right.
 . When finished, select *Next*.
+. Select the *Download* transfer mode.
+. Select *Next*.
+. Review and confirm the file or folder download settings.
+. Select *Restore*.
