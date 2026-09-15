@@ -13,14 +13,14 @@ summary: NetApp Backup and Recovery enables you to restore files and folders tha
 :imagesdir: ./media/
 
 [.lead]
-Restore or download files and folders that were backed up from a VM-based application on a Kubernetes cluster. To restore or download files and folders, you need at least one restore point, and the VM needs to have a partition with a supported filesystem. You can currently restore and download from the local snapshot only.
+Restore or download files and folders that were backed up from a VM-based Kubernetes application. To restore or download files and folders, you need at least one restore point, and the VM needs to have a partition with a supported filesystem. You can currently restore and download from the local snapshot only.
 
 *Required NetApp Console role*
 
 Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
 == Restore Kubernetes VM files and folders
-You can restore namespace-based or VM-based applications from a restore point, either by restoring all resources or by selecting a subset of resources to restore.
+Restore VM-based files and folders from a restore point when you need to recover specific files or folders to a VM-based application without restoring the entire application.
 
 .Steps
 
@@ -55,7 +55,7 @@ If you haven't yet stored credentials for this guest VM, select *Add credentials
 . Select *Restore*.
 
 == Download Kubernetes VM files and folders
-Download files and folders from a Kubernetes VM restore point when you don't want to restore the files and folders to a VM, but instead want to save them to your local computer.
+Download files and folders from a restore point when you don't want to restore the files and folders to a VM-based application, but instead want to save them to your local computer. The downloaded files and folders are saved as a single .tar archive.
 
 .Steps
 
@@ -77,3 +77,5 @@ Open a partition to browse its files and folders. When you select a file or fold
 . Select *Next*.
 . Review and confirm the file or folder download settings.
 . Select *Restore*.
++
+Your web browser handles the download; save the .tar archive to your local machine.
