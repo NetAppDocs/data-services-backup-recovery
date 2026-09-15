@@ -15,6 +15,14 @@ summary: NetApp Backup and Recovery enables you to restore files and folders tha
 [.lead]
 Restore or download files and folders that were backed up from a VM-based Kubernetes application. To restore or download files and folders, you need at least one restore point, and the VM needs to have a partition with a supported filesystem. You can currently restore and download from the local snapshot only.
 
+Supported filesystems include:
+
+* BTRFS 
+* ext4 
+* XFS 
+* NTFS 
+* exFAT
+
 *Required NetApp Console role*
 
 Backup and Recovery super admin or Backup and Recovery restore admin. link:reference-roles.html[Learn about NetApp Backup and Recovery access roles]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
