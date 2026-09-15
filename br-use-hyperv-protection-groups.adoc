@@ -45,7 +45,7 @@ time zone of the management host. See link:br-use-policies-hyper-v-create.html[C
 . Select *Next*.
 . Select a behavior for spanning disks. Currently, *Always include all spanning disks* is supported.
 +
-NOTE: For CIFS configurations, Backup and Recovery automatically protects every disk attached to each VM in the protection group. This includes disks hosted on multiple volumes (spanning disks) and disks hosted on the same volume. For SAN configurations, all non-spanning disks will be included in the protection group.
+NOTE: For CIFS configurations, Backup and Recovery automatically protects every disk attached to each VM in the protection group. This includes files distributed across multiple ONTAP volumes or ONTAP storage systems (spanning disks) and files limited to a single location (non-spanning disks). For SAN configurations, all non-spanning disks will be included in the protection group.
 
 . Select *Next*.
 . Select the protection policy that you want to apply to the protection group.
