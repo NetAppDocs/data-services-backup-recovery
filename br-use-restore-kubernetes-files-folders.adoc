@@ -17,11 +17,11 @@ Restore or download files and folders that were backed up from a VM-based Kubern
 
 Supported filesystems include:
 
-* BTRFS 
-* ext4 
-* XFS 
-* NTFS 
+* BTRFS
 * exFAT
+* ext4
+* NTFS
+* XFS 
 
 *Required NetApp Console role*
 
@@ -29,6 +29,9 @@ Backup and Recovery super admin or Backup and Recovery restore admin. link:refer
 
 == Restore VM files and folders from a VM-based application
 Restore VM-based files and folders from a restore point when you need to recover specific files or folders to a VM-based application without restoring the entire application.
+
+.Before you begin
+To restore files and folders from VM-based applications, SSH is required. Verify that the SSH service is enabled on Linux destination hosts and that an OpenSSH server is installed and enabled on Windows destination hosts.
 
 .Steps
 
@@ -54,10 +57,9 @@ Open a partition to browse its files and folders. When you select a file or fold
 ** *Alternate path*: To restore to a different path, enable this option and enter the preferred path.
 * *Restore to alternate VM*: Enable this option to restore to a different virtual machine in the cluster. Select a VM from the list, and enter a destination path for the restored files or folders.
 
-
 . In the *Guest virtual machine credentials* section, select the credentials for the guest VM.
 +
-If you haven't yet stored credentials for this guest VM, select *Add credentials* to link:br-start-configure.html#add-credentials-for-host-resources[add a new credential] for the guest VM.
+If you haven't yet added credentials for this guest VM, select *Add credential* to add a new credential for the guest VM. After you add a guest VM credential, the new credential appears in the credentials list, and you can select it. These credentials are unique to guest VMs, and can be reused by any cluster that uses the same Console agent.
 . Select *Next*.
 . Review and confirm the file or folder restore settings.
 . Select *Restore*.
