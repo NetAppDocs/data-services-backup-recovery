@@ -40,7 +40,7 @@ Instead of granting a user full Backup and Recovery admin access, you can assign
 
 . Discover workloads in Backup and Recovery.
 +
-Organization admins or folder or project admins discover the available workloads and select the appropriate project (such as US East or US West). Each workload is automatically associated with the selected project. 
+Organization admins or folder or project admins discover the available workloads and select the appropriate project (such as US East or US West). Each workload is automatically associated with the selected project. For Kubernetes clusters, you can optionally select a folder or project to associate with the cluster during discovery.
 
 . Add users to projects.
 +
@@ -48,5 +48,8 @@ Organization admins or folder or project admins add NetApp Console users to proj
 
 == Related information
 
-* link:https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console identity and access management^].
-* link:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console^].
+* link:https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html[Learn about NetApp Console identity and access management^]
+* link:https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[NetApp Backup and Recovery roles in NetApp Console^]
+* link:reference-roles.html[NetApp Backup and Recovery roles and privileges]
+* link:br-start-discover-kubernetes.html[Discover Kubernetes workloads]
+* link:br-use-manage-kubernetes-access-control.html[Manage access to Kubernetes resources]
