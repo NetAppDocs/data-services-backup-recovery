@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: br-use-manage-kubernetes-access-control.html
+keywords: backup, back up, restore, recovery, kubernetes, k8s, access control, rbac, iam, folder, project
+summary: Manage access to Kubernetes resources in NetApp Backup and Recovery by using NetApp Console folders, projects, and roles.
+---
+
+= Manage Kubernetes resource access
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Manage access to Kubernetes resources in NetApp Backup and Recovery at the cluster or resource level. You manage access to cluster resources by associating clusters with folders or projects during discovery in NetApp Console and by assigning users the appropriate roles. Manage resource access at the namespace level by registering a namespace as an IAM resource associated with a project or folder.
+
+For information about associating a cluster with an IAM folder or project, refer to link:br-start-discover-kubernetes.html[Discover Kubernetes workloads].
+
+Backup and Recovery namespace-level resource access for Kubernetes resources is controlled by the folder or project that you associate with the namespace when you register the namespace for access control. After the namespace is associated with a folder or project, users who have the appropriate NetApp Console and Backup and Recovery roles for that scope can access the namespace and its protected resources.
+
+== Associate a Kubernetes namespace with a folder or project
+Associate a namespace with a folder or project so that access control applies to that scope.
+
+*Required NetApp Console role*
+Backup and Recovery super admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
+
+.Steps
+
+. From the NetApp Console menu, select *Protection* > *Backup and recovery*.
+. Under *Workloads*, select the *Kubernetes* tile.
+. In the inventory, select the *Namespaces* menu.
+. Choose one or more namespaces that you want to register for access control, and enable the check box for each.
+. Select *Register for access control*.
+. Optionally, select a folder or project to determine where access control applies to this namespace. If you don't select a folder or project, the namespace IAM resource is registered, but not added to a folder or project:
++
+* *Folder*: Select this option to control user access to namespace resources at the folder level, and select a folder from the list.
+* *Project*: Select this option to control user access to namespace resources at the project level, and select a project from the list.
++
+https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html#netapp-console-organizational-components[Learn more^] about organizational components in NetApp Console.
+
+. Select *Register*.
+
+
+== Related information
+
+* link:br-start-discover-kubernetes.html[Discover Kubernetes workloads]
+* link:br-rbac-setup.html[Set up role-based access control in NetApp Backup and Recovery]
+* link:reference-roles.html[NetApp Backup and Recovery roles and privileges]

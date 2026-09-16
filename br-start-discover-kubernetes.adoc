@@ -35,10 +35,10 @@ When you discover a cluster currently protected with Trident Protect, any backup
 
 . Select the *Kubernetes* workload type.
 . Enter a cluster name and choose a Console agent to use with the cluster.
-. Optionally, select a scope at which to apply access control:
+. Optionally, select a folder or project to determine where access control applies to this cluster. If you don't select a folder or project, the cluster IAM resource is added at the organization level:
 +
-* *Folder*: Select this option to control user access to resources at the folder level, and select a folder from the list.
-* *Project*: Select this option to control user access to resources at the project level, and select a project from the list.
+* *Folder*: Select this option to control user access to cluster resources at the folder level, and select a folder from the list.
+* *Project*: Select this option to control user access to cluster resources at the project level, and select a project from the list.
 +
 https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html#netapp-console-organizational-components[Learn more^] about organizational components in NetApp Console.
 
@@ -48,7 +48,7 @@ Backup and Recovery provides instructions that change based on the installation 
 . Choose an installation type to view the instructions for installing Trident Protect on your Kubernetes cluster:
 +
 * Select *Connected* to discover clusters that have external network connectivity. The instructions are tailored to connected clusters.
-* Select *Air-gapped* to discover clusters that have no external network connectivity. The instructions are tailored to air-gapped clusters.
+* Select *Air-gapped* to discover clusters that have no external network connectivity. The instructions are tailored to air-gapped (offline) clusters.
 +
 [role="tabbed-block"]
 ====

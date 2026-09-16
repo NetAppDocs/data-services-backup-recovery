@@ -28,9 +28,6 @@ NOTE: After adding a storage system to NetApp Console, wait a few minutes before
 
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
 . Under *Workloads*, select the *KVM* tile.
-+
-If this is your first time logging in to NetApp Backup and Recovery and you already have a system in the Console but no discovered resources, the "Welcome to the new NetApp Backup and Recovery" page appears with an option to *Discover resources*.
-
 . Select *Discover resources*.
 
 . Enter the following information: 
