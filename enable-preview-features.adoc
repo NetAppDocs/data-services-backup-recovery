@@ -30,6 +30,7 @@ You can enable the following preview features for NetApp Backup and Recovery.
 |Feature flag |Feature description
 |`"folder-restore-from-local": true` |Enables folder-level restore from local ONTAP volume snapshots. By default, ONTAP only supports restoring folders from object storage backups. With this flag enabled, you can also restore entire directories from local and replicated snapshots.
 |`"prioritize-restore": true` |Makes the *Prioritize restore over existing job queue* option selectable during the restore workflow in the Backup and Recovery web UI. When you select this option during the restore workflow, restore operations are prioritized over other queued jobs so they run even when the queue is busy.
+|`"data-transfer-report": true` |Enables the daily backup data transfer report under the Reports tab in NetApp Backup and Recovery for Volumes. The report provides daily backup and replication data transfer activity information across your environment.
 |===
 
 == Enable preview features
