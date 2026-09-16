@@ -277,6 +277,8 @@ sidebar:
               url: /br-use-manage-kubernetes-clusters.html
             - title: Manage Kubernetes applications
               url: /br-use-manage-kubernetes-applications.html
+            - title: Manage Kubernetes resource access
+              url: /br-use-manage-kubernetes-access-control.html
             - title: Manage execution hook templates for Kubernetes workloads
               url: /br-use-manage-execution-hook-templates.html  
             - title: Create and manage protection reports
