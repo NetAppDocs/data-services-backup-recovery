@@ -6,3 +6,13 @@ In this release, Kubernetes workloads introduces the following enhancements:
 * *Restore files and folders*: You can now restore or download specific files and folders from Kubernetes VM-based application backups.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
+
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following enhancements:
+
+
+* *Ability to cancel restores*: You can now cancel ongoing ONTAP Volumes restore operations.
+* *Customized reporting*: You can now customize ONTAP Volumes protection reports.
+* *AFX support*: You can now protect volumes hosted on 2- and 4-node NetApp AFX clusters.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].
