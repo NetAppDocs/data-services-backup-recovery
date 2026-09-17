@@ -19,6 +19,33 @@ For information about associating a cluster with an IAM folder or project, refer
 
 Backup and Recovery namespace-level resource access for Kubernetes resources is controlled by the folder or project that you associate with the namespace when you register the namespace for access control. After the namespace is associated with a folder or project, users who have the appropriate NetApp Console and Backup and Recovery roles for that scope can access the namespace and its protected resources.
 
+== Backup and Recovery roles and what they allow with Kubernetes workloads
+
+For a Kubernetes cluster or namespace associated with a folder or project, the specific Backup and Recovery role a user holds on that folder or project determines what they can do. For more information on Backup and Recovery roles, refer to https://docs.netapp.com/us-en/console-setup-admin/reference-iam-backup-rec-roles.html[Backup and Recovery roles in NetApp Console^].
+
+NOTE: The Backup and Recovery clone admin role is not used with Kubernetes workloads.
+
+[cols="1,2,2",options="header"]
+|===
+| Role | Scope of view access | Actions permitted
+
+| Backup and Recovery Super Admin
+| Full view of clusters, namespaces, and applications in scope
+| View, create application, protect (create/remove protection), and restore
+
+| Backup and Recovery Viewer
+| View for clusters and namespaces in scope only
+| View only. Cannot create, protect, or restore.
+
+| Backup and Recovery Backup Admin
+| Full view of clusters, namespaces, and applications in scope
+| View, create application, and protect (create/remove protection). Cannot restore.
+
+| Backup and Recovery Restore Admin
+| Full view of clusters, namespaces, and applications in scope
+| View and restore only. Cannot create applications or protection policies.
+|===
+
 == Associate a Kubernetes namespace with a folder or project
 Associate a namespace with a folder or project so that access control applies to that scope.
 
@@ -35,6 +62,9 @@ Backup and Recovery super admin. If you are protecting data stored on a Cloud Vo
 . Optionally, select a folder or project to determine where access control applies to this namespace. If you don't select a folder or project, the namespace IAM resource is registered, but not added to a folder or project:
 +
 * *Folder*: Select this option to control user access to namespace resources at the folder level, and select a folder from the list.
++
+NOTE: If a Kubernetes cluster or namespace is associated with a folder, users also need the *Backup and Recovery viewer* role for the project selected in the top-right project selector. This project-level access enables users to open the Backup and Recovery home page. Roles assigned at the folder level (for example, Backup and Recovery backup admin) determine what users can do after they enter the workload page, but do not grant access to the page by themselves.
+
 * *Project*: Select this option to control user access to namespace resources at the project level, and select a project from the list.
 +
 https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html#netapp-console-organizational-components[Learn more^] about organizational components in NetApp Console.
