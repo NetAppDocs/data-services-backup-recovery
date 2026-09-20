@@ -10,7 +10,6 @@ For details about protecting Kubernetes workloads, refer to https://docs.netapp.
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhancements:
 
-
 * *Ability to cancel restores*: You can now cancel ongoing ONTAP Volumes restore operations.
 * *Customized reporting*: You can now customize ONTAP Volumes protection reports.
 * *AFX support*: You can now protect volumes hosted on 2- and 4-node NetApp AFX clusters.
