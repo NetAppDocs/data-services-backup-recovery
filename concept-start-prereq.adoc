@@ -319,6 +319,7 @@ NOTE: NetApp strongly recommends assigning a static IP address to the Console ag
 * NetApp Trident Protect 26.08 or later (installed on the Kubernetes cluster during discovery)
 * A Kubernetes cluster - Supported Kubernetes distributions and versions include those supported by https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-requirements.html[Trident Protect].
 ** Make sure that TCP port 443 is unfiltered in the outbound direction between the Kubernetes cluster, the Trident Protect Connector, and the Trident Protect proxy.
+* To restore files and folders from VM-based applications, SSH is required. Verify that the SSH service is enabled on Linux destination hosts and that an OpenSSH server is installed and enabled on Windows destination hosts.
 
 == Requirements for protecting Hyper-V workloads
 Ensure your Hyper-V instance meets specific requirements to discover and protect virtual machines.

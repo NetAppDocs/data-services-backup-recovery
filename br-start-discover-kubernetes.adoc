@@ -35,12 +35,23 @@ When you discover a cluster currently protected with Trident Protect, any backup
 
 . Select the *Kubernetes* workload type.
 . Enter a cluster name and choose a Console agent to use with the cluster.
+. Optionally, select a folder or project to determine where access control applies to this cluster. If you don't select a folder or project, the cluster IAM resource is added at the organization level:
++
+* *Folder*: Select this option to control user access to cluster resources at the folder level, and select a folder from the list.
++
+NOTE: If a Kubernetes cluster or namespace is associated with a folder, users also need the *Backup and Recovery viewer* role for the project selected in the top-right project selector. This project-level access enables users to open the Backup and Recovery home page. Roles assigned at the folder level (for example, Backup and Recovery backup admin) determine what users can do after they enter the workload page, but do not grant access to the page by themselves. Refer to link:br-use-manage-kubernetes-access-control.html[Manage Kubernetes resource access] for more information.
+
+* *Project*: Select this option to control user access to cluster resources at the project level, and select a project from the list.
++
+https://docs.netapp.com/us-en/console-setup-admin/concept-identity-and-access-management.html#netapp-console-organizational-components[Learn more^] about organizational components in NetApp Console.
+
+. Select *Generate installation commands*.
 +
 Backup and Recovery provides instructions that change based on the installation type you select. If you use NetApp Console local deployment, you can choose instructions to discover air-gapped resources that have no external network connectivity.
 . Choose an installation type to view the instructions for installing Trident Protect on your Kubernetes cluster:
 +
-* Select *Connected* to discover clusters that have external network connectivity.
-* Select *Air-gapped* to discover clusters that have no external network connectivity.
+* Select *Connected* to discover clusters that have external network connectivity. The instructions are tailored to connected clusters.
+* Select *Air-gapped* to discover clusters that have no external network connectivity. The instructions are tailored to air-gapped (offline) clusters.
 +
 [role="tabbed-block"]
 ====
