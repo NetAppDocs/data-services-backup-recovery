@@ -271,12 +271,16 @@ sidebar:
                   url: /br-use-kubernetes-advanced-restore-settings.html
                 - title: Modify resources during restore operations using custom resources
                   url: /br-use-modify-resources-kubernetes-cr.html
+                - title: Restore or download files and folders from a VM-based application
+                  url: /br-use-restore-kubernetes-files-folders.html                
               #  - title: Create AppVault objects for compatibility with Trident Protect backups
                #   url: /br-use-kubernetes-appvault-custom-resources.html
             - title: Manage Kubernetes clusters
               url: /br-use-manage-kubernetes-clusters.html
             - title: Manage Kubernetes applications
               url: /br-use-manage-kubernetes-applications.html
+            - title: Manage Kubernetes resource access
+              url: /br-use-manage-kubernetes-access-control.html
             - title: Manage execution hook templates for Kubernetes workloads
               url: /br-use-manage-execution-hook-templates.html  
             - title: Create and manage protection reports
