@@ -15,4 +15,4 @@ In this release, ONTAP Volumes workloads introduces the following preview enhanc
 
 *Daily backup data transfer report*: NetApp Backup and Recovery for Volumes now includes a daily backup data transfer report under the Reports tab, giving you visibility into daily backup and replication data transfer activity across your environment. You can generate the report for the full account or for selected storage systems, filter by date range and protection type, and download the results as a CSV. 
 
-For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery]. 
