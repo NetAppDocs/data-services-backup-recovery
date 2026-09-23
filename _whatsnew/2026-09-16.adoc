@@ -1,9 +1,9 @@
-=== General NetApp Backup and Recovery enhancements
+=== General NetApp Backup and Recovery enhancement
 In this release, KVM, Hyper-V, and VMware workloads introduce the following enhancement:
 
-*Credential selection during VM host discovery*: When you register a KVM, Hyper-V, or VMware host, you can now use credentials that you have already added to Backup and Recovery.
+*Credential selection during VM host discovery*: When you discover a KVM, Hyper-V, or VMware host, you can now use credentials that you have already added to Backup and Recovery.
 
-=== Hyper-V workloads enhancements
+=== Hyper-V workloads enhancement
 In this release, Hyper-V workloads introduces the following enhancement:
 
 *Spanning disk protection for VMs*: For CIFS configurations, Backup and Recovery now supports protecting every disk attached to each VM in a protection group. This includes files distributed across multiple ONTAP volumes or ONTAP storage systems (spanning disks) and files limited to a single location.
@@ -15,4 +15,4 @@ In this release, ONTAP Volumes workloads introduces the following preview enhanc
 
 *Daily backup data transfer report*: NetApp Backup and Recovery for Volumes now includes a daily backup data transfer report under the Reports tab, giving you visibility into daily backup and replication data transfer activity across your environment. You can generate the report for the full account or for selected storage systems, filter by date range and protection type, and download the results as a CSV. 
 
-For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery]. 
