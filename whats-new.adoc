@@ -24,7 +24,7 @@ include::_whatsnew/2026-09-21.adoc[]
 
 This NetApp Backup and Recovery release includes the following updates.
 
-include::_whatsnew/2026-08-17.adoc[]
+include::_whatsnew/2026-09-16.adoc[]
 
 == 17 August 2026
 
