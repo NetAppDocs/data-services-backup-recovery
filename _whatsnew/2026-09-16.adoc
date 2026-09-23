@@ -1,9 +1,9 @@
-=== General NetApp Backup and Recovery enhancements
+=== General NetApp Backup and Recovery enhancement
 In this release, KVM, Hyper-V, and VMware workloads introduce the following enhancement:
 
 *Credential selection during VM host discovery*: When you register a KVM, Hyper-V, or VMware host, you can now use credentials that you have already added to Backup and Recovery.
 
-=== Hyper-V workloads enhancements
+=== Hyper-V workloads enhancement
 In this release, Hyper-V workloads introduces the following enhancement:
 
 *Spanning disk protection for VMs*: For CIFS configurations, Backup and Recovery now supports protecting every disk attached to each VM in a protection group. This includes files distributed across multiple ONTAP volumes or ONTAP storage systems (spanning disks) and files limited to a single location.
