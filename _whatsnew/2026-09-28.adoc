@@ -6,7 +6,7 @@ In this release, KVM, Hyper-V, and VMware workloads introduce the following enha
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:
 
-* *Resource-level RBAC*: Sachin Ghandi
-* *Google Cloud NetApp Volumes Flex Unified support*: NetApp Backup and Recovery for VMware workloads now supports the Flex Unified service level for Google Cloud NetApp Volumes. Flex Unified is supported in ONTAP-mode only.
+* *Resource-level RBAC*: NetApp Backup and Recovery for VMware workloads now supports VMware resource level RBAC (Role-Based Access Control), enabling you to manage access to individual VMs by assigning roles that define what actions users can perform on those resources.
+* *Google Cloud NetApp Volumes Flex Unified support*: NetApp Backup and Recovery for VMware workloads now supports protecting VMware VMs stored on Google Cloud NetApp Volumes that use the Flex Unified service level. Flex Unified is supported in ONTAP-mode only.
 
 For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
