@@ -1,4 +1,4 @@
 === General NetApp Backup and Recovery enhancement
 In this release, KVM, Hyper-V, and VMware workloads introduce the following enhancement:
 
-*RBAC support*: The Hyper-V, KVM, and VMware workloads now support the NetApp Console framework for Role-Based Access Control (RBAC).
+*Console RBAC support*: The Hyper-V, KVM, and VMware workloads now support the NetApp Console framework for Role-Based Access Control (RBAC).
