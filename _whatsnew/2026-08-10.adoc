@@ -6,7 +6,6 @@
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancements:
 
-//* *Credential feature*: You can now use credentials. Feature not shipping August 10.
 * *Restore to alternate location support for SAN VMs*: You can now restore SAN-based VM backups to an alternate location.
 * *Multiple backup delete support*: You can now delete multiple backups at a time.
 
@@ -22,7 +21,7 @@ For details about protecting Kubernetes workloads, refer to https://docs.netapp.
 === ONTAP Volumes workloads enhancements
 In this release, ONTAP Volumes workloads introduces the following enhancements:
 
-* *Prioritize restore jobs over backups*: You can now prioritize restore jobs over backup jobs when you restore VMs or files.
+* *Prioritize restore jobs over backups*: You can now prioritize restore jobs over backup jobs when you restore volumes, files, or folders.
 * *Discover ONTAP systems and volumes without Backup and Recovery activation*: You can now discover systems and volumes without activating Backup and Recovery.
 
 For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Protect ONTAP Volumes workloads overview].
