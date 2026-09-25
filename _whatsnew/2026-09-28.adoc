@@ -10,4 +10,4 @@ In this release, VMware workloads introduces the following enhancement:
 
 *Google Cloud NetApp Volumes Flex Unified support*: NetApp Backup and Recovery for VMware workloads now supports the the Flex Unified service level for Google Cloud NetApp Volumes. Flex Unified is supported in ONTAP-mode only.
 
-For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads overview].
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads with NetApp Backup and Recovery].
