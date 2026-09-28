@@ -1,8 +1,15 @@
+=== ONTAP Volumes workloads enhancement
+In this release, ONTAP Volumes workloads introduces the following preview enhancement:
+
+*Improved support for dark sites*: NetApp Backup and Recovery for dark sites now provides the same ONTAP Volumes data protection capabilities as NetApp Backup and Recovery. This enhancement includes updated backup, restore, and job-management services and a new metadata database. During an upgrade, existing database data is preserved and migrated automatically. After the upgrade, review the audit logs to verify that the migration completed successfully. NetApp Backup and Recovery for dark sites supports only ONTAP Volumes workloads.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery]. 
+
 === Kubernetes workloads enhancements
 In this release, Kubernetes workloads introduces the following enhancements:
 
 * *Trident Protect 26.09*: This release includes Trident Protect 26.09.
-* *Cluster- and Namespace-Granular Role-Based Access Control*: During Kubernetes cluster discovery, you can control access to resources by selecting a project or folder to associate with the new cluster. You can also register specific namespaces for access control. This enables more granular access control at either the cluster or namespace level.
+* *Cluster- and namespace-granular Role-Based Access Control (RBAC)*: During Kubernetes cluster discovery, you can control access to resources by selecting a project or folder to associate with the new cluster. You can also register specific namespaces for access control. This enables more granular access control at either the cluster or namespace level.
 * *Restore files and folders*: You can now restore or download specific files and folders from Kubernetes VM-based application backups.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
