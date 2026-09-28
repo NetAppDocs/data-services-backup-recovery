@@ -182,18 +182,15 @@ Use the Console Timeline to investigate backup and restore operations. It provid
 
 https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn about monitoring NetApp Console operations^].
 
-== Cancel an ongoing ONTAP Volumes restore job
-Cancel an ongoing ONTAP Volumes restore job if it is taking too long to complete and has not failed.
+== Cancel an ongoing job
+Some Backup and Recovery workloads support cancelling an ongoing job if it is taking too long to complete and has not failed.
 
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
-. Expand the *Advanced Search & Filtering* area.
-. Select a timeframe.
-. In the *Type* criteria, select *Restore*.
-. In the *Workload* criteria, select the *Volumes* workload.
+. Optionally, expand the *Advanced Search & Filtering* area and select specific criteria to focus the job search results.
 . Select *Search* to display matching restore jobs.
 . Do one of the following:
-* Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select *Cancel restore*.
-* Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], select *View details*, and then select the *Cancel restore* button.
-. In the confirmation dialog, select *Cancel restore*.
+* Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select the *Cancel* action (the action label varies by job type).
+* Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select *View details*. Then select the *Cancel* button (the button label varies by job type).
+. In the confirmation dialog, confirm the cancellation.
