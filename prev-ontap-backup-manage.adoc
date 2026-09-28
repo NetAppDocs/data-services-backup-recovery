@@ -54,8 +54,8 @@ You can enable Microsoft Entra ID authentication for Azure object storage when c
 
 NOTE: You can use different authentication methods for different object store configurations within the same Cloud Volumes ONTAP system, but after you switch an object store configuration to Azure MSI, you cannot switch it back to using the storage account key.
 
-* Verify that the "use-azure-msi-cvo" feature flag is enabled. For more information, refer to link:enable-preview-features.html[Enable preview features].
-* Verify that the Azure storage account already exists and contains a container with the same name as the account. Only the Bring Your Own Bucket (BYOB) policy option is supported. 
+* Verify that the "use-azure-msi-cvo" feature flag is enabled on the Cloud Volumes ONTAP system. For more information, refer to link:enable-preview-features.html[Enable preview features].
+* Only the Bring Your Own Bucket (BYOB) protection policy option is supported. Verify that the Azure storage account already exists and contains a container with the same name as the account. 
 * In the storage account's IAM settings, verify that the `Storage Blob Data Contributor` role is assigned to both the Azure Agent and the Cloud Volumes ONTAP system. If you use the `Object lock` policy option, also enable versioning on the storage account and assign the `Storage Blob Data Owner` role to both the Azure Agent and the Cloud Volumes ONTAP system.
 
 If your environment meets these requirements, you can select `Azure MSI` as the authentication type in any new protection policy. You can also switch to `Azure MSI` for any already configured Azure bucket from the ONTAP Volumes *Backup settings* page.
