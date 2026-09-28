@@ -210,8 +210,9 @@ You need specific requirements to discover and protect your VMware workloads.
 |Connected storage
 a|
 * ONTAP 9.13.1 or later (ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
-* Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 * ASA r2 SAN-only systems (ONTAP 9.17.1 or later required)
+* Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
+* Google Cloud NetApp Volumes (ONTAP-mode and Flex Unified service level)
 |===
 
 [caption=]
