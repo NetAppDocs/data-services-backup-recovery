@@ -49,6 +49,20 @@ For NetApp Backup and Recovery BYOL licensing, you need the serial number from N
 
 You also need an Azure subscription for the storage space where your backups will be located.
 
+== Requirements if using Microsoft Entra ID managed identity authentication
+You can enable Microsoft Entra ID authentication for Azure object storage when creating a protection policy if you don't want to use the account access key when authenticating with Azure. To use this option, verify that your environment meets the following requirements.
+
+NOTE: You can use different authentication methods for different object store configurations within the same Cloud Volumes ONTAP system, but after you switch an object store configuration to Azure MSI, you cannot switch it back to using the storage account key.
+
+* Verify that the "use-azure-msi-cvo" feature flag is enabled. For more information, refer to link:enable-preview-features.html[Enable preview features].
+
+* Verify that the Azure storage account already exists and contains a container with the same name as the account. Only the Bring Your Own Bucket (BYOB) policy option is supported. 
+ 
+* In the storage account's IAM settings, verify that the `Storage Blob Data Contributor` role is assigned to both the Azure Agent and the Cloud Volumes ONTAP system. If you use the `Object lock` policy option, also enable versioning on the storage account and assign the `Storage Blob Data Owner` role to both the Azure Agent and the Cloud Volumes ONTAP system.
+
+If your environment meets these requirements, you can select `Azure MSI` as the authentication type in any new protection policy. You can also switch to `Azure MSI` for any already configured Azure bucket from the ONTAP Volumes *Backup settings* page.
+
+
 == Prepare your Console agent
 The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
 //, or in a site with no internet access ("private" mode)
@@ -150,19 +164,6 @@ https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.ht
 You can use your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case, you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
 
 NetApp Backup and Recovery supports _Azure access policies_, the _Azure role-based access control_ (Azure RBAC) permission model and the _Managed Hardware Security Model_ (HSM) (refer to https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview[What is Azure Key Vault Managed HSM?]).
-
-=== Requirements for using Microsoft Entra ID managed identity authentication
-You can enable Microsoft Entra ID authentication for Azure object storage if you don't want to use the account access key when authenticating with Azure. Make sure your environment meets the following requirements:
-
-NOTE: You can use different authentication methods for different object store configurations within the same Cloud Volumes ONTAP system, but after you switch an object store configuration to Azure MSI, you cannot switch it back to using the storage account key.
-
-* Verify that the "use-azure-msi-cvo" feature flag is enabled. For more information, refer to link:enable-preview-features.html[Enable preview features].
-
-* Verify that the Azure storage account already exists and contains a container with the same name as the account. Only the Bring Your Own Bucket (BYOB) policy option is supported. 
- 
-* In the storage account's IAM settings, verify that the `Storage Blob Data Contributor` role is assigned to both the Azure Agent and the Cloud Volumes ONTAP system. If you use the `Object lock` policy option, also enable versioning on the storage account and assign the `Storage Blob Data Owner` role to both the Azure Agent and the Cloud Volumes ONTAP system.
-
-If your environment meets these requirements, you can select `Azure MSI` as the authentication type in any new protection policy. You can also switch to `Azure MSI` for any already configured Azure bucket from the ONTAP Volumes *Backup settings* page.
 
 === Create your Azure Blob storage account
 
