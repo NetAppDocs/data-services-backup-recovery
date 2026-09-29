@@ -49,6 +49,18 @@ For NetApp Backup and Recovery BYOL licensing, you need the serial number from N
 
 You also need an Azure subscription for the storage space where your backups will be located.
 
+[[anchor-entraid]]
+== Requirements for using Microsoft Entra ID authentication with Azure object stores
+You can enable Microsoft Entra ID authentication for Azure object storage when creating an Azure object storage bucket or editing an existing Azure bucket configuration if you don't want to use the storage account access key for Azure authentication. This option is supported for Cloud Volumes ONTAP in Azure systems running ONTAP 9.16.1 or later.
+
+NOTE: You can use different authentication methods for different object store configurations within the same Cloud Volumes ONTAP system, but after you switch an object store configuration to Azure MSI, you cannot switch it back to using the storage account key.
+
+* Verify that the "use-azure-msi-cvo" feature flag is enabled on the Cloud Volumes ONTAP system. For more information, refer to link:enable-preview-features.html[Enable preview features].
+* Only the Bring Your Own Bucket (BYOB) protection policy option is supported. Verify that the Azure storage account already exists and contains a container with the same name as the account. 
+* In the Azure storage account's IAM settings, verify that the `Storage Blob Data Contributor` role is assigned to both the Azure Agent and the Cloud Volumes ONTAP system. If you use the `Object lock` policy option, also enable versioning on the storage account and assign the `Storage Blob Data Owner` role to both the Azure Agent and the Cloud Volumes ONTAP system.
+
+If your environment meets these requirements, you can select `Entra ID` as the authentication type in any new Azure object storage bucket. You can also switch to Entra ID for any already configured Azure bucket from the ONTAP Volumes *Backup settings* page.
+
 == Prepare your Console agent
 The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
 //, or in a site with no internet access ("private" mode)
@@ -144,18 +156,6 @@ To use the NetApp Backup and Recovery Search & Restore functionality, the role f
 https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html[View the full JSON format for the policy^]
 
 .. Select *Review + update* and then select *Update*.
-
-[[anchor-entraid]]
-=== Requirements for using Microsoft Entra ID authentication with Azure object stores
-You can enable Microsoft Entra ID authentication for Azure object storage when creating an Azure object storage bucket or editing an existing Azure bucket configuration if you don't want to use the storage account access key for Azure authentication. This option is supported for Cloud Volumes ONTAP in Azure systems running ONTAP 9.16.1 or later.
-
-NOTE: You can use different authentication methods for different object store configurations within the same Cloud Volumes ONTAP system, but after you switch an object store configuration to Azure MSI, you cannot switch it back to using the storage account key.
-
-* Verify that the "use-azure-msi-cvo" feature flag is enabled on the Cloud Volumes ONTAP system. For more information, refer to link:enable-preview-features.html[Enable preview features].
-* Only the Bring Your Own Bucket (BYOB) protection policy option is supported. Verify that the Azure storage account already exists and contains a container with the same name as the account. 
-* In the Azure storage account's IAM settings, verify that the `Storage Blob Data Contributor` role is assigned to both the Azure Agent and the Cloud Volumes ONTAP system. If you use the `Object lock` policy option, also enable versioning on the storage account and assign the `Storage Blob Data Owner` role to both the Azure Agent and the Cloud Volumes ONTAP system.
-
-If your environment meets these requirements, you can select `Entra ID` as the authentication type in any new Azure object storage bucket. You can also switch to Entra ID for any already configured Azure bucket from the ONTAP Volumes *Backup settings* page.
 
 === Requirements for using customer-managed keys for data encryption
 
@@ -330,8 +330,9 @@ To create a policy, select *Create new policy* and do the following:
 ** Select up to five schedules, typically of different frequencies. 
 ** Select *Create*. 
 
-. *Back up to Object*: If you selected *Backup*, set the following options: 
+. *Backup*: Set the following options: 
 +
+* *Backup destination settings*: Choose to use an existing backup destination and select one from the list, or choose to configure a new backup destination.
 * *Provider*: Select *Microsoft Azure*. 
 * *Provider settings*: Enter the provider details, such as bucket creation and authentication options:
 ** *Create New Bucket*: NetApp Backup and Recovery creates the bucket in your provider environment.
