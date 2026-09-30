@@ -210,13 +210,13 @@ Note the types of jobs you can and can't cancel:
 | You can cancel
 | You can't cancel
 
-| Volume restore from a local or cloud snapshot (FlexVol and FlexGroup)
+| Volume restores from a local or cloud snapshot (FlexVol and FlexGroup)
 | Queued restore jobs
 
-| File and folder restore from the cloud
+| File and folder restores from the cloud
 | Archival restores
 
-| File and folder restore from a local snapshot to a different volume
+| File and folder restores from a local snapshot to a different volume
 | File and folder restores from a local snapshot to the same volume
 
 | 
