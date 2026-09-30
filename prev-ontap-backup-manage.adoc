@@ -58,7 +58,7 @@ Ensure that your environment meets the link:prev-ontap-backup-cvo-azure.html#anc
 .Steps
 
 . From the Volumes dashboard, select *Backup settings*.
-. locate the volume for which you want to modify the policy settings, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Configure advanced settings > Provider settings*.
+. Locate the volume for which you want to modify provider settings, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Configure advanced settings > Provider settings*.
 . Select the bucket to edit from the *Select bucket* list.
 . Expand the *Authentication method* section.
 . Select *Entra ID (managed identity)*.
