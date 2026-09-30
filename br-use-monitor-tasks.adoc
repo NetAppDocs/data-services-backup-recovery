@@ -202,20 +202,28 @@ When you cancel a volume restore, the entire restore operation is rolled back so
 
 During file and folder restores, Backup and Recovery restores files in batches of eight. If you cancel a file and folder restore while a batch is in progress, the restore stops before the next batch begins. Any files and folders that were already restored remain in place.
 
-.Before you begin
-You can cancel the following types of ONTAP Volumes restore jobs:
+Note the types of jobs you can and can't cancel:
 
-* Volume restore from a local or cloud snapshot (FlexVol and FlexGroup)
-* File and folder restore from the cloud
-* File and folder restore from a local snapshot to a different volume
+[cols="1,1",options="header"]
+|===
+| You can cancel
+| You can't cancel
 
-You can't cancel the following restore jobs:
+| Volume restore from a local or cloud snapshot (FlexVol and FlexGroup)
+| Queued restore jobs
 
-* Queued restore jobs
-* Archival restores
-* File and folder restores from a local snapshot to the same volume
-* Snapshot revert operations
-* Restore jobs that are very close to completion (in the cleanup phase)
+| File and folder restore from the cloud
+| Archival restores
+
+| File and folder restore from a local snapshot to a different volume
+| File and folder restores from a local snapshot to the same volume
+
+| 
+| Snapshot revert operations
+
+| 
+| Restore jobs that are very close to completion (in the cleanup phase)
+|===
 
 .Steps
 
