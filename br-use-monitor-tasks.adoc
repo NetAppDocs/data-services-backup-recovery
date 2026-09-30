@@ -219,11 +219,11 @@ Note the types of jobs you can and can't cancel:
 | File and folder restores from a local snapshot to a different volume
 | File and folder restores from a local snapshot to the same volume
 
-| 
-| Snapshot revert operations
+//| 
+//| Snapshot revert operations
 
-| 
-| Restore jobs that are very close to completion (in the cleanup phase)
+//| 
+//| Restore jobs that are very close to completion (in the cleanup phase)
 |===
 
 .Steps
