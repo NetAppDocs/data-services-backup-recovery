@@ -185,6 +185,8 @@ https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.htm
 == Cancel an ongoing job
 Some Backup and Recovery workloads support cancelling an ongoing job if it is taking too long to complete and has not failed.
 
+NOTE: To cancel an ONTAP Volumes restore job, refer to <<Cancel an ONTAP Volumes restore job>>.
+
 .Steps
 
 . From the NetApp Backup and Recovery menu, select *Monitoring*.
@@ -192,3 +194,32 @@ Some Backup and Recovery workloads support cancelling an ongoing job if it is ta
 . Select *Search* to display matching restore jobs.
 . Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select the *Cancel* action (the action label varies by job type).
 . In the confirmation dialog, confirm the cancellation.
+
+== Cancel an ONTAP Volumes restore job
+Cancel an ONTAP Volumes restore job if is taking too long to complete and has not failed.
+
+You can cancel the following types of ONTAP Volumes restore jobs:
+
+* Volume restore from a local or cloud snapshot (FlexVol and FlexGroup)
+* File and folder restore from the cloud
+* File and folder restore from a local snapshot to a different volume
+
+You can't cancel the following restore jobs:
+
+* Queued restore jobs
+* Archival restores
+* File and folder restores from a local snapshot to the same volume
+* Snapshot revert operations
+* Restore jobs that are very close to completion (in the cleanup phase)
+
+During file and folder restores, Backup and Recovery restores files in batches of eight. If you cancel a file and folder restore while a batch is in progress, the restore stops before the next batch begins. Any files and folders that were already restored remain in place.
+
+When you cancel a volume restore, the entire restore operation is rolled back so that no part of the volume is restored.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. Optionally, expand the *Advanced Search & Filtering* area and select specific criteria to focus the job search results.
+. Select *Search* to display matching restore jobs.
+. Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select the *Cancel restore* action.
+. In the confirmation dialog, select *Cancel restore*.
