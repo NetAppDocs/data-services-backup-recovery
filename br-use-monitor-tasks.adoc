@@ -202,6 +202,7 @@ When you cancel a volume restore, the entire restore operation is rolled back so
 
 During file and folder restores, Backup and Recovery restores files in batches of eight. If you cancel a file and folder restore while a batch is in progress, the restore stops before the next batch begins. Any files and folders that were already restored remain in place.
 
+.About this task
 Note the types of jobs you can and can't cancel:
 
 [cols="1,1",options="header"]
