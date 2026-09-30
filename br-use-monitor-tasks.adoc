@@ -198,6 +198,10 @@ NOTE: To cancel an ONTAP Volumes restore job, refer to <<Cancel an ONTAP Volumes
 == Cancel an ONTAP Volumes restore job
 Cancel an ONTAP Volumes restore job if is taking too long to complete and has not failed.
 
+When you cancel a volume restore, the entire restore operation is rolled back so that no part of the volume is restored.
+
+During file and folder restores, Backup and Recovery restores files in batches of eight. If you cancel a file and folder restore while a batch is in progress, the restore stops before the next batch begins. Any files and folders that were already restored remain in place.
+
 .Before you begin
 You can cancel the following types of ONTAP Volumes restore jobs:
 
@@ -212,10 +216,6 @@ You can't cancel the following restore jobs:
 * File and folder restores from a local snapshot to the same volume
 * Snapshot revert operations
 * Restore jobs that are very close to completion (in the cleanup phase)
-
-When you cancel a volume restore, the entire restore operation is rolled back so that no part of the volume is restored.
-
-During file and folder restores, Backup and Recovery restores files in batches of eight. If you cancel a file and folder restore while a batch is in progress, the restore stops before the next batch begins. Any files and folders that were already restored remain in place.
 
 .Steps
 
