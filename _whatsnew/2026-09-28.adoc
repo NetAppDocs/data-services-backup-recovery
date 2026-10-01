@@ -1,0 +1,13 @@
+=== General NetApp Backup and Recovery enhancement
+In this release, KVM, Hyper-V, and VMware workloads introduce the following enhancement:
+
+*Console Role-Based Access Control (RBAC) support*: The Hyper-V, KVM, and VMware workloads now support the NetApp Console framework for RBAC, enabling you to manage access to individual Hyper-V, KVM, or VMware hosts.
+
+https://docs.netapp.com/us-en/data-services-backup-recovery/br-rbac-setup.html[Learn more about using RBAC in NetApp Backup and Recovery].
+
+=== VMware workloads enhancements
+In this release, VMware workloads introduces the following enhancement:
+
+*Google Cloud NetApp Volumes Flex Unified support*: NetApp Backup and Recovery for VMware workloads now supports the the Flex Unified service level for Google Cloud NetApp Volumes. Flex Unified is supported in ONTAP-mode only.
+
+For details about protecting VMware workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-vmware-protect-overview.html[Protect VMware workloads with NetApp Backup and Recovery].
