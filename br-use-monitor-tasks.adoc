@@ -163,7 +163,7 @@ The Notification Center displays numerous snapshot, replication, backup to cloud
 
 NOTE: Beginning with ONTAP 9.13.0, all alerts appear for Cloud Volumes ONTAP and on-premises ONTAP systems. For systems with Cloud Volumes ONTAP 9.13.0 and on-premises ONTAP, only the alert related to "Restore job completed, but with warnings" appears. 
 
-By default, NetApp Console organization and account admins receive emails for all "Critical" and "Recommendation" alerts. By default, the system does not set up other users and recipients to receive notification emails. Configure email alerts for any Console users in your NetApp Cloud Account or to other recipients who need to know about backup and restore activity. 
+By default, NetApp Console organization and account administrators receive email notifications for all "Critical" and "Recommendation" alerts. Other users and recipients do not receive notification emails unless you configure them. Set up email alerts for Console users in your NetApp Cloud Account or for other recipients who need to monitor backup and restore activity.
 
 To receive the NetApp Backup and Recovery email alerts, you'll need to select the notification severity types "Critical", "Warning", and "Error" in the Notifications settings page.
 
@@ -178,6 +178,58 @@ https://docs.netapp.com/us-en/console-local/task-alert-rules-manage.html[Configu
 
 == Review operation activity in Console Timeline
 
-You can view details of backup and restore operations for further investigation in the Console Timeline. The Console Timeline provides details of each event, whether user-initiated or system-initiated, and shows actions initiated in the UI or via the API. 
+Use the Console Timeline to investigate backup and restore operations. It provides details about each event, including whether it was initiated by a user or by the system, and shows actions performed in the UI or through the API.
 
 https://docs.netapp.com/us-en/console-setup-admin/task-monitor-cm-operations.html[Learn about monitoring NetApp Console operations^].
+
+== Cancel an ongoing job
+Some Backup and Recovery workloads support cancelling an ongoing job if it is taking too long to complete and has not failed.
+
+NOTE: To cancel an ONTAP Volumes restore job, refer to <<Cancel an ONTAP Volumes restore job>>.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. Optionally, expand the *Advanced Search & Filtering* area and select specific criteria to focus the job search results.
+. Select *Search* to display matching restore jobs.
+. Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select the *Cancel* action (the action label varies by job type).
+. In the confirmation dialog, confirm the cancellation.
+
+== Cancel an ONTAP Volumes restore job
+Cancel an ONTAP Volumes restore job if is taking too long to complete and has not failed.
+
+When you cancel a volume restore, the entire restore operation is rolled back so that no part of the volume is restored.
+
+During file and folder restores, Backup and Recovery restores files in batches of eight. If you cancel a file and folder restore while a batch is in progress, the restore stops before the next batch begins. Any files and folders that were already restored remain in place.
+
+.About this task
+Note the types of jobs you can and can't cancel:
+
+[cols="1,1",options="header"]
+|===
+| You can cancel
+| You can't cancel
+
+| Volume restores from a local or cloud snapshot (FlexVol and FlexGroup)
+| Queued restore jobs
+
+| File and folder restores from the cloud
+| Archival restores
+
+| File and folder restores from a local snapshot to a different volume
+| File and folder restores from a local snapshot to the same volume
+
+//| 
+//| Snapshot revert operations
+
+//| 
+//| Restore jobs that are very close to completion (in the cleanup phase)
+|===
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Monitoring*.
+. Optionally, expand the *Advanced Search & Filtering* area and select specific criteria to focus the job search results.
+. Select *Search* to display matching restore jobs.
+. Choose a job from the list, select the Actions menu image:icon-action.png[Actions icon], and select the *Cancel restore* action.
+. In the confirmation dialog, select *Cancel restore*.
