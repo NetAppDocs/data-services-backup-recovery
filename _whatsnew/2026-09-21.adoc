@@ -1,7 +1,10 @@
-=== ONTAP Volumes workloads enhancement
-In this release, ONTAP Volumes workloads introduces the following preview enhancement:
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following preview enhancements:
 
-*Improved support for dark sites*: NetApp Backup and Recovery for dark sites now provides the same ONTAP Volumes data protection capabilities as NetApp Backup and Recovery. This enhancement includes updated backup, restore, and job-management services and a new metadata database. During an upgrade, existing database data is preserved and migrated automatically. After the upgrade, review the audit logs to verify that the migration completed successfully. NetApp Backup and Recovery for dark sites supports only ONTAP Volumes workloads.
+* *Improved support for dark sites*: NetApp Backup and Recovery for dark sites now provides the same ONTAP Volumes data protection capabilities as NetApp Backup and Recovery. This enhancement includes updated backup, restore, and job-management services and a new metadata database. During an upgrade, existing database data is preserved and migrated automatically. After the upgrade, review the audit logs to verify that the migration completed successfully. NetApp Backup and Recovery for dark sites supports only ONTAP Volumes workloads.
+* *Cancel volume restore jobs*: You can now cancel ongoing ONTAP Volumes restore jobs from the job monitoring page, making it easier to manage long-running or slow-running jobs.
+* *Improved volume indexing status reporting*: The ONTAP Volumes dashboard now reports indexing status more accurately by introducing the `Not Applicable` status for volumes and snapshot copies that are not eligible for indexing. The `Not Indexed` status is now reserved for volumes that are waiting to be indexed, and volume details now show per-snapshot indexing status with hovertext that explains why a volume or snapshot copy will not be indexed.
+* *NetApp AFX support*: You can now protect volumes hosted on 2- and 4-node NetApp AFX clusters. 
 
 For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery]. 
 
