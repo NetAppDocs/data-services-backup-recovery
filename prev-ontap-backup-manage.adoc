@@ -49,21 +49,6 @@ Refer to link:br-start-enable.html[Enable NetApp Backup and Recovery to protect 
 
 You can change the backup policies assigned to your existing volumes that have assigned policies. You can change the policies for your local snapshots, replicated volumes, and backup files. Any new snapshot, replication, or backup policy that you want to apply to the volumes must already exist. 
 
-=== Switch an Azure object store configuration to Microsoft Entra ID authentication
-You can switch to Microsoft Entra ID authentication for Azure object storage when editing an existing Azure bucket configuration if you don't want to use the storage account access key for Azure authentication. This option is supported for Cloud Volumes ONTAP in Azure systems running ONTAP 9.16.1 or later.
-
-.Before you begin
-Ensure that your environment meets the link:prev-ontap-backup-cvo-azure.html#anchor-entraid[requirements^] for using Entra ID.
-
-.Steps
-
-. From the Volumes dashboard, select *Backup settings*.
-. Locate the volume for which you want to modify provider settings, select the Actions menu image:icon-action.png[Actions icon] at the end of the row, and select *Configure advanced settings > Provider settings*.
-. Select the bucket to edit from the *Select bucket* list.
-. Expand the *Authentication method* section.
-. Select *Entra ID (managed identity)*.
-. Select *Apply*.
-
 === Edit backup settings on a single volume
 
 .Steps
