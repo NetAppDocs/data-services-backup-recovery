@@ -199,5 +199,21 @@ You can enable or disable ransomware scans at the provider level by using the pr
 . Select *Scheduled ransomware scan*. 
 . Optionally, change the every week default scan to days or weeks. 
 . Set the how often in days or weeks that the scan should run. 
-. Select *Apply*. 
+. Select *Apply*.
 
+== Switch an Azure object store configuration to Microsoft Entra ID authentication
+You can switch to Microsoft Entra ID authentication for Azure object storage when editing an existing Azure bucket configuration if you don't want to use the storage account access key for Azure authentication. This option is supported for Cloud Volumes ONTAP in Azure systems running ONTAP 9.16.1 or later.
+
+.Before you begin
+Ensure that your environment meets the link:prev-ontap-backup-cvo-azure.html#anchor-entraid[requirements^] for using Entra ID.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
+
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[More icon] for the system and select *Configure advanced settings > Provider settings*.
+
+. At the top of the resulting page, select the bucket for which you need to change settings.
+. Expand the *Authentication method* section.
+. Select *Entra ID (managed identity)*.
+. Select *Apply*.
