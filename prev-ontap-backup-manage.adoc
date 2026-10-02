@@ -48,7 +48,6 @@ Refer to link:br-start-enable.html[Enable NetApp Backup and Recovery to protect 
 == Change the backup settings assigned to existing volumes
 
 You can change the backup policies assigned to your existing volumes that have assigned policies. You can change the policies for your local snapshots, replicated volumes, and backup files. Any new snapshot, replication, or backup policy that you want to apply to the volumes must already exist. 
-//<<Add a new backup policy,See how to add a new backup policy for a system>>.
 
 === Edit backup settings on a single volume
 
