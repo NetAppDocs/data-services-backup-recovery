@@ -110,19 +110,19 @@ To use NetApp Backup and Recovery for ONTAP volume workloads, you need the follo
 |===
 | Feature | Required ONTAP version
 
-| ONTAP volume workload protection
+| Protect ONTAP volumes
 | 9.8 or later
 
-| FlexGroup volume protection. Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information.
+| Protect FlexGroup volumes (Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information)
 | 9.12.1 or later
 
-| Microsoft Entra ID authentication for Azure buckets when protecting Cloud Volumes ONTAP
+| Use Microsoft Entra ID authentication for Azure buckets when protecting Cloud Volumes ONTAP
 | 9.16.1 or later
 
-| Backing up or restoring to S3-compatible object storage
+| Back up or restore to S3-compatible object storage
 | 9.17.1 or later
 
-| Support for more than 6 buckets per system across different cloud providers (up to 100 buckets maximum)
+| Use more than 6 buckets per system across different cloud providers (up to 100 buckets maximum)
 | 9.19.1 or later
 |===
 
