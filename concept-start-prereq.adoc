@@ -106,10 +106,25 @@ To use object storage as backup targets, you need an account with AWS S3, Google
 == Requirements for protecting ONTAP volume workloads
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following host system, space, and sizing prerequisites.
 
-* ONTAP 9.8 or later is required.
-* ONTAP 9.12.1 or later is required for FlexGroup volume protection. Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information.
-* ONTAP 9.17.1 or later is required for backing up or restoring to S3-compatible object storage.
-* ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
+[cols="1,2",options="header"]
+|===
+| Feature | Required ONTAP version
+
+| ONTAP volume workload protection
+| 9.8 or later
+
+| FlexGroup volume protection. Refer to link:br-reference-limitations.html[Known limitations with NetApp Backup and Recovery for ONTAP volumes] for more information.
+| 9.12.1 or later
+
+| Microsoft Entra ID authentication for Azure buckets when protecting Cloud Volumes ONTAP
+| 9.16.1 or later
+
+| Backing up or restoring to S3-compatible object storage
+| 9.17.1 or later
+
+| Support for more than 6 buckets per system across different cloud providers (up to 100 buckets maximum)
+| 9.19.1 or later
+|===
 * An ONTAP One License must be enabled on the on-premises ONTAP instance.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
