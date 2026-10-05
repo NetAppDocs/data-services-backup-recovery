@@ -28,7 +28,7 @@ Optionally, you can connect to a secondary ONTAP system for replicated volumes u
 image:diagram_cloud_backup_cvo_azure.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
 Supported ONTAP versions::
-Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended.
+Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended. ONTAP 9.16.1 or later is required if using Microsoft Entra ID authentication for Azure object storage.
 
 Supported Azure regions::
 NetApp Backup and Recovery is supported in all Azure regions, including Azure Government regions. 
@@ -48,6 +48,18 @@ For NetApp Backup and Recovery PAYGO licensing, a subscription through the Azure
 For NetApp Backup and Recovery BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses]. You must use a BYOL license when the Console agent and Cloud Volumes ONTAP system are deployed in a dark site ("private mode").
 
 You also need an Azure subscription for the storage space where your backups will be located.
+
+[[anchor-entraid]]
+== Requirements for using Microsoft Entra ID authentication with Azure object stores
+You can enable Microsoft Entra ID authentication for Azure object storage when creating an Azure object storage bucket or editing an existing Azure bucket configuration if you don't want to use the storage account access key for Azure authentication. This option is supported for Cloud Volumes ONTAP in Azure systems running ONTAP 9.16.1 or later.
+
+NOTE: You can use different authentication methods for different object store configurations within the same Cloud Volumes ONTAP system, but after you switch an object store configuration to use Microsoft Entra ID, you cannot switch it back to using the storage account key.
+
+* Verify that the "use-azure-msi-cvo" feature flag is enabled on the Cloud Volumes ONTAP system. For more information, refer to link:enable-preview-features.html[Enable preview features].
+* Only the Bring Your Own Bucket backup strategy option is supported. Verify that the Azure storage account already exists and contains a container with the same name as the account. 
+* In the Azure storage account's IAM settings, verify that the `Storage Blob Data Contributor` role is assigned to both the Azure Agent and the Cloud Volumes ONTAP system. If you use the `Object lock` policy option, also enable versioning on the storage account and assign the `Storage Blob Data Owner` role to both the Azure Agent and the Cloud Volumes ONTAP system.
+
+If your environment meets these requirements, you can select `Entra ID` as the authentication type in any new Azure object storage bucket when you <<Define the backup strategy, define the backup strategy>>. You can also link:prev-ontap-policy-object-advanced-settings.html#switch-an-azure-object-store-configuration-to-microsoft-entra-id-authentication[switch to Entra ID for an already configured Azure bucket] from the ONTAP Volumes *Backup settings* page.
 
 == Prepare your Console agent
 The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
@@ -145,7 +157,7 @@ https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.ht
 
 .. Select *Review + update* and then select *Update*.
 
-=== Required information for using customer-managed keys for data encryption
+=== Requirements for using customer-managed keys for data encryption
 
 You can use your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case, you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
 
@@ -283,7 +295,7 @@ NOTE: If the volumes you choose have different snapshot and replication policies
 
 .Steps 
 
-. In the Define backup strategy page, choose one or all of the following. All three are selected by default: 
+. In the *Define backup strategy* page, choose one or all of the following. All three are selected by default: 
 +
 * *Local Snapshots*: If you are performing replication or back up to object storage, local snapshots must be created. 
 * *Replication*: Creates replicated volumes on another ONTAP storage system.  
@@ -318,20 +330,17 @@ To create a policy, select *Create new policy* and do the following:
 ** Select up to five schedules, typically of different frequencies. 
 ** Select *Create*. 
 
-. *Back up to Object*: If you selected *Backup*, set the following options: 
+. *Backup*: Set the following options: 
 +
+* *Backup destination settings*: Choose to use an existing backup destination and select one from the list, or choose to configure a new backup destination.
 * *Provider*: Select *Microsoft Azure*. 
-* *Provider settings*: Enter the provider details.
-+
-Enter the region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
-+ 
-Either create a new storage account or select an existing one. 
-+
-Enter the Azure subscription used to store the backups. This can be a different subscription than where the Cloud Volumes ONTAP system resides. 
-//If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
-+
-Either create your own resource group that manages the Blob container or select the resource group type and group.  
-
+* *Provider settings*: Enter the provider details, such as bucket creation and authentication options:
+** *Create New Bucket*: NetApp Backup and Recovery creates the bucket in your provider environment.
+** *Bring Your Own Bucket*: Use an existing bucket that you have already created.
+** *Authentication method*: Choose to use the storage account access key or Microsoft Entra ID to authenticate with Azure. You can only select *Entra ID* if your environment meets the Entra ID <<anchor-entraid,requirements>>. If you select *Storage account access key*, select the following:
+*** Select the Azure subscription used to store the backups. This can be a different subscription than where the Cloud Volumes ONTAP system resides.
+*** Select the region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
+*** Either create your own resource group that manages the Blob container or select the resource group type and group.  
 +
 TIP: If you want to protect your backup files from being modified or deleted, ensure that the storage account was created with immutable storage enabled using a 30-day retention period. 
 
