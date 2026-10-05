@@ -35,7 +35,9 @@ You can enable the following preview features for NetApp Backup and Recovery.
 |===
 
 == Enable preview features
-Enable preview feature flag options to use functionality that is not yet generally available. Use preview features with caution in production environments.
+Enable preview feature flags to use functionality that is not yet generally available. Use preview features with caution in production environments. 
+
+NOTE: These examples assume you use Docker; if you use Podman, run the equivalent Podman commands.
 
 .Steps
 
@@ -107,6 +109,8 @@ Disable indexing for specific volumes or for all volumes belonging to one or mor
 
 * `svms-not-to-index`: A comma-separated list of storage VMs whose volumes should not be indexed
 * `volumes-not-to-index`: A comma-separated list of individual volumes that should not be indexed
+
+NOTE: These examples assume you use Docker; if you use Podman, run the equivalent Podman commands.
 
 .Steps
 
