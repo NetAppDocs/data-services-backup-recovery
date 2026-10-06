@@ -91,6 +91,9 @@ The file browser appears.
 . Browse the list of files and folders, and select files and folders to download.
 +
 Open a partition to browse its files and folders. When you select a file or folder to download by enabling its checkbox, it is added to the "selected" list to the right.
++
+NOTE: The total combined size of the selected files and folders cannot exceed 5 MB.
+
 . When finished, select *Next*.
 . Select the *Download file* transfer mode.
 . Select *Next*.
