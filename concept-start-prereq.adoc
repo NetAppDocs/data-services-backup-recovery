@@ -351,10 +351,10 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |2019, 2022 & 2025 editions
 
 |ASP.NET Core Runtime
-|8.0.24 Hosting Bundle (and all subsequent 8.0.x patches)
+|10.0.10 Hosting Bundle
 
 |PowerShell
-|7.4.13 or later
+|7.6.4 or later
 
 |If non-administrator users will be protecting Hyper-V VMs, ensure the users have the following permissions
 a|
