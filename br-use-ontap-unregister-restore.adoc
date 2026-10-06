@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: br-use-ontap-unregister-restore.html
+keywords: backup and recovery, ONTAP volumes, unregister, deactivate backups, delete backups, restore old backups, endpoint uuid history
+summary: End an ONTAP Volumes backup relationship in NetApp Backup and Recovery and, if you retain the backups, restore older backups by using the ONTAP CLI.
+---
+
+= End an ONTAP Volumes backup relationship in NetApp Backup and Recovery
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+End an ONTAP Volumes backup relationship for a storage system in NetApp Backup and Recovery. If you keep the existing object-store backups when you unregister the system, you can later restore an older backup by using the ONTAP CLI.
+
+NOTE: This procedure applies only to ONTAP Volumes workloads.
+
+NOTE: If you choose *Deactivate and delete backups*, you can't restore those deleted backups later.
+
+== End a backup relationship for an ONTAP system
+
+Use this task to stop future backups for a storage system and unregister it from NetApp Backup and Recovery. If you might need to restore older backups later, choose *Deactivate backups* so the backups remain in object storage.
+
+.Steps
+
+. Go to *Protection > Backup and Recovery*.
+. Select the *Volumes* tile.
+. Select *Backup Settings*.
+. On the Backup Settings page, select image:icon-actions-horizontal.gif[Actions icon] for the system and select *Unregister backups*.
+. In the first step of the dialog, choose one of the following options:
++
+* *Deactivate backups*: Stops future backups, deletes the object-store backup relationships, and keeps the existing backups in object storage. After the system is unregistered, only volume restore through the ONTAP CLI is available for those retained backups.
+* *Deactivate and delete backups*: Stops future backups, deletes the object-store backup relationships, and deletes the existing backups.
+. Optional: Select *Ignore errors in deactivating/deleting backups* if you want the job to continue when a step fails.
+. In *Enter system name to confirm*, enter the system name.
+. Under *Confirm protection report backup*, confirm that you saved any reports you need.
+. Select *Confirm & Unregister*.
+. Monitor the operation in the Job Monitor until it completes.
+
+NOTE: Unregistering the system doesn't change the system's volumes, Snapshot configuration, or replication relationships in ONTAP.
+
+NOTE: If you keep the backups, the cloud provider can continue to charge for the retained object-store capacity until you delete those backups.
+
+== Restore old backups after the backup relationship ends
+
+Use this task if you kept the existing backups when you unregistered the system and later need to restore an older backup that NetApp Backup and Recovery can no longer restore through the UI.
+
+Before you begin, make sure you have access to the ONTAP CLI for the destination cluster and that you know which backup copy you want to restore.
+
+NOTE: If a new backup relationship was created before you unregistered the system, NetApp Backup and Recovery might continue to show the older snapshots for up to one hour after the new backup is created. During that refresh window, UI-based restores of those older snapshots can fail.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Reports*.
+. Download the Backup Report.
+. In the report, locate the volume you want to restore and find the endpoint entry for the backup copy you need:
++
+* For an older backup from a previous relationship, use the *Endpoint UUID History* value.
+* For a backup from the current relationship, use the *Endpoint UUID* value.
++
+Each history entry uses the format `<bucket_name>:<endpoint_uuid>`. Record the bucket name and the endpoint UUID for the backup you want to restore.
+. Connect to the ONTAP cluster CLI and enter diagnostic mode:
++
+[source,shell]
+----
+set -privilege diagnostic
+----
+. Create a destination data-protection volume:
++
+[source,shell]
+----
+volume create -vserver <vserver_name> -volume <volume_name> -aggregate <aggr_name> -size <size> -type DP
+----
+. List the snapshots that are available for the bucket and endpoint UUID you recorded:
++
+[source,shell]
+----
+snapm object-store endpoint snapshot show -object-store-name <bucket_name> -endpoint-uuid <endpoint_uuid>
+----
+. If the object-store credentials changed after the backup was created, update the object-store configuration before you continue:
++
+[source,shell]
+----
+snapmirror object-store config show -object-store-name <object_store_name>
+snapmirror object-store config modify -object-store-name <object_store_name> -access-key <new_access_key> -secret-password <new_secret_password>
+----
+. Restore the selected snapshot from object storage into the destination DP volume:
++
+[source,shell]
+----
+snapmirror restore -destination-path <vserver>:<destination_volume> -source-path <bucket_name>:/objstore/<endpoint_uuid> -source-snapshot <snapshot_name> -source-endpoint-uuid <endpoint_uuid>
+----
+
+NOTE: The `snapm object-store endpoint snapshot show` command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
+
+NOTE: If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before you run the restore.
+
+For more information about the ONTAP commands in this task, see the following ONTAP documentation:
+
+* https://docs.netapp.com/us-en/ontap-cli/volume-create.html[volume create]
+* https://docs.netapp.com/us-en/ontap-cli/snapmirror-object-store-config-modify.html[snapmirror object-store config modify]
+* https://docs.netapp.com/us-en/ontap-cli/snapmirror-restore.html[snapmirror restore]
