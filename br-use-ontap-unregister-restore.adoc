@@ -19,7 +19,7 @@ NOTE: This procedure applies only to ONTAP Volumes workloads.
 
 NOTE: If you choose *Deactivate and delete backups*, you can't restore those deleted backups later.
 
-== End a backup relationship for an ONTAP system
+== End an ONTAP Volumes backup relationship
 
 Stop future backups for a storage system and unregister it from NetApp Backup and Recovery. If you might need to restore older backups later, choose *Deactivate backups* so the backups remain available.
 
@@ -43,7 +43,7 @@ NOTE: Unregistering the system doesn't change the system's volumes, snapshot con
 
 NOTE: If you keep the backups, the cloud provider can continue to charge for the retained object store capacity until you delete those backups.
 
-== Restore old backups after the backup relationship ends
+== Restore old backups after ending an ONTAP Volumes backup relationship
 
 If you kept the existing backups when you unregistered the system and later need to restore one of those older backups, use the ONTAP CLI because NetApp Backup and Recovery can no longer restore them through the UI.
 
