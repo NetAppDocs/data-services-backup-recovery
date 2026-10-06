@@ -1,0 +1,21 @@
+=== ONTAP Volumes workloads enhancements
+In this release, ONTAP Volumes workloads introduces the following preview enhancement:
+
+* *Ability to end a backup relationship*: You can now end an ONTAP Volumes backup relationship and choose whether to discard the data backed up before ending it or keep the data available for restoration.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
+
+=== Hyper-V workloads enhancement
+In this release, Hyper-V workloads introduces the following enhancement:
+
+*Spanning disk protection for SAN VMs*: For CIFS and SAN configurations, you can now protect every disk attached to each VM in a protection group. This includes files distributed across multiple ONTAP volumes or ONTAP storage systems (spanning disks) and files limited to a single location.
+
+For details about protecting Hyper-V workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-hyperv-protect-overview.html[Learn about protecting Hyper-V workloads with NetApp Backup and Recovery].
+
+=== Oracle Database workloads enhancement
+In this release, Oracle Database workloads introduces the following enhancements:
+
+* *Data Guard support*: NetApp Backup and Recovery now supports protecting databases in an Oracle Data Guard configuration.
+
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
+
