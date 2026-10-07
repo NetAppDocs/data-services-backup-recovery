@@ -5,6 +5,13 @@ In this release, KVM, Hyper-V, and VMware workloads introduce the following enha
 
 https://docs.netapp.com/us-en/data-services-backup-recovery/br-rbac-setup.html[Learn more about using RBAC in NetApp Backup and Recovery].
 
+=== ONTAP Volumes workloads enhancement
+In this release, ONTAP Volumes workloads introduces the following preview enhancement:
+
+* *Cloud Volumes ONTAP Azure Entra ID support*: You can now use Microsoft Entra ID authentication for Azure object storage bucket configurations if you don't want to use the storage account access key for Azure authentication. This option is supported for Cloud Volumes ONTAP in Azure systems running ONTAP 9.16.1 or later.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery]. 
+
 === VMware workloads enhancements
 In this release, VMware workloads introduces the following enhancement:
 
