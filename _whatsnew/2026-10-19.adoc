@@ -1,0 +1,6 @@
+=== ONTAP Volumes workloads enhancement
+In this release, ONTAP Volumes workloads introduces the following enhancement:
+
+*Ability to restore old data after unregistering an ONTAP system*: You can now unregister an ONTAP system from NetApp Backup and Recovery and choose whether to discard the data backed up before ending it or keep the data available for restoration.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
