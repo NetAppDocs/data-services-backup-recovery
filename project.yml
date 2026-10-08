@@ -117,8 +117,6 @@ sidebar:
                   url: /prev-ontap-restore-search.html
                 - title: Restore ONTAP data using Browse and Restore
                   url: /prev-ontap-restore-browse.html
-            - title: Deactivate an ONTAP Volumes backup relationship
-              url: /br-use-ontap-unregister-restore.html
         - title: Protect Microsoft SQL Server workloads 
           entries:
             - title: Microsoft SQL Server protection workflow in NetApp Backup and Recovery
