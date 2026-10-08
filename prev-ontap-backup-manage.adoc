@@ -372,20 +372,98 @@ NOTE: You can't delete individual volume backup files once the backup relationsh
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *Backup* > *Delete relationship*.
 
-== Deactivate NetApp Backup and Recovery for a system
+== Unregister NetApp Backup and Recovery for a system
 
-Deactivating NetApp Backup and Recovery for a system pauses backups and restores for all its volumes without deleting existing backups. This enables you to pause all backup and restore activity for a period of time without unregistering the backup service from this system.
+Deactivating NetApp Backup and Recovery for a system stops future backups for a storage system and unregisters it from NetApp Backup and Recovery. This enables you to either pause all backup and restore activity for a period of time without unregistering the backup service from this system, or fully unregister the system and delete existing backups.
 
 Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
 
 .Steps
 
-. From the *Volumes* tab, select *Backup Settings*.
-. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to disable backups and select *Deactivate Backup*.
-. In the confirmation dialog box, select *Deactivate*.
+. Go to *Protection > Backup and Recovery*.
+. Select the *Volumes* tile.
+. Select *Backup Settings*.
+. On the Backup Settings page, select the image:icon-actions-horizontal.gif[Actions icon] for the system and select *Unregister backups*.
+. Select one of the following options:
++
+* *Deactivate backups*: Stops future backups, deletes the object store backup relationships, and keeps the existing backups in object storage. After the system is unregistered, you can only restore those backups using the ONTAP CLI.
+* *Deactivate and delete backups*: Stops future backups, deletes the object store backup relationships, and deletes the existing backups.
+. Optionally, select *Ignore errors in deactivating/deleting backups* if you want the operation to continue if a step fails.
+. In *Enter system name to confirm*, enter the system name.
+. Under *Confirm protection report backup*, confirm that you saved any reports you need.
+. Select *Confirm & Unregister*.
+. Monitor the operation in the Job Monitor until it completes.
 
-NOTE: An *Activate Backup* button appears for that system while backup is disabled. You can select this button when you want to re-enable backup functionality for that system.
+NOTE: Unregistering the system doesn't change the system's volumes, snapshot configuration, or replication relationships in ONTAP.
 
+=== Restore old backups after unregistering a system
+
+If you kept the existing backups when you unregistered the system and later need to restore one of those older backups, use the ONTAP CLI because NetApp Backup and Recovery can no longer restore them through the UI.
+
+.Before you begin
+Make sure you have access to the ONTAP CLI for the destination cluster and that you know which backup copy you want to restore.
+
+NOTE: If a new backup relationship was created before you unregistered the system, NetApp Backup and Recovery might continue to show the older snapshots for up to one hour after the new backup is created. During that refresh window, UI-based restores of those older snapshots might fail.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Reports*.
+. Download the Backup Report.
+. In the report, locate the volume you want to restore and find the endpoint entry for the backup copy you need:
++
+* For an older backup from a previous relationship, use the *Endpoint UUID History* value.
+* For a backup from the current relationship, use the *Endpoint UUID* value.
++
+Each history entry uses the format `<bucket_name>:<endpoint_uuid>`. Record the bucket name and the endpoint UUID for the backup you want to restore.
+. Connect to the ONTAP cluster CLI and enter diagnostic mode:
++
+[source,shell]
+----
+set -privilege diagnostic
+----
+
+. Create a destination data-protection (DP) volume:
++
+[source,shell]
+----
+volume create -vserver <vserver_name> -volume <volume_name> -aggregate <aggr_name> -size <size> -type DP
+----
+
+. List the snapshots that are available for the bucket and endpoint UUID you recorded:
++
+[source,shell]
+----
+snapm object-store endpoint snapshot show -object-store-name <bucket_name> -endpoint-uuid <endpoint_uuid>
+----
+
+. If the object-store credentials changed after the backup was created, update the object-store configuration before you continue:
++
+[source,shell]
+----
+snapmirror object-store config show -object-store-name <object_store_name>
+snapmirror object-store config modify -object-store-name <object_store_name> -access-key <new_access_key> -secret-password <new_secret_password>
+----
+
+. Restore the selected snapshot from object storage into the destination DP volume:
++
+[source,shell]
+----
+snapmirror restore -destination-path <vserver>:<destination_volume> -source-path <bucket_name>:/objstore/<endpoint_uuid> -source-snapshot <snapshot_name> -source-endpoint-uuid <endpoint_uuid>
+----
+
+NOTE: The `snapm object-store endpoint snapshot show` command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
+
+NOTE: If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before you run the restore.
+
+
+=== Find more information
+For more information about the ONTAP commands in this task, refer to the following ONTAP documentation:
+
+* https://docs.netapp.com/us-en/ontap-cli/volume-create.html[volume create]
+* https://docs.netapp.com/us-en/ontap-cli/snapmirror-object-store-config-modify.html[snapmirror object-store config modify]
+* https://docs.netapp.com/us-en/ontap-cli/snapmirror-restore.html[snapmirror restore]
+
+////
 == Unregister NetApp Backup and Recovery for a system
 
 You can unregister NetApp Backup and Recovery for a system if you no longer want to use backup functionality and you want to stop being charged for backups in that system. Typically this feature is used when you're planning to delete a system, and you want to cancel the backup service.
@@ -406,3 +484,4 @@ The unregister option is not available until these two actions are complete.
 . From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to unregister the backup service and select *Unregister*.
 
 . In the confirmation dialog box, select *Unregister*.
+////
