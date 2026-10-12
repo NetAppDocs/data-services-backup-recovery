@@ -42,7 +42,9 @@ When you restore Oracle Database workloads, the following occurs:
 
 
 == View information about available Oracle Database restore points
-View the available restore points, including the SCN number and database incarnation associated with each one.
+View the available restore points, including the SCN number and associated database incarnation.
+
+NOTE: Oracle Database creates a new database incarnation each time you open a database with the `RESETLOGS` option. NetApp Backup and Recovery lists the relevant database incarnations when you review restore points and when you restore to a specific SCN.
 
 .Steps
 
