@@ -18,4 +18,4 @@ In this release, Microsoft SQL Server workloads introduces the following enhance
 
 *Licensing change*: Charges no longer apply to backups using disk-to-disk or disk-to-disk fan-out architectures. Charges apply only to backups to object storage, including backups using 3-2-1 or disk-to-object-storage architectures.
 
-For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-mssql-protect-overview.html[Learn about protecting Microsoft SQL Server workloads with NetApp Backup and Recovery].
+For details about protecting Microsoft SQL Server workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-mssql-protect-overview.html[Learn about protecting Microsoft SQL Server workloads with NetApp Backup and Recovery].
