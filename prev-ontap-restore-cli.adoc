@@ -50,6 +50,8 @@ volume create -vserver <vserver_name> -volume <volume_name> -aggregate <aggr_nam
 ----
 snapm object-store endpoint snapshot show -object-store-name <bucket_name> -endpoint-uuid <endpoint_uuid>
 ----
++
+NOTE: The `snapm object-store endpoint snapshot show` command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
 
 . If the object-store credentials changed after the backup was created, update the object-store configuration before you continue:
 +
@@ -65,8 +67,6 @@ snapmirror object-store config modify -object-store-name <object_store_name> -ac
 ----
 snapmirror restore -destination-path <vserver>:<destination_volume> -source-path <bucket_name>:/objstore/<endpoint_uuid> -source-snapshot <snapshot_name> -source-endpoint-uuid <endpoint_uuid>
 ----
-
-NOTE: The `snapm object-store endpoint snapshot show` command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
 
 NOTE: If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before you run the restore.
 
