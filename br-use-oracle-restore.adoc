@@ -30,13 +30,6 @@ You can restore data to the original location; restoring to an alternate locatio
 * Restore to the original location
 //* Restore to an alternate location
 
-//.Restore from object storage considerations
-
-//If you select a backup file in object storage, and ransomware protection is active for that backup (if you enabled Datalock and Ransomware protection in the backup policy), then you are prompted to run an additional integrity check on the backup file before restoring the data. We recommend that you perform the scan. 
-
-//TIP: You'll incur extra egress costs from your cloud provider to access the contents of the backup file.
-
-
 == How Oracle Database restore works
 
 When you restore Oracle Database workloads, the following occurs:
@@ -48,18 +41,20 @@ When you restore Oracle Database workloads, the following occurs:
 * When you restore a backup from object storage, you can restore the data to the source storage or to an on-premises ONTAP system and recover the database from there.
 
 
-//== When to use Quick Restore 
+== View information about available Oracle Database restore points
+View the available restore points, including the SCN number and associated database incarnation.
 
-//When you restore a cloud backup to a Cloud Volumes ONTAP system using ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1, you'll have the option to perform a _quick restore_ operation. The quick restore is ideal for disaster recovery situations where you need to provide access to a resource as soon as possible. A quick restore restores the metadata from the backup file instead of restoring the entire backup file. Quick restore is not recommended for performance or latency-sensitive applications, and it is not supported with backups in archived storage.
+NOTE: Oracle Database creates a new database incarnation each time you open a database with the `RESETLOGS` option. NetApp Backup and Recovery lists the relevant database incarnations when you review restore points and when you restore to a specific SCN.
 
-//NOTE: Quick restore is supported for FlexGroup volumes only if the source system from which the cloud backup was created was running ONTAP 9.12.1 or greater. And it is supported for SnapLock volumes only if the source system was running ONTAP 9.11.0 or greater.
+.Steps
 
+. From the Backup and Recovery menu, select *Inventory*.
+. From the NetApp Backup and Recovery menu, select *Restore*.
+. Select *View* for the Oracle Database workload.
+. Select the *Databases* tab.
+. Select the *Actions* image:icon-action.png["Actions icon"] icon for a database whose restore points you want to view, and select *View protection details*.
+. Review the available restore points and the SCN number and database incarnation associated with each one.
 
-//== Restore methods
-
-//You can restore workloads using one of the following methods. Typically, choose a method based on your restore needs:
-
-From the Restore page (also known as Search & Restore), you can restore a database, even if you don't remember the exact name, the location in which it resides, or the date when it was last in good shape. You can search for the database using filters. 
 
 == Restore an Oracle database
 
@@ -75,9 +70,9 @@ If restoring PDBs or tablespaces to a specific point in time or SCN:
 * Select only one PDB. Point-in-time recovery is not compatible with restoring multiple PDBs.
 * `PDB$SEED` cannot be selected for point-in-time recovery.
 * Control file restore cannot be combined with point-in-time recovery of PDBs or PDB tablespaces.
-* Ensure the data backup and the required log backups are cataloged.
+//* Ensure the data backup and the required log backups are cataloged.
 * The `SYSTEM`, `SYSAUX`, and `UNDO` tablespaces cannot be selected.
-* Verify that the data backup and required log backups are cataloged.
+//* Verify that the data backup and required log backups are cataloged.
 =====
 
 .Steps
@@ -87,7 +82,7 @@ If restoring PDBs or tablespaces to a specific point in time or SCN:
 . From the drop-down list to the right of the name search field, select *Oracle*. 
 . Enter the name of the database you want to restore or filter for the database host where the database that you want to restore is located. 
 +
-A list of snapshots appears that match your search criteria.
+A list of snapshots appears that match your search criteria. 
 . Select the *Restore* button for the database that you want to restore. 
 . Choose a restore option:
 +
@@ -101,21 +96,19 @@ A list of snapshots appears that match your search criteria.
 . Choose a date from the dropdown, and select *Search*.
 +
 The closest snapshot to the specified date and time is displayed.
-. Optionally, select *View log backups* to see the associated log backups.
-.. Verify that the log backups are mounted.
 . If the snapshot is stored in more than one location, select a source location to use and add or review location details. 
 . Select *Next*.
 --
 .Restore to a specific system change number (SCN)
 --
 [loweralpha, start=1]
+. Optionally, refer to <<View information about available Oracle Database restore points>> to see the available SCNs and associated database incarnations.
 . Select *Restore to a specific system change number (SCN)*.
 . Select *Next*.
 . Enter the SCN to use as a restore point, and select *Search*.
 +
-The closest snapshot for the specified SCN is displayed.
-. Optionally, select *View log backups* to see the associated log backups.
-.. Verify that the log backups are mounted.
+The closest matching snapshot for the specified SCN is displayed. If multiple database incarnations match the SCN, all matching incarnations are shown.
+. If multiple database incarnations match the search, select the snapshot with the correct incarnation.
 . If the snapshot is stored in more than one location, select a source location to use and add or review location details. 
 . Select *Next*.
 --
@@ -126,8 +119,6 @@ The closest snapshot for the specified SCN is displayed.
 . Select *Next*.
 +
 The latest snapshot is displayed. The restore operation recovers the last good state using all available log backups.
-. Optionally, select *View log backups* to see the associated log backups.
-.. Verify that the log backups are mounted.
 . If the snapshot is stored in more than one location, select a source location to use and add or review location details. 
 . Select *Next*.
 --
@@ -164,7 +155,7 @@ Available snapshots are displayed.
 ... Optionally, enable the *Control files* option to also restore the database control files. This option cannot be selected for point-in-time or SCN recovery of PDBs or PDB tablespaces.
 ... Optionally, enable the *Change database state if needed for restore and recovery* option to allow Backup and Recovery to manage the database state depending on the type of recovery.
 ... Optionally, enable the *Force in place restore* option to to perform an in-place restore when new datafiles were added after the backup, or when LUNs were added, deleted, or re-created in an LVM disk group. This overrides the foreign-files check; database recovery proceeds using the restore option you selected.
-... Specify external archive log file locations in the *External archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
+... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
 ... Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
 +
 * *All datafiles*: Open the database or container database in READ-WRITE mode after recovery.
