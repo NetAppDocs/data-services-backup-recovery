@@ -378,7 +378,7 @@ Deactivating NetApp Backup and Recovery for a system stops future backups for a 
 
 Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
 
-To restore older backups that you created with the old relationship before you unregistered the system, refer to link:prev-ontap-restore-cli.html[Restore ONTAP data using the ONTAP CLI^].
+To restore data that you backed up using old relationship before you unregistered the system, refer to link:prev-ontap-restore-cli.html[Restore ONTAP data using the ONTAP CLI^].
 
 .Steps
 
