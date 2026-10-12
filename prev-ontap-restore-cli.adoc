@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: prev-ontap-restore-cli.html
+keywords: CLI, ONTAP, restore, backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery
+summary: You might need to use use the ONTAP CLI to restore ONTAP data in some situations.
+---
+
+= Restore ONTAP data using the ONTAP CLI
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You might not be able to restore some ONTAP data using the Backup and Recovery web UI. This can happen if you kept backups after unregistering a system, or if the backups were created through a relationship that no longer exists. In either case, restore the backup using the ONTAP CLI.
+
+.Before you begin
+Make sure you have access to the ONTAP CLI for the destination cluster and that you know which backup copy you want to restore.
+
+NOTE: If a new backup relationship was created before you unregistered the system, NetApp Backup and Recovery might continue to show the older snapshots for up to one hour after the new backup is created. During that refresh window, UI-based restores of those older snapshots might fail.
+
+.Steps
+
+. From the NetApp Backup and Recovery menu, select *Reports*.
+. Download the Backup Report.
+. In the report, locate the volume you want to restore and find the endpoint entry for the backup copy you need:
++
+* For an older backup from a previous relationship, use the *Endpoint UUID History* value.
+* For a backup from the current relationship, use the *Endpoint UUID* value.
++
+Each history entry uses the format `<bucket_name>:<endpoint_uuid>`. Record the bucket name and the endpoint UUID for the backup you want to restore.
+. Connect to the ONTAP cluster CLI and enter diagnostic mode:
++
+[source,shell]
+----
+set -privilege diagnostic
+----
+
+. Create a destination data-protection (DP) volume:
++
+[source,shell]
+----
+volume create -vserver <vserver_name> -volume <volume_name> -aggregate <aggr_name> -size <size> -type DP
+----
+
+. List the snapshots that are available for the bucket and endpoint UUID you recorded:
++
+[source,shell]
+----
+snapm object-store endpoint snapshot show -object-store-name <bucket_name> -endpoint-uuid <endpoint_uuid>
+----
+
+. If the object-store credentials changed after the backup was created, update the object-store configuration before you continue:
++
+[source,shell]
+----
+snapmirror object-store config show -object-store-name <object_store_name>
+snapmirror object-store config modify -object-store-name <object_store_name> -access-key <new_access_key> -secret-password <new_secret_password>
+----
+
+. Restore the selected snapshot from object storage into the destination DP volume:
++
+[source,shell]
+----
+snapmirror restore -destination-path <vserver>:<destination_volume> -source-path <bucket_name>:/objstore/<endpoint_uuid> -source-snapshot <snapshot_name> -source-endpoint-uuid <endpoint_uuid>
+----
+
+NOTE: The `snapm object-store endpoint snapshot show` command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
+
+NOTE: If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before you run the restore.
+
+
+=== Find more information
+For more information about the ONTAP commands in this task, refer to the following ONTAP documentation:
+
+* https://docs.netapp.com/us-en/ontap-cli/volume-create.html[volume create]
+* https://docs.netapp.com/us-en/ontap-cli/snapmirror-object-store-config-modify.html[snapmirror object-store config modify]
+* https://docs.netapp.com/us-en/ontap-cli/snapmirror-restore.html[snapmirror restore]
