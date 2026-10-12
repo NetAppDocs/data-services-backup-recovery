@@ -16,7 +16,9 @@ summary: You might need to use use the ONTAP CLI to restore ONTAP data in some s
 You might not be able to restore some ONTAP data using the Backup and Recovery web UI. This can happen if you kept backups after unregistering a system, or if the backups were created through a relationship that no longer exists. In either case, restore the backup using the ONTAP CLI.
 
 .Before you begin
-Make sure you have access to the ONTAP CLI for the destination cluster and that you know which backup copy you want to restore.
+
+* Make sure you have access to the ONTAP CLI for the destination cluster and that you know which backup copy you want to restore.
+* If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before restoring.
 
 NOTE: If a new backup relationship was created before you unregistered the system, NetApp Backup and Recovery might continue to show the older snapshots for up to one hour after the new backup is created. During that refresh window, UI-based restores of those older snapshots might fail.
 
@@ -51,7 +53,7 @@ volume create -vserver <vserver_name> -volume <volume_name> -aggregate <aggr_nam
 snapm object-store endpoint snapshot show -object-store-name <bucket_name> -endpoint-uuid <endpoint_uuid>
 ----
 +
-NOTE: The `snapm object-store endpoint snapshot show` command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
+NOTE: This command lists only snapshots that ONTAP tracks for that bucket and endpoint. It does not list snapshots that were moved manually to another bucket.
 
 . If the object-store credentials changed after the backup was created, update the object-store configuration before you continue:
 +
@@ -67,9 +69,6 @@ snapmirror object-store config modify -object-store-name <object_store_name> -ac
 ----
 snapmirror restore -destination-path <vserver>:<destination_volume> -source-path <bucket_name>:/objstore/<endpoint_uuid> -source-snapshot <snapshot_name> -source-endpoint-uuid <endpoint_uuid>
 ----
-
-NOTE: If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before you run the restore.
-
 
 === Find more information
 For more information about the ONTAP commands in this task, refer to the following ONTAP documentation:
