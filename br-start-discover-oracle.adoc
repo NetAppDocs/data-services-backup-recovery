@@ -62,9 +62,27 @@ NetApp Backup and Recovery connects to each host via SSH to install the plug-in 
 TIP: Adding resources can take several minutes. To see the progress, select *Track progress* in the status dialog at the bottom of the Inventory page or select *Monitoring* from the left navigation.
 
 .Result
-The Oracle Database workload appears in the workload list on the Inventory page.  
+The Oracle Database host appears in the workload list on the Inventory page.  
+
+== View Oracle Database inventory
+Review details about the Oracle Database resources you have discovered in the Backup and Recovery inventory.
+
+.Steps
+
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
+. Under *Workloads*, select the *Oracle* tile.
+. To view discovered Oracle Database hosts, select the *Hosts* tab.
++
+You can use this view to see details such as each host name, how many databases each host is hosting, the deployment model (for example, cluster, Oracle Data Guard, or standalone), and other information.
+. To view protection groups that have been created to protect Oracle Database resources, select the *Protection Groups* tab.
+. To view databases hosted by each Oracle Database host, select the *Databases* tab.
++
+This view shows detailed information, including whether each database is a single instance or part of a cluster or high-availability configuration.
+
 
 == Continue to the NetApp Backup and Recovery Dashboard
+
+.Steps
 
 . From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
 . Select a workload tile (for example, Oracle Database).
