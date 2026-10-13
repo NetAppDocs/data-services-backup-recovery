@@ -167,6 +167,14 @@ Allocate sufficient disk space and monitor the storage consumption by the logs f
 
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
 
+|Required permissions
+a|
+The account used to discover the Microsoft SQL Server host must have:
+
+* Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
+* Windows Administrator privileges on the host
+* Permission to log in to the host
+
 |===
 
 [caption=]
