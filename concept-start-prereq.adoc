@@ -167,14 +167,6 @@ Allocate sufficient disk space and monitor the storage consumption by the logs f
 
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
 
-|Required permissions
-a|
-The account used to discover the Microsoft SQL Server host must have:
-
-* Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
-* Windows Administrator privileges on the host
-* Permission to log in to the host
-
 |===
 
 [caption=]
@@ -203,6 +195,13 @@ a|iSCSI LUNs connected directly to the guest system by the iSCSI initiator
 NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that are provisioned on NetApp storage is not supported.
 
 |===
+
+=== Required permissions
+To discover a Microsoft SQL Server host, a NetApp Backup and Recovery account must have a corresponding account with the same name on that SQL Server host and the following permissions:
+
+* Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
+* Windows Administrator privileges on the host
+* Permission to log in to the host
 
 == Requirements for protecting VMware workloads
 You need specific requirements to discover and protect your VMware workloads.
