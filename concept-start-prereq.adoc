@@ -196,10 +196,8 @@ NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that a
 
 |===
 
-=== Permissions requirements for Microsoft SQL Server host discovery
-When you discover an SQL Server host, NetApp Backup and Recovery installs the NetApp SQL Server plug-in on the host. You can also choose to install the plug-in manually instead.
-
-The host credentials you provide during discovery must have the following memberships and permissions so that NetApp Backup and Recovery can install the plug-in:
+=== Required permissions for Microsoft SQL Server host discovery
+When you discover an SQL Server host, NetApp Backup and Recovery installs the NetApp SQL Server plug-in on the host. You can also choose to install the plug-in manually instead. If you choose automatic installation, the host credentials you provide during discovery must have the following memberships and permissions so that NetApp Backup and Recovery can install the plug-in:
 
 * Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
 * Membership in the Windows local Administrator group
@@ -333,8 +331,8 @@ a|
 
 |===
 
-=== Permissions requirements for Oracle Database host discovery
-When you discover an Oracle Database host, NetApp Backup and Recovery installs the NetApp Oracle Database plug-in on the host using password-based SSH. You can also choose to install the plug-in manually instead.
+=== Required permissions for Oracle Database host discovery
+When you discover an Oracle Database host, NetApp Backup and Recovery installs the NetApp Oracle Database plug-in on the host using password-based SSH. You can also choose to install the plug-in manually instead. You need specific permissions for plug-in installation.
 
 .Requirements if using automatic plug-in installation
 The host credentials you provide during discovery must have the following permissions so that NetApp Backup and Recovery can install the NetApp Oracle Database plug-in:
