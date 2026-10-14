@@ -200,7 +200,7 @@ NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that a
 To discover a Microsoft SQL Server host, a NetApp Backup and Recovery account must have a corresponding account with the same name on that SQL Server host and the following permissions:
 
 * Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
-* Windows Administrator privileges on the host
+* Membership in the Windows local Administrator group
 * Permission to log in to the host
 
 == Requirements for protecting VMware workloads
