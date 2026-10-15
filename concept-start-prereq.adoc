@@ -197,7 +197,7 @@ NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that a
 |===
 
 === Required permissions for Microsoft SQL Server host discovery
-When you discover an SQL Server host, NetApp Backup and Recovery installs the NetApp SQL Server plug-in on the host. You can also choose to install the plug-in manually instead. If you choose automatic installation, the host credentials you provide during discovery must have the following memberships and permissions so that Backup and Recovery can install the plug-in:
+When you discover an SQL Server host, NetApp Backup and Recovery installs the NetApp SnapCenter Plug-in for Microsoft SQL Server on the host. You can also choose to install the plug-in manually instead. If you choose automatic installation, the host credentials you provide during discovery must have the following memberships and permissions so that Backup and Recovery can install the plug-in:
 
 * Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
 * Membership in the Windows local Administrator group
