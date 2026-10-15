@@ -54,7 +54,9 @@ By default, the Job Monitoring page shows protection and recovery jobs from the 
 
 . If you're looking for specific jobs, select the *Advanced Search & Filtering* area to open the Search panel. 
 +
-Use this panel to enter a free text search for any resource; for example, "volume 1" or "application 3". You can also filter the jobs list according to the items in the drop-down menus.
+Use this panel to enter a free text search for any resource; for example, "volume 1" or "application 3". You can also filter the jobs list according to the items in the drop-down menus. You can also search a timeframe.
++
+When searching a timeframe, select *Custom range* to choose a start and end date from a calendar.
 +
 Most of the filters are self-explanatory. The filter for "Workload" enables you to view jobs in the following categories:
 
