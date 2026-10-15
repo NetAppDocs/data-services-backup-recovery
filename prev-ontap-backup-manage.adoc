@@ -372,9 +372,9 @@ NOTE: You can't delete individual volume backup files once the backup relationsh
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *Backup* > *Delete relationship*.
 
-== Pause backups and restores for a system
+== Pause all backups for a system
 
-Pause backups and restores for a system to pause protection activity for all the system's volumes without deleting existing backups. Pausing backups and restores does not unregister the backup service from this system.
+Pause all backups for a system to pause backup activity for all the system's volumes without deleting existing backups. Pausing backups does not unregister the backup service from this system.
 
 Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
 
@@ -382,18 +382,18 @@ Note that you'll continue to be charged by your cloud provider for object storag
 
 . From the *Volumes* tab, select *Backup Settings*.
 
-. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system for which you want to pause protection activity and select *Pause all backups*.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system for which you want to pause backups and select *Pause all backups*.
 
 . In the confirmation dialog box, select *Pause*.
 
 == Unregister NetApp Backup and Recovery for a system
 
-Deactivating NetApp Backup and Recovery for a system stops future backups for a storage system and unregisters it from NetApp Backup and Recovery. This enables you to either pause all backup and restore activity for a period of time without unregistering the backup service from this system, or fully unregister the system and delete existing backups.
+Unregistering NetApp Backup and Recovery for a system stops future backups for a storage system and removes it from NetApp Backup and Recovery. During the process, you can choose whether to keep or delete the existing backups.
 
 .About this task
 
 * Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
-* To restore data that you backed up using an old backup relationship before you unregistered the system, refer to link:prev-ontap-restore-cli.html[Restore ONTAP data using the ONTAP CLI^].
+* To restore existing backups, refer to link:prev-ontap-restore-cli.html[Restore ONTAP data using the ONTAP CLI^].
 
 .Steps
 
