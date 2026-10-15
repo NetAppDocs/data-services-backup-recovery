@@ -140,7 +140,14 @@ If you are logging in to Backup and Recovery for the first time and have a syste
 .. *vCenter settings*: Select an existing vCenter or add a new one. To add a new vCenter, enter the vCenter FQDN or IP address, user name, password, port, and protocol.
 +
 TIP: If you are entering vCenter information, enter information for both vCenter settings and Host registration. If you added or entered vCenter information here, you also need to add plug-in information in Advanced Settings next. 
-.. *Host registration*:  Select *Add credentials* and enter information about the hosts containing the workloads you want to discover.
+
+.. *Host registration*: Enter the following information:
++
+* The host FQDN or IP address
+* The Console agent that the host is using to communicate with Backup and Recovery
+* The stored credentials for the host
++
+If you haven't yet added credentials for this host to NetApp Backup and Recovery, select *Add credentials* and enter credential information for the host.
 +
 TIP: If you are adding a standalone server and not a vCenter server, enter only the host information.  
 
@@ -154,21 +161,20 @@ TIP: This process might take a few minutes.
 
 ==== Set Advanced settings options during discovery and install the plug-in
 
-With Advanced Settings, you can manually install the plug-in agent on all servers being registered. This enables you to import all SnapCenter workloads into NetApp Backup and Recovery so you can manage backups and restores there. NetApp Backup and Recovery shows the steps needed to install the plug-in. 
+With Advanced Settings, you can manually install the NetApp SnapCenter Plug-in for Microsoft SQL Server on all servers being registered. This enables you to import all SnapCenter workloads into NetApp Backup and Recovery so you can manage backups and restores there. NetApp Backup and Recovery shows the steps needed to install the plug-in. 
 
 .Steps
 
 . From the Discover resources page, continue to Advanced Settings by selecting the down arrow on the right. 
 . In the Discover workload resources page, enter the following information. 
-* *Enter plug-in port number*: Enter the port number that the plug-in uses.
+* *Plug-in port*: Enter the port number that the plug-in uses.
 * *Installation path*: Enter the path where the plug-in will be installed. 
 
 . If you want to install the SnapCenter agent manually, select the following options:
-* *Use manual installation*: Select this option to install the plug-in manually.   
-//* *Use Group Managed Service Account (gMSA)*: If you use a specific third-party gMSA account to manage host credentials, select this option. 
+* *Use manual installation*: Select this option to install the plug-in manually. 
 * *Add all hosts in the cluster*: Select this option to add all hosts in the cluster to NetApp Backup and Recovery during discovery.
 * *Skip optional preinstall checks*: Select this option to skip optional preinstall checks. You might want to do this, for example, if you know that memory or space considerations will be changed in the near future and you want to install the plug-in now.
-//* *Skip automated installation*: Select this option to skip the automated installation of the plug-in. You might want to do this if you are installing the plug-in manually.
+//* *Use Group Managed Service Account (gMSA)*: If you use a specific third-party gMSA account to manage host credentials, select this option.
 
 . Select *Discover*.
 
