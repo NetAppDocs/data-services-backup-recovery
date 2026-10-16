@@ -106,6 +106,13 @@ To use object storage as backup targets, you need an account with AWS S3, Google
 == Requirements for protecting ONTAP volume workloads
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following prerequisites.
 
+Ensure you have the following before discovering an ONTAP system in Backup and Recovery:
+
+* Ensure that an ONTAP One License is enabled on the on-premises ONTAP instance.
+* Ensure that the AMQP application is enabled as a `Password` login method for the ONTAP user you use for discovering ONTAP systems. This enables scheduled backup jobs to appear in the Job Monitor. Refer to the https://docs.netapp.com/us-en/ontap/manage-users-groups-host-specific-task.html#manage-unix-users[ONTAP documentation^] for user management instructions.
+
+Some ONTAP features require specific ONTAP versions:
+
 [cols="2,1",options="header"]
 |===
 | Feature | Required ONTAP version
@@ -125,8 +132,6 @@ To use NetApp Backup and Recovery for ONTAP volume workloads, you need the follo
 | Use more than 6 buckets per system across different cloud providers (up to 100 buckets maximum)
 | 9.19.1 or later
 |===
-
-NOTE: An ONTAP One License must be enabled on the on-premises ONTAP instance.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
 
