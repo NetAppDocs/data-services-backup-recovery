@@ -106,6 +106,13 @@ To use object storage as backup targets, you need an account with AWS S3, Google
 == Requirements for protecting ONTAP volume workloads
 To use NetApp Backup and Recovery for ONTAP volume workloads, you need the following prerequisites.
 
+Ensure you have the following before discovering an ONTAP system in Backup and Recovery:
+
+* Ensure that an ONTAP One License is enabled on the on-premises ONTAP instance.
+* Ensure that the AMQP application is enabled as a `Password` login method for the ONTAP user you use for discovering ONTAP systems. This enables scheduled backup jobs to appear in the Job Monitor. Refer to the https://docs.netapp.com/us-en/ontap/manage-users-groups-host-specific-task.html#manage-unix-users[ONTAP documentation^] for user management instructions.
+
+Some ONTAP features require specific ONTAP versions:
+
 [cols="2,1",options="header"]
 |===
 | Feature | Required ONTAP version
@@ -125,8 +132,6 @@ To use NetApp Backup and Recovery for ONTAP volume workloads, you need the follo
 | Use more than 6 buckets per system across different cloud providers (up to 100 buckets maximum)
 | 9.19.1 or later
 |===
-
-NOTE: An ONTAP One License must be enabled on the on-premises ONTAP instance.
 
 For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
 
@@ -195,6 +200,13 @@ a|iSCSI LUNs connected directly to the guest system by the iSCSI initiator
 NOTE: Protecting databases stored in pass-through disks or VHD/VHDX files that are provisioned on NetApp storage is not supported.
 
 |===
+
+=== Required permissions for Microsoft SQL Server host discovery
+When you discover an SQL Server host, NetApp Backup and Recovery installs the NetApp SnapCenter Plug-in for Microsoft SQL Server on the host. You can also choose to install the plug-in manually instead. If you choose automatic installation, the host credentials you provide during discovery must have the following memberships and permissions so that Backup and Recovery can install the plug-in:
+
+* Membership in the Microsoft SQL Server instance's `sysadmin` fixed server-level role
+* Membership in the Windows local Administrator group
+* Permission to log in to the host
 
 == Requirements for protecting VMware workloads
 You need specific requirements to discover and protect your VMware workloads.
@@ -323,6 +335,22 @@ a|
 * ONTAP S3
 
 |===
+
+=== Required permissions for Oracle Database host discovery
+When you discover an Oracle Database host, NetApp Backup and Recovery installs the NetApp Oracle Database plug-in on the host using password-based SSH. You can also choose to install the plug-in manually instead. You need specific permissions for plug-in installation.
+
+==== Requirements if using automatic plug-in installation
+The host credentials you provide during discovery must have the following permissions so that Backup and Recovery can install the NetApp Oracle Database plug-in:
+
+* Root permissions, or sudo access for a non-root user. To grant sudo access during host discovery, select non-root credentials in the *Host registration* section, then select *Configure sudoers* and follow the instructions. Root credentials do not need this step.
+* Execute permission for the Java JVM.
+
+==== Requirements if installing the plug-in manually
+If you install the plug-in manually, the account used for the installation must have the following permissions:
+
+* Root permissions or sudo ability for a non-root user.
+* Execute permission for the Java JVM.
+
 
 == Requirements for protecting Kubernetes applications
 You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
