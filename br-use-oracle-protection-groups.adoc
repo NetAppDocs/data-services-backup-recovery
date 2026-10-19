@@ -41,7 +41,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Provide a name for the protection group.
 . Select the databases that you want to include in the protection group.
 . Select *Next*. 
-. Select the *Backup policy* that you want to apply to the protection group.
+. Select the *Backup policy* that you want to apply to the protection group. If you are including a database that is part of an Oracle Data Guard configuration, choose a backup policy with the Data Guard option enabled.
 +
 If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
 
