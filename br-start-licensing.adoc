@@ -69,25 +69,25 @@ Pay for NetApp Backup and Recovery annually by purchasing an annual contract. Th
 
 If you have an annual contract from a marketplace, all NetApp Backup and Recovery consumption is charged against that contract.
 
-When you use AWS, there are two annual contracts available from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
+When you use AWS, the AWS Marketplace offers both https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-0&ref_=ucaf&applicationId=AWSMPContessa[PAYGO^] and https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[annual^] contracts for Cloud Volumes ONTAP and on-premises ONTAP systems:
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 +
 If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription[associate the subscription with your AWS credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
 
-* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
+* A "CVO Professional" plan that bundles Cloud Volumes ONTAP and NetApp Backup and Recovery. It includes unlimited backups for the licensed Cloud Volumes ONTAP system, and those backups don't count toward the licensed capacity. This plan doesn't support backups of on-premises ONTAP data or Cloud Volumes ONTAP systems licensed through the Freemium or Essentials packages; only Cloud Volumes ONTAP systems licensed through the Professional package are supported.
 +
-See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
+Refer to the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP system and the Console prompts you to subscribe to the AWS Marketplace.
 
-When you use Azure, there are two annual contracts available from the https://marketplace.microsoft.com/en-us/product/netapp.netapp-bluexp[Azure Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems:
+When you use Azure, the Azure Marketplace offers both https://marketplace.microsoft.com/en-us/product/netapp.cloud-manager[PAYGO^] and https://marketplace.microsoft.com/en-us/product/netapp.netapp-bluexp[annual^] contracts for Cloud Volumes ONTAP and on-premises ONTAP systems:
 
 * A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 +
 If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[associate the subscription with your Azure credentials^]. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your Azure credentials in the Console.
 
-* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery. This includes unlimited backups for the Cloud Volumes ONTAP system using the license (backup capacity is not counted against the licensed capacity). This option doesn't enable you to back up on-premises ONTAP data.
+* A "CVO Professional" plan that bundles Cloud Volumes ONTAP and NetApp Backup and Recovery. It includes unlimited backups for the licensed Cloud Volumes ONTAP system, and those backups don't count toward the licensed capacity. This plan doesn't support backups of on-premises ONTAP data or Cloud Volumes ONTAP systems licensed through the Freemium or Essentials packages; only Cloud Volumes ONTAP systems licensed through the Professional package are supported.
 +
 See the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
