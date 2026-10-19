@@ -1,0 +1,15 @@
+=== Oracle Database workloads enhancement
+In this release, Oracle Database workloads introduces the following enhancement:
+
+*Oracle Data Guard support*: NetApp Backup and Recovery now supports using protection groups to protect primary and standby databases that use Oracle Data Guard for high availability.
+
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
+
+//=== ONTAP Volumes workloads enhancement
+//In this release, ONTAP Volumes workloads introduces the following enhancement:
+
+//*Choose whether to retain backups when unregistering an ONTAP system*: When you unregister an ONTAP system from NetApp Backup and Recovery, you can now choose to either discard the previously backed up data or keep it available for restoration. NetApp Backup and Recovery documentation now includes instructions for restoring the retained data after the system is unregistered.
+
+//For more details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#unregister-netapp-backup-and-recovery-for-a-system[Unregister Backup and Recovery for a system^].
+
+//For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
