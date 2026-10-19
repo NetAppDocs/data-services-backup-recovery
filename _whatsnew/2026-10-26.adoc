@@ -1,0 +1,19 @@
+=== Kubernetes workloads enhancements
+In this release, Kubernetes workloads introduces the following enhancements:
+
+* *Trident Protect 26.10*: This release includes Trident Protect 26.10.
+* *ontap-nas-eco and ontap-san-eco driver support*: 
+* *Kubernetes-aware alerting*: 
+* *Volume group snapshot support*: 
+* *S3-compatible object storage bucket support*: 
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
+
+=== ONTAP Volumes workloads enhancement
+In this release, ONTAP Volumes workloads introduces the following enhancement:
+
+*Choose whether to retain backups when unregistering an ONTAP system*: When you unregister an ONTAP system from NetApp Backup and Recovery, you can now choose to either discard the previously backed up data or keep it available for restoration. NetApp Backup and Recovery documentation now includes instructions for restoring the retained data after the system is unregistered.
+
+For more details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#unregister-netapp-backup-and-recovery-for-a-system[Unregister Backup and Recovery for a system^].
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
