@@ -339,18 +339,14 @@ a|
 === Required permissions for Oracle Database host discovery
 When you discover an Oracle Database host, NetApp Backup and Recovery installs the NetApp Oracle Database plug-in on the host using password-based SSH. You can also choose to install the plug-in manually instead. You need specific permissions for plug-in installation.
 
-==== Requirements if using automatic plug-in installation
+==== Requirements for plug-in installation
 The host credentials you provide during discovery must have the following permissions so that Backup and Recovery can install the NetApp Oracle Database plug-in:
 
-* Root permissions, or sudo access for a non-root user. To grant sudo access during host discovery, select non-root credentials in the *Host registration* section, then select *Configure sudoers* and follow the instructions. Root credentials do not need this step.
+* The ability to log in to the host using SSH.
+* Root permissions, or sudo access for a non-root user.
+** To grant sudo access during host discovery, select non-root credentials in the *Host registration* section, then select *Configure sudoers* and follow the instructions. Root credentials do not need this step. This step is not required for manual installation.
 * Execute permission for the Java JVM.
-
-==== Requirements if installing the plug-in manually
-If you install the plug-in manually, the account used for the installation must have the following permissions:
-
-* Root permissions or sudo ability for a non-root user.
-* Execute permission for the Java JVM.
-
+* `SYSDBA` privileges are required for the Oracle database user.
 
 == Requirements for protecting Kubernetes applications
 You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
