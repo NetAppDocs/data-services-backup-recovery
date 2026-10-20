@@ -2,10 +2,10 @@
 In this release, Kubernetes workloads introduces the following enhancements:
 
 * *Trident Protect 26.10*: This release includes Trident Protect 26.10.
-* *ontap-nas-eco and ontap-san-eco driver support*: 
-* *Kubernetes-aware alerting*: 
-* *Volume group snapshot support*: 
-* *S3-compatible object storage bucket support*: 
+* *ontap-nas-eco and ontap-san-eco driver support*: You can now protect FlexVol volumes that contain Qtree partitions. When you protect a FlexVol volume, all Qtree partitions are protected by default.
+* *Kubernetes-aware alerting*: The NetApp Console now displays more relevant alerts for Kubernetes workloads.
+* *Volume group snapshot support*: When you define a Kubernetes application, you can now create a volume group so that the group of volumes is protected together as a crash-consistent set.
+* *S3-compatible object storage bucket support*:
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
 
