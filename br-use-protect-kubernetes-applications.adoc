@@ -22,6 +22,8 @@ Backup and Recovery super admin or Backup and Recovery backup admin. link:refere
 == Add and protect a new Kubernetes application
 To protect a Kubernetes application, first create the application in NetApp Backup and Recovery. When you create the application, NetApp Backup and Recovery becomes aware of the running application on the Kubernetes cluster.
 
+NOTE: If your applications use FlexVol volumes that are partitioned with Qtrees, protecting the application protects all Qtrees in any FlexVol volumes that are part of the application.
+
 .Before you begin
 Before you can add and protect a Kubernetes application, you need to link:br-start-discover.html[discover Kubernetes workloads].
 
