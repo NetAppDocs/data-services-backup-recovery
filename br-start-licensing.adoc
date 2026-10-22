@@ -71,21 +71,20 @@ With an annual contract from a marketplace, all NetApp Backup and Recovery consu
 
 Note the following about annual marketplace contract options:
 
+* Annual contracts are available as private offers in each marketplace.
 * Annual contracts enable you to back up both Cloud Volumes ONTAP data and on-premises ONTAP data.
 * You can sign up for an annual contract from the marketplace page. Set up your subscription from the Marketplace page and then associate the subscription with your https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[AWS^] or https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[Azure^] credentials. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
 * If you purchase a "CVO Professional" plan, it includes unlimited backups for the licensed Cloud Volumes ONTAP system, and those backups don't count toward the licensed capacity. This plan doesn't support backups of on-premises ONTAP data or Cloud Volumes ONTAP systems licensed through the Freemium or Essentials packages; only Cloud Volumes ONTAP systems licensed through the Professional package are supported.
 +
 Refer to the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 
-Use these links to subscribe to an annual contract for NetApp Backup and Recovery from your cloud provider marketplace:
+When you use AWS or Azure, use these links to subscribe to an annual marketplace subscription for NetApp Backup and Recovery:
 
 * AWS: https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
 
 * Azure: https://marketplace.microsoft.com/en-us/product/netapp.netapp-bluexp[Go to the Marketplace offering for NetApp Intelligent Services for pricing details^].
 
-When you use GCP, contact your NetApp sales representative to purchase an annual contract. The contract is available as a private offer in the Google Cloud Marketplace.
-
-After NetApp shares the private offer with you, you can select the annual plan when you subscribe from the Google Cloud Marketplace during NetApp Backup and Recovery activation.
+When you use GCP, contact your NetApp sales representative to purchase an annual contract. 
 
 === Use a NetApp Backup and Recovery PAYGO subscription (applies to NetApp Console only)
 
