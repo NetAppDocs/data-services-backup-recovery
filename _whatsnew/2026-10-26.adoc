@@ -5,7 +5,7 @@ In this release, Kubernetes workloads introduces the following enhancements:
 * *ontap-nas-eco and ontap-san-eco driver support*: You can now protect FlexVol volumes that contain Qtree partitions. When you protect a FlexVol volume, all Qtree partitions in that volume are protected by default.
 * *Kubernetes-aware alerting*: The NetApp Console now displays more relevant alerts for Kubernetes workloads.
 * *Volume group snapshot support*: You can now create volume groups when defining a Kubernetes application. Volume groups enable you to protect multiple volumes together as a crash-consistent set, ensuring data consistency across all volumes in the group.
-* *S3-compatible object storage bucket support*: You can now configure protection policies to protect Kubernetes applications and data stored in S3-compatible object storage buckets.
+* *S3-compatible object storage support*: You can now configure protection policies to protect Kubernetes applications and data stored in S3-compatible object storage buckets.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
 
