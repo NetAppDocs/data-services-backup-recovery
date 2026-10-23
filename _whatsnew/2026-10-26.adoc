@@ -2,10 +2,10 @@
 In this release, Kubernetes workloads introduces the following enhancements:
 
 * *Trident Protect 26.10*: This release includes Trident Protect 26.10.
-* *ontap-nas-eco and ontap-san-eco driver support*: You can now protect FlexVol volumes that contain Qtree partitions. When you protect a FlexVol volume, all Qtree partitions in that volume are protected by default.
-* *Kubernetes-aware alerting*: The NetApp Console now displays more relevant alerts for Kubernetes workloads.
-* *Volume group snapshot support*: You can now create volume groups when defining a Kubernetes application. Volume groups enable you to protect multiple volumes together as a crash-consistent set, ensuring data consistency across all volumes in the group.
-* *S3-compatible object storage support*: You can now back up Kubernetes applications and data to S3-compatible object storage by adding backup target credentials, managing buckets, and configuring protection policies.
+* *ontap-nas-eco and ontap-san-eco driver support*: You can now protect persistent volume claims (PVCs) backed by Qtrees and LUNs provisioned by NetApp Trident `ontap-nas-economy` and `ontap-san-economy` drivers. When you protect PVCs using economy drivers, the entire underlying FlexVol or LUN is protected. You can restore individual PVCs from these backups.
+* *Kubernetes-aware alerting*: The NetApp Console now sends Kubernetes alerts once per Kubernetes application instead of once per volume.
+* *Volume group snapshot support*: You can now create volume groups when defining a Kubernetes application. Volume groups enable you to snapshot multiple volumes together as a crash-consistent set, ensuring data consistency across all volumes in the group.
+* *S3-compatible object storage support*: You can now back up Kubernetes application resources and data to S3-compatible object storage by adding backup target credentials and configuring protection policies.
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
 
