@@ -25,10 +25,10 @@ You can restore databases from different starting locations:
 
 .Restore to these points   
 
-You can restore data to the original location; restoring to an alternate location is not available in this private preview release.
+You can restore a database to its original location, or restore it as a new database on a different registered host (alternate location).
 
 * Restore to the original location
-//* Restore to an alternate location
+* Restore to an alternate location (a different registered host)
 
 == How Oracle Database restore works
 
@@ -37,6 +37,8 @@ When you restore Oracle Database workloads, the following occurs:
 * When you restore a database from a local snapshot, NetApp Backup and Recovery creates a _new_ resource using the data from the backup. 
 
 * When you restore from replicated storage, you can restore it to the original location.
+
+* When you restore to an alternate location, NetApp Backup and Recovery restores the selected backup of the source database as a new database on a different registered host. You specify the target host and a name for the new database. If you don't provide a restore specification file, Backup and Recovery automatically calculates the locations for the data files, control files, and redo log files on the target host.
 
 * When you restore a backup from object storage, you can restore the data to the source storage or to an on-premises ONTAP system and recover the database from there.
 
@@ -155,7 +157,7 @@ Available snapshots are displayed.
 ... Optionally, enable the *Control files* option to also restore the database control files. This option cannot be selected for point-in-time or SCN recovery of PDBs or PDB tablespaces.
 ... Optionally, enable the *Change database state if needed for restore and recovery* option to allow Backup and Recovery to manage the database state depending on the type of recovery.
 ... Optionally, enable the *Force in place restore* option to to perform an in-place restore when new datafiles were added after the backup, or when LUNs were added, deleted, or re-created in an LVM disk group. This overrides the foreign-files check; database recovery proceeds using the restore option you selected.
-... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
+... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, and the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
 ... Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
 +
 * *All datafiles*: Open the database or container database in READ-WRITE mode after recovery.
@@ -169,310 +171,39 @@ Available snapshots are displayed.
 --
 
 .Restore to alternate location
-
 --
-Not available for Oracle Database workloads in this preview release. 
+Restore a database as a new database on a different registered host. 
+
+*Supported restore scenarios*
+
+* Restoring one Oracle database, as a whole database, to one target host
+* Recovery to a specific point in time, to a specific SCN, or to the latest backup
+* Using external archive log directories when the archive logs required for the selected recovery point are not included in the backup
+
+*Unsupported restore scenarios*
+
+* Tablespace-only restore, including restore of tablespaces within a PDB
+* PDB-only restore to a different container database (CDB)
+* Restore from secondary storage
+* Restore from object storage
+
+.. In the *Destination settings* section, enter the following information:
+... *Target host*: Select the registered host where you want to create the new database. 
+
+... *Target database*: Enter a name for the target database. By default, the name starts with the name of the source database, and you can edit it.
+
+... *Customize target database parameters*: Enable this option to customize the target database parameters.
+... *Restore specification file*: Optionally, provide a restore specification file to control where the restored files are placed on the target host.
++
+If you don't provide a restore specification file, Backup and Recovery automatically calculates the locations for the data files, control files, and redo log files.
+... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, and the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
+... Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
+
+After the restore operation completes, check the *Inventory* page to confirm that the new database is listed. If the database is not listed, refresh the target host.
+
 --
 
 ====
 
 . Select *Restore*.
 
-//. If you chose to restore to an alternate location, enter the following:
-
-
-//.. *vCenter Server*: Select the vCenter server where you want to restore the snapshot.
-//.. *ESXI host*: Select the host where you want to restore the snapshot.
-//.. *Datastore name*: Enter the name of the datastore where you want to restore the snapshot.
-//.. *VM network*: Select the network where you want to restore the snapshot.
-//.. *VM name after restore*: Enter the name of the VM where you want to restore the snapshot.
-//.. *Enable change storage location*: By default, the backup from object storage will be restored in the source SVM. Select this to choose alternate storage if the source storage is down or does not have enough space. Select the cluster, storage VM, aggregate, and volumes where you want to restore the snapshot. You can do this for storage layout 1 and 2. WHAT ARE STORAGE LAYOUTS 1 AND 2? 
-//+
-//image:screen-vm-restore-destination-alt-change-storage-loc.png[A screenshot showing the Restore Destination details page with the change storage location option.]
-//. In the Restore Destination details page, enter the following information:
-//+
-//.. *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the VM name, and enter the destination path where you want to restore the snapshot.
-//.. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
-
-
-//.. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage to an alternate location.)
-
-//.. *Post-restore options*:  
-//** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-//** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//+
-//image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
-
-//. *Notification* section: 
-//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-//[start=2]
-//. Select *Restore*.
-//
-
-//end of tabbed area
-
-////
-
-== Restore a database to a specific system change number (SCN)
-When you restore a database to a system change number, Backup and Recovery restores the database using the system change number of a specific transaction. After restoring, the database state will reflect that specific point in time.
-
-*Required NetApp Console role*
-Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
-.Steps
-
-. From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. From the NetApp Backup and Recovery menu, select *Restore*.
-. From the drop-down list to the right of the name search field, select *Oracle databases*. 
-. Enter the name of the database you want to restore or filter for the database host where the database that you want to restore is located. 
-+
-A list of snapshots appears that match your search criteria.
-. Select the *Restore* button for the database that you want to restore. 
-+
-A list of possible restore options appears.
-
-
-. Select *Restore to a specific system change number (SCN)*.
-. Select *Next*.
-. Enter the SCN to use as a restore point, and select *Search*.
-+
-A list of matching snapshots for the specified SCN are displayed.
-. Select a snapshot source location.
-. Select *Next* to continue to the Restore destination settings page.
-+
-Next, you can choose the destination settings and the pre-restore and post-restore options.
-
-
-[discrete]
-===== Destination selection
-
-. Choose the destination settings and the pre-restore and post-restore options.
-
-//Start tabbed area 
-
-[role="tabbed-block"]
-====
-
-.Restore to original location
-
---
-
-//In the Restore Destination details page, enter the following information:
-[start=2]
-. *Destination settings*: 
-+
-* Choose to restore the entire database, only the tablespaces for the database, or only the pluggable databases (PDB). 
-* *Control files*: Optionally, enable this option to also restore the database control files.
-
-
-. *Pre-restore options*:
-+
-* Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-* Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
-
-. *Post-restore options*:
-+ 
-* Choose which state the database should be in after the restore operation is complete:
-** *Operational, but unavailable for restoring additional transaction logs*: This brings the database back online after transaction log backups are applied.(Applies only to object storage to an alternate location.)
-** *Non-operational, but available for restoring additional transaction logs*: Maintains the database in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-** *Read-only mode, but available for restoring additional transaction logs*: Restores the database in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//** *Operational*: The database is online and unavailable for restoring additional transaction logs.
-//** *Non-operational*: The database is offline, but you can restore additional transaction logs.
-//** *Read-only mode*: The database cannot be written to, but you can restore additional transaction logs.
-* *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-
-. *Notification* section: 
-** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-
-. Select *Restore*.
-
-
---
-
-.Restore to alternate location
-
---
-Not available for Oracle Database workloads preview. 
-
-//. If you chose to restore to an alternate location, enter the following:
-
-
-//.. *vCenter Server*: Select the vCenter server where you want to restore the snapshot.
-//.. *ESXI host*: Select the host where you want to restore the snapshot.
-//.. *Datastore name*: Enter the name of the datastore where you want to restore the snapshot.
-//.. *VM network*: Select the network where you want to restore the snapshot.
-//.. *VM name after restore*: Enter the name of the VM where you want to restore the snapshot.
-//.. *Enable change storage location*: By default, the backup from object storage will be restored in the source SVM. Select this to choose alternate storage if the source storage is down or does not have enough space. Select the cluster, storage VM, aggregate, and volumes where you want to restore the snapshot. You can do this for storage layout 1 and 2. WHAT ARE STORAGE LAYOUTS 1 AND 2? 
-//+
-//image:screen-vm-restore-destination-alt-change-storage-loc.png[A screenshot showing the Restore Destination details page with the change storage location option.]
-//. In the Restore Destination details page, enter the following information:
-//+
-//.. *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the VM name, and enter the destination path where you want to restore the snapshot.
-//.. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
-
-
-//.. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage to an alternate location.)
-
-//.. *Post-restore options*:  
-//** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-//** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//+
-//image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
-
-//. *Notification* section: 
-//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-[start=2]
-. Select *Restore*.
-//
-
---
-
-====
-//end of tabbed area
-
-== Restore a database to the last good state
-When you restore a database to the last good state, Backup and Recovery uses the latest full and log backups to recover the last good state of the database.
-
-*Required NetApp Console role*
-Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
-
-.Steps
-
-. From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. From the NetApp Backup and Recovery menu, select *Restore*.
-. From the drop-down list to the right of the name search field, select *Oracle databases*. 
-. Enter the name of the database you want to restore or filter for the database host where the database that you want to restore is located. 
-+
-A list of snapshots appears that match your search criteria.
-. Select the *Restore* button for the database that you want to restore. 
-+
-A list of possible restore options appears.
-
-
-. Select *Restore to last good state*.
-. Select *Next*.
-+
-The matching snapshot is displayed.
-. Select a snapshot source location.
-
-
-. Select *Next* to continue to the Restore destination settings page.
-+
-Next, you can choose the destination settings and the pre-restore and post-restore options.
-
-
-[discrete]
-===== Destination selection
-
-. Choose the destination settings and the pre-restore and post-restore options.
-
-//Start tabbed area 
-
-[role="tabbed-block"]
-====
-
-.Restore to original location
-
---
-
-//In the Restore Destination details page, enter the following information:
-[start=2]
-. *Destination settings*: 
-+
-* Choose to restore the entire database, only the tablespaces for the database, or only the pluggable databases (PDB). 
-* *Control files*: Optionally, enable this option to also restore the database control files.
-
-
-. *Pre-restore options*:
-+
-* Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-* Choose a timeout value for the script. If the script fails to execute within this time period, the restore will proceed anyway.
-
-. *Post-restore options*:
-+ 
-* Choose which state the database should be in after the restore operation is complete:
-** *Operational, but unavailable for restoring additional transaction logs*: This brings the database back online after transaction log backups are applied.(Applies only to object storage to an alternate location.)
-** *Non-operational, but available for restoring additional transaction logs*: Maintains the database in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-** *Read-only mode, but available for restoring additional transaction logs*: Restores the database in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//** *Operational*: The database is online and unavailable for restoring additional transaction logs.
-//** *Non-operational*: The database is offline, but you can restore additional transaction logs.
-//** *Read-only mode*: The database cannot be written to, but you can restore additional transaction logs.
-* *Postscript*: Optionally, enable this option and enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-
-. *Notification* section: 
-** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-
-. Select *Restore*.
-
-
---
-
-.Restore to alternate location
-
---
-Not available for Oracle Database workloads preview. 
-
-//. If you chose to restore to an alternate location, enter the following:
-
-
-//.. *vCenter Server*: Select the vCenter server where you want to restore the snapshot.
-//.. *ESXI host*: Select the host where you want to restore the snapshot.
-//.. *Datastore name*: Enter the name of the datastore where you want to restore the snapshot.
-//.. *VM network*: Select the network where you want to restore the snapshot.
-//.. *VM name after restore*: Enter the name of the VM where you want to restore the snapshot.
-//.. *Enable change storage location*: By default, the backup from object storage will be restored in the source SVM. Select this to choose alternate storage if the source storage is down or does not have enough space. Select the cluster, storage VM, aggregate, and volumes where you want to restore the snapshot. You can do this for storage layout 1 and 2. WHAT ARE STORAGE LAYOUTS 1 AND 2? 
-//+
-//image:screen-vm-restore-destination-alt-change-storage-loc.png[A screenshot showing the Restore Destination details page with the change storage location option.]
-//. In the Restore Destination details page, enter the following information:
-//+
-//.. *Destination settings*: Choose whether you want to restore the data to its original location or to an alternate location. For an alternate location, select the VM name, and enter the destination path where you want to restore the snapshot.
-//.. *Enable quick restore*: Select this to perform a quick restore operation. Restored volumes and data will be available immediately. Do not use this on volumes that require high performance because during the quick restore process, access to the data might be slower than usual. 
-//This option is available only if the source system from which the cloud backup was created was running ONTAP 9.13.0 or greater or to an on-premises ONTAP system running ONTAP 9.14.1.
-
-
-//.. *Pre-restore options*: Enter the full path for a script that should be run before the restore operation and any arguments that the script takes.
-//** *Preserve original VM name*: During the restore, the original VM name is preserved. (Applies only to object storage to an alternate location.)
-//** *Create a transaction log backup before restore*: Creates a transaction log backup before the restore operation. (Applies only to object storage to an alternate location.)
-//** *Quit restore if transaction log backup before restore fails*: Stops the restore operation if the transaction log backup fails. (Applies only to object storage to an alternate location.)
-
-//.. *Post-restore options*:  
-//** *Restart VM*: Select this to restart the VM after the restore operation completes and after the post-restore script is applied.
-//** *Postscript*: Enter the full path for a script that should be run after the restore operation and any arguments that the script takes.
-//** *Operational, but unavailable for restoring additional transaction logs*. This brings the VM back online after transaction log backups are applied. (Applies only to object storage to an alternate location.)
-//** *Non-operational, but available for restoring additional transaction logs*. Maintains the VM in a non-operational state after the restore operation while restoring transaction log backups. This option is useful for restoring additional transaction logs. (Applies only to object storage to an alternate location.)
-//** *Read-only mode*, but available for restoring additional transaction logs. Restores the VM in a read-only mode and applies transaction log backups. (Applies only to object storage to an alternate location.)
-//+
-//image:screen-vm-restore-destination-alt-operational.png[A screenshot showing the Restore Destination details page with the operational options.]
-
-//. *Notification* section: 
-//** *Enable email notifications*: Select this to receive email notifications about the restore operation and indicate what type of notifications you want to receive.
-//** *Email address*: Enter the email address where you want to receive notifications about the restore operation.
-
-[start=2]
-. Select *Restore*.
-//
-
---
-
-====
-//end of tabbed area
-
-////
