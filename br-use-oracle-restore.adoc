@@ -197,11 +197,9 @@ Restore a database as a new database on a different registered host. Review the 
 
 .. In the *Destination settings* section, enter the following information:
 ... *Target host*: Select the registered host where you want to create the new database. 
-
 ... *Target database*: Enter a name for the target database. By default, the name starts with the name of the source database, and you can edit it.
-
-... *Customize target database parameters*: Enable this option to customize the target database parameters.
-... *Restore specification file*: Optionally, provide a restore specification file to control where the restored files are placed on the target host.
+... *Customize target database parameters*: Enable this option to upload a custom restore specification file to customize the target database parameters.
+... *Restore specification file*: If you enabled the *Customize target database parameters* option, provide a restore specification file to control where the restored files are placed on the target host. You can download a default restore specification file and customize it to change the target database details such as authentication and log locations.
 +
 If you don't provide a restore specification file, Backup and Recovery automatically calculates the locations for the data files, control files, and redo log files.
 ... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, and the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
