@@ -199,11 +199,11 @@ If you don't provide a restore specification file, Backup and Recovery automatic
 ... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, and the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
 ... Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
 
-After the restore operation completes, check the *Inventory* page to confirm that the new database is listed. If the database is not listed, refresh the target host.
-
 --
 
 ====
 
 . Select *Restore*.
++
+After the restore operation completes, check the *Inventory* page to confirm that the new database is listed. If the database is not listed, refresh the target host.
 
