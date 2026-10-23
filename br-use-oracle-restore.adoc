@@ -65,6 +65,27 @@ Depending on your needs, restore an Oracle database to a specific point in time,
 *Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
+[[alternate-location-support]]
+*Alternate location restore support*
+
+The following scenarios apply only when you restore a database to an alternate location (a different registered host).
+
+*Supported alternate location restore scenarios*
+
+* Restoring one Oracle database, as a whole database, to one target host
+* Recovery to a specific point in time, to a specific SCN, or to the latest backup
+* Using external archive log directories when the archive logs required for the selected recovery point are not included in the backup
+
+[IMPORTANT]
+====
+*Unsupported alternate location restore scenarios*
+
+* Tablespace-only restore, including restore of tablespaces within a PDB
+* PDB-only restore to a different container database (CDB)
+* Restore from secondary storage
+* Restore from object storage
+====
+
 [NOTE]
 =====
 If restoring PDBs or tablespaces to a specific point in time or SCN:
@@ -156,7 +177,7 @@ Available snapshots are displayed.
 * Select *Pluggable database (PDB) tablespaces* (shown as *Tablespaces* for a non-CDB database) to restore specific PDB tablespaces. Then, select the PDB and the tablespaces. 
 ... Optionally, enable the *Control files* option to also restore the database control files. This option cannot be selected for point-in-time or SCN recovery of PDBs or PDB tablespaces.
 ... Optionally, enable the *Change database state if needed for restore and recovery* option to allow Backup and Recovery to manage the database state depending on the type of recovery.
-... Optionally, enable the *Force in place restore* option to to perform an in-place restore when new datafiles were added after the backup, or when LUNs were added, deleted, or re-created in an LVM disk group. This overrides the foreign-files check; database recovery proceeds using the restore option you selected.
+... Optionally, enable the *Force in place restore* option to perform an in-place restore when new datafiles were added after the backup, or when LUNs were added, deleted, or re-created in an LVM disk group. This overrides the foreign-files check; database recovery proceeds using the restore option you selected.
 ... Specify external archive log file locations in the *Specify external archive log files locations* field if restoring PDBs or tablespaces to a specific point in time or SCN, and the archive logs are not in the configured location. Enter a file system path that starts with `/` or an ASM disk group that starts with `+`. Use the "plus" and "minus" buttons next to the text entry field to add or remove locations. This field does not appear when you restore from snapshots with no recovery.
 ... Optionally, enable the *Open the database or container database in READ-WRITE mode after recovery* option and select a sub-option that matches the restore scope (these options don't appear when restoring from snapshots with no recovery):
 +
@@ -172,20 +193,7 @@ Available snapshots are displayed.
 
 .Restore to alternate location
 --
-Restore a database as a new database on a different registered host. 
-
-*Supported restore scenarios*
-
-* Restoring one Oracle database, as a whole database, to one target host
-* Recovery to a specific point in time, to a specific SCN, or to the latest backup
-* Using external archive log directories when the archive logs required for the selected recovery point are not included in the backup
-
-*Unsupported restore scenarios*
-
-* Tablespace-only restore, including restore of tablespaces within a PDB
-* PDB-only restore to a different container database (CDB)
-* Restore from secondary storage
-* Restore from object storage
+Restore a database as a new database on a different registered host. Review the <<alternate-location-support,supported and unsupported scenarios>> before you begin.
 
 .. In the *Destination settings* section, enter the following information:
 ... *Target host*: Select the registered host where you want to create the new database. 
