@@ -65,6 +65,7 @@ Depending on your needs, restore an Oracle database to a specific point in time,
 *Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery restore admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
+.Before you begin
 [[alternate-location-support]]
 *Alternate location restore support*
 
@@ -76,15 +77,12 @@ The following scenarios apply only when you restore a database to an alternate l
 * Recovery to a specific point in time, to a specific SCN, or to the latest backup
 * Using external archive log directories when the archive logs required for the selected recovery point are not included in the backup
 
-[IMPORTANT]
-====
 *Unsupported alternate location restore scenarios*
 
 * Tablespace-only restore, including restore of tablespaces within a PDB
 * PDB-only restore to a different container database (CDB)
 * Restore from secondary storage
 * Restore from object storage
-====
 
 [NOTE]
 =====
