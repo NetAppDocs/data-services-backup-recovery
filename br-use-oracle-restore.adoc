@@ -67,13 +67,11 @@ Backup and Recovery super admin or Backup and Recovery restore admin role. https
 
 .Before you begin
 [[alternate-location-support]]
-*Alternate location restore support*
-
-The following scenarios apply only when you restore a database to an alternate location (a different registered host).
+When you restore to an alternate location, keep in mind the following supported and unsupported restore scenarios:
 
 *Supported alternate location restore scenarios*
 
-* Restoring one Oracle database, as a whole database, to one target host
+* Restoring a single, whole Oracle database to a single target host
 * Recovery to a specific point in time, to a specific SCN, or to the latest backup
 * Using external archive log directories when the archive logs required for the selected recovery point are not included in the backup
 
