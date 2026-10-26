@@ -295,7 +295,7 @@ CAUTION: If you plan to delete a system or cluster that has backups, you must de
 
 === Delete all backup files for a system
 
-Deleting all backups on object storage for a system does not disable future backups of volumes in this system. If you want to stop creating backups of all volumes in a system, you can deactivate backups <<Deactivate NetApp Backup and Recovery for a system,as described here>>.
+Deleting all backups on object storage for a system does not disable future backups of volumes in this system. If you want to stop creating backups of all volumes in a system, you can pause backups <<Pause all backups for a system,as described here>>.
 
 Note that this action does not affect snapshots or replicated volumes - these types of backup files are not deleted.
 
