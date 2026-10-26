@@ -17,3 +17,10 @@ In this release, NetApp Backup and Recovery introduces the following enhancement
 For more details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#unregister-netapp-backup-and-recovery-for-a-system[Unregister Backup and Recovery for a system^].
 
 For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
+
+=== Oracle Database workloads enhancement
+In this release, In this release, NetApp Backup and Recovery introduces the following enhancement for Oracle Database workloads:
+
+*Restore to an alternate location*: NetApp Backup and Recovery now supports restoring an Oracle database to an alternate location (a different registered host).
+
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
