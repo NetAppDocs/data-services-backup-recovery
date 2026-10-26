@@ -30,28 +30,6 @@ When you create a report, you choose one of the following report types.
 | Kubernetes overview | Protection and backup status for your Kubernetes clusters, applications, and namespaces.
 |===
 
-== Open the Reports page
-
-Open the Reports page to create reports and to work with the reports that you have already generated.
-
-.Steps
-
-. From the NetApp Console menu, select *Protection > Backup and Recovery*.
-. On the Backup and Recovery home page, select a workload, for example *Volumes*, *Microsoft SQL Server*, *Oracle*, *Kubernetes*, *VMware*, *KVM*, or *Hyper-V*.
-. From the NetApp Backup and Recovery menu, select *Reports*.
-+
-The *Protection reports* page opens and shows the older reports.
-
-. Select *Go to new reports*.
-+
-The *Reports* page opens. It has the following tabs:
-+
-* *Generated reports*: Reports that have run. From this tab you can view, download, and delete reports.
-* *Scheduled reports*: Reports that are set to run on a schedule.
-* *Templates*: The report types, shown as cards, that you can use as a starting point for a new report.
-+
-The page also has an *Add report* button and a *View Cloud Backup reports* link.
-
 == Create a report
 
 Create a report to review the protection status of your account, specific agents, specific hosts, or specific workloads. You can run the report once or on a recurring schedule.
@@ -68,24 +46,24 @@ The name must be between 3 and 100 characters, can include only letters, numbers
 +
 * *By account*: Include everything in the account. No further input is needed.
 * *By agent*: In *Agent*, select one or more Console agents. The report includes only the resources managed by the selected agents.
-* *By host*: In *Select host*, choose one or more hosts and select *Accept*. Use this option for workloads that run on hosts, such as Microsoft SQL Server and Oracle.
-* *By workload*: In *Workloads*, choose one or more workload types: Microsoft SQL Server, Oracle, Kubernetes, VMware, KVM, or Hyper-V.
+* *By host*: In *Select host*, choose one or more hosts and select *Accept*. Use this option for workloads that run on hosts, such as Microsoft SQL Server and Oracle Database.
+* *By workload*: In *Workloads*, choose one or more workload types.
 +
-NOTE: The *By workload* list does not include a Volumes option. To create a report that covers ONTAP volumes, use the *By account* or *By agent* scope.
+NOTE: The *By workload* list does not include ONTAP Volumes. To create a report for ONTAP Volumes, use the *By account* or *By agent* scope.
 
 . Under *Frequency*, choose how often to run the report:
 +
 * *One time*: Run the report once. This is the default.
-* *On schedule*: Run the report repeatedly. In *Run every*, choose *1 day*, *1 week*, or *1 month*. Scheduled reports appear on the *Scheduled reports* tab.
+* *On schedule*: Run the report repeatedly. In *Run every*, choose a frequency. Scheduled reports appear on the *Scheduled reports* tab.
 
-. Under *Report delivery options*, optionally turn on *Email the report results when the report runs*.
+. Under *Report delivery options*, optionally enable *Email the report results when the report runs*.
 +
-This option is off by default. By default, reports are sent to all users in the organization. To send reports to specific recipients, configure email notifications on the *Settings* page under *Notifications*. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
+This option is disabled by default. By default, reports are sent to all users in the organization. To send reports to specific recipients, configure email notifications on the *Settings* page under *Notifications*. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
 
-. Under *Retention*, in *Keep for*, choose how long to keep the report before it is deleted: 7 days, 30 days (default), 60 days, 90 days, 180 days, or 1 year.
+. Under *Retention*, in *Keep for*, choose how long to keep the report before it is deleted. 30 days is the default.
 . Select *Add*.
 +
-The report appears at the top of the *Generated reports* list. While the report generates, its *Download* and delete actions are disabled and a progress bar appears. When the report finishes, the message "Successfully created report." appears.
+The report appears at the top of the *Generated reports* list. When the report is ready, a success message appears and you can download or delete the report.
 
 The *Generated reports* list shows the name, type, range, generation time, and user for each report. The *Scope* column summarizes what the report covers, for example "1 Account" or "1 Agent". Select *View* in the *Scope* column to open the report. The range shows N/A for one-time reports.
 
@@ -106,7 +84,7 @@ Download a generated report so that you can review and share it.
 +
 You can also use the *Download* menu on the report page.
 +
-A notification, "Report download in progress. Track progress", appears while the file is prepared. When the file is ready, your browser downloads it and the message "Successfully downloaded report." appears. Large reports can take longer to prepare.
+Large reports can take longer to prepare.
 
 == View a report
 
@@ -116,23 +94,13 @@ View the details of a generated report within NetApp Backup and Recovery, includ
 
 . From the NetApp Backup and Recovery menu, select *Reports*.
 . On the *Generated reports* tab, select the name of the report that you want to view.
-+
-The report page shows the report name, a description, a *Download* menu, and a summary card with the report type, status, scope, generation date, and the user who generated the report.
-
 . Expand *Inventory* to see counts for systems, SVMs, volumes, hosts, instances, and buckets.
-. Scroll down to review the report tables. The tables that appear depend on the report type. For example, a protection overview report includes the following tables:
-+
-* *Protection Summary*: Protection status, protection group, protection health, policy, host, Console agent, system, snapshot, replication, and backup copies, data locking and ransomware scan settings, and the last successful snapshot, replication, and backup.
-* *Snapshot Inventory Summary*: Source workload, system, SVM, and host details, snapshot location, size, start time, expiry date, and immutability and retention details.
-* *Restore Summary*: Restore job details, including status, initiator, source and target locations, transfer size, speed, and start and completion times.
-+
-Each table is paged at 100 rows and can be sorted by any column.
-
+. Scroll down to review the report tables. The tables that appear depend on the report type.
 . (Optional) To choose which columns a table shows, select the column icon at the right end of the table header row, select or clear columns, and then select *Apply*.
 +
 The *Resource Name* column always stays on. Select *Restore default* to return to the default columns.
 
-. To return to the list of reports, select *Reports* in the breadcrumb at the top of the page.
+. To return to the list of reports, select *Reports* at the top of the page.
 
 == Delete a report
 
