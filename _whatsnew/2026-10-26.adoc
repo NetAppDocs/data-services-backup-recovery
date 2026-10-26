@@ -1,0 +1,27 @@
+=== Kubernetes workloads enhancements
+In this release, NetApp Backup and Recovery introduces the following enhancements for Kubernetes workloads:
+
+* *Trident Protect 26.10*: This release includes Trident Protect 26.10.
+* *ontap-nas-economy and ontap-san-economy driver support*: You can now protect persistent volume claims (PVCs) provisioned by the NetApp Trident `ontap-nas-economy` driver (Qtrees) and the `ontap-san-economy` driver (LUNs). When you protect PVCs using economy drivers, the entire underlying FlexVol or LUN is protected. You can restore individual PVCs from these backups.
+* *Kubernetes-aware alerting*: The NetApp Console now sends Kubernetes alerts once per Kubernetes application instead of once per volume.
+* *Volume group snapshot support*: You can now create volume groups when defining a Kubernetes application. Volume groups enable you to snapshot multiple volumes together as a crash-consistent set, ensuring data consistency across all volumes in the group.
+* *S3-compatible object storage support*: You can now back up Kubernetes application resources and data to S3-compatible object storage by adding backup target credentials and configuring protection policies.
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
+
+=== ONTAP Volumes workloads enhancements
+In this release, NetApp Backup and Recovery introduces the following enhancements for ONTAP Volumes workloads:
+
+* *Protection reports*: NetApp Backup and Recovery now supports creating and downloading expanded reports for ONTAP Volumes workloads.
+* *Choose whether to retain backups when unregistering an ONTAP system*: When you unregister an ONTAP system from NetApp Backup and Recovery, you can now choose to either discard the previously backed up data or keep it available for restoration. NetApp Backup and Recovery documentation now includes instructions for restoring the retained data after the system is unregistered.
+
+For more details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#unregister-netapp-backup-and-recovery-for-a-system[Unregister Backup and Recovery for a system^].
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery].
+
+=== Oracle Database workloads enhancement
+In this release, In this release, NetApp Backup and Recovery introduces the following enhancement for Oracle Database workloads:
+
+*Restore to an alternate location*: NetApp Backup and Recovery now supports restoring an Oracle database to an alternate location (a different registered host).
+
+For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
