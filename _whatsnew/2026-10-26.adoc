@@ -9,10 +9,11 @@ In this release, NetApp Backup and Recovery introduces the following enhancement
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery].
 
-=== ONTAP Volumes workloads enhancement
-In this release, NetApp Backup and Recovery introduces the following enhancement for ONTAP Volumes workloads:
+=== ONTAP Volumes workloads enhancements
+In this release, NetApp Backup and Recovery introduces the following enhancements for ONTAP Volumes workloads:
 
-*Choose whether to retain backups when unregistering an ONTAP system*: When you unregister an ONTAP system from NetApp Backup and Recovery, you can now choose to either discard the previously backed up data or keep it available for restoration. NetApp Backup and Recovery documentation now includes instructions for restoring the retained data after the system is unregistered.
+* *Protection reports*: NetApp Backup and Recovery now supports creating and downloading expanded reports for ONTAP Volumes workloads.
+* *Choose whether to retain backups when unregistering an ONTAP system*: When you unregister an ONTAP system from NetApp Backup and Recovery, you can now choose to either discard the previously backed up data or keep it available for restoration. NetApp Backup and Recovery documentation now includes instructions for restoring the retained data after the system is unregistered.
 
 For more details, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-backup-manage.html#unregister-netapp-backup-and-recovery-for-a-system[Unregister Backup and Recovery for a system^].
 
