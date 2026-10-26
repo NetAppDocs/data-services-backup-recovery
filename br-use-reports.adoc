@@ -11,14 +11,14 @@ summary: In NetApp Backup and Recovery, create reports for your workload to revi
 :imagesdir: ./media/
 
 [.lead]
-Create reports in NetApp Backup and Recovery to review protection status and details for any workload, including counts of successful and failed backups, backup types, storage systems, cluster health, and timestamps. Run a report once or on a schedule, and then view, download, or delete the generated reports.
+Create reports in NetApp Backup and Recovery to confirm that your workloads are protected and to find backups that need attention. Reports show counts of successful and failed backups, backup types, storage systems, cluster health, and timestamps. Run a report once or on a schedule, and then view, download, or delete the generated reports.
 
 *Required NetApp Console role*
 Backup and Recovery super admin, Backup and Recovery backup admin, Backup and Recovery restore admin, or Backup and Recovery clone admin. If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Volumes ONTAP Admin role is also required. Learn about link:reference-roles.html[Backup and recovery roles and privileges]. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 
-== Report types
+== Report types you can create
 
-When you create a report, you choose one of the following report types.
+Choose the report type that answers your question, such as whether workloads are protected, what you are being charged for, or which jobs failed.
 
 [cols="1,3",options="header"]
 |===
@@ -67,9 +67,9 @@ The report appears at the top of the *Generated reports* list. When the report i
 
 The *Generated reports* list shows the name, type, range, generation time, and user for each report. The *Scope* column summarizes what the report covers, for example "1 Account" or "1 Agent". Select *View* in the *Scope* column to open the report. The range shows N/A for one-time reports.
 
-== Download a report
+== Download a report as JSON, PDF, Excel, or CSV
 
-Download a generated report so that you can review and share it.
+Download a generated report to review it offline or share it with others who don't have access to the NetApp Console.
 
 .Steps
 
@@ -86,7 +86,7 @@ You can also use the *Download* menu on the report page.
 +
 Large reports can take longer to prepare.
 
-== View a report
+== View report details
 
 View the details of a generated report within NetApp Backup and Recovery, including a summary, inventory counts, and detail tables.
 
@@ -104,7 +104,7 @@ The *Resource Name* column always stays on. Select *Restore default* to return t
 
 == Delete a report
 
-Delete a generated report when you no longer need it. Reports are also deleted automatically when their retention period ends.
+Delete a generated report to remove it from the *Generated reports* list. Reports are also deleted automatically when their retention period ends.
 
 .Steps
 
