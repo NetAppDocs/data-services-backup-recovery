@@ -26,9 +26,8 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 
 * *ONTAP volume workloads*: 
 **  Create local snapshots, replicate to secondary storage, and back up ONTAP volumes from on-premises ONTAP or Cloud Volumes ONTAP systems to object storage in your public or private cloud account. 
-
-** Create block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud. 
-** Use NetApp Backup and Recovery along with SnapCenter. 
+** Search and restore files and folders.
+** Create block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud.  
 ** Refer to link:prev-ontap-protect-overview.html[Protect ONTAP volumes workloads].
 
 * *Microsoft SQL Server workloads*: 
@@ -71,7 +70,6 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Manage and protect your Kubernetes applications and resources all in one place.
 ** Use protection policies to structure your incremental backups.
 ** Restore applications and resources to the same or different clusters and namespaces.
-** Use NetApp Backup and Recovery without SnapCenter.
 ** Refer to link:br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads].
 
 //TIP: When the Console agent is deployed in a government region in the cloud, or in a site without internet access (a dark site), NetApp Backup and Recovery supports backup and restore operations only from ONTAP systems. When you use these deployment methods, NetApp Backup and Recovery does not support backup and restore operations from applications.
@@ -110,15 +108,8 @@ Resource charges are paid to the cloud provider for object storage capacity and 
 +
 Because NetApp Backup and Recovery preserves the storage efficiencies of the source volume, you pay the cloud provider object storage costs for the data _after_ ONTAP efficiencies (for the smaller amount of data after deduplication and compression have been applied).
 
-* For restoring data using Search & Restore, certain resources are provisioned by your cloud provider, and there is per-TiB cost associated with the amount of data that is scanned by your search requests. (These resources are not needed for Browse & Restore.)
-+
-
-** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
-** In Azure, an https://azure.microsoft.com/en-us/services/synapse-analytics/?&ef_id=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&gclid=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE[Azure Synapse workspace^] and https://azure.microsoft.com/en-us/services/storage/data-lake-storage/?&ef_id=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&gclid=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE[Azure Data Lake Storage^] are provisioned in your storage account to store and analyze your data.
-** In Google Cloud, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
-
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
-* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled DataLock and Ransomware protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
+* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled DataLock and Ransomware protection for your cloud backups), then you'll incur extra costs from your cloud provider as well.
 
 *Service charges*
 
@@ -203,7 +194,6 @@ NOTE: Primary to object storage is also supported, not just from secondary stora
 === Where backups reside in object store locations
 
 Backup copies are stored in an object store that the NetApp Console creates in your cloud account. There's one object store per cluster or system, and the Console names the object store as follows: `netapp-backup-clusteruuid`. Be sure not to delete this object store.
-
 
 * In AWS, the NetApp Console enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
 
