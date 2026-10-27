@@ -54,6 +54,7 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Back up and restore virtual machines
 ** Use protection groups to manage backup tasks
 ** Refer to link:br-use-hyperv-protect-overview.html[Protect Hyper-V workloads].
+
 * *Oracle Database workloads (Preview)*:
 ** Back up and restore databases and logs
 ** Use protection groups to manage backup tasks
@@ -94,7 +95,7 @@ There are two types of costs associated with using the backup-to-object feature 
 * Resource charges  
 * Service charges
 
-There is no charge to create snapshots or replicated volumes - other than the disk space required to store the snapshots and replicated volumes.
+For all workloads, there is no charge to create local snapshots or to replicate to ONTAP secondary storage - other than the disk space required to store the snapshots and replicated data. You are charged only for protection to object storage.
 
 *Resource charges*
 
@@ -110,11 +111,7 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 *Service charges*
 
 // BLUEXPDOC-1011
-For ONTAP volume workloads, you are only charged for volumes protected to object storage. Charges are based on the logical used capacity of the source ONTAP volumes before efficiencies are applied, also known as Front-End Terabytes (FETB).
-
-For Kubernetes workloads, you are charged based on the combined size of all persistent volumes.
-
-For all other workloads, you are charged for resources protected to at least one secondary or object storage target. Charges are calculated using the logical size of the source workload. For databases, this means the database size; for VMs, the VM size.
+For all workloads, you are only charged for resources protected to object storage. Charges are based on the logical used capacity of the source workload before efficiencies are applied (known as Front-End Terabytes (FETB) for ONTAP Volumes workloads). For databases, this means the database size; for VMs, the VM size. For Kubernetes workloads, charges are based on the combined size of the persistent volumes for those applications.
 
 There are three ways to pay for Backup and Recovery: 
 
@@ -126,7 +123,7 @@ There are three ways to pay for Backup and Recovery:
 
 NetApp Backup and Recovery offers a free trial, allowing you to use it without a license key for a limited time.
 
-A Backup license is only required for backup and restore operations involving object storage. Creating snapshots and replicated volumes does not require a license.
+For all workloads, a backup license is only required for backup and restore operations involving object storage. Creating local snapshots and replicating to ONTAP secondary storage does not require a license.
 
 You can choose from three licensing options:
 
