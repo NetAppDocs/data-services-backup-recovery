@@ -34,7 +34,7 @@ a|
 a|
 * Create ad hoc cloud backup
 * Create ad hoc snapshot
-* Delete ANF snapshot policy
+* Delete Azure NetApp Files snapshot policy
 * Enable backup in a volume
 * Refresh volume backup metadata (scheduled)
 
@@ -58,20 +58,20 @@ a|
 * Migrate backups between ONTAP systems
 * Validate backup migration
 
-| Cyber Vault
+| Cyber Vault management
 a|
 * Create Cyber Vault system
 * Delete Cyber Vault system
 * Disable Cyber Vault access
 * Enable Cyber Vault access
 
-| Object storage
+| Object storage management
 a|
 * Create object storage bucket
 * Modify object storage bucket
 * Modify object storage for system
 
-| Cloud credentials
+| Cloud credential management
 a|
 * Delete cloud credentials
 * Register cloud credentials
