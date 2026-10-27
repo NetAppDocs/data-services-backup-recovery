@@ -17,7 +17,7 @@ Discover or manually add offsite backup targets such as AWS S3, Azure Blob Stora
 
 == Discover a backup target 
 
-Configure your backup targets (Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID) before you use NetApp Backup and Recovery.
+Configure your backup targets (Amazon Web Services (AWS) S3, ONTAP S3, S3-compatible object storage,Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID) before you use NetApp Backup and Recovery.
 
 You can discover these targets automatically or manually add them.
 
@@ -31,7 +31,7 @@ You need to discover at least one workload before you can add an offsite backup 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Backup targets*.
 . Select *Discover backup target*. 
-. Select one of the available backup target types: *AWS*, *Azure*, *StorageGRID*, *ONTAP S3*, or *GCP*.
+. Select one of the available backup target types: *AWS*, *Azure*, *StorageGRID*, *ONTAP S3*, *S3-compatible*, or *GCP*.
 . Select *Next*.
 . (For AWS and Azure backup targets only) In the *Choose credentials location* section, choose the location where the credentials reside and then choose how to associate the credentials. 
 . Select *Next*.
@@ -62,9 +62,16 @@ You need to discover at least one workload before you can add an offsite backup 
 ** *Access key*: Enter the ONTAP S3 access key. 
 ** *Secret key*: Enter the ONTAP S3 secret key. 
 
+* For S3-compatible: 
+** *Credential name*: Enter the S3-compatible credential name.
+** *Gateway Node FQDN*: Enter an FQDN for the S3-compatible gateway node.
+** *Port*: Enter the port number for S3-compatible.
+** *Access key*: Enter the S3-compatible access key. 
+** *Secret key*: Enter the S3-compatible secret key. 
+
 * For GCP: 
 ** *Credentials name*: Enter the Google Cloud credential name.
-//** *GCP project*: Enter the name of your Google Cloud project.
+** *GCP project*: Enter the name of your Google Cloud project.
 ** *Access key*: Enter the Google Cloud access key. 
 ** *Secret key*: Enter the Google Cloud secret key. 
 
@@ -93,32 +100,33 @@ Manually add a bucket to an offsite backup target instead of having NetApp Backu
 * For Azure: 
 ** *Subscription*: Select the name of the Azure subscription.
 ** *Resource group*: Select the name of the Azure resource group.
-** *Instance details*: 
+** *Instance details*: Add the following information:
 *** *Storage account name*: Enter the name of the Azure Blob Storage account.
 *** *Azure region*: Enter the Azure region for the storage account.
-*** *Performance type*: Select the performance type of either standard or premium for the Azure Blob Storage account, indicating the level of performance required. 
-*** *Encryption*: Select the type of encryption for the Azure Blob Storage account. The options are either Microsoft-managed keys or customer-managed keys. If you select customer-managed keys, you must provide the key vault name and key name.
+*** *Object lock*: Select this option to enable object locking for the bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later. 
+//*** *Performance type*: Select the performance type of either standard or premium for the Azure Blob Storage account, indicating the level of performance required. 
+** *Encryption*: Select the encryption type for the Azure Blob Storage account. You can choose either Microsoft-managed keys or customer-managed keys. If you select customer-managed keys, you must provide both the encryption key and the encryption ID.
 
 * For StorageGRID: 
-** *Backup target*: Select the name of the StorageGRID backup target.
-** *Bucket name*: Enter the name of the StorageGRID bucket.
-** *Region*: Enter the StorageGRID region for the bucket.
-** *Enable versioning*: Select this option to enable versioning for the StorageGRID bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
-** *Object locking*: Select this option to enable object locking for the StorageGRID bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later. 
-** *Capacity*: Enter the capacity for the StorageGRID bucket. This is the maximum amount of data that can be stored in the bucket.
+** *Credentials name*: Select the credentials to use to authenticate with this bucket's backup target.
+** *Bucket name*: Enter the name of the new StorageGRID bucket.
+** *Object locking*: Select this option to enable object locking for the bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later. 
 
 * For ONTAP S3: 
-** *Backup target*: Select the name of the ONTAP S3 backup target.
+** *Credentials name*: Select the credentials to use to authenticate with this bucket's backup target.
 ** *Bucket name*: Enter the name of the ONTAP S3 bucket.
-** *Capacity*: Enter the capacity for the ONTAP S3 bucket. This is the maximum amount of data that can be stored in the bucket.
-** *Enable versioning*: Select this option to enable versioning for the ONTAP S3 bucket. Versioning enables you to keep multiple versions of objects in the bucket, which can be useful for backup and recovery purposes.
-** *Object locking*: Select this option to enable object locking for the ONTAP S3 bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.
+** *Object locking*: Select this option to enable object locking for the bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.
+
+* For S3-compatible: 
+** *Credentials name*: Select the credentials to use to authenticate with this bucket's backup target.
+** *Bucket name*: Enter the name of the new S3-compatible bucket.
+** *Object locking*: Select this option to enable object locking for the bucket. Object locking prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.
 
 * For GCP: 
 ** *Bucket name*: Enter the name of the Google Cloud bucket.
 ** *GCP project*: Select the name of the Google Cloud project.
 ** *Bucket region*: Select a region for the Google Cloud bucket.
-** *Object locking*: Select this option to enable retention periods for objects in this bucket. While a retention period is in effect, objects cannot be modified or deleted and are immutable until the period expires. If you enable this option for a bucket, it cannot be turned off. 
+//** *Object locking*: Select this option to enable retention periods for objects in this bucket. While a retention period is in effect, objects cannot be modified or deleted and are immutable until the period expires. If you enable this option for a bucket, it cannot be turned off. 
 
 . Select *Add*.
 
