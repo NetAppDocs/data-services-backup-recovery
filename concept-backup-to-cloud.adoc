@@ -29,7 +29,7 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 
 ** Create block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud. 
 ** Use NetApp Backup and Recovery along with SnapCenter. 
-** Refer to link:prev-ontap-protect-overview.html[Protect ONTAP volumes].
+** Refer to link:prev-ontap-protect-overview.html[Protect ONTAP volumes workloads].
 
 * *Microsoft SQL Server workloads*: 
 
@@ -112,22 +112,13 @@ Because NetApp Backup and Recovery preserves the storage efficiencies of the sou
 
 * For restoring data using Search & Restore, certain resources are provisioned by your cloud provider, and there is per-TiB cost associated with the amount of data that is scanned by your search requests. (These resources are not needed for Browse & Restore.)
 +
-//ifdef::azure[]
+
 ** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
-+
-//endif::aws[]
-+
-//ifdef::azure[]
 ** In Azure, an https://azure.microsoft.com/en-us/services/synapse-analytics/?&ef_id=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&gclid=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE[Azure Synapse workspace^] and https://azure.microsoft.com/en-us/services/storage/data-lake-storage/?&ef_id=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&gclid=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE[Azure Data Lake Storage^] are provisioned in your storage account to store and analyze your data.
-+
-//endif::azure[]
-//ifdef::gcp[]
 ** In Google Cloud, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
-//endif::gcp[]
 
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
-
-* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled Datalock and Ransomware protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
+* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled DataLock and Ransomware protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
 
 *Service charges*
 
@@ -218,10 +209,13 @@ Backup copies are stored in an object store that the NetApp Console creates in y
 
 * In Azure, NetApp Console uses a new or existing resource group with a storage account for the Blob container. The Console https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
 
-* In StorageGRID, the Console uses an existing storage account for the object store bucket.
+* In Google Cloud, the Console uses a new or existing project with a storage account for the Google Cloud storage bucket.
+
+* In StorageGRID, the Console uses an existing tenant account for the S3 bucket.
 
 * In ONTAP S3, the Console uses an existing user account for the S3 bucket.
 
+CAUTION: If you manage or change cloud backup files directly from your cloud provider environment, you can corrupt the files and cause an unsupported configuration.
 
 === Backup copies are associated with your NetApp Console organization
 

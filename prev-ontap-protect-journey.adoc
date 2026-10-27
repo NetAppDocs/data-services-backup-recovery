@@ -24,6 +24,7 @@ We'll go over the following options:
 * Which backup architecture will you use: a cascade or fan-out backup of your volumes
 * Will you use the default backup policies, or do you need to create custom policies 
 * Do you want the service to create the cloud buckets for you, or do you want to make your object storage containers before you begin
+* Are any of your volumes on FabricPool aggregates, and how might their tiering policies affect your backups
 * Which Console agent deployment mode are you using (standard, restricted, or private mode)
 
 == Which protection features will you use
@@ -244,6 +245,19 @@ If you plan to move older backup files to archival storage, or if you plan to en
 
 ** For AWS, you must enable Object Locking on the bucket using a 30-day retention period.
 ** For Azure, you need to create the Storage Class with version-level immutability support.
+
+== Are any of your volumes on FabricPool aggregates
+
+There are certain things you need to be aware of when the volume you are backing up resides on a FabricPool aggregate and it has an assigned tiering policy other than `none`:
+
+* The first backup of a FabricPool-tiered volume requires reading all local and all tiered data (from the object store). A backup operation does not "reheat" the cold data tiered in object storage.
++
+This operation could cause a one-time increase in cost to read the data from your cloud provider.
+
+** Subsequent backups are incremental and do not have this effect.
+** If the tiering policy is assigned to the volume when it is initially created, you will not see this issue.
+
+* Consider the impact of backups before assigning the `all` tiering policy to volumes. Because data is tiered immediately, NetApp Backup and Recovery reads data from the cloud tier rather than from the local tier. Because concurrent backup operations share the network link to the cloud object store, performance degradation might occur if network resources become saturated. In this case, you might want to proactively configure multiple network interfaces (LIFs) to decrease this type of network saturation.
 
 == Which Console agent deployment mode are you using
 
