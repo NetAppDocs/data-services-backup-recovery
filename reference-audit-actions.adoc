@@ -6,6 +6,7 @@ summary: Reference of Backup and Recovery actions supported by NetApp Console au
 ---
 
 = Audited NetApp Backup and Recovery actions
+:table-caption!:
 :hardbreaks:
 :nofooter:
 :icons: font
