@@ -55,9 +55,7 @@ Bring-your-own licenses from NetApp provide 1-, 2-, or 3-year terms. You pay onl
 
 The BYOL NetApp Backup and Recovery license is a floating license where the total capacity is shared across all systems associated with your NetApp Console organization or account. For ONTAP volumes, you can get a rough estimate of the capacity you'll need by running the CLI command `volume show -fields logical-used-by-afs` for the volumes you plan to back up to object storage.
 
-If you don't have a NetApp Backup and Recovery BYOL license, select the chat icon in the lower-right of the Console to purchase one.
-
-Optionally, if you have an unassigned node-based license for Cloud Volumes ONTAP that you won't be using, you can convert it to a NetApp Backup and Recovery license with the same dollar-equivalence and the same expiration date. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses[Go here for details^].
+If you don't have a NetApp Backup and Recovery BYOL license, reach out to your NetApp sales representative to purchase one.
 
 You use NetApp Console or NetApp Console local deployment to manage BYOL licenses. You can add new licenses, update existing licenses, and view license status from the Console.
 
@@ -73,7 +71,7 @@ Note the following about annual marketplace contract options:
 
 * Annual contracts are available as private offers in each marketplace.
 * Annual contracts enable you to back up both Cloud Volumes ONTAP data and on-premises ONTAP data.
-* You can sign up for an annual contract from the marketplace page. Set up your subscription from the Marketplace page and then associate the subscription with your https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[AWS^] or https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[Azure^] credentials. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
+* You can sign up for an annual contract from the marketplace page. Set up your subscription from the Marketplace page and then associate the subscription with your https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[AWS^], https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[Azure^], or GCP credentials. Note that you'll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in the Console.
 * If you purchase a "CVO Professional" plan, it includes unlimited backups for the licensed Cloud Volumes ONTAP system, and those backups don't count toward the licensed capacity. This plan doesn't support backups of on-premises ONTAP data or Cloud Volumes ONTAP systems licensed through the Freemium or Essentials packages; only Cloud Volumes ONTAP systems licensed through the Professional package are supported.
 +
 Refer to the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
@@ -100,7 +98,7 @@ https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-lic
 Note the following about PAYGO marketplace contract options:
 
 * PAYGO contracts enable you to back up both Cloud Volumes ONTAP data and on-premises ONTAP data.
-* You can sign up for a PAYGO contract from the marketplace page. Set up your subscription from the Marketplace page and then associate the subscription with your https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[AWS^] or https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[Azure^] credentials.
+* You can sign up for a PAYGO contract from the marketplace page. Set up your subscription from the Marketplace page and then associate the subscription with your https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[AWS^], https://docs.netapp.com/us-en/console-setup-admin/task-adding-azure-accounts.html#subscribe[Azure^], or GCP credentials.
 * If you purchase a "CVO Professional" plan, it includes unlimited backups for the licensed Cloud Volumes ONTAP system, and those backups don't count toward the licensed capacity. This plan doesn't support backups of on-premises ONTAP data or Cloud Volumes ONTAP systems licensed through the Freemium or Essentials packages; only Cloud Volumes ONTAP systems licensed through the Professional package are supported.
 +
 Refer to the https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
