@@ -42,7 +42,7 @@ NOTE: The High restore priority isn't supported when restoring data from Azure a
 
 You can restore ONTAP data from a backup file that resides in a secondary system (a replicated volume) or in object storage (a backup file) to the following systems. 
 
-[cols=4*,options="header",cols="25,25,25,25",width="100%"]
+[options="header",cols="25,25,25,25",width="100%"]
 |===
 
 |*From Object Store (Backup)* | *From Primary (Snapshot)* | *From Secondary System (Replication)* | To Destination system

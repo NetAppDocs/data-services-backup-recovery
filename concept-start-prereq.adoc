@@ -143,7 +143,7 @@ NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per syste
 
 [caption=]
 .Software and hardware requirements
-[cols=2*,options="header",cols="33,66a",width="90%"]
+[options="header",cols="33,66a",width="90%"]
 |===
 
 | Item
@@ -176,7 +176,7 @@ For the latest information about supported versions, see the https://imt.netapp.
 
 [caption=]
 .Supported storage types
-[cols=2*,options="header",cols="33,66a",width="90%"]
+[options="header",cols="33,66a",width="90%"]
 |===
 
 | Database host
@@ -245,7 +245,7 @@ a|
 
 [caption=]
 .Connection and port requirements for protecting VMware workloads
-[cols=2*,options="header",cols="33,66a",width="90%"]
+[options="header",cols="33,66a",width="90%"]
 |===
 
 | Type of port

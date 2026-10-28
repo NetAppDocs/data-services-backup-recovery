@@ -81,7 +81,7 @@ When more than five volumes are enabled for backup, NetApp Backup and Recovery i
 
 . Depending on the type of backup action you want to configure, select the button in the Bulk actions menu:
 + 
-[cols=2*,options="header",cols="50,30",width="80%"]
+[options="header",cols="50,30",width="80%"]
 |===
 | Backup action...
 | Select this button...
@@ -182,7 +182,7 @@ After you set up data replication between two systems, you can manage the data r
 +
 The following table describes the available actions:
 +
-[cols=2*,options="header",cols="15,85"]
+[options="header",cols="15,85"]
 |===
 | Action
 | Description
