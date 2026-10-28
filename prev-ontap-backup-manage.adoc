@@ -81,7 +81,7 @@ When more than five volumes are enabled for backup, NetApp Backup and Recovery i
 
 . Depending on the type of backup action you want to configure, select the button in the Bulk actions menu:
 + 
-[cols=2*,options="header",cols="50,30",width="80%"]
+[options="header",cols="50,30",width="80%"]
 |===
 | Backup action...
 | Select this button...
@@ -182,7 +182,7 @@ After you set up data replication between two systems, you can manage the data r
 +
 The following table describes the available actions:
 +
-[cols=2*,options="header",cols="15,85"]
+[options="header",cols="15,85"]
 |===
 | Action
 | Description
@@ -389,6 +389,8 @@ Note that you'll continue to be charged by your cloud provider for object storag
 == Unregister NetApp Backup and Recovery for a system
 
 Unregistering NetApp Backup and Recovery for a system stops future backups for a storage system and removes it from NetApp Backup and Recovery. During the process, you can choose whether to keep or delete the existing backups.
+
+IMPORTANT: Before you unregister a system, download a full "Protection overview" report. The report lists your existing backups and their UUIDs. If you keep the backups, you need these UUIDs to restore them.
 
 .About this task
 
