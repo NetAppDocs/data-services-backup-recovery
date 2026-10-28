@@ -27,7 +27,7 @@ The following example shows source and destination namespaces with different lab
 ==== Before the restore or failover operation
 The following table illustrates the state of the example source and destination namespaces before the restore or failover operation:
 
-[cols="1,2a,2a" options="header"]
+[cols="1,2a,2a", options="header"]
 |===
 |Namespace |Annotations |Labels
 
@@ -51,7 +51,7 @@ The following table illustrates the state of the example source and destination 
 ==== After the restore operation
 The following table illustrates the state of the example destination namespace after the restore or failover operation. Some keys have been added, some have been overwritten, and the `name` label has been updated to match the destination namespace:
 
-[cols="1,2a,2a" options="header"]
+[cols="1,2a,2a", options="header"]
 |===
 |Namespace |Annotations |Labels
 

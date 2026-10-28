@@ -51,7 +51,7 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 
 *Note:* You can restore volumes and files from any type of backup file, but you can restore a folder only from backup files in object storage at this time.
 
-[cols=3*,options="header",cols="33,33,33",width="90%"]
+[options="header",cols="33,33,33",width="90%"]
 |===
 
 2+^| Backup File Location
