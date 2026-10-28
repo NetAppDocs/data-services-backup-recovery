@@ -25,7 +25,7 @@ To learn about the default backup policies provided, refer to link:prev-ontap-pr
 NetApp Backup and Recovery provides three types of backups of ONTAP data: snapshots, replications, and backups to object storage. Their policies reside in different locations based on the architecture that you use and the type of backup: 
 
 
-[cols=4*,options="header",cols="25,25,25,25",width="100%"]
+[options="header",cols="25,25,25,25",width="100%"]
 |===
 | Architecture
 | Snapshot policy storage location

@@ -21,7 +21,7 @@ The Console agent includes NetApp Backup and Recovery functionality.
 
 . Connect to the Linux system where the Console agent is running.
 +
-[cols=2*,options="header",cols="25,50"]
+[options="header",cols="25,50"]
 |===
 
 | Console agent location
@@ -34,7 +34,7 @@ The Console agent includes NetApp Backup and Recovery functionality.
 
 . Enter the command to restart the service.
 +
-[cols=3*,options="header",cols="40,30,30"]
+[options="header",cols="40,30,30"]
 |===
 
 | Console agent location

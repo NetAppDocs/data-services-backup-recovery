@@ -47,6 +47,8 @@ sidebar:
           url: /concept-backup-to-cloud.html
         - title: NetApp Backup and Recovery requirements
           url: /concept-start-prereq.html
+        - title: Supported backup and restore destinations
+          url: /br-start-sources-destinations.html
         - title: Set up licensing
           url: /br-start-licensing.html
         - title: Set up security certificates
@@ -71,7 +73,7 @@ sidebar:
         #  url: /br-use-policies-create.html
         - title: Protect ONTAP volume workloads 
           entries: 
-            - title: Learn about NetApp Backup and Recovery for ONTAP volumes
+            - title: Protect ONTAP volumes workloads overview
               url: /prev-ontap-protect-overview.html
             - title: Enable NetApp Backup and Recovery to protect volumes
               url: /br-start-enable.html
@@ -139,8 +141,6 @@ sidebar:
               url: /br-use-manage-inventory.html 
             - title: Manage Microsoft SQL Server snapshots
               url: /br-use-manage-snapshots.html
-            - title: Create Microsoft SQL Server reports 
-              url: /br-use-reports.html
         - title: Protect VMware workloads
           entries:
             - title: VMware protection workflow
@@ -175,26 +175,6 @@ sidebar:
                    #   url: /vmware-extend-the-time-of-a-guest-file-restore-session.html
                     - title: Troubleshoot file and folder restores
                       url: /br-use-vmware-guest-file-restore-scenarios-you-might-encounter.html
-       # - title: Protect VMware workloads (with SnapCenter Plug-in for VMware)
-       #   entries:  
-       #     - title: Protect virtual machine workloads overview
-       #       url: /prev-vmware-protect-overview.html
-       #     - title: Prerequisites for protecting virtual machines workloads
-       #       url: /prev-vmware-prereqs.html
-       #     - title: Create a policy to back up virtual machine data
-       #       url: /prev-vmware-policy-create.html         
-       #     - title: Back up datastores to Amazon Web Services
-       #       url: /prev-vmware-backup-aws.html
-       #     - title: Back up datastores to Microsoft Azure
-       #       url: /prev-vmware-backup-azure.html
-       #     - title: Back up datastores to Google Cloud Platform
-       #       url: /prev-vmware-backup-gcp.html
-       #     - title: Back up datastores to StorageGRID
-       #       url: /prev-vmware-backup-storagegrid.html 
-       #     - title: Manage protection of datastores and virtual machines data
-       #       url: /prev-vmware-manage.html
-       #     - title: Restore virtual machine data and datastores
-       #       url: /prev-vmware-restore.html
         - title: Protect KVM workloads
           entries:
             - title: Protect KVM workloads overview
@@ -285,8 +265,8 @@ sidebar:
               url: /br-use-manage-kubernetes-access-control.html
             - title: Manage execution hook templates for Kubernetes workloads
               url: /br-use-manage-execution-hook-templates.html  
-            - title: Create and manage protection reports
-              url: /br-use-kubernetes-reports.html               
+        - title: Create and manage reports
+          url: /br-use-reports.html
         - title: Monitor jobs
           url: /br-use-monitor-tasks.html
         - title: Restart NetApp Backup and Recovery

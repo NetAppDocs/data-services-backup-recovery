@@ -26,6 +26,8 @@ NetApp Backup and Recovery enables you to create multiple backup policies with u
 
 Each backup policy provides a section for _Labels & Retention_ that you can apply to your backup files. Note that the snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery or backup files will not be created. 
 
+NOTE: The snapshot policy applied to the volume must have one of the labels that you're using in your replication policy and backup-to-object policy. If matching labels are not found, no backup files will be created. For example, if you want to create "weekly" replicated volumes and backup files, you must use a snapshot policy that creates "weekly" snapshots.
+
 There are two parts of the schedule; the Label and the Retention value:
 
 * The *label* defines how often a backup file is created (or updated) from the volume. You can select among the following types of labels:
@@ -43,6 +45,8 @@ For example, say you create a backup policy that creates 7 *weekly* and 12 *mont
 * at the 13th month, the first monthly backup is removed, and the new monthly backup for the 13th month is added (keeping a maximum of 12 monthly backups)
 
 Yearly backups are deleted automatically from the source system after being transferred to object storage. This default behavior can be changed in the Advanced Settings page for the system.
+
+TIP: The retention period for backups of data protection (DP) volumes is the same as defined in the source SnapMirror relationship. You can change this by using the API.
 
 == DataLock and Ransomware protection options
 
@@ -73,7 +77,6 @@ The minimum Snapshot Retention Period is 30 days. Let's look at some examples of
 * If you choose the *Monthly* label with Retention Count 3, the Snapshot Retention Period is 90 days.
 * If you choose the *Yearly* label with Retention Count 1, the Snapshot Retention Period is 365 days.
 
-
 === What is Retention Until Date (RUD) and how is it calculated?
 
 The Retention Until Date (RUD) is determined based on the Snapshot Retention Period. The Retention Until Date is calculated by summing the Snapshot Retention Period and a Buffer.
@@ -81,7 +84,6 @@ The Retention Until Date (RUD) is determined based on the Snapshot Retention Per
 * Buffer is the Buffer for Transfer Time (3 days) + Buffer for Cost Optimization (28 days), which totals as 31 days.
 * The minimum Retention Until Date is 30 days + 31 days buffer = 61 days. 
  
-
 Here are some examples: 
 
 * If you create a Monthly backup schedule with 12 retentions, your backups are locked for 12 months (plus 31 days) before they are deleted (replaced by the next backup file).
@@ -92,7 +94,6 @@ Here are some examples:
 ** The "12 monthly" backups are retained for 12 months (plus 31 days).
 
 * If you create an Hourly backup schedule with 24 retentions, you might think that backups are locked for 24 hours. However, since that is less than the minimum of 30 days, each backup will be locked and retained for 61 days (30 days plus 31 days buffer).
-
 
 CAUTION: Old backups are deleted after the DataLock Retention Period expires, not after the backup policy retention period. 
 
@@ -109,11 +110,7 @@ You can enable DataLock and Ransomware protection when you create a policy. You 
 
 * *Locked*: DataLock protection and ransomware protection are enabled. No users can overwrite or delete protected backup files during the retention period. This satisfies full regulatory compliance.
 
-
-
 Refer to link:prev-ontap-policy-object-advanced-settings.html[How to update Ransomware protection options in the Advanced Settings page].
-
-
 
 === What is Ransomware protection
 
@@ -124,6 +121,8 @@ Scans occur in these situations:
 * Scans on cloud backup objects are initiated soon after they are transferred to the cloud object storage. The scan is not performed on the backup file when it is first written to cloud storage, but when the next backup file is written. 
 * Ransomware scans can be initiated when the backup is selected for the restore process. 
 * Scans can be performed on-demand at any time. 
+
+Scheduled ransomware scans are enabled by default and run every 7 days on the latest snapshot only. You can change the scan frequency or disable scheduled scans in the Advanced Settings page.
 
 *How does the recovery process work?* 
 
@@ -140,42 +139,32 @@ Let's see how this works:
 
 You can enable DataLock and Ransomware protection on ONTAP volumes from the following systems when using object storage in the following public and private cloud providers.
 
-[cols=2*,options="header",cols="55,45",width="80%"]
+[options="header",cols="55,45",width="80%"]
 |===
 
 | Source system
 | Backup File Destination
 
-//ifdef::aws[]
 | Cloud Volumes ONTAP in AWS
 | Amazon S3
-//endif::aws[]
-//ifdef::azure[]
+
 | Cloud Volumes ONTAP in Azure
 | Azure Blob
-//endif::azure[]
-//ifdef::gcp[]
+
 | Cloud Volumes ONTAP in Google Cloud
 | Google Cloud Storage
-//endif::gcp[]
+
 | On-premises ONTAP system
 | 
-//ifdef::aws[]
 Amazon S3
-//endif::aws[]
-//ifdef::azure[]
 Azure Blob
-//endif::azure[]
-//ifdef::gcp[]
 Google Cloud
-//endif::gcp[]
 NetApp StorageGRID
-
 |===
 
 === Requirements
 
-//ifdef::aws[]
+
 * For AWS:
 ** Your clusters must be running ONTAP 9.11.1 or greater 
 ** The Console agent can be deployed in the cloud or on your premises
