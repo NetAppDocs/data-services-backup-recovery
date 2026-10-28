@@ -390,6 +390,8 @@ Note that you'll continue to be charged by your cloud provider for object storag
 
 Unregistering NetApp Backup and Recovery for a system stops future backups for a storage system and removes it from NetApp Backup and Recovery. During the process, you can choose whether to keep or delete the existing backups.
 
+IMPORTANT: Before you unregister a system, download a full "Protection overview" report. The report lists your existing backups and their UUIDs. If you keep the backups, you need these UUIDs to restore them.
+
 .About this task
 
 * Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
