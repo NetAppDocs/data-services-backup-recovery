@@ -133,7 +133,7 @@ Some ONTAP features require specific ONTAP versions:
 | 9.19.1 or later
 |===
 
-For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect your ONTAP volume data].
+For information about supported features, volume types, backup and restore destinations, and more, refer to link:prev-ontap-protect-overview.html[Protect ONTAP volumes workloads with NetApp Backup and Recovery].
 
 == Requirements for protecting Microsoft SQL Server workloads 
 
