@@ -92,7 +92,7 @@ NetApp Backup and Recovery enables you to back up ONTAP volumes from the followi
 
 NOTE: Wasabi is the only qualified S3-compatible object storage provider at this time. Other S3-compatible providers have not been validated.
 
-[cols=3*,options="header",cols="33,33,33",width="90%"]
+[options="header",cols="33,33,33",width="90%"]
 |===
 
 | Source system
@@ -137,7 +137,7 @@ You can restore ONTAP data from a backup file that resides in a secondary system
 
 NOTE: Wasabi is the only qualified S3-compatible object storage provider at this time. Other S3-compatible providers have not been validated.
 
-[cols=3*,options="header",cols="33,33,33",width="90%"]
+[options="header",cols="33,33,33",width="90%"]
 |===
 
 2+^| Backup File Location
@@ -344,7 +344,7 @@ NOTE: The snapshot policy applied to the volume must have one of the labels that
 
 //These policies are:
 //
-//[cols=5*,options="header",cols="35,16,16,16,26",width="80%"]
+//[options="header",cols="35,16,16,16,26",width="80%"]
 //|===
 //| Backup Policy Name
 //3+^| Backups per interval...

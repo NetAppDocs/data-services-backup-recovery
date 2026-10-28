@@ -19,9 +19,6 @@ NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
-
-
-
 == Identify the connection method
 
 The following image shows each component when backing up an on-premises ONTAP system to StorageGRID and the connections that you need to prepare between them.
@@ -62,9 +59,6 @@ The new version of NetApp Backup and Recovery that includes the ability to sched
 * When you use NetApp Backup and Recovery in a SaaS environment, the NetApp Backup and Recovery configuration data is backed up to the cloud. When you use NetApp Backup and Recovery in a site with no internet access, the NetApp Backup and Recovery configuration data is backed up to the StorageGRID bucket where your backups are being stored. 
 
 
-//
-//We highly recommend that you create local backups of the NetApp Backup and Recovery configuration data periodically when the Console agent is installed in a site without internet connectivity. link:reference-backup-cbs-db-in-dark-site.html[See how to back up NetApp Backup and Recovery data in a dark site^].
-
 == Verify license requirements 
 
 Before you can activate NetApp Backup and Recovery for your cluster, you'll need to purchase and activate a NetApp Backup and Recovery BYOL license from NetApp. This license is for the account and can be used across multiple systems.
@@ -79,11 +73,6 @@ TIP: PAYGO licensing is not supported when backing up files to StorageGRID.
 
 include::../_include/backup-onprem-prepare-onprem-ONTAP-cluster.adoc[]
 
-// === Discover your ONTAP systems in BlueXP
-// FROM INCLUDE
-
-// === Verify ONTAP system requirements
-// FROM INCLUDE
 
 === Verify ONTAP networking requirements for backing up data to object storage
 
@@ -325,8 +314,6 @@ To create a policy, select *Create new policy* and do the following:
 +
 If your cluster is using ONTAP 9.11.1 or greater, you can choose to protect your backups from deletion and ransomware attacks by configuring _DataLock and Ransomware protection_. _DataLock_ protects your backup files from being modified or deleted, and _ransomware protection_ scans your backup files to look for evidence of a ransomware attack in your backup files.
 ** Select *Create*. 
-// In backup to object only (not snapshots and replication) for CVO to AWS, CVO to Azure, onprem to AWS, Azure, S3, and SG - can do Advanced Settings for ransomware scans and datalock. Adv Settings does not apply to Google.)
-
 
 +
 If your cluster is using ONTAP 9.12.1 or greater and your StorageGRID system is using version 11.4 or greater, you can choose to tier older backups to public cloud archive tiers after a certain number of days. Current support is for AWS S3 Glacier/S3 Glacier Deep Archive or Azure Archive storage tiers. <<Prepare to archive older backup files to public cloud storage,See how to configure your systems for this functionality>>.
@@ -338,9 +325,6 @@ Select or create a new StorageGRID cluster. For details about creating a Storage
 * *Export existing snapshots to object storage as backup copies*: If there are any local snapshots for volumes in this system that match the backup schedule label you just selected for this system (for example, daily, weekly, etc.), this additional prompt is displayed. Check this box to have all historic snapshots copied to object storage as backup files to ensure the most complete protection for your volumes.
 
 . Select *Next*. 
-
-//.. Enter the name for the default policy. You don't need to change the name.
-//.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings[See the list of existing policies you can choose^].
 
 === Review your selections 
 
