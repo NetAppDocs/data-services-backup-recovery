@@ -295,7 +295,7 @@ CAUTION: If you plan to delete a system or cluster that has backups, you must de
 
 === Delete all backup files for a system
 
-Deleting all backups on object storage for a system does not disable future backups of volumes in this system. If you want to stop creating backups of all volumes in a system, you can deactivate backups <<Deactivate NetApp Backup and Recovery for a system,as described here>>.
+Deleting all backups on object storage for a system does not disable future backups of volumes in this system. If you want to stop creating backups of all volumes in a system, you can pause backups <<Pause all backups for a system,as described here>>.
 
 Note that this action does not affect snapshots or replicated volumes - these types of backup files are not deleted.
 
@@ -372,37 +372,42 @@ NOTE: You can't delete individual volume backup files once the backup relationsh
 
 . From the *Volumes* tab, select image:icon-actions-horizontal.gif[Actions icon] for the source volume and select *Backup* > *Delete relationship*.
 
-== Deactivate NetApp Backup and Recovery for a system
+== Pause all backups for a system
 
-Deactivating NetApp Backup and Recovery for a system pauses backups and restores for all its volumes without deleting existing backups. This enables you to pause all backup and restore activity for a period of time without unregistering the backup service from this system.
+Pause all backups for a system to pause backup activity for all the system's volumes without deleting existing backups. Pausing backups does not unregister the backup service from this system.
 
 Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
 
 .Steps
 
 . From the *Volumes* tab, select *Backup Settings*.
-. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to disable backups and select *Deactivate Backup*.
-. In the confirmation dialog box, select *Deactivate*.
 
-NOTE: An *Activate Backup* button appears for that system while backup is disabled. You can select this button when you want to re-enable backup functionality for that system.
+. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system for which you want to pause backups and select *Pause all backups*.
+
+. In the confirmation dialog box, select *Pause*.
 
 == Unregister NetApp Backup and Recovery for a system
 
-You can unregister NetApp Backup and Recovery for a system if you no longer want to use backup functionality and you want to stop being charged for backups in that system. Typically this feature is used when you're planning to delete a system, and you want to cancel the backup service.
+Unregistering NetApp Backup and Recovery for a system stops future backups for a storage system and removes it from NetApp Backup and Recovery. During the process, you can choose whether to keep or delete the existing backups.
 
-You can also use this feature if you want to change the destination object store where your cluster backups are being stored. After you unregister NetApp Backup and Recovery for the system, then you can enable NetApp Backup and Recovery for that cluster using the new cloud provider information.
+.About this task
 
-Before you can unregister NetApp Backup and Recovery, you must perform the following steps, in this order:
-
-* Deactivate NetApp Backup and Recovery for the system
-* Delete all backups for that system
-
-The unregister option is not available until these two actions are complete.
+* Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
+* To restore existing backups, refer to link:prev-ontap-restore-cli.html[Restore ONTAP data using the ONTAP CLI^].
 
 .Steps
 
-. From the *Volumes* tab, select *Backup Settings*.
+. Go to *Protection > Backup and Recovery*.
+. Select the *Volumes* tile.
+. Select *Backup Settings*.
+. On the Backup Settings page, select the image:icon-actions-horizontal.gif[Actions icon] for the system and select *Unregister backups*.
+. Select one of the following options:
++
+* *Deactivate backups*: Stops future backups, deletes the object store backup relationships, and keeps the existing backups in object storage. After the system is unregistered, you can only restore those backups using the ONTAP CLI.
+* *Deactivate and delete backups*: Stops future backups, deletes the object store backup relationships, and deletes the existing backups. Optionally, select *Ignore errors in deactivating/deleting backups* if you want the operation to continue if a step fails.
+. In *Enter system name to confirm*, enter the system name.
+. Under *Confirm protection report backup*, confirm that you saved any reports you need.
+. Select *Confirm & Unregister*.
+. Monitor the operation in the Job Monitor until it completes.
 
-. From the _Backup Settings page_, select image:icon-actions-horizontal.gif[Actions icon] for the system where you want to unregister the backup service and select *Unregister*.
-
-. In the confirmation dialog box, select *Unregister*.
+NOTE: Unregistering the system doesn't change the system's volumes, snapshot configuration, or replication relationships in ONTAP.
