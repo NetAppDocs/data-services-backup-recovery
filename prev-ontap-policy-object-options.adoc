@@ -26,6 +26,8 @@ NetApp Backup and Recovery enables you to create multiple backup policies with u
 
 Each backup policy provides a section for _Labels & Retention_ that you can apply to your backup files. Note that the snapshot policy applied to the volume must be one of the policies recognized by NetApp Backup and Recovery or backup files will not be created. 
 
+NOTE: The snapshot policy applied to the volume must have one of the labels that you're using in your replication policy and backup-to-object policy. If matching labels are not found, no backup files will be created. For example, if you want to create "weekly" replicated volumes and backup files, you must use a snapshot policy that creates "weekly" snapshots.
+
 There are two parts of the schedule; the Label and the Retention value:
 
 * The *label* defines how often a backup file is created (or updated) from the volume. You can select among the following types of labels:
@@ -43,6 +45,8 @@ For example, say you create a backup policy that creates 7 *weekly* and 12 *mont
 * at the 13th month, the first monthly backup is removed, and the new monthly backup for the 13th month is added (keeping a maximum of 12 monthly backups)
 
 Yearly backups are deleted automatically from the source system after being transferred to object storage. This default behavior can be changed in the Advanced Settings page for the system.
+
+TIP: The retention period for backups of data protection (DP) volumes is the same as defined in the source SnapMirror relationship. You can change this by using the API.
 
 == DataLock and Ransomware protection options
 
@@ -117,6 +121,8 @@ Scans occur in these situations:
 * Scans on cloud backup objects are initiated soon after they are transferred to the cloud object storage. The scan is not performed on the backup file when it is first written to cloud storage, but when the next backup file is written. 
 * Ransomware scans can be initiated when the backup is selected for the restore process. 
 * Scans can be performed on-demand at any time. 
+
+Scheduled ransomware scans are enabled by default and run every 7 days on the latest snapshot only. You can change the scan frequency or disable scheduled scans in the Advanced Settings page.
 
 *How does the recovery process work?* 
 

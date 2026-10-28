@@ -396,6 +396,7 @@ IMPORTANT: Before you unregister a system, download a full "Protection overview"
 
 * Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Delete backups,delete the backups>>.
 * To restore existing backups, refer to link:prev-ontap-restore-cli.html[Restore ONTAP data using the ONTAP CLI^].
+* You can't change the destination object store for a system after you enable backups. To use a different object store, unregister NetApp Backup and Recovery for the system, and then enable it again using the new cloud provider information.
 
 .Steps
 

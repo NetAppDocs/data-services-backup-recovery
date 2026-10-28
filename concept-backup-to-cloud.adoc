@@ -23,16 +23,13 @@ Support for Backup and Recovery is already built into all ONTAP systems, so ther
 
 Use NetApp Backup and Recovery to accomplish the following goals:
 
-
 * *ONTAP volume workloads*: 
 **  Create local snapshots, replicate to secondary storage, and back up ONTAP volumes from on-premises ONTAP or Cloud Volumes ONTAP systems to object storage in your public or private cloud account. 
-
-** Create block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud. 
-** Use NetApp Backup and Recovery along with SnapCenter. 
-** Refer to link:prev-ontap-protect-overview.html[Protect ONTAP volumes].
+** Search and restore files and folders.
+** Create block-level, incremental forever backups that are stored on another ONTAP cluster and in object storage in the cloud.  
+** Refer to link:prev-ontap-protect-overview.html[Protect ONTAP volumes workloads].
 
 * *Microsoft SQL Server workloads*: 
-
 ** Back up Microsoft SQL Server instances and databases from on-premises ONTAP, Cloud Volumes ONTAP, or Amazon FSx for NetApp ONTAP. 
 ** Restore Microsoft SQL Server databases.
 ** Clone Microsoft SQL Server databases.
@@ -40,7 +37,6 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Refer to link:br-use-mssql-protect-overview.html[Protect Microsoft SQL Server workloads].
 
 * *VMware workloads*: 
-
 ** Protect your VMware VMs and datastores with NetApp Backup and Recovery. 
 ** Back up VMware workloads to supported storage providers. 
 ** Restore VMware data from the cloud back to the on-premises vCenter. 
@@ -72,11 +68,9 @@ Use NetApp Backup and Recovery to accomplish the following goals:
 ** Manage and protect your Kubernetes applications and resources all in one place.
 ** Use protection policies to structure your incremental backups.
 ** Restore applications and resources to the same or different clusters and namespaces.
-** Use NetApp Backup and Recovery without SnapCenter.
 ** Refer to link:br-use-kubernetes-protect-overview.html[Protect Kubernetes workloads].
 
 //TIP: When the Console agent is deployed in a government region in the cloud, or in a site without internet access (a dark site), NetApp Backup and Recovery supports backup and restore operations only from ONTAP systems. When you use these deployment methods, NetApp Backup and Recovery does not support backup and restore operations from applications.
-
 
 == Benefits of using NetApp Backup and Recovery
 
@@ -111,24 +105,8 @@ Resource charges are paid to the cloud provider for object storage capacity and 
 +
 Because NetApp Backup and Recovery preserves the storage efficiencies of the source volume, you pay the cloud provider object storage costs for the data _after_ ONTAP efficiencies (for the smaller amount of data after deduplication and compression have been applied).
 
-* For restoring data using Search & Restore, certain resources are provisioned by your cloud provider, and there is per-TiB cost associated with the amount of data that is scanned by your search requests. (These resources are not needed for Browse & Restore.)
-+
-//ifdef::azure[]
-** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
-+
-//endif::aws[]
-+
-//ifdef::azure[]
-** In Azure, an https://azure.microsoft.com/en-us/services/synapse-analytics/?&ef_id=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE:G:s&gclid=EAIaIQobChMI46_bxcWZ-QIVjtiGCh2CfwCsEAAYASAAEgKwjvD_BwE[Azure Synapse workspace^] and https://azure.microsoft.com/en-us/services/storage/data-lake-storage/?&ef_id=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&OCID=AIDcmm5edswduu_SEM_EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE:G:s&gclid=EAIaIQobChMIuYz0qsaZ-QIVUDizAB1EmACvEAAYASAAEgJH5fD_BwE[Azure Data Lake Storage^] are provisioned in your storage account to store and analyze your data.
-+
-//endif::azure[]
-//ifdef::gcp[]
-** In Google Cloud, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
-//endif::gcp[]
-
 * If you plan to restore volume data from a backup file that has been moved to archival object storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
-
-* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled Datalock and Ransomware protection for your cloud backups), then you'll incur extra egress costs from your cloud provider as well.
+* If you plan to scan a backup file for ransomware during the process of restoring volume data (if you enabled DataLock and Ransomware protection for your cloud backups), then you'll incur extra costs from your cloud provider as well.
 
 *Service charges*
 
@@ -152,9 +130,9 @@ You can choose from three licensing options:
 * *Bring Your Own License (BYOL)*:
 Purchase a term-based (1, 2, or 3 years) and capacity-based (in 1-TiB increments) license from NetApp. Enter the provided serial number in the NetApp Console to activate. The license covers all source systems in your organization. Renewal is required when the term or capacity limit is reached.
 * *Pay As You Go (PAYGO)*:
-Subscribe through your cloud provider's marketplace and pay per GiB of backed-up data, billed hourly. No up-front payment is required. A 30-day free trial is available when you first sign up. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html#use-a-netapp-backup-and-recovery-paygo-subscription[use a NetApp Backup and Recovery PAYGO subscription].
-* *Annual Contract*:
-Available through AWS and Azure marketplaces for 1, 2, or 3 years. Two annual contracts are available:
+Subscribe through your cloud provider's marketplace and pay per GiB of backed-up data, billed monthly. No upfront payment is required. A 30-day free trial is available when you first sign up. For more information, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html#use-a-netapp-backup-and-recovery-paygo-subscription[use a NetApp Backup and Recovery PAYGO subscription].
+* *Term-based Contract*:
+Available through AWS and Azure marketplaces for 6 months or yearly increments. Two annual contracts are available:
 ** *Cloud Backup*: Backs up Cloud Volumes ONTAP and on-premises ONTAP data.  
 ** *CVO Professional*: Bundles Cloud Volumes ONTAP and NetApp Backup and Recovery, with unlimited backups for Cloud Volumes ONTAP volumes (backup capacity is not counted against the license).  
 *** With the CVO Professional plan, there are two types of charges:
@@ -210,15 +188,17 @@ NOTE: Primary to object storage is also supported, not just from secondary stora
 
 Backup copies are stored in an object store that the NetApp Console creates in your cloud account. There's one object store per cluster or system, and the Console names the object store as follows: `netapp-backup-clusteruuid`. Be sure not to delete this object store.
 
-
 * In AWS, the NetApp Console enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
 
 * In Azure, NetApp Console uses a new or existing resource group with a storage account for the Blob container. The Console https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
 
-* In StorageGRID, the Console uses an existing storage account for the object store bucket.
+* In Google Cloud, the Console uses a new or existing project with a storage account for the Google Cloud storage bucket.
+
+* In StorageGRID, the Console uses an existing tenant account for the S3 bucket.
 
 * In ONTAP S3, the Console uses an existing user account for the S3 bucket.
 
+CAUTION: If you manage or change cloud backup files directly from your cloud provider environment, you can corrupt the files and cause an unsupported configuration.
 
 === Backup copies are associated with your NetApp Console organization
 
@@ -231,6 +211,5 @@ If you have multiple Console agents in the same NetApp Console organization, eac
 You might benefit by understanding some terminology related to protection.
 
 * *Protection*: Protection in NetApp Backup and Recovery means ensuring that snapshots and immutable backups occur on a regular basis to a different security domain using protection policies.
-
 
 * *Workload*: A workload in NetApp Backup and Recovery can include ONTAP volumes, Microsoft SQL Server instances and databases; VMware VMs and datastores; or Kubernetes clusters and applications.
