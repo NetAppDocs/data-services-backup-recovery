@@ -6,6 +6,7 @@ summary: Reference of Backup and Recovery actions supported by NetApp Console au
 ---
 
 = Audited NetApp Backup and Recovery actions
+:table-caption!:
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -18,42 +19,69 @@ Use this reference to see which NetApp Backup and Recovery actions NetApp Consol
 For each audited action, NetApp Console records the service name, agent, resource, user, and action status.
 
 .Audited Backup and Recovery actions
+[cols="1,3",options="header"]
+|===
+| Category | Actions
 
+| Restore and recovery
+a|
+* Restore files from snapshot
 * Restore volume or files from backup
 * Revert volume to snapshot
 * Start file explore
-* Restore files from snapshot
-* Register cloud credentials
-* Update cloud credentials
-* Delete cloud credentials
-* Create object storage bucket
-* Modify object storage bucket
-* Validate backup migration
-* Migrate backups between ONTAP systems
+
+| Backup and snapshot operations
+a|
+* Create ad hoc cloud backup
+* Create ad hoc snapshot
+* Delete Azure NetApp Files snapshot policy
+* Enable backup in a volume
+* Refresh volume backup metadata (scheduled)
+
+| Protection and replication
+a|
+* Initialize protection for system
 * Initialize source protection
-* Peer clusters for protection
 * Initialize target protection
+* Peer clusters for protection
 * Start volume replication
+
+| Panoramic protection
+a|
+* Activate panoramic protection in a system
+* Enable panoramic protection for volumes
+* Modify panoramic protection for volumes
+* Modify panoramic protection in a system
+
+| Backup migration
+a|
+* Migrate backups between ONTAP systems
+* Validate backup migration
+
+| Cyber Vault management
+a|
 * Create Cyber Vault system
 * Delete Cyber Vault system
-* Enable Cyber Vault access
 * Disable Cyber Vault access
-* Create ad hoc snapshot
+* Enable Cyber Vault access
+
+| Object storage management
+a|
+* Create object storage bucket
+* Modify object storage bucket
+* Modify object storage for system
+
+| Cloud credential management
+a|
+* Delete cloud credentials
+* Register cloud credentials
+* Update cloud credentials
+
+| Discovery and configuration
+a|
 * Discover volumes and relationships
 * Update application configuration
-* Enable panoramic protection for volumes
-* Modify panoramic protection for volumes
-* Modify object storage for system
-* Create ad hoc cloud backup
-* Initialize protection for system
-* Enable panoramic protection for volumes
-* Modify panoramic protection for volumes
-* Refresh volume backup metadata (scheduled)
-* Enable backup in a volume
-* Modify panoramic protection for volumes
-* Delete ANF snapshot policy
-* Activate panoramic protection in a system
-* Modify panoramic protection in a system
+|===
 
 == More information
 

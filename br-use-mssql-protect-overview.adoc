@@ -36,7 +36,7 @@ To back up workloads, you create policies that manage backup and restore operati
 
 NetApp Backup and Recovery supports backups of Microsoft SQL Server instances and databases from the following source systems to the listed secondary systems and object stores in public and private clouds. Snapshots remain on the source system.
 
-[cols=3*,options="header",cols="33,33,33",width="90%"]
+[options="header",cols="33,33,33",width="90%"]
 |===
 
 | Source system
@@ -72,7 +72,7 @@ ONTAP S3
 
 You can restore Microsoft SQL Server instances and databases from a backup that resides in primary storage, a secondary system (replicated volume), or object storage (backup file) to the following destination systems. Snapshots reside on the source system and can be restored only to that same system.
 
-[cols=3*,options="header",cols="33,33,33",width="100%"]
+[options="header",cols="33,33,33",width="100%"]
 |===
 
 2+^| From backup file location

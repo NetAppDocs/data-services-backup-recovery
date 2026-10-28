@@ -49,7 +49,7 @@ In broad terms, _Browse & Restore_ is typically better when you need to restore 
 
 This table provides a feature comparison of the two methods.
 
-[cols=2*,options="header",cols="50,50"]
+[options="header",cols="50,50"]
 |===
 
 | Browse & Restore
@@ -64,7 +64,7 @@ This table provides a feature comparison of the two methods.
 
 This table provides a list of valid restore operations based on the location where your backup files reside. 
 
-[cols=7*,options="header",cols="14h,14,14,14,14,14,14",width="100%"]
+[options="header",cols="14h,14,14,14,14,14,14",width="100%"]
 |===
 | Backup Type
 3+^| Browse & Restore

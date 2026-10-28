@@ -31,7 +31,7 @@ We'll go over the following options:
 
 Before you select the features you'll use, here's a quick explanation of what each feature does and the type of protection it provides.
 
-[cols=2*,options="header",cols="20,70",width="90%"]
+[options="header",cols="20,70",width="90%"]
 |===
 | Backup type
 | Description
@@ -67,7 +67,7 @@ The following table shows a generalized comparison of the three backup methods. 
 
 In addition to these criteria, cloud storage offers additional security options if you use the *DataLock and Ransomware protection* feature, and additional cost savings when you select archival storage classes for older backup files. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection and archival storage settings].
 
-[cols=5*,options="header",cols="18,18,22,18,22",width="100%"]
+[options="header",cols="18,18,22,18,22",width="100%"]
 |===
 | Backup type
 | Backup speed
@@ -109,7 +109,7 @@ image:diagram-321-cascade-detailed.png["A diagram showing how a snapshot of a vo
 
 This table provides a comparison of the fan-out and cascade architectures.
 
-[cols=2*,options="header",cols="50,50"]
+[options="header",cols="50,50"]
 |===
 
 | Fan-out
@@ -146,7 +146,7 @@ In addition to using NetApp Backup and Recovery to create custom policies, you c
 
 Here are a few sample ONTAP CLI commands that might be helpful if you are creating custom policies. Note that you must use the _admin_ vserver (storage VM) as the `<vserver_name>` in these commands.
 
-[cols=2*,options="header",cols="30,70"]
+[options="header",cols="30,70"]
 |===
 
 | Policy Description
@@ -183,7 +183,7 @@ Backup policies reside in different locations depending on whether you use a fan
 
 These differences are shown in the table.
 
-[cols=4*,options="header",cols="25,25,25,25",width="100%"]
+[options="header",cols="25,25,25,25",width="100%"]
 |===
 
 |Architecture
