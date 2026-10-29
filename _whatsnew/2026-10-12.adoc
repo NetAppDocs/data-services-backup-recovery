@@ -1,3 +1,10 @@
+=== General NetApp Backup and Recovery enhancement
+In this release, NetApp Backup and Recovery introduces the following licensing enhancement for all workloads:
+
+*Licensing change*: Charges no longer apply to backups using disk-to-disk or disk-to-disk fan-out architectures. Charges apply only to backups to object storage, including backups using 3-2-1 or disk-to-object-storage architectures.
+
+For details about licensing, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html[Set up licensing for NetApp Backup and Recovery].
+
 === Hyper-V workloads enhancements
 In this release, Hyper-V workloads introduces the following enhancements:
 
@@ -12,10 +19,3 @@ In this release, Oracle Database workloads introduces the following enhancement:
 *Automatic archive log management*: During database restore and clone operations, NetApp Backup and Recovery automatically discovers and mounts the required archive logs, then unmounts them when the operation is complete. Primary, secondary, and object storage log sources are supported.
 
 For details about protecting Oracle Database workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-oracle-protect-overview.html[Learn about protecting Oracle Database workloads with NetApp Backup and Recovery].
-
-=== Microsoft SQL Server workloads enhancement
-In this release, Microsoft SQL Server workloads introduces the following enhancement:
-
-*Licensing change*: Charges no longer apply to backups using disk-to-disk or disk-to-disk fan-out architectures. Charges apply only to backups to object storage, including backups using 3-2-1 or disk-to-object-storage architectures.
-
-For details about protecting Microsoft SQL Server workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-mssql-protect-overview.html[Learn about protecting Microsoft SQL Server workloads with NetApp Backup and Recovery].
