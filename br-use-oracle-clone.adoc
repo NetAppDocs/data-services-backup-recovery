@@ -22,6 +22,8 @@ Backup and Recovery super admin or Backup and Recovery clone admin role. https:/
 
 Create a clone immediately from an existing snapshot. Use this method to create a one-time clone that is not continuously refreshed from a snapshot.
 
+NOTE: In Oracle Data Guard configurations, you can clone a protected primary database or a protected physical standby database. The clone is a standalone database and isn't part of the Oracle Data Guard configuration. If you clone a standby database, the new database is listed as *Data Guard Standby* until you refresh the host. After you refresh the host, it's listed as a regular database.
+
 .Steps 
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
@@ -52,6 +54,8 @@ The *Select snapshot location* page appears if the snapshot is stored in more th
 Create an instant clone and schedule regular refreshes to keep it current with the latest database state.
 
 NOTE: Creating an instant snapshot and clone with a refresh schedule applies to complete database clones only. It is not available for a PDB clone. 
+
+NOTE: In Oracle Data Guard configurations, you can clone a protected primary database or a protected physical standby database. The clone is a standalone database and isn't part of the Oracle Data Guard configuration. If you clone a standby database, the new database is listed as *Data Guard Standby* until you refresh the host. After you refresh the host, it's listed as a regular database.
 
 .Steps 
 

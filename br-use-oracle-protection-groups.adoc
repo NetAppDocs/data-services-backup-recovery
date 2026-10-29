@@ -32,22 +32,24 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
-//+
-//image:screen-vm-inventory.png[Inventory screenshot for NetApp Backup and Recovery]
 . Select a workload to view the protection details.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *View details*.
 . Select the *Protection groups* tab.
 . Select *Create protection group*.
 . Provide a name for the protection group.
 . Select the databases that you want to include in the protection group.
++
+Standby databases aren't listed by default. To list them, select *Show Data Guard standby databases*. If you select a database that is part of an Oracle Data Guard configuration, NetApp Backup and Recovery also adds the other database in the same configuration. It does this only if that database is discovered, can be protected, and isn't in another protection group.
 . Select *Next*. 
-. Select the *Backup policy* that you want to apply to the protection group. If you are including a database that is part of an Oracle Data Guard configuration, choose a backup policy with the Data Guard option enabled.
+. Select the *Backup policy* to apply to the protection group. If the group includes Oracle Data Guard databases, use *Data Guard settings* in the policy to choose which databases are backed up. See link:br-use-policies-oracle-create.html[Create and manage Oracle Database backup policies].
 +
 If you want to create a policy, select *Create new policy* and follow the prompts to create a policy. See link:br-use-policies-create.html[Create policies] for more information.
 
 . Select *Next*. 
 . Review the configuration.
 . Select *Create* to create the protection group.
+
+NOTE: If you add the standby host after you create the protection group, edit the protection group and save it. NetApp Backup and Recovery adds the standby automatically. From the standby host, add only standby databases to the group. Another database from that host that needs a different backup type causes the backup to fail for that host.
 
 ////
 == Suspend a protection group's backup schedule

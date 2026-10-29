@@ -63,3 +63,5 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Back up now*.
 . Select the schedule tier.
 . Select *Back up*. 
+
+NOTE: For Oracle Data Guard databases, NetApp Backup and Recovery checks the current role of each database when a backup starts and follows the *Data Guard settings* in the policy. After a switchover or failover, the next backup uses the new roles.
