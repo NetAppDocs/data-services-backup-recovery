@@ -21,6 +21,12 @@ Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where y
 * Using different types of media helps you recover if one type fails.
 * You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
+== Oracle Data Guard support
+
+NetApp Backup and Recovery can protect Oracle Data Guard configurations that have a single-instance primary database and one physical standby database in the mounted state.
+
+== Supported tasks
+
 You can use NetApp Backup and Recovery to perform the following tasks related to Oracle Database workloads:
 
 * link:br-start-discover-oracle.html[Discover Oracle Database workloads]

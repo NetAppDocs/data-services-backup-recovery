@@ -64,6 +64,8 @@ TIP: Adding resources can take several minutes. To see the progress, select *Tra
 .Result
 The Oracle Database host appears in the workload list on the Inventory page.  
 
+NOTE: If your databases are in an Oracle Data Guard configuration, add the primary host and the standby host as separate hosts.
+
 == View Oracle Database inventory
 Review details about the Oracle Database resources you have discovered in the Backup and Recovery inventory.
 
@@ -73,11 +75,15 @@ Review details about the Oracle Database resources you have discovered in the Ba
 . Under *Workloads*, select the *Oracle* tile.
 . To view discovered Oracle Database hosts, select the *Hosts* tab.
 +
-You can use this view to see details such as each host name, how many databases each host is hosting, the deployment model (for example, cluster, Oracle Data Guard, or standalone), and other information.
+You can use this view to see details such as each host name, how many databases each host is hosting, the deployment model (for example, cluster, Data Guard, or standalone), and other information.
 . To view protection groups that have been created to protect Oracle Database resources, select the *Protection Groups* tab.
 . To view databases hosted by each Oracle Database host, select the *Databases* tab.
 +
 This view shows detailed information, including whether each database is a single instance or part of a cluster or high-availability configuration.
++
+Oracle Data Guard databases are labeled *Data Guard Primary* or *Data Guard Standby*. Standby databases are hidden by default. To show them, select *Data Guard Standby* in the *Type* filter. Each Oracle Data Guard database name appears as the Oracle SID followed by the database name in brackets, for example, `ORCLSTBY (ORCL)`.
++
+After a switchover or failover, select the *Hosts* tab, and then select *Refresh* for the affected hosts to update the roles shown.
 
 
 == Continue to the NetApp Backup and Recovery Dashboard
