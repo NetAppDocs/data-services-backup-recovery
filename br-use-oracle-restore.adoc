@@ -94,6 +94,15 @@ If restoring PDBs or tablespaces to a specific point in time or SCN:
 //* Verify that the data backup and required log backups are cataloged.
 =====
 
+*Important notes about restoring Oracle Data Guard databases*
+
+* Before you restore, make sure the database role is current. If a switchover or failover has happened, select the *Hosts* tab and select *Refresh* for the host first. The available restore options depend on the role the database has now.
+* If the database is currently a standby, you can't restore it to the original location, regardless of the role it had when the backup was taken. Restore it to an alternate location.
+* If the database is currently a standby, you can't restore a snapshot that exists only on secondary storage or in object storage.
+* You can restore a backup taken while the database was a standby to the original location after the database becomes the primary.
+
+CAUTION: Restoring a primary database doesn't change the standby. When you open the primary with `RESETLOGS` after a point-in-time or SCN restore, it starts a new database incarnation. If the standby has already applied redo past that point, redo apply on the standby stops with an error and the standby stays at its earlier state. To resume protection, re-establish the standby after the restore by using Oracle tools.
+
 .Steps
 
 . From the NetApp Console menu, select *Protection > Backup and Recovery*.
