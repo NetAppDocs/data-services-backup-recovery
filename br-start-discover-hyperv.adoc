@@ -50,7 +50,7 @@ After NetApp Backup and Recovery discovers resources, the Inventory page display
 
 == Refresh a Hyper-V host
 
-Refresh a Hyper-V host to renew the connection to the host and update the list of virtual machines on the host.
+Refresh a Hyper-V host to update the list of VMs on the host and map the connected storage. You might want to do this after a MetroCluster switchover or switchback, or if you have recently added or removed VMs from the host.
 
 IMPORTANT: If a Hyper-V host is protected by a NetApp MetroCluster configuration, refresh the host after every MetroCluster switchover or switchback, and before the next scheduled or manual backup or snapshot. Any backups or snapshots that run for the host before it is refreshed fail. If you don't refresh the host manually, Backup and Recovery refreshes it automatically within 12 hours.
 
