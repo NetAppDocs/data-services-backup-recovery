@@ -23,6 +23,8 @@ Back up Hyper-V VMs from on-premises ONTAP systems to supported object storage t
 
 Use an on-demand backup to protect your data before you make system changes.
 
+IMPORTANT: If a Hyper-V host is protected by a NetApp MetroCluster configuration, refresh the host after every MetroCluster switchover or switchback, and before the next scheduled or manual backup or snapshot. For instructions, refer to link:br-start-discover-hyperv.html#refresh-a-hyper-v-host[Refresh a Hyper-V host].
+
 *Required NetApp Console role*
 Backup and Recovery super admin or Backup and Recovery backup admin role. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html[Learn about NetApp Console access roles for all services^].
 

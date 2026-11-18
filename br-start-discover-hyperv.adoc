@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: NetApp Backup and Recovery must discover Hyper-V virtual machines before you can protect them.  
 ---
 
-= Discover Hyper-V workloads in NetApp Backup and Recovery
+= Discover and manage Hyper-V workloads in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -47,6 +47,20 @@ TIP: This process might take a few minutes.
 
 .Result
 After NetApp Backup and Recovery discovers resources, the Inventory page displays the Hyper-V workload in the list of workloads.
+
+== Refresh a Hyper-V host
+
+Refresh a Hyper-V host to update the list of VMs on the host and map the connected storage. You might want to do this after a MetroCluster switchover or switchback, or if you have recently added or removed VMs from the host.
+
+IMPORTANT: If a Hyper-V host is protected by a NetApp MetroCluster configuration, refresh the host after every MetroCluster switchover or switchback, and before the next scheduled or manual backup or snapshot. Any backups or snapshots that run for the host before it is refreshed fail. If you don't refresh the host manually, Backup and Recovery refreshes it automatically within 12 hours.
+
+.Steps
+
+. From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
+. Select the Hyper-V workload tile.
+. From the NetApp Backup and Recovery menu, select *Inventory*. 
+. Select the *View* link for the Hyper-V workload type.
+. Choose a Hyper-V host to refresh, and select the Actions icon image:../media/icon-action.png[Actions option] > *Refresh*.
 
 == Continue to the NetApp Backup and Recovery Dashboard
 
