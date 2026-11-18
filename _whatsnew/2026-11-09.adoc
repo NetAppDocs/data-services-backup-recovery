@@ -1,5 +1,5 @@
 === Hyper-V workloads enhancement
-The 5.9.0 release of NetApp Backup and Recovery introduces the following enhancement for Hyper-V workloads:
+In this release, NetApp Backup and Recovery introduces the following enhancement for Hyper-V workloads:
 
 *NetApp MetroCluster support enhancements*: NetApp Backup and Recovery now supports protecting Hyper-V hosts in a NetApp MetroCluster configuration before and after switchover or switchback operations.
 
