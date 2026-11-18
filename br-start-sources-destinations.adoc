@@ -42,6 +42,7 @@ NOTE: Wasabi is the only qualified S3-compatible object storage provider at this
 a|
 * Cloud Volumes ONTAP in AWS
 * On-premises ONTAP system
+* Amazon FSx for NetApp ONTAP (Kubernetes workloads only)
 | Amazon S3
 
 | Cloud Volumes ONTAP in Azure
@@ -72,9 +73,11 @@ a|
 | Google Cloud NetApp Volumes Flex
 | Google Cloud Storage
 
-| Amazon FSx for NetApp ONTAP (Microsoft SQL Server, Oracle Database, and VMware workloads only)
-| Cloud Volumes ONTAP in AWS
-| Amazon S3 (only from Cloud Volumes ONTAP)
+| Amazon FSx for NetApp ONTAP (Microsoft SQL Server, Oracle Database, VMware, and Kubernetes workloads only)
+a|
+* Cloud Volumes ONTAP in AWS
+* Amazon FSx for NetApp ONTAP in the same or a different AWS region (Kubernetes workloads only)
+| Amazon S3 (only from Cloud Volumes ONTAP; not available for Kubernetes workloads)
 
 |===
 
