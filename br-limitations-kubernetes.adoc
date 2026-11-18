@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-limitations-kubernetes.html
 keywords: limitations, known, NetApp Backup and Recovery, Kubernetes, applications, workloads
-summary: Review these NetApp Backup and Recovery limitations before using Backup and Recovery in your environment.
+summary: "Review known limitations and workarounds for protecting Kubernetes workloads with NetApp Backup and Recovery."
 ---
 
 = Known limitations with NetApp Backup and Recovery for Kubernetes workloads

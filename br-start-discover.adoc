@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-start-discover.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: NetApp Backup and Recovery needs to first discover workloads in order for you to use the service.  
+summary: "Discover Microsoft SQL Server workloads in NetApp Backup and Recovery, and optionally import SnapCenter resources, hosts, credentials, and schedules."
 ---
 
 = Discover Microsoft SQL Server workloads in NetApp Backup and Recovery
@@ -34,9 +34,9 @@ Discovery occurs in the following ways:
 
 * If you already have SnapCenter, import SnapCenter resources into NetApp Backup and Recovery by using the NetApp Backup and Recovery UI.
 +
-NOTE: If you already have SnapCenter, first check to be sure you've met the prerequisites before importing from SnapCenter. For example, you should add on-premises SnapCenter cluster storage systems to NetApp Console before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
+NOTE: If you already have SnapCenter, confirm that you've met the prerequisites before importing from SnapCenter. For example, add on-premises SnapCenter cluster storage systems to NetApp Console before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
 +
-* If you don't already have SnapCenter, you can still discover workloads by adding a vCenter manually and perform discovery.
+* If you don't already have SnapCenter, you can still discover workloads by adding a vCenter manually and performing discovery.
 
 === If SnapCenter is already installed, import SnapCenter resources into NetApp Backup and Recovery
 
@@ -99,7 +99,7 @@ After you import SnapCenter resources, manage the host resources in NetApp Backu
 
 . Select *Manage*. 
 
-. In the Manage host page, select either to use an existing vCenter or add a new vCenter. 
+. In the Manage host page, select an existing vCenter or add a new vCenter. 
 
 
 . Select *Manage*.

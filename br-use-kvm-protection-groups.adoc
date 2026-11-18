@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-kvm-protection-groups.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, KVM, vm, virtual machines, workloads, volumes, snapshots
-summary: Create and manage protection groups for KVM workloads in NetApp Backup and Recovery. 
+summary: "Create and manage protection groups for KVM workloads in NetApp Backup and Recovery." 
 ---
 
 = Manage KVM protection groups in NetApp Backup and Recovery
@@ -15,7 +15,7 @@ summary: Create and manage protection groups for KVM workloads in NetApp Backup 
 [.lead]
 Create and manage protection groups so you can back up related KVM virtual machines and storage pools together.
 
-You can do the following with protection groups:
+You can perform these tasks with protection groups:
 
 * Create a protection group
 * View protection details
@@ -97,7 +97,7 @@ The system validates the schedules and changes the protection status to "Protect
 
 == Edit a protection group
 
-Edit a protection group if you need to change details of the protection group without deleting and recreating it.
+Edit a protection group to change its details without deleting and recreating it.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.

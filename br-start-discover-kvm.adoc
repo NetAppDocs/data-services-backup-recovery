@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-start-discover-kvm.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, KVM, workloads, protect
-summary: NetApp Backup and Recovery needs to first discover workloads in order for you to protect them.  
+summary: "Add a management platform and KVM host to discover KVM workloads in NetApp Backup and Recovery, then review protection status on the Dashboard."
 ---
 
 = Discover KVM workloads in NetApp Backup and Recovery
@@ -67,4 +67,4 @@ The KVM workload is displayed in the list of workloads on the Inventory page.
 . From the NetApp Console menu, select *Protection* > *Backup and recovery*.
 . Select the KVM workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
+. Review the health of data protection. The number of at-risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
