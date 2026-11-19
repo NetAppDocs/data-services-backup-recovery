@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: br-use-policies-mssql-create.html
 keywords: backing up, back up, backup, backup on-premises ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
-summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+summary: "Create, edit, and delete Microsoft SQL Server backup policies in NetApp Backup and Recovery to control backup frequency, schedule, and retention."
 ---
 
-= Create and manage Microsoft SQL Server backup policies in NetApp Backup and Recovery
+= Create and manage Microsoft SQL Server policies in NetApp Backup and Recovery
 :hardbreaks:
 :icons: font
 :imagesdir: ./media/
@@ -15,7 +15,7 @@ Use NetApp Backup and Recovery to create Microsoft SQL Server backup policies th
 
 If you import resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
 
-You can accomplish the following goals related to policies: 
+You can complete these policy tasks: 
 
 * Create a local snapshot policy
 * Create a policy for replication to secondary storage

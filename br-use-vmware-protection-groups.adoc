@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-protection-groups.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, vmware, vm, virtual machines, workloads, volumes, snapshots
-summary: Create and manage protection groups for VMware workloads in NetApp Backup and Recovery. 
+summary: "Create and manage protection groups for VMware workloads, including tag-based groups, to back up and restore VMs and datastores together in NetApp Backup and Recovery."
 ---
 
 = Manage VMware protection groups in NetApp Backup and Recovery
@@ -46,8 +46,8 @@ Backup and Recovery super admin or Backup and Recovery backup admin role. https:
 
 .Before you begin
 
-* Ensure your environment is using supported versions of VMware vSphere.
-* When creating a tag-based protection group, ensure the virtual machines and datastores you want to protect are already associated with one or more vSphere tags in vCenter.
+* Confirm that your environment uses supported versions of VMware vSphere.
+* When creating a tag-based protection group, confirm that the virtual machines and datastores you want to protect are already associated with one or more vSphere tags in vCenter.
 * For VMware workloads, the scheduled backup time uses the time zone of the management host. Refer to link:br-use-policies-vmware-create.html[Create and manage VMware backup policies in NetApp Backup and Recovery] for more information.
 
 .Steps
@@ -66,9 +66,9 @@ You can filter the available resources in the list by selecting a specific vCent
 . When finished, select *Next*. 
 . Choose how the protection group handles VMs whose virtual disks span multiple datastores:
 +
-* *Always exclude all spanning datastores*: The protection group will only include datastores that are added to it directly, along with the primary datastore of any VMs added directly to the protection group.
-* *Always include all spanning datastores*: The protection group will include all datastores spanned by the included VMs.
-* *Manually select the spanning datastores to be included*: If you select this option, you need to manually select which spanning datastores to include in the protection group from the list that appears. This selection is static; you must update the list of spanning datastores each time new VMs are added to the group.
+* *Always exclude all spanning datastores*: The protection group includes only datastores that are added to it directly, along with the primary datastore of any VMs added directly to the protection group.
+* *Always include all spanning datastores*: The protection group includes all datastores spanned by the included VMs.
+* *Manually select the spanning datastores to be included*: If you select this option, manually select the spanning datastores to include in the protection group from the list that appears. This selection is static, so update the list of spanning datastores each time new VMs are added to the group.
 . Select *Next*.
 . Select the protection policy that you want to apply to the protection group.
 +
@@ -124,7 +124,7 @@ The protection status changes to "Under maintenance" when you suspend a protecti
 
 Resuming a suspended protection group restarts the scheduled backups for the protection group.  
 
-The protection status changes from "Under maintenance" when you suspend a protection group to "Protected" when you resume it. You can resume the backup schedule at any time.
+The protection status changes from "Under maintenance" to "Protected" when you resume a protection group. You can resume the backup schedule at any time.
 
 .Steps
 . From the NetApp Backup and Recovery menu, select *Inventory*.
@@ -158,7 +158,7 @@ The Edit protection group wizard guides you through the settings in the protecti
 
 Scheduled backups use the vCenter Server time zone that is recorded when the protection group's schedule is created. If you change the vCenter Server time zone, existing protection groups continue to run on their original time zone (typically UTC) until you update their schedules.
 
-NOTE: Schedules are only re-created when you modify the protection group name, add or remove a VM, change the assigned policy, or update pre/post scripts. Saving without any changes will not update the schedules. This schedule update is a one-time action per protection group and does not start an immediate backup.
+NOTE: Schedules are re-created only when you modify the protection group name, add or remove a VM, change the assigned policy, or update pre/post scripts. Saving without any changes does not update the schedules. This schedule update is a one-time action per protection group and does not start an immediate backup.
 
 .Steps
 

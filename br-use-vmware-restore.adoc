@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-restore.html
 keywords: restore, vmware, vm, virtual machine, snapshots, object storage, cloud storage, backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery.
+summary: "Restore VMware virtual machines from local snapshots, secondary storage, or object storage backups to the original or an alternate location."
 ---
 
 = Restore VMware workloads with NetApp Backup and Recovery
@@ -31,7 +31,7 @@ You can restore workloads from different starting locations:
 
 You can restore data to these points: 
 
-* *Restore to the original location*: The VM is restored in the original location, to the same vCenter deployment, ESXi host, and datastore. The VM and all of its data is overwritten.
+* *Restore to the original location*: The restore returns the VM to the same vCenter deployment, ESXi host, and datastore and overwrites the VM and all of its data.
 * *Restore to an alternate location*: You can choose a different vCenter, ESXi host, or datastore as a restore target for the VM. This is useful for managing different copies of the same VM in different locations and states.
 
 .Restore from object storage considerations
@@ -42,7 +42,7 @@ TIP: You might pay extra fees to your cloud provider to access the backup file.
 
 == How VMware workload restore works
 
-When you restore workloads, the following occurs: 
+Restore behavior depends on the restore source: 
 
 * When you restore a workload from a local snapshot or remote backup, NetApp Backup and Recovery overwrites the original VM if you restore to the original location, and creates a _new_ resource if you restore to an alternate location.
 
@@ -66,15 +66,15 @@ Backup and Recovery super admin or Backup and Recovery restore admin role. If yo
 . From the drop-down list to the right of the name search field, select *VMware*. 
 . Enter the name of the resource you want to restore or filter for the vCenter, datacenter, or datastore where the resource that you want to restore is located. 
 +
-A list of virtual machines appears that match your search criteria.
+A list of virtual machines that match your search criteria appears.
 
-. Find the VM that you want to restore from in the list, and select the options menu button for that VM.
+. Find the VM that you want to restore in the list, and select the options menu button for that VM.
 . In the resulting menu, select *Restore virtual machine*. 
 +
 A list of snapshots (restore points) created on that virtual machine appears. By default, the latest snapshots are shown for the time frame that you select in the *Time frame* dropdown.
 +
 For each snapshot, any illuminated icons in the *Location* column indicate the storage locations where the snapshot is available (primary, secondary, or object storage). 
-. Enable the radio button for the snapshot you want to restore.
+. Select the radio button for the snapshot that you want to restore.
 . Select *Next*.
 +
 Snapshot location options appear.

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-migrate-resync.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database, migrate volumes, SnapMirror to Cloud Resync, ONTAP, NetApp, NetApp ONTAP, NetApp Cloud Volumes ONTAP, FlexVols, FlexGroups
-summary: The SnapMirror to Cloud Resync feature in NetApp Backup and Recovery streamlines data protection and continuity during volume migrations in NetApp environments.  
+summary: "Use SnapMirror to Cloud Resync to keep cloud backups available after you migrate ONTAP volumes, without a re-baseline, in NetApp Backup and Recovery."  
 ---
 
 = Migrate volumes using SnapMirror to Cloud Resync in NetApp Backup and Recovery
@@ -15,7 +15,7 @@ summary: The SnapMirror to Cloud Resync feature in NetApp Backup and Recovery st
 [.lead]
 Use SnapMirror to Cloud Resync in NetApp Backup and Recovery to keep existing cloud backups available after you migrate a volume with SnapMirror Logical Replication (LRSE). This feature lets backups continue without a re-baseline and is available starting with ONTAP 9.16.1.
 
-SnapMirror to Cloud Resync supports FlexVol and FlexGroup migrations and helps you maintain backup continuity across hybrid and multi-cloud environments.
+SnapMirror to Cloud Resync supports FlexVol and FlexGroup migrations and helps you maintain backup continuity across hybrid and multicloud environments.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
@@ -45,7 +45,7 @@ Here's an example:
 
 Imagine you have an on-premises volume called Vol1a. This volume has three snapshots: S1, S2, and S3. These snapshots are restore points. Vol1a is backed up to the cloud using SnapMirror to Cloud (SM-C), but only S1 and S2 are in the object store.
 
-Now, you want to migrate Vol1 to another ONTAP cluster. To do this, you create a SnapMirror Logical Replication (LRSE) relationship to a new cloud volume called Vol1b. This transfers all three snapshots—S1, S2, and S3—from Vol1a to Vol1b. 
+Now, you want to migrate Vol1a to another ONTAP cluster. To do this, you create a SnapMirror Logical Replication (LRSE) relationship to a new cloud volume called Vol1b. This transfers all three snapshots—S1, S2, and S3—from Vol1a to Vol1b. 
 
 After the migration is complete, you have the following setup: 
 
@@ -113,7 +113,7 @@ NOTE: Do not use a SnapMirror policy of type "Vault" to clone a volume from an o
 
 . Add the new ONTAP cluster as a system in the Console *Systems* page.
 +
-NOTE: The volume instance UUID should be used, not the volume ID. The volume instance UUID is a unique identifier that remains consistent across migrations, while the volume ID may change after migration.
+NOTE: The volume instance UUID should be used, not the volume ID. The volume instance UUID is a unique identifier that remains consistent across migrations, while the volume ID might change after migration.
 
 === Perform a SnapMirror to Cloud Resync
 
@@ -121,7 +121,7 @@ After the migration, a NetApp Tech Refresh team performs a SnapMirror to Cloud R
 
 . Add the new ONTAP cluster as a system in the Console *Systems* page. 
 
-. Look at the NetApp Backup and Recovery Volumes page to ensure that the old source system details are available. 
+. Check the NetApp Backup and Recovery Volumes page to confirm that the old source system details are available. 
 
 . From the NetApp Backup and Recovery Volumes page, select *Backup Settings*. 
 * Within the Backup Settings page, select *View all*. 
@@ -140,7 +140,7 @@ After the migration, a NetApp Tech Refresh team performs a SnapMirror to Cloud R
 
 . Select *Upload* under the *Upload Volume Mapping Details* to upload the completed CSV sheet into the NetApp Backup and Recovery UI.  
 +
-NOTE: The volume instance UUID should be used, not the volume ID. The volume instance UUID is a unique identifier that remains consistent across migrations, while the volume ID may change after migration.
+NOTE: The volume instance UUID should be used, not the volume ID. The volume instance UUID is a unique identifier that remains consistent across migrations, while the volume ID might change after migration.
  
 . Enter provider and network configuration information required for the resync operation. 
 

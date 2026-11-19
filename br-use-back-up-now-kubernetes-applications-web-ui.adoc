@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-back-up-now-kubernetes-applications-web-ui.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery, snapcenter
-summary: Manually create on-demand backups of Kubernetes applications using the NetApp Backup and Recovery web UI.  
+summary: "Manually create on-demand backups of Kubernetes applications using the NetApp Backup and Recovery web UI."
 ---
 
 = Back up a Kubernetes application using the NetApp Backup and Recovery web UI

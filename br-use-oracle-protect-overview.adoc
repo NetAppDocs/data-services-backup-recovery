@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-oracle-protect-overview.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
-summary: You can protect Oracle virtual machines from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, Google Cloud Platform, and StorageGRID, ensuring that your data is protected. 
+summary: "Protect Oracle Database workloads and logs with database-consistent backups to AWS S3, StorageGRID, Azure Blob, or ONTAP S3, and restore to an on-premises Oracle host." 
 ---
 
 = Protect Oracle Database workloads with NetApp Backup and Recovery
@@ -15,10 +15,10 @@ summary: You can protect Oracle virtual machines from on-premises ONTAP systems 
 [.lead]
 Use NetApp Backup and Recovery to protect Oracle Database workloads and logs with fast, space-efficient, crash-consistent, and database-consistent backups and restores. You can back up workloads to AWS S3, StorageGRID, Azure Blob, or ONTAP S3 and restore backups to an on-premises Oracle host.
 
-Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have 3 copies of your source data on 2 different storage systems along with 1 copy in the cloud. The benefits of the 3-2-1 approach include:
+Use NetApp Backup and Recovery to implement a 3-2-1 protection strategy, where you have three copies of your source data on two different storage systems along with one copy in the cloud. The benefits of the 3-2-1 approach include:
 
 * Multiple data copies protect against internal and external cybersecurity threats.
-* Using different types of media helps you recover if one type fails.
+* Different types of media help you recover if one type fails.
 * You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
 == Oracle Data Guard support

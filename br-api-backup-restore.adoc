@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-api-backup-restore.html
 keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis
-summary: The NetApp Backup and Recovery capabilities that are available through the web UI are also available through RESTful APIs.
+summary: "Use the NetApp Backup and Recovery REST APIs to automate backup and restore tasks, obtain the required tokens and IDs, and monitor jobs."
 ---
 
 = Automate NetApp Backup and Recovery with REST APIs
@@ -103,11 +103,11 @@ Retrieve the agent ID from the response by parsing *occm.[0].[agent].[agentId]*.
 
 == Example using the APIs
 
-The following example shows an API call that activates NetApp Backup and Recovery on a system with a new policy. The policy has daily, hourly, and weekly labels and archives after 180 days in the East US 2 Azure region. This request enables backup on the system, but it does not back up any volumes. 
+The example API call activates NetApp Backup and Recovery on a system with a new policy. The policy has daily, hourly, and weekly labels and archives after 180 days in the East US 2 Azure region. This request enables backup on the system, but it does not back up any volumes. 
 
 .API Request
 
-You'll see that we use the NetApp Console account ID `account-DpTFcxN3`, Console agent ID `iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients`, and user token `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g` in this command.
+The example uses the NetApp Console account ID `account-DpTFcxN3`, Console agent ID `iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients`, and user token `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g`.
 
 [source,shell]
 ----

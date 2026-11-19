@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-restore-cli.html
 keywords: CLI, ONTAP, restore, backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery
-summary: You might need to use use the ONTAP CLI to restore ONTAP data in some situations.
+summary: "Restore ONTAP data from object storage backups with the ONTAP CLI when you can't restore through the Backup and Recovery web UI."
 ---
 
 = Restore ONTAP data using the ONTAP CLI
@@ -19,7 +19,7 @@ You might not be able to restore some ONTAP data using the Backup and Recovery w
 
 * Make sure you have access to the ONTAP CLI for the destination cluster and that you know which backup copy you want to restore.
 * If you restore to a different ONTAP cluster, that cluster must already have access to the same object store. If needed, configure the object store on the destination cluster before restoring.
-* Note that if a new backup relationship was created before you unregistered the system, NetApp Backup and Recovery might continue to show the older snapshots for up to one hour after the new backup is created. During that refresh window, UI-based restores of those older snapshots might fail.
+* If a new backup relationship was created before you unregistered the system, NetApp Backup and Recovery might continue to show the older snapshots for up to one hour after the new backup is created. During that refresh window, UI-based restores of those older snapshots might fail.
 
 .Steps
 

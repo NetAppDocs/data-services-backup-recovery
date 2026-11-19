@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-policies-hyper-v-create.html
 keywords: backing up, back up, backup, backup on-premises ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
-summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+summary: "Create Hyper-V backup policies in NetApp Backup and Recovery that control backup frequency, schedule, and retention, and edit or delete policies."
 ---
 
 = Create and manage Hyper-V backup policies in NetApp Backup and Recovery
@@ -15,7 +15,7 @@ Use NetApp Backup and Recovery to create Hyper-V backup policies that control ba
 
 If you import resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
 
-You can accomplish the following goals related to policies: 
+You can perform these policy tasks: 
 
 * Create a local snapshot policy
 * Create a policy for replication to secondary storage
@@ -52,7 +52,7 @@ If you are protecting data stored on a Cloud Volumes ONTAP cluster, the Cloud Vo
 
 .Before you begin
 
-If you plan on replicating to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
+If you plan to replicate to secondary storage and want to use snapshot locking on local snapshots or on remote ONTAP secondary storage, you first need to initialize the ONTAP compliance clock on the cluster level. This is a requirement for enabling snapshot locking in the policy.
 
 For instructions on how to do this, refer to https://docs.netapp.com/us-en/ontap/snaplock/initialize-complianceclock-task.html[Initialize the compliance clock in ONTAP^].
 

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-manage.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: With NetApp Backup and Recovery, manage backups for your Cloud Volumes ONTAP and on-premises ONTAP systems by changing the backup schedule, enabling volume backups, pausing backups, deleting backups, and more.  You can also unregister NetApp Backup and Recovery.
+summary: Manage backups for Cloud Volumes ONTAP and on-premises ONTAP systems by changing schedules, pausing or deleting backups, running ransomware scans, and unregistering the service.
 ---
 
 = Manage backups for your ONTAP systems with NetApp Backup and Recovery
@@ -17,7 +17,7 @@ Use NetApp Backup and Recovery to manage snapshot, replication, and object-stora
 
 //creating new backup policies, 
 
-CAUTION: Do not manage or change backup files directly on your storage systems or from your cloud provider environment. This may corrupt the files and will result in an unsupported configuration.
+CAUTION: Do not manage or change backup files directly on your storage systems or from your cloud provider environment. This might corrupt the files and results in an unsupported configuration.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
@@ -69,7 +69,7 @@ When working with multiple volumes, all volumes must have these common character
 
 * same system
 * same style (FlexVol or FlexGroup volume)
-* same type (Read-write or Data Protection volume)
+* same type (Read/write or Data Protection volume)
 
 When more than five volumes are enabled for backup, NetApp Backup and Recovery initializes only five volumes at a time. When those are finished, it continues in groups of 5 until all volumes are initialized.
 
@@ -107,7 +107,7 @@ The backup name includes the timestamp so you can identify your on-demand backup
 
 If you enabled _DataLock and Ransomware protection_ when activating NetApp Backup and Recovery for this cluster, the on-demand backup also will be configured with DataLock, and the retention period will be 30 days. Ransomware scans are not supported for ad-hoc backups. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection^].
 
-When you create an ad-hoc backup, a snapshot is created on the source volume. Because this snapshot is not part of a normal snapshot schedule, it will not rotate off. You may want to manually delete this snapshot from the source volume once the backup is complete. This will allow blocks related to this snapshot to be freed up. The name of the snapshot will begin with `cbs-snapshot-adhoc-`. https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html[See how to delete a snapshot using the ONTAP CLI^].
+When you create an ad-hoc backup, a snapshot is created on the source volume. Because this snapshot is not part of a normal snapshot schedule, it will not rotate off. You might want to manually delete this snapshot from the source volume after the backup is complete. This will allow blocks related to this snapshot to be freed up. The name of the snapshot will begin with `cbs-snapshot-adhoc-`. https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html[See how to delete a snapshot using the ONTAP CLI^].
 
 NOTE: On-demand volume backup isn't supported on data protection volumes.
 
@@ -193,7 +193,7 @@ The following table describes the available actions:
 
 | Pause Replication | Pause the incremental transfer of snapshots to update the destination volume. You can Resume later if you want to restart the incremental updates.
 
-| Break Replication | Breaks the relationship between the source and destination volumes, and activates the destination volume for data access - makes it read-write.
+| Break Replication | Breaks the relationship between the source and destination volumes, and activates the destination volume for data access - makes it read/write.
 
 This option is typically used when the source volume cannot serve data due to events such as data corruption, accidental deletion, or an offline state.
 
@@ -211,7 +211,7 @@ https://docs.netapp.com/us-en/ontap-sm-classic/volume-disaster-recovery/index.ht
 
 Any data written to the original source volume between the last data replication and the time that the source volume was disabled is not preserved.
 
-| Delete Relationship | Deletes the data protection relationship between the source and destination volumes, which means that data replication no longer occurs between the volumes. This action does not activate the destination volume for data access - meaning it does not make it read-write. This action also deletes the cluster peer relationship and the storage VM (SVM) peer relationship, if there are no other data protection relationships between the systems.
+| Delete Relationship | Deletes the data protection relationship between the source and destination volumes, which means that data replication no longer occurs between the volumes. This action does not activate the destination volume for data access - meaning it does not make it read/write. This action also deletes the cluster peer relationship and the storage VM (SVM) peer relationship, if there are no other data protection relationships between the systems.
 
 |===
 

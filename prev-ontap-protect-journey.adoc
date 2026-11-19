@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-protect-journey.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Plan how to protect ONTAP volumes with NetApp Backup and Recovery by choosing protection features, backup architecture, policies, object storage, and Console agent deployment mode."
 ---
 
 = Plan ONTAP volume protection in NetApp Backup and Recovery
@@ -13,14 +13,14 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-Use this page to plan how you'll protect your ONTAP volumes with NetApp Backup and Recovery. Review the protection methods, architectures, policies, object storage choices, and Console agent deployment modes before you enable backup and recovery.
+Plan how to protect your ONTAP volumes with NetApp Backup and Recovery. Review the protection methods, architectures, policies, object storage choices, and Console agent deployment modes before you enable backup and recovery.
 
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
-We'll go over the following options:
+Answer these questions to plan your protection:
 
-* Which protection features will you use: snapshots, replicated volumes, and/or backup to cloud
+* Which protection features will you use: snapshots, replicated volumes, or backup to cloud
 * Which backup architecture will you use: a cascade or fan-out backup of your volumes
 * Will you use the default backup policies, or do you need to create custom policies 
 * Do you want the service to create the cloud buckets for you, or do you want to make your object storage containers before you begin
@@ -29,7 +29,7 @@ We'll go over the following options:
 
 == Which protection features will you use
 
-Before you select the features you'll use, here's a quick explanation of what each feature does and the type of protection it provides.
+Review what each feature does and the type of protection it provides before you select the features to use.
 
 [options="header",cols="20,70",width="90%"]
 |===
@@ -49,10 +49,10 @@ Snapshots are the basis of all the backup methods, and they are required to use 
 
 image:diagram-321-overview.png["A diagram showing how backup files exist on the source system as snapshots, as replicated volumes on the secondary storage system, and as a backup files in object storage."]
 
-You can choose to create both replicated volumes on another ONTAP storage system and backup files in the cloud. Or you can choose just to create replicated volumes or backup files - it's your choice. 
+You can create replicated volumes on another ONTAP storage system, backup files in the cloud, or both. 
 //The service also enables you to select two replication destinations if you want to protect your data in an additional location (both with and without creating backup files).
 
-To summarize, these are the valid protection flows you can create for volumes in your ONTAP system:
+These are the valid protection flows you can create for volumes in your ONTAP system:
 
 * Source volume -> Snapshot -> Replicated volume -> Backup file
 * Source volume -> Snapshot -> Backup file
@@ -63,9 +63,9 @@ NOTE: The initial creation of a replicated volume or backup file includes a full
 
 *Comparison of the different backup methods*
 
-The following table shows a generalized comparison of the three backup methods. While object storage space is typically less expensive than your on-premises disk storage, if you think you might restore data from the cloud frequently, then the egress fees from cloud providers can reduce some of your savings. You'll need to identify how often you need to restore data from the backup files in the cloud.
+This table compares the three backup methods. Object storage is typically less expensive than on-premises disk storage. However, if you restore data from the cloud frequently, egress fees from cloud providers can reduce your savings. Identify how often you need to restore data from the backup files in the cloud.
 
-In addition to these criteria, cloud storage offers additional security options if you use the *DataLock and Ransomware protection* feature, and additional cost savings when you select archival storage classes for older backup files. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection and archival storage settings].
+In addition to these criteria, cloud storage offers extra security options if you use the *DataLock and Ransomware protection* feature, and extra cost savings when you select archival storage classes for older backup files. link:prev-ontap-policy-object-options.html[Learn more about DataLock and Ransomware protection and archival storage settings].
 
 [options="header",cols="18,18,22,18,22",width="100%"]
 |===
@@ -107,7 +107,7 @@ image:diagram-321-cascade-detailed.png["A diagram showing how a snapshot of a vo
 
 *Comparison of the different architecture choices*
 
-This table provides a comparison of the fan-out and cascade architectures.
+This table compares the fan-out and cascade architectures.
 
 [options="header",cols="50,50"]
 |===
@@ -115,7 +115,7 @@ This table provides a comparison of the fan-out and cascade architectures.
 | Fan-out
 | Cascade
 
-| Small performance impact on the source system because it is sending snapshots to 2 distinct systems | Less effect on the performance of the source storage system because it sends the snapshot only once
+| Small performance impact on the source system because it sends snapshots to two distinct systems | Less effect on the performance of the source storage system because it sends the snapshot only once
 | Easier to set up because all policies, networking, and ONTAP configurations are done on the source system | Requires some networking and ONTAP configuration to be done from the secondary system as well.
 
 |===
@@ -124,9 +124,9 @@ This table provides a comparison of the fan-out and cascade architectures.
 
 You can use the default policies provided by NetApp to create your backups, or you can create custom policies. When you use the activation wizard to enable the Backup and Recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want to use a policy different than those existing policies, you can create the policy before starting or while using the activation wizard.
 
-* The default snapshot policy creates hourly, daily, and weekly snapshots, retaining 6 hourly, 2 daily, and 2 weekly snapshots.
-* The default replication policy replicates daily and weekly snapshots, retaining 7 daily and 52 weekly snapshots.
-* The default backup policy replicates daily and weekly snapshots, retaining 7 daily and 52 weekly snapshots.
+* The default snapshot policy creates hourly, daily, and weekly snapshots, retaining six hourly, two daily, and two weekly snapshots.
+* The default replication policy replicates daily and weekly snapshots, retaining seven daily and 52 weekly snapshots.
+* The default backup policy replicates daily and weekly snapshots, retaining seven daily and 52 weekly snapshots.
 
 If you create custom policies for replication or backup, the policy labels (for example, "daily" or "weekly") must match the labels that exist in your snapshot policies or replicated volumes and backup files won't be created. 
 
@@ -144,7 +144,7 @@ In addition to using NetApp Backup and Recovery to create custom policies, you c
 
 
 
-Here are a few sample ONTAP CLI commands that might be helpful if you are creating custom policies. Note that you must use the _admin_ vserver (storage VM) as the `<vserver_name>` in these commands.
+These sample ONTAP CLI commands might help you create custom policies. You must use the _admin_ vserver (storage VM) as the `<vserver_name>` in these commands.
 
 [options="header",cols="30,70"]
 |===
@@ -203,7 +203,7 @@ These differences are shown in the table.
 
 |===
 
-So if you're planning to create custom policies when you use the cascade architecture, you'll need to create the replication and backup-to-object policies on the secondary system where the replicated volumes will be created. If you're planning to create custom policies when you use the fan-out architecture, you'll need to create the replication policies on the secondary system where the replicated volumes will be created and the backup-to-object policies on the primary system.
+If you create custom policies for the cascade architecture, create the replication and backup-to-object policies on the secondary system where the replicated volumes are created. If you use the fan-out architecture, create the replication policies on the secondary system where the replicated volumes are created and the backup-to-object policies on the primary system.
 
 If you're using the default policies that exist on all ONTAP systems, then you're all set.
 

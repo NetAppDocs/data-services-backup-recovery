@@ -9,7 +9,7 @@ IMPORTANT: Before making changes, check both the existing CoreDNS configuration 
 
 .Steps
 
-. Check the existing CoreDNS configuration to ensure that you are not overriding an existing change:
+. Check the existing CoreDNS configuration to confirm that you are not overriding an existing change:
 +
 [source,shell]
 ----

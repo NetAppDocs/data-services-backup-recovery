@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-reference-azure-archive-storage-tiers.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: NetApp Backup and Recovery supports one Azure archival access tier and most regions.
+summary: "Review the Azure archive access tier that NetApp Backup and Recovery supports, plus restore costs and retrieval times for archived backups."
 ---
 
 = Supported Azure archive access tiers with NetApp Backup and Recovery
@@ -13,23 +13,23 @@ summary: NetApp Backup and Recovery supports one Azure archival access tier and 
 :imagesdir: ./media/
 
 [.lead]
-Use this information to understand the Azure archive tier that NetApp Backup and Recovery supports. You can also review restore costs and retrieval times for archived backups.
+NetApp Backup and Recovery supports the Azure Archive access tier for tiering older backups to reduce storage costs. Archived backups cost more and take longer to restore, so review the restore costs and retrieval times before you tier your backups.
 
 == Supported Azure Blob access tiers for NetApp Backup and Recovery
 
 When backup files are initially created, they're stored in the _Cool_ access tier. This tier is optimized for storing data that's infrequently accessed, but it can be accessed immediately when needed.
 
 
-If your source clusters are running ONTAP 9.10.1 or greater, you can choose to tier backups from _Cool_ to _Azure Archive_ storage after a certain number of days (typically more than 30 days) for further cost optimization. Data in this tier can't be accessed immediately when needed, and will require a higher retrieval cost, so you need to consider how often you may need to restore data from these archived backup files. See the section on this page about restoring data from archival storage.
+If your source clusters are running ONTAP 9.10.1 or greater, you can choose to tier backups from _Cool_ to _Azure Archive_ storage after a certain number of days (typically more than 30 days) for further cost optimization. Data in this tier can't be accessed immediately when needed, and will require a higher retrieval cost, so you need to consider how often you might need to restore data from these archived backup files. See the section on this page about restoring data from archival storage.
 
 
-Note that when you configure NetApp Backup and Recovery with this type of lifecycle rule, you must not configure any lifecycle rules when setting up the container in your Azure account.
+When you configure NetApp Backup and Recovery with this type of lifecycle rule, don't configure any lifecycle rules when setting up the container in your Azure account.
 
 https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview[Learn about Azure Blob access tiers^].
 
 == Restore data from archival storage
 
-While storing older backup files in archival storage is much less expensive than Cool storage, accessing data from a backup file in Azure Archive for restore operations will take a longer amount of time and will cost more money.
+While storing older backup files in archival storage is much less expensive than Cool storage, accessing data from a backup file in Azure Archive for restore operations takes longer and costs more.
 
 How much does it cost to restore data from Azure Archive?::
 There are two restore priorities you can choose when retrieving data from Azure Archive:
@@ -43,7 +43,7 @@ Each method has a different per-GB retrieval fee and per-request fee. For detail
 NOTE: High priority is not supported when restoring data from Azure to StorageGRID systems.
 
 How long will it take to restore my data archived in Azure Archive?::
-There are 2 parts that make up the restore time:
+There are two parts that make up the restore time:
 
 * *Retrieval time*: The time to retrieve the archived backup file from Azure Archive and place it in Cool storage. This is sometimes called the "rehydration" time. The retrieval time is different depending on the restore priority you choose:
 ** *High*: < 1 hour

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-policies-kvm-create.html
 keywords: backing up, back up, backup, backup on-premises ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
-summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+summary: "Create KVM backup policies in NetApp Backup and Recovery that control backup frequency, schedule, and retention, and edit or delete them." 
 ---
 
 = Create and manage KVM backup policies in NetApp Backup and Recovery
@@ -15,7 +15,7 @@ Use NetApp Backup and Recovery to create KVM backup policies that control backup
 
 If you import resources from SnapCenter, you might encounter some differences with policies used in SnapCenter and those used in NetApp Backup and Recovery. See link:reference-policy-differences-snapcenter.html[Policy differences between SnapCenter and NetApp Backup and Recovery].
 
-You can accomplish the following goals related to policies: 
+You can complete these tasks with policies: 
 
 * Create a local snapshot policy
 * Create a policy for replication to secondary storage

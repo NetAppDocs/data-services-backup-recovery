@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-clone.html
 keywords: clone, clone application data, NetApp backup and recovery, VMware
-summary: Clone your VMware virtual machine workloads with NetApp Backup and Recovery. 
+summary: "Create, split, and remove writable clones of VMware virtual machines from primary or secondary snapshots with NetApp Backup and Recovery." 
 ---
 
 = Clone VMware workloads using NetApp Backup and Recovery
@@ -75,7 +75,7 @@ Schedule an instant clone creation and continuous refresh of the clone. This cre
 ////
 == Split a clone
 
-You can split a clone of a VMware VM to detach it from its parent volume. Once split, the clone becomes an independent volume that no longer depends on the parent.
+You can split a clone of a VMware VM to detach it from its parent volume. After the split, the clone becomes an independent volume that no longer depends on the parent.
 
 After the split, the datastores associated with the cloned VM become a new, independent datastore. The cloned VM itself is preserved.
 

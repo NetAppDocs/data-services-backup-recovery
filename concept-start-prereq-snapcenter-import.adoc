@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept-start-prereq-snapcenter-import.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery, snapcenter, import, migration, migrate
-summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
+summary: "Prepare to import SnapCenter Microsoft SQL Server resources into NetApp Backup and Recovery by adding systems, checking host requirements, and disabling UAC remote restrictions."
 ---
 
 = SnapCenter import prerequisites for NetApp Backup and Recovery
@@ -13,11 +13,11 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 :imagesdir: ./media/
 
 [.lead]
-Before you import resources from the SnapCenter Plug-in for Microsoft SQL Server into NetApp Backup and Recovery, make sure your environment meets these additional requirements.
+Prepare to import resources from the SnapCenter Plug-in for Microsoft SQL Server into NetApp Backup and Recovery by adding your systems to the Console, confirming host requirements, and disabling User Account Control remote restrictions.
 
 == Create systems in NetApp Console first 
 
-If you are going to import resources from SnapCenter, you should add all on-premises SnapCenter cluster storage to the Console *Systems* page first before importing from SnapCenter. This ensures that host resources can be discovered and imported correctly.
+Before you import resources from SnapCenter, add all on-premises SnapCenter cluster storage to the Console *Systems* page so that the Console can discover and import host resources correctly.
 
 
 == Ensure host requirements for the SnapCenter Plug-in
@@ -117,7 +117,7 @@ CAUTION: Running PowerShell commands with elevated privileges can affect system 
 .. Search for *PowerShell 7* or *Windows Powershell*.
 .. Right-click on that option and select *Run as administrator*.
 
-. Ensure that PowerShell is installed on your system. After installation, it should appear in the *Start* menu. 
+. Confirm that PowerShell is installed on your system. After installation, it should appear in the *Start* menu. 
 +
 TIP: PowerShell is included by default in Windows 7 and later versions. 
 
