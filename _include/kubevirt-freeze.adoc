@@ -1,4 +1,4 @@
-Trident Protect provides filesystem freeze and unfreeze capabilities for KubeVirt virtual machines during data protection operations to ensure data consistency. The configuration method and default behavior for VM freeze operations varies across Trident Protect versions, with newer releases offering simplified configuration through Helm chart parameters.
+Trident Protect provides filesystem freeze and unfreeze capabilities for KubeVirt virtual machines during data protection operations to ensure data consistency. The configuration method and default behavior for VM freeze operations vary across Trident Protect versions, with newer releases offering simplified configuration through Helm chart parameters.
 
 NOTE: During restore operations, any `VirtualMachineSnapshots` created for a virtual machine (VM) are not restored.
 

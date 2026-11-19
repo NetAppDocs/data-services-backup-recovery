@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-hyper-v-restore-guest-files-and-folders.html
 keywords: restore, guest, files, folders, files and folders, Windows, VM, virtual machine, browse, mount, virtual disk, session, snapshot, backup
-summary: You can restore one or more files or folders from a Hyper-V VM snapshot to a Windows guest VM.
+summary: "Restore files and folders from a Hyper-V VM snapshot to the original Windows guest VM by mounting a virtual disk from the snapshot."
 ---
 
 = Restore Hyper-V guest files and folders with NetApp Backup and Recovery
@@ -29,7 +29,7 @@ When you open a file and folder restore session by mounting a virtual disk, the 
 
 Restore performance depends on both the size and the number of files or folders being restored. For a given data set size, restoring a large number of small files typically takes longer than restoring a small number of large files.
 
-Note the following when restoring files and folders:
+Keep these points in mind when restoring files and folders:
 
 [NOTE]
 =====
@@ -74,7 +74,7 @@ Files and folders you have selected to restore are listed in the *Selected files
 
 +
 If there are existing files with the same name, you can choose to overwrite or skip them.
-. In the *Post-restore options* section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the virtual disk and unmounts the datastore. This means you will need to reconnect the guest session before performing any additional file and folder restore operations.
+. In the *Post-restore options* section, you can optionally disconnect the guest session after the restore completes by enabling the *Disconnect guest session after the restore completes* setting. This detaches the virtual disk and unmounts the datastore. You must then reconnect the guest session before performing any additional file and folder restore operations.
 . Select *Restore*.
 +
 You can view the restore progress on the Job Monitoring page.

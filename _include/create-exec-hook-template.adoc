@@ -10,7 +10,7 @@ NOTE: Templates that you create here are only usable when protecting Kubernetes 
 . Expand the *Execution hook template* section.
 . Select *Create execution hook template*.
 . Enter a name for the execution hook.
-. Optionally, choose a type of hook. For example, a post-restore hook is run after the restore operation is complete.
+. Optionally, choose a type of hook. For example, a post-restore hook runs after the restore operation completes.
 . In the *Script* text box, enter the executable shell script that you want to run as part of the execution hook template. Optionally, you can select *Upload script* to upload a script file instead.
 . Select *Create*.
 +

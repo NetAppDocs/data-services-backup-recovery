@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-onprem-gcp.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Back up on-premises ONTAP volume data to Google Cloud Storage with NetApp Backup and Recovery, including preparing the Console agent, ONTAP clusters, and bucket permissions."
 ---
 
-= Back up on-premises ONTAP data to Google Cloud Storage with NetApp Backup and Recovery
+= Back up on-premises ONTAP data to Google Cloud with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, you can back up volume data from your on-premises ONTAP systems to a secondary storage system and to Google Cloud Storage. Use this page to prepare your environment and activate backups.
+Back up volume data from your on-premises ONTAP systems to Google Cloud Storage and to a secondary storage system by using NetApp Backup and Recovery. Prepare your environment, and then activate backups.
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
@@ -31,7 +31,7 @@ Choose which of the two connection methods you will use when configuring backups
 * *Public connection* - Directly connect the ONTAP system to Google Cloud Storage using a public Google endpoint.
 * *Private connection* - Use a VPN or Google Cloud Interconnect and route traffic through a Private Google Access interface that uses a private IP address.
 
-Optionally, you can connect to a secondary ONTAP system for replicated volumes using the public or private connection as well.
+You can also use the public or private connection to connect to a secondary ONTAP system for replicated volumes.
 
 The following diagram shows the *public connection* method and the connections that you need to prepare between the components. The Console agent must be deployed in the Google Cloud Platform VPC.
 //You can use a Console agent that you've installed on your premises, or a Console agent that you've deployed in the Google Cloud Platform VPC.
@@ -51,7 +51,7 @@ The Console agent is the main software for NetApp Console functionality. A Conso
 
 If you already have a Console agent deployed in your Google Cloud Platform VPC, then you're all set. 
 
-If not, then you'll need to create a Console agent in that location to back up ONTAP data to Google Cloud Storage. You can't use a Console agent that's deployed in another cloud provider, or on-premises.
+If you don't have one, create a Console agent in that location to back up ONTAP data to Google Cloud Storage. You can't use a Console agent that's deployed in another cloud provider, or on-premises.
 
 * https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
 * https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-google.html[Install a Console agent in GCP^]
@@ -80,7 +80,7 @@ To use the NetApp Backup and Recovery "Search & Restore" functionality, you need
 
 . In the https://console.cloud.google.com[Google Cloud Console^], go to the *Roles* page.
 
-. Using the drop-down list at the top of the page, select the project or organization that contains the role that you want to edit.
+. From the drop-down list at the top of the page, select the project or organization that contains the role that you want to edit.
 
 . Select a custom role.
 
@@ -140,18 +140,18 @@ The following ONTAP cluster networking requirements are needed:
 
 * The ONTAP cluster initiates an HTTPS connection over port 443 from the intercluster LIF to Google Cloud Storage for backup and restore operations.
 +
-ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
+ONTAP reads and writes data to and from object storage. The object storage never initiates a connection. It only responds.
 +
 * ONTAP requires an inbound connection from the Console agent to the cluster management LIF. The Console agent can reside in a Google Cloud Platform VPC.
 
 * An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[Learn more about IPspaces^].
 +
 When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
-* The nodes' intercluster LIFs are able to access the object store.
+* The nodes' intercluster LIFs can access the object store.
 * DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
 +
 If you're using Private Google Access or Private Service Connect, make sure your DNS servers have been configured to point `storage.googleapis.com` to the correct internal (private) IP address. 
-* Note that if you are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
+* If you use an IPspace other than Default, you might need to create a static route to access the object storage.
 * Update firewall rules, if necessary, to allow NetApp Backup and Recovery connections from ONTAP to object storage through port 443, and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
 
 ===  Verify ONTAP networking requirements for replicating volumes
@@ -248,8 +248,8 @@ cloudkms.keyRings.setIamPolicy
 *CMEK considerations:*
 
 * Both HSM (Hardware-backed) and Software-generated keys are supported.
-* Both newly created or imported Cloud KMS keys are supported.
-* Only regional keys are supported, global keys are not supported.
+* Both newly created and imported Cloud KMS keys are supported.
+* Only regional keys are supported. Global keys are not supported.
 * Currently, only the "Symmetric encrypt/decrypt" purpose is supported.
 * The service agent associated with the Storage Account is assigned the "CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)" IAM role by NetApp Backup and Recovery. 
 

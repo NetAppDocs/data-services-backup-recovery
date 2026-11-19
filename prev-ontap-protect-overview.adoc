@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: prev-ontap-protect-overview.html
 keywords: ontap volumes, protect volumes, back up volumes, restore volumes, snapshots, replication, backup to object storage, 3-2-1, FlexVol, FlexGroup, SnapLock, DataLock, ransomware protection, NetApp Backup and Recovery
-summary: Use NetApp Backup and Recovery to protect ONTAP volumes with snapshots, replicated volumes, and backups in object storage, and restore volumes, folders, or files from any copy.
+summary: "Use NetApp Backup and Recovery to protect ONTAP volumes with snapshots, replicated volumes, and backups in object storage, and restore volumes, folders, or files from any copy."
 ---
 
-= Protect ONTAP volumes workloads with NetApp Backup and Recovery
+= Learn about ONTAP volume protection with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -26,7 +26,7 @@ image:diagram-321-overview-unified.png[A diagram showing how backup files exist 
 The 3-2-1 approach provides the following benefits:
 
 * Multiple data copies protect against internal and external cybersecurity threats.
-* Using different types of media helps you recover if one type fails.
+* Different types of media help you recover if one type fails.
 * You can quickly restore from the onsite copy, and use the offsite copies if the onsite copy is compromised.
 
 When necessary, you can restore an entire _volume_, a _folder_, or one or more _files_, from any of the copies to the same or a different system.
@@ -47,7 +47,7 @@ Each type of copy resides in a different location:
 * _Replicated volumes_ reside on the secondary storage system, which can be a Cloud Volumes ONTAP or on-premises ONTAP system.
 * _Backup copies_ reside in an object store in your cloud account or on your premises. The Console creates one object store for each cluster. Refer to link:concept-backup-to-cloud.html#where-backups-reside-in-object-store-locations[Where backups reside in object store locations] for details about how the Console creates and names the object store.
 
-CAUTION: Do not manage or change backup files directly from your storage systems or your cloud provider environment. Doing so can corrupt the files and results in an unsupported configuration.
+CAUTION: Do not manage or change backup files directly from your storage systems or your cloud provider environment. Doing so can corrupt the files and result in an unsupported configuration.
 
 To plan which copies and architecture to use, refer to link:prev-ontap-protect-journey.html[Plan ONTAP volume protection].
 
@@ -58,7 +58,7 @@ To plan which copies and architecture to use, refer to link:prev-ontap-protect-j
 * Replicate data between ONTAP storage systems to support backup and disaster recovery.
 * Replicate multiple FlexVol volumes at a time to a secondary system.
 * Use native ONTAP in-flight encryption with a pre-shared key (PSK) between the two systems.
-* Rely on self-healing replication in the event of a transfer failure.
+* Rely on self-healing replication if a transfer fails.
 * Restore a replicated volume to the source system or to a different system.
 
 For features in https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp Replication^] that are unavailable when you replicate with Backup and Recovery, refer to link:br-reference-limitations.html#replication-limitations-for-ontap-volumes[Replication limitations for ONTAP volumes].
@@ -87,7 +87,7 @@ Refer to link:prev-ontap-restore.html[Restore ONTAP volumes workloads] for resto
 
 NetApp Backup and Recovery supports the following types of volumes:
 
-* FlexVol read-write volumes
+* FlexVol read/write volumes
 * FlexGroup volumes (requires ONTAP 9.12.1 or later)
 * SnapLock Enterprise volumes (requires ONTAP 9.11.1 or later)
 * SnapLock Compliance for on-premises volumes (requires ONTAP 9.14 or later)

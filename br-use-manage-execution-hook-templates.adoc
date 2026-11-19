@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-manage-execution-hook-templates.html
 keywords: hooks, execution hooks, exec hooks, hook, execution, script, postscript, prescript, post, pre, run, backup, snapshot, freeze
-summary: NetApp Backup and Recovery enables you to manage execution hooks to take action before or after application protection operations.  
+summary: "Manage execution hooks to run custom scripts before or after protection operations on Kubernetes applications in NetApp Backup and Recovery."  
 ---
 
 = Manage Kubernetes execution hook templates in NetApp Backup and Recovery
@@ -68,7 +68,7 @@ Consider the following when planning execution hooks for your applications.
 NOTE: Execution hooks can reduce or disable application functionality. Make your custom hooks run as quickly as possible. If you cancel a backup or snapshot operation that has associated execution hooks, those hooks still run if the operation has already begun. A post-backup execution hook's logic cannot assume that the backup completed.
 
 == Execution hook filters
-When you add or edit an execution hook for an application, you can add filters to the execution hook to control which containers the hook matches. Filters are useful for applications that use the same container image on all containers, but might use each image for a different purpose (such as Elasticsearch). Filters allow you to create scenarios where execution hooks run on some but not necessarily all identical containers. If you create multiple filters for a single execution hook, they are combined with a logical AND operator. You can have up to 10 active filters per execution hook.
+When you add or edit an execution hook for an application, you can add filters to the execution hook to control which containers the hook matches. Filters are useful for applications that use the same container image on all containers, but might use each image for a different purpose (such as Elasticsearch). Filters let execution hooks run on some, but not all, identical containers. If you create multiple filters for a single execution hook, they are combined with a logical AND operator. You can have up to 10 active filters per execution hook.
 
 Each filter you add to an execution hook uses a regular expression to match containers in your cluster. When a hook matches a container, the hook runs its associated script on that container. Regular expressions for filters use the Regular Expression 2 (RE2) syntax, which does not support creating a filter that excludes containers from the list of matches. For information on the syntax that NetApp Backup and Recovery supports for regular expressions in execution hook filters, see https://github.com/google/re2/wiki/Syntax[Regular Expression 2 (RE2) syntax support^].
 

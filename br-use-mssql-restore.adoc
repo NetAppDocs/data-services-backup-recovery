@@ -104,7 +104,7 @@ The destination options appear.
 
 . Select *Restore*.
 
-=== Restore to specific point in time
+=== Restore to a specific point in time
 
 NetApp Backup and Recovery uses logs and the most recent snapshots to create a point-in-time restore of your data. 
 

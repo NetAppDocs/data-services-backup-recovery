@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: br-start-setup.html
 keywords: backup, back up, restore, recovery, aws, azure
-summary: Prepare an offsite location, such as StorageGRID, AWS, or Azure, and configure the required permissions so it can serve as a backup destination.
+summary: "Set up backup destinations and configure S3 permissions for NetApp Backup and Recovery."
 ---
 
-= Set up backup destinations
+= Set up backup destinations for NetApp Backup and Recovery
 :hardbreaks:
 :icons: font
 :imagesdir: ./media/
@@ -43,7 +43,7 @@ Do the following to prepare AWS as a backup destination:
 ** For details about managing your Azure storage in the Console, see https://docs.netapp.com/us-en/storage-management-blob-storage/task-view-azure-blob-storage.html[Manage your Azure storage accounts^].
 
 
-After you configure options in the backup destination itself, you will later configure it as a backup destination in NetApp Backup and Recovery. For details about how to configure the backup destination in NetApp Backup and Recovery, see link:br-start-discover-backup-targets.html[Discover backup targets].
+After you configure the backup destination itself, add it as a backup destination in NetApp Backup and Recovery. For details about how to configure the backup destination in NetApp Backup and Recovery, see link:br-start-discover-backup-targets.html[Discover backup targets].
 
 
 
@@ -56,11 +56,11 @@ You'll need to configure two sets of AWS S3 permissions:
 
 .Steps
 
-. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions].
+. Confirm that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions].
 +
 NOTE: When creating backups in AWS China regions, you need to change the AWS Resource Name "arn" under all _Resource_ sections in the IAM policies from "aws" to "aws-cn"; for example `arn:aws-cn:s3:::netapp-backup-*`.
 
-. When you activate the service, the Backup wizard will prompt you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you'll need to create an IAM user with the following permissions. 
+. When you activate the service, the Backup wizard prompts you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you'll need to create an IAM user with the following permissions. 
 + 
 See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^].
 

@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-cvo-azure.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Back up Cloud Volumes ONTAP volumes to Azure Blob storage with NetApp Backup and Recovery, verify requirements, enable the service, and activate backups on volumes." 
 ---
 
-= Back up Cloud Volumes ONTAP to Azure Blob storage with NetApp Backup and Recovery
+= Back up Cloud Volumes ONTAP to Azure Blob Storage with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -19,9 +19,9 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 == Verify support for your configuration
 
-Read the following requirements to make sure that you have a supported configuration before you start backing up volumes to Azure Blob storage.
+Make sure you have a supported configuration before you start backing up volumes to Azure Blob Storage.
 
-The following image shows each component and the connections that you need to prepare between them.
+The image shows each component and the connections that you need to prepare between them.
 
 Optionally, you can connect to a secondary ONTAP system for replicated volumes using the public or private connection as well.
 
@@ -160,7 +160,7 @@ https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.ht
 
 === Requirements for using customer-managed keys for data encryption
 
-You can use your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case, you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
+You can use your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case, you need the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
 
 NetApp Backup and Recovery supports _Azure access policies_, the _Azure role-based access control_ (Azure RBAC) permission model and the _Managed Hardware Security Model_ (HSM) (refer to https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview[What is Azure Key Vault Managed HSM?]).
 
@@ -343,7 +343,7 @@ To create a policy, select *Create new policy* and do the following:
 *** Select the region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
 *** Either create your own resource group that manages the Blob container or select the resource group type and group.  
 +
-TIP: If you want to protect your backup files from being modified or deleted, ensure that the storage account was created with immutable storage enabled using a 30-day retention period. 
+TIP: If you want to protect your backup files from being modified or deleted, confirm that the storage account was created with immutable storage enabled using a 30-day retention period. 
 
 * *Encryption key*: If you created a new Azure storage account, enter encryption key information given to you from the provider. Choose whether you'll use the default Azure encryption keys, or choose your own customer-managed keys from your Azure account, to manage encryption of your data. 
 
@@ -386,7 +386,7 @@ To create a policy, select *Create new policy* and do the following:
 
 === Review your selections 
 
-This is the chance to review your selections and make adjustments, if necessary. 
+Review your selections and make adjustments if necessary. 
 
 .Steps 
 
@@ -410,7 +410,7 @@ You can also monitor the status of backup and restore jobs using the link:br-use
 
 === Show the API commands 
 
-You might want to display and optionally copy the API commands used in the Activate Backup and Recovery wizard. You might want to do this to automate backup activation in future systems. 
+Display and optionally copy the API commands used in the Activate Backup and Recovery wizard to automate backup activation in future systems. 
 
 .Steps 
 

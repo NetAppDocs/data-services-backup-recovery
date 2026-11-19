@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: reference-policy-differences-snapcenter.html
 keywords: backup policy, backup policies, snapcenter, migration
-summary: There are some differences between policies used in NetApp Backup and Recovery and those used in SnapCenter.
+summary: "Compare SnapCenter and NetApp Backup and Recovery policy schedule tiers, retention, and labels to understand how imported resources and policies change."
 ---
 
 = Policy differences between SnapCenter and NetApp Backup and Recovery
@@ -11,7 +11,7 @@ summary: There are some differences between policies used in NetApp Backup and R
 :imagesdir: ./media/
 
 [.lead]
-Use this reference to understand the policy differences between SnapCenter and NetApp Backup and Recovery that can affect imported resources and policies.
+SnapCenter and NetApp Backup and Recovery handle policy schedules, retention, and labels differently, which can affect imported resources and policies.
 
 == Schedule tiers
 
@@ -54,9 +54,9 @@ NetApp Backup and Recovery adjusts SnapCenter schedules as follows:
 
 SnapCenter hourly policies with repeating intervals greater than one hour are converted to a daily policy in NetApp Backup and Recovery.
 
-Any hourly policy with repeating intervals that are not a factor of 24 (for example 5, 7, etc) will skip some snapshots in a day.
+Any hourly policy with a repeating interval that is not a factor of 24, for example 5 or 7, skips some snapshots in a day.
 
-*Example*: If you have a SnapCenter hourly policy with a repeating interval every 5 hours starting at 1:00 AM, NetApp Backup and Recovery (after migration) will set the schedule to daily with 5-hour intervals at 1:00 AM, 6:00 AM, 11:00 AM, 4:00 PM, and 9:00 PM. Some hours will be skipped — after 9:00 PM it should be 2:00 AM to repeat every 5 hours, but it will always be 1:00 AM.
+*Example*: If you have a SnapCenter hourly policy with a repeating interval every 5 hours starting at 1:00 AM, NetApp Backup and Recovery (after migration) will set the schedule to daily with 5-hour intervals at 1:00 AM, 6:00 AM, 11:00 AM, 4:00 PM, and 9:00 PM. Some hours are skipped. After 9:00 PM, the next snapshot should be at 2:00 AM to repeat every 5 hours, but it is always at 1:00 AM.
 
 
 == Log retention from SnapCenter policies

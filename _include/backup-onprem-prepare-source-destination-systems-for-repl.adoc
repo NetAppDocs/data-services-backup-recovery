@@ -10,7 +10,7 @@ If you plan to create replicated volumes on a secondary ONTAP system using NetAp
 
 * ONTAP clusters must meet additional subnet, port, firewall, and cluster requirements.
 +
-Because you can replicate to Cloud Volumes ONTAP or an on-premises systems, review peering requirements for on-premises ONTAP systems. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html[View prerequisites for cluster peering in the ONTAP documentation^].
+Because you can replicate to Cloud Volumes ONTAP or on-premises systems, review peering requirements for on-premises ONTAP systems. https://docs.netapp.com/us-en/ontap-sm-classic/peering/reference_prerequisites_for_cluster_peering.html[View prerequisites for cluster peering in the ONTAP documentation^].
 
 ==== Cloud Volumes ONTAP networking requirements
 

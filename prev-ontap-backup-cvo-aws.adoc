@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-cvo-aws.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Back up Cloud Volumes ONTAP data to Amazon S3 by verifying requirements, preparing the Console agent, and activating backups in NetApp Backup and Recovery." 
 ---
 
 = Back up Cloud Volumes ONTAP to Amazon S3 with NetApp Backup and Recovery
@@ -19,11 +19,11 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 == Verify support for your configuration
 
-Read the following requirements to make sure that you have a supported configuration before you start backing up volumes to S3.
+Verify that you meet the requirements for a supported configuration before you start backing up volumes to S3.
 
 The following image shows each component and the connections that you need to prepare between them.
 
-Optionally, you can connect to a secondary ONTAP system for replicated volumes using the public or private connection as well.
+You can also connect to a secondary ONTAP system for replicated volumes through a public or private connection.
 
 image:diagram_cloud_backup_cvo_aws.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
@@ -36,7 +36,7 @@ Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended.
 
 Required information for using customer-managed keys for data encryption::
 
-You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
+You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case, you must already have set up your customer-managed keys. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
 
 == Verify license requirements
 
@@ -44,7 +44,7 @@ For NetApp Backup and Recovery PAYGO licensing, a Console subscription is availa
 
 For an annual contract that enables you to back up both Cloud Volumes ONTAP data and on-premises ONTAP data, you need to subscribe from the https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri[AWS Marketplace page^] and then https://docs.netapp.com/us-en/console-setup-admin/task-adding-aws-accounts.html[associate the subscription with your AWS credentials^].
 
-For an annual contract that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery, you must set up the annual contract when you create a Cloud Volumes ONTAP system. This option doesn't enable you to back up on-prem data.
+For an annual contract that enables you to bundle Cloud Volumes ONTAP and NetApp Backup and Recovery, you must set up the annual contract when you create a Cloud Volumes ONTAP system. This option doesn't enable you to back up on-premises data.
 
 For NetApp Backup and Recovery BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:br-start-licensing.html[Learn how to manage your BYOL licenses]. You must use a BYOL license when the Console agent and Cloud Volumes ONTAP system are deployed in a dark site.
 

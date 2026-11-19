@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-reference-aws-archive-storage-tiers.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: NetApp Backup and Recovery supports two S3 archival storage classes and most regions.
+summary: "Choose an AWS S3 Glacier or S3 Glacier Deep Archive tier for backups, and review restore priorities, costs, and retrieval times for archived data."
 ---
 
 = Supported AWS archive storage tiers with NetApp Backup and Recovery
@@ -13,7 +13,7 @@ summary: NetApp Backup and Recovery supports two S3 archival storage classes and
 :imagesdir: ./media/
 
 [.lead]
-Use this information to choose an AWS S3 archive tier for NetApp Backup and Recovery backups. You can also review restore costs and retrieval times for archived backups.
+Choose an AWS S3 archive tier for NetApp Backup and Recovery backups, and review restore costs and retrieval times for archived backups.
 
 == Supported S3 archival storage classes for NetApp Backup and Recovery
 
@@ -22,23 +22,23 @@ When backup files are initially created, they're stored in S3 _Standard_ storage
 If your source clusters are running ONTAP 9.10.1 or greater, you can choose to tier backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage after a certain number of days (typically more than 30 days) for further cost optimization. You can set this to "0" or to 1-999 days. If you set it to "0" days, you cannot change it later to 1-999 days. 
 
 
-Data in these tiers can't be accessed immediately when needed, and will require a higher retrieval cost, so you need to consider how often you may need to restore data from these archived backup files. See the section on this page about restoring data from archival storage.
+Data in these tiers can't be accessed immediately when needed, and will require a higher retrieval cost, so you need to consider how often you might need to restore data from these archived backup files. See the section about restoring data from archival storage.
 
 
 * If you select no archive tier in your first backup policy when activating NetApp Backup and Recovery, then _S3 Glacier_ will be your only archive option for future policies.
 * If you select _S3 Glacier_ in your first backup policy, then you can change to the _S3 Glacier Deep Archive_ tier for future backup policies for that cluster.
 * If you select _S3 Glacier Deep Archive_ in your first backup policy, then that tier will be the only archive tier available for future backup policies for that cluster.
 
-Note that when you configure NetApp Backup and Recovery with this type of lifecycle rule, you must not configure any lifecycle rules when setting up the bucket in your AWS account.
+When you configure NetApp Backup and Recovery with this type of lifecycle rule, don't configure any lifecycle rules when you set up the bucket in your AWS account.
 
 https://aws.amazon.com/s3/storage-classes/[Learn about S3 storage classes^].
 
 == Restore data from archival storage
 
-While storing older backup files in archival storage is much less expensive than Standard or Standard-IA storage, accessing data from a backup file in archive storage for restore operations will take a longer amount of time and will cost more money.
+While storing older backup files in archival storage is much less expensive than Standard or Standard-IA storage, accessing data from a backup file in archive storage for restore operations takes longer and costs more.
 
 How much does it cost to restore data from Amazon S3 Glacier and Amazon S3 Glacier Deep Archive?::
-There are 3 restore priorities you can choose when retrieving data from Amazon S3 Glacier, and 2 restore priorities when retrieving data from Amazon S3 Glacier Deep Archive. S3 Glacier Deep Archive costs less than S3 Glacier:
+You can choose from three restore priorities when retrieving data from Amazon S3 Glacier, and two restore priorities when retrieving data from Amazon S3 Glacier Deep Archive. S3 Glacier Deep Archive costs less than S3 Glacier:
 +
 [options="header",cols="25,25,25,25",width="95%"]
 |===
@@ -55,9 +55,9 @@ There are 3 restore priorities you can choose when retrieving data from Amazon S
 Each method has a different per-GB retrieval fee and per-request fee. For detailed S3 Glacier pricing by AWS Region, visit the https://aws.amazon.com/s3/pricing/[Amazon S3 pricing page^].
 
 How long will it take to restore my objects archived in Amazon S3 Glacier?::
-There are 2 parts that make up the total restore time:
+The total restore time has two parts:
 
-* *Retrieval time*: The time to retrieve the backup file from archive and place it in Standard storage. This is sometimes called the "rehydration" time. The retrieval time is different depending on the restore priority you choose.
+* *Retrieval time*: The time to retrieve the backup file from archive and place it in Standard storage. This is sometimes called the "rehydration" time. The retrieval time varies depending on the restore priority you choose.
 +
 [options="header",cols="25,20,20,20",width="95%"]
 |===
@@ -71,7 +71,7 @@ There are 2 parts that make up the total restore time:
 
 |===
 
-* *Restore time*: The time to restore the data from the backup file in Standard storage. This time is no different than the typical restore operation directly from Standard storage - when not using an archival tier.
+* *Restore time*: The time to restore the data from the backup file in Standard storage. This time is no different from a typical restore operation directly from Standard storage when you don't use an archival tier.
 +
 For more information about Amazon S3 Glacier and S3 Glacier Deep Archive retrieval options, refer to https://aws.amazon.com/s3/faqs/#Amazon_S3_Glacier[the Amazon FAQ about these storage classes^].
 

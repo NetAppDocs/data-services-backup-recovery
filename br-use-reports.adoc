@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-reports.html
 keywords: reports, protection report, protection overview, usage and charges, status summary, audit report, kubernetes overview, schedule report, download report, delete report, backup status, workloads
-summary: In NetApp Backup and Recovery, create reports for your workload to review protection status, job status, usage, and audit details.
+summary: "In NetApp Backup and Recovery, create reports for your workload to review protection status, job status, usage, and audit details."
 ---
 
 = Create and manage reports in NetApp Backup and Recovery
@@ -60,7 +60,7 @@ NOTE: The *By workload* list does not include ONTAP Volumes. To create a report 
 +
 This option is disabled by default. By default, reports are sent to all users in the organization. To send reports to specific recipients, configure email notifications on the *Settings* page under *Notifications*. For details about configuring email notifications, see link:br-start-configure.html[Configure settings].
 
-. Under *Retention*, in *Keep for*, choose how long to keep the report before it is deleted. 30 days is the default.
+. Under *Retention*, in *Keep for*, choose how long to keep the report before it is deleted. The default is 30 days.
 . Select *Add*.
 +
 The report appears at the top of the *Generated reports* list. When the report is ready, a success message appears and you can download or delete the report.

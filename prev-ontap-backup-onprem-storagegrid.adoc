@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-onprem-storagegrid.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Complete a few steps in NetApp Backup and Recovery to get started backing up volume data from your on-premises primary ONTAP systems to a secondary storage system and to object storage in your NetApp StorageGRID systems. 
+summary: "Back up volume data from on-premises ONTAP systems to a secondary storage system and StorageGRID object storage by preparing your environment and activating backups." 
 ---
 
 = Back up on-premises ONTAP data to StorageGRID with NetApp Backup and Recovery
@@ -13,7 +13,7 @@ summary: Complete a few steps in NetApp Backup and Recovery to get started backi
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, you can back up volume data from your primary on-premises ONTAP systems to a secondary storage system and to StorageGRID object storage. Use this page to prepare your environment and activate backups.
+Use NetApp Backup and Recovery to back up volume data from your primary on-premises ONTAP systems to a secondary storage system and to StorageGRID object storage. Prepare your environment, and then activate backups to protect your volumes.
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
@@ -85,13 +85,13 @@ The following ONTAP cluster networking requirements are needed:
 
 * The ONTAP cluster initiates an HTTPS connection over a user-specified port from the intercluster LIF to the StorageGRID Gateway Node for backup and restore operations. The port is configurable during backup setup.
 +
-ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
+ONTAP reads and writes data to and from object storage. The object storage never initiates a connection. It only responds.
 +
 * ONTAP requires an inbound connection from the Console agent to the cluster management LIF. The Console agent must reside on your premises.
 
 * An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage. https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[Learn more about IPspaces^].
 +
-When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+When you set up NetApp Backup and Recovery, you are prompted for the IPspace to use. Choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
 * The nodes' intercluster LIFs are able to access the object store (not required when the Console agent is installed in a "dark" site).
 * DNS servers have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
 * If you are using a different IPspace than the Default, then you might need to create a static route to get access to the object storage.
@@ -144,7 +144,7 @@ You must not enable StorageGRID object versioning manually on the object store b
 
 === Prepare to archive older backup files to public cloud storage
 
-Tiering older backup files to archival storage saves money by using a less expensive storage class for backups that you may not need. StorageGRID is an on-premises (private cloud) solution that doesn't provide archival storage, but you can move older backup files to public cloud archival storage. When used in this fashion, data that is tiered to cloud storage, or restored from cloud storage, goes between StorageGRID and the cloud storage - the Console is not involved in this data transfer.
+Tiering older backup files to archival storage saves money by using a less expensive storage class for backups that you might not need. StorageGRID is an on-premises (private cloud) solution that doesn't provide archival storage, but you can move older backup files to public cloud archival storage. With this setup, data that you tier to cloud storage, or restore from cloud storage, goes between StorageGRID and the cloud storage. The Console isn't involved in this data transfer.
 
 Current support enables you to archive backups to AWS _S3 Glacier_/_S3 Glacier Deep Archive_ or _Azure Archive_ storage.
 

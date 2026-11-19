@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept-start-prereq.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, backup and recovery
-summary: Get started with NetApp Backup and Recovery by verifying the readiness of your operational environment, Console agent, and Console account. To use NetApp Backup and Recovery, you'll need these prerequisites.
+summary: "Verify the NetApp Console, object storage, and workload requirements for protecting ONTAP volumes, SQL Server, VMware, KVM, Oracle, Kubernetes, and Hyper-V with NetApp Backup and Recovery."
 ---
 = NetApp Backup and Recovery requirements
 :hardbreaks:
@@ -13,7 +13,7 @@ summary: Get started with NetApp Backup and Recovery by verifying the readiness 
 :table-caption!:
 
 [.lead]
-Before you begin using NetApp Backup and Recovery, ensure your NetApp Console and operational environment meet the following requirements.
+Verify that your NetApp Console and operational environment meet the requirements for protecting your ONTAP volume, database, virtual machine, and Kubernetes workloads with NetApp Backup and Recovery.
 
 == Prepare to use NetApp Backup and Recovery
 You access NetApp Backup and Recovery through NetApp Console. Perform these tasks to prepare the Console for Backup and Recovery, depending on whether you are using NetApp Console or NetApp Console local deployment.
@@ -129,7 +129,7 @@ Some ONTAP features require specific ONTAP versions:
 | Back up or restore to S3-compatible object storage
 | 9.17.1 or later
 
-| Use more than 6 buckets per system across different cloud providers (up to 100 buckets maximum)
+| Use more than six buckets per system across different cloud providers (up to 100 buckets maximum)
 | 9.19.1 or later
 |===
 
@@ -139,7 +139,7 @@ For information about supported features, volume types, backup and restore desti
 
 To use NetApp Backup and Recovery for Microsoft SQL Server workloads, you need the following host system, space, and sizing prerequisites.
 
-NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
+NOTE: ONTAP 9.19.1 or later is required to support more than six buckets per system across different cloud providers (up to 100 buckets maximum).
 
 [caption=]
 .Software and hardware requirements
@@ -154,7 +154,7 @@ NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per syste
 For the latest information about supported versions, see the https://imt.netapp.com/matrix/imt.jsp?components=121074;&solution=1257&isHWU&src=IMT#welcome[NetApp Interoperability Matrix Tool^].
 | Microsoft SQL Server versions | Versions 2012 and later are supported for VMware Virtual Machine File System (VMFS) and VMware Virtual Machine Disk (VMDK) on NFS.
 
-| SnapCenter Server version | SnapCenter Server version 5.0 or greater is required if you are going to import your existing data from SnapCenter into NetApp Backup and Recovery.
+| SnapCenter Server version | SnapCenter Server version 5.0 or later is required to import your existing data from SnapCenter into NetApp Backup and Recovery.
 
 NOTE: If you already have SnapCenter, first check to be sure you've met the prerequisites before importing from SnapCenter. See link:concept-start-prereq-snapcenter-import.html[Prerequisites for importing resources from SnapCenter].
 
@@ -164,7 +164,7 @@ NOTE: If you already have SnapCenter, first check to be sure you've met the prer
 | Minimum install and log space for the plug-in on the SQL Server host
 | 5 GB
 
-Allocate sufficient disk space and monitor the storage consumption by the logs folder. The log space required varies depending on the number of backups performed and the frequency of data protection operations. If there is not sufficient space, the logs will not be created for the operations. 
+Allocate sufficient disk space and monitor the storage consumption by the logs folder. The log space required varies depending on the number of backups performed and the frequency of data protection operations. If there isn't enough space, logs aren't created for the operations. 
 
 |Required software packages
 | * ASP.NET Core Runtime 10.0.10 Hosting Bundle
@@ -237,7 +237,7 @@ You need specific requirements to discover and protect your VMware workloads.
 
 |Connected storage
 a|
-* ONTAP 9.13.1 or later (ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
+* ONTAP 9.13.1 or later (ONTAP 9.19.1 or later is required to support more than six buckets per system across different cloud providers; up to 100 buckets maximum)
 * ASA r2 SAN-only systems (ONTAP 9.17.1 or later required)
 * Amazon FSx for NetApp ONTAP storage systems running version 9.13.1 or later
 * Google Cloud NetApp Volumes (ONTAP-mode and Flex Unified service level)
@@ -268,7 +268,7 @@ For more information about Backup and Recovery roles, refer to https://docs.neta
 == Requirements for protecting KVM workloads
 You need specific requirements to discover and protect KVM virtual machines.
 
-NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
+NOTE: ONTAP 9.19.1 or later is required to support more than six buckets per system across different cloud providers (up to 100 buckets maximum).
 
 * A modern Linux distribution running kernel version 5.14.0-503.22.1.el9_5.x86_64 (longterm) or later
 * Your KVM hosts and VMs must be managed by a management platform. NetApp Backup and Recovery supports the following management platforms:
@@ -302,7 +302,7 @@ chown -R qemu:qemu <kvm_vm_mount_path> & chmod 771 <kvm_vm_mount_path>
 == Requirements for protecting Oracle Database workloads
 Ensure your environment meets specific requirements to discover and protect Oracle Database resources.
 
-NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
+NOTE: ONTAP 9.19.1 or later is required to support more than six buckets per system across different cloud providers (up to 100 buckets maximum).
 
 [options="header"]
 |===
@@ -351,7 +351,7 @@ The host credentials you provide during discovery must have the following permis
 == Requirements for protecting Kubernetes applications
 You need specific requirements to discover Kubernetes resources and protect your Kubernetes applications.
 
-NOTE: ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers (up to 100 buckets maximum).
+NOTE: ONTAP 9.19.1 or later is required to support more than six buckets per system across different cloud providers (up to 100 buckets maximum).
 
 NOTE: NetApp strongly recommends assigning a static IP address to the Console agent you use for Kubernetes workloads to avoid issues if the agent IP address changes.
 
@@ -372,7 +372,7 @@ Ensure your Hyper-V instance meets specific requirements to discover and protect
 |Requirement |Supported
 
 |Microsoft Hyper-V
-|2019, 2022 & 2025 editions
+|2019, 2022, and 2025 editions
 
 |ASP.NET Core Runtime
 |10.0.10 Hosting Bundle
@@ -405,9 +405,9 @@ a|
 * 1GB RAM minimum for the NetApp Hyper-V plug-in on the Hyper-V host
 * 5GB minimum installation and log space for the plug-in on the Hyper-V Host
 +
-NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the logs folder and regularly monitor its usage. The required space depends on how often backups and data protection operations occur. If there isn't enough space, logs will not be generated.
+NOTE: Ensure that you allocate enough disk space on the Hyper-V host for the logs folder and regularly monitor its usage. The required space depends on how often backups and data protection operations occur. If there isn't enough space, logs aren't generated.
 
 .NetApp ONTAP configuration requirements
 
-* A primary ONTAP system (ONTAP 9.14.1 or later - ONTAP 9.19.1 or later is required to support more than 6 buckets per system across different cloud providers; up to 100 buckets maximum)
+* A primary ONTAP system (ONTAP 9.14.1 or later - ONTAP 9.19.1 or later is required to support more than six buckets per system across different cloud providers; up to 100 buckets maximum)
 * For Hyper-V deployments using SMB shares to store virtual machine data, ensure that the continuous availability share property is enabled on the ONTAP system. Refer to the https://docs.netapp.com/us-en/ontap/smb-hyper-v-sql/configure-shares-continuous-availability-task.html[ONTAP documentation^] for instructions.

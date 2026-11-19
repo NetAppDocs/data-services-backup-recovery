@@ -17,7 +17,7 @@ helm upgrade trident-protect -n trident-protect netapp-trident-protect/trident-p
   --reuse-values
 -----
 
-NOTE: During restore or failover, any namespace annotations and labels specified in `restoreSkipNamespaceAnnotations` and `restoreSkipNamespaceLabels` are excluded from the restore or failover operation. Ensure these settings are configured during the initial Helm installation. To learn more, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-customize-installation.html#configure-additional-trident-protect-helm-chart-settings[Configure additional Trident Protect helm chart settings].
+NOTE: During restore or failover, any namespace annotations and labels specified in `restoreSkipNamespaceAnnotations` and `restoreSkipNamespaceLabels` are excluded from the restore or failover operation. Configure these settings during the initial Helm installation. To learn more, refer to https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-customize-installation.html#configure-additional-trident-protect-helm-chart-settings[Configure additional Trident Protect helm chart settings].
 
 If you used Helm with the `--create-namespace` flag to install the source application, Trident Protect copies the name label to the destination namespace. If the label value matches the source namespace name, it is replaced with the destination namespace name; if not, it is left as-is.
 
@@ -49,7 +49,7 @@ The following table illustrates the state of the example source and destination 
 |===
 
 ==== After the restore operation
-The following table illustrates the state of the example destination namespace after the restore or failover operation. Some keys have been added, some have been overwritten, and the `name` label has been updated to match the destination namespace:
+The following table illustrates the state of the example destination namespace after the restore or failover operation. The operation added some keys, overwrote others, and updated the `name` label to match the destination namespace:
 
 [cols="1,2a,2a", options="header"]
 |===

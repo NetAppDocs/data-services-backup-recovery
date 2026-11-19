@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-guest-file-restore-scenarios-you-might-encounter.html
 keywords:
-summary: 'When attempting to restore a guest file, you might encounter scenarios where guest file restore session is blank, guest file restore attach disk operation fails, or backups are not detached after guest file restore session is discontinued. '
+summary: "Troubleshoot VMware guest file restore issues in NetApp Backup and Recovery, including a blank restore session, a failed attach disk operation, and backups that stay attached."
 ---
 
 = Troubleshoot VMware guest file restore in NetApp Backup and Recovery
@@ -19,7 +19,7 @@ If you encounter problems while restoring a guest file, use these scenarios to i
 
 This issue occurs if you create a guest file restore session and the guest operating system reboots during the session. VMDKs in the guest OS might stay offline, so the guest file restore session list is blank.
 
-To correct the issue, manually put the VMDKs back online in the guest OS. When the VMDKs are online, the guest file restore session will display the correct contents.
+To correct the issue, manually put the VMDKs back online in the guest OS. When the VMDKs are online, the guest file restore session displays the correct contents.
 
 == Guest file restore attach disk operation fails
 

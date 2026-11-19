@@ -15,7 +15,7 @@ summary: Manage your Microsoft SQL Server hosts, instances, and databases in Net
 [.lead]
 View and manage Microsoft SQL Server hosts, instances, and databases, and change or remove their protection settings.
 
-You can do the following to manage your inventory: 
+Manage your inventory with these actions: 
 
 * Manage host information
 ** Suspend schedules
@@ -228,7 +228,7 @@ For details about creating an ad hoc backup, see link:br-use-mssql-backup.html[B
 
 == Manage database information 
 
-You can manage database information in the following ways:    
+Manage database information with these actions:    
 
 * Protect databases
 * Restore databases

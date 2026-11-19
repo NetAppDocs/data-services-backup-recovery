@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-cvo-gcp.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Back up Cloud Volumes ONTAP volumes to Google Cloud Storage with NetApp Backup and Recovery, including preparing the Console agent, permissions, and encryption keys." 
 ---
 
-= Back up Cloud Volumes ONTAP to Google Cloud Storage with NetApp Backup and Recovery
+= Back up Cloud Volumes ONTAP to Google Cloud with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -19,7 +19,7 @@ NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:
 
 == Verify support for your configuration
 
-Read the following requirements to make sure that you have a supported configuration before you start backing up volumes to Google Cloud Storage.
+Verify that you have a supported configuration before you start backing up volumes to Google Cloud Storage.
 
 The following image shows each component and the connections that you need to prepare between them. 
 
@@ -34,7 +34,7 @@ Supported GCP regions::
 NetApp Backup and Recovery is supported in all GCP regions.
 
 GCP Service Account::
-You need to have a service account in your Google Cloud Project that has the custom role. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
+You need a service account in your Google Cloud project that has the custom role. https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
 
 // Removing below note 7/9/2026 - Pradip M from CVO engineering team has confirmed that CVO still needs that role in the GCP service account, regardless of whether B&R needs it.
 //NOTE: The Storage Admin role is no longer required for the service account that enables NetApp Backup and Recovery to access Google Cloud Storage buckets. 
@@ -273,7 +273,7 @@ cloudkms.keyRings.setIamPolicy
 
 * Both HSM (hardware-backed) and software-generated keys are supported.
 * Both newly created or imported Cloud KMS keys are supported.
-* Only regional keys are supported, global keys are not supported.
+* Only regional keys are supported. Global keys are not supported.
 * Currently, only the "Symmetric encrypt/decrypt" purpose is supported.
 * The service agent associated with the Storage Account is assigned the "CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)" IAM role by NetApp Backup and Recovery. 
 
@@ -328,7 +328,7 @@ You can choose to protect FlexVol or FlexGroup volumes; however, you cannot sele
 
 .Steps 
 
-Note that if the volumes you choose already have snapshot or replication policies applied, then the policies you select later will overwrite these existing policies. 
+If the volumes you choose already have snapshot or replication policies applied, the policies you select later overwrite these existing policies. 
 
 . In the Select Volumes page, select the volume or volumes you want to protect. 
 +

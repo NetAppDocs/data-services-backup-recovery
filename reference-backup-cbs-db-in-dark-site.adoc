@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: reference-backup-cbs-db-in-dark-site.html
 keywords: backup database, recover database, dark site, private mode, restore database, backup and recovery, Console agent
-summary: In private mode (no internet access), NetApp Backup and Recovery stores its configuration data in the same StorageGRID or ONTAP S3 bucket used for your backups. If the Console agent host system fails, you can deploy a new Console agent and restore this data.
+summary: "Deploy a new Console agent and restore NetApp Backup and Recovery configuration data from a StorageGRID or ONTAP S3 bucket after a Console agent failure in private mode."
 ---
 
 = Restore NetApp Backup and Recovery configuration data in a dark site
@@ -15,7 +15,7 @@ summary: In private mode (no internet access), NetApp Backup and Recovery stores
 [.lead]
 In _private mode_ (no internet access), NetApp Backup and Recovery stores its configuration data in the same StorageGRID or ONTAP S3 bucket used for your backups. If the Console agent host system fails, you can deploy a new Console agent and restore this data.
 
-You can also follow these steps to replace the Console agent and restore configuration data that was stored on it when using Backup and Recovery in _standard mode_ on-premises when no cloud accounts are involved (for example, when using NetApp StorageGRID as the backup destination).
+You can also follow these steps to replace the Console agent and restore configuration data stored on it when you use Backup and Recovery in _standard mode_ on-premises with no cloud accounts involved (for example, when you use NetApp StorageGRID as the backup destination).
 
 NOTE: This procedure applies only to ONTAP volume data.
 
@@ -24,7 +24,7 @@ When you use NetApp Backup and Recovery in a SaaS environment with the Console a
 There are two types of data that are backed up:
 
 * NetApp Backup and Recovery database - contains a listing of all the volumes, backup files, backup policies, and configuration information.
-* Indexed Catalog files - contains detailed indexes that are used for Search & Restore functionality that make your searches very quick and efficient when looking for volume data that you want to restore.
+* Indexed Catalog files - contain detailed indexes that Search & Restore functionality uses to quickly find the volume data that you want to restore.
 
 This data is backed up once per day at midnight, and a maximum of 7 copies of each file are retained. If the Console agent is managing multiple on-premises ONTAP systems, the NetApp Backup and Recovery files are stored in the bucket of the system that was activated first. 
 
@@ -39,11 +39,11 @@ You'll need to perform the following tasks to return your NetApp Backup and Reco
 * Install a new Console agent
 * Restore the NetApp Backup and Recovery database
 * Restore the Indexed Catalog files
-* Rediscover all of your on-prem ONTAP systems and StorageGRID systems to the NetApp Console UI
+* Rediscover all of your on-premises ONTAP systems and StorageGRID systems to the NetApp Console UI
 
 After you check that your system is working, create new backup files.
 
-.What you'll need
+.Before you begin
 
 You'll need to access the most recent database and index backups from the StorageGRID or ONTAP S3 bucket where your backup files are being stored:
 
@@ -118,7 +118,7 @@ mysql> show tables;
 mysql> select * from volume; 
 ----
 +
-. Ensure that the volumes that are shown are the same as those that existed in your original environment.
+. Confirm that the volumes shown are the same as those that existed in your original environment.
 
 === Restore the Indexed Catalog files
 

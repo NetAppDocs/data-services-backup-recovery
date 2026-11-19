@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-policy-manage.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "View, create, edit, and delete snapshot, replication, and backup to object storage policies that control backup frequency and retention for ONTAP volumes." 
 ---
 
 = Manage backup policies for ONTAP volumes with NetApp Backup and Recovery
@@ -18,7 +18,7 @@ In NetApp Backup and Recovery, you can use the default backup policies or create
 NOTE: To switch to and from NetApp Backup and Recovery workloads, refer to link:br-start-switch-ui.html[Switch to different NetApp Backup and Recovery workloads].
 
 
-When you use the activation wizard to enable the Backup and Recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want to use a policy different than those existing policies, you can create the policy before or while you use the activation wizard.
+When you use the activation wizard to enable the Backup and Recovery service for your volumes, you can select from the default policies and any other policies that already exist in the system (Cloud Volumes ONTAP or on-premises ONTAP system). If you want a different policy, create it before or while you use the activation wizard.
 
 To learn about the default backup policies provided, refer to link:prev-ontap-protect-journey.html[Plan your protection journey].
 
@@ -59,7 +59,7 @@ TIP: When using System Manager, select *Asynchronous* as the policy type for rep
 +
 The Policies management page appears. Snapshot policies are displayed by default. 
 
-. To view other policies that exist in the system, select either *Replication Policies* or *Backup Policies*. If the existing policies can be used for your backup plans, you’re all set. If you need to have a policy with different characteristics, you can create new policies from this page.
+. To view other policies that exist in the system, select either *Replication Policies* or *Backup Policies*. If the existing policies meet your backup needs, you can use them. If you need to have a policy with different characteristics, you can create new policies from this page.
 
 == Create policies 
 
@@ -84,7 +84,7 @@ Part of the policy creation process involves identifying snapshot and SnapMirror
 The Policies management page appears. 
 . In the Policies management page, select *Create policy* > *Create snapshot policy*.
 . Specify the policy name. 
-. Select the snapshot schedule or schedules. You can have a maximum of 5 labels. Or, create a schedule. 
+. Select the snapshot schedule or schedules. You can have a maximum of five labels. Or, create a schedule. 
 . If you choose to create a schedule: 
 
 .. Select the frequency of hourly, daily, weekly, monthly, or yearly. 
@@ -115,7 +115,7 @@ Your 3-2-1 strategy might include replicating a volume on a different storage sy
 .Steps
 . In the Policies management page, select *Create policy* > *Create replication policy*.
 . In the Policy Details section, specify the policy name. 
-. Specify the SnapMirror labels (maximum of 5) denoting the retention for each label.
+. Specify the SnapMirror labels (maximum of five) denoting the retention for each label.
 . Specify the transfer schedule. 
 . Select *Create*.
 
@@ -131,7 +131,7 @@ This storage policy resides in different storage system locations depending on t
 .Steps
 . In the Policies management page, select *Create policy* > *Create backup policy*.
 . In the Policy Details section, specify the policy name. 
-. Specify the SnapMirror labels (maximum of 5) denoting the retention for each label.
+. Specify the SnapMirror labels (maximum of five) denoting the retention for each label.
 . Specify the settings, including the transfer schedule and when to archive backups. 
 
 . (Optional) To move older backup files to a less expensive storage class or access tier after a certain number of days, select the *Archive* option and indicate the number of days that should elapse before the data is archived. Enter *0* as the "Archive After Days" to send your backup file directly to archival storage.
