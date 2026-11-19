@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-backup.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery.
+summary: "Create on-demand backups of VMware VMs and datastores in NetApp Backup and Recovery, and delete local snapshots you no longer need."
 ---
 
 = Back up VMware workloads with NetApp Backup and Recovery

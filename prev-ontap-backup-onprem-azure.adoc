@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-onprem-azure.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Prepare your environment and activate backups of on-premises ONTAP volumes to Azure Blob Storage with NetApp Backup and Recovery." 
 ---
 
-= Back up on-premises ONTAP data to Azure Blob storage with NetApp Backup and Recovery
+= Back up on-premises ONTAP data to Azure Blob Storage with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, you can back up volume data from your on-premises ONTAP systems to a secondary storage system and to Azure Blob. Use this page to prepare your environment and activate backups.
+In NetApp Backup and Recovery, you can back up volume data from your on-premises ONTAP systems to a secondary storage system and to Azure Blob Storage. Prepare your environment, then activate backups to protect your volumes.
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
@@ -64,7 +64,7 @@ Ensure that the Console agent has the required networking connections.
 
 * An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Blob object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-azure.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
-* In order for the NetApp Backup and Recovery Search & Restore functionality to work, port 1433 must be open for communication between the Console agent and the Azure Synapse SQL services.
+* For NetApp Backup and Recovery Search & Restore to work, port 1433 must be open for communication between the Console agent and the Azure Synapse SQL services.
 * Additional inbound security group rules are required for Azure and Azure Government deployments. See https://docs.netapp.com/us-en/console-setup-admin/reference-ports-azure.html[Rules for the Console agent in Azure^] for details.
 
 . Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Console agent and Blob storage to stay in your virtual private network (a *private* connection).
@@ -202,9 +202,9 @@ include::../_include/backup-onprem-prepare-source-destination-systems-for-repl.a
 
 . You can use your own custom-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[Learn how to use your own keys^].
 +
-Note that NetApp Backup and Recovery supports _Azure access policies_ as the permission model. The _Azure role-based access control_ (Azure RBAC) permission model is not currently supported.
+NetApp Backup and Recovery supports _Azure access policies_ as the permission model. The _Azure role-based access control_ (Azure RBAC) permission model is not currently supported.
 
-. If you want to have a more secure connection over the public internet from your on-prem data center to the VNet, there is an option to configure an Azure Private Endpoint in the activation wizard. In this case you will need to know the VNet and Subnet for this connection. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[Refer to details about using a Private Endpoint^].
+. If you want to have a more secure connection over the public internet from your on-premises data center to the VNet, there is an option to configure an Azure Private Endpoint in the activation wizard. In this case you will need to know the VNet and Subnet for this connection. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[Refer to details about using a Private Endpoint^].
 
 === Create your Azure Blob storage account
 

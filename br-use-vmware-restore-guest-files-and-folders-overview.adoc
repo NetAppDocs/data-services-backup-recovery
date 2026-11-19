@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-restore-guest-files-and-folders-overview.html
 keywords:
-summary: 'You can restore files or folders from a virtual machine disk (VMDK) on a Windows guest OS.'
+summary: "Restore files or folders from a VMDK on a Windows or Linux guest OS, and review the requirements and limitations for guest file restore."
 ---
 
 = VMware guest file restore requirements in NetApp Backup and Recovery

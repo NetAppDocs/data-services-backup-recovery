@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-mssql-protect-overview.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, on-premises, applications, virtual machines, backup and recovery
-summary: Protect your Microsoft SQL Server application data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, or StorageGRID using NetApp Backup and Recovery.
+summary: "Protect your Microsoft SQL Server application data from on-premises ONTAP systems to Amazon Web Services, Microsoft Azure, or StorageGRID using NetApp Backup and Recovery."
 ---
 
 = Protect Microsoft SQL Server workloads with NetApp Backup and Recovery
@@ -17,7 +17,7 @@ Back up Microsoft SQL Server databases from on-premises ONTAP systems to AWS, Az
 
 NetApp Backup and Recovery uses NetApp SnapMirror to synchronize backups by creating snapshots and transferring them to the backup locations.
 
-Use the following workflows to protect your data: 
+Use these workflows to protect your data: 
 
 * link:concept-start-prereq-snapcenter-import.html[Configure additional items if importing from SnapCenter]
 * link:br-start-discover.html[Discover Microsoft SQL Server workloads and optionally import SnapCenter resources]

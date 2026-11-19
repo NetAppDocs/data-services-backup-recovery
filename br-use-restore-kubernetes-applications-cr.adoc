@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: br-use-restore-kubernetes-applications-cr.html
 keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, cost, on-premises ontap, onprem, applications, virtual machines, backup and recovery
-summary: NetApp Backup and Recovery enables you to restore applications that you have protected with a protection policy. 
+summary: "Restore Kubernetes applications from snapshots or backups using custom resources, including restores to a different namespace, the original namespace, or a different cluster." 
 ---
 
-= Restore Kubernetes applications with custom resources
+= Restore Kubernetes apps with custom resources in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -128,7 +128,7 @@ You can restore a backup to a different cluster if there is an issue with the or
 
 .Before you begin
 
-Ensure the following prerequisites are met:
+Confirm that you meet these prerequisites:
 
 * The destination cluster has Trident Protect installed.
 * The destination cluster has access to the bucket path of the same AppVault as the source cluster, where the backup is stored.
@@ -212,7 +212,7 @@ kubectl apply -f trident-protect-backup-restore-cr.yaml
 
 == Restore a snapshot to a different namespace
 
-You can restore data from a snapshot using a custom resource (CR) file either to a different namespace or the original source namespace. When you restore a snapshot to a different namespace using a SnapshotRestore CR, Backup and Recovery restores the application in a new namespace and creates an application CR for the restored application. To protect the restored application, create on-demand backups or snapshots, or establish a protection schedule.
+You can restore data from a snapshot using a custom resource (CR) file to either a different namespace or the original source namespace. When you restore a snapshot to a different namespace using a SnapshotRestore CR, Backup and Recovery restores the application in a new namespace and creates an application CR for the restored application. To protect the restored application, create on-demand backups or snapshots, or establish a protection schedule.
 
 [NOTE]
 ====

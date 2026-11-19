@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-mssql-clone.html
 keywords: clone, refresh clone, split clone, delete clone, instant snapshot, Microsoft SQL Server, database, development, testing, backup and recovery
-summary: Clone Microsoft SQL Server application data for development, testing, or protection purposes.
+summary: "Clone Microsoft SQL Server application data for development, testing, or protection purposes."
 ---
 
 = Clone Microsoft SQL Server workloads using NetApp Backup and Recovery
@@ -15,7 +15,7 @@ summary: Clone Microsoft SQL Server application data for development, testing, o
 [.lead]
 Create, refresh, split, and delete Microsoft SQL Server clones for development, testing, or protection.
 
-Choose between the following types of clones:
+Choose one of these clone types:
 
 * *Instant snapshot and clone*: You can create a clone of your Microsoft SQL Server workloads from an instant snapshot, which is a point-in-time copy of the source data that is created from a backup. The clone is stored in an object store in your public or private cloud account. You can use the clone to restore your workloads in case of data loss or corruption.
 * *Clone from an existing snapshot*: You can choose an existing snapshot from a list of snapshots that are available for the workload. This option is useful if you want to create a clone from a specific point in time. Clone to either primary or secondary storage.
@@ -77,7 +77,7 @@ Optionally, select *Suffix* from the target name drop-down list and add a suffix
 
 . If you choose *Instant snapshot and clone*, complete the following options:
 +
-* *Clone refresh schedule and expiration*: Enter the date when to begin refreshing the clone. The refresh schedule defines when the clone refresh begins.
+* *Clone refresh schedule and expiration*: Enter the date to begin refreshing the clone. The refresh schedule defines when the clone refresh begins.
 ** *Delete clone if schedule expires*: Select this option to delete the clone when the schedule expires.
 ** *Refresh clone every*: Select the refresh frequency. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option keeps the clone synchronized with the source workload.
 //* *iGroup settings*: Select the iGroup for the clone. The iGroup is a logical grouping of initiators that are used to access the clone. You can select an existing iGroup or create a new one. Select the iGroup from the primary or secondary ONTAP storage system. 
@@ -112,7 +112,7 @@ You have the option to change the database name, use the latest instant snapshot
 . Complete the *Advanced settings* section:
 +
 * *Recovery scope*: Choose whether to recover all log backups or log backups until a specific point in time. This option is useful if you want to recover the clone to a specific point in time.
-* *Clone refresh schedule and expiration*: Enter the date when to begin refreshing the clone. The refresh schedule defines when the clone refresh begins.
+* *Clone refresh schedule and expiration*: Enter the date to begin refreshing the clone. The refresh schedule defines when the clone refresh begins.
 ** *Delete clone if schedule expires*: Select this option to delete the clone when the schedule expires.
 ** *Refresh clone every*: Select the refresh frequency. You can choose to refresh the clone hourly, daily, weekly, monthly, or quarterly. This option keeps the clone synchronized with the source workload.
 * *iGroup settings*: Select the iGroup for the clone. The iGroup is a logical grouping of initiators that are used to access the clone. You can select an existing iGroup or create a new one. Select the iGroup from the primary or secondary ONTAP storage system. 
@@ -154,7 +154,7 @@ Remove clones of your Microsoft SQL Server workloads to free up storage space. I
 . Select a clone.
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Delete clone*.
 . In the Delete clone confirmation dialog box, review the deletion details.
-.. To delete the cloned resources from SnapCenter even if the clones or their storage is not accessible, select *Force delete*. 
+.. To delete the cloned resources from SnapCenter even if the clones or their storage are not accessible, select *Force delete*. 
 .. Select *Delete*.
 . When the clone is deleted, it is removed from the *Inventory* page.
 

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-restore.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: You can use Search and Restore to recover volumes, folders, or files from ONTAP backup files.
+summary: "Compare Browse and Restore with Search and Restore, and choose how to restore ONTAP volumes, folders, or files from snapshots, replicated volumes, or backup files."
 ---
 
 = ONTAP data restore options in NetApp Backup and Recovery
@@ -25,7 +25,7 @@ NOTE: When you restore a SnapLock-enabled volume, the restored volume retains Sn
 
 You need a valid NetApp Backup and Recovery license to restore data to a production system.
 
-To summarize, these are the valid flows you can use to restore volume data to an ONTAP system:
+These flows are valid for restoring volume data to an ONTAP system:
 
 * Backup file -> restored volume
 * Replicated volume -> restored volume
@@ -47,7 +47,7 @@ The Restore Dashboard provides two different ways to restore data from backup fi
 
 In broad terms, _Browse & Restore_ is typically better when you need to restore a specific volume, folder, or file from the last week or month and you know the name and location of the file and the date when it was last in good shape. _Search & Restore_ is typically better when you need to restore a volume, folder, or file, but you don't remember the exact name, the volume in which it resides, or the date when it was last in good shape.
 
-This table provides a feature comparison of the two methods.
+The table compares the features of the two methods.
 
 [options="header",cols="50,50"]
 |===
@@ -62,7 +62,7 @@ This table provides a feature comparison of the two methods.
 
 |===
 
-This table provides a list of valid restore operations based on the location where your backup files reside. 
+The table lists the valid restore operations for each location where your backup files reside. 
 
 [options="header",cols="14h,14,14,14,14,14,14",width="100%"]
 |===
@@ -77,7 +77,7 @@ This table provides a list of valid restore operations based on the location whe
 
 |===
 
-Before you use either restore method, configure your environment to meet the resource requirements. See the following sections for details.
+Before you use either restore method, configure your environment to meet the resource requirements.
 
 See the requirements and restore steps for the type of restore operation you want to use:
 

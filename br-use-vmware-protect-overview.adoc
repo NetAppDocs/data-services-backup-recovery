@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-protect-overview.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery.
+summary: "Protect VMware VMs and datastores with NetApp Backup and Recovery by creating backups, storing them on supported targets, and restoring to an on-premises VMware host."
 ---
 
 = Protect VMware workloads with NetApp Backup and Recovery
@@ -25,10 +25,10 @@ NOTE: This version of NetApp Backup and Recovery supports only VMware vCenter an
 Use NetApp Backup and Recovery to implement a 3-2-1 strategy with 3 copies of your source data on 2 different storage systems and 1 copy in the cloud. The benefits of the 3-2-1 approach include:
 
 * Multiple data copies protect against internal and external cybersecurity threats.
-* Using different types of media helps you recover if one type fails.
+* Different types of media help you recover if one type fails.
 * You can quickly restore from the on-site copy and use the off-site copies if the on-site copy is compromised.
 
-You can use NetApp Backup and Recovery to perform the following tasks related to VMware workloads:
+Use NetApp Backup and Recovery to perform these tasks for VMware workloads:
 
 * link:br-use-vmware-discovery.html[Discover VMware workloads]
 * link:br-use-vmware-protection-groups.html[Create and manage protection groups for VMware workloads]

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-policies-oracle-create.html
 keywords: backing up, back up, backup, backup on-premises ontap, policy, policies, backup policies, cloud backup, aws, aws s3, azure, google cloud
-summary: In NetApp Backup and Recovery, create your own policies that govern the backup frequency, the time the backup is taken, and the number of backup files that are retained. 
+summary: "Create Oracle Database backup policies in NetApp Backup and Recovery that control backup frequency, schedule, and retention."
 ---
 
 = Create and manage Oracle Database backup policies in NetApp Backup and Recovery
@@ -106,7 +106,7 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 * *Retention copies*: Enter the number of snapshots to keep.
 * *Run at*: Choose the ONTAP transfer schedule to back up data to object storage. 
 * *Tier your backups from object store to archival storage*: If you choose to tier backups to archive storage (for example, AWS Glacier), select the tier option and the number of days to archive. 
-* *Enable integrity scan*: Select whether you want to enable integrity scans (snapshot locking) on the object storage. This ensures backups are valid and restorable. The integrity scan frequency is set to seven days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
+* *Enable integrity scan*: Select whether you want to enable integrity scans (snapshot locking) on the object storage. This confirms that backups are valid and restorable. The integrity scan frequency is set to seven days by default. To protect your backups from being modified or deleted, select the *Integrity scan* option. The scan occurs only on the latest snapshot. You can enable or disable integrity scans on the latest snapshot. 
 
 . Optionally, configure advanced settings in the policy.
 +
@@ -119,7 +119,7 @@ NOTE: The fields that appear differ depending on the provider and architecture s
 ** *Backup only on standby*
 +
 If you don't enable *Data Guard settings*, both the primary and the standby database are backed up. After you assign the policy to resources, you can't disable *Data Guard settings*.
-* *Backup verification*: Select whether you want to enable backup verification and whether you want it immediately or later. This feature ensures that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
+* *Backup verification*: Select whether you want to enable backup verification and whether you want it immediately or later. This feature confirms that the backups are valid and can be restored successfully. We recommend that you enable this option to ensure the integrity of your backups. By default, backup verification runs from secondary storage if secondary storage is configured. If secondary storage isn't configured, backup verification runs from primary storage. 
 +
 Additionally, configure the following options:
 

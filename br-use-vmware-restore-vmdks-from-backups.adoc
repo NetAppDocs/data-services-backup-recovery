@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-use-vmware-restore-vmdks-from-backups.html
 keywords:
-summary: You can restore existing VMDKs, or deleted or detached VMDKs, from either a primary or secondary backup of traditional VMs or vVol VMs.
+summary: "Restore existing, deleted, or detached VMDKs from primary or secondary backups of traditional VMs or vVol VMs."
 ---
 
 = Restore VMware virtual disks from backups in NetApp Backup and Recovery
@@ -48,7 +48,7 @@ A list of virtual machines appears that match your search criteria.
 A list of snapshots (restore points) created on that virtual machine appears. By default, the latest snapshots are shown for the time frame that you select in the *Time frame* dropdown.
 +
 For each snapshot, any illuminated icons in the *Location* column indicate the storage locations where the snapshot is available (primary, secondary, or object storage). 
-. Enable the radio button for the snapshot you want to restore.
+. Select the radio button for the snapshot you want to restore.
 . Select *Next*.
 +
 Snapshot location options appear.
