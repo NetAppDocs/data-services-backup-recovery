@@ -5,7 +5,7 @@ keywords: backup, back up, restore, recovery, kubernetes, k8s, access control, r
 summary: Manage access to Kubernetes resources in NetApp Backup and Recovery by using NetApp Console folders, projects, and roles.
 ---
 
-= Manage Kubernetes resource access
+= Manage access to Kubernetes resources in NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font

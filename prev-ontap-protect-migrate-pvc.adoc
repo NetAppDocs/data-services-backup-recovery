@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-protect-migrate-pvc.html
 keywords: migrate, pvc, nfs, storage, performance, persistence
-summary:  Increase catalog index performance in NetApp Console local deployment environments. 
+summary: "Migrate Search and Restore catalog index storage to ONTAP NFS to improve performance in NetApp Console local deployment environments." 
 ---
 
 = Migrate Search and Restore catalog storage to ONTAP NFS
@@ -56,7 +56,7 @@ kubectl get pods -n cbs | grep cloudmanager-cbs-catalog-worker- || echo "no work
 . Mount the ONTAP NFS export on a local mount point in the VM created when the NetApp Console local deployment OVA was deployed.
 . Copy the data from the running coordinator pod into the ONTAP mount, with no intermediate directory. The coordinator must still be running.
 +
-NOTE: Copy the contents into the volume root — not into a sub-directory. The ONTAP volume is the new `/opt/netapp/cbs/catalog/shared` directory. The data must sit at the volume root so the app finds it at the same paths (e.g. /opt/netapp/cbs/catalog/shared/cbs/<DATASET_NAME>/...). The tar command format in the following commands streams the directory contents (including dotfiles) into the mount root, avoiding a nested `shared` folder.
+NOTE: Copy the contents into the volume root — not into a sub-directory. The ONTAP volume is the new `/opt/netapp/cbs/catalog/shared` directory. The data must sit at the volume root so the app finds it at the same paths (for example, /opt/netapp/cbs/catalog/shared/cbs/<DATASET_NAME>/...). The tar command format in the following commands streams the directory contents (including dotfiles) into the mount root, avoiding a nested `shared` folder.
 
 . Mount the ONTAP NFS export at a local mount point on NetApp Console local deployment. Use the same server/path you will later use in pv.yaml:
 +
@@ -166,7 +166,7 @@ spec:
       volume: ontap-nfs-share # Forces binding to the specific PV above
 ----
 
-. Apply the YAML objects by applying the PV first and then the PVC (the PV must exist for the PVC's label selector to bind to). Then verify that the PVC claim is bound:
+. Apply the PV first and then the PVC (the PV must exist for the PVC's label selector to bind to). Then verify that the PVC claim is bound:
 +
 [source,shell]
 ----

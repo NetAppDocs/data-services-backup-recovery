@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-start-discover-hyperv.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Hyper-V, workloads, protect
-summary: NetApp Backup and Recovery must discover Hyper-V virtual machines before you can protect them.  
+summary: "Add Hyper-V hosts so NetApp Backup and Recovery can discover virtual machines, refresh hosts after changes, and review protection status on the dashboard."  
 ---
 
 = Discover and manage Hyper-V workloads in NetApp Backup and Recovery
@@ -69,4 +69,4 @@ IMPORTANT: If a Hyper-V host is protected by a NetApp MetroCluster configuration
 . From the NetApp Console menu, select *Protection* > *Backup and Recovery*.
 . Select the Hyper-V workload tile.
 . From the Backup and Recovery menu, select *Dashboard*.
-. Review the health of data protection. The number of at risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.
+. Review the health of data protection. The number of at-risk or protected workloads increases based on the newly discovered, protected, and backed up workloads.

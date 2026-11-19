@@ -58,7 +58,7 @@ Delete an application that you no longer need. NetApp Backup and Recovery stops 
 . Select *Delete*.
 . Enable *Delete snapshots and backups* to remove all snapshots and backups for the application.
 +
-CAUTION: You will no longer be able to restore the application using these snapshots and backups.
+CAUTION: You can no longer restore the application from these snapshots and backups.
 
 . Confirm the action and select *Delete*.
 

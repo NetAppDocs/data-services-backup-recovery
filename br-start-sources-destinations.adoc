@@ -139,7 +139,7 @@ a|
 
 |===
 
-Keep the following restore considerations in mind:
+These restrictions apply to restores:
 
 * Restores from Cloud Volumes ONTAP (replication) can only be made to Cloud Volumes ONTAP. However, Cloud Volumes ONTAP in AWS also supports restoring to Amazon FSx for NetApp ONTAP.
 * Restores from on-premises ONTAP (replication) can only be made to on-premises ONTAP.

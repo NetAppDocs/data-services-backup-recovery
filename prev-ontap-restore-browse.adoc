@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-restore-browse.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: With NetApp Backup and Recovery, restore ONTAP data using Browse and Restore.
+summary: "Restore ONTAP volumes, folders, and files from snapshots, replicated volumes, or object storage backups using Browse and Restore in NetApp Backup and Recovery."
 ---
 
 = Restore ONTAP data using Browse & Restore in NetApp Backup and Recovery
@@ -116,7 +116,7 @@ For Browse & Restore, the Console agent can be installed in the following locati
 * For StorageGRID, the Console agent must be deployed on premises, with or without internet access
 * For ONTAP S3, the Console agent can be deployed on premises (with or without internet access) or in a cloud provider environment
 
-Note that references to "on-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
+References to "on-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
 NOTE: If the ONTAP version on your system is less than 9.13.1, then you can't restore folders or files if the backup file has been configured with DataLock & Ransomware. In this case, you can restore the entire volume from the backup file and then access the files you need.
 
@@ -146,7 +146,7 @@ You need the source system name, storage VM, volume name, and backup file date t
 The *Location* column shows whether the backup file (snapshot) is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
 . Select *Next*.
 +
-Note that if you select a backup file in object storage and ransomware protection is active for that backup (if you enabled DataLock and Ransomware protection in the backup policy), you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
+If you select a backup file in object storage and ransomware protection is active for that backup (if you enabled DataLock and Ransomware protection in the backup policy), you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
 . In the _Select Destination_ page, select the *system* where you want to restore the volume.
 . When restoring a backup file from object storage, if you select an on-premises ONTAP system and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
@@ -192,7 +192,7 @@ You return to the Restore Dashboard so you can review the progress of the restor
 
 NetApp Backup and Recovery creates a new volume based on the backup you selected. 
 
-Note that restoring a volume from a backup file that resides in archival storage can take many minutes or hours depending on the archive tier and the restore priority. You can select the *Job Monitoring* tab to see the restore progress.
+Restoring a volume from a backup file that resides in archival storage can take many minutes or hours depending on the archive tier and the restore priority. You can select the *Job Monitoring* tab to see the restore progress.
 
 == Restore folders and files using Browse & Restore
 

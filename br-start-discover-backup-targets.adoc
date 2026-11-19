@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-start-discover-backup-targets.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Microsoft SQL Server database,
-summary: Complete a few steps to discover offsite backup targets in NetApp Backup and Recovery. These targets could include Amazon Web Services (AWS) S3, Microsoft Azure Blob Storage, Google Cloud Storage, and StorageGRID.
+summary: "Discover offsite backup targets, add buckets, and change credentials in NetApp Backup and Recovery."
 ---
 
 = Discover offsite backup targets in NetApp Backup and Recovery 
@@ -17,7 +17,7 @@ Discover or manually add offsite backup targets such as AWS S3, Azure Blob Stora
 
 == Discover a backup target 
 
-Configure your backup targets (Amazon Web Services (AWS) S3, ONTAP S3, S3-compatible object storage,Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID) before you use NetApp Backup and Recovery.
+Configure your backup targets (Amazon Web Services (AWS) S3, ONTAP S3, S3-compatible object storage, Microsoft Azure Blob Storage, Google Cloud Storage, or StorageGRID) before you use NetApp Backup and Recovery.
 
 You can discover these targets automatically or manually add them.
 
@@ -87,7 +87,7 @@ Manually add a bucket to an offsite backup target instead of having NetApp Backu
 . Enter the bucket information. The information differs depending on the type of backup target you selected.
 
 * For AWS: 
-** *Bucket name*: Enter the name of the S3 bucket. The prefix of "netapp-backup" is a required prefix and is automatically added to the name you provide. 
+** *Bucket name*: Enter the name of the S3 bucket. The required prefix "netapp-backup" is automatically added to the name you provide. 
 ** *AWS account*: Enter the AWS account name.
 ** *Bucket region*: Enter the AWS region for the bucket.
 ** *Enable S3 Object Lock*: Select this option to enable S3 Object Lock for the bucket. S3 Object Lock prevents objects from being deleted or overwritten for a specified retention period, providing an additional layer of data protection. You can enable this only when you are creating a bucket and you cannot turn it off later.

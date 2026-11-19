@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: br-start-configure.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Complete a few steps to configure NetApp Backup and Recovery.
+summary: "Add host credentials, maintain VMware vCenter settings, import SnapCenter resources, add a KVM management platform, and create templates in NetApp Backup and Recovery."
 ---
 
 = Configure NetApp Backup and Recovery settings 
@@ -51,7 +51,7 @@ Backup and Recovery super admin. If you are protecting data stored on a Cloud Vo
 * *Credentials name*: Enter a name for the credentials.
 * *Authentication mode*: Select *Windows*, *Microsoft SQL*, *Oracle Database*, or *Linux*. 
 +
-TIP: For Microsoft SQL Server workloads, you must enter credentials for both Windows and Microsoft SQL Server, requiring two sets of credentials.
+TIP: For Microsoft SQL Server workloads, you must enter two sets of credentials: one for Windows and one for Microsoft SQL Server.
 +
 [role="tabbed-block"]
 ====
@@ -158,7 +158,7 @@ Backup and Recovery super admin or Backup and Recovery backup admin. If you are 
 
 This first step imports host resources from SnapCenter and displays those resources in the NetApp Backup and Recovery Inventory page. At that point, the resources are not yet managed by NetApp Backup and Recovery.
 
-TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does not take over protection management. To do so, you must explicitly select to manage these resources in NetApp Backup and Recovery.  
+TIP: After you import SnapCenter host resources, NetApp Backup and Recovery does not take over protection management. To transfer management, explicitly select these resources to manage in NetApp Backup and Recovery.  
 
 .Steps 
 
@@ -184,10 +184,10 @@ The Inventory page shows the imported SnapCenter resources.
 
 === Manage SnapCenter host resources
 
-After you import the SnapCenter resources, manage those host resources in NetApp Backup and Recovery. After you select to manage those imported resources, NetApp Backup and Recovery can back up and recover the resources that you are importing from SnapCenter. You no longer need to manage those resources in SnapCenter Server. 
+After you import the SnapCenter resources, manage those host resources in NetApp Backup and Recovery. After you manage the imported resources, NetApp Backup and Recovery can back up and recover them. You no longer need to manage those resources in SnapCenter Server. 
 
 .Steps 
-. After you import the SnapCenter resources, on the Inventory page that appears, select the SnapCenter resources that you imported that you want to have NetApp Backup and Recovery manage from now on.  
+. After you import the SnapCenter resources, on the Inventory page, select the imported SnapCenter resources that you want NetApp Backup and Recovery to manage.  
 
 . Select the Actions icon image:../media/icon-action.png[Actions option] > *Manage* to manage the resources.   
 
@@ -278,6 +278,6 @@ Backup and Recovery super admin, Backup and Recovery backup admin or Backup and 
 .. Enter the JSON path that the operation applies to.
 .. If applicable, enter a value to add or update, or a JSON path to move from.
 +
-These fields only appear for operations that require them.
+These fields appear only for operations that require them.
 .. To add another operation to this template, select *Add operation*.
 . When finished, select *Add*.

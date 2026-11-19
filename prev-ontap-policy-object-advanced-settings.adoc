@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-policy-object-advanced-settings.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Change cluster-level backup-to-object settings in NetApp Backup and Recovery, including bandwidth, historical snapshot export, yearly snapshot deletion, and ransomware scans." 
 ---
 
 = Manage backup-to-object advanced settings in NetApp Backup and Recovery
@@ -180,8 +180,8 @@ You can enable or disable ransomware scans for a cluster.
 . In the resulting page, expand the *Ransomware scan* section. 
 . Enable or disable *Ransomware scan*. 
 . Select *Scheduled ransomware scan*. 
-. Optionally, change the every week default scan to days or weeks. 
-. Set the how often in days or weeks that the scan should run. 
+. Optionally, change the default weekly scan to days or weeks. 
+. Set how often, in days or weeks, the scan runs. 
 . Select *Apply*. 
 
 === Enable or disable ransomware scans for a provider
@@ -197,8 +197,8 @@ You can enable or disable ransomware scans at the provider level by using the pr
 . Expand the *Ransomware scan* section. 
 . Enable or disable *Ransomware scan*. 
 . Select *Scheduled ransomware scan*. 
-. Optionally, change the every week default scan to days or weeks. 
-. Set the how often in days or weeks that the scan should run. 
+. Optionally, change the default weekly scan to days or weeks. 
+. Set how often, in days or weeks, the scan runs. 
 . Select *Apply*.
 
 == Switch an Azure object store configuration to Microsoft Entra ID authentication

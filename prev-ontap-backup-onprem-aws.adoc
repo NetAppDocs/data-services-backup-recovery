@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: prev-ontap-backup-onprem-aws.html
 keywords: backing up, back up, backup, backup application data, Amazon Web services, AWS, NetApp Backup and Recovery, Oracle database, Microsoft SQL Server database, SAP HANA database
-summary: Protect your VMware workloads with NetApp Backup and Recovery. 
+summary: "Back up volume data from on-premises ONTAP systems to Amazon S3 with NetApp Backup and Recovery, including environment preparation and backup activation." 
 ---
 
 = Back up on-premises ONTAP data to Amazon S3 with NetApp Backup and Recovery
@@ -13,7 +13,7 @@ summary: Protect your VMware workloads with NetApp Backup and Recovery.
 :imagesdir: ./media/
 
 [.lead]
-In NetApp Backup and Recovery, you can back up volume data from your on-premises ONTAP systems to a secondary storage system and to Amazon S3. Use this page to prepare your environment and activate backups.
+Back up volume data from your on-premises ONTAP systems to a secondary storage system and to Amazon S3 with NetApp Backup and Recovery. Prepare your environment, and then activate backups.
 
 NOTE: "On-premises ONTAP systems" include FAS, AFF, and ONTAP Select systems.
 
@@ -44,7 +44,7 @@ The Console agent is the main software for NetApp Console functionality. A Conso
 
 === Create or switch Console agents
 
-If you already have a Console agent deployed in your AWS VPC or on your premises, then you're all set. 
+If you already have a Console agent deployed in your AWS VPC or on your premises, you can continue. 
 
 If not, then you'll need to create a Console agent in one of those locations to back up ONTAP data to AWS S3 storage. You can't use a Console agent that's deployed in another cloud provider.
 
@@ -57,9 +57,9 @@ NetApp Backup and Recovery is supported in GovCloud regions when the Console age
 
 === Prepare Console agent networking requirements
 
-Ensure that the following networking requirements are met:
+Confirm that the following networking requirements are met:
 
-* Ensure that the network where the Console agent is installed enables the following connections:
+* Confirm that the network where the Console agent is installed enables the following connections:
 +
 ** An HTTPS connection over port 443 to NetApp Backup and Recovery and to your S3 object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-aws.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
 ** An HTTPS connection over port 443 to your ONTAP cluster management LIF
@@ -116,8 +116,8 @@ If you are using a different IPspace than "Default", then you might need to crea
 All intercluster LIFs within the IPspace must have access to the object store. If you can't configure this for the current IPspace, then you'll need to create a dedicated IPspace where all intercluster LIFs have access to the object store.
 * DNS servers must have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
 * Update firewall rules, if necessary, to allow NetApp Backup and Recovery connections from ONTAP to object storage through port 443 and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
-* If you are using a Private VPC Interface Endpoint in AWS for the S3 connection, then in order for HTTPS/443 to be used, you'll need to load the S3 endpoint certificate into the ONTAP cluster. <<Configure your system for a private connection using a VPC endpoint interface>>.
-* Ensure that your ONTAP cluster has permissions to access the S3 bucket.
+* If you are using a Private VPC Interface Endpoint in AWS for the S3 connection, to use HTTPS/443, load the S3 endpoint certificate into the ONTAP cluster. <<Configure your system for a private connection using a VPC endpoint interface>>.
+* Confirm that your ONTAP cluster has permissions to access the S3 bucket.
 
 ===  Verify ONTAP networking requirements for replicating volumes
 
@@ -143,7 +143,7 @@ You'll need to configure two sets of permissions:
 
 .Steps
 
-. Ensure that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions^].
+. Confirm that the Console agent has the required permissions. For details, see https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-aws.html[NetApp Console policy permissions^].
 +
 NOTE: When creating backups in AWS China regions, you need to change the AWS Resource Name "arn" under all _Resource_ sections in the IAM policies from "aws" to "aws-cn"; for example `arn:aws-cn:s3:::netapp-backup-*`.
 
@@ -252,7 +252,7 @@ If you create your own buckets, you should use a bucket name of "netapp-backup".
 
 === Set up customer-managed AWS keys for data encryption
 
-If you want to use the default Amazon S3 encryption keys to encrypt the data passed between your on-prem cluster and the S3 bucket, then you are all set because the default installation uses that type of encryption.
+If you want to use the default Amazon S3 encryption keys to encrypt the data passed between your on-premises cluster and the S3 bucket, then you are all set because the default installation uses that type of encryption.
 
 If instead you want to use your own customer-managed keys for data encryption rather than using the default keys, then you'll need to have the encryption managed keys already set up before you start the NetApp Backup and Recovery wizard.
 
@@ -264,7 +264,7 @@ Refer to https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/ta
 
 If you want to use a standard public internet connection, then all the permissions are set by the Console agent and there is nothing else you need to do. 
 
-If you want to have a more secure connection over the internet from your on-prem data center to the VPC, there's an option to select an AWS PrivateLink connection in the Backup activation wizard. It's required if you plan to use a VPN or AWS Direct Connect to connect your on-premises system through a VPC Endpoint interface that uses a private IP address. 
+If you want to have a more secure connection over the internet from your on-premises data center to the VPC, there's an option to select an AWS PrivateLink connection in the Backup activation wizard. It's required if you plan to use a VPN or AWS Direct Connect to connect your on-premises system through a VPC Endpoint interface that uses a private IP address. 
 
 .Steps
 
@@ -272,7 +272,7 @@ If you want to have a more secure connection over the internet from your on-prem
 
 . Modify the security group configuration that's associated with the Console agent. You must change the policy to "Custom" (from "Full Access"), and you must <<Set up S3 permissions,add the S3 permissions from the backup policy>> as shown earlier.
 +
-If you're using port 80 (HTTP) for communication to the private endpoint, you're all set. You can enable NetApp Backup and Recovery on the cluster now.
+If you're using port 80 (HTTP) for communication to the private endpoint, you don't need to do anything else. You can enable NetApp Backup and Recovery on the cluster now.
 +
 If you're using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add it to your ONTAP cluster, as shown in the next 4 steps.
 +
@@ -334,7 +334,7 @@ The Introduction page of the wizard shows the protection options including local
 
 . Continue with the following options: 
 
-* If you already have a Console agent, you're all set. Just select *Next*. 
+* If you already have a Console agent, continue. Select *Next*. 
 * If you don't already have a Console agent, the *Add a Console agent* option appears. Refer to <<Prepare your Console agent>>. 
 
 === Select the volumes that you want to back up
@@ -460,7 +460,7 @@ To create a policy, select *Create new policy* and do the following:
 
 === Review your selections 
 
-This is the chance to review your selections and make adjustments, if necessary. 
+Review your selections and make adjustments, if necessary. 
 
 .Steps 
 
