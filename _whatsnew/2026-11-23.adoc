@@ -1,8 +1,8 @@
 === Kubernetes workloads enhancements
-In this release, NetApp Backup and Recovery introduces the following enhancement for Kubernetes workloads:
+In this release, NetApp Backup and Recovery introduces the following enhancements for Kubernetes workloads:
 
 * *Amazon FSx for NetApp ONTAP support with disk-to-disk backup architecture*: You can now create Kubernetes protection policies that use the disk-to-disk backup architecture with Amazon FSx for NetApp ONTAP as primary storage and another FSx for NetApp ONTAP file system as secondary storage, in the same AWS region or a different AWS region. You can also use Cloud Volumes ONTAP as primary storage and FSx for NetApp ONTAP as secondary storage.
-* *Bugfix for qtree restores*: The ontap-nas-economy driver previously restored Qtree directories with incorrect permissions and files with incorrect UIDs. This issue has been resolved in this release.
+* *Bugfix for qtree restore issue*: The ontap-nas-economy volume restore previously restored qtree directories with incorrect owner and permissions. This issue has been resolved in this release.
 
 For more information about creating Kubernetes protection policies, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-policies-kubernetes-create.html[Create and manage Kubernetes backup policies in NetApp Backup and Recovery^].
 
