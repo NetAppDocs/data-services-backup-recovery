@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: "Prepare your environment and activate backups of on-premises ONTAP volumes to Azure Blob Storage with NetApp Backup and Recovery." 
 ---
 
-= Back up on-premises ONTAP data to Azure Blob Storage with NetApp Backup and Recovery
+= Back up on-premises ONTAP data to Azure Blob with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -183,7 +183,7 @@ The following ONTAP cluster networking requirements are needed:
 
 * The ONTAP cluster initiates an HTTPS connection over port 443 from the intercluster LIF to Azure Blob storage for backup and restore operations. For Azure China, the intercluster LIF needs outbound access on port 443 to `<storage_account>.blob.core.chinacloudapi.cn`. If the LIF has no outbound path, backups fail during object store verification with a connection timeout error.
 +
-ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
+ONTAP reads and writes data to and from object storage. The object storage never initiates connections. It only responds.
 +
 * ONTAP requires an inbound connection from the Console agent to the cluster management LIF. The Console agent can reside in an Azure VNet.
 
@@ -383,7 +383,7 @@ To create a policy, select *Create new policy* and do the following:
 
 === Review your selections 
 
-This is the chance to review your selections and make adjustments, if necessary. 
+Review your selections and make adjustments if necessary. 
 
 .Steps 
 

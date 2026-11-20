@@ -13,7 +13,7 @@ summary: "Review known limitations for NetApp Backup and Recovery with ONTAP vol
 :imagesdir: ./media/
 
 [.lead]
-Review these limitations before using NetApp Backup and Recovery for ONTAP volumes.
+Before you use NetApp Backup and Recovery for ONTAP volumes, review the known limitations that affect backup, replication, and restore operations.
 
 * NetApp Backup and Recovery can back up Cloud Volumes ONTAP to an object store in the AWS China regions (including Beijing and Ningxia); however, you might need to manually modify Identity and access policies first. 
 +
@@ -36,7 +36,7 @@ FlexVol volumes have no such limitation: you can select all FlexVol volumes in y
 
 * The following functionality is supported in https://docs.netapp.com/us-en/data-services-replication/index.html[NetApp Replication], but not when using the replication feature of NetApp Backup and Recovery:
 
-** There is no support for a cascade configuration where replication occurs from volume A to volume B and from volume B to volume C. Support includes replication from volume A to volume B.
+** Cascade configurations, where replication occurs from volume A to volume B and from volume B to volume C, aren't supported. Replication from volume A to volume B is supported.
 ** There is no support for replicating data to and from FSx for ONTAP systems.
 ** There is no support for creating a one-time replication of a volume.
 
@@ -48,7 +48,7 @@ FlexVol volumes have no such limitation: you can select all FlexVol volumes in y
  
 * In the Backup and Recovery preview release for NetApp Console local deployment, backups to object storage are supported only for ONTAP S3 and StorageGRID destinations. Backup archiving is not supported in this preview release.
 
-* When backing up data, NetApp Backup and Recovery will not maintain NetApp Volume Encryption (NVE). This means that encrypted data on the NVE volume will be decrypted while the data is being transferred to the destination and the encryption will not be maintained. 
+* When backing up data, NetApp Backup and Recovery doesn't maintain NetApp Volume Encryption (NVE). Encrypted data on the NVE volume is decrypted while it transfers to the destination, and the encryption isn't maintained. 
 + 
 For an explanation about these encryption types, refer to 
 https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-netapp-volume-encryption-concept.html[Configure NetApp Volume Encryption overview^].
