@@ -46,6 +46,7 @@ If you already have a Console agent deployed in your Azure VNet or on your premi
 
 If not, then you'll need to create a Console agent in one of those locations to back up ONTAP data to Azure Blob storage. You can't use a Console agent that's deployed in another cloud provider.
 
+To back up to Azure Blob storage in Azure China (21Vianet), you must deploy the Console agent in an Azure China region in standard mode. A Console agent that you've installed on your premises, in a commercial Azure region, or in Azure Government can't back up to Azure China.
 
 * https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
 * https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html[Install a Console agent in Azure^]
@@ -62,7 +63,7 @@ Ensure that the Console agent has the required networking connections.
 
 . Ensure that the network where the Console agent is installed enables the following connections:
 
-* An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Blob object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-azure.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+* An HTTPS connection over port 443 to NetApp Backup and Recovery and to your Blob object storage (https://docs.netapp.com/us-en/console-setup-admin/task-set-up-networking-azure.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^]). For Azure China, the Console agent must also reach `*.chinacloudapi.cn`, including `login.chinacloudapi.cn` and `management.chinacloudapi.cn`.
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
 * For NetApp Backup and Recovery Search & Restore to work, port 1433 must be open for communication between the Console agent and the Azure Synapse SQL services.
 * Additional inbound security group rules are required for Azure and Azure Government deployments. See https://docs.netapp.com/us-en/console-setup-admin/reference-ports-azure.html[Rules for the Console agent in Azure^] for details.
@@ -161,7 +162,9 @@ You'll need to verify license requirements for both Azure and the Console:
 
 *Supported regions* 
 
-You can create backups from on-premises systems to Azure Blob in all regions, including Azure Government regions. You specify the region where the backups will be stored when you set up the service.
+You can create backups from on-premises systems to Azure Blob in all Azure commercial regions and Azure Government regions. You specify the region where the backups will be stored when you set up the service.
+
+You can also create backups to Azure Blob in Azure China (21Vianet) regions (China East, China East 2, China East 3, China North, China North 2, and China North 3) when the Console agent is deployed in an Azure China region. The Console agent uses the Azure China endpoints automatically based on its region, and the backup storage account is created in the Console agent's region.
 
 == Prepare your ONTAP clusters
 
@@ -178,7 +181,7 @@ You must configure the following requirements on the system that connects to obj
 
 The following ONTAP cluster networking requirements are needed: 
 
-* The ONTAP cluster initiates an HTTPS connection over port 443 from the intercluster LIF to Azure Blob storage for backup and restore operations.
+* The ONTAP cluster initiates an HTTPS connection over port 443 from the intercluster LIF to Azure Blob storage for backup and restore operations. For Azure China, the intercluster LIF needs outbound access on port 443 to `<storage_account>.blob.core.chinacloudapi.cn`. If the LIF has no outbound path, backups fail during object store verification with a connection timeout error.
 +
 ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
 +

@@ -22,7 +22,7 @@ For details about creating a Console agent in AWS, refer to https://docs.netapp.
 For additional details, refer to the blog post https://community.netapp.com/t5/Tech-ONTAP-Blogs/BlueXP-Backup-and-Recovery-Feature-Blog-May-23-Updates/ba-p/444052[NetApp Backup and Recovery Feature Blog May 2023^].
 
 
-* NetApp Backup and Recovery does not support Microsoft Azure China regions.
+* NetApp Backup and Recovery can back up Cloud Volumes ONTAP and on-premises ONTAP systems to Azure Blob storage in Microsoft Azure China (21Vianet) regions only when the Console agent is deployed in an Azure China region. A Console agent in a commercial Azure region, in Azure Government, or on your premises can't back up to Azure China. The Console agent must also run in standard mode, not restricted mode.
 +
 For details about creating a Console agent in Azure, refer to https://docs.netapp.com/us-en/console-setup-admin/task-install-connector-azure-bluexp.html[Installing a Console agent in Azure^].
 

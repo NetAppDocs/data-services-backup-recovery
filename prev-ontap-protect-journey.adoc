@@ -286,6 +286,8 @@ For a list of valid Console agent locations, refer to one of the following backu
 * link:prev-ontap-backup-onprem-storagegrid.html[Back up on-premises ONTAP data to StorageGRID]
 * link:prev-ontap-backup-onprem-ontaps3.html[Back up on-premises ONTAP to ONTAP S3]
 
+To back up to Azure Blob storage in Azure China (21Vianet), deploy the Console agent in an Azure China region in standard mode. For details, refer to the Azure backup procedures listed above.
+
 === Support for sites with limited internet connectivity
 
 NetApp Backup and Recovery can be used in a site with limited internet connectivity (also known as _restricted mode_) to back up volume data. In this case, you'll need to deploy the Console agent in the destination cloud region. 

@@ -31,8 +31,10 @@ Supported ONTAP versions::
 Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended. ONTAP 9.16.1 or later is required if using Microsoft Entra ID authentication for Azure object storage.
 
 Supported Azure regions::
-NetApp Backup and Recovery is supported in all Azure regions, including Azure Government regions. 
+NetApp Backup and Recovery is supported in all Azure commercial regions and Azure Government regions. 
 //It is also supported in https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-dod-il6[Azure IL6 secure regions^].
++
+NetApp Backup and Recovery is also supported in Azure China (21Vianet) regions when the Console agent is deployed in an Azure China region (China East, China East 2, China East 3, China North, China North 2, or China North 3). The Console agent uses the Azure China management, sign-in, and Blob storage endpoints automatically based on its region. A Console agent in another Azure cloud can't back up to Azure China. For details about the Console agent requirements in Azure China, see <<Prepare your Console agent>>.
 +
 By default, NetApp Backup and Recovery provisions the Blob container with Local redundancy (LRS) for cost optimization. You can change this setting to Zone redundancy (ZRS) after NetApp Backup and Recovery has been activated if you want to make sure your data is replicated between different zones. See the Microsoft instructions for https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration?tabs=portal[changing how your storage account is replicated^].
 
@@ -65,6 +67,8 @@ If your environment meets these requirements, you can select `Entra ID` as the a
 == Prepare your Console agent
 The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
 //, or in a site with no internet access ("private" mode)
+
+To back up to Azure China, deploy the Console agent in an Azure China region in standard mode (restricted mode isn't supported). Allow outbound HTTPS (port 443) from the Console agent to `*.chinacloudapi.cn`, including `login.chinacloudapi.cn` and `management.chinacloudapi.cn`, in addition to the other endpoints that the Console agent requires.
 
 * https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
 * https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html[Deploy a Console agent in Azure in standard mode (full internet access)^]
