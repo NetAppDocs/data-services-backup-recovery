@@ -7,3 +7,14 @@ In this release, NetApp Backup and Recovery introduces the following enhancement
 For more information about creating Kubernetes protection policies, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-policies-kubernetes-create.html[Create and manage Kubernetes backup policies in NetApp Backup and Recovery^].
 
 For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery^].
+
+=== ONTAP Volumes workloads enhancements
+In this release, NetApp Backup and Recovery introduces the following enhancements for ONTAP Volumes workloads:
+
+* *Restore interface improvements*: The restore wizard for ONTAP volumes has a refreshed layout and improved navigation:
+** *Larger tables and cleaner layout*: The selection tables show more rows and columns at once, so you scroll less. The restore screens use refined spacing and breadcrumbs, so you can see where you are in the workflow.
+** *Step-by-step navigation*: *Next* and *Continue* now move to the next screen within the current step, such as from selecting a system to selecting a volume and then a snapshot. Previously, they could skip ahead to the next major step. *Previous* returns you to the last screen you completed and keeps your earlier selections, so you don't need to restart the step.
+** *More details when selecting a source volume*: The volume list now shows the volume type, volume style, SnapLock type, existing protection, and protection health. The Existing protection column is wider, so you can see all protection indicators (snapshot, replication, and backup). The list loads volumes from the same service as the Volumes dashboard, so both pages show the same information.
+* *Support for protecting volumes hosted in Azure China regions*: You can now back up ONTAP volumes to Azure Blob storage in Azure China (21Vianet). This support applies to both Cloud Volumes ONTAP and on-premises ONTAP systems. To use it, deploy the Console agent in an Azure China region. The Console agent then uses the Azure China management, sign-in, and Azure Blob storage endpoints automatically. Commercial Azure and Azure Government regions are unchanged.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery^].
