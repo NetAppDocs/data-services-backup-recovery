@@ -1,0 +1,20 @@
+=== Kubernetes workloads enhancements
+In this release, NetApp Backup and Recovery introduces the following enhancements for Kubernetes workloads:
+
+* *Amazon FSx for NetApp ONTAP support with disk-to-disk backup architecture*: You can now create Kubernetes protection policies that use the disk-to-disk backup architecture with Amazon FSx for NetApp ONTAP as primary storage and another FSx for NetApp ONTAP file system as secondary storage, in the same AWS region or a different AWS region. You can also use Cloud Volumes ONTAP as primary storage and FSx for NetApp ONTAP as secondary storage.
+* *Fix for qtree restore issue*: The ontap-nas-economy volume restore previously restored qtree directories with incorrect owner and permissions. This issue has been resolved in this release.
+
+For more information about creating Kubernetes protection policies, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-policies-kubernetes-create.html[Create and manage Kubernetes backup policies in NetApp Backup and Recovery^].
+
+For details about protecting Kubernetes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/br-use-kubernetes-protect-overview.html[Learn about protecting Kubernetes workloads with NetApp Backup and Recovery^].
+
+=== ONTAP Volumes workloads enhancements
+In this release, NetApp Backup and Recovery introduces the following enhancements for ONTAP Volumes workloads:
+
+* *Restore interface improvements*: The restore wizard for ONTAP volumes has a refreshed layout and improved navigation:
+** *Improved selection tables*: The selection tables show more rows and columns at a time. The restore screens use refined spacing and breadcrumbs, so you can see where you are in the workflow.
+** *Step-by-step navigation*: *Next* and *Continue* button functionality have been improved so that you can't accidentally skip ahead to the next major step. The *Previous* button returns you to the last screen you completed and keeps your earlier selections, so you don't need to restart the step.
+** *More details when selecting a source volume*: The volume list now shows the volume type, volume style, SnapLock type, existing protection, and protection health. The Existing protection column is wider, so you can see all protection indicators (snapshot, replication, and backup).
+* *Support for protecting volumes hosted in Azure China regions*: You can now back up ONTAP volumes to Azure Blob storage in Azure China (21Vianet). This support applies to both Cloud Volumes ONTAP and on-premises ONTAP systems. Commercial Azure and Azure Government regions are unchanged.
+
+For details about protecting ONTAP Volumes workloads, refer to https://docs.netapp.com/us-en/data-services-backup-recovery/prev-ontap-protect-overview.html[Learn about ONTAP volume protection with NetApp Backup and Recovery^].

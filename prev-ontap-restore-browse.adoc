@@ -141,9 +141,9 @@ You need the source system name, storage VM, volume name, and backup file date t
 . From the Console menu, select *Protection > Backup and recovery*.
 . Select the *Restore* tab to display the Restore Dashboard.
 . From the _Browse & Restore_ section, select *Restore Volume*.
-. In the _Select Source_ page, navigate to the backup file for the volume you want to restore. Select the *system*, the *Volume*, and the *Backup* file that has the date/time stamp from which you want to restore.
+. In the _Select Source_ page, navigate to the backup file for the volume you want to restore. Select the *system*, the *volume*, and the *snapshot* that has the date/time stamp from which you want to restore. When you make a selection, you are automatically taken to the next sub-step in the wizard.
 +
-The *Location* column shows whether the backup file (snapshot) is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
+The *Location* column shows whether the snapshot is *Local* (a snapshot on the source system), *Secondary* (a replicated volume on a secondary ONTAP system), or *Object Storage* (a backup file in object storage). Choose the file that you want to restore.
 . Select *Next*.
 +
 If you select a backup file in object storage and ransomware protection is active for that backup (if you enabled DataLock and Ransomware protection in the backup policy), you are prompted to run an additional ransomware scan on the backup file before restoring the data. We recommend that you scan the backup file for ransomware. (You'll incur extra egress costs from your cloud provider to access the contents of the backup file.)
@@ -230,8 +230,8 @@ image:diagram_browse_restore_file.png["A diagram that shows the flow to perform 
 . From the Console menu, select *Protection > Backup and recovery*.
 . Select the *Restore* tab to display the Restore Dashboard.
 . From the _Browse & Restore_ section, select *Restore Files or Folder*.
-. In the _Select Source_ page, navigate to the backup file for the volume that contains the folder or files you want to restore. Select the *system*, the *Volume*, and the *Backup* that has the date/time stamp from which you want to restore files.
-. Select *Next* and the list of folders and files from the volume backup are displayed.
+. In the _Select Source_ page, navigate to the backup file for the volume that contains the folder or files you want to restore. Select the *system*, the *volume*, and the *snapshot* that has the date/time stamp from which you want to restore files. When you make a selection, you are automatically taken to the next sub-step in the wizard.
+. After you select a snapshot, select *Next* and the list of folders and files from the volume backup are displayed.
 +
 If you are restoring folders or files from a backup file that resides in an archival storage tier, then you can select the Restore Priority.
 +

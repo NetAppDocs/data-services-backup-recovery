@@ -5,7 +5,7 @@ keywords: backing up, back up, backup, backup application data, Amazon Web servi
 summary: "Back up Cloud Volumes ONTAP volumes to Azure Blob storage with NetApp Backup and Recovery, verify requirements, enable the service, and activate backups on volumes." 
 ---
 
-= Back up Cloud Volumes ONTAP to Azure Blob Storage with NetApp Backup and Recovery
+= Back up Cloud Volumes ONTAP to Azure Blob with NetApp Backup and Recovery
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -28,11 +28,13 @@ Optionally, you can connect to a secondary ONTAP system for replicated volumes u
 image:diagram_cloud_backup_cvo_azure.png[A diagram showing how NetApp Backup and Recovery communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
 Supported ONTAP versions::
-Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended. ONTAP 9.16.1 or later is required if using Microsoft Entra ID authentication for Azure object storage.
+Minimum of ONTAP 9.8; ONTAP 9.8P13 and later is recommended. ONTAP 9.16.1 or later is required if you use Microsoft Entra ID authentication for Azure object storage.
 
 Supported Azure regions::
-NetApp Backup and Recovery is supported in all Azure regions, including Azure Government regions. 
+NetApp Backup and Recovery is supported in all Azure commercial regions and Azure Government regions. 
 //It is also supported in https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-dod-il6[Azure IL6 secure regions^].
++
+NetApp Backup and Recovery is also supported in Azure China (21Vianet) regions when the Console agent is deployed in an Azure China region (China East, China East 2, China East 3, China North, China North 2, or China North 3). The Console agent uses the Azure China management, sign-in, and Blob storage endpoints automatically based on its region. A Console agent in another Azure cloud can't back up to Azure China. For details about the Console agent requirements in Azure China, see <<Prepare your Console agent>>.
 +
 By default, NetApp Backup and Recovery provisions the Blob container with Local redundancy (LRS) for cost optimization. You can change this setting to Zone redundancy (ZRS) after NetApp Backup and Recovery has been activated if you want to make sure your data is replicated between different zones. See the Microsoft instructions for https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration?tabs=portal[changing how your storage account is replicated^].
 
@@ -65,6 +67,8 @@ If your environment meets these requirements, you can select `Entra ID` as the a
 == Prepare your Console agent
 The Console agent can be installed in an Azure region with full or limited internet access ("standard" or "restricted" mode). https://docs.netapp.com/us-en/console-setup-admin/concept-modes.html[See NetApp Console deployment modes for details^].
 //, or in a site with no internet access ("private" mode)
+
+To back up to Azure China, deploy the Console agent in an Azure China region in standard mode (restricted mode isn't supported). Allow outbound HTTPS (port 443) from the Console agent to `*.chinacloudapi.cn`, including `login.chinacloudapi.cn` and `management.chinacloudapi.cn`, in addition to the other endpoints that the Console agent requires.
 
 * https://docs.netapp.com/us-en/console-setup-admin/concept-connectors.html[Learn about Console agents^]
 * https://docs.netapp.com/us-en/console-setup-admin/task-quick-start-connector-azure.html[Deploy a Console agent in Azure in standard mode (full internet access)^]
@@ -246,7 +250,7 @@ You can also <<Show the API commands>> at the review step, so you can copy the c
 
 +
 If the Azure destination for your backups exists as a system on the *Systems* page, you can drag the ONTAP cluster onto the Azure Blob object storage.  
-* Select *Volumes* in the Backup and Recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Activate Backup* for a single volume (that does not already have replication or backup to object storage already enabled).  
+* Select *Volumes* in the Backup and Recovery bar. From the Volumes tab, select the *Actions* image:icon-action.png["Actions icon"] icon and select *Activate Backup* for a single volume (that doesn't already have replication or backup to object storage enabled).  
 
 + 
 The Introduction page of the wizard shows the protection options, including local snapshots, replication, and backups. If you used the second option in this step, the Define Backup Strategy page appears with one volume selected.
@@ -276,7 +280,7 @@ If the volumes you choose already have snapshot or replication policies applied,
 . In the Select Volumes page, select the volume or volumes you want to protect. 
 +
 * Optionally, filter the rows to show only volumes with certain volume types, styles, and more to make the selection easier. 
-* After you select the first volume, then you can select all FlexVol volumes. (FlexGroup volumes can be selected one at a time only.) To back up all existing FlexVol volumes, check one volume first and then check the box in the title row.
+* After you select the first volume, you can select all FlexVol volumes. (FlexGroup volumes can be selected one at a time only.) To back up all existing FlexVol volumes, check one volume first and then check the box in the title row.
 * To back up individual volumes, check the box for each volume.
 
 . Select *Next*.
@@ -298,7 +302,7 @@ NOTE: If the volumes you choose have different snapshot and replication policies
 
 . In the *Define backup strategy* page, choose one or all of the following. All three are selected by default: 
 +
-* *Local Snapshots*: If you are performing replication or back up to object storage, local snapshots must be created. 
+* *Local Snapshots*: If you are performing replication or backup to object storage, local snapshots must be created. 
 * *Replication*: Creates replicated volumes on another ONTAP storage system.  
 * *Backup*: Backs up volumes to object storage.  
 
@@ -345,7 +349,7 @@ To create a policy, select *Create new policy* and do the following:
 +
 TIP: If you want to protect your backup files from being modified or deleted, confirm that the storage account was created with immutable storage enabled using a 30-day retention period. 
 
-* *Encryption key*: If you created a new Azure storage account, enter encryption key information given to you from the provider. Choose whether you'll use the default Azure encryption keys, or choose your own customer-managed keys from your Azure account, to manage encryption of your data. 
+* *Encryption key*: If you created a new Azure storage account, enter encryption key information given to you by the provider. Choose whether you'll use the default Azure encryption keys, or choose your own customer-managed keys from your Azure account, to manage encryption of your data. 
 
 + 
 If you choose to use your own customer-managed keys, enter the key vault and key information. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[Learn how to use your own keys^].
@@ -391,7 +395,7 @@ Review your selections and make adjustments if necessary.
 .Steps 
 
 . In the Review page, review your selections. 
-. Optionally check the box to *Automatically synchronize the snapshot policy labels with the replication and backup policy labels*. This creates snapshots with a label that matches the labels in the replication and backup policies.  
+. Optionally, check the box to *Automatically synchronize the snapshot policy labels with the replication and backup policy labels*. This creates snapshots with a label that matches the labels in the replication and backup policies.  
 . Select *Activate Backup*. 
 
 .Result 
